@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:orientation="vertical" >
+    <com.farwolf.view.PullToRefreshView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/pull"
+        >
+                <ExpandableListView 
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:divider="#999999"
+             android:id="@+id/list"            
+             android:cacheColorHint="@null"
+	         android:dividerHeight="0.1dp"	        
+	         android:drawSelectorOnTop="false"
+	         android:fadingEdge="none"
+	         android:listSelector="#00000000"
+	         android:scrollbars="none"
+	         
+	      
+            >
+            
+        </ExpandableListView>
+        
+    </com.farwolf.view.PullToRefreshView>
+   
+  <com.farwolf.view.progress.ProgressWheel 
+            android:id="@+id/progress"
+	        android:layout_width="80dp"
+	        android:layout_height="80dp"
+	        android:layout_centerHorizontal="true"        
+	        android:layout_centerVertical="true"       
+	        android:visibility="gone"
+	        wheel:matProg_barColor="#666666"
+	        wheel:matProg_progressIndeterminate="true"
+         />
+    
+    
+
+</RelativeLayout>

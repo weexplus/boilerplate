@@ -1,0 +1,42 @@
+{
+
+   //web根目录名字
+  "schema":"mv",
+  "static":
+  {
+    "umeng":
+    {
+      "ios":
+      {
+        "appkey":"5989828d717c191ffe0005c1"
+      },
+      "android":
+      {
+        "appkey":"598a841b2ae85b7e280008c5"
+      }
+
+    }
+
+  },
+  "platform":
+  {
+     "wx":
+     {
+       "appkey":"wxb9760e8d21f7979b",
+       "appsecret":"a777fcab3485989805e52b2bd095badf"
+     },
+     "qq":
+     {
+       "appkey":"1105821097",
+       "appsecret":""
+     },
+     "weibo":
+     {
+       "appkey":"1105821097",
+       "appsecret":"",
+       "url":""
+     }
+  }
+
+}
+

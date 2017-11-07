@@ -1,0 +1,1 @@
+../../../../sdk/WeexSDK/Sources/Component/WXTextComponent.h

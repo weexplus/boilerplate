@@ -1,0 +1,51 @@
+{
+  "name": "farwolf.weex",
+  "version": "0.0.1",
+  "summary": "Handle some data.",
+  "description": "Handle the data.",
+  "homepage": "http://csdn.net/veryitman",
+  "license": "MIT",
+  "authors": {
+    "veryitman": "veryitman@126.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": [
+    "Source",
+    "farwolf.weex/**/*.{h,m,mm,c}"
+  ],
+  "exclude_files": "Source/Exclude",
+  "resources": [
+    "farwolf.weex/resources/storyboard/**",
+    "farwolf.weex/resources/image/**",
+    "farwolf.weex/resources/xib/**"
+  ],
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "dependencies": {
+    "farwolf": [
+
+    ],
+    "WeexSDK": [
+
+    ],
+    "SDWebImage": [
+      "~> 3.8"
+    ],
+    "WXDevtool": [
+
+    ],
+    "Masonry": [
+      "~> 0.6.3"
+    ],
+    "SocketRocket": [
+      "~> 0.4.2"
+    ],
+    "RHAddressBook": [
+
+    ]
+  }
+}

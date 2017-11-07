@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:id="@+id/topbar"
+    >
+
+    <com.farwolf.view.calendar.DirectionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mcv_action_previous"
+         android:id="@+id/buttonPast"
+        >
+
+    </com.farwolf.view.calendar.DirectionButton>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="5月"
+        android:id="@+id/title"
+        android:gravity="center"
+        />
+    <com.farwolf.view.calendar.DirectionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mcv_action_next"
+        android:id="@+id/buttonFuture"
+        >
+
+    </com.farwolf.view.calendar.DirectionButton>
+</LinearLayout>
+
+    <com.farwolf.view.calendar.CalendarPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pager"
+        >
+
+    </com.farwolf.view.calendar.CalendarPager>
+</LinearLayout>

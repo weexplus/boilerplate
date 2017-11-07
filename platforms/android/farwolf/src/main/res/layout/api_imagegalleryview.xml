@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    >
+    <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frame"
+      
+        >
+        <com.farwolf.view.ImageGallery.MyGallery
+       
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mygallery"
+        android:soundEffectsEnabled="false"
+        
+        android:background="#000"
+        android:fadingEdgeLength="0.0dp"
+        />
+        </FrameLayout>
+	    <com.farwolf.view.ImageGallery.SubscriptView 
+	   
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subscript"
+        android:layout_alignRight="@id/frame"
+        android:layout_alignBottom="@id/frame"
+		></com.farwolf.view.ImageGallery.SubscriptView > 
+    
+</RelativeLayout>
+</FrameLayout>

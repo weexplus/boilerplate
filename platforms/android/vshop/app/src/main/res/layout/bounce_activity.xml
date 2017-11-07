@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    android:background="#ffffff"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+
+    android:orientation="vertical" >
+
+<com.taobao.weex.RenderContainer
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <com.farwolf.vshop.view.BounceScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeee"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"></LinearLayout>
+
+        </LinearLayout>
+    </com.farwolf.vshop.view.BounceScrollView>
+</com.taobao.weex.RenderContainer>
+    <com.farwolf.view.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+
+        />
+
+
+</RelativeLayout>

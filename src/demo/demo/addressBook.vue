@@ -1,0 +1,72 @@
+
+
+<template>
+ <scroller>
+     <head title="读取联系人"  append="tree">
+
+     </head>
+        <div  style="margin-bottom:50" >
+            <div  class="cl" >
+                <div  @click="read()" class="btn"><text style="color:#ffffff" >读取联系人</text></div>
+                <text style="color:#0000000">{{back}}</text>
+
+
+            </div>
+
+
+
+
+        </div>
+
+ </scroller>
+
+
+</template>
+
+<style>
+.cl
+{
+
+    align-items: center;
+
+}
+
+
+</style>
+<style src="./style.css"></style>
+<script>
+
+    var head =require('./header.vue')
+    var globalEvent = weex.requireModule('globalEvent') ;
+    globalEvent.addEventListener("onPageInit", function (e) {
+        const nav = weex.requireModule('navbar');
+        nav.setTitle('网络请求');
+        var navigator = weex.requireModule('navigator') ;
+
+    });
+
+    export default {
+        components:{head},
+        data () {
+            return {
+               back:""
+            }
+        },
+        methods: {
+            read()
+            {
+
+               var r=weex.requireModule("addressBook")
+                r.read((res)=>{
+                    this.back=res;
+                })
+
+            },
+
+        },
+        created:function(){
+
+
+        }
+    }
+</script>

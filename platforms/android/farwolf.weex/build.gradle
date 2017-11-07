@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin:'android-apt'
+def AAVersion='4.0.0'
+android {
+    compileSdkVersion 23
+    buildToolsVersion "24.0.3"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+   compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':farwolf')
+    compile project(':farwolf.business')
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.alibaba:fastjson:1.1.46.android'
+
+
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.wang.avi:library:1.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    compile 'com.umeng.analytics:analytics:latest.integration'
+
+    compile 'com.squareup.okhttp:okhttp:2.3.0'
+    compile 'com.squareup.okhttp:okhttp-ws:2.3.0'
+    compile 'com.jakewharton.scalpel:scalpel:1.1.2'
+    compile 'com.taobao.android.weex_inspection:urlconnection_interceptor:1.0.0'
+    compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
+    compile 'com.taobao.android:weex_inspector:0.11.0'
+
+    compile project(':sdk')
+    compile project(':weex_debug')
+}

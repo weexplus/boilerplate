@@ -1,0 +1,28 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.farwolf.weex">
+    <application>
+
+        <activity android:name="com.farwolf.weex.activity.QrActivity_"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            >
+
+        </activity>
+        <activity android:name="com.farwolf.weex.activity.PresentActivity_"
+            android:theme="@style/pop"
+
+            >
+
+        </activity>
+
+        <activity android:name="com.farwolf.weex.activity.WeexActivity_"
+
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"
+
+        >
+
+        </activity>
+
+    </application>
+
+</manifest>

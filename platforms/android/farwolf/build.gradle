@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin:'android-apt'
+def AAVersion='4.0.0'
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 21
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:21.0.0'
+    compile project(':galleryfinal')
+    compile 'com.google.code.gson:gson:2.2.2'
+
+    compile files('libs/EventBus2.4.jar')
+    compile files('libs/android-support-v4.jar')
+
+    compile files('libs/calcite-linq4j-1.2.0.jar')
+    compile files('libs/httpmime-4.1.1.jar')
+    compile files('libs/volley.jar')
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    compile 'com.android.support:support-annotations:23.1.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+    compile 'com.google.zxing:core:3.2.1'
+}
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // you should set your package name here if you are using different application IDs
+        // resourcePackageName "your.package.name"
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel 'INFO'
+        // logFile '/var/log/aa.log'
+    }
+}

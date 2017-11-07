@@ -1,0 +1,29 @@
+include ':app'
+
+include ':galleryfinal'
+project (':galleryfinal').projectDir = new File('../galleryfinal')
+
+include ':farwolf.weex'
+project (':farwolf.weex').projectDir = new File('../farwolf.weex')
+
+include ':farwolf'
+project (':farwolf').projectDir = new File('../farwolf')
+
+include ':farwolf.business'
+project (':farwolf.business').projectDir = new File('../farwolf.business')
+
+include ':sdk'
+project (':sdk').projectDir = new File('../sdk')
+
+include ':umeng'
+project(':umeng').projectDir = new File('../umeng')
+
+
+include ':weex_debug'
+project(':weex_debug').projectDir = new File('../weex_debug')
+
+include ':alipay'
+project(':alipay').projectDir = new File('../alipay')
+
+include ':wxpay'
+project(':wxpay').projectDir = new File('../wxpay')

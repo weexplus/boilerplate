@@ -1,0 +1,1 @@
+../../../../WXDevtool/WXDevTool/Source/PonyDebugger/NSManagedObject+WXRuntimePropertyDescriptor.h

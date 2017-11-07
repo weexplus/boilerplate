@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="暂无数据"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+           android:textColor="#d8d8d8"
+        android:gravity="center"
+        android:id="@+id/txt"
+        />
+
+</LinearLayout>

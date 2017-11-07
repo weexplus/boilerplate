@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="app_name">farwolf</string>
+   <string name="crop__saving" translatable="false">Saving picture…</string>
+    <string name="crop__wait" translatable="false">Please wait…</string>
+    <string name="crop__pick_error" translatable="false">No image sources available</string>
+
+    <string name="crop__done" translatable="false">确认</string>
+    <string name="crop__cancel"  translatable="false">取消</string>
+     <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
+    <string name="pickerview_year">年</string>
+    <string name="pickerview_month">月</string>
+    <string name="pickerview_day">日</string>
+    <string name="pickerview_hours">时</string>
+    <string name="pickerview_minutes">分</string>
+    <string name="pickerview_seconds">秒</string>
+
+ <string name="cancel">Cancel</string>
+ <string name="save">Save</string>
+ <string name="saving_image">Saving image</string>
+ <string name="preparing_card">Preparing card</string>
+ <string name="no_storage_card">No storage card</string>
+ <string name="not_enough_space">Not enough space</string>
+
+
+ <string name="previous">Go to previous</string>
+ <string name="next">Go to next</string>
+ <string name="calendar">Calendar</string>
+</resources>

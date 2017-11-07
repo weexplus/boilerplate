@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "97c2b125-0731-4035-acd7-a7a788a5dbff",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "97c2b125-0731-4035-acd7-a7a788a5dbff" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "97c2b125-0731-4035-acd7-a7a788a5dbff" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5B680816-B499-4B0E-849A-CC53FEC7FABE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "97c2b125-0731-4035-acd7-a7a788a5dbff" : "Code\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "farwolf.business",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Code\/trunk\/ios\/farwolf.business\/farwolf.business.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/svn.eyeieye.com:23690\/hotjob",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "97c2b125-0731-4035-acd7-a7a788a5dbff"
+    }
+  ]
+}

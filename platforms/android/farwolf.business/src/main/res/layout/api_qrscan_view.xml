@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#60000000"
+            android:gravity="bottom|center_horizontal"
+            android:paddingBottom="25dp"
+            android:text=""
+            android:textColor="#ffffff"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#60000000"/>
+
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:id="@+id/scan_window">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="2dp"
+                    android:id="@+id/scanner_line"
+                    android:src="@drawable/scanner"
+                    android:visibility="gone"/>
+
+                <View
+                    android:layout_width="25dp"
+                    android:layout_height="3dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/theme"/>
+
+                <View
+                    android:layout_width="25dp"
+                    android:layout_height="3dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/theme"/>
+
+                <View
+                    android:layout_width="25dp"
+                    android:layout_height="3dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:background="@color/theme"/>
+
+                <View
+                    android:layout_width="25dp"
+                    android:layout_height="3dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/theme"/>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/theme"/>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/theme"/>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:background="@color/theme"/>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/theme"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#60000000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#60000000"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:gravity="bottom|center_horizontal"
+                android:paddingBottom="25dp"
+                android:text="请将二维码放入扫描框内"
+                android:textColor="#ffffff"/>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

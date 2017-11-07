@@ -1,0 +1,1 @@
+../../../../farwolf.weex/farwolf.weex/module/WXQRModule.h
