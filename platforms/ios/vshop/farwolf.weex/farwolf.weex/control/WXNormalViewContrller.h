@@ -25,6 +25,7 @@
 @property (nonatomic, strong) WXSDKInstance *instance;
 @property (nonatomic, strong) UIView *weexView;
 @property (nonatomic, strong) NSString *pageid;
+@property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) NSURL *sourceURL;
 @property (nonatomic, strong) SRWebSocket *hotReloadSocket;
 @property (nonatomic)BOOL freeFrame;

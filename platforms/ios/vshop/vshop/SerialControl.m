@@ -18,8 +18,13 @@
  
 }
 
+
+
 -(void)gotovc
 {
+//    if(_hasload)
+//        return;
+//    _hasload=true;
     [self push:@"Main/vc1" anim:true];
 }
 -(void)loadCompelete

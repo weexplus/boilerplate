@@ -24,6 +24,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
+
     compile project(':farwolf.weex')
     compile project(':umeng')
     compile project(':alipay')

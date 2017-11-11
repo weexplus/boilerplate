@@ -152,7 +152,7 @@
                   moduleName = "movie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/farwolf.weex/platforms/ios/vshop/farwolf.business/farwolf.business/http/FileReader.m"
-                  timestampString = "531749699.450271"
+                  timestampString = "532071407.423167"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "230"
@@ -167,7 +167,7 @@
                   moduleName = "movie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/farwolf.weex/platforms/ios/vshop/farwolf.business/farwolf.business/http/FileReader.m"
-                  timestampString = "531749699.451647"
+                  timestampString = "532071407.426366"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "230"
@@ -182,7 +182,7 @@
                   moduleName = "movie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/farwolf.weex/platforms/ios/vshop/farwolf.business/farwolf.business/http/FileReader.m"
-                  timestampString = "531749699.453271"
+                  timestampString = "532071407.42966"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "230"
@@ -403,91 +403,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/core/WeexFactory.m"
-            timestampString = "531655009.966949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "+renderNew:compelete:frame:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/core/WeexFactory.m"
-            timestampString = "531655009.967012"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "+renderNew:compelete:frame:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/core/WeexFactory.m"
-            timestampString = "531655009.967073"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "+renderNew:compelete:frame:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/component/WXLooperText.m"
-            timestampString = "531749699.243915"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/component/WXLooperText.m"
-            timestampString = "531749699.244284"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "WXLooperText"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "farwolf.weex/farwolf.weex/component/WXLooperText.m"
-            timestampString = "531749699.244557"
+            timestampString = "531900230.803138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -503,7 +423,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "farwolf.weex/farwolf.weex/component/WXLooperText.m"
-            timestampString = "531749699.244795"
+            timestampString = "531900230.803397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -519,7 +439,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "farwolf.weex/farwolf.weex/component/WXLooperText.m"
-            timestampString = "531749699.245034"
+            timestampString = "531900230.803709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"

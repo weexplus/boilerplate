@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(390)
+	__vue_styles__.push(__webpack_require__(393)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(391)
+	__vue_exports__ = __webpack_require__(394)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(392)
+	var __vue_template__ = __webpack_require__(395)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/index.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Desktop/新奥/farwolf.weex/src/index.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-c7dbd106"
+	__vue_options__._scopeId = "data-v-215b42cf"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -221,10 +221,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/component/header.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Desktop/新奥/farwolf.weex/src/component/header.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-3f315c04"
+	__vue_options__._scopeId = "data-v-0ff64972"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -510,7 +510,7 @@
 
 /***/ }),
 
-/***/ 390:
+/***/ 393:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -532,7 +532,7 @@
 
 /***/ }),
 
-/***/ 391:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -636,7 +636,7 @@
 
 /***/ }),
 
-/***/ 392:
+/***/ 395:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -646,7 +646,16 @@
 	      justifyContent: "center",
 	      alignItems: "center"
 	    }
-	  }, [_c('div', {
+	  }, [_c('image', {
+	    staticStyle: {
+	      width: "100",
+	      height: "100",
+	      borderRadius: "10"
+	    },
+	    attrs: {
+	      "src": "http://59.110.169.246/movie/tx/1.jpg"
+	    }
+	  }), _c('div', {
 	    staticStyle: {
 	      width: "100",
 	      height: "100",

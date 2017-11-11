@@ -41,6 +41,7 @@
     [[UIApplication sharedApplication]setStatusBarHidden:false];;
     [self regist:@"tabselect" method:@selector(tabselect:)];
     [self regist:@"tabrender" method:@selector(tabrender)];
+//     _splash.layer.opacity=0;
 
 }
 -(void)tabrender
@@ -71,6 +72,7 @@
     {
          [self setSelectedIndex:1];
          self.selectedViewController=self.viewControllers[1];
+        
 //        [self setSelectedViewController:<#(__kindof UIViewController * _Nullable)#>]
     }
     else if([@"电影" isEqualToString:name])

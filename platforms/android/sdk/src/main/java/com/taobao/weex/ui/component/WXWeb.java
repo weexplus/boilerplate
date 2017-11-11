@@ -36,6 +36,7 @@ import com.taobao.weex.utils.WXUtils;
 import java.util.HashMap;
 import java.util.Map;
 @Component(lazyload = false)
+
 public class WXWeb extends WXComponent {
 
     public static final String GO_BACK = "goBack";

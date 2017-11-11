@@ -18,6 +18,7 @@
  */
 package com.taobao.weex.dom.action;
 
+import com.alibaba.fastjson.JSONObject;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.adapter.IWXUserTrackAdapter;
 import com.taobao.weex.common.WXErrorCode;
@@ -26,18 +27,23 @@ import com.taobao.weex.dom.DOMActionContext;
 import com.taobao.weex.dom.RenderAction;
 import com.taobao.weex.dom.RenderActionContext;
 import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.dom.WXEvent;
+import com.taobao.weex.tracing.Stopwatch;
+import com.taobao.weex.tracing.WXTracing;
 import com.taobao.weex.ui.component.WXComponent;
+
+import java.util.List;
 
 /**
  * Created by sospartan on 01/03/2017.
  */
-class AddEventAction implements DOMAction, RenderAction {
+class AddEventAction extends TraceableAction implements DOMAction, RenderAction {
   private final String mRef;
-  private final String mEvent;
+  private final Object mEvent;
 
   private WXDomObject mUpdatedDom;
 
-  AddEventAction(String ref, String event) {
+  AddEventAction(String ref, Object event) {
     mRef = ref;
     mEvent = event;
   }
@@ -47,6 +53,8 @@ class AddEventAction implements DOMAction, RenderAction {
     if (context.isDestory()) {
       return;
     }
+
+    Stopwatch.tick();
     WXSDKInstance instance = context.getInstance();
     WXDomObject domObject = context.getDomByRef(mRef);
     if (domObject == null) {
@@ -55,8 +63,13 @@ class AddEventAction implements DOMAction, RenderAction {
       }
       return;
     }
-    domObject.addEvent(mEvent);
+
+    domObject.getEvents().addEvent(mEvent);
     mUpdatedDom = domObject;
+    if (WXTracing.isAvailable() && mBeginEvent != null) {
+      submitPerformance("addEventToDom", "X", instance.getInstanceId(), Stopwatch.tack(), Stopwatch.lastTickStamp(), true);
+    }
+
     context.postRenderTask(this);
 
     if (instance != null) {
@@ -69,8 +82,18 @@ class AddEventAction implements DOMAction, RenderAction {
     WXComponent comp = context.getComponent(mRef);
     if(comp != null){
       //sync dom change to component
+      Stopwatch.tick();
       comp.updateDom(mUpdatedDom);
+      Stopwatch.split("updateDom");
       comp.addEvent(mEvent);
+      Stopwatch.split("addEventToComponent");
+
+      if (WXTracing.isAvailable() && mBeginEvent != null) {
+        List<Stopwatch.ProcessEvent> events = Stopwatch.getProcessEvents();
+        for (Stopwatch.ProcessEvent event : events) {
+          submitPerformance(event.fname, "X", comp.getInstanceId(), event.duration, event.startMillis, true);
+        }
+      }
     }
   }
 }

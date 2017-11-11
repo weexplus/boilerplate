@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "farwolf_weex.h"
-
+#import "URL.h"
 @interface WXNavigationModule : NSObject<WXModuleProtocol,UIGestureRecognizerDelegate>
 
 @end

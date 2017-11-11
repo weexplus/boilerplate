@@ -118,12 +118,6 @@ public class ChoosePhotoActivity extends ActivityBase{
 	@Click
 	void cameraClicked()
 	{
-//		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//		boolean t=tool.makeDir(tool.getBaseDir());
-//		Log.i("创建目录",t+"");
-//		Uri uri=Uri.fromFile(new File(tool.getBaseDir(),IMAGE_FILE_NAME));
-//		intent.putExtra(MediaStore.EXTRA_OUTPUT,uri);
-//		startActivityForResult(intent,GotoCamera);
 
 		openCamrea();
 		
@@ -251,12 +245,7 @@ public class ChoosePhotoActivity extends ActivityBase{
 	{
 
 		openPhoto();
-//		Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//		startActivityForResult(intent, GotoPhoto);
 
-//		Intent intent1 = new Intent(Intent.ACTION_GET_CONTENT,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//		intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-//		startActivityForResult(intent1, GotoPhoto);
 	}
 	
 //	@OnActivityResult(GotoPhoto)
@@ -272,24 +261,7 @@ public class ChoosePhotoActivity extends ActivityBase{
 		if(resize)
 		{
 			startPhotoZoom(in.getData());
-//			File temp = new File(tool.getBaseDir(), IMAGE_FILE_NAME);
-//			try {
-//				InputStream inputStream = getContentResolver().openInputStream(in.getData());
-//				FileOutputStream fileOutputStream = new FileOutputStream(temp);
-//				copyStream(inputStream, fileOutputStream);
-//				fileOutputStream.close();
-//				inputStream.close();
-////				startPhotoZoom(in.getData());
-//				startCropImage();
-//			}
-//			catch (Exception e)
-//			{
-//
-//			}
 
-
-//			startCropImage();
-//			startPhotoZoom(in.getData());
 		}
 		else
 		{
@@ -364,9 +336,7 @@ public class ChoosePhotoActivity extends ActivityBase{
 		if(photo==null)
 		{
 			String path = in.getStringExtra(CropImage.IMAGE_PATH);
-//			String path=tool.getBaseDir()+IMAGE_FILE_NAME;
-//			photo = BitmapFactory.decodeFile(path);
-//			in.putExtra("data",photo);
+
 			in.putExtra("path",path);
 		}
 //		Drawable drawable = new BitmapDrawable(photo);

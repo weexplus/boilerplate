@@ -556,6 +556,7 @@
 	//
 	//
 	//
+	//
 
 
 	var head = __webpack_require__(130);
@@ -565,40 +566,22 @@
 	    data: function data() {
 	        return {
 	            src: "",
-	            index: 0
+	            index: 0,
+	            items: ['1', '2', '3', '4', '5']
 	        };
 	    },
 
 	    methods: {
+	        getindex: function getindex() {
+	            var _this = this;
+
+	            this.$refs.looper.getIndex(function (res) {
+
+	                _this.index = res.index;
+	            });
+	        },
 	        onchange: function onchange(res) {
 	            this.index = res.index;
-	        },
-	        openPhoto: function openPhoto() {
-	            var self = this;
-	            var photo = weex.requireModule('photo');
-	            photo.openPhoto(500, 800, '#000000', '#ffffff', '#ffffff', function (e) {
-
-	                self.src = e.path;
-	                var net = weex.requireModule("net");
-	                net.postFile('http://10.39.1.72:8081/cdtp/file/uploadReturnName', {//param
-
-	                }, {
-	                    // header
-	                }, { file: e.path }, function () {
-	                    //start
-	                }, function (e) {
-	                    //succcess
-	                    var modal = weex.requireModule("modal");
-	                    modal.toast({ message: '上传成功！' });
-	                }, function () {
-	                    //compelete
-
-	                }, function () {
-	                    //exception
-	                    var modal = weex.requireModule("modal");
-	                    modal.toast({ message: '上传异常！' });
-	                });
-	            });
 	        },
 	        openCamera: function openCamera() {
 	            var self = this;
@@ -692,18 +675,26 @@
 	      "append": "tree"
 	    }
 	  }), _c('looper', {
+	    ref: "looper",
 	    staticStyle: {
 	      width: "300",
 	      height: "100",
 	      backgroundColor: "#0088fb"
 	    },
 	    attrs: {
-	      "data": ['1', '2', '3', '4', '5']
+	      "data": _vm.items,
+	      "color": "#eeeeee"
+	    }
+	  }), _c('text', [_vm._v(_vm._s(_vm.index))]), _c('div', {
+	    staticStyle: {
+	      width: "200",
+	      height: "100",
+	      backgroundColor: "#006ce7"
 	    },
 	    on: {
-	      "change": _vm.onchange
+	      "click": _vm.getindex
 	    }
-	  }), _c('text', [_vm._v(_vm._s(_vm.index))])], 1)
+	  })], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

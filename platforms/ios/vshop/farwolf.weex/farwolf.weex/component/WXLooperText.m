@@ -121,7 +121,6 @@ WX_EXPORT_METHOD(@selector(getIndex:))
     GYChangeTextView *tView=[[GYChangeTextView alloc]initWithFrame:self.calculatedFrame];
     tView.needDealy=self.interval;
     tView.interval=self.interval;
-   
     
     self.textview=tView;
     if(_data!=nil)
@@ -136,7 +135,7 @@ WX_EXPORT_METHOD(@selector(getIndex:))
 
 -(void)getIndex:(WXModuleCallback)callback
 {
-    callback(@{@"index" : @(self.textview.currentIndex)});
+    callback(@{@"index" : @([self.textview realCurrentIndex])});
 }
 
 -(void)resetAlign

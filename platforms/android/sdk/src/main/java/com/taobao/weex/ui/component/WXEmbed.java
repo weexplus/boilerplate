@@ -280,7 +280,11 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     }
 
     ViewGroup.LayoutParams layoutParams = getHostView().getLayoutParams();
-
+//    sdkInstance.renderByUrl(WXPerformance.DEFAULT,
+//                            url,
+//                            null, null, layoutParams.width,
+//                            layoutParams.height,
+//                            WXRenderStrategy.APPEND_ASYNC);
     //zjr add
     this.loadUrl(url,sdkInstance,layoutParams);
     return sdkInstance;
@@ -296,7 +300,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     else
     {
 
-        instance.render(WXPerformance.DEFAULT, loadAsset(url, instance.getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
+      instance.render(WXPerformance.DEFAULT, loadAsset(url, instance.getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
 
     }
   }

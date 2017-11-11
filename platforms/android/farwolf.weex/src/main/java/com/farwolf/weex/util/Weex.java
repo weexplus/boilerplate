@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
+import com.farwolf.weex.adapter.PicassoImageAdapter;
 import com.farwolf.weex.component.WXFEmbed;
 import com.farwolf.weex.component.WXFImage;
 import com.farwolf.weex.component.WXFListComponent;
@@ -99,7 +100,7 @@ public class Weex extends ServiceBase{
         WXSDKEngine.addCustomOptions("appGroup", groupname);
         WXSDKEngine.initialize(application,
                 new InitConfig.Builder()
-                        .setImgAdapter(new ImageAdapter())
+                        .setImgAdapter(new PicassoImageAdapter())
                         .build());
         try {
             WXSDKEngine.registerModule("event", WXEventModule.class);

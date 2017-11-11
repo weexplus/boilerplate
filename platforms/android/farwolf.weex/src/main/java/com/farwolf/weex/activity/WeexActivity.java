@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.farwolf.base.TitleActivityBase;
@@ -37,10 +38,12 @@ import com.farwolf.weex.view.AndroidBug5497Workaround;
 import com.farwolf.weex.view.ToolPop;
 import com.farwolf.weex.view.ToolPop_;
 import com.taobao.weex.IWXRenderListener;
+import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.utils.WXFileUtils;
+import com.taobao.weex.utils.WXUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -50,7 +53,9 @@ import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zhengjiangrong on 2017/5/8.
@@ -245,7 +250,11 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             {
                 this.url=url;
             }
-            render(url);
+            if(this.url!=null)
+            {
+                render(url);
+            }
+
         }
         HotRefreshManager.getInstance().disConnect();
         if(mReceiver!=null)
@@ -296,6 +305,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         });
         HotRefreshManager.getInstance().setHandler(mWXHandler);
         init();
+
     }
 
 
@@ -361,6 +371,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
                 mWXSDKInstance.destroy();
             }
             this.url=url;
+            Log.i("url",url);
             mWXSDKInstance=null;
             mWXSDKInstance=new WXSDKInstance(this);
             mWXSDKInstance.setSize(screenTool.getScreenWidth(),screenTool.getScreenHeight());
@@ -374,7 +385,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             }
             else
             {
-                mWXSDKInstance.render("farwolf", WXFileUtils.loadAsset(url, this), null, null, WXRenderStrategy.APPEND_ASYNC);
+                String s= WXFileUtils.loadAsset(url, this);
+//                mWXSDKInstance.render("farwolf",s, null, null, WXRenderStrategy.APPEND_ASYNC);
+                this.renderPage(s,url);
             }
         }
         catch (Exception e)
@@ -394,6 +407,46 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         render(url,true);
 
 
+    }
+
+
+
+    protected void renderPage(String template,String source){
+        renderPage(template,source,null);
+    }
+
+    protected void renderPage(String template,String source,String jsonInitData){
+//        AssertUtil.throwIfNull(mContainer,new RuntimeException("Can't render page, container is null"));
+        Map<String, Object> options = new HashMap<>();
+        options.put(WXSDKInstance.BUNDLE_URL, source);
+        // Set options.bundleDigest
+        try {
+            String banner = WXUtils.getBundleBanner(template);
+            JSONObject jsonObj = JSONObject.parseObject(banner);
+            String digest = null;
+            if (jsonObj != null) {
+                digest = jsonObj.getString(com.taobao.weex.common.Constants.CodeCache.BANNER_DIGEST);
+            }
+            if (digest != null) {
+                options.put(com.taobao.weex.common.Constants.CodeCache.DIGEST, digest);
+            }
+        } catch (Throwable t) {}
+        //Set options.codeCachePath
+        String path = WXEnvironment.getFilesDir(getApplicationContext());
+        path += File.separator;
+        path += com.taobao.weex.common.Constants.CodeCache.SAVE_PATH;
+        path += File.separator;
+        options.put(com.taobao.weex.common.Constants.CodeCache.PATH, path);
+
+        mWXSDKInstance.setTrackComponent(true);
+        mWXSDKInstance.render(
+                "farwolf",
+                template,
+                options,
+                jsonInitData,
+                screenTool.getScreenWidth(),
+                screenTool.getScreenHeight(),
+                WXRenderStrategy.APPEND_ASYNC);
     }
 
 

@@ -34,6 +34,7 @@
         }
        
     }
+    
     return self;
 }
 
@@ -42,11 +43,7 @@
 {
     
     dispatch_async(dispatch_get_main_queue(), ^{
-//        if (attributes[@"items"])
-//        {
-//            self.items=attributes[@"items"];
-//            [self updateItems:_items];
-//        }
+ 
         if (attributes[@"index"])
         {
             self.index=[attributes[@"index"] integerValue];
@@ -75,7 +72,7 @@
  
     if(self.items!=nil&&[self.items count]>0)
     [self updateItems:self.items];
-      [self show];
+    [self show];
     
 }
 
@@ -84,14 +81,15 @@
     NSMutableArray *n=self.host.childViewControllers;
     for(UIViewController *vc in  n)
     {
-        
-        BOOL t=[n indexOfObject:vc]!=self.index;
+        WXNormalViewContrller *cv=vc;
+        BOOL t=cv.key.integerValue!=self.index;
         [vc.view setHidden:t];
     }
 }
 
 -(void)updateItems:(NSMutableArray*)items
 {
+ 
      self.items=items;
      NSMutableArray *n=self.host.childViewControllers;
      for(UIViewController *vc in  n)
@@ -99,13 +97,16 @@
          [vc removeFromParentViewController];
          [vc.view removeFromSuperview];
      }
-    
+ 
     for(NSString *url in items)
     {
         NSString *nurl=[URL getFinalUrl:url weexInstance:self.weexInstance];
         [WeexFactory renderNew:[NSURL URLWithString:nurl] compelete:^(WXNormalViewContrller *cv) {
             
             [_host addVc:cv];
+            int i=  [items indexOfObject:url];
+            NSString *inx=[@"" addInt:i];
+            cv.key=inx;
             [cv.view setHidden:[items indexOfObject:url]!=self.index];
             
         } frame:self.weexInstance.frame];

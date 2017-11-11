@@ -9,5 +9,5 @@
 
 #import "farwolf_weex.h"
 @interface SerialControl : WXNormalViewContrller
-
+@property(nonatomic) BOOL hasload;
 @end

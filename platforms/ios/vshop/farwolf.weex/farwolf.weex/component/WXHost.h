@@ -11,5 +11,6 @@
 @interface WXHost : WXComponent
 @property(nonatomic,strong)NSMutableArray *items;
 @property(nonatomic,strong)UIViewController* host;
+
 @property(nonatomic)int index;
 @end

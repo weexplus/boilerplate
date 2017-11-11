@@ -28,6 +28,25 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController.navigationBar setHidden:false];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor redColor]];
+    //创建一个高20的假状态栏
+    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.view.bounds.size.width, 20)];
+    //设置成绿色
+    statusBarView.backgroundColor=[UIColor redColor];
+    // 添加到 navigationBar 上
+    [self.navigationController.navigationBar addSubview:statusBarView];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setHidden:false];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor redColor]];
+    //创建一个高20的假状态栏
+    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.view.bounds.size.width, 20)];
+    //设置成绿色
+    statusBarView.backgroundColor=[UIColor redColor];
+    // 添加到 navigationBar 上
+    [self.navigationController.navigationBar addSubview:statusBarView];
 }
 
 

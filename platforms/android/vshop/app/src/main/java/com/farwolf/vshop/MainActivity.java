@@ -1,5 +1,7 @@
 package com.farwolf.vshop;
 
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 
 import com.farwolf.movie.R;
@@ -42,18 +44,22 @@ public class MainActivity extends WeexActivity {
         });
 
 
-//        render("http://172.17.133.15:9898/mv/index.js");
-//        render("http://192.168.1.147:9898/mv/demo/demo/addressBook.js");
-//        render("app/demo/demo/addressBook.js");
-           render("http://192.168.11.81:9898/mv/demo/demo/looper.js");
-//            render("app/demo/demo/photo.js");
-//          render("app/busi/tab/movie.js");
-//          render("app/busi/tab/serial.js");
-//          render("http://192.168.1.101:9898/mv/index.js");
-//          render("app/index.js");
-//          render("http://192.168.1.101:9898/mv/busi/account/login.js");
 
+//        render("app/index.js");
 
+        final Handler achandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                render("app/index.js");
+            }
+        };
+        achandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                achandler.sendEmptyMessage(0);
+            }
+        }, 500);
 
 
 

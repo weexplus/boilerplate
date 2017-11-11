@@ -38,44 +38,26 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 }
 -(void)pushFull:(NSString *)url param:(NSDictionary*)param  navbarVisibility:(NSString*) navbarVisibility callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
 {
-    if([url startWith:@"root:"])
-    {
-        url=[url replace:@"root:" withString:[Weex getBaseUrl]];
-      
-    }
-//    url= [Weex getFinalUrl:url weexInstance:weexInstance];
-    NSString *newURL = url;
     
-    if ([url hasPrefix:@"//"]) {
-        newURL = [NSString stringWithFormat:@"http:%@", url];
-    } else if (![url hasPrefix:@"http"]) {
-        newURL = [NSURL URLWithString:url relativeToURL:weexInstance.scriptURL].absoluteString;
-    }
-    
- 
- 
+    NSString *newURL = [URL getFinalUrl:url weexInstance:weexInstance];
     [WeexFactory render:[NSURL URLWithString:newURL] compelete:^(Page *p) {
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
         vc.hidesBottomBarWhenPushed = YES;
-     
         vc.page=p;
         vc.instance=p.instance;
         vc.param=param;
         vc.callback=callback;
         vc.navbarVisibility=navbarVisibility;
 
-    
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         UIViewController *rootViewController = window.rootViewController;
-        
         [rootViewController.view addSubview:p.weexView];
         [rootViewController addChildViewController:vc];
-//        [vc ]
 
         p.instance.renderFinish = ^(UIView *view) {
 //            view.frame=CGRectMake(0, 0, 0, 0);
-            [vc removeFromParentViewController];
-            [p.weexView removeFromSuperview];
+             [vc removeFromParentViewController];
+             [p.weexView removeFromSuperview];
              [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
         };
         
@@ -130,19 +112,8 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 -(void)presentFull:(NSString *)url param:(NSDictionary*)param navbarVisibility:(NSString*) navbarVisibility   createNav:(BOOL)createNav callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
 {
-    if([url startWith:@"root:"])
-    {
-        url=[url replace:@"root:" withString:[Weex getBaseUrl]];
-    }
-    NSString *newURL = url;
-    if ([url hasPrefix:@"//"]) {
-        newURL = [NSString stringWithFormat:@"http:%@", url];
-    } else if (![url hasPrefix:@"http"]) {
-        newURL = [NSURL URLWithString:url relativeToURL:weexInstance.scriptURL].absoluteString;
-    }
- 
-    
-    
+   
+     NSString *newURL = [URL getFinalUrl:url weexInstance:weexInstance];
     [WeexFactory render:[NSURL URLWithString:newURL] compelete:^(Page *p) {
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
         vc.navbarVisibility=navbarVisibility;

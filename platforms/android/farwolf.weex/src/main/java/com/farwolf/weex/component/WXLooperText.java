@@ -100,7 +100,8 @@ public class WXLooperText extends WXComponent<LooperTextView> {
     public void getIndex(JSCallback callback)
     {
         HashMap m=new HashMap();
-        m.put("index",text.index--);
+        int index=text.index-1;
+        m.put("index",index);
         callback.invoke(m);
     }
 

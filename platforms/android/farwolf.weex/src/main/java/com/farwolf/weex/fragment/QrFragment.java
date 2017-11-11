@@ -35,4 +35,6 @@ public class QrFragment extends  com.farwolf.fragment.QrFragment{
 
 
 
+
+
 }

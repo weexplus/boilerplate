@@ -22,6 +22,7 @@
 @property (nonatomic, assign) CGFloat needDealy;
 @property (nonatomic, assign) CGFloat interval;
 @property (nonatomic, assign) NSInteger currentIndex;  /*当前播放到那个标题了*/
+- (NSInteger)realCurrentIndex;
 - (void)animationWithTexts:(NSArray *)textAry;
 - (void)stopAnimation;
 

@@ -30,13 +30,30 @@
         android:name="com.farwolf.vshop.VSApplication_"
         >
         <activity android:name="com.farwolf.vshop.MainActivity_">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name="com.farwolf.vshop.IndexActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+
+
+        <activity android:name="com.farwolf.vshop.DebugActivity_"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustNothing"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
 
 
         <activity android:name="com.farwolf.vshop.activity.tab.LaunchActivity_"
@@ -78,10 +95,7 @@
             >
 
         </activity>
-
-
-
-
+        <activity android:name="com.farwolf.vshop.DebugActivity" />
 
 
     </application>

@@ -157,17 +157,28 @@ public class WXSwipeLayout extends FrameLayout implements NestedScrollingParent 
   @Override
   protected void onAttachedToWindow() {
     super.onAttachedToWindow();
-    mTargetView = getChildAt(0);
-    setRefreshView();
+    if(mTargetView == null && getChildCount() > 0){
+      mTargetView = getChildAt(0);
+    }
+    if(mTargetView != null){
+      if(headerView == null || footerView == null){
+        setRefreshView();
+      }
+    }
   }
 
+
+  public void addTargetView(View mInnerView){
+    this.addView(mInnerView, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+    setRefreshView();
+  }
   /**
    * Init refresh view or loading view
    */
   private void setRefreshView() {
     // SetUp HeaderView
-    if(headerView != null)
-      return;
+    //zjr add
+    if(headerView != null) return;
     FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, 0);
     headerView = new WXRefreshView(getContext());
     headerView.setStartEndTrim(0, 0.75f);
@@ -239,7 +250,7 @@ public class WXSwipeLayout extends FrameLayout implements NestedScrollingParent 
       if (dy < 0 && !canChildScrollUp()) {
         mCurrentAction = PULL_REFRESH;
         isConfirm = true;
-      } else if (dy > 0 && !canChildScrollDown()) {
+      } else if (dy > 0 && !canChildScrollDown() && (!mRefreshing)) {
         mCurrentAction = LOAD_MORE;
         isConfirm = true;
       }

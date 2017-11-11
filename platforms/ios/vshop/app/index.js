@@ -646,7 +646,16 @@
 	      justifyContent: "center",
 	      alignItems: "center"
 	    }
-	  }, [_c('div', {
+	  }, [_c('image', {
+	    staticStyle: {
+	      width: "100",
+	      height: "100",
+	      borderRadius: "50"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    }
+	  }), _c('div', {
 	    staticStyle: {
 	      width: "100",
 	      height: "100",

@@ -92,7 +92,10 @@ WX_EXPORT_METHOD(@selector(goForward))
     };
     
     if (_url) {
-        [self loadURL:_url];
+        if (self.webview) {
+            NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:_url]];
+            [self.webview loadRequest:request];
+        }
     }
 }
 
@@ -185,10 +188,11 @@ WX_EXPORT_METHOD(@selector(goForward))
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    if (_finishLoadEvent) {
-        NSDictionary *data = [self baseInfo];
-        [self fireEvent:@"pagefinish" params:data domChanges:@{@"attrs": @{@"src":self.webview.request.URL.absoluteString}}];
-    }
+     [self fireEvent:@"load" params:nil];
+//    if (_finishLoadEvent) {
+//        NSDictionary *data = [self baseInfo];
+//        [self fireEvent:@"pagefinish" params:data domChanges:@{@"attrs": @{@"src":self.webview.request.URL.absoluteString}}];
+//    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error

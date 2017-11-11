@@ -1,16 +1,22 @@
 package com.farwolf.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.farwolf.base.FragmentBase;
 import com.farwolf.business.R;
@@ -54,6 +60,7 @@ public class QrFragment   extends FragmentBase implements ScanView.ResultHandler
 
     private void delayOpen(final long time) {
 
+
         final Handler achandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -79,8 +86,48 @@ public class QrFragment   extends FragmentBase implements ScanView.ResultHandler
     public void onResume() {
         super.onResume();
         scanner.setResultHandler(this); // 设置处理结果回调
+        if(!this.check())
+        {
+            return;
+        }
         scanner.startCamera();
     }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            //就像onActivityResult一样这个地方就是判断你是从哪来的。
+            case 222:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission Granted
+                    scanner.startCamera();
+                } else {
+                    // Permission Denied
+                    Toast.makeText(this.getContext(), "很遗憾你把相机权限禁用了。请务必开启相机权限享受我们提供的服务吧。", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+
+    public boolean check()
+    {
+        if (Build.VERSION.SDK_INT >= 23) {
+            int checkCallPhonePermission = ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.CAMERA);
+            if(checkCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this.getActivity(),new String[]{Manifest.permission.CAMERA},222);
+                return false;
+            }
+            return true;
+        }
+        return true;
+    }
+
 
     @Override
      public void onPause() {

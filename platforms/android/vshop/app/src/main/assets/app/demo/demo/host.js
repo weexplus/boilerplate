@@ -160,7 +160,8 @@
 	    data: {
 	        logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
 	        target: 'World',
-	        index: 0
+	        index: 0,
+	        items: ['../../busi/tab/mainpage.js', '../../busi/tab/serial.js', '../../busi/tab/movie.js', '../../demo/hmain.js']
 	    },
 	    methods: {
 	        update: function update(e) {
@@ -213,7 +214,7 @@
 	    },
 	    attrs: {
 	      "index": _vm.index,
-	      "items": ['../../busi/tab/mainpage.js', '../../busi/tab/serial.js', '../../busi/tab/movie.js', '../../demo/hmain.js']
+	      "items": _vm.items
 	    }
 	  }), _c('div', {
 	    staticStyle: {

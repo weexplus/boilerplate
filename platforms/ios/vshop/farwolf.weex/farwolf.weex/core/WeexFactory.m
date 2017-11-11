@@ -80,9 +80,8 @@
     __strong __typeof(p) weakP = p;
     p.instance.onCreate = ^(UIView *view) {
         
-        //        view.frame=CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+ 
         weakP.weexView=view;
-        
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
         vc.hidesBottomBarWhenPushed = YES;
         vc.page=p;
