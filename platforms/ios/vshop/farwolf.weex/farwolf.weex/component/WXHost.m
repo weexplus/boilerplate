@@ -69,9 +69,10 @@
 
 -(void)viewDidLoad
 {
- 
+    CGRect r=  self.view.frame;
     if(self.items!=nil&&[self.items count]>0)
     [self updateItems:self.items];
+  
     [self show];
     
 }
@@ -97,19 +98,20 @@
          [vc removeFromParentViewController];
          [vc.view removeFromSuperview];
      }
- 
+    CGRect r=self.view.frame;
     for(NSString *url in items)
     {
         NSString *nurl=[URL getFinalUrl:url weexInstance:self.weexInstance];
         [WeexFactory renderNew:[NSURL URLWithString:nurl] compelete:^(WXNormalViewContrller *cv) {
             
+            cv.freeFrame=true;
             [_host addVc:cv];
             int i=  [items indexOfObject:url];
             NSString *inx=[@"" addInt:i];
             cv.key=inx;
             [cv.view setHidden:[items indexOfObject:url]!=self.index];
             
-        } frame:self.weexInstance.frame];
+        } frame:r];
     
     }
      [self show];

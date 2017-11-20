@@ -2,6 +2,7 @@
   <div style="flex: 1;justify-content: center;align-items: center">
     <image style="width: 100;height: 100;border-radius: 50"  placeholder="root:img/cat.png"  src="http://59.110.169.246/movie/tx/1.jpg"></image>
     <image style="width: 100;height: 100;border-radius: 50" src="root:img/cat.png"></image>
+    <image style="width: 100;height: 100;border-radius: 50" src="root:img/cat.png"></image>
     <!--<host  :index="index"  :items="['app/busi/tab/serial.js','app/busi/tab/movie.js']" style="width: 750;height:1000;background-color: red">-->
 
     <!--</host>-->

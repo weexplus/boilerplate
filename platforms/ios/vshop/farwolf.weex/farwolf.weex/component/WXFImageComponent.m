@@ -21,9 +21,11 @@
     if (attributes[@"placeholder"])
     {
         NSString *ps= [[WXConvert NSString:attributes[@"placeholder"]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
         if([ps startWith:@"root:"])
         {
-            NSString *nurl= [self getUrl:ps weexInstance:weexInstance];
+//            NSString *nurl= [self getUrl:ps weexInstance:weexInstance];
+             NSString *nurl=[ps replace:@"root:" withString:@"app/"];
             if([temp.allKeys containsObject:@"placeholder"])
             {
                 change=true;
@@ -31,6 +33,7 @@
                 [temp setValue:nurl forKey:@"placeholder"];
             }
         }
+//          [self configPlaceHolder:temp];
         
         
     }

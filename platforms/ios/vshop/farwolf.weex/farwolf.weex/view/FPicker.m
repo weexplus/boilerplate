@@ -14,6 +14,7 @@
     
   
     [self dismiss];
+    
 }
 
 - (IBAction)doneClick:(id)sender {
@@ -25,6 +26,7 @@
 -(void)dismiss
 {
     [self gone];
+ 
 //    [self setHidden:true];
     
 }
@@ -163,14 +165,50 @@
 }
 
 
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row
+          forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+     UILabel *myView = nil;
+    if(view==nil)
+    {
+        myView = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.vc.screenWidth/self.count, 30)];
+        myView.textAlignment = NSTextAlignmentCenter;
+        myView.font = [UIFont systemFontOfSize:21];
+        myView.textColor=[@"#000000" toColor];
+        myView.backgroundColor = [UIColor clearColor];
+        view=myView;
+    }
+    
+    myView=view;
+    NSString *t=@"";
+    if(component==0)
+    {
+        t=_data1[row];
+    }
+    else if(component==1)
+    {
+        t=_data2[row];
+    }
+    else if(component==2)
+    {
+        t=_data3[row];
+    }
+    myView.text=t;
+    return myView;
+}
+
+
+
 - (void)gone {
     
       CGRect c=self.frame;
-    [UIView animateWithDuration:0.15 animations:^{
-       
-       self.frame = CGRectMake(0, self.vc.screenHeight, self.vc.screenWidth, c.size.height);
-    }];
+   
     
+    [UIView animateWithDuration:0.15 animations:^{
+      self.frame = CGRectMake(0, self.vc.screenHeight, self.vc.screenWidth, c.size.height);
+    } completion:^(BOOL finished) {
+          self.onDismiss();
+    }];
     
     
 }

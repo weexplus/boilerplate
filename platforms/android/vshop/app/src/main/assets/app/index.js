@@ -69,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Desktop/新奥/farwolf.weex/src/index.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/index.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-215b42cf"
+	__vue_options__._scopeId = "data-v-c7dbd106"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -221,10 +221,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Desktop/新奥/farwolf.weex/src/component/header.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/component/header.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-0ff64972"
+	__vue_options__._scopeId = "data-v-3f315c04"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -571,6 +571,8 @@
 	//
 	//
 	//
+	//
+	//
 
 	var head = __webpack_require__(57);
 	var net = __webpack_require__(16);
@@ -650,10 +652,29 @@
 	    staticStyle: {
 	      width: "100",
 	      height: "100",
-	      borderRadius: "10"
+	      borderRadius: "50"
 	    },
 	    attrs: {
+	      "placeholder": "root:img/cat.png",
 	      "src": "http://59.110.169.246/movie/tx/1.jpg"
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "100",
+	      height: "100",
+	      borderRadius: "50"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "100",
+	      height: "100",
+	      borderRadius: "50"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
 	    }
 	  }), _c('div', {
 	    staticStyle: {

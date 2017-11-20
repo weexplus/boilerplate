@@ -178,17 +178,17 @@
     <orderEntry type="library" exported="" scope="TEST" name="asm-tree-5.0.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="sqlite4java-0.282" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="shadow-api-3.3.2" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="maven-project-2.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="support-media-compat-25.3.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="maven-project-2.2.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="robolectric-junit-3.3.2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="plexus-container-default-1.0-alpha-9-stable-1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="robolectric-utils-3.3.2" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-25.3.1" level="project" />
+    <orderEntry type="library" exported="" name="support-vector-drawable-25.3.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="classworlds-1.1-alpha-2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="plexus-interpolation-1.11" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="maven-artifact-manager-2.2.1" level="project" />
-    <orderEntry type="library" exported="" name="support-vector-drawable-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="support-compat-25.3.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="maven-ant-tasks-2.1.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="ant-1.8.0" level="project" />
@@ -221,12 +221,12 @@
     <orderEntry type="library" exported="" scope="TEST" name="protobuf-java-2.6.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="assertj-core-2.6.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-25.3.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="powermock-module-junit4-1.6.4" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-25.3.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="shadows-core-3.3.2" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="powermock-module-junit4-1.6.4" level="project" />
     <orderEntry type="library" exported="" name="animated-vector-drawable-25.3.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="shadows-core-3.3.2" level="project" />
     <orderEntry type="library" exported="" name="classes" level="project" />
   </component>
 </module>

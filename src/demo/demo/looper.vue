@@ -6,7 +6,7 @@
             <head title="相机"   append="tree">
 
             </head>
-           <looper ref="looper" :data="items"  color="#eeeeee"  style="width: 300;height: 100;background-color: #0088fb">
+           <looper ref="looper" font-size="25" @click="ok" :data="items"  color="#eeeeee"  style="width: 300;height: 100;background-color: #0088fb">
 
            </looper>
             <text>{{index}}</text>
@@ -43,11 +43,18 @@
             return {
                src:"",
                 index:0,
-                items:['1','2','3','4','5']
+                items:['2017年11月9日，网络设计平台app','2017年11月9日，网络设计平台app','2017年11月9日，网络设计平台app','2017年11月9日，网络设计平台app','2017年11月9日，网络设计平台app']
             }
         },
         methods: {
+            ok()
+            {
+                this.$refs.looper.getIndex((res)=>{
 
+                    this.index=res.index;
+                });
+
+            },
             getindex()
             {
                this.$refs.looper.getIndex((res)=>{

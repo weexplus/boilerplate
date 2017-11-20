@@ -561,6 +561,7 @@
 	//
 	//
 	//
+	//
 
 
 	var head = __webpack_require__(130);
@@ -575,7 +576,8 @@
 	    components: { head: head },
 	    data: function data() {
 	        return {
-	            back: ""
+	            back: "",
+	            header: {}
 	        };
 	    },
 
@@ -589,6 +591,7 @@
 	            }, function (e) {
 	                //success
 	                self.back = e.res;
+	                self.header = r.headers;
 	            }, function (e) {
 	                //exception
 
@@ -659,6 +662,10 @@
 	      color: "#ffffff"
 	    }
 	  }, [_vm._v("get")])]), _c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v(_vm._s(_vm.header))]), _c('text', {
 	    staticStyle: {
 	      color: "#ffffff"
 	    }

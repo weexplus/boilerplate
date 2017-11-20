@@ -33,7 +33,11 @@
     for(UINavigationController *n in self.viewControllers)
     {
         UIViewController *vb= n.childViewControllers[0];
-        [vb viewDidLoad];
+         [vb viewDidLoad];
+//        self.selectedIndex=[self.viewControllers indexOfObject:n];
+    
+        
+//          [self tabBarController:self didSelectViewController:vb];
     }
     [self loadTabBar];
     CGFloat w=[UIScreen mainScreen].bounds.size.width;
@@ -72,8 +76,7 @@
     {
          [self setSelectedIndex:1];
          self.selectedViewController=self.viewControllers[1];
-        
-//        [self setSelectedViewController:<#(__kindof UIViewController * _Nullable)#>]
+//      [[UIApplication sharedApplication].keyWindow setRootViewController:self];
     }
     else if([@"电影" isEqualToString:name])
     {
@@ -178,12 +181,12 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController NS_AVAILABLE_IOS(3_0)
 {
+    
  
     NSInteger index = [tabBarController.viewControllers indexOfObject:viewController];
     if(index==3)
     {
         NSArray *dex=@[@"推荐",@"电视剧",@"电影",@"关注"];
-     
         WXStaticModule *n=[WXStaticModule new];
         if([n get:@"user"]!=nil)
         {
@@ -194,18 +197,10 @@
             NSURL *url= [[NSBundle mainBundle] URLForResource:@"app/busi/account/login" withExtension:@"js"];;
             [WeexFactory render:url compelete:^(Page *p) {
                 WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-                
                 vc.hidesBottomBarWhenPushed = YES;
-               vc.navbarVisibility=@"visiable";
-//                vc.nativeCallback=^(NSObject *res){
-//           
-////                    [self setSelectedIndex:index];
-////                    self.selectedViewController=tabBarController.viewControllers[index];
-////                    [self tabBarController:self didSelectViewController:tabBarController.viewControllers[index]];
-//                };
- 
+                vc.navbarVisibility=@"visiable";
                 vc.page=p;
-                 UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
                 [self presentViewController:nav animated:true completion:^{
                     
                 }];

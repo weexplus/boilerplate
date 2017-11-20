@@ -567,17 +567,25 @@
 	        return {
 	            src: "",
 	            index: 0,
-	            items: ['1', '2', '3', '4', '5']
+	            items: ['2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app']
 	        };
 	    },
 
 	    methods: {
-	        getindex: function getindex() {
+	        ok: function ok() {
 	            var _this = this;
 
 	            this.$refs.looper.getIndex(function (res) {
 
 	                _this.index = res.index;
+	            });
+	        },
+	        getindex: function getindex() {
+	            var _this2 = this;
+
+	            this.$refs.looper.getIndex(function (res) {
+
+	                _this2.index = res.index;
 	            });
 	        },
 	        onchange: function onchange(res) {
@@ -682,8 +690,12 @@
 	      backgroundColor: "#0088fb"
 	    },
 	    attrs: {
+	      "fontSize": "25",
 	      "data": _vm.items,
 	      "color": "#eeeeee"
+	    },
+	    on: {
+	      "click": _vm.ok
 	    }
 	  }), _c('text', [_vm._v(_vm._s(_vm.index))]), _c('div', {
 	    staticStyle: {

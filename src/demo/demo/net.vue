@@ -10,6 +10,7 @@
                 <div  @click="post()" class="btn"><text style="color:#ffffff" >post</text></div>
                 <div  @click="get()" class="btn"><text style="color:#ffffff" >get</text></div>
 
+                    <text style="color:#ffffff">{{header}}</text>
                     <text style="color:#ffffff">{{back}}</text>
 
 
@@ -51,7 +52,8 @@
         components:{head},
         data () {
             return {
-               back:""
+               back:"",
+                header:{}
             }
         },
         methods: {
@@ -65,6 +67,7 @@
                 },function(e){
                     //success
                     self.back=e.res;
+                    self.header=r.headers;
                 },function(e){
                   //exception
 

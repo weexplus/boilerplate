@@ -81,8 +81,7 @@
 
         make.left.equalTo(self.view).offset(10);
         make.bottom.equalTo(self.view).offset(-200);
-//        make.height.mas_equalTo(@50);
-//        make.width.mas_equalTo(@100);
+ 
     }];
 
     [_set addTarget:self

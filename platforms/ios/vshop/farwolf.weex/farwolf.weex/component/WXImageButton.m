@@ -25,7 +25,7 @@
     [self setImageSource:self.normal compelete:^(UIImage *img) {
         weakSelf.normal_img=img;
     }];
-    
+    [@"" replace:@"" withString:@""];
     [[UIButton new] addTarget:self action:@selector(load) forControlEvents:UIControlEventTouchDown];
    
 }

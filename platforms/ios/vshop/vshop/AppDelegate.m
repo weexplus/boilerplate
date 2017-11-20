@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     [WXTracingManager setTracingEnable:NO];
 //    [WXTracingManager setTracingEnable:YES];
-    [Weex setBaseDir:@"xinao"];
+    [Weex setBaseDir:@"mv"];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
     [WXSDKEngine registerModule:@"tabbar" withClass:[TabbarModule class]];
 //     [WXLog setLogLevel:WXLogLevelOff];

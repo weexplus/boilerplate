@@ -17,7 +17,8 @@
 @end
 
 @interface GYChangeTextView : UIView
-@property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, strong) UITextField *textLabel;
+
 @property (nonatomic, assign) id<GYChangeTextViewDelegate> delegate;
 @property (nonatomic, assign) CGFloat needDealy;
 @property (nonatomic, assign) CGFloat interval;

@@ -1144,17 +1144,21 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
       if (TextUtils.isEmpty(offset)) {
         offset = "0";
       }
-      float offsetParsed = WXViewUtils.getRealPxByWidth(Integer.parseInt(offset),getInstance().getInstanceViewPortWidth());
+      //zjr add
+//      int k= Integer.parseInt(offset);
+//      int t= getInstance().getInstanceViewPortWidth();
+//      float offsetParsed = WXViewUtils.getRealPxByWidth(k,t);
 
-      if (offScreenY <= offsetParsed) {
+//      Log.i("到底判断",offScreenY+"---"+offsetParsed);
+//      if (offScreenY < offsetParsed) {
 
-        if (mListCellCount != mChildren.size()
-            || mForceLoadmoreNextTime) {
-          fireEvent(Constants.Event.LOADMORE);
-          mListCellCount = mChildren.size();
-          mForceLoadmoreNextTime = false;
-        }
-      }
+//        if (mListCellCount != mChildren.size()
+//            || mForceLoadmoreNextTime) {
+      fireEvent(Constants.Event.LOADMORE);
+      mListCellCount = mChildren.size();
+      mForceLoadmoreNextTime = false;
+//        }
+//      }
     } catch (Exception e) {
       WXLogUtils.d(TAG + "onLoadMore :", e);
     }

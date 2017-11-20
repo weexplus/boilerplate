@@ -53,7 +53,7 @@
 	});
 	exports.Draggable = undefined;
 
-	var _classCallCheck2 = __webpack_require__(371);
+	var _classCallCheck2 = __webpack_require__(374);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -143,7 +143,7 @@
 
 /***/ }),
 
-/***/ 371:
+/***/ 374:
 /***/ (function(module, exports) {
 
 	"use strict";

@@ -114,13 +114,13 @@ public class WXLooperText extends WXComponent<LooperTextView> {
         }
         else if("right".equals(align))
         {
-            text.tv_tip_in.setGravity(Gravity.RIGHT);
-            text.tv_tip_out.setGravity(Gravity.RIGHT);
+            text.tv_tip_in.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
+            text.tv_tip_out.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
         }
         else
         {
-            text.tv_tip_in.setGravity(Gravity.LEFT);
-            text.tv_tip_out.setGravity(Gravity.LEFT);
+            text.tv_tip_in.setGravity(Gravity.CENTER_VERTICAL|Gravity.LEFT);
+            text.tv_tip_out.setGravity(Gravity.CENTER_VERTICAL|Gravity.LEFT);
         }
 
 

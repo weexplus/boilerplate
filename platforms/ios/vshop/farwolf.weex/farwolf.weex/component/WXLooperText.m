@@ -75,13 +75,9 @@ WX_EXPORT_METHOD(@selector(getIndex:))
         _data = attributes[@"data"];
         [self.textview animationWithTexts:_data];
     }
-    
     if(attributes[@"fontSize"])
     {
- 
-        
-       UIFont *font=  [WXUtility fontWithSize:_fontSize textWeight:0.1 textStyle:WXTextStyleNormal fontFamily:@"" scaleFactor:self.weexInstance.pixelScaleFactor];
-        
+       UIFont *font=  [WXUtility fontWithSize:_fontSize textWeight:0 textStyle:WXTextStyleNormal fontFamily:@"" scaleFactor:self.weexInstance.pixelScaleFactor];
         [self.textview.textLabel setFont:font];
     }
     
@@ -103,10 +99,12 @@ WX_EXPORT_METHOD(@selector(getIndex:))
     [super viewDidLoad];
     [self resizeFrame];
     
-    UIFont *font=  [WXUtility fontWithSize:_fontSize* self.weexInstance.pixelScaleFactor textWeight:0.1 textStyle:WXTextStyleNormal fontFamily:@"" scaleFactor:self.weexInstance.pixelScaleFactor];
- 
-    [self.textview.textLabel setFont:font];
-      
+    UIFont *font=  [WXUtility fontWithSize:_fontSize* self.weexInstance.pixelScaleFactor textWeight:0 textStyle:WXTextStyleNormal fontFamily:@"" scaleFactor:self.weexInstance.pixelScaleFactor];
+
+    [self.textview.textLabel  setFont:font];
+//    UIFont *f=[UIFont systemFontOfSize:15];
+//    [self.textview.textLabel setFont:f];
+    
 }
 
 - (void)gyChangeTextView:(GYChangeTextView *)textView didTapedAtIndex:(NSInteger)index {

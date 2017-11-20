@@ -557,6 +557,10 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
 
 
 	var head = __webpack_require__(130);
@@ -570,11 +574,17 @@
 	    },
 
 	    methods: {
+	        jk1: function jk1() {
+	            var nav = weex.requireModule("navigator");
+	            nav.push('net.js');
+	        },
 	        jk: function jk() {
 
 	            var picker = weex.requireModule("fpicker");
-	            picker.setCount(1);
-	            picker.setItems1(['猫', '狗', '鹦鹉']);
+	            picker.setCount(3);
+	            picker.setItems1(['猫猫猫猫', '狗', '鹦鹉']);
+	            picker.setItems2(['猫猫猫猫', '狗', '鹦鹉']);
+	            picker.setItems3(['猫猫猫猫猫', '狗', '鹦鹉']);
 	            //                picker.setItems2(this.toArray(l[0].children))
 	            picker.setTheme('#5261f7', '#ffffff');
 	            picker.show();
@@ -626,7 +636,23 @@
 	      color: "#ffffff",
 	      fontSize: "30"
 	    }
-	  }, [_vm._v("picker单列")])])])], 1)
+	  }, [_vm._v("picker单列")])])]), _c('div', {
+	    staticStyle: {
+	      alignItems: "center"
+	    }
+	  }, [_c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": function($event) {
+	        _vm.jk1()
+	      }
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#ffffff",
+	      fontSize: "30"
+	    }
+	  }, [_vm._v("跳转")])])])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

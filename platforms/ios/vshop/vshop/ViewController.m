@@ -23,10 +23,10 @@
     
     
       NSString *s=@"http://127.0.0.1:9898/mv/demo/demo/looper.js";
-//      self.page=[SplashControl getPage:@"主页"];
+//     self.page=[SplashControl getPage:@"主页"];
    
     self.sourceURL=[NSURL URLWithString:s];
-//    self.sourceURL = [[NSBundle mainBundle] URLForResource:@"app/demo/demo/host" withExtension:@"js"];
+    self.sourceURL = [[NSBundle mainBundle] URLForResource:@"app/demo/demo/net" withExtension:@"js"];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
     [super viewDidLoad];
     [[UIApplication sharedApplication]setStatusBarHidden:false];

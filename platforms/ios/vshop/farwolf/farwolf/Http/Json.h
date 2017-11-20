@@ -10,6 +10,7 @@
 @interface Json : NSObject
 @property(nonatomic,strong)  NSString* sessionId;
 @property(nonatomic,strong) NSDictionary *data;
+@property(nonatomic,strong) NSDictionary *resHeader;
 @property(nonatomic,strong) NSString *backString;
 @property(nonatomic,strong) NSObject *tag;
 -(NSArray*) toList:(Class) cls data :(NSArray*) data;

@@ -43,10 +43,13 @@ typedef NS_ENUM(NSUInteger, GYTitlePosition) {
         self.middlePosition = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         self.bottomPosition = CGPointMake(self.frame.size.width/2, self.frame.size.height/2*3);
         self.shouldStop = NO;
-        _textLabel = [[UILabel alloc] init];
+        _textLabel = [[UITextField alloc] init];
         _textLabel.layer.bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
         _textLabel.layer.position = self.middlePosition;
         _textLabel.textAlignment = NSTextAlignmentLeft;
+        _textLabel.adjustsFontForContentSizeCategory=true;
+        _textLabel.borderStyle=UITextBorderStyleNone;
+        _textLabel.enabled=false;
         [self addSubview:_textLabel];
         self.clipsToBounds = YES;   /*保证文字不跑出视图*/
         if(self.interval==0)
@@ -57,6 +60,17 @@ typedef NS_ENUM(NSUInteger, GYTitlePosition) {
     return self;
 }
 
+- (void)changeWordSpaceForLabel:(UILabel *)label WithSpace:(float)space {
+    
+//    NSString *labelText = label.text;
+//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:labelText attributes:@{NSKernAttributeName:@(space)}];
+//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [labelText length])];
+//    label.attributedText = attributedString;
+//    [label sizeToFit];
+    
+}
+
 
 
 - (void)animationWithTexts:(NSArray *)textAry {
@@ -65,6 +79,8 @@ typedef NS_ENUM(NSUInteger, GYTitlePosition) {
         return;
     self.currentIndex=0;
     self.textLabel.text = [textAry objectAtIndex:0];
+    
+    [self changeWordSpaceForLabel:_textLabel WithSpace:0.1];
      if([self.textLabel.layer animationKeys].count==0)
     [self startAnimation];
 }
@@ -87,6 +103,7 @@ typedef NS_ENUM(NSUInteger, GYTitlePosition) {
             weakSelf.needDealy = DEALY_WHEN_TITLE_IN_BOTTOM;
             weakSelf.currentIndex ++;
             weakSelf.textLabel.text = [weakSelf.contentsAry objectAtIndex:[weakSelf realCurrentIndex]];
+//              [self changeWordSpaceForLabel:_textLabel WithSpace:0.1];
         } else {
             if(self.interval==0)
                 self.interval=3;
@@ -97,6 +114,7 @@ typedef NS_ENUM(NSUInteger, GYTitlePosition) {
         } else { //停止动画后，要设置label位置和label显示内容
             weakSelf.textLabel.layer.position = weakSelf.middlePosition;
             weakSelf.textLabel.text = [weakSelf.contentsAry objectAtIndex:[weakSelf realCurrentIndex]];
+//            [self changeWordSpaceForLabel:_textLabel WithSpace:0.1];
         }
     }];
 }

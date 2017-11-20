@@ -24,7 +24,12 @@ WX_EXPORT_METHOD(@selector(postFile:param:header:path:start:success:compelete:ex
     [j excuteNoLimit:^{
         start(@{},false);
     } success:^(Json *j) {
-        success(@{@"res":j.data,@"sessionid":j.sessionId},false);
+        NSMutableDictionary *dic=j.resHeader;
+        if(dic==nil)
+        {
+            dic=[NSMutableDictionary new];
+        }
+        success(@{@"res":j.data,@"sessionid":j.sessionId,@"headers":dic},false);
     } exception:^{
         exception(@{},false);
     } compelete:^{

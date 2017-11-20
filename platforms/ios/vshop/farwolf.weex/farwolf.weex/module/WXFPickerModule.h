@@ -12,4 +12,6 @@
 #import "FPicker.h"
 @interface WXFPickerModule : NSObject <WXModuleProtocol>
 @property(nonatomic,strong)FPicker *p;
+@property(nonatomic,strong)UIView *layout;
+ 
 @end

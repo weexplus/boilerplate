@@ -217,6 +217,7 @@
 				4D2665351ECD84CD00664B38 /* Resources */,
 				6092393ACB38E9707E554249 /* [CP] Embed Pods Frameworks */,
 				DD11B7AEB5A1664C8EDD8BE8 /* [CP] Copy Pods Resources */,
+				4D19A1A91FC2CA8800FB1810 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -276,6 +277,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4D19A1A91FC2CA8800FB1810 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../../install.sh\"";
+			showEnvVarsInLog = 0;
+		};
 		6092393ACB38E9707E554249 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

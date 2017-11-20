@@ -272,27 +272,6 @@
     
 }
 
-
-//-(void)excute:(UIViewController*)vc
-//      success:(void(^)(Json*j))success usePost:(BOOL)usePost
-//{
-//    if(self.p==nil)
-//        self.p= [[LockScreenProgress alloc]initWith:vc.view];
-//
-//    //    __weak typeof(LockScreenProgress) *weakp = self.p;
-//    [self excuteFull:^{
-//        [self.p show];
-//    } success:^(Json *jx) {
-//        success(jx);
-//    } fail:^(Json *jx, NSInteger code, NSString *msg) {
-//        [vc toast:msg];
-//    } exception:^{
-//        [vc toast:@"网络异常！"];
-//
-//    } compelete:^{
-//        [self.p hide];
-//    } usePost:usePost];
-//}
 -(AFHTTPRequestOperation*)excuteNoLimit:(UIViewController*)vc
              success:(void(^)(Json*j))success
              usePost:(BOOL)usePost
@@ -341,7 +320,9 @@
             NSLog(result);
             NSHTTPURLResponse* response = operation.response;
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
+          
             Json *res=[[self getDecoder] initWithString:result];
+            res.resHeader=response.allHeaderFields;
             res.sessionId=sessionId;
             res.tag=self.tag;
             res.backString=result;
@@ -379,6 +360,7 @@
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
             Json *res=[[self getDecoder] initWithString:result];
             res.sessionId=sessionId;
+            res.resHeader=response.allHeaderFields;
             res.tag=self.tag;
             res.backString=result;
             success(res);
@@ -422,6 +404,7 @@
         Json *res=[[self getDecoder] initWithString:result];
         res.sessionId=sessionId;
         res.tag=self.tag;
+        res.resHeader=response.allHeaderFields;
         res.backString=result;
         if([res isSuccess])
         {

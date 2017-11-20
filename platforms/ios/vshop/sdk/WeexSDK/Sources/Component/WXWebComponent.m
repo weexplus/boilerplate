@@ -189,10 +189,10 @@ WX_EXPORT_METHOD(@selector(goForward))
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
      [self fireEvent:@"load" params:nil];
-//    if (_finishLoadEvent) {
-//        NSDictionary *data = [self baseInfo];
-//        [self fireEvent:@"pagefinish" params:data domChanges:@{@"attrs": @{@"src":self.webview.request.URL.absoluteString}}];
-//    }
+    if (_finishLoadEvent) {
+        NSDictionary *data = [self baseInfo];
+        [self fireEvent:@"pagefinish" params:data domChanges:@{@"attrs": @{@"src":self.webview.request.URL.absoluteString}}];
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error

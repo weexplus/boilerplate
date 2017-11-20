@@ -18,6 +18,7 @@
 @property(nonatomic,strong)WXModuleKeepAliveCallback change2;
 @property(nonatomic,strong)WXModuleKeepAliveCallback change3;
 @property(nonatomic,strong)WXModuleKeepAliveCallback done;
+
 @property(nonatomic) int count;
 @property(nonatomic) int index1;
 @property(nonatomic) int index2;
@@ -31,5 +32,8 @@
 -(void)setItems3:(NSArray*)l;
 -(void)selectRow:(int)p row:(int)row;
 -(void)setTheme:(NSString*)bgcolor btncolor:(NSString*)btncolor;
+
+@property (strong,nonatomic)   typeof(void(^)()) onDismiss;
+@property (strong,nonatomic)   typeof(void(^)()) onDone;
 
 @end

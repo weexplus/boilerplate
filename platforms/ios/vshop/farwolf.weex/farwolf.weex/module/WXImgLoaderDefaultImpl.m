@@ -54,7 +54,29 @@
         completedBlock([self getDocumentImage:url], nil, nil);
         return nil;
     }
-    return (id<WXImageOperationProtocol>)[[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    NSURL *nurl= [NSURL URLWithString:url];
+    if(![url startWith:@"http"])
+    {
+        NSArray *n=[url split:@"."];
+        NSString *end=n[n.count-1];
+        NSString *ss=@"";
+        for(NSString *s in n)
+        {
+            int index=[n indexOfObject:s];
+            if(index!=n.count-1)
+            {
+                ss=[ss add:s];
+            }
+            int c=n.count-2;
+            if(index<c)
+            {
+                ss=[ss add:@"."];
+            }
+        }
+       nurl= [[NSBundle mainBundle] URLForResource:ss withExtension:end];
+    }
+    
+    return (id<WXImageOperationProtocol>)[[SDWebImageManager sharedManager] downloadImageWithURL:nurl options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         if (completedBlock) {
