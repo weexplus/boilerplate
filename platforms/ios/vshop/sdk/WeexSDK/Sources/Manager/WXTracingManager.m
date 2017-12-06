@@ -21,9 +21,9 @@
 #import "WXComponentFactory.h"
 #import "WXModuleFactory.h"
 #import "WXSDKManager.h"
-#import <WeexSDK/WXComponentFactory.h>
-#import <WeexSDK/WXModuleFactory.h>
-#import <WeexSDK/WXHandlerFactory.h>
+#import "WXComponentFactory.h"
+#import "WXModuleFactory.h"
+#import "WXHandlerFactory.h"
 #import "WXUtility.h"
 #import "WXComponentManager.h"
 #import "WXTracingProtocol.h"
@@ -47,7 +47,6 @@
 @property (nonatomic, strong) NSMutableDictionary *tracingTasks;  // every instance have a task
 @property (nonatomic, copy) NSString *currentInstanceId;  // every instance have a task
 @property(nonatomic)BOOL traceEnable; ////zjr add
-
 @end
 
 @implementation WXTracingManager
@@ -84,14 +83,17 @@
     [WXTracingManager sharedInstance].traceEnable = enable;
 }
 
+
 +(BOOL)isTracing
 {
     return [WXTracingManager sharedInstance].isTracing;
 }
+
 +(BOOL)isTracingEnable
 {
     return [WXTracingManager sharedInstance].traceEnable;
 }
+
 +(void)startTracing:(WXTracing *)tracing
 {
     if([self isTracing]){
@@ -303,7 +305,7 @@
 //            if([t.threadName isEqualToString:WXTJSBridgeThread]&& [self compareRef:tracing.ref withTracing:t] && ([t.name isEqualToString:tracing.name] || [t.name isEqualToString:WXTJSCall])){
             if([t.threadName isEqualToString:WXTJSBridgeThread]&& [self compareRef:tracing.ref withTracing:t]){
                 if([t.fName isEqualToString:tracing.fName]){
-                    return (int)t.traceId;
+                    return (NSInteger)t.traceId;
                 }
             }
         }
@@ -503,4 +505,16 @@
     }
 }
 
++(void)destroyTraincgTaskWithInstance:(NSString *)instanceId
+{
+    if(![self isTracing]){
+        return ;
+    }
+    WXTracingTask *task = [[WXTracingManager sharedInstance].tracingTasks objectForKey:instanceId];
+    if(task){
+        [[WXTracingManager sharedInstance].tracingTasks removeObjectForKey:instanceId];
+    }
+}
+
 @end
+

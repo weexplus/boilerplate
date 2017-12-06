@@ -11,8 +11,9 @@
 #import "TabSelector.h"
 #import "WeexFactory.h"
 #import "farwolf.h"
-#import "WXStaticModule.H"
-@interface TabController ()<UITabBarControllerDelegate>
+#import "WXStaticModule.h"
+    static UIViewController *lastController = nil;
+@interface TabController ()<UITabBarControllerDelegate,UINavigationControllerDelegate>
 
 @end
 
@@ -30,14 +31,14 @@
     
 //    [self load];
      [self setDelegate:self];
-    for(UINavigationController *n in self.viewControllers)
+    for(UIViewController *n in self.viewControllers)
     {
-        UIViewController *vb= n.childViewControllers[0];
-         [vb viewDidLoad];
-//        self.selectedIndex=[self.viewControllers indexOfObject:n];
-    
-        
-//          [self tabBarController:self didSelectViewController:vb];
+//        UIViewController *vb= n.childViewControllers[0];
+//         [vb viewDidLoad];
+         [n viewDidLoad];
+//         n.delegate=self;
+//         [vb loadView];
+ 
     }
     [self loadTabBar];
     CGFloat w=[UIScreen mainScreen].bounds.size.width;
@@ -48,6 +49,46 @@
 //     _splash.layer.opacity=0;
 
 }
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    for(UIViewController *n in self.viewControllers)
+    {
+        if([self.viewControllers indexOfObject:n]==self.selectedIndex)
+        {
+            [n viewWillAppear:animated];
+        }
+        
+    }
+     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    //每次当navigation中的界面切换，设为空。本次赋值只在程序初始化时执行一次
+
+    
+    //若上个view不为空
+    if (lastController != nil)
+    {
+        //若该实例实现了viewWillDisappear方法，则调用
+        if ([lastController respondsToSelector:@selector(viewWillDisappear:)])
+        {
+            [lastController viewWillDisappear:animated];
+        }
+    }
+    
+    //将当前要显示的view设置为lastController，在下次view切换调用本方法时，会执行viewWillDisappear
+    lastController = viewController;
+    
+    [viewController viewWillAppear:animated];
+}
+
+
 -(void)tabrender
 {
     self.loadcount++;
@@ -76,7 +117,7 @@
     {
          [self setSelectedIndex:1];
          self.selectedViewController=self.viewControllers[1];
-//      [[UIApplication sharedApplication].keyWindow setRootViewController:self];
+       
     }
     else if([@"电影" isEqualToString:name])
     {
@@ -96,6 +137,13 @@
 
 
 }
+
+-(void)setSelectedIndex:(NSUInteger)selectedIndex
+{
+    [super setSelectedIndex:selectedIndex];
+//    [self.tabBar setSelectedItem:self.tabBar.items[selectedIndex]];
+}
+
 -(UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
     if (!color || size.width <=0 || size.height <=0) return nil;
     CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
@@ -137,15 +185,12 @@
      [vc viewDidLoad];
     return nav;
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-}
 
 -(void)loadTabBar
 {
     //    UITabBarController *tabc=(UITabBarController*)self.window.rootViewController;
     NSArray *n=self.tabBar.items ;
+  
     self.tabBar.tintColor=[@"#1296db" toColor];
     for (UITabBarItem *i in n) {
         
@@ -184,6 +229,8 @@
     
  
     NSInteger index = [tabBarController.viewControllers indexOfObject:viewController];
+    lastController=viewController;
+ 
     if(index==3)
     {
         NSArray *dex=@[@"推荐",@"电视剧",@"电影",@"关注"];
@@ -201,7 +248,7 @@
                 vc.navbarVisibility=@"visiable";
                 vc.page=p;
                 UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-                [self presentViewController:nav animated:true completion:^{
+                [self presentViewController:nav animated:false completion:^{
                     
                 }];
                 

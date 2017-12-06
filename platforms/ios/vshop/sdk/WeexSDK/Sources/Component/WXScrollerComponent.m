@@ -686,3 +686,4 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
 }
 
 @end
+

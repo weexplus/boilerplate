@@ -44,6 +44,8 @@ public class Picker  extends ViewBase {
     @ViewById
     public WheelView options3;
 
+    RelativeLayout layout;
+
     @ViewById
     LinearLayout optionspicker;
     @ViewById
@@ -99,6 +101,27 @@ public class Picker  extends ViewBase {
         options1.setTextSize(textSize);
         options2.setTextSize(textSize);
         options3.setTextSize(textSize);
+        this.titlebg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        layout=new RelativeLayout(getContext());
+        layout.setBackgroundColor(Color.argb(153,Color.red(Color.BLACK),Color.green(Color.BLACK),Color.blue(Color.BLACK)));
+        RelativeLayout.LayoutParams lplayout=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT);
+        layout.setLayoutParams(lplayout);
+        layout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+
+            }
+        });
+
+        ((WeexActivity) getActivity()).root.addView(layout);
+        this.layout.setVisibility(View.GONE);
     }
 
     public void setCount(int count)
@@ -141,18 +164,22 @@ public class Picker  extends ViewBase {
     public void show()
     {
         this.setVisibility(View.GONE);
+        this.layout.setVisibility(View.GONE);
+
         if(this.getParent()==null)
         {
             ScreenTool tool= ScreenTool_.getInstance_(getContext());
             RelativeLayout.LayoutParams lp=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,tool.toDip(300));
             lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             this.setLayoutParams(lp);
-            ((WeexActivity) getActivity()).root.addView(this);
+            layout.addView(this);
+            this.layout.setVisibility(View.VISIBLE);
 
         }
         else
         {
             this.setVisibility(View.VISIBLE);
+            this.layout.setVisibility(View.VISIBLE);
         }
         Animation an= AnimationUtils.loadAnimation(this.getContext(), R.anim.picker_com);
         an.setAnimationListener(new Animation.AnimationListener() {
@@ -242,6 +269,7 @@ public class Picker  extends ViewBase {
             @Override
             public void onAnimationEnd(Animation animation) {
                 Picker.this.setVisibility(View.GONE);
+                Picker.this.layout.setVisibility(View.GONE);
                 ((WeexActivity) getActivity()).root.setOnTouchListener(null);
             }
 

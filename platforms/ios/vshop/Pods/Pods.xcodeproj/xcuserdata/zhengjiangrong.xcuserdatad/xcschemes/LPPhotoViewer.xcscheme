@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '604C091C358C6BDA0E7F2222EFF7C2D4'
+               BlueprintIdentifier = '5DE7F243076294F9204CC722C46B6BDB'
                BlueprintName = 'LPPhotoViewer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libLPPhotoViewer.a'>

@@ -19,6 +19,9 @@
 
 #ifdef __OBJC__
 
+#import "WXWebSocketHandler.h"
+#import "WXVoiceOverModule.h"
+#import "WXView.h"
 #import "WXValidateProtocol.h"
 #import "WXUtility.h"
 #import "WXURLRewriteProtocol.h"
@@ -50,6 +53,7 @@
 #import "WXIndicatorComponent.h"
 #import "WXImgLoaderProtocol.h"
 #import "WXExtendCallNativeProtocol.h"
+#import "WXExceptionUtils.h"
 #import "WXEventModuleProtocol.h"
 #import "WXErrorView.h"
 #import "WXDefine.h"

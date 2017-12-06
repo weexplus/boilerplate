@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
+import com.farwolf.weex.component.WXDrawerLayout;
 import com.farwolf.weex.component.WXFEmbed;
 import com.farwolf.weex.component.WXFImage;
 import com.farwolf.weex.component.WXFListComponent;
@@ -122,7 +123,6 @@ public class Weex extends ServiceBase{
             registerComponent("image",WXFImage.class);
             registerComponent("web",WXFWeb.class);
             registerComponent(WXFListComponent.class, false, WXBasicComponentType.LIST,WXBasicComponentType.VLIST,WXBasicComponentType.RECYCLER,WXBasicComponentType.WATERFALL);
-
             registerComponent("viewpager",WXViewPager.class);
             registerComponent("prerender",WXPreRender.class);
             registerComponent("page",WXPage.class);
@@ -134,6 +134,7 @@ public class Weex extends ServiceBase{
             registerComponent("wheel",WXWheelView.class);
             registerComponent("host",WXHost.class);
             registerComponent("looper",WXLooperText.class);
+            registerComponent("drawerlayout",WXDrawerLayout.class);
         } catch (WXException e) {
             e.printStackTrace();
         }
@@ -196,6 +197,56 @@ public class Weex extends ServiceBase{
 //            return   url.replace("root:",Weex.baseurl);
 //
 //    }
+public static String getSingleRealUrl(String url)
+{
+
+    if(url.startsWith("./"))
+    {
+        url=url.substring(2);
+    }
+    if(url.startsWith("/"))
+    {
+        url=url.substring(1);
+    }
+    if(url.contains("/./"))
+    {
+        url=url.replace("/./","/");
+    }
+
+    String q[]=url.split("\\.\\.\\/");
+    String x[]= q[0].split("\\/");
+    if(q.length==1)
+        return q[0];
+    String p="";
+    if(x.length>=q.length-1)
+    {
+        for(int i=0;i<x.length-q.length+1;i++)
+        {
+            p+=x[i]+"/";
+        }
+    }
+    p+=q[q.length-1];
+    return p;
+}
+
+
+    public static String getRelativeUrl(String url, WXSDKInstance  instance)
+    {
+        String base= instance.getBundleUrl();
+        String q[]=url.split("\\.\\.\\/");
+        String x[]= base.split("\\/");
+
+        String p="";
+
+        for(int i=0;i<x.length-q.length;i++)
+        {
+            p+=x[i]+"/";
+        }
+
+        p+=q[q.length-1];
+        return p;
+    }
+
     public static String getRootUrl(String url, WXSDKInstance  instance)
     {
 
@@ -230,37 +281,6 @@ public class Weex extends ServiceBase{
     }
 
 
-    public static String getSingleRealUrl(String url)
-    {
-
-        if(url.startsWith("./"))
-        {
-            url=url.substring(2);
-        }
-        if(url.startsWith("/"))
-        {
-            url=url.substring(1);
-        }
-        if(url.contains("/./"))
-        {
-            url=url.replace("/./","/");
-        }
-
-        String q[]=url.split("\\.\\.\\/");
-        String x[]= q[0].split("\\/");
-        if(q.length==1)
-            return q[0];
-        String p="";
-        if(x.length>=q.length-1)
-        {
-            for(int i=0;i<x.length-q.length+1;i++)
-            {
-                p+=x[i]+"/";
-            }
-        }
-        p+=q[q.length-1];
-        return p;
-    }
 
 
 

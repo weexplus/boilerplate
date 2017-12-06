@@ -20,6 +20,10 @@
 @interface WXNormalViewContrller : UIViewController<SRWebSocketDelegate>
 //- (instancetype)initWith:(NSString *)url;
 
+@property(strong,nonatomic)UIButton *set;
+@property(strong,nonatomic)UIButton *refresh;
+
+
 @property (strong,nonatomic)   typeof(void(^)(NSObject*)) nativeCallback;
  
 @property (nonatomic, strong) WXSDKInstance *instance;

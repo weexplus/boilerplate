@@ -26,6 +26,7 @@
 #import "QRControl.h"
 #import "WXConvert.h"
 #import "Page.h"
+#import "Config.h"
 @interface farwolf_weex : NSObject
 
 @end

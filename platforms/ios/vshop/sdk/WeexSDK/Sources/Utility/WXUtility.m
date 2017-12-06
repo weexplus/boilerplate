@@ -41,6 +41,8 @@
 #define KEY_PASSWORD  @"com.taobao.Weex.123456"
 #define KEY_USERNAME_PASSWORD  @"com.taobao.Weex.weex123456"
 
+static BOOL utilityShouldRoundPixel = NO;
+
 void WXPerformBlockOnMainThread(void (^ _Nonnull block)())
 {
     if (!block) return;
@@ -117,20 +119,29 @@ CGFloat WXPixelScale(CGFloat value, CGFloat scaleFactor)
 
 CGFloat WXRoundPixelValue(CGFloat value)
 {
-    CGFloat scale = WXScreenScale();
-    return round(value * scale) / scale;
+    if (utilityShouldRoundPixel) {
+        CGFloat scale = WXScreenScale();
+        return round(value * scale) / scale;
+    }
+    return value;
 }
 
 CGFloat WXCeilPixelValue(CGFloat value)
 {
-    CGFloat scale = WXScreenScale();
-    return ceil(value * scale) / scale;
+    if (utilityShouldRoundPixel) {
+        CGFloat scale = WXScreenScale();
+        return ceil(value * scale) / scale;
+    }
+    return value;
 }
 
 CGFloat WXFloorPixelValue(CGFloat value)
 {
-    CGFloat scale = WXScreenScale();
-    return floor(value * scale) / scale;
+    if (utilityShouldRoundPixel) {
+        CGFloat scale = WXScreenScale();
+        return floor(value * scale) / scale;
+    }
+    return value;
 }
 
 @implementation WXUtility
@@ -154,6 +165,14 @@ CGFloat WXFloorPixelValue(CGFloat value)
     block();
 }
 
++ (void)setShouldRoudPixel:(BOOL)shouldRoundPixel
+{
+    utilityShouldRoundPixel = shouldRoundPixel;
+}
++ (BOOL)shouldRoudPixel
+{
+    return utilityShouldRoundPixel;
+}
 
 + (NSDictionary *)getEnvironment
 {
@@ -326,7 +345,12 @@ CGFloat WXFloorPixelValue(CGFloat value)
 }
 
 + (BOOL)isBlankString:(NSString *)string {
+    
     if (string == nil || string == NULL || [string isKindOfClass:[NSNull class]]) {
+        return true;
+    }
+    if (![string isKindOfClass:[NSString class]]) {
+        WXLogError(@"%@ is not a string", string);
         return true;
     }
     if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
@@ -439,7 +463,6 @@ CGFloat WXFloorPixelValue(CGFloat value)
     gradientLayer.startPoint = start;
     gradientLayer.endPoint = end;
     gradientLayer.frame = frame;
-    
     return gradientLayer;
 }
 

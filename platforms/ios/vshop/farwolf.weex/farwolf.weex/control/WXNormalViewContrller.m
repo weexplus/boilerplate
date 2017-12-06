@@ -17,6 +17,7 @@
 #import "WeexSDK/WXSDKManager.h"
 #import "Masonry.h"
 #import "Weex.h"
+#import "Config.h"
 
 @interface WXNormalViewContrller ()
 
@@ -81,7 +82,11 @@
     self.navigationController.navigationBar.translucent=false;
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    if([Config isDebug])
+    {
+        [self add];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWeex) name:@"RefreshInstance" object:nil];
     if(self.page!=nil)
     {
         [self loadPage];
@@ -92,7 +97,7 @@
     if ([self.navigationController isKindOfClass:[WXNormalViewContrller class]]) {
         self.navigationController.navigationBarHidden = YES;
     }
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWeex) name:@"RefreshInstance" object:nil];
+    
  
   #ifdef DEBUG
     [self.view addDoubleClick:^{
@@ -105,6 +110,8 @@
   #endif
    
     [self regist:@"notify" method:@selector(onNotify:)];
+  
+
 //    [self addFailLayout];
   
   
@@ -122,16 +129,23 @@
     self.instance.pageObject=self;
     self.instance.pageName=[@"" addInt:arc4random()];
     
-    [self.view addSubview:self.weexView];
+  
 
 
     self.instance.renderFinish = ^(UIView *view) {
         
           [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+        
+
           [self loadCompelete];
     };
-    
-    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+      [self.view addSubview:self.weexView];
+    if([Config isDebug])
+    {
+        [self.view bringSubviewToFront:self.set];
+        [self.view bringSubviewToFront:self.refresh];
+    }
+//    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
 //    [self.instance fireModuleEvent:[WXNavBarModule class] eventName:@"onPageInit" params:nil];
     
 }
@@ -151,24 +165,7 @@
 {
     if(_freeFrame)
         return;
-    int count=self.navigationController.viewControllers.count;
-    CGFloat delt=64;
-    if([@"hidden" isEqualToString: self.navbarVisibility ])
-    {
-        [self.navigationController.navigationBar setHidden:true];
-        delt=0;
-    }
-    if([@"transparent" isEqualToString: self.navbarVisibility ])
-    {
-        delt=0;
-    }
-    
-    
-    if((self.tabBarController!=nil||self.navigationController.tabBarController!=nil)&&count==1)
-    {
-        delt+=49.0;
-    }
-    [self.instance setFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-delt)];
+    [self.instance setFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
  
 }
 -(void)onNotify:(NSNotification*)n
@@ -275,40 +272,23 @@ BOOL isshowErr;
     
 }
 
--(void)openQR
-{
-    
-    UINavigationController  *nav=[self present:_QRControl anim:true];
-    QRControl *vc=nav.childViewControllers[0];
-    vc.scanSuccess=^(NSString* s){
-        
-        
-        NSString *ip= [s findone:@"http://" end:@":"];
-        NSLog(ip);
-        self.sourceURL=[NSURL URLWithString:s];
-        [self refreshWeex];
-        [self openWatch:ip];
-        [Weex startDebug:ip port:@"8088"];
-    };
-}
+
+
+
+ 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self setBackBar:nil color:nil];
     [_instance fireGlobalEvent:@"viewWillDisappear" params:nil];
     [_instance fireGlobalEvent:WX_APPLICATION_WILL_RESIGN_ACTIVE params:nil];
-//    if([@"transparent" isEqualToString: self.navbarVisibility ])
-//    {
-//        [self.navigationController.navigationBar setTranslucent:false];
-//        [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-//    }
-    
-//   [self unregist:@"weex_error"];
+ 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [_instance fireGlobalEvent:@"viewWillAppear" params:nil];
-    [self.navigationController.navigationBar setHidden:true];
+ 
+    [self.navigationController setNavigationBarHidden:true animated:animated];
     [self resetFrame];
     self.view.backgroundColor=[@"#333333" toColor];
  
@@ -410,14 +390,16 @@ BOOL isshowErr;
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
          [_instance fireGlobalEvent:@"onPageInit" params:nil];
+        if([Config isDebug])
+        {
+            [self.view bringSubviewToFront:self.set];
+            [self.view bringSubviewToFront:self.refresh];
+        }
          [self loadCompelete];
     };
 }
 
--(void)onCreateWeexView
-{
-    
-}
+
 - (void)_updateInstanceState:(WXState)state
 {
     if (_instance && _instance.state != state) {
@@ -455,6 +437,95 @@ BOOL isshowErr;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
+-(void)debugInit
+{
+    [self regist:@"refreshpage" method:@selector(onqr:)];
+    NSString *url=  [self getSaveValue:@"url"];
+    if(url==nil||[@"" isEqualToString:url])
+    {
+        
+    }
+    
+    if([url startWith:@"http"])
+    {
+        self.sourceURL=[NSURL URLWithString:url];
+    }
+    else
+    {
+        if([url endWith:@".js"])
+            url=[url replace:@".js" withString:@""];
+        self.sourceURL = [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
+    }
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+    [super viewDidLoad];
+    [self add];
+}
+
+-(void)onqr:(NSNotification*)n
+{
+    NSMutableDictionary *d=  n.userInfo;
+    NSString *url=[d objectForKey:@"url"];
+    self.sourceURL=[NSURL URLWithString:url];
+    [self refreshWeex];
+}
+
+-(void)onCreateWeexView
+{
+  
+}
+-(void)add
+{
+    __weak __typeof(self)weakSelf = self;
+    _set=[UIButton buttonWithType:UIButtonTypeCustom];;
+    
+    //    [_set setBackgroundColor:[@"#4990E2" toColor]];
+    [_set setTitle:@"设置" forState:UIControlStateNormal];
+    [_set setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
+    [_set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [self.view addSubview:_set];
+    [_set mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.view).offset(10);
+        make.bottom.equalTo(self.view).offset(-200);
+        
+    }];
+    
+    [_set addTarget:self
+             action:@selector(gotoset)
+   forControlEvents:UIControlEventTouchUpInside
+     ];
+    
+    
+    _refresh=[UIButton buttonWithType:UIButtonTypeCustom];;
+    [_refresh setTitle:@"刷新" forState:UIControlStateNormal];
+    [_refresh setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
+    [_refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    
+    [self.view addSubview:_refresh];
+    [_refresh mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.right.equalTo(self.view).offset(-10);
+        make.bottom.equalTo(self.view).offset(-200);
+    }];
+    
+    
+    
+    [_refresh addTarget:self
+                 action:@selector(refreshWeex)
+       forControlEvents:UIControlEventTouchUpInside
+     ];
+}
+
+
+
+-(void)gotoset
+{
+    [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
+}
+
+
 
 
 @end

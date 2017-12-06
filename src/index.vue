@@ -18,7 +18,7 @@
     <!--<prerender src="app/busi/tab/serial.js"></prerender>-->
     <!--<prerender src="app/busi/tab/movie.js"></prerender>-->
     <!--<a href="demo/pagedemo.js" navbarVisibility="hidden" style="width: 100;height: 100;background-color: red;justify-content: center;align-items: center"><text>跳转</text></a>-->
-    <div style="width: 100;height: 100;background-color: red" @click="showpicker">
+    <div style="width: 100;height: 100;background-color: red"   @longpress="showpicker">
 
     </div>
   </div>
@@ -50,25 +50,27 @@
             },
             showpicker()
             {
-                var url='http://59.110.169.246/movie/tx/p1.txt'
-                var progress=weex.requireModule("progress")
                 var modal=weex.requireModule("modal")
-                var net=weex.requireModule("net")
-                net.post(url,{},{},function(){
-                    //start
-                    progress.show();
-                },function(e){
-                    //success
-                    // modal.toast({message:e.res.err})
-                    modal.alert({message:e.res})
-
-                },function(e){
-                    //compelete
-                    progress.dismiss();
-                },function(e){
-                    // exception
-
-                });
+                modal.toast({message:'ok'})
+//                var url='http://59.110.169.246/movie/tx/p1.txt'
+//                var progress=weex.requireModule("progress")
+//                var modal=weex.requireModule("modal")
+//                var net=weex.requireModule("net")
+//                net.post(url,{},{},function(){
+//                    //start
+//                    progress.show();
+//                },function(e){
+//                    //success
+//                    // modal.toast({message:e.res.err})
+//                    modal.alert({message:e.res})
+//
+//                },function(e){
+//                    //compelete
+//                    progress.dismiss();
+//                },function(e){
+//                    // exception
+//
+//                });
             },
 
             change(i)

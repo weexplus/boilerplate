@@ -8,13 +8,18 @@
 
 #import "SerialControl.h"
 #import "SplashControl.h"
-
+static BOOL load;
 @implementation SerialControl
 - (void)viewDidLoad {
     self.page=[SplashControl getPage:@"电视剧"];
     [super viewDidLoad];
-    [self viewWillAppear:true];
-    [self regist:@"gotovc" method:@selector(gotovc)];
+
+    if(!load)
+    {
+            [self regist:@"gotovc" method:@selector(gotovc)];
+        load=true;
+    }
+
 
 }
 
@@ -33,7 +38,8 @@
 //    statusBarView.backgroundColor=[UIColor redColor];
 //    // 添加到 navigationBar 上
 //    [self.navigationController.navigationBar addSubview:statusBarView];
-    [self push:@"Main/vc1" anim:true];
+    UIViewController *vc= [self push:@"Main/vc1" anim:true];
+    vc.hidesBottomBarWhenPushed=true;
 }
 -(void)loadCompelete
 {

@@ -2,13 +2,13 @@
 
 <template>
  <scroller>
-     <head title="网络请求"  append="tree">
+     <head title="网络请求sss"  append="tree">
 
      </head>
         <div  style="margin-bottom:50" >
             <div  class="cl" >
                 <div  @click="post()" class="btn"><text style="color:#ffffff" >post</text></div>
-                <div  @click="get()" class="btn"><text style="color:#ffffff" >get</text></div>
+                <div  @click="get()" class="btn" style="width: 500"><text style="color:#ffffff" >get</text></div>
 
                     <text style="color:#ffffff">{{header}}</text>
                     <text style="color:#ffffff">{{back}}</text>

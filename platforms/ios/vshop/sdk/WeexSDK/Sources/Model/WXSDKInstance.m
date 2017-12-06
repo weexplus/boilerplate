@@ -43,6 +43,8 @@
 #import "WXConvert.h"
 #import "WXPrerenderManager.h"
 #import "WXTracingManager.h"
+#import "WXJSExceptionProtocol.h"
+#import "WXTracingManager.h"
 
 NSString *const bundleUrlOptionKey = @"bundleUrl";
 
@@ -171,10 +173,16 @@ typedef enum : NSUInteger {
         return;
     }
     
-    if (self.pageName && ![self.pageName isEqualToString:@""]) {
+    if (![WXUtility isBlankString:self.pageName]) {
         WXLog(@"Start rendering page:%@", self.pageName);
     } else {
         WXLogWarning(@"WXSDKInstance's pageName should be specified.");
+        id<WXJSExceptionProtocol> jsExceptionHandler = [WXHandlerFactory handlerForProtocol:@protocol(WXJSExceptionProtocol)];
+        if ([jsExceptionHandler respondsToSelector:@selector(onRuntimeCheckException:)]) {
+            WXRuntimeCheckException * runtimeCheckException = [WXRuntimeCheckException new];
+            runtimeCheckException.exception = @"We highly recommend you to set pageName.\n Using WXSDKInstance * instance = [WXSDKInstance new]; instance.pageName = @\"your page name\" to fix it";
+            [jsExceptionHandler onRuntimeCheckException:runtimeCheckException];
+        }
     }
     
     WX_MONITOR_INSTANCE_PERF_START(WXPTFirstScreenRender, self);
@@ -216,6 +224,11 @@ typedef enum : NSUInteger {
     if ([configCenter respondsToSelector:@selector(configForKey:defaultValue:isDefault:)]) {
         BOOL useCoreText = [[configCenter configForKey:@"iOS_weex_ext_config.text_render_useCoreText" defaultValue:@YES isDefault:NULL] boolValue];
         [WXTextComponent setRenderUsingCoreText:useCoreText];
+        
+        //handler pixel round
+        BOOL shouldRoudPixel = [[configCenter configForKey:@"iOS_weex_ext_config.utilityShouldRoundPixel" defaultValue:@(NO) isDefault:NULL] boolValue];
+        [WXUtility setShouldRoudPixel:shouldRoudPixel];
+        
         id sliderConfig =  [configCenter configForKey:@"iOS_weex_ext_config.slider_class_name" defaultValue:@"WXCycleSliderComponent" isDefault:NULL];
         if(sliderConfig){
             NSString *sliderClassName = [WXConvert NSString:sliderConfig];
@@ -292,6 +305,11 @@ typedef enum : NSUInteger {
             WX_MONITOR_FAIL_ON_PAGE(WXMTJSDownload, WX_ERR_JSBUNDLE_STRING_CONVERT, @"data converting to string failed.", strongSelf.pageName)
             return;
         }
+        if (!strongSelf.userInfo) {
+            strongSelf.userInfo = [NSMutableDictionary new];
+        }
+        strongSelf.userInfo[@"jsMainBundleStringContentLength"] = @([jsBundleString length]);
+        strongSelf.userInfo[@"jsMainBundleStringContentMd5"] = [WXUtility md5:jsBundleString];
 
         WX_MONITOR_SUCCESS_ON_PAGE(WXMTJSDownload, strongSelf.pageName);
         WX_MONITOR_INSTANCE_PERF_END(WXPTJSDownload, strongSelf);
@@ -340,14 +358,21 @@ typedef enum : NSUInteger {
 
 - (void)destroyInstance
 {
+    NSString *url = @"";
     if([WXPrerenderManager isTaskExist:[self.scriptURL absoluteString]]) {
-        return;
+        url = [self.scriptURL absoluteString];
     }
     if (!self.instanceId) {
         WXLogError(@"Fail to find instance！");
         return;
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:WX_INSTANCE_WILL_DESTROY_NOTIFICATION object:nil userInfo:@{@"instanceId":self.instanceId}];
+    
+    [WXTracingManager destroyTraincgTaskWithInstance:self.instanceId];
+
+    
+    [WXPrerenderManager removePrerenderTaskforUrl:[self.scriptURL absoluteString]];
     [WXPrerenderManager destroyTask:self.instanceId];
     
     [[WXSDKManager bridgeMgr] destroyInstance:self.instanceId];
@@ -363,6 +388,10 @@ typedef enum : NSUInteger {
             [WXSDKManager removeInstanceforID:strongSelf.instanceId];
         });
     });
+    if(url.length > 0){
+        [WXPrerenderManager addGlobalTask:url callback:nil];
+    }
+    
 }
 
 - (void)forceGarbageCollection

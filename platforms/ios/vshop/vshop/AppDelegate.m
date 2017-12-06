@@ -10,6 +10,7 @@
 #import "farwolf_weex.h"
 #import "TabController.h"
 #import "TabbarModule.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,20 +20,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [WXTracingManager setTracingEnable:NO];
+//    [WXTracingManager setTracingEnable:NO];
 //    [WXTracingManager setTracingEnable:YES];
-    [Weex setBaseDir:@"mv"];
+    [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
     [WXSDKEngine registerModule:@"tabbar" withClass:[TabbarModule class]];
-//     [WXLog setLogLevel:WXLogLevelOff];
+    
+    self.window = [[UIWindow alloc] init];
+    self.window.frame = [UIScreen mainScreen].bounds;
+    UIViewController *vc= [Weex start:[Config splash] url:[Config entry]];
+    _window.rootViewController=vc;
+    [_window makeKeyAndVisible];
 //    [Weex startDebug:@"127.0.0.1" port:@"8088"];
-//    TabController *tab=[TabController new];
-    //1.创建Window
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    TabController *tb=[[TabController alloc]init];
-//    self.window.rootViewController=tb;
-//    [self.window makeKeyAndVisible];
+ 
     return YES;
 }
 

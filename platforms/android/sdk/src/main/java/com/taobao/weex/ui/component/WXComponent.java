@@ -44,6 +44,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.taobao.weex.ComponentObserver;
@@ -67,8 +68,6 @@ import com.taobao.weex.tracing.Stopwatch;
 import com.taobao.weex.tracing.WXTracing;
 import com.taobao.weex.ui.IFComponentHolder;
 import com.taobao.weex.ui.animation.WXAnimationModule;
-import com.taobao.weex.ui.component.binding.Statements;
-import com.taobao.weex.ui.component.list.WXCell;
 import com.taobao.weex.ui.component.pesudo.OnActivePseudoListner;
 import com.taobao.weex.ui.component.pesudo.PesudoStatus;
 import com.taobao.weex.ui.component.pesudo.TouchActivePseudoListener;
@@ -88,6 +87,7 @@ import com.taobao.weex.utils.WXReflectionUtils;
 import com.taobao.weex.utils.WXResourceUtils;
 import com.taobao.weex.utils.WXUtils;
 import com.taobao.weex.utils.WXViewUtils;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -766,12 +766,14 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
             /* Hacked by moxun
                Set border radius on ViewGroup will cause the Overlay to be cut and don't know why
                Delay setting border radius can avoid the problem, and don't know why too, dog science…… */
-            mHost.postDelayed(new Runnable() {
-              @Override
-              public void run() {
-                setBorderRadius(finalKey, radius);
-              }
-            }, 64);
+            //zjr add
+//            mHost.postDelayed(new Runnable() {
+//              @Override
+//              public void run() {
+//                setBorderRadius(finalKey, radius);
+//              }
+//            }, 64);
+            setBorderRadius(finalKey, radius);
           } else {
             setBorderRadius(finalKey, radius);
           }

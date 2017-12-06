@@ -16,8 +16,12 @@
 @property(nonatomic,strong)NSString *side;
 @property(nonatomic,strong) WXNormalViewContrller *vc;
 @property(nonatomic,strong) UINavigationController *nav;
-
-
+@property (nonatomic, strong) UIView *backgroundView;
 @property(nonatomic,strong)NSString*url;
+
+@property(nonatomic)CGFloat left;
+@property(nonatomic)CGFloat  top;
+@property(nonatomic)CGFloat right;
+@property(nonatomic)CGFloat bottom;
 
 @end

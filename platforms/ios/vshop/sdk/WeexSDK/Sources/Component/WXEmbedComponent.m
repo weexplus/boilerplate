@@ -181,7 +181,7 @@
     _embedInstance.renderFinish = ^(UIView *view) {
         weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
-        [weakSelf onRenderFinish];
+        [self onRenderFinish];
     };
 }
 
@@ -252,3 +252,4 @@
 }
 
 @end
+

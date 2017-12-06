@@ -139,6 +139,7 @@ static WXThreadSafeMutableDictionary *globalPerformanceDict;
                           @(WXPTFrameworkExecute) : JSLIBINITTIME,
                           @(WXPTJSDownload) : NETWORKTIME,
                           @(WXPTJSCreateInstance) : COMMUNICATETIME,
+                          @(WXFirstScreenJSFExecuteTime) : FIRSETSCREENJSFEXECUTETIME,
                           @(WXPTFirstScreenRender) : SCREENRENDERTIME,
                           @(WXPTAllRender) : TOTALTIME,
                           @(WXPTBundleSize) : JSTEMPLATESIZE
@@ -163,6 +164,8 @@ static WXThreadSafeMutableDictionary *globalPerformanceDict;
         NSString *commitKey = commitKeyDict[@(tag)];
         commitDict[commitKey] = @([end integerValue] - [start integerValue]);
     }
+    
+    commitDict[@"instanceId"] = [instance instanceId]?:@"";
     
     id<WXAppMonitorProtocol> appMonitor = [WXHandlerFactory handlerForProtocol:@protocol(WXAppMonitorProtocol)];
     if (appMonitor && [appMonitor respondsToSelector:@selector(commitAppMonitorArgs:)]){

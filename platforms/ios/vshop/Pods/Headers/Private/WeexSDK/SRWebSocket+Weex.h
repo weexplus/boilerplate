@@ -1,1 +1,0 @@
-../../../../sdk/WeexSDK/Sources/WebSocket/SRWebSocket+Weex.h

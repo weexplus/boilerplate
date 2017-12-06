@@ -20,9 +20,13 @@ static NSString *baseurl;
 +(void)initWeex:(NSString*)group appName:(NSString*)appName appVersion:(NSString*)appVersion;
 +(void)startDebug:(NSString*)ip port:(NSString*)port;
 +(void)setImageSource:(NSString*)url compelete:(void(^)(UIImage *img))compelete;
-+(NSString*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance;
++(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance;
 +(NSString*)getBaseDir;
 +(void)setBaseDir:(NSString*)url;
 +(NSString*)getBaseUrl;
 +(void)setBaseUrl:(NSString*)url;
++(UIViewController*)start:(NSString*)image url:(NSString*)url;
++(NSMutableDictionary*)conifg;
++(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance;
++(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance;
 @end

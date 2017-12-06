@@ -361,16 +361,19 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
     if (attributes[@"maxlength"]) {
         _maxLength = [NSNumber numberWithInteger:[attributes[@"maxlength"] integerValue]];
     }
-    if (attributes[@"placeholder"]) {
-        _placeholderString = [WXConvert NSString:attributes[@"placeholder"]]?:@"";
-        [self setPlaceholderAttributedString];
-    }
     if (attributes[@"value"]) {
         _value = [WXConvert NSString:attributes[@"value"]]?:@"";
         if (_maxLength && [_value length] > [_maxLength integerValue]&& [_maxLength integerValue] >= 0) {
             _value = [_value substringToIndex:([_maxLength integerValue])];
         }
         [self setText:_value];
+    }
+    if (attributes[@"placeholder"]) {
+        _placeholderString = [WXConvert NSString:attributes[@"placeholder"]]?:@"";
+        [self setPlaceholderAttributedString];
+        if(_value.length > 0){
+            _placeHolderLabel.text = @"";
+        }
     }
     if (attributes[@"returnKeyType"]) {
         _returnKeyType = [WXConvert UIReturnKeyType:attributes[@"returnKeyType"]];
@@ -534,6 +537,7 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
         NSString *typeStr = [WXUtility returnKeyType:_returnKeyType];
         [self fireEvent:@"return" params:@{@"value":[textField text],@"returnKeyType":typeStr} domChanges:@{@"attrs":@{@"value":[textField text]}}];
     }
+    [self blur];
     return YES;
 }
 
@@ -557,7 +561,7 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
         if (offset > 0) {
             rect = (CGRect){
                 .origin.x = 0.f,
-                .origin.y = -offset,
+                .origin.y = rect.origin.y - offset,
                 .size = rootViewFrame.size
             };
         }
@@ -624,9 +628,13 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"]) {
+        NSString *typeStr = [WXUtility returnKeyType:_returnKeyType];
         if (_returnEvent) {
-            NSString *typeStr = [WXUtility returnKeyType:_returnKeyType];
             [self fireEvent:@"return" params:@{@"value":[textView text],@"returnKeyType":typeStr} domChanges:@{@"attrs":@{@"value":[textView text]}}];
+        }
+        if(typeStr.length > 0 && ![@"default" isEqualToString:typeStr]){
+            [self blur];
+            return NO;
         }
     }
     
@@ -759,12 +767,7 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
     if(![self.view isFirstResponder]) {
         return;
     }
-    CGRect begin = [[[notification userInfo] objectForKey:@"UIKeyboardFrameBeginUserInfoKey"] CGRectValue];
-    
     CGRect end = [[[notification userInfo] objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-    if(begin.size.height <= 44) {
-        return;
-    }
     _keyboardSize = end.size;
     UIView * rootView = self.weexInstance.rootView;
     CGRect screenRect = [[UIScreen mainScreen] bounds];

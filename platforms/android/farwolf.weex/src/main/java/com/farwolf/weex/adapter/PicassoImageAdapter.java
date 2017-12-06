@@ -142,27 +142,53 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
   public  void loadLocal(String url,final ImageView view,
                          WXImageQuality quality, final WXImageStrategy strategy)
   {
+      Drawable pladrawable=null;
+      if(!TextUtils.isEmpty(strategy.placeHolder)){
+
+
+          if(placeholders.containsKey(strategy.placeHolder))
+          {
+              pladrawable=placeholders.get(strategy.placeHolder);
+          }
+          else
+          {
+              if(strategy.placeHolder!=null&&Weex.baseurl!=null)
+              {
+                  String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
+                  Bitmap bmx= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
+                  pladrawable =new BitmapDrawable(bmx);
+                  placeholders.put(strategy.placeHolder,pladrawable);
+              }
+
+          }
+      }
+      view.setImageDrawable(pladrawable);
+
+
+
       if(url.startsWith("sdcard:"))
       {
-        url=url.replace("sdcard:","");
-        Bitmap  bm= Picture.getBitmap(url);
-        view.setImageBitmap(bm);
-        return;
+          url=url.replace("sdcard:","");
+          Bitmap  bm= Picture.getBitmap(url);
+          view.setImageBitmap(bm);
+          return;
       }
 
       url=Weex.getSingleRealUrl(url);
       Bitmap bm=null;
       if(url.startsWith("base64==="))
       {
-        url=url.replace("base64===","");
-        bm= base64ToBitmap(url);
+          url=url.replace("base64===","");
+          bm= base64ToBitmap(url);
       }
       else
       {
-        bm= FileTool.loadAssetImage(url,view.getContext().getApplicationContext());
+          bm= FileTool.loadAssetImage(url,view.getContext().getApplicationContext());
       }
 
-      view.setImageBitmap(bm);
+      if(bm!=null)
+          view.setImageBitmap(bm);
+
   }
 
 

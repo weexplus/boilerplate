@@ -80,12 +80,32 @@ public class WXNetModule extends WXModule {
 
     }
 
+    /**
+     *
+     * @param url
+     * @param param
+     * @param header
+     * @param start
+     * @param success
+     * @param compelete
+     * @param exception
+     */
     @JSMethod
     public void post(String url , HashMap param, HashMap header, final JSCallback start, final JSCallback success, final JSCallback compelete, final JSCallback exception)
     {
         this.fetch(true,url,param,header,start,success,compelete,exception);
     }
 
+    /**
+     *
+     * @param url
+     * @param param
+     * @param header
+     * @param start
+     * @param success
+     * @param compelete
+     * @param exception
+     */
     @JSMethod
     public void get(String url , HashMap param, HashMap header, final JSCallback start, final JSCallback success, final JSCallback compelete, final JSCallback exception)
     {
@@ -93,6 +113,17 @@ public class WXNetModule extends WXModule {
     }
 
 
+    /**
+     *
+     * @param url
+     * @param param
+     * @param header
+     * @param path
+     * @param start
+     * @param success
+     * @param compelete
+     * @param exception
+     */
     @JSMethod
     public void postFile(String url , HashMap param, HashMap header, HashMap path,final JSCallback start, final JSCallback success, final JSCallback compelete, final JSCallback exception)
     {

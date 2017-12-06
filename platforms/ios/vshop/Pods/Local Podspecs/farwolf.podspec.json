@@ -36,9 +36,6 @@
     "SDWebImage": [
       "~> 3.8"
     ],
-    "MMDrawerController": [
-      "~> 0.5.7"
-    ],
     "IQKeyboardManager": [
       "~> 4.0.6"
     ],

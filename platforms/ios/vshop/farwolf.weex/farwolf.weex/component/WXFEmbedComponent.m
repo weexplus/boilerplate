@@ -14,12 +14,9 @@
 
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{
     
-    if([url startWith:@"root:"])
-    {
-       url= [Weex getFinalUrl:url weexInstance:instance];
-    }
     
-    [instance renderWithURL:[NSURL URLWithString:url] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+    
+    [instance renderWithURL:[Weex getFinalUrl:url weexInstance:instance] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
 
 }
 

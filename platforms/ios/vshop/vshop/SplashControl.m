@@ -56,8 +56,10 @@ static NSMutableDictionary<NSString*,Page*> *cache;
             _count++;
             if(_count==4)
             {
-                 [self present:@"Main/TabControl" anim:false];
-                [self back:true];
+//                 [self push:@"Main/TabControl" anim:false];
+               UIViewController *vc=  [self fromStoryBoard:@"Main/TabControl"];
+                [self addVc:vc];
+//                [self back:true];
             }
         }];
     }
@@ -68,6 +70,10 @@ static NSMutableDictionary<NSString*,Page*> *cache;
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setHidden:true];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

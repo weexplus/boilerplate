@@ -35,7 +35,8 @@ public class WXFImage extends WXImage {
         }else if(getDomObject().getAttrs().containsKey(Constants.Name.PLACE_HOLDER)){
             placeholder=(String)getDomObject().getAttrs().get(Constants.Name.PLACE_HOLDER);
         }
-
+        if(Weex.baseurl==null)
+            Weex.setBaseUrl(this.getInstance());
         if(placeholder!=null)
         {
             if(Weex.baseurl.startsWith("http"))

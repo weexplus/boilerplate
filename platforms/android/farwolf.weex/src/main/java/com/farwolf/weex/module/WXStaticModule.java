@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class WXStaticModule extends WXModule {
 
 
-    static HashMap<String,Object> m=new HashMap<>();
+    public static HashMap<String,Object> m=new HashMap<>();
 
 
     @JSMethod(uiThread = false)
@@ -23,6 +23,11 @@ public class WXStaticModule extends WXModule {
         return  m.get(key);
     }
 
+    /**
+     *
+     * @param key
+     * @param value
+     */
     @JSMethod(uiThread = false)
     public void set(String key,HashMap value)
     {
@@ -48,5 +53,7 @@ public class WXStaticModule extends WXModule {
     {
         m.put(key,value);
     }
+
+
 
 }

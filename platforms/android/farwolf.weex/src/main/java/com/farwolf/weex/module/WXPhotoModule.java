@@ -36,7 +36,15 @@ public class WXPhotoModule extends WXModule {
     JSCallback  callback;
 
 
-
+    /**
+     *
+     * @param aspX
+     * @param aspY
+     * @param themeColor
+     * @param titleColor
+     * @param cancelColor
+     * @param callback
+     */
     @JSMethod
     public void open(int aspX, int aspY , String themeColor, String titleColor, String cancelColor, JSCallback callback)
     {
@@ -79,6 +87,15 @@ public class WXPhotoModule extends WXModule {
          }
     }
 
+    /**
+     *
+     * @param width
+     * @param height
+     * @param themeColor
+     * @param titleColor
+     * @param cancelColor
+     * @param callback
+     */
     @JSMethod
     public void openPhoto(int width,int height,String themeColor,String titleColor, String cancelColor,final JSCallback callback )
     {
@@ -132,6 +149,13 @@ public class WXPhotoModule extends WXModule {
     }
 
 
+    /**
+     *
+     * @param width
+     * @param height
+     * @param themeColor
+     * @param callback
+     */
     @JSMethod
     public void openCamera(int width,int height,String themeColor,final JSCallback callback )
     {

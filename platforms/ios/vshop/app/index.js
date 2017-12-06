@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(393)
+	__vue_styles__.push(__webpack_require__(412)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(394)
+	__vue_exports__ = __webpack_require__(413)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(395)
+	var __vue_template__ = __webpack_require__(414)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -510,7 +510,7 @@
 
 /***/ }),
 
-/***/ 393:
+/***/ 412:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -532,7 +532,7 @@
 
 /***/ }),
 
-/***/ 394:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -591,24 +591,27 @@
 	            console.log('target:', this.target);
 	        },
 	        showpicker: function showpicker() {
-	            var url = 'http://59.110.169.246/movie/tx/p1.txt';
-	            var progress = weex.requireModule("progress");
 	            var modal = weex.requireModule("modal");
-	            var net = weex.requireModule("net");
-	            net.post(url, {}, {}, function () {
-	                //start
-	                progress.show();
-	            }, function (e) {
-	                //success
-	                // modal.toast({message:e.res.err})
-	                modal.alert({ message: e.res });
-	            }, function (e) {
-	                //compelete
-	                progress.dismiss();
-	            }, function (e) {
-	                // exception
-
-	            });
+	            modal.toast({ message: 'ok' });
+	            //                var url='http://59.110.169.246/movie/tx/p1.txt'
+	            //                var progress=weex.requireModule("progress")
+	            //                var modal=weex.requireModule("modal")
+	            //                var net=weex.requireModule("net")
+	            //                net.post(url,{},{},function(){
+	            //                    //start
+	            //                    progress.show();
+	            //                },function(e){
+	            //                    //success
+	            //                    // modal.toast({message:e.res.err})
+	            //                    modal.alert({message:e.res})
+	            //
+	            //                },function(e){
+	            //                    //compelete
+	            //                    progress.dismiss();
+	            //                },function(e){
+	            //                    // exception
+	            //
+	            //                });
 	        },
 	        change: function change(i) {
 	            this.index = i;
@@ -638,7 +641,7 @@
 
 /***/ }),
 
-/***/ 395:
+/***/ 414:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -683,7 +686,7 @@
 	      backgroundColor: "red"
 	    },
 	    on: {
-	      "click": _vm.showpicker
+	      "longpress": _vm.showpicker
 	    }
 	  })])
 	},staticRenderFns: []}

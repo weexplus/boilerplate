@@ -8,7 +8,29 @@
 
 #import "WeexFactory.h"
 #import "Weex.h"
+static NSMutableDictionary *pageCache;
 @implementation WeexFactory
+
++(void)addCache:(NSString*)url vc:(WXNormalViewContrller*)vc
+{
+    if([url contains:@"?random"])
+    {
+        url=[url split:@"?random"][0];
+    }
+    if(pageCache==nil)
+        pageCache=[NSMutableDictionary new];
+    [pageCache setValue:vc forKey:url];
+}
++(WXNormalViewContrller*)getCache:(NSString*)url
+{
+    if([url contains:@"?random"])
+    {
+        url=[url split:@"?random"][0];
+    }
+    if(pageCache==nil)
+         pageCache=[NSMutableDictionary new];
+    return [pageCache objectForKey:url];
+}
 
 
 + (void)render:(NSURL *)sourceURL  compelete:(void(^)(Page*))complete
@@ -21,15 +43,16 @@
     p.instance.frame = CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     p.instance.pageObject = self;
     NSString *newURL = nil;
-    
-    if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
+ 
+    NSString *abs=sourceURL.absoluteString;
+    if ([abs rangeOfString:@"?"].location != NSNotFound) {
         newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
     } else {
         newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
     }
     [p.instance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
     
- 
+    p.url=newURL;
     __strong __typeof(p) weakP = p;
     p.instance.onCreate = ^(UIView *view) {
  
@@ -58,15 +81,34 @@
     
 }
 
-+ (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  frame:(CGRect)frame
+
++(void)preRender:(NSURL *)sourceURL
 {
     
+    [self renderNew:sourceURL compelete:^(WXNormalViewContrller *vc) {
+        
+        [self addCache:sourceURL.absoluteString vc:vc];
+        
+    } frame:[[UIApplication sharedApplication] keyWindow].bounds];
+}
+
++ (void)renderNew:(NSURL *)sourceURL compelete:(void(^)(WXNormalViewContrller*))complete  frame:(CGRect)frame
+{
+
     if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
         [Weex setBaseUrl:sourceURL.absoluteString];
     Page *p=[Page new];
     p.instance = [[WXSDKInstance alloc] init];
-    p.instance.frame = CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    p.instance.frame =frame;
     p.instance.pageObject = self;
+    
+  
+    if([self getCache:sourceURL.absoluteString])
+    {
+        complete([self getCache:sourceURL.absoluteString]);
+        return;
+    }
+    
     NSString *newURL = nil;
     
     if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
@@ -76,18 +118,21 @@
     }
     [p.instance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
     
-    
+    p.url=sourceURL;
     __strong __typeof(p) weakP = p;
     p.instance.onCreate = ^(UIView *view) {
         
  
         weakP.weexView=view;
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
+        
         vc.hidesBottomBarWhenPushed = YES;
         vc.page=p;
         vc.navbarVisibility=@"hidden";
+        vc.sourceURL=sourceURL;
         vc.instance=p.instance;
         p.instance.frame=frame;
+        p.instance.viewController=vc;
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         UIViewController *rootViewController = window.rootViewController;
         [rootViewController.view addSubview:p.weexView];
@@ -117,6 +162,34 @@
     
 }
 
++(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete
+{
+    if(urls==nil)
+        return;
+      __block int c=0;
+    for(NSString *url in urls )
+    {
+        
+        NSURL *nurl=nil;
+        if([url startWith:@"http"])
+        {
+            nurl=[NSURL URLWithString:url];
+        }
+        else
+        {
+            nurl= [[NSBundle mainBundle] URLForResource:[url replace:@".js" withString:@""]  withExtension:@"js"];
+        }
+        [self renderNew:nurl compelete:^(WXNormalViewContrller *vc) {
+            
+            c++;
+            [self addCache:vc.sourceURL.absoluteString vc:vc];
+            if(c==urls.count)
+            {
+                complete();
+            }
+        } frame:[UIApplication sharedApplication].keyWindow.bounds];
+    }
+}
 
 +(NSString*)getUrl:(NSString*)url instance:(WXSDKInstance*)instance
 {

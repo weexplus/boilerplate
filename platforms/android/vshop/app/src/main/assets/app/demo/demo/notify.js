@@ -50,16 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(157)
+	__vue_styles__.push(__webpack_require__(172)
 	)
-	__vue_styles__.push(__webpack_require__(158)
+	__vue_styles__.push(__webpack_require__(173)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(159)
+	__vue_exports__ = __webpack_require__(174)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(160)
+	var __vue_template__ = __webpack_require__(175)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -195,9 +195,9 @@
 	  "btn": {
 	    "backgroundColor": "#0085ee",
 	    "height": 100,
-	    "width": 200,
+	    "width": 500,
 	    "marginTop": 50,
-	    "borderRadius": 10,
+	    "borderRadius": 20,
 	    "alignItems": "center",
 	    "justifyContent": "center",
 	    "backgroundColor:active": "#006ce7"
@@ -437,7 +437,7 @@
 
 /***/ }),
 
-/***/ 157:
+/***/ 172:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -449,7 +449,7 @@
 
 /***/ }),
 
-/***/ 158:
+/***/ 173:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -516,7 +516,7 @@
 
 /***/ }),
 
-/***/ 159:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -601,7 +601,7 @@
 
 /***/ }),
 
-/***/ 160:
+/***/ 175:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

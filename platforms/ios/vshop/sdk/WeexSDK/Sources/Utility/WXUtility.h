@@ -70,6 +70,7 @@ do {\
         WX_ENUMBER_CASE(_invocation, idx, _C_LNG, _obj, long, longValue, _ppFree)\
         WX_ENUMBER_CASE(_invocation, idx, _C_LNG_LNG, _obj, long long, longLongValue, _ppFree)\
         WX_ENUMBER_CASE(_invocation, idx, _C_UCHR, _obj, unsigned char, unsignedCharValue, _ppFree)\
+        WX_ENUMBER_CASE(_invocation, idx, _C_CHR, _obj, char, charValue, _ppFree)\
         WX_ENUMBER_CASE(_invocation, idx, _C_UINT, _obj, unsigned int, unsignedIntValue, _ppFree)\
         WX_ENUMBER_CASE(_invocation, idx, _C_USHT, _obj, unsigned short, unsignedShortValue, _ppFree)\
         WX_ENUMBER_CASE(_invocation, idx, _C_ULNG, _obj, unsigned long, unsignedLongValue, _ppFree)\
@@ -81,33 +82,41 @@ do {\
     }\
 }while(0)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
 /**
  * @abstract execute asynchronous action block on the main thread.
  *
  */
-extern void WXPerformBlockOnMainThread( void (^ _Nonnull block)());
+void WXPerformBlockOnMainThread( void (^ _Nonnull block)());
 
 /**
  * @abstract execute synchronous action block on the main thread.
  *
  */
-extern void WXPerformBlockSyncOnMainThread( void (^ _Nonnull block)());
+void WXPerformBlockSyncOnMainThread( void (^ _Nonnull block)());
 
 /**
  * @abstract execute action block on the specific thread.
  *
  */
-extern void WXPerformBlockOnThread(void (^ _Nonnull block)(), NSThread *_Nonnull thread);
+void WXPerformBlockOnThread(void (^ _Nonnull block)(), NSThread *_Nonnull thread);
 
 /**
  * @abstract swizzling methods.
  *
  */
-extern void WXSwizzleInstanceMethod(_Nonnull Class className, _Nonnull SEL original, _Nonnull SEL replaced);
+void WXSwizzleInstanceMethod(_Nonnull Class className, _Nonnull SEL original, _Nonnull SEL replaced);
 
-extern void WXSwizzleInstanceMethodWithBlock(_Nonnull Class className, _Nonnull SEL original, _Nonnull id block, _Nonnull SEL replaced);
+void WXSwizzleInstanceMethodWithBlock(_Nonnull Class className, _Nonnull SEL original, _Nonnull id block, _Nonnull SEL replaced);
 
-extern _Nonnull SEL WXSwizzledSelectorForSelector(_Nonnull SEL selector);
+_Nonnull SEL WXSwizzledSelectorForSelector(_Nonnull SEL selector);
+    
+#ifdef __cplusplus
+}
+#endif
 
 @interface WXUtility : NSObject
 
@@ -450,5 +459,8 @@ BOOL WXFloatGreaterThanWithPrecision(CGFloat a,CGFloat b,double precision);
  *
  */
 + (NSData *_Nonnull)base64DictToData:(NSDictionary *_Nullable)base64Dict;
+
+
++ (void)setShouldRoudPixel:(BOOL)shouldRoundPixel;
 
 @end

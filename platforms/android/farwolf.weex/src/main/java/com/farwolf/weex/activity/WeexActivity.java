@@ -30,6 +30,7 @@ import com.farwolf.weex.R;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.module.WXNavgationModule;
+import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.pref.WeexPref_;
 import com.farwolf.weex.util.Constants;
 import com.farwolf.weex.util.HotRefreshManager;
@@ -156,6 +157,11 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             if(url!=null)
             {
                 this.url=url;
+            }
+            HashMap m=(HashMap) arg0.getSerializable("static");
+            if(m!=null)
+            {
+                WXStaticModule.m=m;
             }
         }
 
@@ -320,6 +326,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         super.onSaveInstanceState(outState);
         if(outState!=null)
             outState.putString("url",this.url);
+         outState.putSerializable("static", WXStaticModule.m);
     }
 
     public void showLoading()

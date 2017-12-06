@@ -32,6 +32,12 @@ public class WXFPicker extends WXModuleBase {
         picker.select(c,row);
     }
 
+    /**
+     *
+     * @param change1
+     * @param change2
+     * @param change3
+     */
     @JSMethod
     public void setChange(JSCallback change1,JSCallback change2,JSCallback change3)
     {
@@ -79,6 +85,10 @@ public class WXFPicker extends WXModuleBase {
     }
 
 
+    /**
+     *
+     * @param callback
+     */
     @JSMethod
     public void setDone(final JSCallback callback)
     {
@@ -98,7 +108,9 @@ public class WXFPicker extends WXModuleBase {
     }
 
 
-
+    /**
+     * @param d
+     */
     @JSMethod
     public void setItems1(ArrayList d)
     {

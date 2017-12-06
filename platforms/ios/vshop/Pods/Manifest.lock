@@ -30,7 +30,6 @@ PODS:
     - LPPhotoViewer (~> 0.0.7)
     - Masonry (~> 0.6.3)
     - MBProgressHUD (~> 0.9.2)
-    - MMDrawerController (~> 0.5.7)
     - SDCycleScrollView (~> 1.65)
     - SDWebImage (~> 3.8)
     - SRMonthPicker
@@ -57,18 +56,6 @@ PODS:
     - SDWebImage (~> 3.8)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
-  - MMDrawerController (0.5.7):
-    - MMDrawerController/Core (= 0.5.7)
-    - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
-    - MMDrawerController/MMDrawerVisualStates (= 0.5.7)
-    - MMDrawerController/Subclass (= 0.5.7)
-  - MMDrawerController/Core (0.5.7)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
-    - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.7):
-    - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.7):
-    - MMDrawerController/Core
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
   - RHAddressBook (1.1.1)
@@ -104,13 +91,12 @@ DEPENDENCIES:
   - LPPhotoViewer (~> 0.0.7)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
-  - MMDrawerController (~> 0.5.7)
   - PNChart (~> 0.8.8)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.8)
   - SRMonthPicker
   - SSLunarDate (~> 0.0.1)
-  - TOCropViewController (~> 2.0.8)
+  - TOCropViewController (~> 2.0.12)
   - UCZProgressView
   - UIViewController_PopUp (~> 0.0.2)
   - WeexSDK (from `sdk`)
@@ -135,7 +121,7 @@ SPEC CHECKSUMS:
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
-  farwolf: fa3e85b580f13d1e63ed034e58f2b24fde0bd705
+  farwolf: 4e28afd7c0a288d285f3ec0e620183b2d954ba7b
   farwolf.business: dac235353f260775f36ad022cb361d2a61fa951b
   farwolf.weex: 7be10c08c19182b45914e4815cf457853fb0f8b1
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
@@ -144,7 +130,6 @@ SPEC CHECKSUMS:
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   RHAddressBook: 870e9e0b34cb917b9c4c600fc3b7d5b530b23b13
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
@@ -161,6 +146,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
 
-PODFILE CHECKSUM: 7c0256ed8142eb6d89908a10a2bc5ecfbca06847
+PODFILE CHECKSUM: d865d6028f240a387c0941125b7828cf8fcb6e59
 
 COCOAPODS: 1.1.1

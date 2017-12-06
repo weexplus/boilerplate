@@ -92,16 +92,13 @@ typedef enum : NSUInteger {
  *  @return isTracing , NO in the release environment.
  */
 +(BOOL)isTracing;
+
++(BOOL)isTracingEnable;
 /**
  *  @discusstion  set weex perfermance  tracing state , you should use in debug environment
  *  @param isTracing YES weex will be traced, NO weex will not be traced .
  */
 +(void)switchTracing:(BOOL)isTracing;
-
-//zjr add
-+(BOOL)isTracingEnable;
-//zjr add
-+(void)setTracingEnable:(BOOL )enable;
 /**
  *  @discusstion  weex perfermance  tracing state
  *  @param iid the instance id.
@@ -123,6 +120,7 @@ typedef enum : NSUInteger {
  *  @discusstion  clear tracing data
  */
 +(void)clearTracingData;
+
 
 /**
  *  @discusstion  get current time
@@ -153,4 +151,9 @@ typedef enum : NSUInteger {
  */
 + (void)commitTracingSummaryInfo:(NSDictionary *)info withInstanceId:(NSString *)instanceId;
 
+/**
+ *  @discusstion destroy Traincg Task by Instance
+ *  @param instanceId the instanceId.
+ */
++(void)destroyTraincgTaskWithInstance:(NSString *)instanceId;
 @end

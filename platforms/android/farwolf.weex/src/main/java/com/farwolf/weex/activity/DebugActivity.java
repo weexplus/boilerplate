@@ -18,7 +18,9 @@ public class DebugActivity  extends WeexActivity {
     public void init() {
 
         url=pref.url().get();
-        render("http://10.2.112.4:9898/mv/index.js");
+//        render("http://172.16.103.113:9898/mv/SignIn.js");
+//        render("http://172.16.103.113:9898/mv/demo/demo/net.js");
+        render("app/demo/demo/static.js");
 
 //        final Handler achandler = new Handler() {
 //            @Override

@@ -22,11 +22,11 @@
 //    NSString *s=@"http://127.0.0.1:9898/mv/demo/demo/addressBook.js";
     
     
-      NSString *s=@"http://127.0.0.1:9898/mv/demo/demo/looper.js";
+      NSString *s=@"http://127.0.0.1:9898/mv/demo/demo/slidpop.js";
 //     self.page=[SplashControl getPage:@"主页"];
    
     self.sourceURL=[NSURL URLWithString:s];
-    self.sourceURL = [[NSBundle mainBundle] URLForResource:@"app/demo/demo/net" withExtension:@"js"];
+    self.sourceURL = [[NSBundle mainBundle] URLForResource:@"app/demo/demo/slidpop" withExtension:@"js"];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
     [super viewDidLoad];
     [[UIApplication sharedApplication]setStatusBarHidden:false];

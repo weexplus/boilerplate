@@ -55,7 +55,7 @@
         return nil;
     }
     NSURL *nurl= [NSURL URLWithString:url];
-    if(![url startWith:@"http"])
+    if(![url startWith:@"http"]&&![url startWith:@"file"])
     {
         NSArray *n=[url split:@"."];
         NSString *end=n[n.count-1];

@@ -6,7 +6,7 @@
         <div  style="margin-bottom:50" >
             <div  class="cl" >
                 <div  @click="post()" class="btn"><text style="color:#ffffff" >post</text></div>
-                <div  @click="get()" class="btn"><text style="color:#ffffff" >get</text></div>
+                <div  @click="get()" class="btn" style="width: 750;border-radius: 20"><text style="color:#ffffff" >get</text></div>
 
                     <text>{{back}}</text>
 

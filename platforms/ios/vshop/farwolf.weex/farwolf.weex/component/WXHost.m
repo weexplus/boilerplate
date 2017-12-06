@@ -9,6 +9,7 @@
 #import "WXHost.h"
 #import "WeexFactory.h"
 #import "URL.h"
+#import "Weex.h"
 @implementation WXHost
 
 
@@ -72,6 +73,8 @@
     CGRect r=  self.view.frame;
     if(self.items!=nil&&[self.items count]>0)
     [self updateItems:self.items];
+    [self.weexInstance.viewController addChildViewController:self.host];
+    
   
     [self show];
     
@@ -101,14 +104,15 @@
     CGRect r=self.view.frame;
     for(NSString *url in items)
     {
-        NSString *nurl=[URL getFinalUrl:url weexInstance:self.weexInstance];
-        [WeexFactory renderNew:[NSURL URLWithString:nurl] compelete:^(WXNormalViewContrller *cv) {
-            
+        [WeexFactory renderNew:[Weex getFinalUrl:url weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *cv)
+        {
             cv.freeFrame=true;
+            cv.instance.frame=r;
             [_host addVc:cv];
             int i=  [items indexOfObject:url];
             NSString *inx=[@"" addInt:i];
             cv.key=inx;
+            
             [cv.view setHidden:[items indexOfObject:url]!=self.index];
             
         } frame:r];
@@ -124,6 +128,9 @@
     UIViewController *vc= [[UIViewController alloc] init];
     self.host=vc;
     [self.weexInstance.viewController addChildViewController:self.host];
+//
+     [self.host didMoveToParentViewController:self.weexInstance.viewController];
+//      UINavigationController *nvc= self.weexInstance.viewController.navigationController;
     return vc.view;
 }
 

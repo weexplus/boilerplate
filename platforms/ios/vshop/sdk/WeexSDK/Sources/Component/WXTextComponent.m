@@ -25,19 +25,20 @@
 #import "WXConvert.h"
 #import "WXRuleManager.h"
 #import "WXDefine.h"
+#import "WXView.h"
 #import <pthread/pthread.h>
 #import <CoreText/CoreText.h>
 
-@interface WXText : UIView
+// WXText is a non-public is not permitted
+@interface WXTextView : WXView
 @property (nonatomic, strong) NSTextStorage *textStorage;
 @end
 
-@implementation WXText
+@implementation WXTextView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
-        self.isAccessibilityElement = YES;
         self.accessibilityTraits |= UIAccessibilityTraitStaticText;
         
         self.opaque = NO;
@@ -74,15 +75,23 @@
 
 - (NSString *)accessibilityValue
 {
-    if (self.wx_component) {
-        if (self.wx_component->_ariaLabel) {
-            return self.wx_component->_ariaLabel;
-        }
+    if (self.wx_component && self.wx_component->_ariaLabel) {
+        return [super accessibilityValue];
     }
     if (![(WXTextComponent*)self.wx_component useCoreText]) {
         return _textStorage.string;
     }
     return [(WXTextComponent*)self.wx_component valueForKey:@"_text"];
+}
+
+- (NSString *)accessibilityLabel
+{
+    if (self.wx_component) {
+        if (self.wx_component->_ariaLabel) {
+            return self.wx_component->_ariaLabel;
+        }
+    }
+    return [super accessibilityLabel];
 }
 
 @end
@@ -240,8 +249,8 @@ do {\
 - (void)fillAttributes:(NSDictionary *)attributes
 {
     id text = attributes[@"value"];
-    if (text) {
-        _text = [WXConvert NSString:text];
+    if (text && ![[self text] isEqualToString:text]) {
+        [self setText:[WXConvert NSString:text]];
         [self setNeedsRepaint];
         [self setNeedsLayout];
     }
@@ -272,14 +281,16 @@ do {\
         useCoreText = [(WXTextComponent*)self.view.wx_component useCoreText];
     }
     if (!useCoreText) {
-        ((WXText *)self.view).textStorage = _textStorage;
+        ((WXTextView *)self.view).textStorage = _textStorage;
     }
+    self.view.isAccessibilityElement = YES;
+    
     [self setNeedsDisplay];
 }
 
 - (UIView *)loadView
 {
-    return [[WXText alloc] init];
+    return [[WXTextView alloc] init];
 }
 
 - (BOOL)needsDrawRect
@@ -293,7 +304,7 @@ do {\
     if (_isCompositingChild) {
         [self drawTextWithContext:context bounds:rect padding:_padding view:nil];
     } else {
-        WXText *textView = (WXText *)_view;
+        WXTextView *textView = (WXTextView *)_view;
         [self drawTextWithContext:context bounds:rect padding:_padding view:textView];
     }
     
@@ -306,6 +317,16 @@ do {\
     return ^CGSize (CGSize constrainedSize) {
         CGSize computedSize = CGSizeZero;
         NSTextStorage *textStorage = nil;
+        
+        //TODO:more elegant way to use max and min constrained size
+        if (!isnan(weakSelf.cssNode->style.minDimensions[CSS_WIDTH])) {
+            constrainedSize.width = MAX(constrainedSize.width, weakSelf.cssNode->style.minDimensions[CSS_WIDTH]);
+        }
+        
+        if (!isnan(weakSelf.cssNode->style.maxDimensions[CSS_WIDTH])) {
+            constrainedSize.width = MIN(constrainedSize.width, weakSelf.cssNode->style.maxDimensions[CSS_WIDTH]);
+        }
+        
         if (![self useCoreText]) {
             textStorage = [weakSelf textStorageWithWidth:constrainedSize.width];
             NSLayoutManager *layoutManager = textStorage.layoutManagers.firstObject;
@@ -313,15 +334,6 @@ do {\
             computedSize = [layoutManager usedRectForTextContainer:textContainer].size;
         } else {
             computedSize = [weakSelf calculateTextHeightWithWidth:constrainedSize.width];
-        }
-    
-        //TODO:more elegant way to use max and min constrained size
-        if (!isnan(weakSelf.cssNode->style.minDimensions[CSS_WIDTH])) {
-            computedSize.width = MAX(computedSize.width, weakSelf.cssNode->style.minDimensions[CSS_WIDTH]);
-        }
-        
-        if (!isnan(weakSelf.cssNode->style.maxDimensions[CSS_WIDTH])) {
-            computedSize.width = MIN(computedSize.width, weakSelf.cssNode->style.maxDimensions[CSS_WIDTH]);
         }
         
         if (!isnan(weakSelf.cssNode->style.minDimensions[CSS_HEIGHT])) {
@@ -349,15 +361,23 @@ do {\
 {
     return _text;
 }
+- (void)setText:(NSString*)text
+{
+    pthread_mutex_lock(&(_ctAttributedStringMutex));
+    _text = text;
+    pthread_mutex_unlock(&(_ctAttributedStringMutex));
+}
 
 - (NSAttributedString *)ctAttributedString
 {
+    NSAttributedString * attributedString = nil;
     pthread_mutex_lock(&(_ctAttributedStringMutex));
     if (!_ctAttributedString) {
-        _ctAttributedString = [[self buildCTAttributeString] copy];
+        _ctAttributedString = [self buildCTAttributeString];
     }
+    attributedString = [_ctAttributedString copy];
     pthread_mutex_unlock(&(_ctAttributedStringMutex));
-    return [_ctAttributedString copy];
+    return attributedString;
 }
 
 - (void)repaintText:(NSNotification *)notification
@@ -377,8 +397,12 @@ do {\
 
 - (NSMutableAttributedString *)buildCTAttributeString
 {
-    NSString *string = [NSString stringWithFormat:@"%@", [self text] ?: @""];
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+    NSString * string = [self text];
+    if (![string isKindOfClass:[NSString class]]) {
+        WXLogError(@"text %@ is invalid", [self text]);
+        string = @"";
+    }
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: string];
     if (_color) {
         [attributedString addAttribute:NSForegroundColorAttributeName value:_color range:NSMakeRange(0, string.length)];
     }
@@ -566,7 +590,7 @@ do {\
     [self.weexInstance.componentManager  _addUITask:^{
         if ([self isViewLoaded]) {
             if (![self useCoreText]) {
-                ((WXText *)self.view).textStorage = textStorage;
+                ((WXTextView *)self.view).textStorage = textStorage;
             }
             [self readyToRender]; // notify super component
             [self setNeedsDisplay];
@@ -598,7 +622,7 @@ do {\
     [self syncTextStorageForView];
 }
 
-- (void)drawTextWithContext:(CGContextRef)context bounds:(CGRect)bounds padding:(UIEdgeInsets)padding view:(WXText *)view
+- (void)drawTextWithContext:(CGContextRef)context bounds:(CGRect)bounds padding:(UIEdgeInsets)padding view:(WXTextView *)view
 {
     if (bounds.size.width <= 0 || bounds.size.height <= 0) {
         return;

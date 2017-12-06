@@ -18,6 +18,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -29,4 +30,13 @@ dependencies {
     compile project(':umeng')
     compile project(':alipay')
     compile project(':wxpay')
+}
+
+task copyMethod {
+    doLast {
+        copy {
+            from '../../../../dist'
+            into new File(projectDir,"assets")
+        }
+    }
 }

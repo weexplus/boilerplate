@@ -13,8 +13,10 @@
 		4D2665421ECD84CD00664B38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2665411ECD84CD00664B38 /* ViewController.m */; };
 		4D2665451ECD84CD00664B38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2665431ECD84CD00664B38 /* Main.storyboard */; };
 		4D2665471ECD84CD00664B38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2665461ECD84CD00664B38 /* Assets.xcassets */; };
-		4D26654A1ECD84CD00664B38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2665481ECD84CD00664B38 /* LaunchScreen.storyboard */; };
 		4D2DB4AA1F04E21200D47B46 /* TabbarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2DB4A91F04E21200D47B46 /* TabbarModule.m */; };
+		4D3CC5521FD4E6FB002D3ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */; };
+		4D4A87361FCE87D0006F828C /* TransitControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A87341FCE87D0006F828C /* TransitControl.m */; };
+		4D5BC1C61FC6AEF30056904E /* NavControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BC1C51FC6AEF30056904E /* NavControl.m */; };
 		4D76B27F1EF8BAC800BD7FF6 /* MainPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D76B27E1EF8BAC800BD7FF6 /* MainPageControl.m */; };
 		4D92AA151F4D5BD900493BCF /* app in Resources */ = {isa = PBXBuildFile; fileRef = 4D92AA141F4D5BD900493BCF /* app */; };
 		4DAD919E1EF21B7E0020ED5F /* SplashControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD919D1EF21B7E0020ED5F /* SplashControl.m */; };
@@ -24,8 +26,8 @@
 		4DC74A911EF1332100D9128B /* TabSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC74A901EF1332100D9128B /* TabSelector.m */; };
 		4DD211891ED68820003269F7 /* CollectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD211881ED68820003269F7 /* CollectionControl.m */; };
 		4DD2118F1ED68912003269F7 /* MineControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2118E1ED68912003269F7 /* MineControl.m */; };
+		68C7FCBB5B4D3E577D4D067D /* libPods-movie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8FCEBAFDCB880BF16A8053 /* libPods-movie.a */; };
 		6DA829C2CE98309408F940A4 /* libPods-vshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEB74A40716872F81AB2240 /* libPods-vshop.a */; };
-		78C1BC92E9B9A15B8BAC1A71 /* libPods-movie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA0A7515703B4FED46C5CD5 /* libPods-movie.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +42,14 @@
 		4D2665411ECD84CD00664B38 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4D2665441ECD84CD00664B38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D2665461ECD84CD00664B38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4D2665491ECD84CD00664B38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D26654B1ECD84CD00664B38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2DB4A81F04E21200D47B46 /* TabbarModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarModule.h; sourceTree = "<group>"; };
 		4D2DB4A91F04E21200D47B46 /* TabbarModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarModule.m; sourceTree = "<group>"; };
+		4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4D4A87341FCE87D0006F828C /* TransitControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitControl.m; sourceTree = "<group>"; };
+		4D4A87351FCE87D0006F828C /* TransitControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitControl.h; sourceTree = "<group>"; };
+		4D5BC1C41FC6AEF30056904E /* NavControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavControl.h; sourceTree = "<group>"; };
+		4D5BC1C51FC6AEF30056904E /* NavControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavControl.m; sourceTree = "<group>"; };
 		4D76B27D1EF8BAC800BD7FF6 /* MainPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageControl.h; sourceTree = "<group>"; };
 		4D76B27E1EF8BAC800BD7FF6 /* MainPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageControl.m; sourceTree = "<group>"; };
 		4D92AA141F4D5BD900493BCF /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
@@ -65,7 +71,7 @@
 		9370BCD5A3E5982DF4D81801 /* Pods-vshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-vshop/Pods-vshop.release.xcconfig"; sourceTree = "<group>"; };
 		B4D34DFA837B04BB77D56A78 /* Pods-vshop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vshop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vshop/Pods-vshop.debug.xcconfig"; sourceTree = "<group>"; };
 		BC29D09E844069E77CAB9613 /* Pods-movie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-movie/Pods-movie.debug.xcconfig"; sourceTree = "<group>"; };
-		DEA0A7515703B4FED46C5CD5 /* libPods-movie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-movie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD8FCEBAFDCB880BF16A8053 /* libPods-movie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-movie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DA829C2CE98309408F940A4 /* libPods-vshop.a in Frameworks */,
-				78C1BC92E9B9A15B8BAC1A71 /* libPods-movie.a in Frameworks */,
+				68C7FCBB5B4D3E577D4D067D /* libPods-movie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,8 +117,8 @@
 				4D26653D1ECD84CD00664B38 /* AppDelegate.h */,
 				4D26653E1ECD84CD00664B38 /* AppDelegate.m */,
 				4D2665431ECD84CD00664B38 /* Main.storyboard */,
+				4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */,
 				4D2665461ECD84CD00664B38 /* Assets.xcassets */,
-				4D2665481ECD84CD00664B38 /* LaunchScreen.storyboard */,
 				4D26654B1ECD84CD00664B38 /* Info.plist */,
 				4D26653A1ECD84CD00664B38 /* Supporting Files */,
 			);
@@ -139,6 +145,8 @@
 		4D881CDB1F52BF320099BA43 /* vc */ = {
 			isa = PBXGroup;
 			children = (
+				4D4A87351FCE87D0006F828C /* TransitControl.h */,
+				4D4A87341FCE87D0006F828C /* TransitControl.m */,
 				4DAD919C1EF21B7E0020ED5F /* SplashControl.h */,
 				4DAD919D1EF21B7E0020ED5F /* SplashControl.m */,
 				4DBAB2D61ED5232D00389B2C /* TabController.h */,
@@ -147,6 +155,8 @@
 				4D2665411ECD84CD00664B38 /* ViewController.m */,
 				4D1D24C01FA9A4BD00ACD47C /* TestViewController.h */,
 				4D1D24C11FA9A4BD00ACD47C /* TestViewController.m */,
+				4D5BC1C41FC6AEF30056904E /* NavControl.h */,
+				4D5BC1C51FC6AEF30056904E /* NavControl.m */,
 			);
 			name = vc;
 			sourceTree = "<group>";
@@ -199,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEB74A40716872F81AB2240 /* libPods-vshop.a */,
-				DEA0A7515703B4FED46C5CD5 /* libPods-movie.a */,
+				FD8FCEBAFDCB880BF16A8053 /* libPods-movie.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -268,7 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D92AA151F4D5BD900493BCF /* app in Resources */,
-				4D26654A1ECD84CD00664B38 /* LaunchScreen.storyboard in Resources */,
+				4D3CC5521FD4E6FB002D3ED8 /* LaunchScreen.storyboard in Resources */,
 				4D2665471ECD84CD00664B38 /* Assets.xcassets in Resources */,
 				4D2665451ECD84CD00664B38 /* Main.storyboard in Resources */,
 			);
@@ -346,10 +356,12 @@
 				4DAD919E1EF21B7E0020ED5F /* SplashControl.m in Sources */,
 				4D1D24C21FA9A4BD00ACD47C /* TestViewController.m in Sources */,
 				4D2665421ECD84CD00664B38 /* ViewController.m in Sources */,
+				4D4A87361FCE87D0006F828C /* TransitControl.m in Sources */,
 				4DD2118F1ED68912003269F7 /* MineControl.m in Sources */,
 				4DB88F241F1B7A89004C5A1A /* SerialControl.m in Sources */,
 				4DBAB2D81ED5232D00389B2C /* TabController.m in Sources */,
 				4DB88F271F1B7AE3004C5A1A /* MovieControl.m in Sources */,
+				4D5BC1C61FC6AEF30056904E /* NavControl.m in Sources */,
 				4D26653F1ECD84CD00664B38 /* AppDelegate.m in Sources */,
 				4D26653C1ECD84CD00664B38 /* main.m in Sources */,
 				4D2DB4AA1F04E21200D47B46 /* TabbarModule.m in Sources */,
@@ -368,14 +380,6 @@
 				4D2665441ECD84CD00664B38 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4D2665481ECD84CD00664B38 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D2665491ECD84CD00664B38 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -480,6 +484,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WXGE867ALD;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = vshop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -502,6 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WXGE867ALD;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = vshop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

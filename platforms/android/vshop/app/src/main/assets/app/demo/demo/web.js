@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(189)
+	__vue_styles__.push(__webpack_require__(208)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(190)
+	__vue_exports__ = __webpack_require__(209)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(191)
+	var __vue_template__ = __webpack_require__(210)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -193,9 +193,9 @@
 	  "btn": {
 	    "backgroundColor": "#0085ee",
 	    "height": 100,
-	    "width": 200,
+	    "width": 500,
 	    "marginTop": 50,
-	    "borderRadius": 10,
+	    "borderRadius": 20,
 	    "alignItems": "center",
 	    "justifyContent": "center",
 	    "backgroundColor:active": "#006ce7"
@@ -435,7 +435,7 @@
 
 /***/ }),
 
-/***/ 189:
+/***/ 208:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -457,7 +457,7 @@
 
 /***/ }),
 
-/***/ 190:
+/***/ 209:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -465,6 +465,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	//
+	//
 	//
 	//
 	//
@@ -513,11 +515,15 @@
 	        return {
 	            text: '',
 	            param: '',
-	            data: {}
+	            data: {},
+	            src: ''
 	        };
 	    },
 
 	    methods: {
+	        load: function load() {
+	            this.src = 'https://www.baidu.com';
+	        },
 	        pagestart: function pagestart() {
 	            progress.show();
 	        },
@@ -573,7 +579,7 @@
 
 /***/ }),
 
-/***/ 191:
+/***/ 210:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -584,6 +590,11 @@
 	      "append": "tree"
 	    }
 	  }), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.load
+	    }
+	  }, [_c('text', [_vm._v("加载")])]), _c('div', {
 	    staticStyle: {
 	      flex: "1"
 	    }
@@ -597,7 +608,8 @@
 	      backgroundColor: "red"
 	    },
 	    attrs: {
-	      "src": "http://wwww.baidu.com"
+	      "src": _vm.src,
+	      "bounce": "false"
 	    },
 	    on: {
 	      "pagestart": _vm.pagestart,

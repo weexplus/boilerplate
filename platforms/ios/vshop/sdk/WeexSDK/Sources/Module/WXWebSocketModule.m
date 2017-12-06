@@ -23,7 +23,6 @@
 #import "WXHandlerFactory.h"
 #import "WXWebSocketLoader.h"
 #import "WXConvert.h"
-#import "SRWebSocket.h"
 
 @interface WXWebSocketModule()
 
@@ -114,10 +113,7 @@ WX_EXPORT_METHOD(@selector(onclose:))
         if(sendData){
             [loader send:sendData];
         }
-        
     }
-    
-    
 }
 
 - (void)close
@@ -127,7 +123,7 @@ WX_EXPORT_METHOD(@selector(onclose:))
 
 - (void)close:(NSString *)code reason:(NSString *)reason
 {
-    if(!code)
+    if([WXUtility isBlankString:code])
     {
         [loader close];
         return;

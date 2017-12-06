@@ -27,6 +27,12 @@
 #import "URL.h"
 #import "WXHost.h"
 #import "WXLooperText.h"
+#import "EntryControl.h"
+#import "RenderControl.h"
+#import "WXSlidComponent.h"
+#import "WXCenterPop.h"
+#import "WXSlidPopModule.h"
+
 @implementation Weex
 
 +(void)initWeex:(NSString*)group appName:(NSString*)appName appVersion:(NSString*)appVersion
@@ -49,8 +55,8 @@
     [WXSDKEngine registerModule:@"addressBook" withClass:[WXAddressBookModule class]];
     [WXSDKEngine registerModule:@"slidpop" withClass:[WXSlidPopModule class]];
     [WXSDKEngine registerModule:@"qr" withClass:[WXQRModule class]];
-    
-    
+    [WXSDKEngine registerModule:@"centerpop" withClass:[WXCenterPop class]];
+    [WXSDKEngine registerModule:@"slidpop" withClass:[WXSlidPopModule class]];
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
@@ -63,10 +69,43 @@
     [WXSDKEngine registerComponent:@"waterfall" withClass:[WXFRecyclerComponent class]];
     [WXSDKEngine registerComponent:@"host" withClass:[WXHost class]];
     [WXSDKEngine registerComponent:@"looper" withClass:[WXLooperText class]];
+    [WXSDKEngine registerComponent:@"drawerlayout" withClass:[WXSlidComponent class]];
+    
 //    [WXLog setLogLevel: WXLogLevelOff];
        [WXLog setLogLevel: WXLogLevelError];
 }
 
+
++(UIViewController*)start:(NSString*)image url:(NSString*)url
+{
+//    EntryControl *vc=[[EntryControl alloc]initWithImage:url img:image];
+    RenderControl *vc=[[RenderControl alloc]initWithImage:url img:image];
+    
+    UINavigationController *nvc=[[UINavigationController alloc]initWithRootViewController:vc];
+    return nvc;
+}
+
++(NSMutableDictionary*)conifg
+{
+    NSString *path = @"app/config";
+    NSURL *url= [[NSBundle mainBundle] URLForResource:path withExtension:@"json"];
+    NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    return [str toJson];
+}
+
+
++(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance
+{
+    
+     return length *instance.pixelScaleFactor;
+   
+}
+
+
++(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance
+{
+     return  [WXConvert WXPixelType:[@"" addFloat: fontsize] scaleFactor:instance.pixelScaleFactor];
+}
 
 +(NSString*)getBaseDir
 {
@@ -127,7 +166,7 @@
 }
 
 
-+(NSString*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance
++(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance
 {
     return [URL getFinalUrl:url weexInstance:weexInstance];
 }

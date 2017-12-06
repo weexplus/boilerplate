@@ -8,5 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WXSDKInstance.h>
 @interface URL : NSObject
-+(NSString*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance;
++(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance;
++(NSMutableArray*)getFinalUrls:(NSMutableArray*)urls weexInstance:(WXSDKInstance*)weexInstance;
 @end

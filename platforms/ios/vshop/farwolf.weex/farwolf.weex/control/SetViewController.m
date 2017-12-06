@@ -12,6 +12,7 @@
 #import "QRControl.h"
 #import "Weex.h"
 #import "WXDevTool.h"
+#import "Config.h"
 
 
 @interface SetViewController ()
@@ -23,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *s= [self getSaveValue:@"url"];
-    NSString *ip= [s findone:@"http://" end:@":"];
+//    NSString *ip= [s findone:@"http://" end:@":"];
+      NSString *ip=[Config debugIp];
     self.url.text=s;
     self.debugip.text=[@"debugip=" add:ip];
     if([WXDevTool isDebug])
@@ -72,26 +74,34 @@
   
     
     
-    if([WXDevTool isDebug])
-    {
-        [WXDevTool setDebug:false];
-        
-//        NSMutableDictionary *dic=[NSMutableDictionary new];
-//        [dic setValue:[self getSaveValue:@"url"] forKey:@"url"];
-//        [self notifyDict:@"refreshpage" value:dic];
-        
-        NSString *s= [self getSaveValue:@"url"];
-        NSString *ip= [s findone:@"http://" end:@":"];
-        NSString *url=[[[[@"ws://" add:ip]add:@":"]add:@"8888"]add:@"/debugProxy/native"];
-        [WXDevTool launchDevToolDebugWithUrl:url];
-        
-    }
-    else
-    {
-        NSString *s= [self getSaveValue:@"url"];
-        NSString *ip= [s findone:@"http://" end:@":"];
-        [Weex startDebug:ip port:@"8088"];
-    }
+//    if([WXDevTool isDebug])
+//    {
+//        [WXDevTool setDebug:false];
+//
+////        NSMutableDictionary *dic=[NSMutableDictionary new];
+////        [dic setValue:[self getSaveValue:@"url"] forKey:@"url"];
+////        [self notifyDict:@"refreshpage" value:dic];
+//
+//        NSString *s= [self getSaveValue:@"url"];
+////        NSString *ip= [s findone:@"http://" end:@":"];
+//        NSString *ip=[Config debugIp];
+//
+//
+//        NSString *url=[[[[@"ws://" add:ip]add:@":"]add:@"8888"]add:@"/debugProxy/native"];
+//
+//
+//
+//        [WXDevTool launchDevToolDebugWithUrl:url];
+//
+//    }
+//    else
+//    {
+//        NSString *s= [self getSaveValue:@"url"];
+//        NSString *ip= [s findone:@"http://" end:@":"];
+//        [Weex startDebug:ip port:@"8088"];
+//    }
+     NSString *ip=[Config debugIp];
+     [Weex startDebug:ip port:@"8088"];
      [self closeClick:nil];
     
 }

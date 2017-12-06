@@ -42,7 +42,7 @@ public class VSApplication extends Application {
         } catch (WXException e) {
             e.printStackTrace();
         }
-//        weex.startDebug("192.168.253.22");
+        weex.startDebug("192.168.199.248");
 //        TabModule
 
     }

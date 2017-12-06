@@ -168,6 +168,13 @@ public class WXNavgationModule extends WXModuleBase {
 
     }
 
+
+    @JSMethod
+    public void present(String url)
+    {
+        this.presentFull(url,null,"hidden",false,null,true);
+    }
+
     @JSMethod
     public void presentFull(String url, HashMap param,String  navbarVisibility,boolean createnav, JSCallback callback,boolean animate)
     {

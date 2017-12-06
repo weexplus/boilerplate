@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.dependency 'Masonry', '~> 0.6.3'
   s.dependency 'SDWebImage', '~> 3.8'
   #s.dependency 'KoaPullToRefresh', '~> 1.0.6'    
-  s.dependency 'MMDrawerController', '~> 0.5.7'    
+     
   s.dependency 'IQKeyboardManager', '~> 4.0.6'
   s.dependency 'LPPhotoViewer', '~> 0.0.7'
   s.dependency 'TOCropViewController', '~> 2.0.8'

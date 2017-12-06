@@ -12,10 +12,11 @@
 @synthesize weexInstance;
 WX_EXPORT_METHOD(@selector(push:))
 WX_EXPORT_METHOD(@selector(pushParam:param:))
-WX_EXPORT_METHOD(@selector(pushFull:param:navbarVisibility:callback:animated:))
+WX_EXPORT_METHOD(@selector(pushFull:param:callback:animated:))
 WX_EXPORT_METHOD(@selector(back))
 WX_EXPORT_METHOD(@selector(backFull:animated:))
-WX_EXPORT_METHOD(@selector(presentFull:param:navbarVisibility:createNav:callback:animated:))
+WX_EXPORT_METHOD(@selector(presentFull:param:callback:animated:))
+
 WX_EXPORT_METHOD(@selector(present:))
 WX_EXPORT_METHOD(@selector(dismiss))
 WX_EXPORT_METHOD(@selector(dismissFull:animated:))
@@ -27,41 +28,59 @@ WX_EXPORT_METHOD(@selector(setRoot:))
 WX_EXPORT_METHOD(@selector(addBackGestureSelfControl))
 WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
+
+
+
+//-(void)push:(NSMutableDictionary*)param
+//{
+//   NSString *url=  [param  objectForKey:@"url"];
+//   NSMutableDictionary *p=  [param  objectForKey:@"param"];
+//   WXModuleKeepAliveCallback callback= [param  objectForKey:@"callback"];
+//   BOOL animated=[param  objectForKey:@"animated"];
+//  [self pushFull:url param:param callback:callback animated:animated];
+//
+//}
+
 -(void)push:(NSString *)url
 {
-    [self pushFull:url param:nil navbarVisibility:@"hidden"  callback:nil animated:true];
-    
+    [self pushFull:url param:nil   callback:nil animated:true];
+
 }
 -(void)pushParam:(NSString *)url param:(NSDictionary*)param
 {
-     [self pushFull:url param:param navbarVisibility:@"hidden" callback:nil animated:true];
+     [self pushFull:url param:param callback:nil animated:true];
 }
--(void)pushFull:(NSString *)url param:(NSDictionary*)param  navbarVisibility:(NSString*) navbarVisibility callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
+-(void)pushFull:(NSString *)url param:(NSDictionary*)param   callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
 {
     
-    NSString *newURL = [URL getFinalUrl:url weexInstance:weexInstance];
-    [WeexFactory render:[NSURL URLWithString:newURL] compelete:^(Page *p) {
-        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.page=p;
-        vc.instance=p.instance;
-        vc.param=param;
-        vc.callback=callback;
-        vc.navbarVisibility=navbarVisibility;
-
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        UIViewController *rootViewController = window.rootViewController;
-        [rootViewController.view addSubview:p.weexView];
-        [rootViewController addChildViewController:vc];
-
-        p.instance.renderFinish = ^(UIView *view) {
-//            view.frame=CGRectMake(0, 0, 0, 0);
-             [vc removeFromParentViewController];
-             [p.weexView removeFromSuperview];
-             [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
-        };
+    [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
-    }];
+         [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
+        
+    } frame:[UIApplication sharedApplication].keyWindow.bounds];
+ 
+//    [WeexFactory render:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(Page *p) {
+//        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.page=p;
+//        vc.instance=p.instance;
+//        vc.param=param;
+//        vc.callback=callback;
+//        vc.navbarVisibility=navbarVisibility;
+//
+//        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//        UIViewController *rootViewController = window.rootViewController;
+//        [rootViewController.view addSubview:p.weexView];
+//        [rootViewController addChildViewController:vc];
+//
+//        p.instance.renderFinish = ^(UIView *view) {
+////            view.frame=CGRectMake(0, 0, 0, 0);
+//             [vc removeFromParentViewController];
+//             [p.weexView removeFromSuperview];
+//             [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
+//        };
+//
+//    }];
 }
 
 -(id)param
@@ -107,36 +126,46 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 -(void)present:(NSString *)url
 {
-    [self presentFull:url param:nil navbarVisibility:@"hidden" createNav:true callback:nil animated:true];
+    [self presentFull:url param:nil callback:nil animated:true];
 }
 
--(void)presentFull:(NSString *)url param:(NSDictionary*)param navbarVisibility:(NSString*) navbarVisibility   createNav:(BOOL)createNav callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
+-(void)presentFull:(NSString *)url param:(NSDictionary*)param    callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
 {
    
-     NSString *newURL = [URL getFinalUrl:url weexInstance:weexInstance];
-    [WeexFactory render:[NSURL URLWithString:newURL] compelete:^(Page *p) {
-        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-        vc.navbarVisibility=navbarVisibility;
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.page=p;
-        vc.instance=p.instance;
-        vc.param=param;
-        vc.callback=callback;
-        if(createNav)
-        {
-            UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-            [weexInstance.viewController presentViewController:nav animated:animated completion:^{
-//                 [weexInstance fireGlobalEvent:@"onPageInit" params:nil];
-            }];
-        }
-        else
-        {
-            [weexInstance.viewController presentViewController:vc animated:animated completion:^{
-            }];
-        }
-
+//    NSURL *nurl=[URL getFinalUrl:url weexInstance:weexInstance];
+//    [WeexFactory render:nurl compelete:^(Page *p) {
+//        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
+//        vc.navbarVisibility=navbarVisibility;
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.page=p;
+//        vc.instance=p.instance;
+//        vc.param=param;
+//        vc.callback=callback;
+//        if(createNav)
+//        {
+//            UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+//            [weexInstance.viewController presentViewController:nav animated:animated completion:^{
+////                 [weexInstance fireGlobalEvent:@"onPageInit" params:nil];
+//            }];
+//        }
+//        else
+//        {
+//            [weexInstance.viewController presentViewController:vc animated:animated completion:^{
+//            }];
+//        }
+//
+//
+//    }];
+    
+    
+    [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
-    }];
+        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+        [weexInstance.viewController presentViewController:nav animated:animated completion:^{
+            
+        }];
+        
+    } frame:[UIApplication sharedApplication].keyWindow.bounds];
     
    
  

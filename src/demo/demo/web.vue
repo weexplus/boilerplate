@@ -4,9 +4,11 @@
       <head title="web"    append="tree">
 
       </head>
-
+       <div class="btn" @click="load">
+           <text>加载</text>
+       </div>
       <div style="flex:1">
-          <web src="http://wwww.baidu.com" @pagestart="pagestart" @pagefinish="pagefinish"  @error="pagefinish" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red">
+          <web :src="src" bounce="false" @pagestart="pagestart" @pagefinish="pagefinish"  @error="pagefinish" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red">
 
           </web>
       </div>
@@ -46,11 +48,16 @@
       return {
         text: '',
           param:'',
-          data:{}
+          data:{},
+          src:''
       }
     }
     ,
       methods:{
+          load()
+          {
+            this.src='https://www.baidu.com'
+          },
           pagestart()
           {
               progress.show()

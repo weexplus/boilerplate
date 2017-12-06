@@ -11,17 +11,31 @@
 #import "Weex.h"
 @implementation URL
 
-+(NSString*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance
++(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance
 {
     if([url startWith:@"root:"])
     {
         url=[url replace:@"root:" withString:[Weex getBaseUrl]];
-        return url;
+        
+        return [NSURL URLWithString:url];
     }
-    return [NSURL URLWithString:url relativeToURL:weexInstance.scriptURL].absoluteString;
+    NSURL *n= [NSURL URLWithString:url relativeToURL:weexInstance.scriptURL];
+    return n;
 }
 
 
++(NSMutableArray*)getFinalUrls:(NSMutableArray*)urls weexInstance:(WXSDKInstance*)weexInstance
+{
+ 
+    NSMutableArray *n=[NSMutableArray new];
+    for(NSString* url in urls)
+    {
+        [n addObject:[URL getFinalUrl:url weexInstance:weexInstance]];
+    }
+    return n;
+//
+    
+}
 
 
 

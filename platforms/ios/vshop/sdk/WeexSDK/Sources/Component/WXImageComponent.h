@@ -20,5 +20,5 @@
 #import "WXComponent.h"
 
 @interface WXImageComponent : WXComponent
-- (void)configPlaceHolder:(NSDictionary*)attributes;
+
 @end

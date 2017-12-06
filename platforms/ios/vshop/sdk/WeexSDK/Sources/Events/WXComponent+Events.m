@@ -109,7 +109,10 @@
         [dict addEntriesFromDictionary:params];
     }
     
-    [[WXSDKManager bridgeMgr] fireEvent:self.weexInstance.instanceId ref:self.ref type:eventName params:dict domChanges:domChanges];
+    NSArray *handlerArguments = [self _paramsForEvent:eventName];
+    NSString *ref = _templateComponent ? _templateComponent.ref  : self.ref;
+    
+    [[WXSDKManager bridgeMgr] fireEvent:self.weexInstance.instanceId ref:ref type:eventName params:dict domChanges:domChanges handlerArguments:handlerArguments];
 }
 
 - (void)addEvent:(NSString *)addEventName
@@ -151,6 +154,11 @@ if ([removeEventName isEqualToString:@#eventName]) {\
 
 - (void)_addEventOnMainThread:(NSString *)addEventName
 {
+    if (![self isViewLoaded]) {
+        //This action will be ignored While the view is loaded,
+        //then it will initEvent according to the records in _events
+        return;
+    }
     WX_ADD_EVENT(appear, addAppearEvent)
     WX_ADD_EVENT(disappear, addDisappearEvent)
     
@@ -169,6 +177,7 @@ if ([removeEventName isEqualToString:@#eventName]) {\
     WX_ADD_EVENT(touchmove, addTouchMoveEvent)
     WX_ADD_EVENT(touchend, addTouchEndEvent)
     WX_ADD_EVENT(touchcancel, addTouchCancelEvent)
+    WX_ADD_EVENT(accessibilityMagicTap, addAccessibilityMagicTapEvent)
     
     if(_isListenPseudoTouch) {
         self.touchGesture.listenPseudoTouch = YES;
@@ -197,7 +206,7 @@ if ([removeEventName isEqualToString:@#eventName]) {\
     WX_REMOVE_EVENT(touchmove, removeTouchMoveEvent)
     WX_REMOVE_EVENT(touchend, removeTouchEndEvent)
     WX_REMOVE_EVENT(touchcancel, removeTouchCancelEvent)
-    
+    WX_REMOVE_EVENT(accessibilityMagicTap, removeAccessibilityMagicTapEvent)
     if(_isListenPseudoTouch) {
         self.touchGesture.listenPseudoTouch = NO;
     }
@@ -256,6 +265,18 @@ if ([removeEventName isEqualToString:@#eventName]) {\
     [self checkRemoveTouchGesture];
 }
 
+#pragma mark - Accessibility Event
+
+- (void)addAccessibilityMagicTapEvent
+{
+    _accessibilityMagicTapEvent = YES;
+}
+
+- (void)removeAccessibilityMagicTapEvent
+{
+    _accessibilityMagicTapEvent = NO;
+}
+
 #pragma mark - Click Event
 
 - (void)addClickEvent
@@ -271,9 +292,12 @@ if ([removeEventName isEqualToString:@#eventName]) {\
 {
     if (_tapGesture) {
         _tapGesture.delegate = nil;
-        if ([self.view.gestureRecognizers containsObject:_tapGesture]) {
-            [self.view removeGestureRecognizer:_tapGesture];
+        if ([self isViewLoaded]) {
+            if ([self.view.gestureRecognizers containsObject:_tapGesture]) {
+                [self.view removeGestureRecognizer:_tapGesture];
+            }
         }
+        [_tapGesture removeTarget:self action:@selector(onClick:)];
         _tapGesture = nil;
     }
 }
@@ -345,9 +369,12 @@ if ([removeEventName isEqualToString:@#eventName]) {\
   
     for (UISwipeGestureRecognizer *recognizer in _swipeGestures) {
         recognizer.delegate = nil;
-        if ([[self.view gestureRecognizers] containsObject:recognizer]) {
-            [self.view removeGestureRecognizer:recognizer];
+        if([self isViewLoaded]) {
+            if ([[self.view gestureRecognizers] containsObject:recognizer]) {
+                [self.view removeGestureRecognizer:recognizer];
+            }
         }
+        [recognizer removeTarget:self action:@selector(onSwipe:)];
     }
     _swipeGestures = nil;
 }
@@ -400,10 +427,12 @@ if ([removeEventName isEqualToString:@#eventName]) {\
 {
     if (_longPressGesture) {
         _longPressGesture.delegate = nil;
-        
-        if([[self.view gestureRecognizers] containsObject:_longPressGesture]) {
-            [self.view removeGestureRecognizer:_longPressGesture];
+        if ([self isViewLoaded]) {
+            if([[self.view gestureRecognizers] containsObject:_longPressGesture]) {
+                [self.view removeGestureRecognizer:_longPressGesture];
+            }
         }
+        [_longPressGesture removeTarget:self action:@selector(onLongPress:)];
         _longPressGesture = nil;
     }
 }
@@ -550,11 +579,14 @@ if ([removeEventName isEqualToString:@#eventName]) {\
         && !_listenHorizontalPan && !_listenVerticalPan
         ) {
         
-        if ([[self.view gestureRecognizers] containsObject:_panGesture]) {
-            [self.view removeGestureRecognizer:_panGesture];
+        if ([self isViewLoaded]) {
+            if ([[self.view gestureRecognizers] containsObject:_panGesture]) {
+                [self.view removeGestureRecognizer:_panGesture];
+            }
         }
         
         _panGesture.delegate = nil;
+        [_panGesture removeTarget:self action:@selector(onPan:)];
         _panGesture = nil;
     }
 }
@@ -620,8 +652,10 @@ if ([removeEventName isEqualToString:@#eventName]) {\
 {
     if (_touchGesture && !_touchGesture.listenTouchStart && !_touchGesture.listenTouchMove && !_touchGesture.listenTouchEnd && !_touchGesture.listenTouchCancel && !_touchGesture.listenPseudoTouch) {
         _touchGesture.delegate = nil;
-        if ([[self.view gestureRecognizers] containsObject:_touchGesture]) {
-            [self.view removeGestureRecognizer:_touchGesture];
+        if ([self isViewLoaded]) {
+            if ([[self.view gestureRecognizers] containsObject:_touchGesture]) {
+                [self.view removeGestureRecognizer:_touchGesture];
+            }
         }
         _touchGesture = nil;
     }
