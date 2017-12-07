@@ -32,8 +32,8 @@
     _window.rootViewController=vc;
     [_window makeKeyAndVisible];
 //    [Weex startDebug:@"127.0.0.1" port:@"8088"];
- 
-    return YES;
+    UITextField *t;
+     return YES;
 }
 
 

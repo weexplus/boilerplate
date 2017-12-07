@@ -8,8 +8,6 @@
 
 #import "WXNormalViewContrller.h"
 #import "farwolf_weex.h"
-
-
 #import <WeexSDK/WXSDKInstance.h>
 #import "WeexSDK/WXSDKEngine.h"
 #import "WeexSDK/WXAppConfiguration.h"
@@ -18,6 +16,7 @@
 #import "Masonry.h"
 #import "Weex.h"
 #import "Config.h"
+#import "IQKeyboardManager.h"
 
 @interface WXNormalViewContrller ()
 
@@ -145,6 +144,8 @@
         [self.view bringSubviewToFront:self.set];
         [self.view bringSubviewToFront:self.refresh];
     }
+//    [IQKeyboardManager sharedManager].enable = YES;
+    
 //    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
 //    [self.instance fireModuleEvent:[WXNavBarModule class] eventName:@"onPageInit" params:nil];
     

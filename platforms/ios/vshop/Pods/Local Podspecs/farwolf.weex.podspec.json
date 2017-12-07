@@ -46,6 +46,9 @@
     ],
     "RHAddressBook": [
 
+    ],
+    "IQKeyboardManager": [
+      "~> 4.0.6"
     ]
   }
 }

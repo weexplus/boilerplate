@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(142)
+	__vue_styles__.push(__webpack_require__(154)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(143)
+	__vue_exports__ = __webpack_require__(155)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(144)
+	var __vue_template__ = __webpack_require__(156)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -90,7 +90,7 @@
 
 /***/ }),
 
-/***/ 142:
+/***/ 154:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -112,7 +112,7 @@
 
 /***/ }),
 
-/***/ 143:
+/***/ 155:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -161,7 +161,7 @@
 	        logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
 	        target: 'World',
 	        index: 0,
-	        items: ['../../busi/tab/mainpage.js', '../../busi/tab/serial.js', '../../busi/tab/movie.js', '../../demo/hmain.js']
+	        items: ['../../busi/tab/mainpage.js', '../../busi/tab/serial.js', '../../busi/tab/movie.js', '../../busi/tab/collection.js']
 	    },
 	    methods: {
 	        update: function update(e) {
@@ -196,7 +196,7 @@
 
 /***/ }),
 
-/***/ 144:
+/***/ 156:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -29,5 +29,7 @@ Pod::Spec.new do |s|
   s.dependency 'Masonry', '~> 0.6.3'
   s.dependency 'SocketRocket','~> 0.4.2' 
   s.dependency 'RHAddressBook'
+  s.dependency 'IQKeyboardManager', '~> 4.0.6'
+
 
 end
