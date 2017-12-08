@@ -20,7 +20,7 @@ public class DebugActivity  extends WeexActivity {
         url=pref.url().get();
 //        render("http://172.16.103.113:9898/mv/SignIn.js");
 //        render("http://172.16.103.113:9898/mv/demo/demo/net.js");
-        render("app/demo/demo/static.js");
+        render("http://192.168.12.221:9898/mv/demo/demo/url.js");
 
 //        final Handler achandler = new Handler() {
 //            @Override

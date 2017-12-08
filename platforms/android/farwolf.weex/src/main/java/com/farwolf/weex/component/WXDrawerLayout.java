@@ -46,7 +46,7 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
         }
     }
 
-    @WXComponentProp(name = "slid_src")
+    @WXComponentProp(name = "slidSrc")
     public void setSlidUrl(String url)
     {
         url= Weex.getRelativeUrl(url,this.getInstance());

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
+import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.component.WXDrawerLayout;
 import com.farwolf.weex.component.WXFEmbed;
 import com.farwolf.weex.component.WXFImage;
@@ -73,8 +74,8 @@ public class Weex extends ServiceBase{
         WXSDKEngine.reload();
 
     }
-    public   void startDebug() {
-        startDebug(pref.ip().get());
+    public   void startDebug(Context c) {
+        startDebug(Config.debugIp(c));
     }
 
     public   String getDebugUrl()
@@ -197,6 +198,23 @@ public class Weex extends ServiceBase{
 //            return   url.replace("root:",Weex.baseurl);
 //
 //    }
+
+
+    public static String getRelativeUrl(String url)
+    {
+        String temp="";
+        if(url.contains("root:"))
+        {
+            String q[]=url.split("root:");
+            temp= Weex.baseurl+q[1];
+        }
+        else
+        {
+            temp=Weex.getSingleRealUrl(url);
+        }
+        return temp;
+    }
+
 public static String getSingleRealUrl(String url)
 {
 
@@ -232,6 +250,14 @@ public static String getSingleRealUrl(String url)
 
     public static String getRelativeUrl(String url, WXSDKInstance  instance)
     {
+        if(url.startsWith("root:"))
+        {
+             return url.replace("root:", Weex.baseurl);
+        }
+        if(url.startsWith("./"))
+        {
+            url=url.substring(2);
+        }
         String base= instance.getBundleUrl();
         String q[]=url.split("\\.\\.\\/");
         String x[]= base.split("\\/");

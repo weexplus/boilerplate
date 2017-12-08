@@ -90,6 +90,7 @@ public class WXPageView extends ViewBase   {
             ViewGroup.LayoutParams layoutParams = root.getLayoutParams();
             page.v.setLayoutParams(layoutParams);
             root.addView(page.v);
+            instance.setSize(layoutParams.width,layoutParams.height);
             instance.fireGlobalEventCallback("onPageInit",null);
         }
         else
@@ -105,7 +106,8 @@ public class WXPageView extends ViewBase   {
 
     private WXSDKInstance createInstance() {
         WXSDKInstance   instance =new WXSDKInstance(getContext());
-
+        ViewGroup.LayoutParams layoutParams = root.getLayoutParams();
+        instance.setSize(layoutParams.width,layoutParams.height);
         instance.registerRenderListener(new IWXRenderListener(){
 
             @Override

@@ -69,11 +69,16 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
         }
 
 
-        if(url.contains("root:"))
-        {
-          String q[]=url.split("root:");
-          temp= Weex.baseurl+q[1];
-        }
+//        if(url.contains("root:"))
+//        {
+//          String q[]=url.split("root:");
+//          temp= Weex.baseurl+q[1];
+//        }
+//        else
+//        {
+//            temp=Weex.getSingleRealUrl(url);
+//        }
+        temp=Weex.getRelativeUrl(url);
 
         if(temp.startsWith("http"))
         {

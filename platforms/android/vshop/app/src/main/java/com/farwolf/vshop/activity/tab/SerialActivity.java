@@ -29,7 +29,7 @@ public class SerialActivity extends WeexActivity {
     public void init() {
         this.title.setTitle("分类");
 
-        this.navbarVisibility="hidden";
+//        this.navbarVisibility="hidden";
         this.resetFrame();
 //        this.render("app/busi/tab/serial.js",false);
     }

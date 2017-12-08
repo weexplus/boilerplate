@@ -2,8 +2,8 @@
   "schema":"mv",
   "debug":true,
   "debugIp":"127.0.0.1",
-  "entry":"app/demo/demo/inputs.js",
-  "preload":["app/busi/tab/mainpage.js","app/busi/tab/movie.js","app/busi/tab/serial.js","app/busi/tab/collection.js"],
+  "entry":"app/demo/demo/host.js",
+  "preload":["app/busi/tab/mainpage.js"],
   "splash":"splash1",
   "static":
   {

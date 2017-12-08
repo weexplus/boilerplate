@@ -15,7 +15,7 @@ public class MainPageActivity extends WeexActivity {
     @Override
     public void init() {
         this.title.setTitle("主页");
-       this.navbarVisibility="hidden";
+//       this.navbarVisibility="hidden";
         this.resetFrame();
 //        render("app/busi/tab/main/mainpage.js",false);
     }

@@ -137,7 +137,7 @@ public class ToolPop extends ViewBase{
         }
         else
         {
-            weex.startDebug();
+            weex.startDebug(getActivity());
             debug_reconnetc.setText("关闭Debug");
         }
 

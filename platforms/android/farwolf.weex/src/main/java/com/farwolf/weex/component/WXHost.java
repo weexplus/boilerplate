@@ -3,6 +3,7 @@ package com.farwolf.weex.component;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXTabView;
 import com.farwolf.weex.view.WXTabView_;
 import com.taobao.weex.WXSDKInstance;
@@ -42,7 +43,13 @@ public class WXHost extends WXComponent<WXTabView> {
     public void setItems(ArrayList l)
     {
 
-        this.getHostView().setItems(l);
+        ArrayList lx=new ArrayList();
+        for(Object q:l)
+        {
+             lx.add(Weex.getRelativeUrl(q+"", this.getInstance()));
+        }
+
+        this.getHostView().setItems(lx);
     }
 
     @WXComponentProp(name = "index")

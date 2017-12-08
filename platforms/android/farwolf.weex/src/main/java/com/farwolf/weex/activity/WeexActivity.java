@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,8 +24,8 @@ import com.farwolf.util.AppTool;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
 import com.farwolf.view.FreeDialog;
-import com.farwolf.view.OnMultiTouchListener;
 import com.farwolf.weex.R;
+import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.module.WXNavgationModule;
@@ -35,7 +34,6 @@ import com.farwolf.weex.pref.WeexPref_;
 import com.farwolf.weex.util.Constants;
 import com.farwolf.weex.util.HotRefreshManager;
 import com.farwolf.weex.util.Weex;
-import com.farwolf.weex.view.AndroidBug5497Workaround;
 import com.farwolf.weex.view.ToolPop;
 import com.farwolf.weex.view.ToolPop_;
 import com.taobao.weex.IWXRenderListener;
@@ -115,7 +113,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     public HashMap param;
 
-    public String navbarVisibility;
+//    public String navbarVisibility;
 
     public String pageid;
 
@@ -185,20 +183,20 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         }
         rootContainer.setLayoutParams(lp);
 
-        if("transparent".equals(navbarVisibility))
-        {
-            makeTransparent();
-        }
-        else if("visiable".equals(navbarVisibility))
-        {
-
-
-        }
-        else
-        {
+//        if("transparent".equals(navbarVisibility))
+//        {
+//            makeTransparent();
+//        }
+//        else if("visiable".equals(navbarVisibility))
+//        {
+//
+//
+//        }
+//        else
+//        {
             makeHidden();
 
-        }
+//        }
     }
 
     @AfterViews
@@ -206,62 +204,24 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     {
         if(hasInit)
             return;
-
-        getTitleBar().setTitle("");
-
-//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        if(lodingimg==null)
+            return;
         Glide
                 .with(this)
                 .load(R.drawable.load)
                 .asGif()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(lodingimg);
-        hasInit=true;
-        String pageid=getIntent().getStringExtra("pageid");
 
+        hasInit=true;
+        String url=getIntent().getStringExtra("url");
         this.isRoot = getIntent().getBooleanExtra("isRoot",false);
         this.param=(HashMap) getIntent().getSerializableExtra("param");
         this.rootid= getIntent().getStringExtra("rootid");
-        this.navbarVisibility=getIntent().getStringExtra("navbarVisibility");
         WXNavgationModule.addActivity(this.rootid,this);
-        Page page= weexFactory.getPage(pageid);
-        AndroidBug5497Workaround.assistActivity(root);
+//        AndroidBug5497Workaround.assistActivity(root);
         this.resetFrame();
-        if(page!=null)
-        {
-//            RenderContainer c=(RenderContainer)page.v;
-            RelativeLayout parent=  (RelativeLayout)page.v.getParent();
-            if(parent!=null)
-                parent.removeAllViews();
-            container.addView(page.v);
-
-            url=page.instance.getBundleUrl();
-            mWXSDKInstance= page.instance;
-            pageid=page.id;
-            mWXSDKInstance.setContext(this);
-            mWXSDKInstance.registerRenderListener(this);
-            mWXSDKInstance.onActivityCreate();
-            mWXSDKInstance.fireGlobalEventCallback("onPageInit",null);
-            page=null;
-
-        }
-        else
-        {
-            String url=getIntent().getStringExtra("url");
-            if(url==null)
-            {
-                url=this.url;
-            }
-            else
-            {
-                this.url=url;
-            }
-            if(this.url!=null)
-            {
-                render(url);
-            }
-
-        }
+        this.render(url);
         HotRefreshManager.getInstance().disConnect();
         if(mReceiver!=null)
         {
@@ -269,22 +229,6 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         }
 
 
-
-        this.title.setOnTouchListener(new OnMultiTouchListener(4){
-
-
-            @Override
-            public void onMultiTouch(View v, int count, MotionEvent event) {
-                if(count==2)
-                {
-                    render(url);
-                }
-                else
-                {
-                    showTool();
-                }
-            }
-        });
 
 
         mWXHandler=new Handler(new Handler.Callback() {
@@ -366,6 +310,31 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     public void render(String url,boolean showProgress)
     {
+
+        if(url==null)
+            return;
+
+        Page page= weexFactory.getPage(url);
+        if(page!=null)
+        {
+
+            RelativeLayout parent=  (RelativeLayout)page.v.getParent();
+            if(parent!=null)
+                parent.removeAllViews();
+            container.addView(page.v);
+            url=page.instance.getBundleUrl();
+            mWXSDKInstance= page.instance;
+            pageid=page.id;
+            mWXSDKInstance.setContext(this);
+            mWXSDKInstance.registerRenderListener(this);
+            mWXSDKInstance.onActivityCreate();
+            mWXSDKInstance.fireGlobalEventCallback("onPageInit",null);
+            page=null;
+            return;
+
+        }
+
+
         try
         {
             if(StringUtil.isNullOrEmpty(url))
@@ -475,9 +444,13 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     }
     public void showError(String err)
     {
-        fail_layout.setVisibility(View.VISIBLE);
-        this.err.setText(err+"");
-        this.err_layout.setVisibility(View.VISIBLE);
+        if(Config.debug(this))
+        {
+            fail_layout.setVisibility(View.VISIBLE);
+            this.err.setText(err+"");
+            this.err_layout.setVisibility(View.VISIBLE);
+        }
+
     }
 
 
@@ -510,12 +483,16 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     @Override
     public void onException(WXSDKInstance instance, String errCode, String msg) {
         hideLoading();
-        fail_layout.setVisibility(View.VISIBLE);
-        if(apptool.isDebugMode())
+        if(Config.debug(this))
         {
-            if(!StringUtil.isNullOrEmpty(msg))
-                showError(msg);
+            fail_layout.setVisibility(View.VISIBLE);
+            if(apptool.isDebugMode())
+            {
+                if(!StringUtil.isNullOrEmpty(msg))
+                    showError(msg);
+            }
         }
+
 
     }
 

@@ -28,7 +28,7 @@ public class CollectionActivity  extends WeexActivity {
     @Override
     public void init() {
         this.title.setTitle("分类");
-        this.navbarVisibility="hidden";
+//        this.navbarVisibility="hidden";
         this.resetFrame();
 //        this.render("app/busi/tab/collection.js",false);
 //        render("app/busi/tab/collection/collection.js",false);

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 
-import com.farwolf.util.StringUtil;
 import com.farwolf.weex.activity.PresentActivity_;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.activity.WeexActivity_;
@@ -38,7 +37,7 @@ public class WXNavgationModule extends WXModuleBase {
     public void push(String url)
     {
 
-        this.pushFull(url,null,"hidden",null,true);
+        this.pushFull(url,null,null,true);
     }
 
     public static void addActivity(String rootid,Activity a)
@@ -67,16 +66,16 @@ public class WXNavgationModule extends WXModuleBase {
     public void pushParam(String url,HashMap param )
     {
 
-        this.pushFull(url,param,"hidden",null,true);
+        this.pushFull(url,param,null,true);
     }
 
 
     @JSMethod
-    public void pushFull(String url, HashMap param,String navbarVisibility, JSCallback callback, boolean animate)
+    public void pushFull(String url, HashMap param, JSCallback callback, boolean animate)
     {
 
 
-        this.goNext(url,param,navbarVisibility,callback,WeexActivity_.class,false);
+        this.goNext(url,param,callback,WeexActivity_.class,false);
 
 
 
@@ -172,18 +171,18 @@ public class WXNavgationModule extends WXModuleBase {
     @JSMethod
     public void present(String url)
     {
-        this.presentFull(url,null,"hidden",false,null,true);
+        this.presentFull(url,null,null,true);
     }
 
     @JSMethod
-    public void presentFull(String url, HashMap param,String  navbarVisibility,boolean createnav, JSCallback callback,boolean animate)
+    public void presentFull(String url, HashMap param, JSCallback callback,boolean animate)
     {
-        this.goNext(url,param,navbarVisibility,callback,PresentActivity_.class,true);
+        this.goNext(url,param,callback,PresentActivity_.class,true);
 
     }
 
 
-    public void goNext(String url,HashMap param,String navbarVisibility,JSCallback callback,Class c,boolean isroot )
+    public void goNext(String url,HashMap param,JSCallback callback,Class c,boolean isroot )
     {
 
 
@@ -192,7 +191,7 @@ public class WXNavgationModule extends WXModuleBase {
         Intent in=new Intent(mWXSDKInstance.getContext(),c);
         Activity a=  (Activity)this.mWXSDKInstance.getContext();
         in.putExtra("param",param);
-        in.putExtra("navbarVisibility",navbarVisibility);
+//        in.putExtra("navbarVisibility",navbarVisibility);
         if(!isroot)
         {
             WeexActivity  wa=  (WeexActivity)a;
@@ -205,7 +204,7 @@ public class WXNavgationModule extends WXModuleBase {
             url=url.replace("root:",Weex.baseurl);
         }
         else
-        url= StringUtil.getRealUrl(this.mWXSDKInstance.getBundleUrl(),url);
+        url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
         in.putExtra("url",url);
         if(callback!=null)
         {

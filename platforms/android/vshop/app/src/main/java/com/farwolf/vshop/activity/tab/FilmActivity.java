@@ -32,7 +32,7 @@ public class FilmActivity extends WeexActivity {
     @Override
     public void init() {
         this.title.setTitle("购物车");
-        this.navbarVisibility="hidden";
+//        this.navbarVisibility="hidden";
         this.resetFrame();
 //        this.render("app/busi/tab/movie.js",false);
 

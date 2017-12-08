@@ -5,6 +5,7 @@ import android.os.StrictMode;
 
 import com.farwolf.movie.R;
 import com.farwolf.vshop.module.TabModule;
+import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.util.Weex;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -32,7 +33,7 @@ public class VSApplication extends Application {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 //        Weex.basedir="mv";
-        String schema=Weex.config(this).optString("schema");
+        String schema= Config.schema(this);
         if(schema==null)
             schema="";
         weex.init(this,"网络设计平台","farwolf",schema);
@@ -42,7 +43,7 @@ public class VSApplication extends Application {
         } catch (WXException e) {
             e.printStackTrace();
         }
-        weex.startDebug("192.168.199.248");
+//        weex.startDebug("192.168.199.248");
 //        TabModule
 
     }
