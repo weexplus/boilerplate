@@ -182,6 +182,7 @@ public class Picker  extends ViewBase {
             this.layout.setVisibility(View.VISIBLE);
         }
         Animation an= AnimationUtils.loadAnimation(this.getContext(), R.anim.picker_com);
+
         an.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

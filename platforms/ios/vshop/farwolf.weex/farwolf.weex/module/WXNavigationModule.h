@@ -10,5 +10,5 @@
 #import "farwolf_weex.h"
 #import "URL.h"
 @interface WXNavigationModule : NSObject<WXModuleProtocol,UIGestureRecognizerDelegate>
-
+-(void)getChildVc:(UIViewController *)vc array:(NSMutableArray*)array;
 @end

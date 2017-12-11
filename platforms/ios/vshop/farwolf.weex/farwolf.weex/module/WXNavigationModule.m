@@ -106,16 +106,51 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 {
     WXNormalViewContrller *vc=  weexInstance.viewController;
     NSArray *n=vc.navigationController.viewControllers;
-    WXNormalViewContrller *tvc=nil;
-    for (WXNormalViewContrller* v in n) {
+    UIViewController *tvc=nil;
+    for (UIViewController* v in n) {
        
-        if([pageid isEqualToString:v.pageid])
+        if([v isKindOfClass:[WXNormalViewContrller class]])
         {
-            tvc=v;
+            WXNormalViewContrller *wx=v;
+            if([pageid isEqualToString:wx.pageid])
+            {
+                tvc=wx;
+                break;
+            }
         }
+        NSMutableArray *nx=[NSMutableArray new ];
+        [self getChildVc:v array:nx];
+        for(UIViewController *vx in nx)
+        {
+            if([vx isKindOfClass:[WXNormalViewContrller class]])
+            {
+                WXNormalViewContrller *wx=vx;
+                if([pageid isEqualToString:wx.pageid])
+                {
+                    tvc=v;
+                    break;
+                }
+            }
+        }
+            
+      
     }
     if(tvc!=nil)
     [vc.navigationController popToViewController:tvc animated:true];
+    
+}
+
+
+-(void)getChildVc:(UIViewController *)vc array:(NSMutableArray*)array
+{
+    if(vc.childViewControllers.count>0)
+    {
+        [array addObjectsFromArray:vc.childViewControllers];
+        for(UIViewController *v in vc.childViewControllers)
+        {
+            [self getChildVc:v array:array];
+        }
+    }
     
 }
 

@@ -78,20 +78,33 @@ public class SplashActivity extends WeexActivity {
     {
         List l= Config.preload(this);
         l.add(Config.entry(this));
-        weexFactory.preRender(l,new WeexFactory.OnMultiRenderFinishListener(){
+        if(!Config.debug(this))
+        {
+            weexFactory.preRender(l,new WeexFactory.OnMultiRenderFinishListener(){
 
-            @Override
-            public void onRenderFinish() {
+                @Override
+                public void onRenderFinish() {
 
-                Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
-                in.putExtra("url",Config.entry(SplashActivity.this));
-                startActivity(in);
-                finish();
-                releaseImageViewResouce(img);
+                    Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
+                    in.putExtra("url",Config.entry(SplashActivity.this));
+                    startActivity(in);
+                    finish();
+                    releaseImageViewResouce(img);
 
 
-            }
-        });
+                }
+            });
+        }
+        else
+        {
+            String url=pref.url().get();
+            Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
+            in.putExtra("url",url);
+            startActivity(in);
+            finish();
+            releaseImageViewResouce(img);
+        }
+
     }
 
 

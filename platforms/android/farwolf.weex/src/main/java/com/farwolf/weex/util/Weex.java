@@ -45,6 +45,7 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.WXException;
 import com.taobao.weex.ui.component.WXBasicComponentType;
 import com.taobao.weex.utils.WXFileUtils;
+import com.taobao.weex.utils.WXViewUtils;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.sharedpreferences.Pref;
@@ -190,6 +191,13 @@ public class Weex extends ServiceBase{
 
         }
     }
+
+
+    public static float length(float length)
+    {
+       return  WXViewUtils.getRealPxByWidth(length);
+    }
+
 
 
 //    public static String getUrl(String url)

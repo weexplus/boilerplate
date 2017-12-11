@@ -90,7 +90,7 @@ public class WXRecyclerViewOnScrollListener extends RecyclerView.OnScrollListene
 //    }
 
     //zjr add
-    if(mLastVisibleItemPosition+2==totalItemCount)
+    if(mLastVisibleItemPosition+2>=totalItemCount)
     {
       if (visibleItemCount > 0 && mCurrentScrollState == RecyclerView.SCROLL_STATE_IDLE) {
         if (listener != null && listener.get() != null) {

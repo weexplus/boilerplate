@@ -215,6 +215,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         hasInit=true;
         String url=getIntent().getStringExtra("url");
+
         this.isRoot = getIntent().getBooleanExtra("isRoot",false);
         this.param=(HashMap) getIntent().getSerializableExtra("param");
         this.rootid= getIntent().getStringExtra("rootid");

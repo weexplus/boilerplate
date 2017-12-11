@@ -146,7 +146,7 @@
     }
 //    [IQKeyboardManager sharedManager].enable = YES;
     
-//    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
 //    [self.instance fireModuleEvent:[WXNavBarModule class] eventName:@"onPageInit" params:nil];
     
 }

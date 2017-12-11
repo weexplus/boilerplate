@@ -41,7 +41,7 @@
         present(){
             var self=this;
             var nav = weex.requireModule('navigator') ;
-            nav.presentFull('present.js',{a:'okoko'},'hidden',true,function (e) {
+            nav.presentFull('present.js',{a:'okoko'},function (e) {
                 self.callbackdata=e.ok;
             },true);
         },
@@ -50,9 +50,10 @@
 
             var self=this;
             var nav = weex.requireModule('navigator') ;
-            nav.setPageId('navigator');
+
+            nav.setPageId('index');
 //            nav.pushParam('nav1.js',{a:'这是传过来的值'});
-            nav.pushFull('nav1.js',{a:'这是传过来的值'},'hidden',function (e) {
+            nav.pushFull('nav1.js',{a:'这是传过来的值'},function (e) {
               self.callbackdata=e.ok;
             },true);
         }
@@ -64,14 +65,6 @@
           globalEvent.addEventListener("onPageInit", function (e) {
 
 
-              const nav = weex.requireModule('navbar');
-              nav.setTitle('导航控制');
-              nav.setBack(true);
-              nav.setRightImage('img/scan.png',function(res){
-
-                  var modal = weex.requireModule('modal') ;
-                  modal.alert({message:"ok"})
-              });
               var navigator = weex.requireModule('navigator') ;
               navigator.addBackGestureSelfControl();
 
