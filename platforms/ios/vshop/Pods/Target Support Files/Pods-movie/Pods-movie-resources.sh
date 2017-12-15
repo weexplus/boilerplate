@@ -74,7 +74,6 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/TOCropViewController/TOCropViewControllerBundle.bundle"
   install_resource "../sdk/WeexSDK/Resources/native-bundle-main.js"
   install_resource "../sdk/WeexSDK/Resources/wx_load_error@3x.png"
@@ -87,7 +86,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../farwolf.weex/farwolf.weex/resources/xib/Picker.xib"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/TOCropViewController/TOCropViewControllerBundle.bundle"
   install_resource "../sdk/WeexSDK/Resources/native-bundle-main.js"
   install_resource "../sdk/WeexSDK/Resources/wx_load_error@3x.png"

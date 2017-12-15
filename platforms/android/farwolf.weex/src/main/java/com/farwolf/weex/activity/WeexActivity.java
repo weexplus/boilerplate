@@ -270,8 +270,11 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         if(outState!=null)
+        {
             outState.putString("url",this.url);
-         outState.putSerializable("static", WXStaticModule.m);
+            outState.putSerializable("static", WXStaticModule.m);
+        }
+
     }
 
     public void showLoading()

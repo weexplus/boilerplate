@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '09C7A70E57D9CCFE31B9F07C86B4A25B'
+               BlueprintIdentifier = 'E6E44EF10FD5844B5CF2158400938355'
                BlueprintName = 'farwolf.business'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libfarwolf.business.a'>

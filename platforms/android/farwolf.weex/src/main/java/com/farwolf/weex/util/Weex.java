@@ -13,6 +13,7 @@ import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.component.WXDrawerLayout;
 import com.farwolf.weex.component.WXFEmbed;
 import com.farwolf.weex.component.WXFImage;
+import com.farwolf.weex.component.WXFInput;
 import com.farwolf.weex.component.WXFListComponent;
 import com.farwolf.weex.component.WXFScrollView;
 import com.farwolf.weex.component.WXFWeb;
@@ -25,6 +26,7 @@ import com.farwolf.weex.component.WXPreRender;
 import com.farwolf.weex.component.WXViewPager;
 import com.farwolf.weex.component.WXWheelView;
 import com.farwolf.weex.module.WXAddressBookModule;
+import com.farwolf.weex.module.WXCenterPopModule;
 import com.farwolf.weex.module.WXEventModule;
 import com.farwolf.weex.module.WXFPicker;
 import com.farwolf.weex.module.WXFarwolfModule;
@@ -36,6 +38,7 @@ import com.farwolf.weex.module.WXPhotoModule;
 import com.farwolf.weex.module.WXPrefModule;
 import com.farwolf.weex.module.WXProgressModule;
 import com.farwolf.weex.module.WXQRModule;
+import com.farwolf.weex.module.WXSlidpopModule;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.pref.WeexPref_;
 import com.taobao.weex.InitConfig;
@@ -119,7 +122,8 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("progress", WXProgressModule.class);
             WXSDKEngine.registerModule("qr", WXQRModule.class);
             WXSDKEngine.registerModule("addressBook", WXAddressBookModule.class);
-
+            WXSDKEngine.registerModule("slidpop", WXSlidpopModule.class);
+            WXSDKEngine.registerModule("centerpop", WXCenterPopModule.class);
 
 
             registerComponent("image",WXFImage.class);
@@ -137,6 +141,7 @@ public class Weex extends ServiceBase{
             registerComponent("host",WXHost.class);
             registerComponent("looper",WXLooperText.class);
             registerComponent("drawerlayout",WXDrawerLayout.class);
+            registerComponent("input",WXFInput.class);
         } catch (WXException e) {
             e.printStackTrace();
         }

@@ -49,6 +49,7 @@
         methods: {
             ok()
             {
+//                this.index++;
                 this.$refs.looper.getIndex((res)=>{
 
                     this.index=res.index;
@@ -57,6 +58,7 @@
             },
             getindex()
             {
+
                this.$refs.looper.getIndex((res)=>{
 
                    this.index=res.index;

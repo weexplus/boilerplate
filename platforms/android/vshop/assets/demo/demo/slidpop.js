@@ -555,11 +555,7 @@
 
 	var head = __webpack_require__(130);
 	var globalEvent = weex.requireModule('globalEvent');
-	globalEvent.addEventListener("onPageInit", function (e) {
-	    var nav = weex.requireModule('navbar');
-	    nav.setTitle('网络请求');
-	    var navigator = weex.requireModule('navigator');
-	});
+	globalEvent.addEventListener("onPageInit", function (e) {});
 
 	exports.default = {
 	    components: { head: head },

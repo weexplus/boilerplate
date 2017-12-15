@@ -9,6 +9,7 @@ import android.os.Message;
 import android.widget.ImageView;
 
 import com.farwolf.util.FileTool;
+import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.WeexFactory;
@@ -98,6 +99,10 @@ public class SplashActivity extends WeexActivity {
         else
         {
             String url=pref.url().get();
+            if(StringUtil.isNullOrEmpty(url))
+            {
+                url=Config.entry(this);
+            }
             Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
             in.putExtra("url",url);
             startActivity(in);

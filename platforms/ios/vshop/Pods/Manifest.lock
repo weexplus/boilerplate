@@ -26,7 +26,6 @@ PODS:
   - farwolf (0.0.1):
     - AFNetworking (~> 2.6.3)
     - GSKStretchyHeaderView (~> 0.12.2)
-    - IQKeyboardManager (~> 4.0.6)
     - LPPhotoViewer (~> 0.0.7)
     - Masonry (~> 0.6.3)
     - MBProgressHUD (~> 0.9.2)
@@ -42,7 +41,6 @@ PODS:
     - TOCropViewController (~> 2.0.8)
   - farwolf.weex (0.0.1):
     - farwolf
-    - IQKeyboardManager (~> 4.0.6)
     - Masonry (~> 0.6.3)
     - RHAddressBook
     - SDWebImage (~> 3.8)
@@ -51,7 +49,6 @@ PODS:
     - WXDevtool
   - FSCalendar (2.7.9)
   - GSKStretchyHeaderView (0.12.2)
-  - IQKeyboardManager (4.0.11)
   - LPPhotoViewer (0.0.7):
     - DACircularProgress (~> 2.3.1)
     - SDWebImage (~> 3.8)
@@ -88,7 +85,6 @@ DEPENDENCIES:
   - farwolf.weex (from `farwolf.weex`)
   - FSCalendar (~> 2.7.9)
   - GSKStretchyHeaderView (~> 0.12.2)
-  - IQKeyboardManager (~> 4.0.6)
   - LPPhotoViewer (~> 0.0.7)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
@@ -122,12 +118,11 @@ SPEC CHECKSUMS:
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
-  farwolf: 4e28afd7c0a288d285f3ec0e620183b2d954ba7b
+  farwolf: 7faa516c516d9493a3c48c08639307bfafe04183
   farwolf.business: dac235353f260775f36ad022cb361d2a61fa951b
-  farwolf.weex: ab4b35639f9cdd62edf813ff7e1fb372eea461bc
+  farwolf.weex: 7be10c08c19182b45914e4815cf457853fb0f8b1
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
-  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -147,6 +142,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
 
-PODFILE CHECKSUM: d865d6028f240a387c0941125b7828cf8fcb6e59
+PODFILE CHECKSUM: 91ab325e2537d63b7a288e5f41fd0d69abdb1678
 
 COCOAPODS: 1.1.1

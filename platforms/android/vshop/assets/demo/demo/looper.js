@@ -575,6 +575,7 @@
 	        ok: function ok() {
 	            var _this = this;
 
+	            //                this.index++;
 	            this.$refs.looper.getIndex(function (res) {
 
 	                _this.index = res.index;
