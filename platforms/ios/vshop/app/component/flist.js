@@ -147,10 +147,11 @@
 	                    return;
 	                }
 	                if (e.res.err == 1000) {
-	                    var nav = weex.requireModule("navigator");
-	                    nav.presentFull('root:busi/account/login.js', {}, 'transparent', true, function () {
-	                        self.postFull(weg, param, header, start, success, fail, exception, compelete);
-	                    }, true);
+	                    // var nav=weex.requireModule("navigator")
+	                    // nav.presentFull('root:busi/account/login.js',{},'transparent',true,function(){
+	                    //     self.postFull(weg,param,header,start,success,fail,exception,compelete);
+
+	                    // },true);
 	                } else fail(e.res);
 	            }
 	        }, function (e) {

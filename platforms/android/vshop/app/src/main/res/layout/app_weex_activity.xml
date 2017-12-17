@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root"
-    android:background="#333333"
+    android:background="#c12121"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
 
-            android:layout_marginBottom="54dp"
+
             android:background="#333333"
 
             android:id="@+id/container"

@@ -30,8 +30,7 @@ public class EntryActivity extends WeexActivity {
          this.set.setVisibility(View.GONE);
          this.refresh.setVisibility(View.GONE);
        }
-//       String url= Config.entry(this);
-//       render(url);
+
 
     }
 

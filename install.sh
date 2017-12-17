@@ -10,3 +10,7 @@ cd $DIR
 pwd
 cp -rf dist/    platforms/android/vshop/app/src/main/assets/app/
 cp -rf dist/    platforms/ios/vshop/app/
+cp -rf src/img/    dist/img/;
+cp -rf src/config.json    platforms/android/vshop/app/src/main/assets/app/config.json;
+cp -rf src/config.json    platforms/ios/vshop/app/config.json;
+pwd

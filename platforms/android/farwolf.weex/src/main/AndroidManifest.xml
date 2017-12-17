@@ -16,13 +16,7 @@
 
         </activity>
 
-        <activity android:name="com.farwolf.weex.activity.DebugActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"
-            >
 
-        </activity>
 
         <activity android:name="com.farwolf.weex.activity.EntryActivity_"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

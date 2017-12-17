@@ -36,4 +36,11 @@ public class WXPageModule extends WXModuleBase {
 
 
 
+    @JSMethod(uiThread = true)
+    public void doubleBack()
+    {
+        getActivity().exitEnable=true;
+    }
+
+
 }

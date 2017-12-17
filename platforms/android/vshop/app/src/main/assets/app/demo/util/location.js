@@ -52,7 +52,7 @@
 	    value: true
 	});
 
-	var data = __webpack_require__(401);
+	var data = __webpack_require__(404);
 
 	exports.default = {
 	    get: function get(res) {
@@ -116,7 +116,7 @@
 
 /***/ }),
 
-/***/ 401:
+/***/ 404:
 /***/ (function(module, exports) {
 
 	"use strict";

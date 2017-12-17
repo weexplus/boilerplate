@@ -10,11 +10,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
@@ -53,6 +55,7 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -109,6 +112,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     @Bean
     public Weex weex;
 
+
+    public  boolean exitEnable;
 
 
     public HashMap param;
@@ -171,16 +176,16 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     {
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT);
-        if(AppTool.OSVersion()>=19)
-        {
-
-            lp.setMargins(0, screenTool.toDip(60), 0, 0);
-
-        }
-        else
-        {
-            lp.setMargins(0, screenTool.toDip(52), 0, 0);
-        }
+//        if(AppTool.OSVersion()>=19)
+//        {
+//
+//            lp.setMargins(0, screenTool.toDip(60), 0, 0);
+//
+//        }
+//        else
+//        {
+//            lp.setMargins(0, screenTool.toDip(52), 0, 0);
+//        }
         rootContainer.setLayoutParams(lp);
 
 //        if("transparent".equals(navbarVisibility))
@@ -310,6 +315,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
                 RelativeLayout.LayoutParams.MATCH_PARENT);
         lp.setMargins(0, 0, 0, 0);
         this.rootContainer.setLayoutParams(lp);
+        ViewGroup.LayoutParams lpx= this.rootContainer.getLayoutParams();
+        if(mWXSDKInstance!=null)
+        mWXSDKInstance.setSize(lpx.width,lpx.height);
     }
 
     public void render(String url,boolean showProgress)
@@ -333,6 +341,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance.registerRenderListener(this);
             mWXSDKInstance.onActivityCreate();
             mWXSDKInstance.fireGlobalEventCallback("onPageInit",null);
+            ViewGroup.LayoutParams lp= this.root.getLayoutParams();
+            mWXSDKInstance.setSize(lp.width,lp.height);
             page=null;
             return;
 
@@ -573,7 +583,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     @Override
     protected void onPause() {
-        
+
         super.onPause();
         if (mWXSDKInstance != null) {
             mWXSDKInstance.onActivityPause();
@@ -612,6 +622,35 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     }
 
+
+    long lasttime = 0;
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+
+                return exit();
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+
+    private boolean exit() {
+
+        long n = Calendar.getInstance().getTime().getTime();
+
+        if (n - lasttime < 2000) {
+            System.exit(0);
+        }
+        else {
+            Toast.makeText(this, "在按一次退出应用", Toast.LENGTH_SHORT).show();
+            lasttime = n;
+        }
+        return true;
+    }
 
 
 

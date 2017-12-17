@@ -27,73 +27,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.farwolf.vshop.VSApplication_"
+        android:name=".MVApplication_"
         >
-        <activity android:name="com.farwolf.vshop.MainActivity_">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-
-        <activity android:name="com.farwolf.vshop.IndexActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-
-
-
-
-        <activity android:name="com.farwolf.vshop.DebugActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"
-            >
-
-        </activity>
-
-
-        <activity android:name="com.farwolf.vshop.activity.tab.LaunchActivity_"
-            android:hardwareAccelerated="false"
-            android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait"
-            >
-
-        </activity>
-        <activity android:name="com.farwolf.vshop.activity.tab.MainActivity_">
-
-        </activity>
-
-        <activity android:name="com.farwolf.vshop.activity.tab.MainPageActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-
-            >
-
-        </activity>
-
-        <activity android:name="com.farwolf.vshop.activity.tab.SerialActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            >
-
-        </activity>
-        <activity android:name="com.farwolf.vshop.activity.tab.CollectionActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            >
-
-        </activity>
-        <!--<activity android:name="com.farwolf.vshop.activity.tab.MineActivity_"-->
-            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
-            <!--&gt;-->
-
-        <!--</activity>-->
-        <activity android:name="com.farwolf.vshop.activity.tab.FilmActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            >
-
-        </activity>
-        <activity android:name="com.farwolf.vshop.DebugActivity" />
 
 
     </application>

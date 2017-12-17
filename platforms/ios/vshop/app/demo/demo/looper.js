@@ -50,16 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(161)
+	__vue_styles__.push(__webpack_require__(164)
 	)
-	__vue_styles__.push(__webpack_require__(162)
+	__vue_styles__.push(__webpack_require__(165)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(163)
+	__vue_exports__ = __webpack_require__(166)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(164)
+	var __vue_template__ = __webpack_require__(167)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -92,23 +92,23 @@
 
 /***/ }),
 
-/***/ 130:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(131)
+	__vue_styles__.push(__webpack_require__(134)
 	)
-	__vue_styles__.push(__webpack_require__(132)
+	__vue_styles__.push(__webpack_require__(135)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(133)
+	__vue_exports__ = __webpack_require__(136)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(134)
+	var __vue_template__ = __webpack_require__(137)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -139,7 +139,7 @@
 
 /***/ }),
 
-/***/ 131:
+/***/ 134:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -206,7 +206,7 @@
 
 /***/ }),
 
-/***/ 132:
+/***/ 135:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -222,7 +222,7 @@
 
 /***/ }),
 
-/***/ 133:
+/***/ 136:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -341,7 +341,7 @@
 
 /***/ }),
 
-/***/ 134:
+/***/ 137:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -437,7 +437,7 @@
 
 /***/ }),
 
-/***/ 161:
+/***/ 164:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -448,7 +448,7 @@
 
 /***/ }),
 
-/***/ 162:
+/***/ 165:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -515,7 +515,7 @@
 
 /***/ }),
 
-/***/ 163:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -559,7 +559,7 @@
 	//
 
 
-	var head = __webpack_require__(130);
+	var head = __webpack_require__(133);
 
 	exports.default = {
 	    components: { head: head },
@@ -575,6 +575,7 @@
 	        ok: function ok() {
 	            var _this = this;
 
+	            //                this.index++;
 	            this.$refs.looper.getIndex(function (res) {
 
 	                _this.index = res.index;
@@ -672,7 +673,7 @@
 
 /***/ }),
 
-/***/ 164:
+/***/ 167:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

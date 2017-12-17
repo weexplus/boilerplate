@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(419)
+	__vue_styles__.push(__webpack_require__(422)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(420)
+	__vue_exports__ = __webpack_require__(423)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(421)
+	var __vue_template__ = __webpack_require__(424)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -147,10 +147,11 @@
 	                    return;
 	                }
 	                if (e.res.err == 1000) {
-	                    var nav = weex.requireModule("navigator");
-	                    nav.presentFull('root:busi/account/login.js', {}, 'transparent', true, function () {
-	                        self.postFull(weg, param, header, start, success, fail, exception, compelete);
-	                    }, true);
+	                    // var nav=weex.requireModule("navigator")
+	                    // nav.presentFull('root:busi/account/login.js',{},'transparent',true,function(){
+	                    //     self.postFull(weg,param,header,start,success,fail,exception,compelete);
+
+	                    // },true);
 	                } else fail(e.res);
 	            }
 	        }, function (e) {
@@ -510,7 +511,7 @@
 
 /***/ }),
 
-/***/ 419:
+/***/ 422:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -532,7 +533,7 @@
 
 /***/ }),
 
-/***/ 420:
+/***/ 423:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -641,7 +642,7 @@
 
 /***/ }),
 
-/***/ 421:
+/***/ 424:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

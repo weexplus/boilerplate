@@ -12,6 +12,7 @@ import com.farwolf.util.FileTool;
 import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
+import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 
 import org.androidannotations.annotations.AfterViews;
@@ -78,23 +79,35 @@ public class SplashActivity extends WeexActivity {
     public  void jump()
     {
         List l= Config.preload(this);
-        l.add(Config.entry(this));
+
+//        l.add(Config.entry(this));
         if(!Config.debug(this))
         {
+
+
             weexFactory.preRender(l,new WeexFactory.OnMultiRenderFinishListener(){
 
                 @Override
                 public void onRenderFinish() {
 
-                    Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
-                    in.putExtra("url",Config.entry(SplashActivity.this));
-                    startActivity(in);
-                    finish();
-                    releaseImageViewResouce(img);
 
+                    weexFactory.preRender(Config.entry(SplashActivity.this), new WeexFactory.OnRenderFinishListener() {
+                        @Override
+                        public void onRenderFinish(Page p) {
+
+                            Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
+                            in.putExtra("url",Config.entry(SplashActivity.this));
+                            startActivity(in);
+                            finish();
+                            releaseImageViewResouce(img);
+                        }
+                    });
 
                 }
             });
+
+
+
         }
         else
         {
