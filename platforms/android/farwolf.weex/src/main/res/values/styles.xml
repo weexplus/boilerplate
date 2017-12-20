@@ -40,7 +40,7 @@ under the License.
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowBackground">@drawable/splash1</item>
     </style>
 
 </resources>

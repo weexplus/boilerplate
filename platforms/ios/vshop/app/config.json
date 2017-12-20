@@ -1,9 +1,9 @@
 {
   "schema":"mv",
-  "debug":false,
-  "debugIp":"192.168.1.124",
+  "debug":true,
+  "debugIp":"127.0.0.1",
   "entry":"app/busi/index.js",
-  "preload":["app/busi/tab/mainpage.js","app/busi/tab/movie.js","app/busi/tab/serial.js","app/busi/tab/collection.js"],
+  "preload":["root:busi/tab/mainpage.js","root:busi/tab/movie.js","root:busi/tab/serial.js","root:busi/tab/collection.js","root:busi/detail.js"],
   "splash":"splash1",
   "static":
   {

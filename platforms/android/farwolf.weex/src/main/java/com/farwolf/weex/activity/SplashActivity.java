@@ -14,6 +14,7 @@ import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
+import com.farwolf.weex.util.Weex;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -111,16 +112,35 @@ public class SplashActivity extends WeexActivity {
         }
         else
         {
-            String url=pref.url().get();
-            if(StringUtil.isNullOrEmpty(url))
-            {
-                url=Config.entry(this);
-            }
-            Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
-            in.putExtra("url",url);
-            startActivity(in);
-            finish();
-            releaseImageViewResouce(img);
+
+
+            Weex.setBaseUrl(Config.entry(SplashActivity.this));
+            weexFactory.preRender(l,new WeexFactory.OnMultiRenderFinishListener(){
+
+                @Override
+                public void onRenderFinish() {
+
+
+                    weexFactory.preRender(Config.entry(SplashActivity.this), new WeexFactory.OnRenderFinishListener() {
+                        @Override
+                        public void onRenderFinish(Page p) {
+
+                            String url=pref.url().get();
+                            if(StringUtil.isNullOrEmpty(url))
+                            {
+                                url=Config.entry(SplashActivity.this);
+                            }
+                            Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
+                            in.putExtra("url",url);
+                            startActivity(in);
+                            finish();
+                            releaseImageViewResouce(img);
+                        }
+                    });
+
+                }
+            });
+
         }
 
     }

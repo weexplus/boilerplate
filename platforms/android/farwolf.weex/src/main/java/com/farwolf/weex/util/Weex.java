@@ -34,6 +34,7 @@ import com.farwolf.weex.module.WXNavBarModule;
 import com.farwolf.weex.module.WXNavgationModule;
 import com.farwolf.weex.module.WXNetModule;
 import com.farwolf.weex.module.WXNotifyModule;
+import com.farwolf.weex.module.WXPageModule;
 import com.farwolf.weex.module.WXPhotoModule;
 import com.farwolf.weex.module.WXPrefModule;
 import com.farwolf.weex.module.WXProgressModule;
@@ -124,6 +125,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("addressBook", WXAddressBookModule.class);
             WXSDKEngine.registerModule("slidpop", WXSlidpopModule.class);
             WXSDKEngine.registerModule("centerpop", WXCenterPopModule.class);
+            WXSDKEngine.registerModule("pagemodule", WXPageModule.class);
 
 
             registerComponent("image",WXFImage.class);
@@ -174,20 +176,27 @@ public class Weex extends ServiceBase{
     public static void setBaseUrl(WXSDKInstance instance)
     {
 
+         setBaseUrl(instance.getBundleUrl());
+
+    }
+
+    public static void setBaseUrl(String  url)
+    {
+
         if(baseurl!=null)
             return;
-       String s= instance.getBundleUrl();
+        String s= url;
 
         if(s.startsWith("http"))
         {
-            String x[]=instance.getBundleUrl().split("\\/");
+            String x[]=url.split("\\/");
 
             if(x.length>3)
             {
                 String res= x[0]+"//"+x[2]+"/"+Weex.basedir;
                 if(!res.endsWith("/"))
                     res+="/";
-                 baseurl=res;
+                baseurl=res;
             }
         }
         else

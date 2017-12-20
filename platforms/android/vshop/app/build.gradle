@@ -36,7 +36,7 @@ task copyMethod {
     doLast {
         copy {
             from '../../../../dist'
-            into new File(projectDir,"assets")
+            into new File(projectDir,"src/main/assets")
         }
     }
 }

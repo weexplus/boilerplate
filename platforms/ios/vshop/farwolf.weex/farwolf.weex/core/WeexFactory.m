@@ -170,14 +170,19 @@ static NSMutableDictionary *pageCache;
     for(NSString *url in urls )
     {
         
+        NSString *temp=@"";
         NSURL *nurl=nil;
-        if([url startWith:@"http"])
+        if([url startWith:@"root:"])
         {
-            nurl=[NSURL URLWithString:url];
+            temp=[url replace:@"root:" withString:@"app/"];
+        }
+        if([temp startWith:@"http"])
+        {
+            nurl=[NSURL URLWithString:temp];
         }
         else
         {
-            nurl= [[NSBundle mainBundle] URLForResource:[url replace:@".js" withString:@""]  withExtension:@"js"];
+            nurl= [[NSBundle mainBundle] URLForResource:[temp replace:@".js" withString:@""]  withExtension:@"js"];
         }
         [self renderNew:nurl compelete:^(WXNormalViewContrller *vc) {
             

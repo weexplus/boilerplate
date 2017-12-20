@@ -32,6 +32,7 @@
 #import "WXSlidComponent.h"
 #import "WXCenterPop.h"
 #import "WXSlidPopModule.h"
+#import "WXPageModule.h"
 
 @implementation Weex
 
@@ -57,6 +58,8 @@
     [WXSDKEngine registerModule:@"qr" withClass:[WXQRModule class]];
     [WXSDKEngine registerModule:@"centerpop" withClass:[WXCenterPop class]];
     [WXSDKEngine registerModule:@"slidpop" withClass:[WXSlidPopModule class]];
+    [WXSDKEngine registerModule:@"pagemodule" withClass:[WXPageModule class]];
+    
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
@@ -142,6 +145,7 @@
     {
         NSArray *n= [url split:@"/app/"];
         url=[n[0] add:@"/app/"] ;
+//        url=@"app/";
     }
     baseurl=url;
     

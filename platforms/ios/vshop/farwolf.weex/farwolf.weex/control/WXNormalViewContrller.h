@@ -17,15 +17,16 @@
 #import <SRWebSocket.h>
 #import "ErrorControl.h"
 #import "Page.h"
+#import "IQKeyboardReturnKeyHandler.h"
 @interface WXNormalViewContrller : UIViewController<SRWebSocketDelegate>
 //- (instancetype)initWith:(NSString *)url;
-
+//@property (nonatomic, strong) IQKeyboardReturnKeyHandler    *returnKeyHandler;
 @property(strong,nonatomic)UIButton *set;
 @property(strong,nonatomic)UIButton *refresh;
-
+@property(nonatomic)BOOL debug;
 
 @property (strong,nonatomic)   typeof(void(^)(NSObject*)) nativeCallback;
- 
+
 @property (nonatomic, strong) WXSDKInstance *instance;
 @property (nonatomic, strong) UIView *weexView;
 @property (nonatomic, strong) NSString *pageid;
@@ -38,11 +39,11 @@
 @property (nonatomic, strong) Page *page;
 @property (nonatomic) NSString* navbarVisibility;
 @property (strong,nonatomic)  WXModuleKeepAliveCallback callback;
-
+@property (nonatomic, strong) NSMutableArray *textfields;
 - (instancetype)initWithSourceURL:(NSURL *)sourceURL;
 - (void)preRender:(NSString *)url finish:(void(^)())finish;
 
- 
+
 - (void)refreshWeex;
 -(void)openWatch:(NSString*)ip;
 -(void)openQR;
@@ -51,3 +52,4 @@
 -(void)onCreateWeexView;
 -(void)resetFrame;
 @end
+

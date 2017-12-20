@@ -50,16 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(164)
+	__vue_styles__.push(__webpack_require__(169)
 	)
-	__vue_styles__.push(__webpack_require__(165)
+	__vue_styles__.push(__webpack_require__(170)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(166)
+	__vue_exports__ = __webpack_require__(171)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(167)
+	var __vue_template__ = __webpack_require__(172)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -92,23 +92,23 @@
 
 /***/ }),
 
-/***/ 133:
+/***/ 138:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(134)
+	__vue_styles__.push(__webpack_require__(139)
 	)
-	__vue_styles__.push(__webpack_require__(135)
+	__vue_styles__.push(__webpack_require__(140)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(136)
+	__vue_exports__ = __webpack_require__(141)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(137)
+	var __vue_template__ = __webpack_require__(142)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -139,7 +139,7 @@
 
 /***/ }),
 
-/***/ 134:
+/***/ 139:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -206,7 +206,7 @@
 
 /***/ }),
 
-/***/ 135:
+/***/ 140:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -222,7 +222,7 @@
 
 /***/ }),
 
-/***/ 136:
+/***/ 141:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -341,7 +341,7 @@
 
 /***/ }),
 
-/***/ 137:
+/***/ 142:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -437,7 +437,7 @@
 
 /***/ }),
 
-/***/ 164:
+/***/ 169:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -448,7 +448,7 @@
 
 /***/ }),
 
-/***/ 165:
+/***/ 170:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -515,7 +515,7 @@
 
 /***/ }),
 
-/***/ 166:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -559,7 +559,7 @@
 	//
 
 
-	var head = __webpack_require__(133);
+	var head = __webpack_require__(138);
 
 	exports.default = {
 	    components: { head: head },
@@ -567,7 +567,7 @@
 	        return {
 	            src: "",
 	            index: 0,
-	            items: ['2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app', '2017年11月9日，网络设计平台app']
+	            items: ['1111', '222222', '3333333', '444444444']
 	        };
 	    },
 
@@ -673,7 +673,7 @@
 
 /***/ }),
 
-/***/ 167:
+/***/ 172:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

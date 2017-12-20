@@ -628,12 +628,16 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
 
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+        if(exitEnable)
+        {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 
-                return exit();
+                    return exit();
+                }
             }
         }
+
         return super.dispatchKeyEvent(event);
     }
 

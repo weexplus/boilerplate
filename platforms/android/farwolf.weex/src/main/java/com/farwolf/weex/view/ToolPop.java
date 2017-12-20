@@ -12,6 +12,7 @@ import com.farwolf.view.FreeDialog;
 import com.farwolf.weex.R;
 import com.farwolf.weex.activity.QrActivity_;
 import com.farwolf.weex.activity.WeexActivity;
+import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.pref.WeexPref_;
 import com.farwolf.weex.util.HotRefreshManager;
 import com.farwolf.weex.util.Weex;
@@ -76,7 +77,7 @@ public class ToolPop extends ViewBase{
         }
         debug_reconnetc.setText(!WXEnvironment.sRemoteDebugMode?"开启Debug":"关闭Debug");
         url.setText(a.url);
-        ip.setText("debug_ip:"+pref.ip().get());
+        ip.setText("debug_ip:"+ Config.debugIp(a));
 
 
     }

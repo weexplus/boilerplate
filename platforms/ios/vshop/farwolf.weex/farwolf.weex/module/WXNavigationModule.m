@@ -55,6 +55,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
+        vc.param=param;
          [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
         
     } frame:[UIApplication sharedApplication].keyWindow.bounds];
@@ -196,6 +197,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
         UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+        vc.param=param;
         [weexInstance.viewController presentViewController:nav animated:animated completion:^{
             
         }];

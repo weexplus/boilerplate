@@ -32,10 +32,3 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-task cp{
-    copy {
-        from '../../../dist'
-        into new File(projectDir,"assets")
-
-    }
-}

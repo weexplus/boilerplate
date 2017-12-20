@@ -27,7 +27,7 @@
 
 - (void)dealloc
 {
- 
+    
     [_instance destroyInstance];
     [self _removeObservers];
 }
@@ -76,12 +76,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
+    
     
     self.navigationController.navigationBar.translucent=false;
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    if([Config isDebug])
+    if(_debug)
     {
         [self add];
     }
@@ -89,31 +89,35 @@
     if(self.page!=nil)
     {
         [self loadPage];
-         return;
+        return;
     }
     [self _renderWithURL:_sourceURL];
-  
+    
     if ([self.navigationController isKindOfClass:[WXNormalViewContrller class]]) {
         self.navigationController.navigationBarHidden = YES;
     }
     
- 
-  #ifdef DEBUG
+    
+#ifdef DEBUG
     [self.view addDoubleClick:^{
         
         [self refreshWeex];
     }];
-//    [self.view add3Click:^{
-////        [self openScan];
-//    }];
-  #endif
-   
+    
+#endif
+    
     [self regist:@"notify" method:@selector(onNotify:)];
-  
-
-//    [self addFailLayout];
-  
-  
+    
+    
+    
+    //    self.returnKeyHandler=
+    //    [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+    //    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDone;
+    
+    
+    _textfields=[NSMutableArray new];
+    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextField class]]];
+    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
 }
 
 -(void)loadPage
@@ -122,38 +126,45 @@
     self.weexView=self.page.weexView;
     self.sourceURL=self.page.url;
     self.instance.viewController=self;
- 
+    
     [self resetFrame];
-
+    
     self.instance.pageObject=self;
     self.instance.pageName=[@"" addInt:arc4random()];
     
-  
-
-
+    
+    
+    
     self.instance.renderFinish = ^(UIView *view) {
         
-          [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+        [self.instance fireGlobalEvent:@"onPageInit" params:nil];
         
-
-          [self loadCompelete];
+        
+        [self loadCompelete];
     };
-      [self.view addSubview:self.weexView];
-    if([Config isDebug])
+    [self.view addSubview:self.weexView];
+    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+    if(_debug)
     {
         [self.view bringSubviewToFront:self.set];
         [self.view bringSubviewToFront:self.refresh];
     }
-//    [IQKeyboardManager sharedManager].enable = YES;
     
-    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
-//    [self.instance fireModuleEvent:[WXNavBarModule class] eventName:@"onPageInit" params:nil];
-    
+    [self loadtextfields];
 }
 
+-(void)loadtextfields
+{
+    NSMutableArray *n= [self.view findAllViewByType:[UITextField class]];
+    _textfields=[NSMutableArray new];
+    [_textfields addObjectsFromArray:n];
+    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
+}
 -(void)loadCompelete
 {
     [self onaddWeexView];
+    [self loadtextfields];
+    //    self.returnKeyHandler addTextFieldView:<#(nonnull UIView *)#>
     
 }
 
@@ -167,31 +178,31 @@
     if(_freeFrame)
         return;
     [self.instance setFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
- 
+    
 }
 -(void)onNotify:(NSNotification*)n
 {
     NSMutableDictionary *d=n.userInfo;
-     d[@"key"];
+    d[@"key"];
     
 }
 
 BOOL isshowErr;
 -(void)onWeexError:(NSNotification*)n
 {
-     #ifdef DEBUG
+#ifdef DEBUG
     
     
-           [self showError:n.userInfo[@"msg"]] ;
-      
-      #endif
+    [self showError:n.userInfo[@"msg"]] ;
+    
+#endif
 }
 -(void)openScan
 {
-    #ifdef DEBUG
+#ifdef DEBUG
     [self openQR];
-    #endif
-  
+#endif
+    
 }
 
 
@@ -200,36 +211,36 @@ BOOL isshowErr;
 {
     self.fail_layout=  [UIView new];
     [self.view addSubviewFull:self.fail_layout];
-
+    
     UIImageView *failimg=[UIImageView new];
     UILabel *lable=[UILabel new];
     lable.text=@"加载失败了,点击重新加载";
     lable.textColor=[@"dddddd" toColor];
-     [self.fail_layout addSubview:failimg];
-     [self.fail_layout addSubview:lable];
+    [self.fail_layout addSubview:failimg];
+    [self.fail_layout addSubview:lable];
     [self.fail_layout mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerXWithinMargins.equalTo(self.view);
-         make.size.mas_equalTo(CGSizeMake(250, 230));
+        make.size.mas_equalTo(CGSizeMake(250, 230));
         make.top.equalTo(self.view).offset(50);
-      
-       
+        
+        
     }];
     failimg.image=[UIImage imageNamed:@"fail.png"];
-     [failimg mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.size.mas_equalTo(CGSizeMake(200, 173));
-         make.center.equalTo(_fail_layout);
-     }];
+    [failimg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(200, 173));
+        make.center.equalTo(_fail_layout);
+    }];
     [lable mas_makeConstraints:^(MASConstraintMaker *make) {
-       
+        
         make.centerXWithinMargins.equalTo(self.fail_layout);
         make.bottom.equalTo(self.fail_layout);
     }];
-   
+    
     [self.fail_layout addClick:@selector(refreshWeex) host:self];
     [self.fail_layout setHidden:true];
-//    [self.fail_layout addSubview:lable];
- 
+    //    [self.fail_layout addSubview:lable];
+    
     
 }
 
@@ -243,7 +254,7 @@ BOOL isshowErr;
     }
     [self.fail_layout setHidden:false];
     isshowErr=true;
-  
+    
     ErrorControl *vc=[ErrorControl new];
     vc.errmsg=msg;
     vc.onClose=^(){
@@ -251,7 +262,7 @@ BOOL isshowErr;
         [self.fail_layout setHidden:false];
     };
     
-   
+    
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         
@@ -261,38 +272,38 @@ BOOL isshowErr;
         
     });
     
- 
     
     
-  
-  
-
     
     
- 
+    
+    
+    
+    
+    
     
 }
 
 
 
 
- 
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self setBackBar:nil color:nil];
     [_instance fireGlobalEvent:@"viewWillDisappear" params:nil];
     [_instance fireGlobalEvent:WX_APPLICATION_WILL_RESIGN_ACTIVE params:nil];
- 
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [_instance fireGlobalEvent:@"viewWillAppear" params:nil];
- 
+    
     [self.navigationController setNavigationBarHidden:true animated:animated];
     [self resetFrame];
     self.view.backgroundColor=[@"#333333" toColor];
- 
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -301,15 +312,15 @@ BOOL isshowErr;
     [_instance fireGlobalEvent:@"viewDidAppear" params:nil];
     [_instance fireGlobalEvent:WX_APPLICATION_DID_BECOME_ACTIVE params:nil];
     [self _updateInstanceState:WeexInstanceAppear];
- 
-     if(self.page.hasload)
+    
+    if(self.page.hasload)
         [_instance fireGlobalEvent:@"onPageInit" params:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-        [_instance fireGlobalEvent:@"viewDidDisappear" params:nil];
+    [_instance fireGlobalEvent:@"viewDidDisappear" params:nil];
     [self _updateInstanceState:WeexInstanceDisappear];
     
 }
@@ -349,10 +360,10 @@ BOOL isshowErr;
     }
     if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
         [Weex setBaseUrl:sourceURL.absoluteString];
-
+    
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];
- 
+    
     
     [self resetFrame];
     _instance.pageObject = self;
@@ -372,12 +383,12 @@ BOOL isshowErr;
     _instance.onCreate = ^(UIView *view) {
         [weakSelf.weexView removeFromSuperview];
         weakSelf.weexView = view;
-       
+        
         [weakSelf.view addSubview:weakSelf.weexView];
         UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,  weakSelf.weexView);
- 
+        
         [self onCreateWeexView];
-
+        
     };
     
     
@@ -387,16 +398,16 @@ BOOL isshowErr;
         [self showError:msg];
     };
     
- 
+    
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
-         [_instance fireGlobalEvent:@"onPageInit" params:nil];
-        if([Config isDebug])
+        [_instance fireGlobalEvent:@"onPageInit" params:nil];
+        if(_debug)
         {
             [self.view bringSubviewToFront:self.set];
             [self.view bringSubviewToFront:self.refresh];
         }
-         [self loadCompelete];
+        [self loadCompelete];
     };
 }
 
@@ -474,7 +485,7 @@ BOOL isshowErr;
 
 -(void)onCreateWeexView
 {
-  
+    
 }
 -(void)add
 {
@@ -530,3 +541,4 @@ BOOL isshowErr;
 
 
 @end
+

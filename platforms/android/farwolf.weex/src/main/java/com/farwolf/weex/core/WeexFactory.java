@@ -281,6 +281,10 @@ public class WeexFactory  extends ServiceBase{
         if(StringUtil.isNullOrEmpty(url))
             return;
 
+        if(url.startsWith("root:"))
+        {
+            url=url.replace("root:",Weex.baseurl);
+        }
 
         if(url.startsWith("http"))
         {

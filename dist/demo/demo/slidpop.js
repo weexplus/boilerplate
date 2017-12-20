@@ -50,16 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(205)
+	__vue_styles__.push(__webpack_require__(210)
 	)
-	__vue_styles__.push(__webpack_require__(206)
+	__vue_styles__.push(__webpack_require__(211)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(207)
+	__vue_exports__ = __webpack_require__(212)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(208)
+	var __vue_template__ = __webpack_require__(213)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -92,23 +92,23 @@
 
 /***/ }),
 
-/***/ 133:
+/***/ 138:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(134)
+	__vue_styles__.push(__webpack_require__(139)
 	)
-	__vue_styles__.push(__webpack_require__(135)
+	__vue_styles__.push(__webpack_require__(140)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(136)
+	__vue_exports__ = __webpack_require__(141)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(137)
+	var __vue_template__ = __webpack_require__(142)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -139,7 +139,7 @@
 
 /***/ }),
 
-/***/ 134:
+/***/ 139:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -206,7 +206,7 @@
 
 /***/ }),
 
-/***/ 135:
+/***/ 140:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -222,7 +222,7 @@
 
 /***/ }),
 
-/***/ 136:
+/***/ 141:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -341,7 +341,7 @@
 
 /***/ }),
 
-/***/ 137:
+/***/ 142:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -437,7 +437,7 @@
 
 /***/ }),
 
-/***/ 205:
+/***/ 210:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -448,7 +448,7 @@
 
 /***/ }),
 
-/***/ 206:
+/***/ 211:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -515,7 +515,7 @@
 
 /***/ }),
 
-/***/ 207:
+/***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -553,7 +553,7 @@
 	//
 
 
-	var head = __webpack_require__(133);
+	var head = __webpack_require__(138);
 	var globalEvent = weex.requireModule('globalEvent');
 	globalEvent.addEventListener("onPageInit", function (e) {});
 
@@ -582,7 +582,7 @@
 
 /***/ }),
 
-/***/ 208:
+/***/ 213:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -58,10 +58,18 @@
 
 -(void)gotoMain
 {
+    if([self.url startWith:@"app"])
+    {
+       NSURL *nl=  [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
+        [Weex setBaseUrl:nl.absoluteString];
+    }
+    else
+     [Weex setBaseUrl:self.url];
     NSURL *url=[NSURL URLWithString:self.url];
     if([self.url startWith:@"http"])
     {
         url=[NSURL URLWithString:self.url];
+       
     }
     else
     {
@@ -74,7 +82,7 @@
             
             [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
                 
-                
+                vc.debug=[Config isDebug];
                 UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
                 [self presentViewController:nav animated:false completion:^{
                     
