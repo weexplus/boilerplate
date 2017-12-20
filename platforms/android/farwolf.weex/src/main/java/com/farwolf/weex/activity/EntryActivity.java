@@ -30,7 +30,7 @@ public class EntryActivity extends WeexActivity {
          this.set.setVisibility(View.GONE);
          this.refresh.setVisibility(View.GONE);
        }
-
+//this.render("http://192.168.12.221:9898/mv/demo/demo/looper.js");
 
     }
 

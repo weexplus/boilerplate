@@ -115,10 +115,15 @@ typedef NS_ENUM(NSUInteger, GYTitlePosition) {
             weakSelf.textLabel.layer.position = weakSelf.middlePosition;
             weakSelf.textLabel.text = [weakSelf.contentsAry objectAtIndex:[weakSelf realCurrentIndex]];
 //            [self changeWordSpaceForLabel:_textLabel WithSpace:0.1];
+            NSInteger k=[weakSelf realCurrentIndex];
+            [weakSelf.delegate change:k ];
         }
+     
     }];
 }
 
+
+ 
 - (void)stopAnimation {
     self.shouldStop = YES;
 }

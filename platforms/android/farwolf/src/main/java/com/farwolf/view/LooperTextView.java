@@ -29,9 +29,9 @@ public class LooperTextView extends FrameLayout {
     private static final int ANIM_DURATION = 1* 1000;
     private static final String DEFAULT_TEXT_COLOR = "#2F4F4F";
     private static final int DEFAULT_TEXT_SIZE = 16;
-//    private Drawable head_boy,head_girl;
-   public TextView tv_tip_out,tv_tip_in;
-//    private static final String TIP_PREFIX = "是我老婆 ";
+    //    private Drawable head_boy,head_girl;
+    public TextView tv_tip_out,tv_tip_in;
+    //    private static final String TIP_PREFIX = "是我老婆 ";
     private Animation anim_out, anim_in;
 
 
@@ -100,7 +100,8 @@ public class LooperTextView extends FrameLayout {
             @Override
             public void onAnimationEnd(Animation animation) {
                 updateTipAndPlayAnimationWithCheck();
-
+                if(onChangeListener!=null)
+                 onChangeListener.onChange(index);
             }
         });
 
@@ -132,10 +133,7 @@ public class LooperTextView extends FrameLayout {
             tv_tip_in.startAnimation(anim_in);
             this.bringChildToFront(tv_tip_out);
         }
-        if(onChangeListener!=null)
-        {
-            onChangeListener.onChange(index);
-        }
+
     }
     private void updateTip(TextView tipView) {
 //        if (new Random().nextBoolean()) {
@@ -161,8 +159,13 @@ public class LooperTextView extends FrameLayout {
      */
     private String getNextTip() {
         if (isListEmpty(tipList)) return null;
-        index=curTipIndex++ % tipList.size();
-        return tipList.get(index);
+        int c=curTipIndex++;
+        index=c% tipList.size();
+        if(index==0)
+        {
+            index=tipList.size();
+        }
+        return tipList.get(c% tipList.size());
     }
     public static boolean isListEmpty(List list) {
         return list == null || list.isEmpty();

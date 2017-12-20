@@ -557,6 +557,7 @@
 	//
 	//
 	//
+	//
 
 
 	var head = __webpack_require__(138);
@@ -567,7 +568,7 @@
 	        return {
 	            src: "",
 	            index: 0,
-	            items: ['1111', '222222', '3333333', '444444444']
+	            items: ['1111', '2222', '33333', '44444']
 	        };
 	    },
 
@@ -657,16 +658,7 @@
 
 	        var globalEvent = weex.requireModule('globalEvent');
 
-	        globalEvent.addEventListener("onPageInit", function (e) {
-	            var nav = weex.requireModule('navbar');
-	            nav.setTitle('照相');
-	            nav.setBack(true);
-	            nav.setRightImage('img/scan.png', function (res) {
-
-	                var modal = weex.requireModule('modal');
-	                modal.alert({ message: "ok" });
-	            });
-	        });
+	        globalEvent.addEventListener("onPageInit", function (e) {});
 	    }
 	};
 	module.exports = exports['default'];
@@ -696,9 +688,10 @@
 	      "color": "#eeeeee"
 	    },
 	    on: {
+	      "change": _vm.onchange,
 	      "click": _vm.ok
 	    }
-	  }), _c('text', [_vm._v(_vm._s(_vm.index))]), _c('div', {
+	  }), _c('text', [_vm._v(_vm._s(_vm.index))]), _c('text', [_vm._v(_vm._s(_vm.index))]), _c('div', {
 	    staticStyle: {
 	      width: "200",
 	      height: "100",

@@ -83,7 +83,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     if(_debug)
     {
-        [self add];
+        [self debugInit];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWeex) name:@"RefreshInstance" object:nil];
     if(self.page!=nil)
@@ -146,6 +146,8 @@
     [self.instance fireGlobalEvent:@"onPageInit" params:nil];
     if(_debug)
     {
+        
+        [self.view bringSubviewToFront:self.toolView];
         [self.view bringSubviewToFront:self.set];
         [self.view bringSubviewToFront:self.refresh];
     }
@@ -302,7 +304,7 @@ BOOL isshowErr;
     
     [self.navigationController setNavigationBarHidden:true animated:animated];
     [self resetFrame];
-    self.view.backgroundColor=[@"#333333" toColor];
+    //    self.view.backgroundColor=[@"#ffffff" toColor];
     
 }
 
@@ -485,55 +487,109 @@ BOOL isshowErr;
 
 -(void)onCreateWeexView
 {
-    
+    if(_debug)
+    {
+        
+        [self.view bringSubviewToFront:self.toolView];
+        [self.view bringSubviewToFront:self.set];
+        [self.view bringSubviewToFront:self.refresh];
+    }
 }
 -(void)add
 {
-    __weak __typeof(self)weakSelf = self;
-    _set=[UIButton buttonWithType:UIButtonTypeCustom];;
+    self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) / 2, 50, 80)];
+    float width = CGRectGetWidth(self.toolView.bounds);
+    float height = CGRectGetHeight(self.toolView.bounds);
+    float y = CGRectGetHeight(self.view.bounds) / 2;
+    self.toolView.backgroundColor=[@"#000000" toColor:0.3];
+    self.set=[UIButton buttonWithType:UIButtonTypeCustom];
+    self.set.frame = CGRectMake(0, y, width, (height - 20) / 2);
+    [self.set setTitle:@"设置" forState:UIControlStateNormal];
+    [self.set setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
+    [self.set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [self.view addSubview:self.set];
     
-    //    [_set setBackgroundColor:[@"#4990E2" toColor]];
-    [_set setTitle:@"设置" forState:UIControlStateNormal];
-    [_set setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
-    [_set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [self.view addSubview:_set];
-    [_set mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.equalTo(self.view).offset(10);
-        make.bottom.equalTo(self.view).offset(-200);
-        
-    }];
-    
-    [_set addTarget:self
-             action:@selector(gotoset)
-   forControlEvents:UIControlEventTouchUpInside
-     ];
-    
-    
-    _refresh=[UIButton buttonWithType:UIButtonTypeCustom];;
-    [_refresh setTitle:@"刷新" forState:UIControlStateNormal];
-    [_refresh setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
-    [_refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    
-    [self.view addSubview:_refresh];
-    [_refresh mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.right.equalTo(self.view).offset(-10);
-        make.bottom.equalTo(self.view).offset(-200);
-    }];
-    
-    
-    
-    [_refresh addTarget:self
-                 action:@selector(refreshWeex)
+    [self.set addTarget:self
+                 action:@selector(gotoset)
        forControlEvents:UIControlEventTouchUpInside
      ];
+    
+    
+    self.refresh=[UIButton buttonWithType:UIButtonTypeCustom];
+    self.refresh.frame = CGRectMake(0, y + (height - 20) / 2 + 20, width, (height - 20) / 2);
+    [self.refresh setTitle:@"刷新" forState:UIControlStateNormal];
+    [self.refresh setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
+    [self.refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [self.view addSubview:self.refresh];
+    
+    [self.refresh addTarget:self
+                     action:@selector(refreshWeex)
+           forControlEvents:UIControlEventTouchUpInside
+     ];
+    [self.view addSubview:self.toolView];
+    [self.view bringSubviewToFront:self.toolView];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    BOOL isInToolView = [self.toolView.layer containsPoint:[touch locationInView:self.toolView]];
+    BOOL isInSetView = [self.set.layer containsPoint:[touch locationInView:self.toolView]];
+    BOOL isInRefreshView = [self.refresh.layer containsPoint:[touch locationInView:self.toolView]];
+    self.isInView = isInToolView && !isInSetView && !isInRefreshView;
+    
+    _beginpoint = [touch locationInView:self.toolView];
+}
 
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesMoved:touches withEvent:event];
+    if (!self.isInView)    // 仅当取到touch的view是小窗口时，我们才响应触控，否则直接return
+    {
+        return;
+    }
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint currentPosition = [touch locationInView:self.toolView];
+    //偏移量
+    float offsetX = currentPosition.x - self.beginpoint.x;
+    float offsetY = currentPosition.y - self.beginpoint.y;
+    //移动后的中心坐标
+    self.toolView.center = CGPointMake(self.toolView.center.x + offsetX, self.toolView.center.y + offsetY);
+    
+    //x轴左右极限坐标
+    if (self.toolView.center.x > (self.toolView.superview.frame.size.width-self.toolView.frame.size.width/2))
+    {
+        CGFloat x = self.toolView.superview.frame.size.width-self.toolView.frame.size.width/2;
+        self.toolView.center = CGPointMake(x, self.toolView.center.y + offsetY);
+    }
+    else if (self.toolView.center.x < self.toolView.frame.size.width/2)
+    {
+        CGFloat x = self.toolView.frame.size.width/2;
+        self.toolView.center = CGPointMake(x, self.toolView.center.y + offsetY);
+    }
+    
+    //y轴上下极限坐标
+    if (self.toolView.center.y > (self.toolView.superview.frame.size.height-self.toolView.frame.size.height/2))
+    {
+        CGFloat x = self.toolView.center.x;
+        CGFloat y = self.toolView.superview.frame.size.height-self.toolView.frame.size.height/2;
+        self.toolView.center = CGPointMake(x, y);
+    }
+    else if (self.toolView.center.y <= self.toolView.frame.size.height/2)
+    {
+        CGFloat x = self.toolView.center.x;
+        CGFloat y = self.toolView.frame.size.height/2;
+        self.toolView.center = CGPointMake(x, y);
+    }
+    CGPoint toolCenter = self.toolView.center;
+    self.set.center = CGPointMake(toolCenter.x, toolCenter.y - CGRectGetWidth(self.set.bounds) / 2);
+    self.refresh.center = CGPointMake(toolCenter.x, toolCenter.y + CGRectGetWidth(self.refresh.bounds) / 2);
+}
 
 -(void)gotoset
 {
+    //   _setVc= [self fromStoryBoard:@"weex/SetViewController"]
+    //    [self addVc:_setVc];
     [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
 }
 
@@ -541,4 +597,3 @@ BOOL isshowErr;
 
 
 @end
-

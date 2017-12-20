@@ -21,9 +21,15 @@
 @interface WXNormalViewContrller : UIViewController<SRWebSocketDelegate>
 //- (instancetype)initWith:(NSString *)url;
 //@property (nonatomic, strong) IQKeyboardReturnKeyHandler    *returnKeyHandler;
-@property(strong,nonatomic)UIButton *set;
-@property(strong,nonatomic)UIButton *refresh;
+
+@property (strong, nonatomic) UIView *toolView;
+@property(strong,nonatomic) UIButton *set;
+@property(strong,nonatomic) UIButton *refresh;
+@property(nonatomic)BOOL isInView;
+
 @property(nonatomic)BOOL debug;
+
+@property(nonatomic) CGPoint beginpoint;
 
 @property (strong,nonatomic)   typeof(void(^)(NSObject*)) nativeCallback;
 
@@ -52,4 +58,3 @@
 -(void)onCreateWeexView;
 -(void)resetFrame;
 @end
-

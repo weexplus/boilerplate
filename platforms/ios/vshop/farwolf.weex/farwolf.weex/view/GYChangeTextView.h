@@ -13,6 +13,7 @@
 @protocol GYChangeTextViewDelegate <NSObject>
 
 - (void)gyChangeTextView:(GYChangeTextView *)textView didTapedAtIndex:(NSInteger)index;
+-(void)change:(NSInteger)index;
 
 @end
 

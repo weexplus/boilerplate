@@ -2,13 +2,14 @@
 
 <template>
 
-        <div   >
+        <div>
             <head title="相机"   append="tree">
 
             </head>
-           <looper ref="looper" font-size="25" @click="ok" :data="items"  color="#eeeeee"  style="width: 300;height: 100;background-color: #0088fb">
+           <looper ref="looper" font-size="25" @change="onchange" @click="ok" :data="items"  color="#eeeeee"  style="width: 300;height: 100;background-color: #0088fb">
 
            </looper>
+            <text>{{index}}</text>
             <text>{{index}}</text>
 
 
@@ -43,7 +44,7 @@
             return {
                src:"",
                 index:0,
-                items:['1111','222222','3333333','444444444']
+                items:['1111','2222','33333','44444']
             }
         },
         methods: {
@@ -144,14 +145,7 @@
             var globalEvent = weex.requireModule('globalEvent') ;
 
             globalEvent.addEventListener("onPageInit", function (e) {
-                const nav = weex.requireModule('navbar');
-                nav.setTitle('照相');
-                nav.setBack(true);
-                nav.setRightImage('img/scan.png',function(res){
 
-                    var modal = weex.requireModule('modal') ;
-                    modal.alert({message:"ok"})
-                });
             });
 
         }

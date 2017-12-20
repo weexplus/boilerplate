@@ -29,7 +29,9 @@ static NSMutableDictionary *pageCache;
     }
     if(pageCache==nil)
          pageCache=[NSMutableDictionary new];
-    return [pageCache objectForKey:url];
+    WXNormalViewContrller *vc= [pageCache objectForKey:url];
+    [pageCache removeObjectForKey:url];
+    return vc;
 }
 
 
@@ -103,9 +105,10 @@ static NSMutableDictionary *pageCache;
     p.instance.pageObject = self;
     
   
-    if([self getCache:sourceURL.absoluteString])
+    WXNormalViewContrller *vc=[self getCache:sourceURL.absoluteString];
+    if(vc)
     {
-        complete([self getCache:sourceURL.absoluteString]);
+        complete(vc);
         return;
     }
     

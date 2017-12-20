@@ -46,15 +46,15 @@ public class WXLooperText extends WXComponent<LooperTextView> {
          text=new LooperTextView(context);
 //        text.setBackgroundColor(Color.BLUE);
 
-//        text.setOnChangeListener(new LooperTextView.OnChangeListener() {
-//            @Override
-//            public void onChange(int index) {
-//
-//                HashMap m=new HashMap();
-//                m.put("index",index);
-//                fireEvent("change",m);
-//            }
-//        });
+        text.setOnChangeListener(new LooperTextView.OnChangeListener() {
+            @Override
+            public void onChange(int index) {
+
+                HashMap m=new HashMap();
+                m.put("index",index-1);
+                fireEvent("change",m);
+            }
+        });
         return text;
     }
 

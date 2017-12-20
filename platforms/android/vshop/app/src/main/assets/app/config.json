@@ -2,7 +2,7 @@
   "schema":"mv",
   "debug":true,
   "debugIp":"127.0.0.1",
-  "entry":"app/busi/index.js",
+  "entry":"http://127.0.0.1:9898/mv/demo/demo/looper.js",
   "preload":["root:busi/tab/mainpage.js","root:busi/tab/movie.js","root:busi/tab/serial.js","root:busi/tab/collection.js","root:busi/detail.js"],
   "splash":"splash1",
   "static":

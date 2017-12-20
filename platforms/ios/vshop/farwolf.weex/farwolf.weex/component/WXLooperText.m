@@ -102,6 +102,7 @@ WX_EXPORT_METHOD(@selector(getIndex:))
     UIFont *font=  [WXUtility fontWithSize:_fontSize* self.weexInstance.pixelScaleFactor textWeight:0 textStyle:WXTextStyleNormal fontFamily:@"" scaleFactor:self.weexInstance.pixelScaleFactor];
 
     [self.textview.textLabel  setFont:font];
+    self.textview.delegate=self;
 //    UIFont *f=[UIFont systemFontOfSize:15];
 //    [self.textview.textLabel setFont:f];
     
@@ -109,6 +110,12 @@ WX_EXPORT_METHOD(@selector(getIndex:))
 
 - (void)gyChangeTextView:(GYChangeTextView *)textView didTapedAtIndex:(NSInteger)index {
     NSLog(@"%ld",index);
+}
+
+-(void)change:(NSInteger)index
+{
+    
+    [self fireEvent:@"change" params: @{@"index":@(index)}];
 }
 
 - (void)resizeFrame

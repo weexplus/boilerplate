@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.farwolf.base.ViewBase;
+import com.farwolf.util.RegexBase;
 import com.farwolf.util.StringUtil;
 import com.farwolf.view.FreeDialog;
 import com.farwolf.weex.R;
@@ -77,7 +78,21 @@ public class ToolPop extends ViewBase{
         }
         debug_reconnetc.setText(!WXEnvironment.sRemoteDebugMode?"开启Debug":"关闭Debug");
         url.setText(a.url);
-        ip.setText("debug_ip:"+ Config.debugIp(a));
+//        ip.setText("debug_ip:"+ Config.debugIp(a));
+
+
+        String url= pref.url().get();
+        String ipx= RegexBase.regexOne(url,"http://",":");
+        if(!StringUtil.isNullOrEmpty(ipx))
+        {
+            ip.setText("debug_ip:"+ ipx);
+        }
+        else
+        {
+            ip.setText("debug_ip:"+ Config.debugIp(a));
+        }
+
+        debug_reconnetc.setText("关闭Debug");
 
 
     }
@@ -138,7 +153,17 @@ public class ToolPop extends ViewBase{
         }
         else
         {
-            weex.startDebug(getActivity());
+            String url= pref.url().get();
+            String ip= RegexBase.regexOne(url,"http://",":");
+            if(StringUtil.isNullOrEmpty(ip))
+            {
+                weex.startDebug(getActivity());
+            }
+            else
+            {
+                weex.startDebug(ip);
+            }
+
             debug_reconnetc.setText("关闭Debug");
         }
 
