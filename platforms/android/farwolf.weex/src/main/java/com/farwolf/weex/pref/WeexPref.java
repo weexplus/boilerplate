@@ -10,4 +10,6 @@ public interface WeexPref {
 
     String ip();
     String url();
+    int lastX();
+    int lastY();
 }

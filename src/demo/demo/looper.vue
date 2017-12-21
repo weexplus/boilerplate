@@ -6,9 +6,9 @@
             <head title="相机"   append="tree">
 
             </head>
-           <looper ref="looper" font-size="25" @change="onchange" @click="ok" :data="items"  color="#eeeeee"  style="width: 300;height: 100;background-color: #0088fb">
+           <!--<looper ref="looper" font-size="25" @change="onchange" @click="ok" :data="items"  color="#eeeeee"  style="width: 300;height: 100;background-color: #0088fb">-->
 
-           </looper>
+           <!--</looper>-->
             <text>{{index}}</text>
             <text>{{index}}</text>
 

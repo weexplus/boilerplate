@@ -123,7 +123,7 @@ typedef NS_ENUM(NSUInteger, GYTitlePosition) {
 }
 
 
- 
+
 - (void)stopAnimation {
     self.shouldStop = YES;
 }

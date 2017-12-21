@@ -337,6 +337,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             url=page.instance.getBundleUrl();
             mWXSDKInstance= page.instance;
             pageid=page.id;
+            this.url=url;
             mWXSDKInstance.setContext(this);
             mWXSDKInstance.registerRenderListener(this);
             mWXSDKInstance.onActivityCreate();
