@@ -134,15 +134,14 @@
         android:orientation="vertical"
         android:layout_marginTop="200dp"
 
-
         android:id="@+id/weextool">
         <Button
             android:layout_width="50dp"
             android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            android:background="#30ffffff"
             android:text="刷新"
             android:textSize="13sp"
+            android:textColor="#ffffff"
             android:id="@+id/refresh"
             />
         <Button
@@ -150,6 +149,8 @@
             android:layout_height="30dp"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="3dp"
+            android:background="#30ffffff"
+            android:textColor="#ffffff"
             android:text="设置"
             android:textSize="8sp"
             android:id="@+id/set"

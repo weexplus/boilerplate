@@ -37,7 +37,7 @@ public class WeexFactory  extends ServiceBase{
 
     public static boolean hasCache(String url)
     {
-         return m.containsKey(url);
+        return m.containsKey(url);
     }
 
     public Page getPage(String id)
@@ -48,7 +48,7 @@ public class WeexFactory  extends ServiceBase{
             remove(id);
             return p;
         }
-       return null;
+        return null;
     }
 
     public void remove(String id)
@@ -68,22 +68,32 @@ public class WeexFactory  extends ServiceBase{
 
     public   void preRender(final List<String> urls, final OnMultiRenderFinishListener listener)
     {
-         renderCount=0;
-         for(String url :urls)
-         {
-             this.preRender(url, new OnRenderFinishListener() {
-                 @Override
-                 public void onRenderFinish(Page p) {
+        renderCount=0;
+        for(String url :urls)
+        {
+            if(renderCount==-1)
+            {
+                break;
+            }
+            this.preRender(url, new OnRenderFinishListener() {
+                @Override
+                public void onRenderFinish(Page p) {
 
-                     renderCount++;
-                     if(renderCount==urls.size())
-                     {
+                    renderCount++;
+                    if(renderCount==urls.size())
+                    {
                         listener.onRenderFinish();
-                     }
+                    }
 
-                 }
-             });
-         }
+                }
+
+                @Override
+                public void onRenderFailed(Page p) {
+                    listener.onRenderFailed();
+                    renderCount=-1;
+                }
+            });
+        }
     }
 
 //    public int getCacheCount(List<String> urls)
@@ -138,7 +148,10 @@ public class WeexFactory  extends ServiceBase{
 
             @Override
             public void onException(WXSDKInstance instance, String errCode, String msg) {
-
+                if(listener!=null)
+                {
+                    listener.onRenderFailed(p);
+                }
             }
         });
 
@@ -157,7 +170,7 @@ public class WeexFactory  extends ServiceBase{
         }
         p.id=pageid;
         if(p.id==null)
-        p.id=new Random().nextLong()+"";
+            p.id=new Random().nextLong()+"";
         p.instance.registerRenderListener(new IWXRenderListener() {
             @Override
             public void onViewCreated(WXSDKInstance instance, View view) {
@@ -183,7 +196,10 @@ public class WeexFactory  extends ServiceBase{
 
             @Override
             public void onException(WXSDKInstance instance, String errCode, String msg) {
-
+                if(listener!=null)
+                {
+                    listener.onRenderFailed(p);
+                }
             }
         });
         m.put(p.id,p);
@@ -194,6 +210,7 @@ public class WeexFactory  extends ServiceBase{
     public static interface OnMultiRenderFinishListener
     {
         void onRenderFinish();
+        void onRenderFailed();
 
 
     }
@@ -201,6 +218,7 @@ public class WeexFactory  extends ServiceBase{
     public static interface OnRenderFinishListener
     {
         void onRenderFinish(Page p);
+        void onRenderFailed(Page p);
 
     }
 
@@ -213,8 +231,8 @@ public class WeexFactory  extends ServiceBase{
             in.putExtra("url",url);
             if(!forResult)
                 context.startActivity(in);
-                else
-            getActivity().startActivityForResult(in,10001);
+            else
+                getActivity().startActivityForResult(in,10001);
             return;
         }
 
@@ -281,10 +299,6 @@ public class WeexFactory  extends ServiceBase{
         if(StringUtil.isNullOrEmpty(url))
             return;
 
-        if(url.startsWith("root:"))
-        {
-            url=url.replace("root:",Weex.baseurl);
-        }
 
         if(url.startsWith("http"))
         {

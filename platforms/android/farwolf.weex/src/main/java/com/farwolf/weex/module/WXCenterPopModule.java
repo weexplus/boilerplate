@@ -58,6 +58,11 @@ public class WXCenterPopModule extends WXModuleBase {
                 initMaskView();
                 initSlidView();
             }
+
+            @Override
+            public void onRenderFailed(Page p) {
+
+            }
         });
     }
 

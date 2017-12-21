@@ -63,6 +63,11 @@ public class WXSlidpopModule  extends WXModuleBase {
                 initMaskView();
                 initSlidView();
             }
+
+            @Override
+            public void onRenderFailed(Page p) {
+
+            }
         });
 
         Log.e("传入的数据为： = " + offset + side);

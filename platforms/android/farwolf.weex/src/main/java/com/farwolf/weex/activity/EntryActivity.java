@@ -56,7 +56,7 @@ public class EntryActivity extends WeexActivity {
 //       String url= Config.entry(this);
 //       render(url);
 
-        weextool.setBackgroundColor(Color.argb(153,Color.red(Color.BLACK),Color.green(Color.BLACK),Color.blue(Color.BLACK)));
+        weextool.setBackgroundColor(Color.argb(50,Color.red(Color.BLACK),Color.green(Color.BLACK),Color.blue(Color.BLACK)));
         this.screenHeight = this.getWindowManager().getDefaultDisplay()
                 .getHeight();
         this.screenWidth = this.getWindowManager().getDefaultDisplay()
