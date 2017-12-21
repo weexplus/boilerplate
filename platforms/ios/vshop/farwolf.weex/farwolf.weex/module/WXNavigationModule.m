@@ -58,30 +58,11 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         vc.param=param;
          [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
         
-    } frame:[UIApplication sharedApplication].keyWindow.bounds];
+    } fail:^(NSString *msg) {
+        
+    }  frame:[UIApplication sharedApplication].keyWindow.bounds];
  
-//    [WeexFactory render:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(Page *p) {
-//        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        vc.page=p;
-//        vc.instance=p.instance;
-//        vc.param=param;
-//        vc.callback=callback;
-//        vc.navbarVisibility=navbarVisibility;
-//
-//        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-//        UIViewController *rootViewController = window.rootViewController;
-//        [rootViewController.view addSubview:p.weexView];
-//        [rootViewController addChildViewController:vc];
-//
-//        p.instance.renderFinish = ^(UIView *view) {
-////            view.frame=CGRectMake(0, 0, 0, 0);
-//             [vc removeFromParentViewController];
-//             [p.weexView removeFromSuperview];
-//             [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
-//        };
-//
-//    }];
+ 
 }
 
 -(id)param
@@ -202,7 +183,9 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
             
         }];
         
-    } frame:[UIApplication sharedApplication].keyWindow.bounds];
+    } fail:^(NSString *msg) {
+    
+    }   frame:[UIApplication sharedApplication].keyWindow.bounds];
     
    
  

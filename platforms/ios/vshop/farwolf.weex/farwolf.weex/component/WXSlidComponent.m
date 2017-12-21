@@ -58,8 +58,12 @@
                [_host addSubviewFull:sideMenuController.view];
                 [self.weexInstance.viewController addChildViewController:sideMenuController];
               
-          } frame:CGRectMake(0, 0, _leftWidth, [self.weexInstance.viewController screenHeight])];
-     } frame:r];
+          } fail:^(NSString *msg) {
+              
+          }  frame:CGRectMake(0, 0, _leftWidth, [self.weexInstance.viewController screenHeight])];
+     } fail:^(NSString *msg) {
+         
+     }  frame:r];
 //
 
    

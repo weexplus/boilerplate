@@ -91,10 +91,12 @@ static NSMutableDictionary *pageCache;
         
         [self addCache:sourceURL.absoluteString vc:vc];
         
-    } frame:[[UIApplication sharedApplication] keyWindow].bounds];
+    } fail:^(NSString *s) {
+        
+    }  frame:[[UIApplication sharedApplication] keyWindow].bounds];
 }
 
-+ (void)renderNew:(NSURL *)sourceURL compelete:(void(^)(WXNormalViewContrller*))complete  frame:(CGRect)frame
++ (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame
 {
 
     if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
@@ -155,6 +157,7 @@ static NSMutableDictionary *pageCache;
         
         NSString *msg=error.userInfo[@"NSLocalizedDescription"];
         NSLog(@"%@", msg);
+        fail(msg);
         
     };
     
@@ -165,14 +168,15 @@ static NSMutableDictionary *pageCache;
     
 }
 
-+(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete
++(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete fail:(void(^)(NSString *))fail
 {
     if(urls==nil)
         return;
       __block int c=0;
     for(NSString *url in urls )
     {
-        
+        if(c==-1)
+            break;
         NSString *temp=@"";
         NSURL *nurl=nil;
         if([url startWith:@"root:"])
@@ -195,7 +199,10 @@ static NSMutableDictionary *pageCache;
             {
                 complete();
             }
-        } frame:[UIApplication sharedApplication].keyWindow.bounds];
+        } fail:^(NSString *msg) {
+            fail(msg);
+            c=-1;
+        }  frame:[UIApplication sharedApplication].keyWindow.bounds];
     }
 }
 

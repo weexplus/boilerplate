@@ -115,7 +115,9 @@
             
             [cv.view setHidden:[items indexOfObject:url]!=self.index];
             
-        } frame:r];
+        }  fail:^(NSString *msg) {
+        
+        }  frame:r];
     
     }
      [self show];

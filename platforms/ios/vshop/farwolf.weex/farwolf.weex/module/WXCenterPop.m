@@ -39,7 +39,9 @@ WX_EXPORT_METHOD(@selector(dismiss))
         [weakself.weexInstance.viewController addChildViewController:nav];
         [weakself com:nav.view frame:CGRectMake(0, 0, width, height) clickdismiss:clickdismiss];
 
-    } frame:CGRectMake(0, 0, width,height)];
+    } fail:^(NSString *msg) {
+    
+    }  frame:CGRectMake(0, 0, width,height)];
     [self regist:@"closecenterpop" method:@selector(close)];
 
 }

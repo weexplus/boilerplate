@@ -104,7 +104,9 @@ WX_EXPORT_METHOD(@selector(reset))
 
         }];
         
-    } frame:[UIApplication sharedApplication].keyWindow.bounds];
+    } fail:^(NSString *msg) {
+        
+    }  frame:[UIApplication sharedApplication].keyWindow.bounds];
  
 }
 

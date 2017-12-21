@@ -88,7 +88,23 @@
                     
                 }];
                 
-            } frame:[UIApplication sharedApplication].keyWindow.frame ];
+            } fail:^(NSString *msg) {
+            
+            }  frame:[UIApplication sharedApplication].keyWindow.frame ];
+            
+        } fail:^(NSString *s) {
+            
+            [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
+                
+                vc.debug=[Config isDebug];
+                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+                [self presentViewController:nav animated:false completion:^{
+                    
+                }];
+                
+            } fail:^(NSString *msg) {
+                
+            }  frame:[UIApplication sharedApplication].keyWindow.frame ];
             
         }];
     }
@@ -102,7 +118,9 @@
                 
             }];
             
-        } frame:[UIApplication sharedApplication].keyWindow.frame ];
+        } fail:^(NSString *msg) {
+            
+        }  frame:[UIApplication sharedApplication].keyWindow.frame ];
     }
     
     
