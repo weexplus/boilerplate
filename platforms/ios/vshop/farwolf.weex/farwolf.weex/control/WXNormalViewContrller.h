@@ -32,7 +32,7 @@
 @property(nonatomic) CGPoint beginpoint;
 
 @property (strong,nonatomic)   typeof(void(^)(NSObject*)) nativeCallback;
-
+@property (nonatomic, strong) UIViewController *setVc;
 @property (nonatomic, strong) WXSDKInstance *instance;
 @property (nonatomic, strong) UIView *weexView;
 @property (nonatomic, strong) NSString *pageid;

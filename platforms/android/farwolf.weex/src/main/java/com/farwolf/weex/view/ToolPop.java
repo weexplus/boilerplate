@@ -119,12 +119,12 @@ public class ToolPop extends ViewBase{
         {
 
 //           a.url=a.url.replace("8082","8081");
-            a.stopHotRefresh();
+//            a.stopHotRefresh();
         }
         else
         {
 //           a.url=a.url.replace("8081","8082");
-            a.startHotRefresh();
+//            a.startHotRefresh();
 
 
         }

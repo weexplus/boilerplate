@@ -1,6 +1,7 @@
 package com.farwolf.weex.module;
 
-import com.farwolf.weex.util.Event;
+
+import com.farwolf.weex.event.Event;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;

@@ -9,13 +9,11 @@ import android.widget.RelativeLayout;
 
 import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
-import com.farwolf.weex.pref.WeexPref_;
 import com.taobao.weex.WXSDKInstance;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-import org.androidannotations.annotations.sharedpreferences.Pref;
 
 /**
  * Created by zhengjiangrong on 2017/12/7.
@@ -31,8 +29,7 @@ public class EntryActivity extends WeexActivity {
     @ViewById
     LinearLayout weextool;
 
-    @Pref
-    WeexPref_ pref;
+
 
     private int					screenHeight;
     private int					screenWidth;

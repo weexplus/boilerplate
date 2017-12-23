@@ -104,6 +104,13 @@
    
 }
 
++(RefreshManager*)getRefreshManager
+{
+   if(refreshManager==nil)
+       refreshManager=[RefreshManager new];
+    return refreshManager;
+}
+
 
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance
 {
@@ -167,6 +174,32 @@
 //     [WXDevTool setDebug:YES];
     
 //     [WXDebugTool setDebug:YES];
+}
+
++(NSString*)getEntry
+{
+    NSString *s= [self getSaveValue:@"url"];
+    if(s==nil||[s isEqualToString:@""])
+    {
+        s=[Config entry];
+    }
+    return s;
+}
++(NSString*)getDebugIp
+{
+    NSString *s= [self getSaveValue:@"url"];
+    NSString *ip=@"";
+    
+    if(s!=nil&&![s isEqualToString:@""])
+    {
+      
+        ip= [s findone:@"http://" end:@":"];
+    }
+    if(ip==nil||[ip isEqualToString:@""])
+    {
+        ip=[Config debugIp];
+    }
+    return ip;
 }
 
 

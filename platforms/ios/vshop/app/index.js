@@ -561,19 +561,6 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 	var head = __webpack_require__(57);
 	var net = __webpack_require__(16);
@@ -584,44 +571,28 @@
 	        logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
 	        target: 'World',
 	        index: 0
+
 	    },
 	    methods: {
 	        update: function update(e) {
 	            this.target = 'Weex';
-
 	            console.log('target:', this.target);
 	        },
 	        showpicker: function showpicker() {
 	            var modal = weex.requireModule("modal");
 	            modal.toast({ message: 'ok' });
-	            //                var url='http://59.110.169.246/movie/tx/p1.txt'
-	            //                var progress=weex.requireModule("progress")
-	            //                var modal=weex.requireModule("modal")
-	            //                var net=weex.requireModule("net")
-	            //                net.post(url,{},{},function(){
-	            //                    //start
-	            //                    progress.show();
-	            //                },function(e){
-	            //                    //success
-	            //                    // modal.toast({message:e.res.err})
-	            //                    modal.alert({message:e.res})
-	            //
-	            //                },function(e){
-	            //                    //compelete
-	            //                    progress.dismiss();
-	            //                },function(e){
-	            //                    // exception
-	            //
-	            //                });
+	        },
+	        goton: function goton() {
+	            var nav = weex.requireModule("navigator");
+	            nav.push('Login.js');
 	        },
 	        change: function change(i) {
+
 	            this.index = i;
 	        },
 	        show: function show() {
 	            var modal = weex.requireModule("modal");
 	            var p = weex.config.env.osVersion;
-	            //              p=p.replace('.', "")
-	            //          p=p.replace(/./g,"");
 	            p = p.replace(/\./g, '');
 	            modal.alert({ message: p });
 	        }
@@ -635,6 +606,12 @@
 
 	            var nav = weex.requireModule('navbar');
 	            nav.hide();
+
+	            var navigator = weex.requireModule('navigator');
+	            navigator.addBackGestureSelfControl();
+
+	            //                nav.setStatusBarStyle('white');
+
 	        });
 	    }
 	};
@@ -646,50 +623,34 @@
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
+	  return _c('scroller', {
 	    staticStyle: {
 	      flex: "1",
 	      justifyContent: "center",
-	      alignItems: "center"
+	      alignItems: "center",
+	      backgroundColor: "blue"
 	    }
-	  }, [_c('image', {
+	  }, [_vm._l(([1, 1, 1]), function(item) {
+	    return _c('div', {
+	      staticStyle: {
+	        width: "100",
+	        height: "40",
+	        backgroundColor: "#0085ee"
+	      }
+	    })
+	  }), _c('text', [_vm._v("hjhj")]), _c('text', [_vm._v("hjhj")]), _c('text', [_vm._v("hjhj")]), _c('text', [_vm._v("hjhj")]), _c('image', {
 	    staticStyle: {
-	      width: "100",
-	      height: "100",
-	      borderRadius: "50"
-	    },
-	    attrs: {
-	      "placeholder": "root:img/cat.png",
-	      "src": "http://59.110.169.246/movie/tx/1.jpg"
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "100",
-	      height: "100",
-	      borderRadius: "50"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "100",
-	      height: "100",
-	      borderRadius: "50"
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
 	    },
 	    attrs: {
 	      "src": "root:img/cat.png"
-	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "100",
-	      height: "100",
-	      backgroundColor: "red"
 	    },
 	    on: {
-	      "longpress": _vm.showpicker
+	      "click": _vm.goton
 	    }
-	  })])
+	  })], 2)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

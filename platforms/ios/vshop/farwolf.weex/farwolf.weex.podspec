@@ -30,6 +30,9 @@ Pod::Spec.new do |s|
   s.dependency 'SocketRocket','~> 0.4.2' 
   s.dependency 'RHAddressBook'
  # s.dependency 'IQKeyboardManager', '~> 4.0.6'
+  s.dependency 'CocoaAsyncSocket', '~> 7.6.2'
+
+  
 
 
 end

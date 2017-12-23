@@ -152,7 +152,7 @@ static NSMutableDictionary *pageCache;
         
     };
     
-    
+  
     p.instance.onFailed = ^(NSError *error) {
         
         NSString *msg=error.userInfo[@"NSLocalizedDescription"];

@@ -8,8 +8,7 @@
 
 #import "AppDelegate.h"
 #import "farwolf_weex.h"
-#import "TabController.h"
-#import "TabbarModule.h"
+#import "RefreshManager.h"
 
 @interface AppDelegate ()
 
@@ -24,15 +23,16 @@
 //    [WXTracingManager setTracingEnable:YES];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
-    [WXSDKEngine registerModule:@"tabbar" withClass:[TabbarModule class]];
     
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
-    UIViewController *vc= [Weex start:[Config splash] url:[Config entry]];
+    UIViewController *vc= [Weex start:[Config splash] url:[Weex getEntry]];
     _window.rootViewController=vc;
     [_window makeKeyAndVisible];
+
 //    [Weex startDebug:@"127.0.0.1" port:@"8088"];
-  \
+    if([Config isDebug])
+      [[Weex getRefreshManager] open:[Weex getDebugIp] port:@"9897"];
      return YES;
 }
 

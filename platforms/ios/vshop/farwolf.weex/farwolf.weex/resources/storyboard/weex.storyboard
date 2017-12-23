@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +39,7 @@
             <objects>
                 <navigationController storyboardIdentifier="QRControl" id="EWs-iS-sGZ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cFQ-hd-in9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -54,10 +54,31 @@
             </objects>
             <point key="canvasLocation" x="3287" y="-1429"/>
         </scene>
-        <!--Set View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="78e-iY-J4L">
+            <objects>
+                <navigationController storyboardIdentifier="SetViewController" id="NzZ-93-GWF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hiT-Qy-VUo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CFv-m7-FfU" kind="relationship" relationship="rootViewController" id="Dsq-gW-Q6J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cBo-pp-iPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5175" y="-1430"/>
+        </scene>
+        <!--设置-->
         <scene sceneID="ypb-nE-oTW">
             <objects>
-                <viewController storyboardIdentifier="SetViewController" id="CFv-m7-FfU" customClass="SetViewController" sceneMemberID="viewController">
+                <viewController id="CFv-m7-FfU" customClass="SetViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ydw-dY-2cM"/>
                         <viewControllerLayoutGuide type="bottom" id="QpI-Dm-HRW"/>
@@ -67,10 +88,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67D-iA-id2">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4g-4O-pWw">
-                                        <rect key="frame" x="30" y="149" width="315" height="350"/>
+                                        <rect key="frame" x="30" y="127" width="315" height="350"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你要做什么" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZd-Hk-cnS">
                                                 <rect key="frame" x="114" y="8" width="87" height="21"/>
@@ -215,6 +236,7 @@
                             <constraint firstItem="67D-iA-id2" firstAttribute="leading" secondItem="bxZ-Gm-aYP" secondAttribute="leading" id="iiM-xk-eZe"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="设置" id="oXS-hk-C2C"/>
                     <connections>
                         <outlet property="debugbtn" destination="f23-W4-re8" id="G5d-da-t5Q"/>
                         <outlet property="debugip" destination="r3Z-yU-c3I" id="YPg-ej-Oes"/>
@@ -223,10 +245,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyn-Yl-0cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5676" y="-1430"/>
+            <point key="canvasLocation" x="5967" y="-1430"/>
         </scene>
     </scenes>
     <resources>
-        <image name="backwhit" width="16" height="16"/>
+        <image name="backwhit" width="11" height="20"/>
     </resources>
 </document>

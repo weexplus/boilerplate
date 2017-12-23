@@ -1,4 +1,4 @@
-package com.farwolf.weex.util;
+package com.farwolf.weex.event;
 
 import java.util.HashMap;
 
@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class Event {
 
 
-    public Event( String key,HashMap param) {
+    public Event(String key, HashMap param) {
         this.param = param;
         this.key = key;
     }

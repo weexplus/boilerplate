@@ -549,15 +549,6 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 
 	var head = __webpack_require__(138);
@@ -674,6 +665,22 @@
 	    attrs: {
 	      "title": "相机",
 	      "append": "tree"
+	    }
+	  }), _c('looper', {
+	    ref: "looper",
+	    staticStyle: {
+	      width: "300",
+	      height: "100",
+	      backgroundColor: "#0088fb"
+	    },
+	    attrs: {
+	      "fontSize": "25",
+	      "data": _vm.items,
+	      "color": "#eeeeee"
+	    },
+	    on: {
+	      "change": _vm.onchange,
+	      "click": _vm.ok
 	    }
 	  }), _c('text', [_vm._v(_vm._s(_vm.index))]), _c('text', [_vm._v(_vm._s(_vm.index))]), _c('div', {
 	    staticStyle: {

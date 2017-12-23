@@ -15,12 +15,16 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
+        "chokidar": "^1.7.0",
+        "fs": "0.0.1-security",
         "vue": "^2.1.8",
         "vue-router": "^2.1.1",
         "vuex": "^2.1.1",
         "vuex-router-sync": "^4.0.1",
         "weex-html5": "^0.4.1",
-        "weex-vue-render": "^0.11.2"
+        "weex-vue-render": "^0.11.2",
+        "ws": "^3.3.3",
+        "weexplus": "^0.0.2"
     },
     "devDependencies": {
         "babel-core": "^6.21.0",
@@ -36,7 +40,11 @@
         "webpack": "^2.2.1",
         "webpack-dev-server": "^2.4.2",
         "weex-builder": "^0.2.6",
-        "weex-loader": "^0.4.1"
+        "weex-loader": "^0.4.1",
+        "weexplus": "^0.0.2",
+        "chalk": "^2.3.0",
+        "commander": "^2.11.0",
+        "download-git-repo": "^1.0.1"
     },
     "optionalDependencies": {
         "ios-deploy": "^1.9.0"

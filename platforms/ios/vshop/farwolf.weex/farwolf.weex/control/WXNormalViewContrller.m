@@ -17,6 +17,7 @@
 #import "Weex.h"
 #import "Config.h"
 #import "IQKeyboardManager.h"
+#import "RefreshManager.h"
 
 @interface WXNormalViewContrller ()
 
@@ -59,11 +60,13 @@
     }
 }
 
+
+
 -(void)openWatch:(NSString*)ip
 {
     
     
-    NSString *wsport = @"8082";
+    NSString *wsport = @"9897";
     NSURL *socketURL = [NSURL URLWithString:[NSString stringWithFormat:@"ws://%@:%@", ip, wsport]];
     self.hotReloadSocket = [[SRWebSocket alloc] initWithURL:socketURL protocols:@[@"echo-protocol"]];
     self.hotReloadSocket.delegate = self;
@@ -76,7 +79,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+     [self regist:@"refreshpage" method:@selector(scoketrefresh)];
     
     self.navigationController.navigationBar.translucent=false;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -99,10 +102,10 @@
     
     
 #ifdef DEBUG
-    [self.view addDoubleClick:^{
-        
-        [self refreshWeex];
-    }];
+//    [self.view addDoubleClick:^{
+//
+////        [self refreshWeex];
+//    }];
     
 #endif
     
@@ -118,6 +121,10 @@
     _textfields=[NSMutableArray new];
     [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextField class]]];
     [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
+//    [self openWatch:@"192.168.199.248"];
+
+//    RefreshManager *r=[RefreshManager new];
+//    [r open:@"192.168.199.248" port:@"6969"];
 }
 
 -(void)loadPage
@@ -250,29 +257,29 @@ BOOL isshowErr;
 
 -(void)showError:(NSString*)msg
 {
-    if(isshowErr)
-    {
-        return;
-    }
-    [self.fail_layout setHidden:false];
-    isshowErr=true;
+//    if(isshowErr)
+//    {
+//        return;
+//    }
+//    [self.fail_layout setHidden:false];
+//    isshowErr=true;
+//
+//    ErrorControl *vc=[ErrorControl new];
+//    vc.errmsg=msg;
+//    vc.onClose=^(){
+//        isshowErr=false;
+//        [self.fail_layout setHidden:false];
+//    };
+//
     
-    ErrorControl *vc=[ErrorControl new];
-    vc.errmsg=msg;
-    vc.onClose=^(){
-        isshowErr=false;
-        [self.fail_layout setHidden:false];
-    };
     
-    
-    
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        
-        　 [self presentViewController:vc animated:true completion:^{
-            
-        }];
-        
-    });
+//    dispatch_sync(dispatch_get_main_queue(), ^{
+//
+//        　 [self presentViewController:vc animated:true completion:^{
+//
+//        }];
+//
+//    });
     
     
     
@@ -455,30 +462,81 @@ BOOL isshowErr;
 
 -(void)debugInit
 {
-    [self regist:@"refreshpage" method:@selector(onqr:)];
+   
     NSString *url=  [self getSaveValue:@"url"];
     if(url==nil||[@"" isEqualToString:url])
     {
         
     }
     
-    if([url startWith:@"http"])
+    if(url!=nil&&url!=@"")
     {
-        self.sourceURL=[NSURL URLWithString:url];
+        if([url startWith:@"http"])
+        {
+            self.sourceURL=[NSURL URLWithString:url];
+        }
+        else
+        {
+            if([url endWith:@".js"])
+                url=[url replace:@".js" withString:@""];
+            self.sourceURL = [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
+        }
     }
-    else
-    {
-        if([url endWith:@".js"])
-            url=[url replace:@".js" withString:@""];
-        self.sourceURL = [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
-    }
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
-    [super viewDidLoad];
+    
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    
+  
     [self add];
 }
+-(void)scoketrefresh
+{
+    
+    if (self.isViewLoaded && self.view.window!=nil) {
+        NSLog(@"屏幕上");
+        
+        [self refreshWeex];
+        
+    }
 
+}
+
+- (UIViewController *)getCurrentVC
+{
+    UIViewController *result = nil;
+    
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    if (window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows)
+        {
+            if (tmpWin.windowLevel == UIWindowLevelNormal)
+            {
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    
+    UIView *frontView = [[window subviews] objectAtIndex:0];
+    id nextResponder = [frontView nextResponder];
+    
+    if ([nextResponder isKindOfClass:[UIViewController class]])
+        result = nextResponder;
+    else
+        result = window.rootViewController;
+    
+    return result;
+}
 -(void)onqr:(NSNotification*)n
 {
+    if(_setVc)
+    {
+        [_setVc dismiss:true];
+        _setVc=nil;
+    }
+    
     NSMutableDictionary *d=  n.userInfo;
     NSString *url=[d objectForKey:@"url"];
     self.sourceURL=[NSURL URLWithString:url];
@@ -505,7 +563,7 @@ BOOL isshowErr;
     self.set=[UIButton buttonWithType:UIButtonTypeCustom];
     self.set.frame = CGRectMake(0, y, width, (height - 20) / 2);
     [self.set setTitle:@"设置" forState:UIControlStateNormal];
-    [self.set setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
+    [self.set setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
     [self.set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [self.view addSubview:self.set];
     
@@ -518,7 +576,7 @@ BOOL isshowErr;
     self.refresh=[UIButton buttonWithType:UIButtonTypeCustom];
     self.refresh.frame = CGRectMake(0, y + (height - 20) / 2 + 20, width, (height - 20) / 2);
     [self.refresh setTitle:@"刷新" forState:UIControlStateNormal];
-    [self.refresh setTitleColor:[@"#4990E2" toColor] forState:UIControlStateNormal];
+    [self.refresh setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
     [self.refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [self.view addSubview:self.refresh];
     
@@ -528,6 +586,8 @@ BOOL isshowErr;
      ];
     [self.view addSubview:self.toolView];
     [self.view bringSubviewToFront:self.toolView];
+    [self.view bringSubviewToFront:self.set];
+      [self.view bringSubviewToFront:self.refresh];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -588,9 +648,10 @@ BOOL isshowErr;
 
 -(void)gotoset
 {
-    //   _setVc= [self fromStoryBoard:@"weex/SetViewController"]
-    //    [self addVc:_setVc];
-    [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
+//    _setVc= [self fromStoryBoard:@"weex/SetViewController"];
+//        [self addVc:_setVc];
+  _setVc=  [self present:@"weex/SetViewController" anim:true];
+//   _setVc= [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
 }
 
 

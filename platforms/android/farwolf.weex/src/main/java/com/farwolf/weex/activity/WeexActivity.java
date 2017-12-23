@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -30,11 +28,10 @@ import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
+import com.farwolf.weex.event.RefreshEvent;
 import com.farwolf.weex.module.WXNavgationModule;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.pref.WeexPref_;
-import com.farwolf.weex.util.Constants;
-import com.farwolf.weex.util.HotRefreshManager;
 import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.ToolPop;
 import com.farwolf.weex.view.ToolPop_;
@@ -45,6 +42,7 @@ import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.utils.WXFileUtils;
 import com.taobao.weex.utils.WXUtils;
+import com.ypy.eventbus.EventBus;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -98,7 +96,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
 
 
-    private Handler mWXHandler;
+
 
     @ViewById
     public ViewGroup root;
@@ -135,19 +133,19 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     }
 
 
-    public void startHotRefresh() {
-
-        String wsUrl = "ws://" + pref.ip().get() + ":8082";
-        mWXHandler.obtainMessage(Constants.HOT_REFRESH_CONNECT, 0, 0, wsUrl).sendToTarget();
-
-    }
-
-    public void stopHotRefresh() {
-
-        String wsUrl = "ws://" + pref.ip().get() + ":8082";
-        mWXHandler.obtainMessage(Constants.HOT_REFRESH_DISCONNECT, 0, 0, wsUrl).sendToTarget();
-
-    }
+//    public void startHotRefresh() {
+//
+//        String wsUrl = "ws://" + pref.ip().get() + ":8082";
+//        mWXHandler.obtainMessage(Constants.HOT_REFRESH_CONNECT, 0, 0, wsUrl).sendToTarget();
+//
+//    }
+//
+//    public void stopHotRefresh() {
+//
+//        String wsUrl = "ws://" + pref.ip().get() + ":8082";
+//        mWXHandler.obtainMessage(Constants.HOT_REFRESH_DISCONNECT, 0, 0, wsUrl).sendToTarget();
+//
+//    }
 
 
     boolean hasInit=false;
@@ -228,38 +226,15 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 //        AndroidBug5497Workaround.assistActivity(root);
         this.resetFrame();
         this.render(url);
-        HotRefreshManager.getInstance().disConnect();
+
         if(mReceiver!=null)
         {
             unregisterReceiver(mReceiver);
         }
 
 
+        EventBus.getDefault().register(this);
 
-
-        mWXHandler=new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                switch (msg.what) {
-                    case Constants.HOT_REFRESH_CONNECT:
-                        HotRefreshManager.getInstance().connect(msg.obj.toString());
-                        break;
-                    case Constants.HOT_REFRESH_DISCONNECT:
-                        HotRefreshManager.getInstance().disConnect();
-                        break;
-                    case Constants.HOT_REFRESH_REFRESH:
-                        render(WeexActivity.this.url);
-                        break;
-                    case Constants.HOT_REFRESH_CONNECT_ERROR:
-
-                        break;
-                    default:
-                        break;
-                }
-                return false;
-            }
-        });
-        HotRefreshManager.getInstance().setHandler(mWXHandler);
         init();
 
     }
@@ -287,6 +262,17 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
 
         lodingimg.setVisibility(View.VISIBLE);
+    }
+
+    public void onEventMainThread(RefreshEvent event) {
+
+        if( ActivityManager.getInstance().getCurrentActivity()==this&&"refresh".equals(event.type))
+        {
+            this.render(this.url,false);
+        }
+
+
+
     }
 
 
@@ -617,7 +603,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             this.url=url;
             pref.edit().url().put(url).apply();
             render(url);
-            startHotRefresh();
+            EventBus.getDefault().post(new RefreshEvent("connect"));
+
+//            startHotRefresh();
 //            weex.startDebug();
         }
 

@@ -14,8 +14,10 @@
 #import "WXNetModule.h"
 #import "WXLoadingView.h"
 #import "WXStaticModule.h"
+#import "RefreshManager.h"
 static NSString *basedir;
 static NSString *baseurl;
+static RefreshManager *refreshManager;
 @interface Weex : NSObject
 +(void)initWeex:(NSString*)group appName:(NSString*)appName appVersion:(NSString*)appVersion;
 +(void)startDebug:(NSString*)ip port:(NSString*)port;
@@ -29,4 +31,10 @@ static NSString *baseurl;
 +(NSMutableDictionary*)conifg;
 +(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance;
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance;
++(RefreshManager*)getRefreshManager;
+
++(NSString*)getEntry;
++(NSString*)getDebugIp;
+
 @end
+

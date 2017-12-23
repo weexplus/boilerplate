@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CHXBannerView (0.8.3)
+  - CocoaAsyncSocket (7.6.2)
   - DACircularProgress (2.3.1)
   - DOPDropDownMenu-Enhanced (1.0.0)
   - farwolf (0.0.1):
@@ -40,6 +41,7 @@ PODS:
     - farwolf
     - TOCropViewController (~> 2.0.8)
   - farwolf.weex (0.0.1):
+    - CocoaAsyncSocket (~> 7.6.2)
     - farwolf
     - Masonry (~> 0.6.3)
     - RHAddressBook
@@ -116,11 +118,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
+  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   farwolf: 7faa516c516d9493a3c48c08639307bfafe04183
   farwolf.business: dac235353f260775f36ad022cb361d2a61fa951b
-  farwolf.weex: 7be10c08c19182b45914e4815cf457853fb0f8b1
+  farwolf.weex: b1fc5100b9af27845c2cbf4ae897245528c3779a
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f

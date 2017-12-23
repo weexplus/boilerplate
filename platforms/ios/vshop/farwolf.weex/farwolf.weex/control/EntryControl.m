@@ -90,6 +90,7 @@
                 
             } fail:^(NSString *msg) {
             
+                  [self failGo];
             }  frame:[UIApplication sharedApplication].keyWindow.frame ];
             
         } fail:^(NSString *s) {
@@ -103,7 +104,7 @@
                 }];
                 
             } fail:^(NSString *msg) {
-                
+                  [self failGo];
             }  frame:[UIApplication sharedApplication].keyWindow.frame ];
             
         }];
@@ -119,13 +120,25 @@
             }];
             
         } fail:^(NSString *msg) {
-            
+            [self failGo];
         }  frame:[UIApplication sharedApplication].keyWindow.frame ];
     }
     
     
 
 }
+
+-(void)failGo
+{
+    WXNormalViewContrller *vc=[WXNormalViewContrller new];
+    vc.debug=[Config isDebug];
+    vc.sourceURL=[NSURL URLWithString:[Config entry]];
+    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nav animated:false completion:^{
+        
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

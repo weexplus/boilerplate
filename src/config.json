@@ -1,8 +1,8 @@
 {
-  "schema":"mv",
+  "schema":"",
   "debug":true,
   "debugIp":"127.0.0.1",
-  "entry":"http://192.168.12.221:9898/mv/demo/demo/looper.js",
+  "entry":"http://127.0.0.1:9999/index.js",
   "preload":["root:busi/tab/mainpage.js","root:busi/tab/movie.js","root:busi/tab/serial.js","root:busi/tab/collection.js","root:busi/detail.js"],
   "splash":"splash1",
   "static":
@@ -19,6 +19,7 @@
       }
 
     }
+
 
   },
   "platform":

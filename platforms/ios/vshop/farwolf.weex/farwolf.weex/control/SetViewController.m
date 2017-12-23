@@ -13,6 +13,7 @@
 #import "Weex.h"
 #import "WXDevTool.h"
 #import "Config.h"
+#import "RefreshManager.h"
 
 
 @interface SetViewController ()
@@ -26,6 +27,18 @@
     NSString *s= [self getSaveValue:@"url"];
 //    NSString *ip= [s findone:@"http://" end:@":"];
       NSString *ip=[Config debugIp];
+//    NSString *s= [self getSaveValue:@"url"];
+//            NSString *ip= [s findone:@"http://" end:@":"];
+
+    if(s==nil||[s isEqualToString:@""])
+    {
+        s=[Config entry];
+        ip= [s findone:@"http://" end:@":"];
+    }
+    if(ip==nil||[ip isEqualToString:@""])
+    {
+        ip=[Config debugIp];
+    }
     self.url.text=s;
     self.debugip.text=[@"debugip=" add:ip];
     if([WXDevTool isDebug])
@@ -66,6 +79,8 @@
         [dic setValue:s forKey:@"url"];
         [self notifyDict:@"refreshpage" value:dic];
         [self closeClick:nil];
+        
+        [RefreshManager reload];
        
      
     };
@@ -107,8 +122,18 @@
 }
 - (IBAction)closeClick:(id)sender {
     
-    [self removeFromParentViewController];
-    [self.view removeFromSuperview];
+//    [self removeFromParentViewController];
+//    [self.view removeFromSuperview];
+    [self dismiss:true];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
+}
 @end

@@ -105,17 +105,19 @@ public class HotRefreshManager {
 
     @Override
     public void onPong(Buffer payload) {
-
+      mHandler.obtainMessage(Constants.HOT_REFRESH_CONNECT_ERROR, 0, 0, mUrl).sendToTarget();
     }
 
     @Override
     public void onClose(int code, String reason) {
       mWebSocket = null;
+      mHandler.obtainMessage(Constants.HOT_REFRESH_DISCONNECT, 0, 0, mUrl).sendToTarget();
     }
 
     @Override
     public void onFailure(IOException e) {
       mWebSocket = null;
+      mHandler.obtainMessage(Constants.HOT_REFRESH_CONNECT_ERROR, 0, 0, mUrl).sendToTarget();
     }
   }
 }

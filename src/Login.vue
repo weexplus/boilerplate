@@ -6,6 +6,8 @@
         <image src="images/u19.png" class="img" style="width:325px; height:77px;margin-left:40px"></image>
       </div>
       <div class=inputGroup>
+
+
         <div class="user">
           <image src="images/user.png" style="height: 40px;width: 36px"></image>
           <text class="username">&nbsp;用户名&nbsp;</text>
