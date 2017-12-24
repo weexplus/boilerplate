@@ -1,10 +1,15 @@
 <template>
   <div>
 
+      <head title="导航子界面"    append="tree">
 
-      <text>参数值：{{param}}</text>
+      </head>
+      <div style="width: 750;align-items: center;margin-top: 50">
+          <text style="color: #ffffff;">传过来的参数值：{{param}}</text>
+      </div>
+
       <div  class="btn" @click="back()"  ><text style="color:white" > navigator.backFull({ok:this.param},true) 带参数返回</text></div>
-      <div  class="btn" @click="backto()"  ><text style="color:white" >（navigator.backTo('index');跳跃返回</text></div>
+      <div  class="btn" @click="backto()"  ><text style="color:white" >（navigator.backTo('index');夸页返回</text></div>
 
   </div>
  
@@ -32,8 +37,9 @@
 </style>
 
 <script>
-
+    var head =require('./header.vue')
   export default {
+      components:{head},
     data () {
       return {
         text: 'Hello World.',
@@ -50,7 +56,7 @@
           back()
           {
               var navigator = weex.requireModule('navigator') ;
-              navigator.backFull({ok:this.param},true);
+              navigator.backFull({ok:'这是回传的值'},true);
           }
           ,backto()
           {
@@ -67,14 +73,6 @@
           globalEvent.addEventListener("onPageInit", function (e) {
 
 
-              const nav = weex.requireModule('navbar');
-              nav.setTitle('带参数页面');
-              nav.setBack(true);
-
-              nav.setRightImage('img/scan.png',function(res){
-
-                  modal.alert({message:"ok"})
-              });
               var navigator = weex.requireModule('navigator') ;
               self.param=navigator.param().a;
               navigator.setPageId('nav1');

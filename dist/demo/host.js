@@ -50,16 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(57)
-	)
-	__vue_styles__.push(__webpack_require__(58)
+	__vue_styles__.push(__webpack_require__(141)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(59)
+	__vue_exports__ = __webpack_require__(142)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(60)
+	var __vue_template__ = __webpack_require__(143)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -71,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/component/star.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/host.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-2b24e109"
+	__vue_options__._scopeId = "data-v-33e01a7f"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -92,81 +90,29 @@
 
 /***/ }),
 
-/***/ 57:
+/***/ 141:
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  "bg": {
-	    "backgroundColor": "#f5f5f5"
+	  "title": {
+	    "paddingTop": 40,
+	    "paddingBottom": 40,
+	    "fontSize": 48
 	  },
-	  "cell": {
-	    "height": 100,
-	    "backgroundColor": "#ffffff",
-	    "flexDirection": "row",
-	    "alignItems": "center",
-	    "borderRadius": 5
+	  "logo": {
+	    "width": 360,
+	    "height": 156
 	  },
-	  "arrow": {
-	    "width": 16,
-	    "height": 26
-	  },
-	  "font_normal": {
-	    "fontSize": 30
-	  },
-	  "theme_color": {
-	    "color": "#1296db"
-	  },
-	  "theme_bg": {
-	    "color": "#1296db"
-	  },
-	  "mask": {
-	    "backgroundColor": "#000000",
-	    "opacity": 0.6,
-	    "position": "absolute",
-	    "left": 0,
-	    "top": 0,
-	    "bottom": 0,
-	    "right": 0
+	  "desc": {
+	    "paddingTop": 20,
+	    "color": "#888888",
+	    "fontSize": 24
 	  }
 	}
 
 /***/ }),
 
-/***/ 58:
-/***/ (function(module, exports) {
-
-	module.exports = {
-	  "text": {
-	    "color": "#ffffff",
-	    "fontSize": 30
-	  },
-	  "text-disabled": {
-	    "color": "#b4b4b4",
-	    "fontSize": 30
-	  },
-	  "button": {
-	    "height": 100,
-	    "backgroundColor": "#ff4800",
-	    "alignItems": "center",
-	    "justifyContent": "center",
-	    "color": "#ffffff",
-	    "borderRadius": 8,
-	    "backgroundColor:active": "#ff1b08"
-	  },
-	  "button-disabled": {
-	    "height": 100,
-	    "backgroundColor": "#eeeeee",
-	    "alignItems": "center",
-	    "justifyContent": "center",
-	    "color": "#ffffff",
-	    "borderRadius": 8,
-	    "backgroundColor:active": "#eeeeee"
-	  }
-	}
-
-/***/ }),
-
-/***/ 59:
+/***/ 142:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -180,92 +126,152 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 
 	exports.default = {
-	    props: {
-	        text: {
-	            type: String
-
-	        },
-	        color: {
-	            type: String
-
-	        },
-	        disabled: {
-
-	            default: false
-	        },
-
-	        type: {
-	            type: String,
-	            default: 'text'
-	        },
-	        font_size: {
-	            default: 20
-	        }
-
+	    components: {},
+	    data: {
+	        logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
+	        target: 'World',
+	        index: 0,
+	        items: ['../../busi/tab/mainpage.js', '../../busi/tab/serial.js', '../../busi/tab/movie.js', '../../busi/tab/collection.js']
 	    },
-	    data: function data() {
-	        return {
-
-	            visiable: true
-
-	        };
-	    },
-
 	    methods: {
-	        oninput: function oninput(e) {
-
-	            //                this.$emit('oninput');
-	            this.$emit('oninput', e);
-	            this.visiable = e.value != '';
+	        update: function update(e) {
+	            this.target = 'Weex';
+	            console.log('target:', this.target);
 	        },
-	        onclick: function onclick() {
-	            if (!this.disabled) this.$emit('onclick');
+	        change: function change(i) {
+	            this.index = i;
 	        },
-	        panstart: function panstart() {
-	            if (!this.disabled) this.bgcolor = '#ff1b08';
-	        },
-	        panend: function panend() {
-	            if (!this.disabled) this.bgcolor = '#ff4800';
-	        },
-	        setenable: function setenable() {},
-	        onclose: function onclose() {
-	            this.value = '';
+	        show: function show() {
+	            var modal = weex.requireModule("modal");
+	            var p = weex.config.env.osVersion;
+	            //              p=p.replace('.', "")
+	            //          p=p.replace(/./g,"");
+	            p = p.replace(/\./g, '');
+	            modal.alert({ message: p });
 	        }
 	    },
 
 	    created: function created() {
 
-	        this.visiable = !this.value == '';
-	    },
-	    ready: function ready() {}
+	        var globalEvent = weex.requireModule('globalEvent');
+	        var self = this;
+	        globalEvent.addEventListener("onPageInit", function (e) {
+
+	            var nav = weex.requireModule('navbar');
+	            nav.hide();
+	        });
+	    }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 60:
+/***/ 143:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
 	    staticStyle: {
-	      flexDirection: "row"
+	      flex: "1"
 	    }
-	  }, _vm._l(([1, 1, 1, 1, 1]), function(item) {
-	    return _c('image', {
-	      staticStyle: {
-	        width: "42",
-	        height: "42",
-	        marginLeft: "5"
-	      },
-	      attrs: {
-	        "src": "root:img/star.png"
+	  }, [_c('host', {
+	    staticStyle: {
+	      position: "absolute",
+	      left: "0",
+	      top: "0",
+	      right: "0",
+	      bottom: "100"
+	    },
+	    attrs: {
+	      "index": _vm.index,
+	      "items": _vm.items
+	    }
+	  }), _c('div', {
+	    staticStyle: {
+	      height: "100",
+	      width: "750",
+	      position: "absolute",
+	      bottom: "0",
+	      left: "0",
+	      right: "0",
+	      flexDirection: "row",
+	      backgroundColor: "#0088fb"
+	    }
+	  }, [_c('div', {
+	    staticStyle: {
+	      flex: "1",
+	      alignItems: "center",
+	      justifyContent: "center"
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.change(0)
 	      }
-	    })
-	  }))
+	    }
+	  }, [_c('text', [_vm._v("推荐")])]), _c('div', {
+	    staticStyle: {
+	      flex: "1",
+	      alignItems: "center",
+	      justifyContent: "center"
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.change(1)
+	      }
+	    }
+	  }, [_c('text', [_vm._v("电视剧")])]), _c('div', {
+	    staticStyle: {
+	      flex: "1",
+	      alignItems: "center",
+	      justifyContent: "center"
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.change(2)
+	      }
+	    }
+	  }, [_c('text', [_vm._v("电影")])]), _c('div', {
+	    staticStyle: {
+	      flex: "1",
+	      alignItems: "center",
+	      justifyContent: "center"
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.change(3)
+	      }
+	    }
+	  }, [_c('text', [_vm._v("收藏")])])])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

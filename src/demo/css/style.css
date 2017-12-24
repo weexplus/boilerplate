@@ -1,0 +1,67 @@
+.header{
+    background-color:red;
+    flex:1;
+    flex-direction:row;
+  }
+.tz{color:red}
+.logo { width: 300; height:300; margin-top:80 }
+.k1{ align-items:center; }
+  .wrapper{
+
+  }
+  .titleback
+  {
+     flex:1;
+     align-items:center;
+     
+  }
+  .title
+  {
+    color:white;
+    flex:1;
+    margin-top:73;
+    font-weight:bold;
+
+  }
+  .leftimage
+  {
+     width:30;
+     height:45;
+      
+      bottom:25;
+       left:30;
+        position:absolute;
+  }
+  .rightimage
+  {
+     width:45;
+     height:45;
+       bottom:23;
+       right:32;
+      position:absolute;
+  }
+  .bottomline
+  {
+    height:1;
+    background-color:#000000;
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    flex:1;
+
+  }
+
+.btn{
+
+
+    background-color:#0085ee;
+    height:100;
+    width: 500;
+    margin-top:50;
+    border-radius:20;
+    align-items:center;
+    justify-content:center;
+
+}
+.btn:active{background-color:#006ce7;}

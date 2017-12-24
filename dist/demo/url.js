@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(152)
+	__vue_styles__.push(__webpack_require__(199)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(153)
+	__vue_exports__ = __webpack_require__(200)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(154)
+	var __vue_template__ = __webpack_require__(201)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/nav1.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/url.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-80036576"
+	__vue_options__._scopeId = "data-v-21555e68"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -408,12 +408,13 @@
 
 /***/ }),
 
-/***/ 152:
+/***/ 199:
 /***/ (function(module, exports) {
 
 	module.exports = {
 	  "text": {
-	    "fontSize": 50
+	    "fontSize": 50,
+	    "color": "#ffffff"
 	  },
 	  "btn": {
 	    "backgroundColor": "#0085ee",
@@ -430,7 +431,7 @@
 
 /***/ }),
 
-/***/ 153:
+/***/ 200:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -438,6 +439,21 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -492,13 +508,17 @@
 
 	            this.param = "dsds";
 	        },
-	        back: function back() {
+	        push: function push() {
 	            var navigator = weex.requireModule('navigator');
-	            navigator.backFull({ ok: '这是回传的值' }, true);
+	            navigator.push('navigator.js');
 	        },
-	        backto: function backto() {
+	        pusha: function pusha() {
 	            var navigator = weex.requireModule('navigator');
-	            navigator.backTo('index');
+	            navigator.push('./navigator.js');
+	        },
+	        pushn: function pushn() {
+	            var navigator = weex.requireModule('navigator');
+	            navigator.push('../input.js');
 	        }
 	    },
 
@@ -509,8 +529,8 @@
 	        globalEvent.addEventListener("onPageInit", function (e) {
 
 	            var navigator = weex.requireModule('navigator');
-	            self.param = navigator.param().a;
-	            navigator.setPageId('nav1');
+	            navigator.setPageId('index');
+	            navigator.setRoot('index');
 	        });
 	    }
 	};
@@ -518,49 +538,69 @@
 
 /***/ }),
 
-/***/ 154:
+/***/ 201:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', [_c('head', {
 	    appendAsTree: true,
 	    attrs: {
-	      "title": "导航子界面",
+	      "title": "url",
+	      "back": false,
 	      "append": "tree"
 	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "750",
-	      alignItems: "center",
-	      marginTop: "50"
+	  }), _c('scroller', [_c('a', {
+	    staticClass: ["btn"],
+	    attrs: {
+	      "href": "./navigator.js"
 	    }
 	  }, [_c('text', {
-	    staticStyle: {
-	      color: "#ffffff"
+	    staticClass: ["text"]
+	  }, [_vm._v("./navigator.js")])]), _c('a', {
+	    staticClass: ["btn"],
+	    attrs: {
+	      "href": "root:demo/app.js"
 	    }
-	  }, [_vm._v("传过来的参数值：" + _vm._s(_vm.param))])]), _c('div', {
+	  }, [_c('text', {
+	    staticClass: ["text"]
+	  }, [_vm._v("root:demo/app.js")])]), _c('div', {
 	    staticClass: ["btn"],
 	    on: {
-	      "click": function($event) {
-	        _vm.back()
-	      }
+	      "click": _vm.push
 	    }
 	  }, [_c('text', {
-	    staticStyle: {
-	      color: "white"
-	    }
-	  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])]), _c('div', {
+	    staticClass: ["text"]
+	  }, [_vm._v("navigator.js")])]), _c('div', {
 	    staticClass: ["btn"],
 	    on: {
-	      "click": function($event) {
-	        _vm.backto()
-	      }
+	      "click": _vm.pusha
 	    }
 	  }, [_c('text', {
-	    staticStyle: {
-	      color: "white"
+	    staticClass: ["text"]
+	  }, [_vm._v("./navigator.js")])]), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.pushn
 	    }
-	  }, [_vm._v("（navigator.backTo('index');夸页返回")])])], 1)
+	  }, [_c('text', {
+	    staticClass: ["text"]
+	  }, [_vm._v("../input.js")])]), _c('image', {
+	    staticStyle: {
+	      width: "100",
+	      height: "100"
+	    },
+	    attrs: {
+	      "src": "../../img/default.png"
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "100",
+	      height: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/default.png"
+	    }
+	  })], 1)], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

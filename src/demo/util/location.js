@@ -15,7 +15,7 @@ export default {
         picker.setItems2(this.toArray(l[0].children))
         picker.setTheme('#f9f9f9','#4c4c4c')
 
-        var index1=0;
+        var index1=0;x
         var index2=0;
         var index3=0;
         //每个滚轮的change事件

@@ -2,9 +2,12 @@
 
 <template>
 
-        <div style="flex-direction: row">
+        <div  >
+            <head title="跨页面无线通知"   append="tree">
+
+            </head>
             <div  class="cl" >
-                <div   class="btn"  @click="send()"><text  style="color:#ffffff">发送</text></div>
+                <div   class="btn"  @click="send()"><text  style="color:#ffffff">发送并返回</text></div>
 
 
             </div>
@@ -28,10 +31,10 @@
 
 
 </style>
-<style src="./css/style.css"></style>
+<style src="./style.css"></style>
 <script>
 
-
+    var head =require('./header.vue')
     var globalEvent = weex.requireModule('globalEvent') ;
     globalEvent.addEventListener("onPageInit", function (e) {
         const nav = weex.requireModule('navbar');
@@ -50,7 +53,7 @@
 
 
     export default {
-
+        components:{head},
         data () {
             return {
 

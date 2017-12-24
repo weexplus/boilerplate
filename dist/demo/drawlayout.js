@@ -50,14 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(152)
+	__vue_styles__.push(__webpack_require__(131)
+	)
+	__vue_styles__.push(__webpack_require__(132)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(153)
+	__vue_exports__ = __webpack_require__(133)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(154)
+	var __vue_template__ = __webpack_require__(134)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +71,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/nav1.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/drawlayout.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-80036576"
+	__vue_options__._scopeId = "data-v-632e0c05"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -408,19 +410,75 @@
 
 /***/ }),
 
-/***/ 152:
+/***/ 131:
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  "text": {
-	    "fontSize": 50
+	  "cl": {
+	    "alignItems": "center"
+	  }
+	}
+
+/***/ }),
+
+/***/ 132:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "header": {
+	    "backgroundColor": "#FF0000",
+	    "flex": 1,
+	    "flexDirection": "row"
+	  },
+	  "tz": {
+	    "color": "#FF0000"
+	  },
+	  "logo": {
+	    "width": 300,
+	    "height": 300,
+	    "marginTop": 80
+	  },
+	  "k1": {
+	    "alignItems": "center"
+	  },
+	  "titleback": {
+	    "flex": 1,
+	    "alignItems": "center"
+	  },
+	  "title": {
+	    "color": "#FFFFFF",
+	    "flex": 1,
+	    "marginTop": 73,
+	    "fontWeight": "bold"
+	  },
+	  "leftimage": {
+	    "width": 30,
+	    "height": 45,
+	    "bottom": 25,
+	    "left": 30,
+	    "position": "absolute"
+	  },
+	  "rightimage": {
+	    "width": 45,
+	    "height": 45,
+	    "bottom": 23,
+	    "right": 32,
+	    "position": "absolute"
+	  },
+	  "bottomline": {
+	    "height": 1,
+	    "backgroundColor": "#000000",
+	    "position": "absolute",
+	    "bottom": 0,
+	    "left": 0,
+	    "right": 0,
+	    "flex": 1
 	  },
 	  "btn": {
 	    "backgroundColor": "#0085ee",
 	    "height": 100,
+	    "width": 200,
 	    "marginTop": 50,
-	    "marginLeft": 50,
-	    "marginRight": 50,
 	    "borderRadius": 10,
 	    "alignItems": "center",
 	    "justifyContent": "center",
@@ -430,7 +488,7 @@
 
 /***/ }),
 
-/***/ 153:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -464,103 +522,77 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+
 
 	var head = __webpack_require__(117);
+	var globalEvent = weex.requireModule('globalEvent');
+	globalEvent.addEventListener("onPageInit", function (e) {
+	    var nav = weex.requireModule('navbar');
+	    nav.setTitle('网络请求');
+	    var navigator = weex.requireModule('navigator');
+	});
+
 	exports.default = {
 	    components: { head: head },
 	    data: function data() {
 	        return {
-	            text: 'Hello World.',
-	            param: ''
+	            back: "",
+	            header: {}
 	        };
 	    },
 
 	    methods: {
-	        ok: function ok() {
+	        post: function post() {
+	            var self = this;
+	            self.back = "";
+	            var net = weex.requireModule('net');
+	            net.post('http://121.40.81.1:9080/edu/getBanners.do', { a: "1", b: "2" }, {}, function () {
+	                //start
+	            }, function (e) {
+	                //success
+	                self.back = e.res;
+	                self.header = r.headers;
+	            }, function (e) {
+	                //exception
 
-	            this.param = "dsds";
+	            }, function () {
+	                //compelete
+	            });
 	        },
-	        back: function back() {
-	            var navigator = weex.requireModule('navigator');
-	            navigator.backFull({ ok: '这是回传的值' }, true);
-	        },
-	        backto: function backto() {
-	            var navigator = weex.requireModule('navigator');
-	            navigator.backTo('index');
+	        get: function get() {
+
+	            var self = this;
+	            var net = weex.requireModule('net');
+	            self.back = "";
+	            net.get('http://121.40.81.1:9080/edu/getBanners.do', {}, {}, function () {
+	                //start
+	            }, function (e) {
+	                //success
+	                self.back = e.res;
+	            }, function (e) {
+	                //exception
+
+	            }, function () {
+	                //compelete
+	            });
 	        }
 	    },
-
-	    created: function created() {
-
-	        var self = this;
-	        var globalEvent = weex.requireModule('globalEvent');
-	        globalEvent.addEventListener("onPageInit", function (e) {
-
-	            var navigator = weex.requireModule('navigator');
-	            self.param = navigator.param().a;
-	            navigator.setPageId('nav1');
-	        });
-	    }
+	    created: function created() {}
 	};
 	module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 154:
+/***/ 134:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_c('head', {
-	    appendAsTree: true,
+	  return _c('drawerlayout', {
 	    attrs: {
-	      "title": "导航子界面",
-	      "append": "tree"
+	      "src": "../../busi/tab/mainpage.js",
+	      "slidSrc": "center.js"
 	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "750",
-	      alignItems: "center",
-	      marginTop: "50"
-	    }
-	  }, [_c('text', {
-	    staticStyle: {
-	      color: "#ffffff"
-	    }
-	  }, [_vm._v("传过来的参数值：" + _vm._s(_vm.param))])]), _c('div', {
-	    staticClass: ["btn"],
-	    on: {
-	      "click": function($event) {
-	        _vm.back()
-	      }
-	    }
-	  }, [_c('text', {
-	    staticStyle: {
-	      color: "white"
-	    }
-	  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])]), _c('div', {
-	    staticClass: ["btn"],
-	    on: {
-	      "click": function($event) {
-	        _vm.backto()
-	      }
-	    }
-	  }, [_c('text', {
-	    staticStyle: {
-	      color: "white"
-	    }
-	  }, [_vm._v("（navigator.backTo('index');夸页返回")])])], 1)
+	  })
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

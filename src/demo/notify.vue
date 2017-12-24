@@ -2,16 +2,17 @@
 
 <template>
 
-        <div style="flex-direction: row">
-            <text style="align-items:center;margin-left: 50;margin-top: 30">{{data}}</text>
+        <div  >
+            <head title="无线通知"   append="tree">
+
+            </head>
+            <text style="align-items:center;margin-left: 50;margin-top: 30;color: #ffffff">{{data}}</text>
             <div  class="cl" >
                 <div   class="btn"  @click="send()"><text  style="color:#ffffff">发送</text></div>
 
-                <a   href="notify1.js" class="btn"   ><text  style="color:#ffffff">跳转到新页面</text></a>
+                <a   href="notify1.js" class="btn"   ><text  style="color:#ffffff">跨页面无线通知</text></a>
 
             </div>
-
-        
 
         </div>
 
@@ -30,16 +31,13 @@
 
 
 </style>
-<style src="./css/style.css"></style>
+<style src="./style.css"></style>
 <script>
 
-
-
-
-
+    var head =require('./header.vue')
 
     export default {
-
+        components:{head},
         data () {
             return {
                 data:''

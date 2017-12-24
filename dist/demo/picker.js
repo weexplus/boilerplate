@@ -50,14 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(152)
+	__vue_styles__.push(__webpack_require__(175)
+	)
+	__vue_styles__.push(__webpack_require__(176)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(153)
+	__vue_exports__ = __webpack_require__(177)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(154)
+	var __vue_template__ = __webpack_require__(178)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +71,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/nav1.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/picker.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-80036576"
+	__vue_options__._scopeId = "data-v-2f6892b6"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -408,19 +410,75 @@
 
 /***/ }),
 
-/***/ 152:
+/***/ 175:
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  "text": {
-	    "fontSize": 50
+	  "cl": {
+	    "alignItems": "center"
+	  }
+	}
+
+/***/ }),
+
+/***/ 176:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "header": {
+	    "backgroundColor": "#FF0000",
+	    "flex": 1,
+	    "flexDirection": "row"
+	  },
+	  "tz": {
+	    "color": "#FF0000"
+	  },
+	  "logo": {
+	    "width": 300,
+	    "height": 300,
+	    "marginTop": 80
+	  },
+	  "k1": {
+	    "alignItems": "center"
+	  },
+	  "titleback": {
+	    "flex": 1,
+	    "alignItems": "center"
+	  },
+	  "title": {
+	    "color": "#FFFFFF",
+	    "flex": 1,
+	    "marginTop": 73,
+	    "fontWeight": "bold"
+	  },
+	  "leftimage": {
+	    "width": 30,
+	    "height": 45,
+	    "bottom": 25,
+	    "left": 30,
+	    "position": "absolute"
+	  },
+	  "rightimage": {
+	    "width": 45,
+	    "height": 45,
+	    "bottom": 23,
+	    "right": 32,
+	    "position": "absolute"
+	  },
+	  "bottomline": {
+	    "height": 1,
+	    "backgroundColor": "#000000",
+	    "position": "absolute",
+	    "bottom": 0,
+	    "left": 0,
+	    "right": 0,
+	    "flex": 1
 	  },
 	  "btn": {
 	    "backgroundColor": "#0085ee",
 	    "height": 100,
+	    "width": 200,
 	    "marginTop": 50,
-	    "marginLeft": 50,
-	    "marginRight": 50,
 	    "borderRadius": 10,
 	    "alignItems": "center",
 	    "justifyContent": "center",
@@ -430,10 +488,10 @@
 
 /***/ }),
 
-/***/ 153:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -477,90 +535,97 @@
 	//
 	//
 
+
 	var head = __webpack_require__(117);
+
 	exports.default = {
 	    components: { head: head },
 	    data: function data() {
 	        return {
-	            text: 'Hello World.',
-	            param: ''
+	            src: ""
 	        };
 	    },
 
 	    methods: {
-	        ok: function ok() {
+	        jk1: function jk1() {
+	            var nav = weex.requireModule("navigator");
+	            nav.push('net.js');
+	        },
+	        jk: function jk() {
 
-	            this.param = "dsds";
-	        },
-	        back: function back() {
-	            var navigator = weex.requireModule('navigator');
-	            navigator.backFull({ ok: '这是回传的值' }, true);
-	        },
-	        backto: function backto() {
-	            var navigator = weex.requireModule('navigator');
-	            navigator.backTo('index');
+	            var picker = weex.requireModule("fpicker");
+	            picker.setCount(3);
+	            picker.setItems1(['猫猫猫猫', '狗', '鹦鹉']);
+	            picker.setItems2(['猫猫猫猫', '狗', '鹦鹉']);
+	            picker.setItems3(['猫猫猫猫猫', '狗', '鹦鹉']);
+	            //                picker.setItems2(this.toArray(l[0].children))
+	            picker.setTheme('#5261f7', '#ffffff');
+	            picker.show();
 	        }
 	    },
-
 	    created: function created() {
 
-	        var self = this;
 	        var globalEvent = weex.requireModule('globalEvent');
-	        globalEvent.addEventListener("onPageInit", function (e) {
 
-	            var navigator = weex.requireModule('navigator');
-	            self.param = navigator.param().a;
-	            navigator.setPageId('nav1');
+	        globalEvent.addEventListener("onPageInit", function (e) {
+	            var nav = weex.requireModule('navbar');
+	            nav.setTitle('照相');
+	            nav.setBack(true);
+	            nav.setRightImage('img/scan.png', function (res) {
+
+	                var modal = weex.requireModule('modal');
+	                modal.alert({ message: "ok" });
+	            });
 	        });
 	    }
 	};
-	module.exports = exports['default'];
+	module.exports = exports["default"];
 
 /***/ }),
 
-/***/ 154:
+/***/ 178:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', [_c('head', {
 	    appendAsTree: true,
 	    attrs: {
-	      "title": "导航子界面",
+	      "title": "picker",
 	      "append": "tree"
 	    }
 	  }), _c('div', {
 	    staticStyle: {
-	      width: "750",
-	      alignItems: "center",
-	      marginTop: "50"
+	      alignItems: "center"
 	    }
-	  }, [_c('text', {
-	    staticStyle: {
-	      color: "#ffffff"
-	    }
-	  }, [_vm._v("传过来的参数值：" + _vm._s(_vm.param))])]), _c('div', {
+	  }, [_c('div', {
 	    staticClass: ["btn"],
 	    on: {
 	      "click": function($event) {
-	        _vm.back()
+	        _vm.jk()
 	      }
 	    }
 	  }, [_c('text', {
 	    staticStyle: {
-	      color: "white"
+	      color: "#ffffff",
+	      fontSize: "30"
 	    }
-	  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])]), _c('div', {
+	  }, [_vm._v("picker单列")])])]), _c('div', {
+	    staticStyle: {
+	      alignItems: "center"
+	    }
+	  }, [_c('div', {
 	    staticClass: ["btn"],
 	    on: {
 	      "click": function($event) {
-	        _vm.backto()
+	        _vm.jk1()
 	      }
 	    }
 	  }, [_c('text', {
 	    staticStyle: {
-	      color: "white"
+	      color: "#ffffff",
+	      fontSize: "30"
 	    }
-	  }, [_vm._v("（navigator.backTo('index');夸页返回")])])], 1)
+	  }, [_vm._v("跳转")])])])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

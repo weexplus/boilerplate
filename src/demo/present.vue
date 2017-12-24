@@ -1,10 +1,15 @@
 <template>
   <div>
 
+      <head title="弹出式导航" @backClick="back"    append="tree">
 
-      <text>参数值：{{param}}</text>
+      </head>
+      <div style="width: 750;height: 600;align-items: center;justify-content: center">
+          <text style="color: #ffffff">参数值：{{param}}</text>
+          <text style="color: #ffffff">弹出式导航关闭时只能用dismiss,不能用back</text>
+          <div  class="btn" @click="dismiss()"><text style="color:white" >(dismiss);返回</text></div>
+      </div>
 
-      <div  class="btn" @click="dismiss()"><text style="color:white" >(dismiss);返回</text></div>
   </div>
  
 </template>
@@ -14,10 +19,11 @@
   }
 
 </style>
-<style src="./css/style.css"></style>
+<style src="./style.css"></style>
 <script>
-
+    var head =require('./header.vue')
   export default {
+      components:{head},
     data () {
       return {
         text: 'Hello World.',
@@ -36,6 +42,12 @@
           {
               var navigator = weex.requireModule('navigator') ;
               navigator.dismissFull({ok:this.param},true);
+          }
+          ,
+          back()
+          {
+              var navigator = weex.requireModule('navigator') ;
+              navigator.dismiss();
           }
 
 

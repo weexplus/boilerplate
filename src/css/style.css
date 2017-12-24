@@ -1,0 +1,44 @@
+.bg
+{
+    background-color: #f5f5f5;
+}
+
+.cell
+{
+    height: 100;
+    background-color: #ffffff;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5;
+}
+
+.arrow
+{
+    width: 16;
+    height:26;
+
+}
+.font_normal
+{
+    font-size: 30;
+}
+.theme_color
+{
+    color:#1296db;
+
+}
+.theme_bg
+{
+    color:#1296db;
+
+}
+.mask
+{
+    background-color: #000000;
+    opacity:0.6;
+    position: absolute;
+    left:0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}

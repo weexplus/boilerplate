@@ -1,8 +1,11 @@
 
 
 <template>
-    <scroller style="flex:1;">
+
         <div   >
+            <head title="相机"   append="tree">
+
+            </head>
             <div  style="align-items: center"  >
                 <div  @click="jk()" class="btn"><text style="color:#ffffff" >打开所有</text></div>
                 <div  @click="openCamera()" class="btn"><text style="color:#ffffff" >打开相机</text></div>
@@ -16,7 +19,7 @@
         </div>
 
 
-    </scroller>
+
 
 </template>
 
@@ -30,14 +33,14 @@
 
 
 </style>
-<style src="./css/style.css"></style>
+<style src="./style.css"></style>
 <script>
 
-
+    var head =require('./header.vue')
 
 
     export default {
-
+        components:{head},
         data () {
             return {
                src:""
@@ -50,7 +53,27 @@
                 const photo = weex.requireModule('photo');
                 photo.openPhoto(500,800,'#000000','#ffffff','#ffffff',function(e){
 
-                    self.src=e.base64;
+                    self.src=e.path;
+                    var net=weex.requireModule("net");
+                    net.postFile('http://10.39.1.72:8081/cdtp/file/uploadReturnName',{//param
+
+                    },{
+                        // header
+                    },{file:e.path},()=>{
+                        //start
+                    },(e)=>{
+                        //succcess
+                        var modal=weex.requireModule("modal")
+                        modal.toast({message:'上传成功！'})
+                    },()=>{
+                        //compelete
+
+                    },()=>{
+                        //exception
+                        var modal=weex.requireModule("modal")
+                        modal.toast({message:'上传异常！'})
+                    })
+
                 });
             },
             openCamera()
@@ -59,7 +82,27 @@
                 const photo = weex.requireModule('photo');
                 photo.openCamera(500,800,'#000000',function(e){
 
-                    self.src=e.base64;
+                    self.src=e.path;
+
+                    var net=weex.requireModule("net");
+                    net.postFile('http://59.110.169.246/movie/imgupload.do',{//param
+
+                       },{
+                        // header
+                         },{file:e.path},()=>{
+                        //start
+                    },(e)=>{
+                        //succcess
+                        var modal=weex.requireModule("modal")
+                        modal.toast({message:'上传成功！'})
+                    },()=>{
+                        //compelete
+
+                    },()=>{
+                        //exception
+                        var modal=weex.requireModule("modal")
+                        modal.toast({message:'上传异常！'})
+                    })
                 });
             },
             jk()
@@ -70,7 +113,27 @@
                 const photo = weex.requireModule('photo');
                 photo.open(500,800,'#000000','#ffffff','#ffffff',function(e){
 
-                 self.src=e.base64;
+                    self.src=e.path;
+
+                    var net=weex.requireModule("net");
+                    net.postFile('http://59.110.169.246/movie/imgupload.do',{//param
+
+                    },{
+                        // header
+                    },{file:e.path},()=>{
+                        //start
+                    },(e)=>{
+                        //succcess
+                        var modal=weex.requireModule("modal")
+                        modal.toast({message:'上传成功！'})
+                    },()=>{
+                        //compelete
+
+                    },()=>{
+                        //exception
+                        var modal=weex.requireModule("modal")
+                        modal.toast({message:'上传异常！'})
+                    })
                 });
 
 //                const modal = weex.requireModule('modal');

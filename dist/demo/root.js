@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(152)
+	__vue_styles__.push(__webpack_require__(186)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(153)
+	__vue_exports__ = __webpack_require__(187)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(154)
+	var __vue_template__ = __webpack_require__(188)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/nav1.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/root.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-80036576"
+	__vue_options__._scopeId = "data-v-3bd878b9"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -408,7 +408,7 @@
 
 /***/ }),
 
-/***/ 152:
+/***/ 186:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -430,14 +430,18 @@
 
 /***/ }),
 
-/***/ 153:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -479,58 +483,68 @@
 
 	var head = __webpack_require__(117);
 	exports.default = {
-	    components: { head: head },
-	    data: function data() {
-	        return {
-	            text: 'Hello World.',
-	            param: ''
-	        };
+	  components: { head: head },
+	  data: function data() {
+	    return {
+	      text: 'Hello World.',
+	      param: ''
+	    };
+	  },
+
+	  methods: {
+	    ok: function ok() {
+
+	      this.param = "dsds";
 	    },
-
-	    methods: {
-	        ok: function ok() {
-
-	            this.param = "dsds";
-	        },
-	        back: function back() {
-	            var navigator = weex.requireModule('navigator');
-	            navigator.backFull({ ok: '这是回传的值' }, true);
-	        },
-	        backto: function backto() {
-	            var navigator = weex.requireModule('navigator');
-	            navigator.backTo('index');
-	        }
-	    },
-
-	    created: function created() {
-
-	        var self = this;
-	        var globalEvent = weex.requireModule('globalEvent');
-	        globalEvent.addEventListener("onPageInit", function (e) {
-
-	            var navigator = weex.requireModule('navigator');
-	            self.param = navigator.param().a;
-	            navigator.setPageId('nav1');
-	        });
+	    gotonext: function gotonext() {
+	      var nav = weex.requireModule("navigator");
+	      nav.push('root:demo/demo/nav1.js');
 	    }
+	  },
+
+	  created: function created() {
+
+	    var self = this;
+	    var globalEvent = weex.requireModule('globalEvent');
+	    globalEvent.addEventListener("onPageInit", function (e) {});
+	  }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 154:
+/***/ 188:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', [_c('head', {
 	    appendAsTree: true,
 	    attrs: {
-	      "title": "导航子界面",
+	      "title": "绝对路径",
 	      "append": "tree"
 	    }
-	  }), _c('div', {
+	  }), _vm._m(0), _c('a', {
+	    staticClass: ["btn"],
+	    attrs: {
+	      "href": "root:demo/demo/nav1.js"
+	    }
+	  }, [_c('text', {
 	    staticStyle: {
-	      width: "750",
+	      color: "white"
+	    }
+	  }, [_vm._v("跳转路径也可以用")])]), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.gotonext
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "white"
+	    }
+	  }, [_vm._v("代码跳转")])])], 1)
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticStyle: {
 	      alignItems: "center",
 	      marginTop: "50"
 	    }
@@ -538,30 +552,17 @@
 	    staticStyle: {
 	      color: "#ffffff"
 	    }
-	  }, [_vm._v("传过来的参数值：" + _vm._s(_vm.param))])]), _c('div', {
-	    staticClass: ["btn"],
-	    on: {
-	      "click": function($event) {
-	        _vm.back()
-	      }
-	    }
-	  }, [_c('text', {
+	  }, [_vm._v("以dist为根目录计算路径,\"root:\"等于dist,组件中的图片务必使用这个")]), _c('image', {
 	    staticStyle: {
-	      color: "white"
+	      width: "281",
+	      height: "217",
+	      marginTop: "20"
+	    },
+	    attrs: {
+	      "src": "root:img/fail.png"
 	    }
-	  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])]), _c('div', {
-	    staticClass: ["btn"],
-	    on: {
-	      "click": function($event) {
-	        _vm.backto()
-	      }
-	    }
-	  }, [_c('text', {
-	    staticStyle: {
-	      color: "white"
-	    }
-	  }, [_vm._v("（navigator.backTo('index');夸页返回")])])], 1)
-	},staticRenderFns: []}
+	  })])
+	}]}
 	module.exports.render._withStripped = true
 
 /***/ })

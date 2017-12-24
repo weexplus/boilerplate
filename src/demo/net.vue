@@ -2,13 +2,16 @@
 
 <template>
  <scroller>
+     <head title="网络请求sss"  append="tree">
 
+     </head>
         <div  style="margin-bottom:50" >
             <div  class="cl" >
                 <div  @click="post()" class="btn"><text style="color:#ffffff" >post</text></div>
-                <div  @click="get()" class="btn" style="width: 750;border-radius: 20"><text style="color:#ffffff" >get</text></div>
+                <div  @click="get()" class="btn" style="width: 500"><text style="color:#ffffff" >get</text></div>
 
-                    <text>{{back}}</text>
+                    <text style="color:#ffffff">{{header}}</text>
+                    <text style="color:#ffffff">{{back}}</text>
 
 
             </div>
@@ -33,10 +36,10 @@
 
 
 </style>
-<style src="./css/style.css"></style>
+<style src="./style.css"></style>
 <script>
 
-
+    var head =require('./header.vue')
     var globalEvent = weex.requireModule('globalEvent') ;
     globalEvent.addEventListener("onPageInit", function (e) {
         const nav = weex.requireModule('navbar');
@@ -49,7 +52,8 @@
         components:{head},
         data () {
             return {
-               back:""
+               back:"",
+                header:{}
             }
         },
         methods: {
@@ -63,6 +67,7 @@
                 },function(e){
                     //success
                     self.back=e.res;
+                    self.header=r.headers;
                 },function(e){
                   //exception
 
