@@ -50,16 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(276)
+	__vue_styles__.push(__webpack_require__(159)
 	)
-	__vue_styles__.push(__webpack_require__(277)
+	__vue_styles__.push(__webpack_require__(160)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(278)
+	__vue_exports__ = __webpack_require__(161)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(279)
+	var __vue_template__ = __webpack_require__(162)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -92,7 +92,325 @@
 
 /***/ }),
 
-/***/ 276:
+/***/ 117:
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = []
+
+	/* styles */
+	__vue_styles__.push(__webpack_require__(118)
+	)
+	__vue_styles__.push(__webpack_require__(119)
+	)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(120)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(121)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/header.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-9a3f0db8"
+	__vue_options__.style = __vue_options__.style || {}
+	__vue_styles__.forEach(function (module) {
+	  for (var name in module) {
+	    __vue_options__.style[name] = module[name]
+	  }
+	})
+	if (typeof __register_static_styles__ === "function") {
+	  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+	}
+
+	module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 118:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "bg": {
+	    "backgroundColor": "#f5f5f5"
+	  },
+	  "cell": {
+	    "height": 100,
+	    "backgroundColor": "#ffffff",
+	    "flexDirection": "row",
+	    "alignItems": "center",
+	    "borderRadius": 5
+	  },
+	  "arrow": {
+	    "width": 16,
+	    "height": 26
+	  },
+	  "font_normal": {
+	    "fontSize": 30
+	  },
+	  "theme_color": {
+	    "color": "#1296db"
+	  },
+	  "theme_bg": {
+	    "color": "#1296db"
+	  },
+	  "mask": {
+	    "backgroundColor": "#000000",
+	    "opacity": 0.6,
+	    "position": "absolute",
+	    "left": 0,
+	    "top": 0,
+	    "bottom": 0,
+	    "right": 0
+	  }
+	}
+
+/***/ }),
+
+/***/ 119:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "layout": {
+	    "backgroundColor": "#333333",
+	    "height": 128,
+	    "width": 750,
+	    "flexDirection": "row",
+	    "alignItems": "center",
+	    "justifyContent": "center"
+	  }
+	}
+
+/***/ }),
+
+/***/ 120:
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+
+	exports.default = {
+	    props: {
+	        title: {
+	            default: ''
+
+	        },
+	        back: {
+	            default: true
+	        },
+	        bgcolor: {
+	            default: '#222222'
+
+	        },
+	        isloading: {
+	            default: false
+	        },
+	        disabled: {
+
+	            default: false
+	        },
+
+	        type: {
+	            type: String,
+	            default: 'text'
+	        },
+	        font_size: {
+	            default: 20
+	        },
+	        height: {
+	            default: 128
+	        },
+	        top: {
+	            default: 40
+	        },
+	        titletop: {
+	            default: 10
+	        }
+
+	    },
+	    data: function data() {
+	        return {};
+	    },
+
+	    methods: {
+	        titleClick: function titleClick() {
+	            this.$emit('titleClick');
+	        },
+	        rightclick: function rightclick() {
+	            this.$emit('rightClick');
+	        },
+	        backTo: function backTo() {
+	            var nav = weex.requireModule("navigator");
+	            nav.back();
+	            this.$emit('backClick');
+	        },
+	        onclick: function onclick() {
+	            if (!this.disabled) this.$emit('onclick');
+	        },
+	        adjust: function adjust() {
+	            if (weex.config.env.platform == 'android') {
+	                //                    if(weex.config.env.osVersion=)
+	                var p = weex.config.env.osVersion;
+	                p = p.replace(/\./g, '');
+	                if (p.length < 3) p = p + "0";
+	                if (p <= '440') {
+	                    this.height = 108;
+	                    this.top = 16;
+	                    this.titletop = 4;
+	                }
+	            }
+	        }
+	    },
+
+	    created: function created() {
+
+	        this.adjust();
+	    },
+	    ready: function ready() {}
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+
+/***/ 121:
+/***/ (function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: ["layout"],
+	    style: {
+	      'background-color': _vm.bgcolor,
+	      'height': _vm.height
+	    }
+	  }, [_c('div', {
+	    staticStyle: {
+	      flexDirection: "row"
+	    },
+	    style: {
+	      'top': _vm.titletop
+	    }
+	  }, [(_vm.isloading) ? _c('div', {
+	    staticStyle: {
+	      height: "40",
+	      width: "40",
+	      marginRight: "10"
+	    }
+	  }) : _vm._e(), _c('text', {
+	    staticStyle: {
+	      flex: "1",
+	      color: "#ffffff",
+	      textAlign: "center",
+	      fontSize: "38"
+	    },
+	    on: {
+	      "click": _vm.titleClick
+	    }
+	  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
+	    staticStyle: {
+	      height: "40",
+	      width: "40",
+	      marginLeft: "10",
+	      marginTop: "5"
+	    },
+	    attrs: {
+	      "color": "#ffffff",
+	      "loadingStyle": "small"
+	    }
+	  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
+	    staticStyle: {
+	      width: "200",
+	      top: "40",
+	      position: "absolute",
+	      left: "0"
+	    },
+	    style: {
+	      'height': _vm.height,
+	      'top': _vm.top
+	    },
+	    on: {
+	      "click": _vm.backTo
+	    }
+	  }, [_c('image', {
+	    staticStyle: {
+	      width: "80",
+	      height: "80"
+	    },
+	    attrs: {
+	      "src": "root:img/back.png"
+	    }
+	  })]) : _vm._e(), _c('div', {
+	    staticStyle: {
+	      width: "200",
+	      position: "absolute",
+	      right: "0",
+	      top: "0",
+	      alignItems: "center",
+	      justifyContent: "center"
+	    },
+	    style: {
+	      'height': _vm.height
+	    },
+	    on: {
+	      "click": _vm.rightclick
+	    }
+	  }, [_vm._t("right")], 2), _c('div', {
+	    staticStyle: {
+	      height: "1",
+	      backgroundColor: "#111111",
+	      position: "absolute",
+	      bottom: "0",
+	      left: "0",
+	      right: "0"
+	    }
+	  })])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 159:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -103,7 +421,7 @@
 
 /***/ }),
 
-/***/ 277:
+/***/ 160:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -159,9 +477,9 @@
 	  "btn": {
 	    "backgroundColor": "#0085ee",
 	    "height": 100,
-	    "width": 500,
+	    "width": 200,
 	    "marginTop": 50,
-	    "borderRadius": 20,
+	    "borderRadius": 10,
 	    "alignItems": "center",
 	    "justifyContent": "center",
 	    "backgroundColor:active": "#006ce7"
@@ -170,8 +488,8 @@
 
 /***/ }),
 
-/***/ 278:
-/***/ (function(module, exports) {
+/***/ 161:
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -214,8 +532,12 @@
 	//
 	//
 	//
+	//
+	//
+	//
 
 
+	var head = __webpack_require__(117);
 	var globalEvent = weex.requireModule('globalEvent');
 	globalEvent.addEventListener("onPageInit", function (e) {
 	    var nav = weex.requireModule('navbar');
@@ -227,7 +549,8 @@
 	    components: { head: head },
 	    data: function data() {
 	        return {
-	            back: ""
+	            back: "",
+	            header: {}
 	        };
 	    },
 
@@ -241,6 +564,7 @@
 	            }, function (e) {
 	                //success
 	                self.back = e.res;
+	                self.header = r.headers;
 	            }, function (e) {
 	                //exception
 
@@ -272,11 +596,17 @@
 
 /***/ }),
 
-/***/ 279:
+/***/ 162:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('scroller', [_c('div', {
+	  return _c('scroller', [_c('head', {
+	    appendAsTree: true,
+	    attrs: {
+	      "title": "网络请求sss",
+	      "append": "tree"
+	    }
+	  }), _c('div', {
 	    staticStyle: {
 	      marginBottom: "50"
 	    }
@@ -296,8 +626,7 @@
 	  }, [_vm._v("post")])]), _c('div', {
 	    staticClass: ["btn"],
 	    staticStyle: {
-	      width: "750",
-	      borderRadius: "20"
+	      width: "500"
 	    },
 	    on: {
 	      "click": function($event) {
@@ -308,7 +637,15 @@
 	    staticStyle: {
 	      color: "#ffffff"
 	    }
-	  }, [_vm._v("get")])]), _c('text', [_vm._v(_vm._s(_vm.back))])])])])
+	  }, [_vm._v("get")])]), _c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v(_vm._s(_vm.header))]), _c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v(_vm._s(_vm.back))])])])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 
