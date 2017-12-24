@@ -33,7 +33,7 @@
 
 
 </style>
-<style src="./style.css"></style>
+<style src="./css/style.css"></style>
 <script>
 
     var head =require('./header.vue')
