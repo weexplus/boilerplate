@@ -1,37 +1,47 @@
 <template>
-  <scroller style="flex: 1;align-items:center;background-color: yellow">
+    <scroller style="flex: 1;align-items:center;background-color: yellow">
 
-<text>dsdsdsghgh</text>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-      <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-
-  </scroller>
+        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
+        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
+        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
+        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
+        <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
+        <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
+        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
+        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
+        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
+    </scroller>
 </template>
 <style>
 
-  .title { padding-top:40px; padding-bottom: 40px; font-size: 48px; }
-  .logo { width: 360px; height: 156px; }
-  .desc { padding-top: 20px; color:#888; font-size: 24px;}
+    .title {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        font-size: 48px;
+    }
+
+    .logo {
+        width: 360px;
+        height: 156px;
+    }
+
+    .desc {
+        padding-top: 20px;
+        color: #888;
+        font-size: 24px;
+    }
 </style>
 
 <script>
-    var head =require('./component/header.vue')
-    const net =require('./busi/util/net.js')
-    var p=undefined;
+    var head = require('./component/header.vue')
+    const net = require('./busi/util/net.js')
+    var p = undefined;
     export default {
-        components:{head},
+        components: {head},
         data: {
             logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
             target: 'World',
-            index:0
+            index: 0
 
         },
         methods: {
@@ -41,50 +51,50 @@
             },
             showpicker()
             {
-                var modal=weex.requireModule("modal")
-                modal.toast({message:'ok'})
+                var modal = weex.requireModule("modal")
+                modal.toast({message: 'ok'})
             },
 
 
-           goton()
-           {
-             var nav=weex.requireModule("navigator")
-               nav.push('Login.js');
-           },
+            goton()
+            {
+                var nav = weex.requireModule("navigator")
+                nav.push('Login.js');
+            },
 
 
             change(i)
             {
 
-                this.index=i;
+                this.index = i;
             },
             show()
             {
-                var modal=weex.requireModule("modal")
-                var p=weex.config.env.osVersion
-                p= p.replace(/\./g,'')
-                modal.alert({message:p})
+                var modal = weex.requireModule("modal")
+                var p = weex.config.env.osVersion
+                p = p.replace(/\./g, '')
+                modal.alert({message: p})
             }
         }
         ,
 
 
-        created:function(){
+        created: function () {
 
 
-            var globalEvent = weex.requireModule('globalEvent') ;
-            var self=this;
+            var globalEvent = weex.requireModule('globalEvent');
+            var self = this;
             globalEvent.addEventListener("onPageInit", function (e) {
 
 
                 const nav = weex.requireModule('navbar');
-                nav.hide();
+//                nav.hide();
 
                 const navigator = weex.requireModule('navigator');
                 navigator.addBackGestureSelfControl();
 
 
-//                nav.setStatusBarStyle('white');
+                nav.setStatusBarStyle('balck');
 
 
             });

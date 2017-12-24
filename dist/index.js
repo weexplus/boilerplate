@@ -565,6 +565,16 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	var head = __webpack_require__(57);
 	var net = __webpack_require__(16);
@@ -609,13 +619,12 @@
 	        globalEvent.addEventListener("onPageInit", function (e) {
 
 	            var nav = weex.requireModule('navbar');
-	            nav.hide();
+	            //                nav.hide();
 
 	            var navigator = weex.requireModule('navigator');
 	            navigator.addBackGestureSelfControl();
 
-	            //                nav.setStatusBarStyle('white');
-
+	            nav.setStatusBarStyle('balck');
 	        });
 	    }
 	};
@@ -633,7 +642,27 @@
 	      alignItems: "center",
 	      backgroundColor: "yellow"
 	    }
-	  }, [_c('text', [_vm._v("dsdsdsghgh")]), _c('image', {
+	  }, [_c('text', {
+	    staticStyle: {
+	      marginTop: "50",
+	      fontSize: "35"
+	    }
+	  }, [_vm._v("我是一只猫")]), _c('text', {
+	    staticStyle: {
+	      marginTop: "50",
+	      fontSize: "35"
+	    }
+	  }, [_vm._v("我是一只猫")]), _c('text', {
+	    staticStyle: {
+	      marginTop: "50",
+	      fontSize: "35"
+	    }
+	  }, [_vm._v("我是一只猫")]), _c('text', {
+	    staticStyle: {
+	      marginTop: "50",
+	      fontSize: "35"
+	    }
+	  }, [_vm._v("我是一只猫")]), _c('image', {
 	    staticStyle: {
 	      width: "200",
 	      height: "200",
@@ -657,101 +686,26 @@
 	    on: {
 	      "click": _vm.goton
 	    }
-	  }), _c('image', {
+	  }), _c('div', {
 	    staticStyle: {
 	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
+	      height: "100",
+	      backgroundColor: "#0085ee",
+	      marginTop: "10"
 	    }
-	  }), _c('image', {
+	  }), _c('div', {
 	    staticStyle: {
 	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
+	      height: "100",
+	      backgroundColor: "#0085ee",
+	      marginTop: "10"
 	    }
-	  }), _c('image', {
+	  }), _c('div', {
 	    staticStyle: {
 	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
+	      height: "100",
+	      backgroundColor: "#0085ee",
+	      marginTop: "10"
 	    }
 	  })])
 	},staticRenderFns: []}

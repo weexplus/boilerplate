@@ -30,15 +30,7 @@
 //    NSString *s= [self getSaveValue:@"url"];
 //            NSString *ip= [s findone:@"http://" end:@":"];
 
-    if(s==nil||[s isEqualToString:@""])
-    {
-        s=[Config entry];
-        ip= [s findone:@"http://" end:@":"];
-    }
-    if(ip==nil||[ip isEqualToString:@""])
-    {
-        ip=[Config debugIp];
-    }
+    ip=[Weex getDebugIp];
     self.url.text=s;
     self.debugip.text=[@"debugip=" add:ip];
     if([WXDevTool isDebug])

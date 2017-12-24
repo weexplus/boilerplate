@@ -40,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DA829C2CE98309408F940A4 /* libPods-vshop.a in Frameworks */,
+
 				68C7FCBB5B4D3E577D4D067D /* libPods-movie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,8 +92,7 @@
 		9FE5E58B1B9AD3F8D405F1A6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B4D34DFA837B04BB77D56A78 /* Pods-vshop.debug.xcconfig */,
-				9370BCD5A3E5982DF4D81801 /* Pods-vshop.release.xcconfig */,
+				 
 				BC29D09E844069E77CAB9613 /* Pods-movie.debug.xcconfig */,
 				13CCE28059D845AEDB628609 /* Pods-movie.release.xcconfig */,
 			);

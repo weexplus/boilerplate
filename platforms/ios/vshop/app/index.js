@@ -561,6 +561,32 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	var head = __webpack_require__(57);
 	var net = __webpack_require__(16);
@@ -626,19 +652,10 @@
 	  return _c('scroller', {
 	    staticStyle: {
 	      flex: "1",
-	      justifyContent: "center",
 	      alignItems: "center",
-	      backgroundColor: "blue"
+	      backgroundColor: "yellow"
 	    }
-	  }, [_vm._l(([1, 1, 1]), function(item) {
-	    return _c('div', {
-	      staticStyle: {
-	        width: "100",
-	        height: "40",
-	        backgroundColor: "#0085ee"
-	      }
-	    })
-	  }), _c('text', [_vm._v("hjhj")]), _c('text', [_vm._v("hjhj")]), _c('text', [_vm._v("hjhj")]), _c('text', [_vm._v("hjhj")]), _c('image', {
+	  }, [_c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('text', [_vm._v("dsdsdsghgh")]), _c('image', {
 	    staticStyle: {
 	      width: "200",
 	      height: "200",
@@ -650,7 +667,115 @@
 	    on: {
 	      "click": _vm.goton
 	    }
-	  })], 2)
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200",
+	      borderRadius: "100"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    },
+	    on: {
+	      "click": _vm.goton
+	    }
+	  })])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 
