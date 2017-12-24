@@ -156,7 +156,7 @@ public class MVApplication extends Application {
     {
         HotRefreshManager.getInstance().disConnect();
         HotRefreshManager.getInstance().setHandler(mWXHandler);
-        String wsUrl = "ws://" + getIp()+ ":9897";
+        String wsUrl = "ws://" + getIp()+ ":"+Config.socketPort(this);
 //        mWXHandler.obtainMessage(Constants.HOT_REFRESH_CONNECT, 0, 0, wsUrl).sendToTarget();
         HotRefreshManager.getInstance().connect(wsUrl);
     }

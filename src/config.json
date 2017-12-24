@@ -2,6 +2,7 @@
   "schema":"",
   "debug":true,
   "debugIp":"127.0.0.1",
+  "socketPort":"9896",
   "entry":"http://127.0.0.1:9999/index.js",
   "preload":["root:busi/tab/mainpage.js","root:busi/tab/movie.js","root:busi/tab/serial.js","root:busi/tab/collection.js","root:busi/detail.js"],
   "splash":"splash1",

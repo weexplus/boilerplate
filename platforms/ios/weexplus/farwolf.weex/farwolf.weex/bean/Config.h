@@ -14,6 +14,7 @@
 +(NSString*)entry;
 +(NSString*)splash;
 +(NSString*)debugIp;
++(NSString*)socketPort;
 +(NSMutableArray*)preload;
 +(BOOL)isDebug;
 +(NSString*)getUMAndroidKey;

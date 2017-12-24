@@ -46,6 +46,12 @@ public class Config {
     }
 
 
+    public static String socketPort(Context c)
+    {
+        return config(c).optString("socketPort","9897");
+    }
+
+
     public static String debugIp(Context c)
     {
         return config(c).optString("debugIp");
