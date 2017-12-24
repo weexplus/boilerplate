@@ -2,9 +2,7 @@
     <scroller style="flex: 1;align-items:center;background-color: yellow">
 
         <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
-        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
-        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
-        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
+
         <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
         <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
         <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>

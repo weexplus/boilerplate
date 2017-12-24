@@ -573,6 +573,8 @@
 	//
 	//
 	//
+	//
+	//
 
 	var head = __webpack_require__(57);
 	var net = __webpack_require__(16);
@@ -641,6 +643,21 @@
 	      backgroundColor: "yellow"
 	    }
 	  }, [_c('text', {
+	    staticStyle: {
+	      marginTop: "50",
+	      fontSize: "35"
+	    }
+	  }, [_vm._v("我是一只猫")]), _c('text', {
+	    staticStyle: {
+	      marginTop: "50",
+	      fontSize: "35"
+	    }
+	  }, [_vm._v("我是一只猫")]), _c('text', {
+	    staticStyle: {
+	      marginTop: "50",
+	      fontSize: "35"
+	    }
+	  }, [_vm._v("我是一只猫")]), _c('text', {
 	    staticStyle: {
 	      marginTop: "50",
 	      fontSize: "35"

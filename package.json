@@ -7,6 +7,7 @@
         "build": "webpack",
         "build_plugin": "webpack --config ./tools/webpack.config.plugin.js --color",
         "dev": "weex-builder src dist -w",
+        "listen": "weexplus start",
         "serve": "webpack-dev-server --config webpack.dev.js -p --open"
     },
     "keywords": [
