@@ -102,7 +102,7 @@
 		B002B8620A99EC0B79AA68DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4FEB74A40716872F81AB2240 /* libPods-vshop.a */,
+				 
 				FD8FCEBAFDCB880BF16A8053 /* libPods-movie.a */,
 			);
 			name = Frameworks;
