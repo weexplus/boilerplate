@@ -32,7 +32,7 @@
 
 //    [Weex startDebug:@"127.0.0.1" port:@"8088"];
     if([Config isDebug])
-      [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Config socketPort]];
+      [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
      return YES;
 }
 

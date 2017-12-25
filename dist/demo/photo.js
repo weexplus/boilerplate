@@ -50,16 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(171)
+	__vue_styles__.push(__webpack_require__(215)
 	)
-	__vue_styles__.push(__webpack_require__(172)
+	__vue_styles__.push(__webpack_require__(216)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(173)
+	__vue_exports__ = __webpack_require__(217)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(174)
+	var __vue_template__ = __webpack_require__(218)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -437,7 +437,7 @@
 
 /***/ }),
 
-/***/ 171:
+/***/ 215:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -448,7 +448,7 @@
 
 /***/ }),
 
-/***/ 172:
+/***/ 216:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -515,7 +515,7 @@
 
 /***/ }),
 
-/***/ 173:
+/***/ 217:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -664,23 +664,14 @@
 
 	        var globalEvent = weex.requireModule('globalEvent');
 
-	        globalEvent.addEventListener("onPageInit", function (e) {
-	            var nav = weex.requireModule('navbar');
-	            nav.setTitle('照相');
-	            nav.setBack(true);
-	            nav.setRightImage('img/scan.png', function (res) {
-
-	                var modal = weex.requireModule('modal');
-	                modal.alert({ message: "ok" });
-	            });
-	        });
+	        globalEvent.addEventListener("onPageInit", function (e) {});
 	    }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 174:
+/***/ 218:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

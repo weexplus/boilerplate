@@ -7,7 +7,7 @@
         "build": "webpack",
         "build_plugin": "webpack --config ./tools/webpack.config.plugin.js --color",
         "dev": "weex-builder src dist -w",
-        "weexplus": "weexplus start  --serverport 9999  --dir weexplus --socketport 9897",
+        "weexplus": "weexplus start  --serverport 9999  --dir weexplus --socketport 9897 & npm run dev",
         "serve": "webpack-dev-server --config webpack.dev.js -p --open"
     },
     "keywords": [
@@ -46,7 +46,7 @@
         "webpack-dev-server": "^2.4.2",
         "weex-builder": "^0.2.6",
         "weex-loader": "^0.4.1",
-        "weexplus": "0.0.9"
+        "weexplus": "1.0.0"
     },
     "optionalDependencies": {
         "ios-deploy": "^1.9.0"

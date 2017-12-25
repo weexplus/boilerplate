@@ -113,7 +113,7 @@
     {
         [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
             
-            
+             vc.debug=[Config isDebug];
             UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
             [self presentViewController:nav animated:false completion:^{
                 

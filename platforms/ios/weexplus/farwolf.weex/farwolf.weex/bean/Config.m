@@ -25,15 +25,7 @@
 {
     return  [[Weex conifg] objectForKey:@"debugIp"];
 }
-+(NSString*)socketPort
-{
-    NSString *port=  [[Weex conifg] objectForKey:@"socketPort"];
-    if(port==nil||[@"" isEqualToString:port])
-    {
-        port=@"9897";
-    }
-    return port;
-}
+
 +(NSMutableArray*)preload
 {
    return  [[Weex conifg] objectForKey:@"preload"];

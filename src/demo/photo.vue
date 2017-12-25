@@ -151,14 +151,7 @@
             var globalEvent = weex.requireModule('globalEvent') ;
 
             globalEvent.addEventListener("onPageInit", function (e) {
-                const nav = weex.requireModule('navbar');
-                nav.setTitle('照相');
-                nav.setBack(true);
-                nav.setRightImage('img/scan.png',function(res){
 
-                    var modal = weex.requireModule('modal') ;
-                    modal.alert({message:"ok"})
-                });
             });
 
         }

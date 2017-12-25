@@ -69,13 +69,55 @@
         [s save:@"url"];
         NSMutableDictionary *dic=[NSMutableDictionary new];
         [dic setValue:s forKey:@"url"];
-        [self notifyDict:@"refreshpage" value:dic];
+        NSString *socketport=[self getSocketPort:s];
+        if(socketport!=nil)
+        {
+            [socketport save:@"socketport"];
+        }
+        [self notifyDict:@"qrrefreshpage" value:dic];
         [self closeClick:nil];
         
         [RefreshManager reload];
        
      
     };
+}
+
+-(NSString*)getSocketPort:(NSString*)url
+{
+  NSMutableDictionary *m=  [self getParam:url];
+   NSString *port= [m objectForKey:@"socketport"];
+    if(port!=nil)
+    {
+        return port;
+    }
+    return nil;
+}
+-(NSMutableDictionary*)getParam:(NSString*)url
+{
+    NSMutableDictionary *m=[NSMutableDictionary new];
+    if(![url contains:@"?"])
+    {
+        return m;
+    }
+    NSMutableArray *a= [url split:@"?"];
+    if([a count]<2)
+    {
+        return m;
+    }
+    NSString *s= [a objectAtIndex:1];
+    NSMutableArray *t=[s split:@"&"];
+    for(NSString *ts in t)
+    {
+        NSMutableArray *ta= [ts split:@"="];
+        if([ta count]==2)
+        {
+            [m setObject:[ta  objectAtIndex:1] forKey:[ta  objectAtIndex:0]];
+        }
+            
+    }
+    return m;
+    
 }
 - (IBAction)openDebug:(id)sender {
   

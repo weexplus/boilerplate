@@ -9,6 +9,7 @@ import org.androidannotations.annotations.sharedpreferences.SharedPref;
 public interface WeexPref {
 
     String ip();
+    String socketPort();
     String url();
     int lastX();
     int lastY();

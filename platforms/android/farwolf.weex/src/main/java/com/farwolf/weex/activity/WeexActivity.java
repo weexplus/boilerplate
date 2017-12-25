@@ -602,6 +602,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         {
             this.url=url;
             pref.edit().url().put(url).apply();
+            String sp=getSocketPortByUrl(url);
+            pref.edit().socketPort().put(sp).apply();
             render(url);
             EventBus.getDefault().post(new RefreshEvent("connect"));
 
@@ -611,6 +613,30 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     }
 
+
+    public String getSocketPortByUrl(String url)
+    {
+          if(url.contains("?"))
+              return null;
+         String q[]= url.split("\\?");
+        if(q.length!=2)
+            return null;
+        String p[]=q[1].split("&");
+        for(String px:p)
+        {
+            String qx[]=px.split("=");
+            if(qx.length==2)
+            {
+                if("socketport".equals(qx[0]))
+                {
+                    return qx[1];
+                }
+            }
+        }
+        return null;
+
+
+    }
 
     long lasttime = 0;
 

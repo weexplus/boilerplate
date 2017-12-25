@@ -231,6 +231,17 @@
 }
 
 
++(NSString*)socketPort
+{
+    //    NSString *port=  [[Weex conifg] objectForKey:@"socketPort"];
+    NSString *port=[self getSaveValue:@"socketport"];
+    if(port==nil||[@"" isEqualToString:port])
+    {
+        port=@"9897";
+    }
+    return port;
+}
+
 
 
 @end

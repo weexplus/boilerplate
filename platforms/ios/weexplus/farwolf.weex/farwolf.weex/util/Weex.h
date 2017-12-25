@@ -29,6 +29,7 @@ static RefreshManager *refreshManager;
 +(void)setBaseUrl:(NSString*)url;
 +(UIViewController*)start:(NSString*)image url:(NSString*)url;
 +(NSMutableDictionary*)conifg;
++(NSString*)socketPort;
 +(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance;
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance;
 +(RefreshManager*)getRefreshManager;

@@ -80,6 +80,7 @@
 {
     [super viewDidLoad];
      [self regist:@"refreshpage" method:@selector(scoketrefresh)];
+    [self regist:@"qrrefreshpage" method:@selector(onqr:)];
     
     self.navigationController.navigationBar.translucent=false;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -531,11 +532,7 @@ BOOL isshowErr;
 }
 -(void)onqr:(NSNotification*)n
 {
-    if(_setVc)
-    {
-        [_setVc dismiss:true];
-        _setVc=nil;
-    }
+    
     
     NSMutableDictionary *d=  n.userInfo;
     NSString *url=[d objectForKey:@"url"];

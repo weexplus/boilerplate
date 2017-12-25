@@ -13,7 +13,7 @@
 
 +(void)reload
 {
-    [[Weex getRefreshManager] open:[Weex getDebugIp] port:@"9897"];
+    [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
     [self notify:@"refreshpage" value:nil];
 }
 

@@ -3,7 +3,7 @@
     <application>
 
         <activity android:name="com.farwolf.weex.activity.QrActivity_"
-            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:theme="@style/pop"
             android:screenOrientation="portrait"
             >
 
