@@ -8,6 +8,4 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE"  )" && pwd  )"
 cd $DIR
 pwd
-nginx -s stop
-nginx -c /usr/local/etc/nginx/nginx.conf
 npm run dev

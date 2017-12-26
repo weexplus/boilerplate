@@ -692,6 +692,20 @@
 	      backgroundColor: "#0085ee",
 	      marginTop: "10"
 	    }
+	  }), _c('div', {
+	    staticStyle: {
+	      width: "200",
+	      height: "100",
+	      backgroundColor: "#0085ee",
+	      marginTop: "10"
+	    }
+	  }), _c('div', {
+	    staticStyle: {
+	      width: "200",
+	      height: "100",
+	      backgroundColor: "#0085ee",
+	      marginTop: "10"
+	    }
 	  })])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true

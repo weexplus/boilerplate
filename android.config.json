@@ -1,6 +1,6 @@
 {
-  "AppName":"WeexApp",
-  "AppId":"com.alibaba.weex",
+  "AppName":"追剧",
+  "AppId":"com.farwolf.movie",
   "SplashText":"Hello\nWeex",
   "WeexBundle":"index.js"
 }

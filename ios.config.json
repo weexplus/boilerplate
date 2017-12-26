@@ -1,8 +1,8 @@
 {
-   "AppName":"WeexApp",
+   "AppName":"追剧dddd",
    "Version":"0.1",
    "BuildVersion":"0.1.0",
-   "AppId":"",
+   "AppId":"com.farwolf.movie",
    "CodeSign":"",
    "Profile":"",
    "WeexBundle":"index.js"

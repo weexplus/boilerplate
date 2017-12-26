@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(152)
+	__vue_styles__.push(__webpack_require__(196)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(153)
+	__vue_exports__ = __webpack_require__(197)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(154)
+	var __vue_template__ = __webpack_require__(198)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -141,37 +141,64 @@
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  "bg": {
-	    "backgroundColor": "#f5f5f5"
+	  "header": {
+	    "backgroundColor": "#FF0000",
+	    "flex": 1,
+	    "flexDirection": "row"
 	  },
-	  "cell": {
-	    "height": 100,
-	    "backgroundColor": "#ffffff",
-	    "flexDirection": "row",
-	    "alignItems": "center",
-	    "borderRadius": 5
+	  "tz": {
+	    "color": "#FF0000"
 	  },
-	  "arrow": {
-	    "width": 16,
-	    "height": 26
+	  "logo": {
+	    "width": 300,
+	    "height": 300,
+	    "marginTop": 80
 	  },
-	  "font_normal": {
-	    "fontSize": 30
+	  "k1": {
+	    "alignItems": "center"
 	  },
-	  "theme_color": {
-	    "color": "#1296db"
+	  "titleback": {
+	    "flex": 1,
+	    "alignItems": "center"
 	  },
-	  "theme_bg": {
-	    "color": "#1296db"
+	  "title": {
+	    "color": "#FFFFFF",
+	    "flex": 1,
+	    "marginTop": 73,
+	    "fontWeight": "bold"
 	  },
-	  "mask": {
+	  "leftimage": {
+	    "width": 30,
+	    "height": 45,
+	    "bottom": 25,
+	    "left": 30,
+	    "position": "absolute"
+	  },
+	  "rightimage": {
+	    "width": 45,
+	    "height": 45,
+	    "bottom": 23,
+	    "right": 32,
+	    "position": "absolute"
+	  },
+	  "bottomline": {
+	    "height": 1,
 	    "backgroundColor": "#000000",
-	    "opacity": 0.6,
 	    "position": "absolute",
-	    "left": 0,
-	    "top": 0,
 	    "bottom": 0,
-	    "right": 0
+	    "left": 0,
+	    "right": 0,
+	    "flex": 1
+	  },
+	  "btn": {
+	    "backgroundColor": "#0085ee",
+	    "height": 100,
+	    "width": 500,
+	    "marginTop": 50,
+	    "borderRadius": 20,
+	    "alignItems": "center",
+	    "justifyContent": "center",
+	    "backgroundColor:active": "#006ce7"
 	  }
 	}
 
@@ -408,7 +435,7 @@
 
 /***/ }),
 
-/***/ 152:
+/***/ 196:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -430,7 +457,7 @@
 
 /***/ }),
 
-/***/ 153:
+/***/ 197:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -518,7 +545,7 @@
 
 /***/ }),
 
-/***/ 154:
+/***/ 198:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
