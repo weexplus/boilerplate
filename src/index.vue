@@ -33,8 +33,8 @@
 </style>
 
 <script>
-    var head = require('./busi/component/header.vue')
-    const net = require('./busi/util/net.js')
+    var head = require('./demo/component/header.vue')
+    const net = require('./demo/util/net.js')
     var p = undefined;
     export default {
         components: {head},

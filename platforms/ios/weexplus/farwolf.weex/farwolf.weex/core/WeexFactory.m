@@ -23,6 +23,8 @@ static NSMutableDictionary *pageCache;
 }
 +(WXNormalViewContrller*)getCache:(NSString*)url
 {
+    if(url==nil)
+        return nil;
     if([url contains:@"?random"])
     {
         url=[url split:@"?random"][0];
