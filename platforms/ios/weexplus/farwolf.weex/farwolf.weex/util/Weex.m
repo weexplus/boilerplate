@@ -83,7 +83,6 @@
 {
 //    EntryControl *vc=[[EntryControl alloc]initWithImage:url img:image];
     RenderControl *vc=[[RenderControl alloc]initWithImage:url img:image];
-    
     UINavigationController *nvc=[[UINavigationController alloc]initWithRootViewController:vc];
     return nvc;
 }
@@ -242,6 +241,25 @@
     return port;
 }
 
++(NSURL*)getNSURL:(NSString*)url
+{
+    
+    
+        if(url!=nil&&url!=@"")
+        {
+            if([url startWith:@"http"])
+            {
+               return [NSURL URLWithString:url];
+            }
+            else
+            {
+                if([url endWith:@".js"])
+                    url=[url replace:@".js" withString:@""];
+                return [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
+            }
+        }
+    return nil;
+}
 
 
 @end

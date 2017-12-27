@@ -149,7 +149,7 @@
 //        NSString *ip= [s findone:@"http://" end:@":"];
 //        [Weex startDebug:ip port:@"8088"];
 //    }
-     NSString *ip=[Config debugIp];
+     NSString *ip=[Weex getDebugIp];
      [Weex startDebug:ip port:@"8088"];
      [self closeClick:nil];
     

@@ -36,6 +36,7 @@ static RefreshManager *refreshManager;
 
 +(NSString*)getEntry;
 +(NSString*)getDebugIp;
++(NSURL*)getNSURL:(NSString*)url;
 
 @end
 

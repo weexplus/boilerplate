@@ -258,38 +258,8 @@ BOOL isshowErr;
 
 -(void)showError:(NSString*)msg
 {
-//    if(isshowErr)
-//    {
-//        return;
-//    }
-//    [self.fail_layout setHidden:false];
-//    isshowErr=true;
-//
-//    ErrorControl *vc=[ErrorControl new];
-//    vc.errmsg=msg;
-//    vc.onClose=^(){
-//        isshowErr=false;
-//        [self.fail_layout setHidden:false];
-//    };
-//
-    
-    
-//    dispatch_sync(dispatch_get_main_queue(), ^{
-//
-//        　 [self presentViewController:vc animated:true completion:^{
-//
-//        }];
-//
-//    });
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
+ 
     
     
 }
@@ -464,25 +434,25 @@ BOOL isshowErr;
 -(void)debugInit
 {
    
-    NSString *url=  [self getSaveValue:@"url"];
-    if(url==nil||[@"" isEqualToString:url])
-    {
-        
-    }
-    
-    if(url!=nil&&url!=@"")
-    {
-        if([url startWith:@"http"])
-        {
-            self.sourceURL=[NSURL URLWithString:url];
-        }
-        else
-        {
-            if([url endWith:@".js"])
-                url=[url replace:@".js" withString:@""];
-            self.sourceURL = [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
-        }
-    }
+//    NSString *url=  [self getSaveValue:@"url"];
+//    if(url==nil||[@"" isEqualToString:url])
+//    {
+//
+//    }
+//
+//    if(url!=nil&&url!=@"")
+//    {
+//        if([url startWith:@"http"])
+//        {
+//            self.sourceURL=[NSURL URLWithString:url];
+//        }
+//        else
+//        {
+//            if([url endWith:@".js"])
+//                url=[url replace:@".js" withString:@""];
+//            self.sourceURL = [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
+//        }
+//    }
     
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     
@@ -537,6 +507,7 @@ BOOL isshowErr;
     NSMutableDictionary *d=  n.userInfo;
     NSString *url=[d objectForKey:@"url"];
     self.sourceURL=[NSURL URLWithString:url];
+    [Weex setBaseUrl:url];
     [self refreshWeex];
 }
 

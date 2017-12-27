@@ -76,6 +76,12 @@
         url= [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
     }
 
+    if([Config isDebug])
+    {
+        [self failGo];
+        return;
+    }
+    
     if([Config preload].count>0)
     {
         [WeexFactory preRenderAll:[Config preload] compelete:^{
@@ -130,9 +136,16 @@
 
 -(void)failGo
 {
+    NSString *url=[self getSaveValue:@"url"];
+    if(url==nil)
+    {
+        url=[Config entry];
+    }
+    url=[Config entry];
+    
     WXNormalViewContrller *vc=[WXNormalViewContrller new];
     vc.debug=[Config isDebug];
-    vc.sourceURL=[NSURL URLWithString:[Config entry]];
+    vc.sourceURL=[Weex getNSURL:url];
     UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
     [self presentViewController:nav animated:false completion:^{
         

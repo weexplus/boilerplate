@@ -193,6 +193,12 @@ static NSMutableDictionary *pageCache;
         {
             nurl= [[NSBundle mainBundle] URLForResource:[temp replace:@".js" withString:@""]  withExtension:@"js"];
         }
+        if(nurl==nil)
+        {
+            fail(@"");
+            c=-1;
+            return;
+        }
         [self renderNew:nurl compelete:^(WXNormalViewContrller *vc) {
             
             c++;
