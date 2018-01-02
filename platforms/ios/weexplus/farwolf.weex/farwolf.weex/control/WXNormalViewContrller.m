@@ -18,6 +18,7 @@
 #import "Config.h"
 #import "IQKeyboardManager.h"
 #import "RefreshManager.h"
+#import "SetViewController.h"
 
 @interface WXNormalViewContrller ()
 
@@ -81,10 +82,12 @@
     [super viewDidLoad];
      [self regist:@"refreshpage" method:@selector(scoketrefresh)];
     [self regist:@"qrrefreshpage" method:@selector(onqr:)];
-    
+//    [self initSplashView];
+    [self loadtextfields];
     self.navigationController.navigationBar.translucent=false;
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
+  
     if(_debug)
     {
         [self debugInit];
@@ -119,9 +122,9 @@
     //    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDone;
     
     
-    _textfields=[NSMutableArray new];
-    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextField class]]];
-    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
+//    _textfields=[NSMutableArray new];
+//    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextField class]]];
+//    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
 //    [self openWatch:@"192.168.199.248"];
 
 //    RefreshManager *r=[RefreshManager new];
@@ -146,11 +149,11 @@
     self.instance.renderFinish = ^(UIView *view) {
         
         [self.instance fireGlobalEvent:@"onPageInit" params:nil];
-        
-        
         [self loadCompelete];
     };
     [self.view addSubview:self.weexView];
+    if(self.splashimg!=nil)
+     [self.view bringSubviewToFront:self.splashimg];
     [self.instance fireGlobalEvent:@"onPageInit" params:nil];
     if(_debug)
     {
@@ -159,9 +162,44 @@
         [self.view bringSubviewToFront:self.set];
         [self.view bringSubviewToFront:self.refresh];
     }
+//    [self initSplashView];
     
     [self loadtextfields];
 }
+
+
+-(void)initSplashView
+{
+    
+    if(self.img==nil)
+    {
+        return;
+    }
+    
+     _splashimg=[UIImageView new];
+    UIImage *mg=[UIImage imageNamed:self.img];
+    _splashimg.contentMode=UIViewContentModeScaleAspectFill;
+    _splashimg.image=mg;
+    [self.view addSubview:_splashimg];
+    [_splashimg mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.top.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+    }];
+    
+    [self regist:@"firstviewadd" method:@selector(firstviewadd) ];
+    self.img=nil;
+}
+
+-(void)firstviewadd
+{
+    [_splashimg removeFromSuperview];
+}
+
+
+
 
 -(void)loadtextfields
 {
@@ -282,6 +320,7 @@ BOOL isshowErr;
     
     [self.navigationController setNavigationBarHidden:true animated:animated];
     [self resetFrame];
+//    [self initSplashView];
     //    self.view.backgroundColor=[@"#ffffff" toColor];
     
 }
@@ -520,6 +559,8 @@ BOOL isshowErr;
         [self.view bringSubviewToFront:self.set];
         [self.view bringSubviewToFront:self.refresh];
     }
+    [self loadtextfields];
+  
 }
 -(void)add
 {
@@ -618,7 +659,9 @@ BOOL isshowErr;
 {
 //    _setVc= [self fromStoryBoard:@"weex/SetViewController"];
 //        [self addVc:_setVc];
-  _setVc=  [self present:@"weex/SetViewController" anim:true];
+  UINavigationController *nav=  [self present:@"weex/SetViewController" anim:true];
+    SetViewController *set=nav.childViewControllers[0];
+    set.vc=self;
 //   _setVc= [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
 }
 

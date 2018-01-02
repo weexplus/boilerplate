@@ -10,5 +10,6 @@
 @interface EntryControl : UIViewController
 @property(nonatomic,strong)NSString*url;
 @property(nonatomic,strong)NSString*img;
+@property(nonatomic)BOOL firstviewadd;
 -(id)initWithImage:(NSString*)url img:(NSString*)img;
 @end

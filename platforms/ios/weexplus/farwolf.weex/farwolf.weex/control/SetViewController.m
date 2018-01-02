@@ -31,7 +31,8 @@
 //            NSString *ip= [s findone:@"http://" end:@":"];
 
     ip=[Weex getDebugIp];
-    self.url.text=s;
+    
+    self.url.text= self.vc.sourceURL.absoluteString;
     self.debugip.text=[@"debugip=" add:ip];
     if([WXDevTool isDebug])
     {
@@ -65,7 +66,7 @@
     QRControl *vc=nav.childViewControllers[0];
     [nav.navigationBar setHidden:false];
     vc.scanSuccess=^(NSString* s){
-        
+           [self closeClick:nil];
         [s save:@"url"];
         NSMutableDictionary *dic=[NSMutableDictionary new];
         [dic setValue:s forKey:@"url"];
@@ -75,7 +76,7 @@
             [socketport save:@"socketport"];
         }
         [self notifyDict:@"qrrefreshpage" value:dic];
-        [self closeClick:nil];
+     
         
         [RefreshManager reload];
        
@@ -158,7 +159,9 @@
     
 //    [self removeFromParentViewController];
 //    [self.view removeFromSuperview];
-    [self dismiss:true];
+//  [self dismissViewControllerAnimated:true completion:nil];
+    [self.parentViewController dismiss:true];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated

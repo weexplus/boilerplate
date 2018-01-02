@@ -26,9 +26,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self regist:@"viewadd" method:@selector(viewadd)];
     [self initView];
     [self gotoMain];
   
+}
+-(void)viewadd
+{
+    _firstviewadd=true;
+    
 }
 -(void)initView
 {
@@ -86,18 +92,19 @@
     {
         [WeexFactory preRenderAll:[Config preload] compelete:^{
             
-            [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
-                
+            
+            [WeexFactory  renderFull:url compelete:^(WXNormalViewContrller *vc) {
                 vc.debug=[Config isDebug];
+//                vc.img=@"splash1";
                 UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
                 [self presentViewController:nav animated:false completion:^{
                     
                 }];
-                
-            } fail:^(NSString *msg) {
-            
-                  [self failGo];
-            }  frame:[UIApplication sharedApplication].keyWindow.frame ];
+                return;
+            } splash:@"splash1" fail:^(NSString *msg) {
+                 [self failGo];
+            } frame:[UIApplication sharedApplication].keyWindow.frame];
+           
             
         } fail:^(NSString *s) {
             
@@ -141,7 +148,7 @@
     {
         url=[Config entry];
     }
-    url=[Config entry];
+//    url=[Config entry];
     
     WXNormalViewContrller *vc=[WXNormalViewContrller new];
     vc.debug=[Config isDebug];

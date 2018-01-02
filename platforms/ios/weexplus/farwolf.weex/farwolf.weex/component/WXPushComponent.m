@@ -48,30 +48,16 @@
     if (_href && [_href length] > 0) {
         /* a标签的跳转连接 可以根据该链接 进行跳转 */
     
-        NSString *newURL = _href;
-        if ([_href hasPrefix:@"//"]) {
-            newURL = [NSString stringWithFormat:@"http:%@", _href];
-        } else if (![_href hasPrefix:@"http"]) {
-            newURL = [NSURL URLWithString:_href relativeToURL:self.weexInstance.scriptURL].absoluteString;
-        }
+    
       
-        if([newURL startWith:@"root:"])
-        {
-            newURL=[newURL replace:@"root:" withString:[Weex getBaseUrl]];
-        }
-
-        NSURL *url=[NSURL URLWithString:newURL];
-        [WeexFactory render:url compelete:^(Page *p) {
-            WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-            vc.navbarVisibility=_navbarVisibility;
-            vc.hidesBottomBarWhenPushed = YES;
-            vc.page=p;
-            [self.weexInstance.viewController addVc:vc];
+        
+        [WeexFactory renderNew:[Weex getFinalUrl:_href weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc) {
+             [[self.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
+        } fail:^(NSString *msg) {
             
-            [[self.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
-           
-        }];
-            
+        } frame:[UIApplication sharedApplication].keyWindow.frame];
+ 
+        
    
        
     }

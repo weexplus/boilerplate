@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXNormalViewContrller.h"
 
 @interface SetViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *url;
 @property (weak, nonatomic) IBOutlet UILabel *debugip;
 @property (weak, nonatomic) IBOutlet UIButton *debugbtn;
+
+@property (strong, nonatomic) WXNormalViewContrller *vc;
 
 @end

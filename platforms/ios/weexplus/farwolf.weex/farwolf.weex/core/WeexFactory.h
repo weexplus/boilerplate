@@ -16,4 +16,5 @@
 +(WXNormalViewContrller*)getCache:(NSString*)url;
 +(void)preRender:(NSURL *)sourceURL;
 +(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete fail:(void(^)(NSString *))fail;
++ (void)renderFull:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  splash:(NSString*)splash fail:(void(^)(NSString*))fail frame:(CGRect)frame;
 @end

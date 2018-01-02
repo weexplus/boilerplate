@@ -14,7 +14,7 @@
 +(void)reload
 {
     [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
-    [self notify:@"refreshpage" value:nil];
+   
 }
 
 -(void)open:(NSString*)ip port:(NSString*)port
@@ -49,6 +49,13 @@
     
    
 }
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket
+{
+    [self notify:@"refreshpage" value:nil];
+    
+}
+
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
