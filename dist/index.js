@@ -602,7 +602,6 @@
 	//
 	//
 	//
-	//
 
 	var head = __webpack_require__(186);
 	var net = __webpack_require__(145);
@@ -667,88 +666,41 @@
 	  return _c('scroller', {
 	    staticStyle: {
 	      flex: "1",
-	      alignItems: "center",
 	      backgroundColor: "yellow"
 	    }
-	  }, [_c('text', {
-	    staticStyle: {
-	      marginTop: "50",
-	      fontSize: "35"
-	    }
-	  }, [_vm._v("我是一只猫")]), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
-	    },
+	  }, [_c('head', {
 	    attrs: {
-	      "src": "root:img/cat.png"
+	      "title": "demo"
 	    },
 	    on: {
-	      "click": _vm.goton
+	      "titleClick": _vm.update
+	    }
+	  }), _c('div', {
+	    staticStyle: {
+	      width: "750px",
+	      height: "100px",
+	      backgroundColor: "red"
+	    },
+	    on: {
+	      "click": _vm.update
 	    }
 	  }), _c('image', {
 	    staticStyle: {
 	      width: "200",
-	      height: "200",
-	      borderRadius: "100"
+	      height: "200"
+	    },
+	    attrs: {
+	      "src": _vm.logoUrl
+	    }
+	  }), _c('image', {
+	    staticStyle: {
+	      width: "200",
+	      height: "200"
 	    },
 	    attrs: {
 	      "src": "root:img/cat.png"
-	    },
-	    on: {
-	      "click": _vm.goton
 	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "200",
-	      height: "100",
-	      backgroundColor: "#0085ee",
-	      marginTop: "10"
-	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "200",
-	      height: "100",
-	      backgroundColor: "#0085ee",
-	      marginTop: "10"
-	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "200",
-	      height: "100",
-	      backgroundColor: "#0085ee",
-	      marginTop: "10"
-	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "200",
-	      height: "100",
-	      backgroundColor: "#0085ee",
-	      marginTop: "10"
-	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "200",
-	      height: "100",
-	      backgroundColor: "#0085ee",
-	      marginTop: "10"
-	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "200",
-	      height: "100",
-	      backgroundColor: "#0085ee",
-	      marginTop: "10"
-	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "200",
-	      height: "100",
-	      backgroundColor: "#0085ee",
-	      marginTop: "10"
-	    }
-	  })])
+	  }), _c('text', [_vm._v(_vm._s(_vm.target))])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

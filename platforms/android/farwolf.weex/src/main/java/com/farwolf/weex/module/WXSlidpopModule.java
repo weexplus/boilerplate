@@ -16,11 +16,17 @@ import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.core.WeexFactory_;
+import com.farwolf.weex.event.Event;
+import com.farwolf.weex.event.PopEvent;
 import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXPageView;
 import com.farwolf.weex.view.WXPageView_;
 import com.taobao.weex.annotation.JSMethod;
+import com.ypy.eventbus.EventBus;
+
 import java.util.HashMap;
+
+import static com.farwolf.weex.R.id.close;
 
 /**
  * Created by zhengjiangrong on 2017/12/8.
@@ -41,7 +47,14 @@ public class WXSlidpopModule  extends WXModuleBase {
     HashMap offset;
     String side;
 
-
+    /**
+     *
+     * @param url 弹出页面的js地址
+     * @param param 参数
+     * @param delt 宽度或者高度
+     * @param offset  边距
+     * @param side 上下左右(left,top,right,bottom)
+     */
     @JSMethod
     public void show(String url, HashMap param,float delt,HashMap offset,String side)
     {
@@ -50,6 +63,9 @@ public class WXSlidpopModule  extends WXModuleBase {
         realdelt = (int) Weex.length(delt); //转化为真实的weex数值
         this.offset = offset;
         this.side = side;
+        if(!EventBus.getDefault().isRegistered(this))
+        EventBus.getDefault().register(this);
+
 
         WeexFactory factory =WeexFactory_.getInstance_(getActivity());
         factory.preRender(this.url, new WeexFactory.OnRenderFinishListener() {
@@ -72,6 +88,30 @@ public class WXSlidpopModule  extends WXModuleBase {
 
         Log.e("传入的数据为： = " + offset + side);
     }
+
+
+    public void onEventMainThread(PopEvent event) {
+
+        if("slidpop".equals(event.type))
+            this.close();
+
+    }
+
+    @JSMethod
+    public  void dismiss()
+    {
+        EventBus.getDefault().post(new PopEvent("slidpop"));
+    }
+
+
+    void close()
+    {
+        if(maskView!=null)
+            getActivity().root.removeView(maskView);
+        if(slidView!=null)
+        getActivity().root.removeView(slidView);
+    }
+
 
     void initMaskView() {
         if (maskView == null) {

@@ -1,17 +1,16 @@
 <template>
-    <scroller style="flex: 1;align-items:center;background-color: yellow">
+    <scroller style="flex: 1;background-color: yellow">
+        <head title="demo"  @titleClick="update"></head>
+      <div @click="update" style="width: 750px;height: 100px; background-color: red" >
 
-        <text style="margin-top: 50;font-size: 35" >我是一只猫</text>
-        <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-        <image @click="goton" src="root:img/cat.png" style="width: 200;height:200;border-radius: 100"></image>
-        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
-        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
-        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
-        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
-        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
-        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
-        <div style="width: 200;height: 100;background-color: #0085ee;margin-top: 10"></div>
+      </div>
+        <image style="width: 200;height: 200" :src="logoUrl"></image>
+        <image style="width: 200;height: 200" src="root:img/cat.png"></image>
+        <text>{{target}}</text>
+
+
     </scroller>
+
 </template>
 <style>
 

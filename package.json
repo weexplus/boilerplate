@@ -6,7 +6,7 @@
     "scripts": {
         "build": "weex-builder src dist",
         "build_plugin": "webpack --config ./tools/webpack.config.plugin.js --color",
-        "dev": "weex-builder src dist -w",
+        "dev": "weex-builder src dist -w --min",
         "weexplus": "weexplus start  --serverport 9999  --dir weexplus --socketport 9897 & npm run dev",
         "serve": "webpack-dev-server --config webpack.dev.js -p --open"
     },
@@ -44,9 +44,9 @@
         "vue-template-compiler": "^2.1.8",
         "webpack": "^2.2.1",
         "webpack-dev-server": "^2.4.2",
-        "weex-builder": "^0.2.6",
+        "weex-builder": "0.2.6",
         "weex-loader": "^0.4.1",
-        "weexplus": "1.0.8"
+        "weexplus": "latest"
     },
     "optionalDependencies": {
         "ios-deploy": "^1.9.0"

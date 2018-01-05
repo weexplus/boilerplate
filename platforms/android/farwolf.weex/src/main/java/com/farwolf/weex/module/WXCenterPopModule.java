@@ -17,10 +17,12 @@ import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.core.WeexFactory_;
+import com.farwolf.weex.event.PopEvent;
 import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXPageView;
 import com.farwolf.weex.view.WXPageView_;
 import com.taobao.weex.annotation.JSMethod;
+import com.ypy.eventbus.EventBus;
 
 import java.util.HashMap;
 
@@ -45,6 +47,9 @@ public class WXCenterPopModule extends WXModuleBase {
     @JSMethod
     public void show(String url, HashMap style, HashMap param, Boolean clickDismiss)
     {
+        if(!EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().register(this);
+
         this.url = Weex.getRelativeUrl(url,this.mWXSDKInstance);
         this.param = param;
         this.style = style;
@@ -64,10 +69,29 @@ public class WXCenterPopModule extends WXModuleBase {
 
             }
         });
+
     }
+
+
+
+
+    public void onEventMainThread(PopEvent event) {
+
+        if("centerpop".equals(event.type))
+        this.clear();
+
+    }
+
+
+
 
     @JSMethod
     public void dismiss() {
+        EventBus.getDefault().post(new PopEvent("centerpop"));
+    }
+
+    void close()
+    {
         hideAnimation.setDuration(160);
         popView.startAnimation(hideAnimation);
         hideAnimation.startNow();
