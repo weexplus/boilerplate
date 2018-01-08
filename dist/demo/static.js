@@ -1,2 +1,684 @@
 // { "framework": "Vue" }
-!function(t){function e(o){if(i[o])return i[o].exports;var n=i[o]={exports:{},id:o,loaded:!1};return t[o].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var i={};return e.m=t,e.c=i,e.p="",e(0)}({0:function(t,e,i){var o,n,a=[];a.push(i(237)),o=i(238);var r=i(239);n=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(n=o=o.default),"function"==typeof n&&(n=n.options),n.render=r.render,n.staticRenderFns=r.staticRenderFns,n._scopeId="data-v-366e8c85",n.style=n.style||{},a.forEach(function(t){for(var e in t)n.style[e]=t[e]}),"function"==typeof __register_static_styles__&&__register_static_styles__(n._scopeId,a),t.exports=o,t.exports.el="true",new Vue(t.exports)},117:function(t,e,i){var o,n,a=[];a.push(i(118)),a.push(i(119)),o=i(120);var r=i(121);n=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(n=o=o.default),"function"==typeof n&&(n=n.options),n.render=r.render,n.staticRenderFns=r.staticRenderFns,n._scopeId="data-v-9a3f0db8",n.style=n.style||{},a.forEach(function(t){for(var e in t)n.style[e]=t[e]}),"function"==typeof __register_static_styles__&&__register_static_styles__(n._scopeId,a),t.exports=o},118:function(t,e){t.exports={header:{backgroundColor:"#FF0000",flex:1,flexDirection:"row"},tz:{color:"#FF0000"},logo:{width:300,height:300,marginTop:80},k1:{alignItems:"center"},titleback:{flex:1,alignItems:"center"},title:{color:"#FFFFFF",flex:1,marginTop:73,fontWeight:"bold"},leftimage:{width:30,height:45,bottom:25,left:30,position:"absolute"},rightimage:{width:45,height:45,bottom:23,right:32,position:"absolute"},bottomline:{height:1,backgroundColor:"#000000",position:"absolute",bottom:0,left:0,right:0,flex:1},btn:{backgroundColor:"#0085ee",height:100,width:500,marginTop:50,borderRadius:20,alignItems:"center",justifyContent:"center","backgroundColor:active":"#006ce7"}}},119:function(t,e){t.exports={layout:{backgroundColor:"#333333",height:128,width:750,flexDirection:"row",alignItems:"center",justifyContent:"center"}}},120:function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={props:{title:{default:""},back:{default:!0},bgcolor:{default:"#222222"},isloading:{default:!1},disabled:{default:!1},type:{type:String,default:"text"},font_size:{default:20},height:{default:128},top:{default:40},titletop:{default:10}},data:function(){return{}},methods:{titleClick:function(){this.$emit("titleClick")},rightclick:function(){this.$emit("rightClick")},backTo:function(){var t=weex.requireModule("navigator");t.back(),this.$emit("backClick")},onclick:function(){this.disabled||this.$emit("onclick")},adjust:function(){if("android"==weex.config.env.platform){var t=weex.config.env.osVersion;t=t.replace(/\./g,""),t.length<3&&(t+="0"),t<="440"&&(this.height=108,this.top=16,this.titletop=4)}}},created:function(){this.adjust()},ready:function(){}},t.exports=e.default},121:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("div",{staticClass:["layout"],style:{"background-color":t.bgcolor,height:t.height}},[i("div",{staticStyle:{flexDirection:"row"},style:{top:t.titletop}},[t.isloading?i("div",{staticStyle:{height:"40",width:"40",marginRight:"10"}}):t._e(),i("text",{staticStyle:{flex:"1",color:"#ffffff",textAlign:"center",fontSize:"38"},on:{click:t.titleClick}},[t._v(t._s(t.title))]),t.isloading?i("floading",{staticStyle:{height:"40",width:"40",marginLeft:"10",marginTop:"5"},attrs:{color:"#ffffff",loadingStyle:"small"}}):t._e()],1),t.back?i("div",{staticStyle:{width:"200",top:"40",position:"absolute",left:"0"},style:{height:t.height,top:t.top},on:{click:t.backTo}},[i("image",{staticStyle:{width:"80",height:"80"},attrs:{src:"root:img/back.png"}})]):t._e(),i("div",{staticStyle:{width:"200",position:"absolute",right:"0",top:"0",alignItems:"center",justifyContent:"center"},style:{height:t.height},on:{click:t.rightclick}},[t._t("right")],2),i("div",{staticStyle:{height:"1",backgroundColor:"#111111",position:"absolute",bottom:"0",left:"0",right:"0"}})])},staticRenderFns:[]}},237:function(t,e){t.exports={text:{fontSize:50},btn:{backgroundColor:"#0085ee",height:100,marginTop:50,marginLeft:50,marginRight:50,borderRadius:10,alignItems:"center",justifyContent:"center","backgroundColor:active":"#006ce7"}}},238:function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var o=i(117);e.default={components:{head:o},data:function(){return{text:"",param:"",data:{}}},methods:{save:function(){var t=weex.requireModule("static");t.setString("key",11111);var e=weex.requireModule("modal");e.toast({message:"存储成功"})},get:function(){var t=weex.requireModule("static"),e=t.getString("key"),i=weex.requireModule("modal");i.toast({message:"存储成功的值:"+e})},saveObj:function(){var t=weex.requireModule("static"),e={};e.a=1,e.b=2,t.set("objkey",e);var i=weex.requireModule("modal");i.toast({message:"存储成功"})},gonext:function(){var t=weex.requireModule("navigator");t.push("static1.js")},getObj:function(){var t=weex.requireModule("static"),e=t.get("objkey");this.data=e}},created:function(){var t=weex.requireModule("globalEvent");t.addEventListener("onPageInit",function(t){})}},t.exports=e.default},239:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("div",[i("head",{appendAsTree:!0,attrs:{title:"内存存储",append:"tree"}}),t._m(0),i("input",{staticStyle:{width:"750",paddingLeft:"10",height:"100",color:"#000000"},attrs:{type:"text",placeholder:"请输入要存储的值",value:t.text},on:{input:function(e){t.text=e.target.attr.value}}}),i("text",{staticStyle:{color:"#ffffff"}},[t._v(t._s(t.data))]),i("div",{staticClass:["btn"],on:{click:t.save}},[i("text",{staticStyle:{color:"#ffffff"}},[t._v("存储字符串")])]),i("div",{staticClass:["btn"],on:{click:t.get}},[i("text",{staticStyle:{color:"#ffffff"}},[t._v("获取字符串")])]),i("div",{staticClass:["btn"],on:{click:t.saveObj}},[i("text",{staticStyle:{color:"#ffffff"}},[t._v("存储对象{a:1}")])]),i("div",{staticClass:["btn"],on:{click:t.getObj}},[i("text",{staticStyle:{color:"#ffffff"}},[t._v("获取对象")])]),i("div",{staticClass:["btn"],on:{click:t.gonext}},[i("text",{staticStyle:{color:"#ffffff"}},[t._v("跳转到下一个界面")])])],1)},staticRenderFns:[function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("div",{staticStyle:{width:"160",height:"160",borderRadius:"80",marginLeft:"20"}},[i("image",{staticStyle:{borderRadius:"80",position:"absolute",left:"0",right:"0",bottom:"0",top:"0"},attrs:{src:"root:img/cat.png"}})])}]}}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = []
+
+	/* styles */
+	__vue_styles__.push(__webpack_require__(237)
+	)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(238)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(239)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/static.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-366e8c85"
+	__vue_options__.style = __vue_options__.style || {}
+	__vue_styles__.forEach(function (module) {
+	  for (var name in module) {
+	    __vue_options__.style[name] = module[name]
+	  }
+	})
+	if (typeof __register_static_styles__ === "function") {
+	  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+	}
+
+	module.exports = __vue_exports__
+	module.exports.el = 'true'
+	new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 117:
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = []
+
+	/* styles */
+	__vue_styles__.push(__webpack_require__(118)
+	)
+	__vue_styles__.push(__webpack_require__(119)
+	)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(120)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(121)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/header.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-9a3f0db8"
+	__vue_options__.style = __vue_options__.style || {}
+	__vue_styles__.forEach(function (module) {
+	  for (var name in module) {
+	    __vue_options__.style[name] = module[name]
+	  }
+	})
+	if (typeof __register_static_styles__ === "function") {
+	  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+	}
+
+	module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 118:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "header": {
+	    "backgroundColor": "#FF0000",
+	    "flex": 1,
+	    "flexDirection": "row"
+	  },
+	  "tz": {
+	    "color": "#FF0000"
+	  },
+	  "logo": {
+	    "width": 300,
+	    "height": 300,
+	    "marginTop": 80
+	  },
+	  "k1": {
+	    "alignItems": "center"
+	  },
+	  "titleback": {
+	    "flex": 1,
+	    "alignItems": "center"
+	  },
+	  "title": {
+	    "color": "#FFFFFF",
+	    "flex": 1,
+	    "marginTop": 73,
+	    "fontWeight": "bold"
+	  },
+	  "leftimage": {
+	    "width": 30,
+	    "height": 45,
+	    "bottom": 25,
+	    "left": 30,
+	    "position": "absolute"
+	  },
+	  "rightimage": {
+	    "width": 45,
+	    "height": 45,
+	    "bottom": 23,
+	    "right": 32,
+	    "position": "absolute"
+	  },
+	  "bottomline": {
+	    "height": 1,
+	    "backgroundColor": "#000000",
+	    "position": "absolute",
+	    "bottom": 0,
+	    "left": 0,
+	    "right": 0,
+	    "flex": 1
+	  },
+	  "btn": {
+	    "backgroundColor": "#0085ee",
+	    "height": 100,
+	    "width": 500,
+	    "marginTop": 50,
+	    "borderRadius": 20,
+	    "alignItems": "center",
+	    "justifyContent": "center",
+	    "backgroundColor:active": "#006ce7"
+	  }
+	}
+
+/***/ }),
+
+/***/ 119:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "layout": {
+	    "backgroundColor": "#333333",
+	    "height": 128,
+	    "width": 750,
+	    "flexDirection": "row",
+	    "alignItems": "center",
+	    "justifyContent": "center"
+	  }
+	}
+
+/***/ }),
+
+/***/ 120:
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+
+	exports.default = {
+	    props: {
+	        title: {
+	            default: ''
+
+	        },
+	        back: {
+	            default: true
+	        },
+	        bgcolor: {
+	            default: '#222222'
+
+	        },
+	        isloading: {
+	            default: false
+	        },
+	        disabled: {
+
+	            default: false
+	        },
+
+	        type: {
+	            type: String,
+	            default: 'text'
+	        },
+	        font_size: {
+	            default: 20
+	        },
+	        height: {
+	            default: 128
+	        },
+	        top: {
+	            default: 40
+	        },
+	        titletop: {
+	            default: 10
+	        }
+
+	    },
+	    data: function data() {
+	        return {};
+	    },
+
+	    methods: {
+	        titleClick: function titleClick() {
+	            this.$emit('titleClick');
+	        },
+	        rightclick: function rightclick() {
+	            this.$emit('rightClick');
+	        },
+	        backTo: function backTo() {
+	            var nav = weex.requireModule("navigator");
+	            nav.back();
+	            this.$emit('backClick');
+	        },
+	        onclick: function onclick() {
+	            if (!this.disabled) this.$emit('onclick');
+	        },
+	        adjust: function adjust() {
+	            if (weex.config.env.platform == 'android') {
+	                //                    if(weex.config.env.osVersion=)
+	                var p = weex.config.env.osVersion;
+	                p = p.replace(/\./g, '');
+	                if (p.length < 3) p = p + "0";
+	                if (p <= '440') {
+	                    this.height = 108;
+	                    this.top = 16;
+	                    this.titletop = 4;
+	                }
+	            }
+	        }
+	    },
+
+	    created: function created() {
+
+	        this.adjust();
+	    },
+	    ready: function ready() {}
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+
+/***/ 121:
+/***/ (function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: ["layout"],
+	    style: {
+	      'background-color': _vm.bgcolor,
+	      'height': _vm.height
+	    }
+	  }, [_c('div', {
+	    staticStyle: {
+	      flexDirection: "row"
+	    },
+	    style: {
+	      'top': _vm.titletop
+	    }
+	  }, [(_vm.isloading) ? _c('div', {
+	    staticStyle: {
+	      height: "40",
+	      width: "40",
+	      marginRight: "10"
+	    }
+	  }) : _vm._e(), _c('text', {
+	    staticStyle: {
+	      flex: "1",
+	      color: "#ffffff",
+	      textAlign: "center",
+	      fontSize: "38"
+	    },
+	    on: {
+	      "click": _vm.titleClick
+	    }
+	  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
+	    staticStyle: {
+	      height: "40",
+	      width: "40",
+	      marginLeft: "10",
+	      marginTop: "5"
+	    },
+	    attrs: {
+	      "color": "#ffffff",
+	      "loadingStyle": "small"
+	    }
+	  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
+	    staticStyle: {
+	      width: "200",
+	      top: "40",
+	      position: "absolute",
+	      left: "0"
+	    },
+	    style: {
+	      'height': _vm.height,
+	      'top': _vm.top
+	    },
+	    on: {
+	      "click": _vm.backTo
+	    }
+	  }, [_c('image', {
+	    staticStyle: {
+	      width: "80",
+	      height: "80"
+	    },
+	    attrs: {
+	      "src": "root:img/back.png"
+	    }
+	  })]) : _vm._e(), _c('div', {
+	    staticStyle: {
+	      width: "200",
+	      position: "absolute",
+	      right: "0",
+	      top: "0",
+	      alignItems: "center",
+	      justifyContent: "center"
+	    },
+	    style: {
+	      'height': _vm.height
+	    },
+	    on: {
+	      "click": _vm.rightclick
+	    }
+	  }, [_vm._t("right")], 2), _c('div', {
+	    staticStyle: {
+	      height: "1",
+	      backgroundColor: "#111111",
+	      position: "absolute",
+	      bottom: "0",
+	      left: "0",
+	      right: "0"
+	    }
+	  })])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 237:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "text": {
+	    "fontSize": 50
+	  },
+	  "btn": {
+	    "backgroundColor": "#0085ee",
+	    "height": 100,
+	    "marginTop": 50,
+	    "marginLeft": 50,
+	    "marginRight": 50,
+	    "borderRadius": 10,
+	    "alignItems": "center",
+	    "justifyContent": "center",
+	    "backgroundColor:active": "#006ce7"
+	  }
+	}
+
+/***/ }),
+
+/***/ 238:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	var head = __webpack_require__(117);
+	exports.default = {
+	    components: { head: head },
+	    data: function data() {
+	        return {
+	            text: '',
+	            param: '',
+	            data: {}
+	        };
+	    },
+
+	    methods: {
+	        save: function save() {
+	            var pref = weex.requireModule("static");
+	            //              pref.setString('key',this.text);
+	            pref.setString('key', 11111);
+	            var modal = weex.requireModule("modal");
+	            modal.toast({ message: '存储成功' });
+	        },
+	        get: function get() {
+	            var pref = weex.requireModule("static");
+	            var s = pref.getString('key');
+	            var modal = weex.requireModule("modal");
+	            modal.toast({ message: '存储成功的值:' + s });
+	        },
+	        saveObj: function saveObj() {
+	            var pref = weex.requireModule("static");
+	            var obj = {};
+	            obj.a = 1;
+	            obj.b = 2;
+	            pref.set('objkey', obj);
+	            var modal = weex.requireModule("modal");
+	            modal.toast({ message: '存储成功' });
+	        },
+	        gonext: function gonext() {
+	            var nav = weex.requireModule("navigator");
+	            nav.push('static1.js');
+	        },
+	        getObj: function getObj() {
+	            var pref = weex.requireModule("static");
+	            var p = pref.get('objkey');
+	            this.data = p;
+	            //              var modal=weex.requireModule("modal")
+	            //              modal.toast({message:p});
+	        }
+	    },
+
+	    created: function created() {
+
+	        var self = this;
+	        var globalEvent = weex.requireModule('globalEvent');
+	        globalEvent.addEventListener("onPageInit", function (e) {});
+	    }
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+
+/***/ 239:
+/***/ (function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', [_c('head', {
+	    appendAsTree: true,
+	    attrs: {
+	      "title": "内存存储",
+	      "append": "tree"
+	    }
+	  }), _vm._m(0), _c('input', {
+	    staticStyle: {
+	      width: "750",
+	      paddingLeft: "10",
+	      height: "100",
+	      color: "#000000"
+	    },
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入要存储的值",
+	      "value": (_vm.text)
+	    },
+	    on: {
+	      "input": function($event) {
+	        _vm.text = $event.target.attr.value
+	      }
+	    }
+	  }), _c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v(_vm._s(_vm.data))]), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.save
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v("存储字符串")])]), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.get
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v("获取字符串")])]), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.saveObj
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v("存储对象{a:1}")])]), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.getObj
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v("获取对象")])]), _c('div', {
+	    staticClass: ["btn"],
+	    on: {
+	      "click": _vm.gonext
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#ffffff"
+	    }
+	  }, [_vm._v("跳转到下一个界面")])])], 1)
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticStyle: {
+	      width: "160",
+	      height: "160",
+	      borderRadius: "80",
+	      marginLeft: "20"
+	    }
+	  }, [_c('image', {
+	    staticStyle: {
+	      borderRadius: "80",
+	      position: "absolute",
+	      left: "0",
+	      right: "0",
+	      bottom: "0",
+	      top: "0"
+	    },
+	    attrs: {
+	      "src": "root:img/cat.png"
+	    }
+	  })])
+	}]}
+	module.exports.render._withStripped = true
+
+/***/ })
+
+/******/ });

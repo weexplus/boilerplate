@@ -1,2 +1,995 @@
 // { "framework": "Vue" }
-!function(t){function e(o){if(i[o])return i[o].exports;var n=i[o]={exports:{},id:o,loaded:!1};return t[o].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var i={};return e.m=t,e.c=i,e.p="",e(0)}({0:function(t,e,i){var o,n,s=[];s.push(i(139)),o=i(140);var r=i(146);n=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(n=o=o.default),"function"==typeof n&&(n=n.options),n.render=r.render,n.staticRenderFns=r.staticRenderFns,n._scopeId="data-v-3e5dd72a",n.style=n.style||{},s.forEach(function(t){for(var e in t)n.style[e]=t[e]}),"function"==typeof __register_static_styles__&&__register_static_styles__(n._scopeId,s),t.exports=o,t.exports.el="true",new Vue(t.exports)},139:function(t,e){t.exports={progress:{width:220,height:220,opacity:.8,backgroundColor:"#000000",borderRadius:30,justifyContent:"center",alignItems:"center",position:"absolute",left:265,top:300},exception:{marginTop:50,borderRadius:10,justifyContent:"center",alignItems:"center",width:300,height:80,borderWidth:2,borderColor:"#949494",backgroundColor:"#ffffff","backgroundColor:active":"#dddddd"},emptytxt:{marginTop:100,color:"#999999"},empty:{height:500,alignItems:"center"},loading:{height:90,justifyContent:"center",alignItems:"center",flexDirection:"row",borderRadius:5,borderWidth:1,borderColor:"#e6e6e6",backgroundColor:"#fdfdfd",margin:15,marginLeft:30,marginRight:30},c:{flex:1},page:{backgroundColor:"#ffffff",width:750,flex:1}}},140:function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var o=i(141),n=i(145);e.default={components:{pull:o},props:{columnCount:{default:1},key:{default:"key1"},columnGap:{default:20},columnWidth:{default:"auto"},scrollable:{default:!0},showScrollbar:{default:!0},showheader:{default:!1},usePullRefresh:{default:!0},items:{default:[]},isEmpty:{default:!1},background:{default:"#ffffff"},isException:{default:!1},pageSize:{default:15},isloading:{default:!1},loadOnInit:{default:!0},hasmore:{default:!0},emptyTxt:{default:"您的订单为空~"},img_empty_src:{default:"root:img/ico_empty.png"},img_exception_src:{default:"root:img/ico_exception.png"},showweg:{default:!1},ispull:{default:!1}},data:function(){return{pullkey:this.key+"pull",waterkey:this.key+"water",_columnCount:this.getCount()}},mounted:function(){if(this.loadOnInit){var t=this;t.$emit("load")}},methods:{loadmore:function(t){this.hasmore&&this.$emit("load")},getCount:function(){return this.isEmpty||this.isException?1:this.columnCount},clear:function(){this.hasmore=!0,this.items.length=0},showEmpty:function(){this._columnCount=this.getCount(),this.isEmpty=!0,this.isException=!1},showException:function(){this._columnCount=this.getCount(),this.isEmpty=!1,this.isException=!0},load:function(t,e,i,o){this.loadFull(t,e,i,o,function(){},function(){},function(){},function(){})},loadFull:function(t,e,i,o,s,r,a,l){if(!this.isloading){this.isException=!1,this.isEmpty=!1,this.isloading=!0;var c=this,f=weex.requireModule("modal");n.postFull(t,e,{},function(){s()},function(t){t.list.length<15&&(c.hasmore=!1),t.list.length>0&&(i=i.concat(t.list),c.items=i),0==i.length&&c.showEmpty(),o(i),c._columnCount=c.getCount()},function(t){r(),f.toast({message:t.res.error})},function(){a(),0==i.length?c.showException():f.toast({message:"网络异常"})},function(t){c.isloading=!1,c.$refs.refresh.end(),l()})}},hideRefresh:function(){var t=this.$refs.refresh;t.end(),this.ispull=!1},refresh:function(){this.isEmpty=!1,this.isException=!1,this.isloading=!1,this.ispull=!0,this.$emit("refresh")},reload:function(){this.isEmpty=!1,this.isException=!1,this.isloading=!1,this.ispull=!1,this.$emit("refresh")}}},t.exports=e.default},141:function(t,e,i){var o,n,s=[];s.push(i(142)),o=i(143);var r=i(144);n=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(n=o=o.default),"function"==typeof n&&(n=n.options),n.render=r.render,n.staticRenderFns=r.staticRenderFns,n._scopeId="data-v-0219a31d",n.style=n.style||{},s.forEach(function(t){for(var e in t)n.style[e]=t[e]}),"function"==typeof __register_static_styles__&&__register_static_styles__(n._scopeId,s),t.exports=o},142:function(t,e){t.exports={limg:{width:32,height:46},refresh:{height:128,width:750,flexDirection:"row",alignItems:"center",justifyContent:"center"},refreshText:{color:"#888888",fontSize:30},indicator:{color:"#888888",height:40,width:40,marginRight:10},panel:{width:600,height:250,marginLeft:75,marginTop:35,marginBottom:35,flexDirection:"column",justifyContent:"center",borderWidth:2,borderStyle:"solid",borderColor:"#DDDDDD",backgroundColor:"#F5F5F5"},text:{fontSize:50,textAlign:"center",color:"#41B883"}}},143:function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={data:function(){return{rtext:"下拉以加载",updatetime:"没有更新",offset:0,deg:20,refreshing:!1,pulldistance:135,hasrotate:!1,key:"ky"+Math.random()}},methods:{animateArrow:function(t){var e=weex.requireModule("animation"),i=this.$refs.arrow;e.transition(i,{styles:{transform:"rotate("+t+"deg)"},duration:150,timingFunction:"ease",delay:0},function(){})},onrefresh:function(t){this.offset>=this.pulldistance&&(this.refreshing=!0,this.rtext="加载中",this.$emit("onRefresh"))},end:function(){this.refreshing=!1,this.updatetime=this.getNowFormatDate()},onpullingdown:function(t){var e=t.pullingDistance;if(e<0&&(e*=-1),this.offset=e,0==this.refreshing)if(e>this.pulldistance)this.rtext="松开刷新",this.deg=180,this.hasrotate=!1,this.animateArrow(180);else{var i=e/this.pulldistance;this.deg=180*i,this.animateArrow(0),this.rtext="下拉以加载"}},getNowFormatDate:function(){var t=new Date,e="-",i=":",o=t.getMonth()+1,n=t.getDate(),s=t.getMinutes(),r=t.getSeconds();o>=1&&o<=9&&(o="0"+o),n>=0&&n<=9&&(n="0"+n),s>=0&&s<=9&&(s="0"+s),r>=0&&r<=9&&(r="0"+r);var a=t.getFullYear()+e+o+e+n+" "+t.getHours()+i+s+i+r;return a}},created:function(){}},t.exports=e.default},144:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("refresh",{key:t.key,staticClass:["refresh"],attrs:{id:"rex",display:t.refreshing?"show":"hide"},on:{refresh:t.onrefresh,pullingdown:t.onpullingdown}},[i("div",{staticStyle:{flexDirection:"row"}},[t.refreshing?i("floading",{staticClass:["indicator"],attrs:{color:"#555555"}}):t._e(),t.refreshing?t._e():i("image",{ref:"arrow",staticClass:["limg"],attrs:{src:"root:img/pull_arrow.png"}}),i("div",{staticStyle:{alignItems:"center"}},[i("text",{staticClass:["refreshText"]},[t._v(t._s(t.rtext))]),i("text",{staticStyle:{fontSize:"25",color:"#888888"}},[t._v("上次更新:"+t._s(t.updatetime))])])],1)])},staticRenderFns:[]}},145:function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i="http://59.110.169.246/movie/";e.default={postShort:function(t,e,i,o,n,s){var r=weex.requireModule("modal");this.postFull(t,e,i,o,n,function(t){r.toast({message:t.msg})},function(){r.toast({message:"网络异常！"})},function(){s()})},postFull:function(t,e,o,n,s,r,a,l){var c=weex.requireModule("net"),f=(weex.requireModule("modal"),i+t),u=weex.requireModule("static"),d=u.getString("token");void 0!=d&&""!=d&&(o.token=d),c.post(f,e,o,function(){n()},function(t){if(0==t.res.err)s(t.res);else{if(void 0!=d&&""!=d)return void u.remove("token");1e3==t.res.err||r(t.res)}},function(t){l()},function(t){a()})},post:function(t,e,i){var o=weex.requireModule("progress");this.postShort(t,e,{},function(){o.show()},i,function(){o.dismiss()})},postSilent:function(t,e,i){this.postFull(t,e,{},function(){},i,function(t){},function(){},function(){})}},t.exports=e.default},146:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("div",{staticClass:["c"]},[i("waterfall",{key:t.waterkey,staticClass:["page"],style:{"background-color":t.background},attrs:{columnCount:t.getCount(),columnGap:t.columnGap,showScrollbar:t.showScrollbar,scrollable:t.scrollable,loadmoreoffset:"141"},on:{loadmore:t.loadmore}},[t.usePullRefresh?i("pull",{ref:"refresh",on:{onRefresh:t.refresh}}):t._e(),i("header",[i("div",[t._t("head")],2)]),t._t("cell"),i("cell",{appendAsTree:!0,attrs:{append:"tree"}},[i("div",[t._t("foot")],2)]),t.isEmpty?i("cell",{appendAsTree:!0,attrs:{append:"tree"}},[i("div",{staticClass:["empty"]},[i("image",{staticStyle:{width:"252",height:"201",marginTop:"100"},attrs:{src:t.img_empty_src}}),i("text",{staticClass:["emptytxt"],staticStyle:{marginTop:"20"}},[t._v(t._s(t.emptyTxt))])])]):t._e(),t.isException?i("cell",{appendAsTree:!0,attrs:{append:"tree"}},[i("div",{staticClass:["empty"]},[i("image",{staticStyle:{width:"252",height:"201",marginTop:"100"},attrs:{src:t.img_exception_src}}),i("text",{staticStyle:{color:"#000000",marginTop:"20"}},[t._v("网络请求失败")]),i("div",{staticClass:["exception"],on:{click:t.reload}},[i("text",{staticStyle:{color:"#000000",fontSize:"28"}},[t._v("重新加载")])])])]):t._e(),!t.ispull&&t.isloading&&t.items.length>0?i("cell",{appendAsTree:!0,attrs:{append:"tree"}},[i("div",{staticClass:["loading"]},[i("floading",{staticStyle:{height:"40",width:"40"},attrs:{color:"#999999",loadingStyle:"small"}}),i("text",{staticStyle:{marginLeft:"10",color:"#999999",fontSize:"28"}},[t._v("正在载入")])],1)]):t._e()],2),!t.ispull&&t.isloading&&0==t.items.length?i("div",{staticClass:["progress"]},[i("floading",{staticStyle:{height:"40",width:"40",marginTop:"20"},attrs:{color:"#ffffff",loadingStyle:"big"}}),i("text",{staticStyle:{marginLeft:"0",color:"#ffffff",fontSize:"30",marginTop:"30",fontWeight:"bold"}},[t._v("加载中...")])],1):t._e()],1)},staticRenderFns:[]}}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = []
+
+	/* styles */
+	__vue_styles__.push(__webpack_require__(139)
+	)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(140)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(146)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/flist.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-3e5dd72a"
+	__vue_options__.style = __vue_options__.style || {}
+	__vue_styles__.forEach(function (module) {
+	  for (var name in module) {
+	    __vue_options__.style[name] = module[name]
+	  }
+	})
+	if (typeof __register_static_styles__ === "function") {
+	  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+	}
+
+	module.exports = __vue_exports__
+	module.exports.el = 'true'
+	new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 139:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "progress": {
+	    "width": 220,
+	    "height": 220,
+	    "opacity": 0.8,
+	    "backgroundColor": "#000000",
+	    "borderRadius": 30,
+	    "justifyContent": "center",
+	    "alignItems": "center",
+	    "position": "absolute",
+	    "left": 265,
+	    "top": 300
+	  },
+	  "exception": {
+	    "marginTop": 50,
+	    "borderRadius": 10,
+	    "justifyContent": "center",
+	    "alignItems": "center",
+	    "width": 300,
+	    "height": 80,
+	    "borderWidth": 2,
+	    "borderColor": "#949494",
+	    "backgroundColor": "#ffffff",
+	    "backgroundColor:active": "#dddddd"
+	  },
+	  "emptytxt": {
+	    "marginTop": 100,
+	    "color": "#999999"
+	  },
+	  "empty": {
+	    "height": 500,
+	    "alignItems": "center"
+	  },
+	  "loading": {
+	    "height": 90,
+	    "justifyContent": "center",
+	    "alignItems": "center",
+	    "flexDirection": "row",
+	    "borderRadius": 5,
+	    "borderWidth": 1,
+	    "borderColor": "#e6e6e6",
+	    "backgroundColor": "#fdfdfd",
+	    "margin": 15,
+	    "marginLeft": 30,
+	    "marginRight": 30
+	  },
+	  "c": {
+	    "flex": 1
+	  },
+	  "page": {
+	    "backgroundColor": "#ffffff",
+	    "width": 750,
+	    "flex": 1
+	  }
+	}
+
+/***/ }),
+
+/***/ 140:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	var pull = __webpack_require__(141);
+	var net = __webpack_require__(145);
+
+	exports.default = {
+	    components: { pull: pull },
+	    props: {
+	        columnCount: {
+	            default: 1
+	        },
+	        key: {
+	            default: 'key1'
+	        },
+	        columnGap: {
+	            default: 20
+	        },
+	        columnWidth: {
+	            default: 'auto'
+	        },
+	        scrollable: {
+	            default: true
+	        },
+	        showScrollbar: {
+	            default: true
+	        },
+	        showheader: {
+	            default: false
+	        },
+	        usePullRefresh: {
+	            default: true
+	        },
+	        items: {
+	            default: []
+	        },
+	        isEmpty: {
+	            default: false
+	        },
+	        background: {
+	            default: '#ffffff'
+	        },
+	        isException: {
+	            default: false
+	        },
+	        pageSize: {
+	            default: 15
+	        },
+	        isloading: {
+	            default: false
+	        },
+	        loadOnInit: {
+	            default: true
+	        },
+	        hasmore: {
+	            default: true
+	        },
+	        emptyTxt: {
+	            default: '您的订单为空~'
+	        },
+	        img_empty_src: {
+	            default: 'root:img/ico_empty.png'
+	        },
+
+	        img_exception_src: {
+	            default: 'root:img/ico_exception.png'
+	        },
+	        showweg: {
+	            default: false
+	        },
+	        ispull: {
+	            default: false
+	        }
+
+	    },
+	    data: function data() {
+
+	        return {
+	            pullkey: this.key + "pull",
+	            waterkey: this.key + "water",
+	            _columnCount: this.getCount()
+
+	        };
+	    },
+	    mounted: function mounted() {
+
+	        if (this.loadOnInit) {
+	            var self = this;
+	            self.$emit('load');
+	        }
+	    },
+
+
+	    methods: {
+
+	        loadmore: function loadmore(e) {
+
+	            if (this.hasmore) this.$emit('load');
+	        },
+	        getCount: function getCount() {
+	            if (this.isEmpty || this.isException) {
+	                return 1;
+	            } else {
+	                return this.columnCount;
+	            }
+	        },
+
+	        clear: function clear() {
+
+	            this.hasmore = true;
+	            this.items.length = 0;
+	        },
+	        showEmpty: function showEmpty() {
+	            this._columnCount = this.getCount();
+	            this.isEmpty = true;
+	            this.isException = false;
+	        },
+	        showException: function showException() {
+	            this._columnCount = this.getCount();
+	            this.isEmpty = false;
+	            this.isException = true;
+	        },
+	        load: function load(url, param, items, callback) {
+	            this.loadFull(url, param, items, callback, function () {}, function () {}, function () {}, function () {});
+	        },
+	        loadFull: function loadFull(url, param, items, callback, start, fail, exp, comp) {
+	            //                var progress=weex.requireModule("progress")
+	            if (this.isloading) return;
+	            this.isException = false;
+	            this.isEmpty = false;
+	            this.isloading = true;
+
+	            var self = this;
+	            //                postFull:  function (weg,param,header,start,success,compelete)
+
+	            var modal = weex.requireModule('modal');
+	            net.postFull(url, param, {}, function () {
+	                //start
+	                start();
+	            }, function (res) {
+	                //success
+	                if (res.list.length < 15) {
+	                    self.hasmore = false;
+	                }
+	                if (res.list.length > 0) {
+	                    items = items.concat(res.list);
+	                    self.items = items;
+	                }
+	                if (items.length == 0) {
+	                    self.showEmpty();
+	                }
+	                callback(items);
+	                self._columnCount = self.getCount();
+	            }, function (e) {
+	                //fail
+	                fail();
+	                modal.toast({ message: e.res.error });
+	            }, function () {
+	                //exception
+	                exp();
+	                if (items.length == 0) {
+	                    self.showException();
+	                } else {
+	                    modal.toast({ message: '网络异常' });
+	                }
+	            }, function (e) {
+	                //compelete
+	                //                    progress.dismiss();
+	                self.isloading = false;
+	                self.$refs.refresh.end();
+	                comp();
+	            });
+	        },
+
+	        hideRefresh: function hideRefresh() {
+	            var p = this.$refs.refresh;
+	            p.end();
+	            this.ispull = false;
+	        },
+	        refresh: function refresh() {
+	            this.isEmpty = false;
+	            this.isException = false;
+	            this.isloading = false;
+	            this.ispull = true;
+	            this.$emit('refresh');
+	        },
+	        reload: function reload() {
+	            this.isEmpty = false;
+	            this.isException = false;
+	            this.isloading = false;
+	            this.ispull = false;
+	            this.$emit('refresh');
+	        }
+
+	    }
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+
+/***/ 141:
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = []
+
+	/* styles */
+	__vue_styles__.push(__webpack_require__(142)
+	)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(143)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(144)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/pullrefresh.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-0219a31d"
+	__vue_options__.style = __vue_options__.style || {}
+	__vue_styles__.forEach(function (module) {
+	  for (var name in module) {
+	    __vue_options__.style[name] = module[name]
+	  }
+	})
+	if (typeof __register_static_styles__ === "function") {
+	  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+	}
+
+	module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 142:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "limg": {
+	    "width": 32,
+	    "height": 46
+	  },
+	  "refresh": {
+	    "height": 128,
+	    "width": 750,
+	    "flexDirection": "row",
+	    "alignItems": "center",
+	    "justifyContent": "center"
+	  },
+	  "refreshText": {
+	    "color": "#888888",
+	    "fontSize": 30
+	  },
+	  "indicator": {
+	    "color": "#888888",
+	    "height": 40,
+	    "width": 40,
+	    "marginRight": 10
+	  },
+	  "panel": {
+	    "width": 600,
+	    "height": 250,
+	    "marginLeft": 75,
+	    "marginTop": 35,
+	    "marginBottom": 35,
+	    "flexDirection": "column",
+	    "justifyContent": "center",
+	    "borderWidth": 2,
+	    "borderStyle": "solid",
+	    "borderColor": "#DDDDDD",
+	    "backgroundColor": "#F5F5F5"
+	  },
+	  "text": {
+	    "fontSize": 50,
+	    "textAlign": "center",
+	    "color": "#41B883"
+	  }
+	}
+
+/***/ }),
+
+/***/ 143:
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+
+	exports.default = {
+	    data: function data() {
+	        return {
+	            rtext: '下拉以加载',
+	            updatetime: '没有更新',
+	            offset: 0,
+	            deg: 20,
+	            refreshing: false,
+	            pulldistance: 135,
+	            hasrotate: false,
+	            key: "ky" + Math.random()
+	        };
+	    },
+
+	    methods: {
+	        animateArrow: function animateArrow(deg) {
+	            var animation = weex.requireModule('animation');
+	            var arrow = this.$refs.arrow;
+	            //                var deg=this.hasrotate?180:0
+
+	            animation.transition(arrow, {
+	                styles: {
+	                    transform: "rotate(" + deg + "deg" + ")"
+	                },
+
+	                duration: 150, //ms
+	                timingFunction: 'ease',
+	                delay: 0 //ms
+	            }, function () {});
+	        },
+	        onrefresh: function onrefresh(event) {
+	            if (this.offset >= this.pulldistance) {
+
+	                this.refreshing = true;
+	                this.rtext = "加载中";
+	                this.$emit('onRefresh');
+	                //                    setTimeout(() => {
+	                //                        this.refreshing = false
+	                //                    }, 2000)
+	            }
+	        },
+	        end: function end() {
+	            this.refreshing = false;
+	            //                this.deg=0;
+	            this.updatetime = this.getNowFormatDate();
+	            //                this.rtext='下拉以加载'
+	        },
+	        onpullingdown: function onpullingdown(event) {
+
+	            var dis = event.pullingDistance;
+	            if (dis < 0) dis *= -1;
+	            this.offset = dis;
+
+	            if (this.refreshing == false) {
+
+	                //                     var t=dis>this.pulldistance
+	                //                    if(t!=this.hasrotate)
+	                //                    {
+	                //                        this.hasrotate=t;
+	                //                        this.animateArrow();
+	                //                    }
+	                if (dis > this.pulldistance) {
+	                    this.rtext = "松开刷新";
+	                    this.deg = 180;
+	                    this.hasrotate = false;
+	                    this.animateArrow(180);
+	                } else {
+	                    var p = dis / this.pulldistance;
+	                    if (p > 1) p == 1;
+	                    this.deg = p * 180;
+	                    this.animateArrow(0);
+	                    this.rtext = '下拉以加载';
+	                }
+	            }
+	        },
+	        getNowFormatDate: function getNowFormatDate() {
+	            var date = new Date();
+	            var seperator1 = "-";
+	            var seperator2 = ":";
+	            var month = date.getMonth() + 1;
+	            var strDate = date.getDate();
+	            var min = date.getMinutes();
+	            var secon = date.getSeconds();
+	            if (month >= 1 && month <= 9) {
+	                month = "0" + month;
+	            }
+	            if (strDate >= 0 && strDate <= 9) {
+	                strDate = "0" + strDate;
+	            }
+	            if (min >= 0 && min <= 9) {
+	                min = "0" + min;
+	            }
+	            if (secon >= 0 && secon <= 9) {
+	                secon = "0" + secon;
+	            }
+
+	            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + " " + date.getHours() + seperator2 + min + seperator2 + secon;
+	            return currentdate;
+	        }
+	    },
+
+	    created: function created() {}
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+
+/***/ 144:
+/***/ (function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('refresh', {
+	    key: _vm.key,
+	    staticClass: ["refresh"],
+	    attrs: {
+	      "id": "rex",
+	      "display": _vm.refreshing ? 'show' : 'hide'
+	    },
+	    on: {
+	      "refresh": _vm.onrefresh,
+	      "pullingdown": _vm.onpullingdown
+	    }
+	  }, [_c('div', {
+	    staticStyle: {
+	      flexDirection: "row"
+	    }
+	  }, [(_vm.refreshing) ? _c('floading', {
+	    staticClass: ["indicator"],
+	    attrs: {
+	      "color": "#555555"
+	    }
+	  }) : _vm._e(), (!_vm.refreshing) ? _c('image', {
+	    ref: "arrow",
+	    staticClass: ["limg"],
+	    attrs: {
+	      "src": "root:img/pull_arrow.png"
+	    }
+	  }) : _vm._e(), _c('div', {
+	    staticStyle: {
+	      alignItems: "center"
+	    }
+	  }, [_c('text', {
+	    staticClass: ["refreshText"]
+	  }, [_vm._v(_vm._s(_vm.rtext))]), _c('text', {
+	    staticStyle: {
+	      fontSize: "25",
+	      color: "#888888"
+	    }
+	  }, [_vm._v("上次更新:" + _vm._s(_vm.updatetime))])])], 1)])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 145:
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var host = 'http://59.110.169.246/movie/';
+	// var host='http://192.168.1.101:8080/'
+
+
+	exports.default = {
+
+	    postShort: function postShort(weg, param, header, start, success, compelete) {
+	        var modal = weex.requireModule("modal");
+	        this.postFull(weg, param, header, start, success, function (res) {
+	            //fail
+	            modal.toast({ message: res.msg });
+	        }, function () {
+	            //exception
+	            modal.toast({ message: '网络异常！' });
+	        }, function () {
+	            //compelete
+
+	            compelete();
+	        });
+	    },
+
+	    postFull: function postFull(weg, param, header, start, success, fail, exception, compelete) {
+	        var net = weex.requireModule("net");
+	        var modal = weex.requireModule("modal");
+	        var self = this;
+	        var url = host + weg;
+	        var st = weex.requireModule('static');
+	        var token = st.getString('token');
+	        if (token != undefined && token != '') {
+	            header.token = token;
+	        }
+	        // param.token='95d594d7b18fd1c7db37e81dd5bae9c9'
+	        net.post(url, param, header, function () {
+	            //start
+	            start();
+	        }, function (e) {
+	            //success
+	            // modal.toast({message:e.res.err})
+	            if (e.res.err == 0) {
+
+	                success(e.res);
+	            } else {
+	                // modal.toast({message:e.res.msg})
+	                if (token != undefined && token != '') {
+	                    st.remove('token');
+	                    return;
+	                }
+	                if (e.res.err == 1000) {
+	                    // var nav=weex.requireModule("navigator")
+	                    // nav.presentFull('root:busi/account/login.js',{},'transparent',true,function(){
+	                    //     self.postFull(weg,param,header,start,success,fail,exception,compelete);
+
+	                    // },true);
+	                } else fail(e.res);
+	            }
+	        }, function (e) {
+	            //compelete
+
+
+	            compelete();
+	        }, function (e) {
+	            // exception
+	            exception();
+	        });
+	    },
+
+	    post: function post(weg, param, success) {
+	        var progress = weex.requireModule("progress");
+	        this.postShort(weg, param, {}, function () {
+	            progress.show();
+	        }, success, function () {
+	            progress.dismiss();
+	        });
+	    },
+
+	    postSilent: function postSilent(weg, param, success) {
+
+	        this.postFull(weg, param, {}, function () {}, success, function (res) {
+	            //fail
+
+	        }, function () {
+	            //exception
+
+	        }, function () {
+	            //compelete
+
+
+	        });
+	    }
+
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+
+/***/ 146:
+/***/ (function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: ["c"]
+	  }, [_c('waterfall', {
+	    key: _vm.waterkey,
+	    staticClass: ["page"],
+	    style: {
+	      'background-color': _vm.background
+	    },
+	    attrs: {
+	      "columnCount": _vm.getCount(),
+	      "columnGap": _vm.columnGap,
+	      "showScrollbar": _vm.showScrollbar,
+	      "scrollable": _vm.scrollable,
+	      "loadmoreoffset": "141"
+	    },
+	    on: {
+	      "loadmore": _vm.loadmore
+	    }
+	  }, [(_vm.usePullRefresh) ? _c('pull', {
+	    ref: "refresh",
+	    on: {
+	      "onRefresh": _vm.refresh
+	    }
+	  }) : _vm._e(), _c('header', [_c('div', [_vm._t("head")], 2)]), _vm._t("cell"), _c('cell', {
+	    appendAsTree: true,
+	    attrs: {
+	      "append": "tree"
+	    }
+	  }, [_c('div', [_vm._t("foot")], 2)]), (_vm.isEmpty) ? _c('cell', {
+	    appendAsTree: true,
+	    attrs: {
+	      "append": "tree"
+	    }
+	  }, [_c('div', {
+	    staticClass: ["empty"]
+	  }, [_c('image', {
+	    staticStyle: {
+	      width: "252",
+	      height: "201",
+	      marginTop: "100"
+	    },
+	    attrs: {
+	      "src": _vm.img_empty_src
+	    }
+	  }), _c('text', {
+	    staticClass: ["emptytxt"],
+	    staticStyle: {
+	      marginTop: "20"
+	    }
+	  }, [_vm._v(_vm._s(_vm.emptyTxt))])])]) : _vm._e(), (_vm.isException) ? _c('cell', {
+	    appendAsTree: true,
+	    attrs: {
+	      "append": "tree"
+	    }
+	  }, [_c('div', {
+	    staticClass: ["empty"]
+	  }, [_c('image', {
+	    staticStyle: {
+	      width: "252",
+	      height: "201",
+	      marginTop: "100"
+	    },
+	    attrs: {
+	      "src": _vm.img_exception_src
+	    }
+	  }), _c('text', {
+	    staticStyle: {
+	      color: "#000000",
+	      marginTop: "20"
+	    }
+	  }, [_vm._v("网络请求失败")]), _c('div', {
+	    staticClass: ["exception"],
+	    on: {
+	      "click": _vm.reload
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#000000",
+	      fontSize: "28"
+	    }
+	  }, [_vm._v("重新加载")])])])]) : _vm._e(), (!_vm.ispull && _vm.isloading && _vm.items.length > 0) ? _c('cell', {
+	    appendAsTree: true,
+	    attrs: {
+	      "append": "tree"
+	    }
+	  }, [_c('div', {
+	    staticClass: ["loading"]
+	  }, [_c('floading', {
+	    staticStyle: {
+	      height: "40",
+	      width: "40"
+	    },
+	    attrs: {
+	      "color": "#999999",
+	      "loadingStyle": "small"
+	    }
+	  }), _c('text', {
+	    staticStyle: {
+	      marginLeft: "10",
+	      color: "#999999",
+	      fontSize: "28"
+	    }
+	  }, [_vm._v("正在载入")])], 1)]) : _vm._e()], 2), (!_vm.ispull && _vm.isloading && _vm.items.length == 0) ? _c('div', {
+	    staticClass: ["progress"]
+	  }, [_c('floading', {
+	    staticStyle: {
+	      height: "40",
+	      width: "40",
+	      marginTop: "20"
+	    },
+	    attrs: {
+	      "color": "#ffffff",
+	      "loadingStyle": "big"
+	    }
+	  }), _c('text', {
+	    staticStyle: {
+	      marginLeft: "0",
+	      color: "#ffffff",
+	      fontSize: "30",
+	      marginTop: "30",
+	      fontWeight: "bold"
+	    }
+	  }, [_vm._v("加载中...")])], 1) : _vm._e()], 1)
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+
+/***/ })
+
+/******/ });
