@@ -76,6 +76,8 @@
     {
         url=[NSURL URLWithString:self.url];
        
+       
+        
     }
     else
     {

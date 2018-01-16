@@ -20,6 +20,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Fullscreen;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -81,7 +82,12 @@ public class SplashActivity extends WeexActivity {
         l.add(Config.entry(this));
         if(!Config.debug(this))
         {
-            weexFactory.preRender(l,new WeexFactory.OnMultiRenderFinishListener(){
+            List temp=new ArrayList();
+            for(Object q:l)
+            {
+                temp.add((q+"").replace("root:","app/"));
+            }
+            weexFactory.preRender(temp,new WeexFactory.OnMultiRenderFinishListener(){
 
                 @Override
                 public void onRenderFinish() {

@@ -1,16 +1,19 @@
 <template>
-    <scroller style="flex: 1;background-color: yellow">
-        <head title="demo"  @titleClick="update"></head>
-      <div @click="update" style="width: 750px;height: 100px; background-color: red" >
+    <!--<scroller style="flex: 1;background-color: yellow">-->
+        <!--<head title="demo"  @titleClick="update"></head>-->
+        <!--<text >{{target}}</text>-->
+      <!--<div @click="update" style="width: 750px;height: 100px; background-color: red" >-->
 
-      </div>
-        <image style="width: 200;height: 200" :src="logoUrl"></image>
-        <image style="width: 200;height: 200" src="root:img/cat.png"></image>
-        <text>{{target}}</text>
+      <!--</div>-->
+        <!--<image style="width: 200;height: 200" :src="logoUrl"></image>-->
+        <!--<image style="width: 200;height: 200" src="root:img/cat.png"></image>-->
+        <!--<text>{{target}}</text>-->
+    <!--</scroller>-->
+   <div style="background-color: yellow">
+       <head title="demo"  @titleClick="update"></head>
 
 
-    </scroller>
-
+   </div>
 </template>
 <style>
 
@@ -40,7 +43,7 @@
         components: {head},
         data: {
             logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
-            target: 'World',
+            target: weex.config.env.deviceWidth,
             index: 0
 
         },
@@ -81,7 +84,7 @@
 
         created: function () {
 
-
+            this.target=weex.config.env.deviceWidth+'*'+weex.config.env.deviceHeight;
             var globalEvent = weex.requireModule('globalEvent');
             var self = this;
             globalEvent.addEventListener("onPageInit", function (e) {

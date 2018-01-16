@@ -83,6 +83,19 @@
         android:textColor="#ffffff"
 
         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="清空图片缓存(0M)"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn"
+        android:id="@+id/clearcache"
+        android:textColor="#ffffff"
+
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="40dp"

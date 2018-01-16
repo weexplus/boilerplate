@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *url;
 @property (weak, nonatomic) IBOutlet UILabel *debugip;
 @property (weak, nonatomic) IBOutlet UIButton *debugbtn;
-
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *cachebtn;
 @property (strong, nonatomic) WXNormalViewContrller *vc;
 
 @end

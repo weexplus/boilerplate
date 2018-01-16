@@ -8,9 +8,9 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE"  )" && pwd  )"
 cd $DIR
 pwd
-cp -rf dist/    platforms/android/vshop/app/src/main/assets/app/;
-cp -rf dist/    platforms/ios/vshop/app/;
+cp -rf dist/    platforms/android/weexplus/app/src/main/assets/app/;
+cp -rf dist/    platforms/ios/weexplus/app/;
 cp -rf src/img/    dist/img/;
-cp -rf src/config.json    platforms/android/vshop/app/src/main/assets/app/config.json;
-cp -rf src/config.json    platforms/ios/vshop/app/config.json;
+cp -rf src/config.json    platforms/android/weexplus/app/src/main/assets/app/config.json;
+cp -rf src/config.json    platforms/ios/weexplus/app/config.json;
 pwd

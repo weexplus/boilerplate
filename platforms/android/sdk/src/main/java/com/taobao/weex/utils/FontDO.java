@@ -26,12 +26,10 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.adapter.URIAdapter;
 import com.taobao.weex.common.Constants;
 
-import java.net.URI;
-
 public class FontDO {
   private final String mFontFamilyName;
-  private String mUrl = "";
-  private int mType = TYPE_NETWORK;
+  public String mUrl = "";
+  public int mType = TYPE_NETWORK;
   private Typeface mTypeface;
   private int mState = STATE_INVALID;
 

@@ -142,6 +142,9 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
                 }
               }
             });
+
+
+
   }
 
   public  void loadLocal(String url,final ImageView view,

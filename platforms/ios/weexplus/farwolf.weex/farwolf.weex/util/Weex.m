@@ -33,6 +33,7 @@
 #import "WXCenterPop.h"
 #import "WXSlidPopModule.h"
 #import "WXPageModule.h"
+#import "WXFontModule.h"
 
 @implementation Weex
 
@@ -59,6 +60,8 @@
     [WXSDKEngine registerModule:@"centerpop" withClass:[WXCenterPop class]];
     [WXSDKEngine registerModule:@"slidpop" withClass:[WXSlidPopModule class]];
     [WXSDKEngine registerModule:@"pagemodule" withClass:[WXPageModule class]];
+    [WXSDKEngine registerModule:@"font" withClass:[WXFontModule class]];
+    
     
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
