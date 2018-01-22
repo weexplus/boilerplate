@@ -600,6 +600,11 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
 
 	var head = __webpack_require__(186);
 	var net = __webpack_require__(145);
@@ -608,7 +613,7 @@
 	    components: { head: head },
 	    data: {
 	        logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
-	        target: 'World',
+	        target: weex.config.env.deviceWidth,
 	        index: 0
 
 	    },
@@ -639,6 +644,7 @@
 
 	    created: function created() {
 
+	        this.target = weex.config.env.deviceWidth + '*' + weex.config.env.deviceHeight;
 	        var globalEvent = weex.requireModule('globalEvent');
 	        var self = this;
 	        globalEvent.addEventListener("onPageInit", function (e) {
@@ -661,9 +667,8 @@
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('scroller', {
+	  return _c('div', {
 	    staticStyle: {
-	      flex: "1",
 	      backgroundColor: "yellow"
 	    }
 	  }, [_c('head', {
@@ -673,32 +678,7 @@
 	    on: {
 	      "titleClick": _vm.update
 	    }
-	  }), _c('div', {
-	    staticStyle: {
-	      width: "750px",
-	      height: "100px",
-	      backgroundColor: "red"
-	    },
-	    on: {
-	      "click": _vm.update
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200"
-	    },
-	    attrs: {
-	      "src": _vm.logoUrl
-	    }
-	  }), _c('image', {
-	    staticStyle: {
-	      width: "200",
-	      height: "200"
-	    },
-	    attrs: {
-	      "src": "root:img/cat.png"
-	    }
-	  }), _c('text', [_vm._v(_vm._s(_vm.target))])], 1)
+	  })], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

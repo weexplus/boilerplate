@@ -355,7 +355,7 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     [_currentService stop];
     _currentService.delegate = nil;
     _currentService = nil;
-    
+    _bridgeThread = nil;
     [_socket close];
     _socket.delegate = nil;
     _socket = nil;
@@ -759,7 +759,15 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
         WXDebugger *debugger = [WXDebugger defaultInstance];
         [debugger enableNetworkTrafficDebugging];
         [debugger forwardAllNetworkTraffic];
+        
+       
     }
+//    else
+//    {
+//         WXDebugger *debugger = [WXDebugger defaultInstance];
+//         [debugger disEnableNetworkTrafficDebugging];
+//    }
+    
     
     if (previouslyEnabled != enabled) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kWXNetworkObserverEnabledStateChangedNotification object:self];

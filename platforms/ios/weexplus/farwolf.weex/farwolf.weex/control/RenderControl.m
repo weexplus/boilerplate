@@ -39,6 +39,7 @@
         make.bottom.equalTo(self.view);
     }];
     EntryControl *vc=[[EntryControl alloc]initWithImage:_url img:_img];
+     
     UINavigationController *nvc=[[UINavigationController alloc]initWithRootViewController:vc];
     [self.navigationController presentViewController:nvc animated:false completion:^{
         

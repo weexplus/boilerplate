@@ -42,6 +42,8 @@ public class WXPageView extends ViewBase   {
     Page page;
 
 
+    RenerListerner renderListener;
+
 
     @Bean
     public ScreenTool tool;
@@ -68,6 +70,11 @@ public class WXPageView extends ViewBase   {
     }
 
 
+
+    public void setRenderListener(RenerListerner renderListener) {
+        this.renderListener = renderListener;
+    }
+
     public void fireResume()
     {
 
@@ -87,11 +94,16 @@ public class WXPageView extends ViewBase   {
         {
             instance=page.instance;
             root.removeAllViews();
-            ViewGroup.LayoutParams layoutParams = root.getLayoutParams();
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
             page.v.setLayoutParams(layoutParams);
             root.addView(page.v);
             instance.setSize(layoutParams.width,layoutParams.height);
             instance.fireGlobalEventCallback("onPageInit",null);
+            if(renderListener!=null)
+            {
+                renderListener.onRenderSuccess();
+            }
         }
         else
         {
@@ -102,6 +114,7 @@ public class WXPageView extends ViewBase   {
     public String getSrc() {
         return src;
     }
+
 
 
     private WXSDKInstance createInstance() {
@@ -123,7 +136,10 @@ public class WXPageView extends ViewBase   {
 
             @Override
             public void onRenderSuccess(WXSDKInstance instance, int width, int height) {
-
+                if(renderListener!=null)
+                {
+                    renderListener.onRenderSuccess();
+                }
             }
 
             @Override
@@ -166,96 +182,11 @@ public class WXPageView extends ViewBase   {
 
 
     }
-//    @Override
-//    public void setVisibility(String visibility) {
-//        super.setVisibility(visibility);
-//        boolean visible = TextUtils.equals(visibility, Constants.Value.VISIBLE);
-//        if (!TextUtils.isEmpty(src) && visible) {
-//            if (instance == null) {
-//                loadContent();
-//            } else {
-//                instance.onViewAppear();
-//            }
-//        }
-//
-//        if (!visible) {
-//            if (instance != null) {
-//                instance.onViewDisappear();
-//            }
-//        }
-//        mIsVisible = visible;
-//    }
 
-//    @Override
-//    public void destroy() {
-//        super.destroy();
-//        if (instance != null) {
-//            instance.destroy();
-//            instance = null;
-//        }
-//        src = null;
-//        if (getInstance() != null) {
-//            getInstance().removeOnInstanceVisibleListener(this);
-//        }
-//    }
 
-//    @Override
-//    public void onAppear() {
-//        //appear event from root instance will not trigger visibility change
-//        if(mIsVisible && instance != null){
-//            WXComponent comp = instance.getRootComponent();
-//            if(comp != null)
-//                comp.fireEvent(Constants.Event.VIEWAPPEAR);
-//        }
-//    }
-//
-//    @Override
-//    public void onDisappear() {
-//        //appear event from root instance will not trigger visibility change
-//        if(mIsVisible && instance != null){
-//            WXComponent comp = instance.getRootComponent();
-//            if(comp != null)
-//                comp.fireEvent(Constants.Event.VIEWDISAPPEAR);
-//        }
-//    }
-//
-//    @Override
-//    public void onActivityStart() {
-//        super.onActivityStart();
-//        if (instance != null) {
-//            instance.onActivityStart();
-//        }
-//    }
-//
-//    @Override
-//    public void onActivityResume() {
-//        super.onActivityResume();
-//        if (instance != null) {
-//            instance.onActivityResume();
-//        }
-//    }
-//
-//    @Override
-//    public void onActivityPause() {
-//        super.onActivityPause();
-//        if (instance != null) {
-//            instance.onActivityPause();
-//        }
-//    }
+    public  static interface  RenerListerner
+    {
+        void onRenderSuccess();
+    }
 
-//    @Override
-//    public void onActivityStop() {
-//        super.onActivityStop();
-//        if (instance != null) {
-//            instance.onActivityStop();
-//        }
-//    }
-//
-//    @Override
-//    public void onActivityDestroy() {
-//        super.onActivityDestroy();
-//        if (instance != null) {
-//            instance.onActivityDestroy();
-//        }
-//    }
 }

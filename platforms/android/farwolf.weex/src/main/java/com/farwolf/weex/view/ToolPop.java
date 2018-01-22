@@ -79,7 +79,7 @@ public class ToolPop extends ViewBase{
         {
             hotreload.setText("开启热更新");
         }
-        debug_reconnetc.setText(WXEnvironment.sRemoteDebugMode?"开启Debug":"关闭Debug");
+        debug_reconnetc.setText(!WXEnvironment.sRemoteDebugMode?"开启Debug":"关闭Debug");
         url.setText(a.url);
 //        ip.setText("debug_ip:"+ Config.debugIp(a));
 
@@ -95,7 +95,7 @@ public class ToolPop extends ViewBase{
             ip.setText("debug_ip:"+ Config.debugIp(a));
         }
 
-        debug_reconnetc.setText("关闭Debug");
+//        debug_reconnetc.setText("关闭Debug");
 
 
     }

@@ -100,10 +100,6 @@ static NSMutableDictionary *pageCache;
 
 + (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame
 {
-    [WeexFactory renderFull:sourceURL compelete:complete splash:nil fail:fail frame:frame];
-}
-+ (void)renderFull:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  splash:(NSString*)splash fail:(void(^)(NSString*))fail frame:(CGRect)frame
-{
 
     if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
         [Weex setBaseUrl:sourceURL.absoluteString];
@@ -111,6 +107,8 @@ static NSMutableDictionary *pageCache;
     p.instance = [[WXSDKInstance alloc] init];
     p.instance.frame =frame;
     p.instance.pageObject = self;
+    
+  
     WXNormalViewContrller *vc=[self getCache:sourceURL.absoluteString];
     if(vc)
     {
@@ -119,6 +117,7 @@ static NSMutableDictionary *pageCache;
     }
     
     NSString *newURL = nil;
+    
     if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
         newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
     } else {
@@ -133,10 +132,10 @@ static NSMutableDictionary *pageCache;
  
         weakP.weexView=view;
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
-        vc.img=splash;
+        
         vc.hidesBottomBarWhenPushed = YES;
         vc.page=p;
-//        vc.navbarVisibility=@"hidden";
+        vc.navbarVisibility=@"hidden";
         vc.sourceURL=sourceURL;
         vc.instance=p.instance;
         p.instance.frame=frame;

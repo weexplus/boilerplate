@@ -31,7 +31,7 @@ WX_EXPORT_METHOD(@selector(hideBottomLine:))
 {
     weexInstance.viewController.navigationController.navigationBar.translucent=YES;
     [weexInstance.viewController.navigationController.navigationBar setHidden:true];
-//    ((WXNormalViewContrller*)weexInstance.viewController).navbarVisibility=@"hidden";
+    ((WXNormalViewContrller*)weexInstance.viewController).navbarVisibility=@"hidden";
      weexInstance.frame = CGRectMake(0.0f, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
      
 }
@@ -39,7 +39,7 @@ WX_EXPORT_METHOD(@selector(hideBottomLine:))
 {
     weexInstance.viewController.navigationController.navigationBar.translucent=NO;
     [weexInstance.viewController.navigationController.navigationBar setHidden:false];
-//      ((WXNormalViewContrller*)weexInstance.viewController).navbarVisibility=@"visibility";
+      ((WXNormalViewContrller*)weexInstance.viewController).navbarVisibility=@"visibility";
      weexInstance.frame = CGRectMake(0.0f, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64);
 }
 -(void)setTitle:(NSString*)s

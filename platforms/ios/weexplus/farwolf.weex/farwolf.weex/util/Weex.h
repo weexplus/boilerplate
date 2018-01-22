@@ -15,9 +15,12 @@
 #import "WXLoadingView.h"
 #import "WXStaticModule.h"
 #import "RefreshManager.h"
+#import "DebugScocket.h"
 static NSString *basedir;
 static NSString *baseurl;
 static RefreshManager *refreshManager;
+static DebugScocket *debugScocket;
+
 @interface Weex : NSObject
 +(void)initWeex:(NSString*)group appName:(NSString*)appName appVersion:(NSString*)appVersion;
 +(void)startDebug:(NSString*)ip port:(NSString*)port;
@@ -33,10 +36,10 @@ static RefreshManager *refreshManager;
 +(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance;
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance;
 +(RefreshManager*)getRefreshManager;
++(DebugScocket*)getDebugScocket;
 
 +(NSString*)getEntry;
 +(NSString*)getDebugIp;
-+(NSURL*)getNSURL:(NSString*)url;
 
 @end
 

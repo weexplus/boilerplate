@@ -2,6 +2,7 @@ package com.farwolf.weex.module;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 
 import com.farwolf.weex.activity.PresentActivity_;
@@ -46,7 +47,7 @@ public class WXNavgationModule extends WXModuleBase {
         {
             Stack<Activity> s= stacks.get(rootid);
             if(s!=null)
-            s.push(a);
+                s.push(a);
         }
 
     }
@@ -57,7 +58,7 @@ public class WXNavgationModule extends WXModuleBase {
         {
             Stack<Activity> s= stacks.get(rootid);
             if(s!=null&&!s.isEmpty())
-               s.pop();
+                s.pop();
         }
 
     }
@@ -110,7 +111,7 @@ public class WXNavgationModule extends WXModuleBase {
     @JSMethod
     public void back()
     {
-       this.backFull(null,true);
+        this.backFull(null,true);
 
     }
 
@@ -132,8 +133,7 @@ public class WXNavgationModule extends WXModuleBase {
     @JSMethod(uiThread = false)
     public HashMap param()
     {
-        WeexActivity a=  (WeexActivity)this.mWXSDKInstance.getContext();
-        return a.param;
+        return this.mWXSDKInstance.param;
     }
 
 
@@ -158,7 +158,7 @@ public class WXNavgationModule extends WXModuleBase {
 
             }
             if(!s.isEmpty())
-            wa= (WeexActivity)s.peek();
+                wa= (WeexActivity)s.peek();
             else
             {
                 break;
@@ -196,7 +196,7 @@ public class WXNavgationModule extends WXModuleBase {
         {
             WeexActivity  wa=  (WeexActivity)a;
             if(wa!=null)
-            in.putExtra("rootid",wa.rootid);
+                in.putExtra("rootid",wa.rootid);
         }
 
         if(url.startsWith("root:"))
@@ -204,7 +204,7 @@ public class WXNavgationModule extends WXModuleBase {
             url=url.replace("root:",Weex.baseurl);
         }
         else
-        url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
+            url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
         in.putExtra("url",url);
         if(callback!=null)
         {
@@ -244,7 +244,7 @@ public class WXNavgationModule extends WXModuleBase {
     @JSMethod
     public void dismiss()
     {
-          this.dismissFull(null,true);
+        this.dismissFull(null,true);
     }
 
 

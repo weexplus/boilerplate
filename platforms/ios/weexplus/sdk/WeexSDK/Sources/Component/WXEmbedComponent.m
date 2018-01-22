@@ -38,7 +38,7 @@
 
 @end
 
-@implementation WXEmbedComponent
+@implementation WXEmbedComponent 
 
 #pragma mark Life Cycle
 
@@ -144,8 +144,7 @@
     }
     
     [self loadUrl:newURL instance:_embedInstance sourceurl:sourceURL];
-    
-    //    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+//    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
     
     __weak typeof(self) weakSelf = self;
     _embedInstance.onCreate = ^(UIView *view) {
@@ -154,7 +153,7 @@
                 [weakSelf.errorView removeFromSuperview];
                 weakSelf.errorView = nil;
             }
-            
+        
             [weakSelf.embedView removeFromSuperview];
             weakSelf.embedView = view;
             [weakSelf.view addSubview:weakSelf.embedView];
@@ -179,12 +178,11 @@
     };
     
     _embedInstance.renderFinish = ^(UIView *view) {
-        weakSelf.renderFinished = YES;
+         weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
-        [self onRenderFinish];
+           [self onRenderFinish];
     };
 }
-
 
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{
     
@@ -216,6 +214,12 @@
             [[WXSDKManager bridgeMgr] fireEvent:self.embedInstance.instanceId ref:WX_SDK_ROOT_REF type:@"viewdisappear" params:nil domChanges:nil];
         }
     }
+}
+
+- (void)_frameDidCalculated:(BOOL)isChanged
+{
+    [super _frameDidCalculated:isChanged];
+    self.embedInstance.frame = self.calculatedFrame;
 }
 
 - (void)onclickErrorView
@@ -252,4 +256,3 @@
 }
 
 @end
-

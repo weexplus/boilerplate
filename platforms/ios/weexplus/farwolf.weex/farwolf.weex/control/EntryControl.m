@@ -26,15 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self regist:@"viewadd" method:@selector(viewadd)];
     [self initView];
     [self gotoMain];
   
-}
--(void)viewadd
-{
-    _firstviewadd=true;
-    
 }
 -(void)initView
 {
@@ -76,37 +70,28 @@
     {
         url=[NSURL URLWithString:self.url];
        
-       
-        
     }
     else
     {
         url= [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
     }
 
-    if([Config isDebug])
-    {
-        [self failGo];
-        return;
-    }
-    
     if([Config preload].count>0)
     {
         [WeexFactory preRenderAll:[Config preload] compelete:^{
             
-            
-            [WeexFactory  renderFull:url compelete:^(WXNormalViewContrller *vc) {
+            [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
+                
                 vc.debug=[Config isDebug];
-//                vc.img=@"splash1";
                 UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
                 [self presentViewController:nav animated:false completion:^{
                     
                 }];
-                return;
-            } splash:@"splash1" fail:^(NSString *msg) {
-                 [self failGo];
-            } frame:[UIApplication sharedApplication].keyWindow.frame];
-           
+                
+            } fail:^(NSString *msg) {
+            
+                  [self failGo];
+            }  frame:[UIApplication sharedApplication].keyWindow.frame ];
             
         } fail:^(NSString *s) {
             
@@ -145,16 +130,9 @@
 
 -(void)failGo
 {
-    NSString *url=[self getSaveValue:@"url"];
-    if(url==nil)
-    {
-        url=[Config entry];
-    }
-//    url=[Config entry];
-    
     WXNormalViewContrller *vc=[WXNormalViewContrller new];
     vc.debug=[Config isDebug];
-    vc.sourceURL=[Weex getNSURL:url];
+    vc.sourceURL=[NSURL URLWithString:[Config entry]];
     UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
     [self presentViewController:nav animated:false completion:^{
         

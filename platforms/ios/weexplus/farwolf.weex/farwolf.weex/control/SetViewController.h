@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WXNormalViewContrller.h"
+#import "DebugScocket.h"
 
 @interface SetViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *url;
 @property (weak, nonatomic) IBOutlet UILabel *debugip;
 @property (weak, nonatomic) IBOutlet UIButton *debugbtn;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *cachebtn;
-@property (strong, nonatomic) WXNormalViewContrller *vc;
 
 @end

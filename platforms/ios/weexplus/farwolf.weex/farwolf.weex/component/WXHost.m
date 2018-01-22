@@ -110,13 +110,6 @@
             cv.instance.frame=r;
             [_host addVc:cv];
             int i=  [items indexOfObject:url];
-            if(i==0)
-            {
-//                cv.viewAdded=^(){
-                [self notify:@"firstviewadd" value:nil];
-//                    [self fireEvent:@"firstviewadd" params:nil];
-//                };
-            }
             NSString *inx=[@"" addInt:i];
             cv.key=inx;
             

@@ -25,9 +25,6 @@
 @property (strong, nonatomic) UIView *toolView;
 @property(strong,nonatomic) UIButton *set;
 @property(strong,nonatomic) UIButton *refresh;
-@property(nonatomic,strong)NSString*img;
-@property(nonatomic,strong)UIImageView *splashimg;
-
 @property(nonatomic)BOOL isInView;
 
 @property(nonatomic)BOOL debug;
@@ -46,8 +43,7 @@
 @property (nonatomic, strong) UIView *fail_layout;
 @property (nonatomic, strong) NSMutableDictionary *param;
 @property (nonatomic, strong) Page *page;
-@property (strong,nonatomic)   typeof(void(^)()) viewAdded;
-//@property (nonatomic) NSString* navbarVisibility;
+@property (nonatomic) NSString* navbarVisibility;
 @property (strong,nonatomic)  WXModuleKeepAliveCallback callback;
 @property (nonatomic, strong) NSMutableArray *textfields;
 - (instancetype)initWithSourceURL:(NSURL *)sourceURL;

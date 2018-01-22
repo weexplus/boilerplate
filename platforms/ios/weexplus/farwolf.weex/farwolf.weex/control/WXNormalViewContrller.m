@@ -18,7 +18,6 @@
 #import "Config.h"
 #import "IQKeyboardManager.h"
 #import "RefreshManager.h"
-#import "SetViewController.h"
 
 @interface WXNormalViewContrller ()
 
@@ -82,12 +81,10 @@
     [super viewDidLoad];
      [self regist:@"refreshpage" method:@selector(scoketrefresh)];
     [self regist:@"qrrefreshpage" method:@selector(onqr:)];
-//    [self initSplashView];
-    [self loadtextfields];
+    
     self.navigationController.navigationBar.translucent=false;
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-  
     if(_debug)
     {
         [self debugInit];
@@ -122,9 +119,9 @@
     //    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDone;
     
     
-//    _textfields=[NSMutableArray new];
-//    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextField class]]];
-//    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
+    _textfields=[NSMutableArray new];
+    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextField class]]];
+    [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
 //    [self openWatch:@"192.168.199.248"];
 
 //    RefreshManager *r=[RefreshManager new];
@@ -149,11 +146,11 @@
     self.instance.renderFinish = ^(UIView *view) {
         
         [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+        
+        
         [self loadCompelete];
     };
     [self.view addSubview:self.weexView];
-    if(self.splashimg!=nil)
-     [self.view bringSubviewToFront:self.splashimg];
     [self.instance fireGlobalEvent:@"onPageInit" params:nil];
     if(_debug)
     {
@@ -162,44 +159,9 @@
         [self.view bringSubviewToFront:self.set];
         [self.view bringSubviewToFront:self.refresh];
     }
-//    [self initSplashView];
     
     [self loadtextfields];
 }
-
-
--(void)initSplashView
-{
-    
-    if(self.img==nil)
-    {
-        return;
-    }
-    
-     _splashimg=[UIImageView new];
-    UIImage *mg=[UIImage imageNamed:self.img];
-    _splashimg.contentMode=UIViewContentModeScaleAspectFill;
-    _splashimg.image=mg;
-    [self.view addSubview:_splashimg];
-    [_splashimg mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.top.equalTo(self.view);
-        make.bottom.equalTo(self.view);
-    }];
-    
-    [self regist:@"firstviewadd" method:@selector(firstviewadd) ];
-    self.img=nil;
-}
-
--(void)firstviewadd
-{
-    [_splashimg removeFromSuperview];
-}
-
-
-
 
 -(void)loadtextfields
 {
@@ -296,8 +258,38 @@ BOOL isshowErr;
 
 -(void)showError:(NSString*)msg
 {
- 
- 
+//    if(isshowErr)
+//    {
+//        return;
+//    }
+//    [self.fail_layout setHidden:false];
+//    isshowErr=true;
+//
+//    ErrorControl *vc=[ErrorControl new];
+//    vc.errmsg=msg;
+//    vc.onClose=^(){
+//        isshowErr=false;
+//        [self.fail_layout setHidden:false];
+//    };
+//
+    
+    
+//    dispatch_sync(dispatch_get_main_queue(), ^{
+//
+//        　 [self presentViewController:vc animated:true completion:^{
+//
+//        }];
+//
+//    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }
@@ -320,7 +312,6 @@ BOOL isshowErr;
     
     [self.navigationController setNavigationBarHidden:true animated:animated];
     [self resetFrame];
-//    [self initSplashView];
     //    self.view.backgroundColor=[@"#ffffff" toColor];
     
 }
@@ -473,25 +464,25 @@ BOOL isshowErr;
 -(void)debugInit
 {
    
-//    NSString *url=  [self getSaveValue:@"url"];
-//    if(url==nil||[@"" isEqualToString:url])
-//    {
-//
-//    }
-//
-//    if(url!=nil&&url!=@"")
-//    {
-//        if([url startWith:@"http"])
-//        {
-//            self.sourceURL=[NSURL URLWithString:url];
-//        }
-//        else
-//        {
-//            if([url endWith:@".js"])
-//                url=[url replace:@".js" withString:@""];
-//            self.sourceURL = [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
-//        }
-//    }
+    NSString *url=  [self getSaveValue:@"url"];
+    if(url==nil||[@"" isEqualToString:url])
+    {
+        
+    }
+    
+    if(url!=nil&&url!=@"")
+    {
+        if([url startWith:@"http"])
+        {
+            self.sourceURL=[NSURL URLWithString:url];
+        }
+        else
+        {
+            if([url endWith:@".js"])
+                url=[url replace:@".js" withString:@""];
+            self.sourceURL = [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
+        }
+    }
     
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     
@@ -546,7 +537,6 @@ BOOL isshowErr;
     NSMutableDictionary *d=  n.userInfo;
     NSString *url=[d objectForKey:@"url"];
     self.sourceURL=[NSURL URLWithString:url];
-    [Weex setBaseUrl:url];
     [self refreshWeex];
 }
 
@@ -559,8 +549,6 @@ BOOL isshowErr;
         [self.view bringSubviewToFront:self.set];
         [self.view bringSubviewToFront:self.refresh];
     }
-    [self loadtextfields];
-  
 }
 -(void)add
 {
@@ -659,9 +647,7 @@ BOOL isshowErr;
 {
 //    _setVc= [self fromStoryBoard:@"weex/SetViewController"];
 //        [self addVc:_setVc];
-  UINavigationController *nav=  [self present:@"weex/SetViewController" anim:true];
-    SetViewController *set=nav.childViewControllers[0];
-    set.vc=self;
+  _setVc=  [self present:@"weex/SetViewController" anim:true];
 //   _setVc= [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
 }
 

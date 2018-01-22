@@ -21,13 +21,15 @@ public class WXFontModule extends WXModule {
 
 
     @JSMethod
-    public void addRule(String name, HashMap param)
+    public void addFont(String name, String url)
     {
 
-        String url=(param.get("src")+"").replace("url('","").replace("')","");
 
-        url= Weex.getRelativeUrl(url,this.mWXSDKInstance);
+
+        HashMap param=new HashMap();
+        url=Weex.getRelativeUrl(url,this.mWXSDKInstance);
         param.put("src","url('"+url+"')");
+        param.put(Constants.Name.FONT_FAMILY,name);
         JSONObject j=new JSONObject(param);
 
 
@@ -37,11 +39,11 @@ public class WXFontModule extends WXModule {
 
         if(url.startsWith("http"))
         {
-            fontDO.mType= FontDO.TYPE_NETWORK;
+            fontDO.mType=FontDO.TYPE_NETWORK;
         }
         else
         {
-            fontDO.mType= FontDO.TYPE_LOCAL;
+            fontDO.mType=FontDO.TYPE_LOCAL;
             fontDO.mUrl="/"+url;
         }
         if (fontDO != null && !TextUtils.isEmpty(fontDO.getFontFamilyName())) {
@@ -56,7 +58,7 @@ public class WXFontModule extends WXModule {
 
     }
 
-    private FontDO parseFontDO(JSONObject jsonObject, WXSDKInstance instance) {
+    private FontDO parseFontDO(JSONObject jsonObject,WXSDKInstance instance) {
         if(jsonObject == null) {
             return null;
         }

@@ -13,4 +13,5 @@
 @interface WXCenterPop : NSObject <WXModuleProtocol>
 @property (nonatomic, strong) UIViewController *vc;
 @property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong) WXModuleKeepAliveCallback callback;
 @end

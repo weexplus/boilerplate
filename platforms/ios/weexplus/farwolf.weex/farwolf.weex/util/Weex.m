@@ -63,7 +63,6 @@
     [WXSDKEngine registerModule:@"font" withClass:[WXFontModule class]];
     
     
-    
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
     [WXSDKEngine registerComponent:@"a" withClass:[WXPushComponent class]];
@@ -86,6 +85,7 @@
 {
 //    EntryControl *vc=[[EntryControl alloc]initWithImage:url img:image];
     RenderControl *vc=[[RenderControl alloc]initWithImage:url img:image];
+    
     UINavigationController *nvc=[[UINavigationController alloc]initWithRootViewController:vc];
     return nvc;
 }
@@ -113,6 +113,7 @@
     return refreshManager;
 }
 
+ 
 
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance
 {
@@ -164,13 +165,32 @@
     return baseurl;
 }
 
++(DebugScocket*)getDebugScocket
+{
+    if(debugScocket==nil)
+        debugScocket=[DebugScocket new];
+    return debugScocket;
+}
+
 +(void)startDebug:(NSString*)ip port:(NSString*)port
 {
-     [WXDevTool setDebug:YES];
     
-   
-    NSString *url=[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native"];
-    [WXDevTool launchDevToolDebugWithUrl:url];
+    DebugScocket  *debug=[Weex getDebugScocket];
+    debug.success=^(NSString*channelId){
+        
+        
+        [WXDevTool setDebug:YES];
+        NSString *url=[[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"] add:channelId];
+        [WXDevTool launchDevToolDebugWithUrl:url];
+        [[Weex getRefreshManager] send:[@"open=" add:channelId]];
+    };
+    debug.fail=^(){
+        
+    };
+    [debug open:ip port:port];
+    
+    
+ 
      
 //   [WXLog setLogLevel:WXLogLevelLog];
 //     [WXDevTool setDebug:YES];
@@ -182,7 +202,7 @@
 {
     if(![Config isDebug])
     {
-        return [Config entry];
+        return [Config entry];;
     }
     NSString *s= [self getSaveValue:@"url"];
     if(s==nil||[s isEqualToString:@""])
@@ -248,25 +268,6 @@
     return port;
 }
 
-+(NSURL*)getNSURL:(NSString*)url
-{
-    
-    
-        if(url!=nil&&url!=@"")
-        {
-            if([url startWith:@"http"])
-            {
-               return [NSURL URLWithString:url];
-            }
-            else
-            {
-                if([url endWith:@".js"])
-                    url=[url replace:@".js" withString:@""];
-                return [[NSBundle mainBundle] URLForResource:url withExtension:@"js"];
-            }
-        }
-    return nil;
-}
 
 
 @end

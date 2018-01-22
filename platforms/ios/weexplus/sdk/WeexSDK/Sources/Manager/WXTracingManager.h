@@ -92,8 +92,6 @@ typedef enum : NSUInteger {
  *  @return isTracing , NO in the release environment.
  */
 +(BOOL)isTracing;
-
-+(BOOL)isTracingEnable;
 /**
  *  @discusstion  set weex perfermance  tracing state , you should use in debug environment
  *  @param isTracing YES weex will be traced, NO weex will not be traced .
@@ -120,7 +118,6 @@ typedef enum : NSUInteger {
  *  @discusstion  clear tracing data
  */
 +(void)clearTracingData;
-
 
 /**
  *  @discusstion  get current time

@@ -69,6 +69,17 @@ public class HotRefreshManager {
     return true;
   }
 
+  public  void send(String msg)
+  {
+    Buffer b=new Buffer();
+    b.writeUtf8(msg);
+    try {
+      if(mWebSocket!=null)
+        mWebSocket.sendMessage(WebSocket.PayloadType.TEXT,b);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
   public boolean connect(String url) {
     OkHttpClient httpClient = new OkHttpClient();
     Request request = new Request.Builder().url(url).addHeader("sec-websocket-protocol", "echo-protocol").build();

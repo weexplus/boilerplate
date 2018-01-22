@@ -22,6 +22,7 @@ import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXPageView;
 import com.farwolf.weex.view.WXPageView_;
 import com.taobao.weex.annotation.JSMethod;
+import com.taobao.weex.bridge.JSCallback;
 import com.ypy.eventbus.EventBus;
 
 import java.util.HashMap;
@@ -38,6 +39,7 @@ public class WXCenterPopModule extends WXModuleBase {
     RelativeLayout.LayoutParams endLP;
     ScaleAnimation showAnimation;
     ScaleAnimation hideAnimation;
+    JSCallback callback;
 
     String url;
     HashMap style;
@@ -45,16 +47,16 @@ public class WXCenterPopModule extends WXModuleBase {
     Boolean clickDismiss;
 
     @JSMethod
-    public void show(String url, HashMap style, HashMap param, Boolean clickDismiss)
+    public void show(String url, HashMap style, HashMap param, Boolean clickDismiss, JSCallback callback)
     {
         if(!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);
-
+        this.callback=callback;
         this.url = Weex.getRelativeUrl(url,this.mWXSDKInstance);
         this.param = param;
         this.style = style;
         this.clickDismiss = clickDismiss;
-        clear();
+        clear(null);
 
         WeexFactory factory = WeexFactory_.getInstance_(getActivity());
         factory.preRender(this.url, new WeexFactory.OnRenderFinishListener() {
@@ -78,7 +80,7 @@ public class WXCenterPopModule extends WXModuleBase {
     public void onEventMainThread(PopEvent event) {
 
         if("centerpop".equals(event.type))
-        this.clear();
+            this.clear(event.param);
 
     }
 
@@ -86,8 +88,8 @@ public class WXCenterPopModule extends WXModuleBase {
 
 
     @JSMethod
-    public void dismiss() {
-        EventBus.getDefault().post(new PopEvent("centerpop"));
+    public void dismiss(HashMap param) {
+        EventBus.getDefault().post(new PopEvent("centerpop",param));
     }
 
     void close()
@@ -103,7 +105,7 @@ public class WXCenterPopModule extends WXModuleBase {
             @Override
             public void onAnimationEnd(Animation animation) {
                 popView.clearAnimation();
-                clear();
+                clear(null);
             }
             @Override
             public void onAnimationRepeat(Animation animation) {
@@ -111,13 +113,15 @@ public class WXCenterPopModule extends WXModuleBase {
         });
     }
 
-    void clear() {
+    void clear(HashMap param) {
         if (maskView != null) {
             maskView.removeView(popView);
             getActivity().root.removeView(maskView);
         }
         popView = null;
         maskView = null;
+        if(callback!=null)
+            callback.invokeAndKeepAlive(param);
         Log.e("删除");
     }
 
@@ -134,7 +138,7 @@ public class WXCenterPopModule extends WXModuleBase {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent) {
                         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                            dismiss();
+                            dismiss(null);
                         }
                         return true;
                     }
@@ -153,8 +157,16 @@ public class WXCenterPopModule extends WXModuleBase {
         if (popView == null) {
             popView = WXPageView_.build(getActivity());
         }
-        popView.setSrc(url);
-        popView. setBackgroundColor(Color.RED);
+        popView.setRenderListener(new WXPageView.RenerListerner() {
+            @Override
+            public void onRenderSuccess() {
+                popView.startAnimation(showAnimation);
+                showAnimation.startNow();
+            }
+        });
+
+
+//        popView. setBackgroundColor(Color.RED);
 
         final int width =  (int)Weex.length(style.get("width") != null?(Integer) style.get("width"):300);
         final int height = (int)Weex.length(style.get("height") != null?(Integer) style.get("height"):400);
@@ -174,10 +186,11 @@ public class WXCenterPopModule extends WXModuleBase {
 
         popView.setLayoutParams(startLP);
         Log.e("数据：" + endLP.leftMargin + "," + endLP.topMargin + "," + endLP.rightMargin + "," + endLP.bottomMargin);
-        showAnimation.setDuration(160);
+        showAnimation.setDuration(30);
         showAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
+
             }
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -185,22 +198,30 @@ public class WXCenterPopModule extends WXModuleBase {
                 FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(endLP.width, endLP.height);
                 params.setMargins(endLP.leftMargin, endLP.topMargin, endLP.rightMargin, endLP.bottomMargin);
                 popView.setLayoutParams(params);
+
             }
             @Override
             public void onAnimationRepeat(Animation animation) {
             }
         });
 
-        popView.startAnimation(showAnimation);
-        showAnimation.startNow();
+
         popView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.e("点击了pop页面");
             }
         });
-
+        popView.setSrc(url);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(0, 0);
+        params.setMargins(endLP.leftMargin, endLP.topMargin, endLP.rightMargin, endLP.bottomMargin);
+        popView.instance.setSize(width,height);
+        popView.instance.param=this.param;
+        popView.setLayoutParams(params);
         maskView.root.addView(popView);
+
+
+
     }
 
 }

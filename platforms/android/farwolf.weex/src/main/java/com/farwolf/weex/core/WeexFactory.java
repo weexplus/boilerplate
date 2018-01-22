@@ -255,6 +255,7 @@ public class WeexFactory  extends ServiceBase{
         String pageid=new Random().nextLong()+"";
         in.putExtra("url",pageid);
         p.id=pageid;
+        p.instance.param=(HashMap)in.getSerializableExtra("param");
         p.instance.registerRenderListener(new IWXRenderListener() {
             @Override
             public void onViewCreated(WXSDKInstance instance, final View view) {

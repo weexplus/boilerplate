@@ -15,6 +15,7 @@
 #import "Config.h"
 #import "RefreshManager.h"
 #import "WXDebugger.h"
+#import "WXDevTool.h"
 
 
 @interface SetViewController ()
@@ -26,26 +27,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *s= [self getSaveValue:@"url"];
-    //    NSString *ip= [s findone:@"http://" end:@":"];
-    NSString *ip=[Config debugIp];
-    //    NSString *s= [self getSaveValue:@"url"];
-    //            NSString *ip= [s findone:@"http://" end:@":"];
-    
+//    NSString *ip= [s findone:@"http://" end:@":"];
+      NSString *ip=[Config debugIp];
+//    NSString *s= [self getSaveValue:@"url"];
+//            NSString *ip= [s findone:@"http://" end:@":"];
+
     ip=[Weex getDebugIp];
     self.url.text=s;
     self.debugip.text=[@"debugip=" add:ip];
     if([WXDevTool isDebug])
     {
         [self.debugbtn setTitle:@"关闭debug" forState:UIControlStateNormal];
-        //        [self.debugbtn setTitle:@"关闭debug" forState:st]
+//        [self.debugbtn setTitle:@"关闭debug" forState:st]
     }
     else
     {
-        [self.debugbtn setTitle:@"开启debug" forState:UIControlStateNormal];
+             [self.debugbtn setTitle:@"开启debug" forState:UIControlStateNormal];
     }
-    
+
     [self updateCache];
-    //     [WXDevTool setDebug:YES];
+//     [WXDevTool setDebug:YES];
     // Do any additional setup after loading the view.
 }
 
@@ -61,14 +62,14 @@
 }
 
 /*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 - (IBAction)qrClick:(id)sender {
     UINavigationController  *nav=[self present:_QRControl anim:true];
     QRControl *vc=nav.childViewControllers[0];
@@ -84,18 +85,19 @@
             [socketport save:@"socketport"];
         }
         [self notifyDict:@"qrrefreshpage" value:dic];
-        [self closeClick:nil];
+        
+        [self dismissViewControllerAnimated:true completion:nil];
         
         [RefreshManager reload];
-        
-        
+       
+     
     };
 }
 
 -(NSString*)getSocketPort:(NSString*)url
 {
-    NSMutableDictionary *m=  [self getParam:url];
-    NSString *port= [m objectForKey:@"socketport"];
+  NSMutableDictionary *m=  [self getParam:url];
+   NSString *port= [m objectForKey:@"socketport"];
     if(port!=nil)
     {
         return port;
@@ -123,39 +125,87 @@
         {
             [m setObject:[ta  objectAtIndex:1] forKey:[ta  objectAtIndex:0]];
         }
-        
+            
     }
     return m;
     
 }
 - (IBAction)openDebug:(id)sender {
-    
-    if(![WXDevTool isDebug])
-    {
-        NSString *ip=[Weex getDebugIp];
-        [Weex startDebug:ip port:@"8088"];
-        [self closeClick:nil];
-    }
+
+     if(![WXDevTool isDebug])
+     {
+         NSString *ip=[Weex getDebugIp];
+         [Weex startDebug:ip port:@"8088"];
+          [self dismissViewControllerAnimated:true completion:nil];
+//         [self closeClick:nil];
+//         UINavigationController  *nav=[self present:_QRControl anim:true];
+//         QRControl *vc=nav.childViewControllers[0];
+//         [nav.navigationBar setHidden:false];
+//         vc.scanSuccess=^(NSString* s){
+//
+//
+//
+//             [nav dismissViewControllerAnimated:true completion:nil];
+//             [self dismissViewControllerAnimated:true completion:nil];
+//             NSArray *n= [s split:@"="];
+//             NSString *url=n[1];
+//             [WXDevTool launchDevToolDebugWithUrl:url];
+//         };
+         
+     }
     else
     {
-        [Weex startDebug:@"127" port:@"8088"];
+        [WXDevTool setDebug:false];
+        [WXDebugger  setEnabled:false];
+//        [WXDebugger setEnabled:false];
+        [[WXDebugger defaultInstance] disconnect ];
+        [WXSDKEngine restart];
+//
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(200 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            [self notify:@"RefreshInstance" value:nil];
+        });
+     
+//  [[NSNotificationCenter defaultCenter] postNotificationName:kWXNetworkObserverEnabledStateChangedNotification object:self];
+//   [self notify:@"RefreshInstance" value:nil];
+//                NSString *url=[[[[[@"ws://" add:@"127"]add:@":"]add:@"98"]add:@"/debugProxy/native/"] add:@""];
+//        [WXDevTool launchDevToolDebugWithUrl:url];
+        [[Weex getDebugScocket] close];
+         
+//        [WXDevTool launchDevToolDebugWithUrl:<#(NSString *)#>]
         [WXDevTool setDebug:NO];
-        [self closeClick:nil];
+            [self dismissViewControllerAnimated:true completion:nil];
     }
+
     
+
+//        [s save:@"url"];
+//        NSMutableDictionary *dic=[NSMutableDictionary new];
+//        [dic setValue:s forKey:@"url"];
+//        NSString *socketport=[self getSocketPort:s];
+//        if(socketport!=nil)
+//        {
+//            [socketport save:@"socketport"];
+//        }
+//        [self notifyDict:@"qrrefreshpage" value:dic];
+//        [self closeClick:nil];
+//
+//        [RefreshManager reload];
+        
+        
+ 
     
 }
 - (IBAction)closeClick:(id)sender {
     
-    //    [self removeFromParentViewController];
-    //    [self.view removeFromSuperview];
+//    [self removeFromParentViewController];
+//    [self.view removeFromSuperview];
     [self dismiss:true];
 }
 - (IBAction)clearCache:(id)sender {
     [[SDImageCache sharedImageCache] clearDisk];
     [self updateCache];
     
-    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

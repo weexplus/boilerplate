@@ -3,6 +3,8 @@ package com.farwolf.weex.util;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -23,13 +25,13 @@ import com.farwolf.weex.component.WXLoading;
 import com.farwolf.weex.component.WXLooperText;
 import com.farwolf.weex.component.WXPage;
 import com.farwolf.weex.component.WXPreRender;
-import com.farwolf.weex.component.WXViewPager;
 import com.farwolf.weex.component.WXWheelView;
 import com.farwolf.weex.module.WXAddressBookModule;
 import com.farwolf.weex.module.WXCenterPopModule;
 import com.farwolf.weex.module.WXEventModule;
 import com.farwolf.weex.module.WXFPicker;
 import com.farwolf.weex.module.WXFarwolfModule;
+import com.farwolf.weex.module.WXFontModule;
 import com.farwolf.weex.module.WXNavBarModule;
 import com.farwolf.weex.module.WXNavgationModule;
 import com.farwolf.weex.module.WXNetModule;
@@ -72,11 +74,46 @@ public class Weex extends ServiceBase{
     public static String baseurl;
 
 
-    public   void startDebug(String ip) {
-        WXEnvironment.sDebugServerConnectable = false;
-        WXEnvironment.sRemoteDebugMode = true;
-        WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8088/debugProxy/native";
-        WXSDKEngine.reload();
+    public   void startDebug(final String ip) {
+
+        final Handler handler=new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message message) {
+
+                startDebug(ip);
+                return false;
+            }
+        });
+        final DebugManager debugManager= DebugManager.getInstance();
+        debugManager.setDebugListener(new DebugManager.DebugListener() {
+            @Override
+            public void onSuccess(String channelId) {
+
+                WXEnvironment.sDebugServerConnectable = false;
+                WXEnvironment.sRemoteDebugMode = true;
+                WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8088/debugProxy/native/"+channelId;
+                WXSDKEngine.reload();
+                HotRefreshManager.getInstance().send("open="+channelId);
+                DebugManager.getInstance().destory();
+            }
+
+            @Override
+            public void onFail() {
+
+//                debugManager.disConnect();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        handler.sendEmptyMessage(0);
+                    }
+                },2000);
+
+
+            }
+        });
+        debugManager.connect(ip);
+
+
 
     }
     public   void startDebug(Context c) {
@@ -126,12 +163,13 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("slidpop", WXSlidpopModule.class);
             WXSDKEngine.registerModule("centerpop", WXCenterPopModule.class);
             WXSDKEngine.registerModule("pagemodule", WXPageModule.class);
+            WXSDKEngine.registerModule("font", WXFontModule.class);
 
 
             registerComponent("image",WXFImage.class);
             registerComponent("web",WXFWeb.class);
             registerComponent(WXFListComponent.class, false, WXBasicComponentType.LIST,WXBasicComponentType.VLIST,WXBasicComponentType.RECYCLER,WXBasicComponentType.WATERFALL);
-            registerComponent("viewpager",WXViewPager.class);
+//            registerComponent("viewpager",WXViewPager.class);
             registerComponent("prerender",WXPreRender.class);
             registerComponent("page",WXPage.class);
             registerComponent("item",WXItem.class);
@@ -176,7 +214,7 @@ public class Weex extends ServiceBase{
     public static void setBaseUrl(WXSDKInstance instance)
     {
 
-         setBaseUrl(instance.getBundleUrl());
+        setBaseUrl(instance.getBundleUrl());
 
     }
 
@@ -209,7 +247,7 @@ public class Weex extends ServiceBase{
 
     public static float length(float length)
     {
-       return  WXViewUtils.getRealPxByWidth(length);
+        return  WXViewUtils.getRealPxByWidth(length);
     }
 
 
@@ -237,44 +275,44 @@ public class Weex extends ServiceBase{
         return temp;
     }
 
-public static String getSingleRealUrl(String url)
-{
+    public static String getSingleRealUrl(String url)
+    {
 
-    if(url.startsWith("./"))
-    {
-        url=url.substring(2);
-    }
-    if(url.startsWith("/"))
-    {
-        url=url.substring(1);
-    }
-    if(url.contains("/./"))
-    {
-        url=url.replace("/./","/");
-    }
-
-    String q[]=url.split("\\.\\.\\/");
-    String x[]= q[0].split("\\/");
-    if(q.length==1)
-        return q[0];
-    String p="";
-    if(x.length>=q.length-1)
-    {
-        for(int i=0;i<x.length-q.length+1;i++)
+        if(url.startsWith("./"))
         {
-            p+=x[i]+"/";
+            url=url.substring(2);
         }
+        if(url.startsWith("/"))
+        {
+            url=url.substring(1);
+        }
+        if(url.contains("/./"))
+        {
+            url=url.replace("/./","/");
+        }
+
+        String q[]=url.split("\\.\\.\\/");
+        String x[]= q[0].split("\\/");
+        if(q.length==1)
+            return q[0];
+        String p="";
+        if(x.length>=q.length-1)
+        {
+            for(int i=0;i<x.length-q.length+1;i++)
+            {
+                p+=x[i]+"/";
+            }
+        }
+        p+=q[q.length-1];
+        return p;
     }
-    p+=q[q.length-1];
-    return p;
-}
 
 
     public static String getRelativeUrl(String url, WXSDKInstance  instance)
     {
         if(url.startsWith("root:"))
         {
-             return url.replace("root:", Weex.baseurl);
+            return url.replace("root:", Weex.baseurl);
         }
         if(url.startsWith("./"))
         {
@@ -300,25 +338,25 @@ public static String getSingleRealUrl(String url)
 
         if(url.contains("root:"))
         {
-               String q[]=url.split("root:");
+            String q[]=url.split("root:");
 
-               if(instance.getBundleUrl().startsWith("http"))
-               {
-                   String x[]=instance.getBundleUrl().split("\\/");
+            if(instance.getBundleUrl().startsWith("http"))
+            {
+                String x[]=instance.getBundleUrl().split("\\/");
 
-                   if(x.length>3)
-                   {
-                       String res= x[0]+"//"+x[2]+"/"+Weex.basedir;
-                       if(!res.endsWith("/"))
-                           res+="/";
-                       url=res+url.replace("root:","");
+                if(x.length>3)
+                {
+                    String res= x[0]+"//"+x[2]+"/"+Weex.basedir;
+                    if(!res.endsWith("/"))
+                        res+="/";
+                    url=res+url.replace("root:","");
 
-                   }
-               }
-               else
-               {
-                   url="app/"+q[1];
-               }
+                }
+            }
+            else
+            {
+                url="app/"+q[1];
+            }
             return url;
         }
 
