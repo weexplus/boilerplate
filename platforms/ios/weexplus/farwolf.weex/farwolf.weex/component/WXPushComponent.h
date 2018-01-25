@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WeexSDK/WXComponent.h>
+#import <WeexSDK/WXDivComponent.h>
 #import <UIKit/UIKit.h>
 #import "farwolf_weex.h"
-@interface WXPushComponent :  WXComponent <UIGestureRecognizerDelegate>
+@interface WXPushComponent :  WXDivComponent <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) NSString *href;
 @property (nonatomic,strong) NSString* navbarVisibility;

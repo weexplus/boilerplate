@@ -169,8 +169,8 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
         toolbar.items = [NSArray arrayWithObjects:space, barButton, nil];
-        
-        self.inputAccessoryView = toolbar;
+        //zjr add
+//        self.inputAccessoryView = toolbar;
     }
 
     [self handlePseudoClass];

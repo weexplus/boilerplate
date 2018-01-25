@@ -83,6 +83,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../farwolf.weex/farwolf.weex/resources/image/canvas@2x.png"
   install_resource "../farwolf.weex/farwolf.weex/resources/image/fail.png"
   install_resource "../farwolf.weex/farwolf.weex/resources/image/qrcodecase@2x.png"
+  install_resource "../farwolf.weex/farwolf.weex/resources/image/IQKeyboardManager.bundle"
   install_resource "../farwolf.weex/farwolf.weex/resources/xib/Picker.xib"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,6 +96,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../farwolf.weex/farwolf.weex/resources/image/canvas@2x.png"
   install_resource "../farwolf.weex/farwolf.weex/resources/image/fail.png"
   install_resource "../farwolf.weex/farwolf.weex/resources/image/qrcodecase@2x.png"
+  install_resource "../farwolf.weex/farwolf.weex/resources/image/IQKeyboardManager.bundle"
   install_resource "../farwolf.weex/farwolf.weex/resources/xib/Picker.xib"
 fi
 

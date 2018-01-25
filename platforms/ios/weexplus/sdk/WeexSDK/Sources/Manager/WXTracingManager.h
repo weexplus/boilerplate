@@ -87,6 +87,7 @@ typedef enum : NSUInteger {
 
 @interface WXTracingManager : NSObject
 
+
 /**
  *  @discusstion  weex perfermance  tracing state
  *  @return isTracing , NO in the release environment.
@@ -153,4 +154,9 @@ typedef enum : NSUInteger {
  *  @param instanceId the instanceId.
  */
 +(void)destroyTraincgTaskWithInstance:(NSString *)instanceId;
+
+//zjr add
++(BOOL)isTracingEnable;
+//zjr add
++(void)setTracingEnable:(BOOL )enable;
 @end

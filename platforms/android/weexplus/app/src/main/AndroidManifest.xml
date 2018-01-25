@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.farwolf.movie">
+    package="com.farwolf.movie"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -28,6 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".MVApplication_"
+        tools:replace="android:allowBackup"
         >
 
 

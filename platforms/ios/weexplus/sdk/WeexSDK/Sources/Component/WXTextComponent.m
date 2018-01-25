@@ -406,7 +406,8 @@ do {\
 {
     NSString * string = self.text;
     if (![string isKindOfClass:[NSString class]]) {
-        WXLogError(@"text %@ is invalid", self.text);
+        //zjr add
+//        WXLogError(@"text %@ is invalid", self.text);
         string = @"";
     }
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: string];

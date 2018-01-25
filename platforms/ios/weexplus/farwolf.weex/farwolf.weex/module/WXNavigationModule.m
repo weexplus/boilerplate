@@ -55,7 +55,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
-        vc.param=param;
+         vc.param=param;
          [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
         
     } fail:^(NSString *msg) {

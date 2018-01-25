@@ -140,13 +140,17 @@ static NSMutableDictionary *pageCache;
         vc.instance=p.instance;
         p.instance.frame=frame;
         p.instance.viewController=vc;
+//          complete(vc);
+        
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         UIViewController *rootViewController = window.rootViewController;
         [rootViewController.view addSubview:p.weexView];
         [rootViewController addChildViewController:vc];
         p.instance.renderFinish = ^(UIView *view) {
+               
             [vc removeFromParentViewController];
             [p.weexView removeFromSuperview];
+        
             complete(vc);
         };
         

@@ -187,6 +187,9 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
     scrollView.showsHorizontalScrollIndicator = _showScrollBar;
     scrollView.scrollEnabled = _scrollable;
     scrollView.pagingEnabled = _pagingEnabled;
+    
+    
+   
     //zjr add
     scrollView.alwaysBounceVertical=_bounce;
     

@@ -65,6 +65,7 @@
     }
     else
      [Weex setBaseUrl:self.url];
+    
     NSURL *url=[NSURL URLWithString:self.url];
     if([self.url startWith:@"http"])
     {
@@ -76,6 +77,16 @@
         url= [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
     }
 
+    if([Config isDebug])
+    {
+        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
+        vc.debug=[Config isDebug];
+        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+        [self presentViewController:nav animated:false completion:^{
+            
+        }];
+        return;
+    }
     if([Config preload].count>0)
     {
         [WeexFactory preRenderAll:[Config preload] compelete:^{
@@ -134,8 +145,9 @@
     vc.debug=[Config isDebug];
     vc.sourceURL=[NSURL URLWithString:[Config entry]];
     UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+//    [self.navigationController pushViewController:vc animated:true];
     [self presentViewController:nav animated:false completion:^{
-        
+
     }];
 }
 

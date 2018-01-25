@@ -46,11 +46,8 @@
 @property (nonatomic) BOOL isTracing;
 @property (nonatomic, strong) NSMutableDictionary *tracingTasks;  // every instance have a task
 @property (nonatomic, copy) NSString *currentInstanceId;  // every instance have a task
+@property(nonatomic)BOOL traceEnable; ////zjr add
 
-//zjr add
-+(BOOL)isTracingEnable;
-//zjr add
-+(void)setTracingEnable:(BOOL )enable;
 
 @end
 
@@ -67,6 +64,17 @@
     });
     
     return instance;
+}
+
+//zjr add
++(BOOL)isTracingEnable
+{
+    return  [WXTracingManager sharedInstance].traceEnable;;
+}
+//zjr add
++(void)setTracingEnable:(BOOL )enable
+{
+    [WXTracingManager sharedInstance].traceEnable=enable;
 }
 
 - (instancetype) initPrivate{

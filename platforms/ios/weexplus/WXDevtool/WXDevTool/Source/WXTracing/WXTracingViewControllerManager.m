@@ -54,9 +54,9 @@
     if(![WXTracingManager isTracing]) {
         return;
     }
-//     if(![WXTracingManager isTracingEnable]) {
-//         return;
-//     }
+     if(![WXTracingManager isTracingEnable]) {
+         return;
+     }
     
     if(![WXTracingViewControllerManager sharedInstance].isLoad){
         [WXTracingViewControllerManager sharedInstance].isLoad = YES;

@@ -7,7 +7,7 @@
         "build": "weex-builder src dist",
         "build_plugin": "webpack --config ./tools/webpack.config.plugin.js --color",
         "dev": "weex-builder src dist -w",
-        "weexplus": "weexplus start  --serverport 9999  --dir weexplus --socketport 9897 & npm run dev",
+        "weexplus": "weexplus start  --serverport 9999  --dir weexplus --socketport 9897",
         "serve": "webpack-dev-server --config webpack.dev.js -p --open"
     },
     "keywords": [

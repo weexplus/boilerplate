@@ -38,7 +38,7 @@ def mypod
 
  
     
-    #  pod 'IQKeyboardManager', '~> 4.0.6'
+    #   pod 'IQKeyboardManager', '~> 4.0.11'
     
     pod 'SRMonthPicker'
     
@@ -56,21 +56,17 @@ def mypod
         
     pod 'YZHeaderScaleImage', '~> 1.0.1'
     
-#    pod 'ECDrawerLayout'
-#    pod 'LGSideMenuController'
-#    pod 'REFrostedViewController', '~> 2.4'
-#     pod 'RESideMenu', '~> 4.0.7'
-#    pod 'KWDrawerController', '~> 3.6.1'
-#    pod 'KYDrawerController-ObjC'
-#    pod 'MMDrawerController', '~> 0.6.0'
+ 
 
-    pod  'WeexSDK',:path => 'sdk'
+    pod  'WeexSDK',:path => 'sdk' 
 
     pod ‘farwolf’, :path => 'farwolf'   
     
     pod ‘farwolf.business’, :path => 'farwolf.business’ 
     
     pod ‘farwolf.weex’, :path => 'farwolf.weex’ 
+
+    #pod  ‘oss’,:path => ‘oss’
     
     pod ‘WXDevtool’, :path => 'WXDevtool’
 

@@ -19,8 +19,8 @@ include ':umeng'
 project(':umeng').projectDir = new File('../umeng')
 
 
-include ':weex_debug'
-project(':weex_debug').projectDir = new File('../weex_debug')
+//include ':weex_debug'
+//project(':weex_debug').projectDir = new File('../weex_debug')
 
 include ':alipay'
 project(':alipay').projectDir = new File('../alipay')

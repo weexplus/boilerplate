@@ -21,6 +21,7 @@
     // Override point for customization after application launch.
 //    [WXTracingManager setTracingEnable:NO];
 //    [WXTracingManager setTracingEnable:YES];
+    [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
     

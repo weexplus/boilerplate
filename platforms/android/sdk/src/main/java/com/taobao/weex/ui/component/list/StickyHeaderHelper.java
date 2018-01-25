@@ -21,6 +21,7 @@ package com.taobao.weex.ui.component.list;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.common.WXThread;
 import com.taobao.weex.utils.WXLogUtils;
 
@@ -29,6 +30,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by sospartan on 17/03/2017.
@@ -87,12 +89,20 @@ public class StickyHeaderHelper {
         if ((existedParent = (ViewGroup) headerView.getParent()) != null) {
           existedParent.removeView(headerView);
         }
+        headerView.setTag(headComponent.getRef());
         mParent.addView(headerView);
+        headerView.setTag(this);
+        if(headComponent.getStickyOffset() > 0) {
+          ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) headerView.getLayoutParams();
+          if(headComponent.getStickyOffset() != params.topMargin) {
+            params.topMargin = headComponent.getStickyOffset();
+          }
+        }
         //recover translation, sometimes it will be changed on fling
         headerView.setTranslationX(translationX);
         headerView.setTranslationY(translationY);
-
       }
+      changeFrontStickyVisible();
       if (headComponent.getDomObject().getEvents().contains("sticky")) {
         headComponent.fireEvent("sticky");
       }
@@ -108,7 +118,8 @@ public class StickyHeaderHelper {
 
 
     if(component == null || headerView == null){
-      WXLogUtils.e(" sticky header to remove not found."+compToRemove.getRef());
+      if(WXEnvironment.isApkDebugable()) {
+      }
       return;
     }
     if(mCurrentStickyRef != null && mCurrentStickyRef.equals(compToRemove.getRef())){
@@ -118,7 +129,12 @@ public class StickyHeaderHelper {
       @Override
       public void run() {
         mParent.removeView(headerView);
+        if(headerView.getVisibility() != View.VISIBLE){
+           headerView.setVisibility(View.VISIBLE);
+        }
         component.recoverySticky();
+        changeFrontStickyVisible();
+
       }
     }));
     if (component.getDomObject().getEvents().contains("unsticky")) {
@@ -141,11 +157,45 @@ public class StickyHeaderHelper {
         View view = mHeaderViews.get(cell.getRef());
         if(view != null){
           view.bringToFront();
+          changeFrontStickyVisible();
         }
       }
     }
     for(WXCell cell:toRemove){
       notifyStickyRemove(cell);
+    }
+  }
+
+  public void  clearStickyHeaders(){
+      if(mHeaderViews.size() <= 0){
+        return;
+      }
+      Set<String> keys = mHeaderViews.keySet();
+      for(String key : keys){
+        notifyStickyRemove(mHeaderComps.get(key));
+      }
+  }
+
+
+  private void changeFrontStickyVisible(){
+    if(mHeaderViews.size() <= 0){
+      return;
+    }
+    boolean  fontVisible = false;
+    for(int i=mParent.getChildCount()-1; i>=0; i--){
+         View view = mParent.getChildAt(i);
+         if(fontVisible && view.getTag() instanceof  StickyHeaderHelper){
+             if(view.getVisibility() != View.GONE){
+                  view.setVisibility(View.GONE);
+             }
+         }else{
+           if(view.getTag() instanceof  StickyHeaderHelper){
+               fontVisible = true;
+               if(view != null && view.getVisibility() != View.VISIBLE){
+                   view.setVisibility(View.VISIBLE);
+               }
+           }
+         }
     }
   }
 }

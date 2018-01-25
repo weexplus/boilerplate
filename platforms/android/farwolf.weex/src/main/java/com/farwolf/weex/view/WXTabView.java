@@ -1,7 +1,6 @@
 package com.farwolf.weex.view;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,7 @@ public class WXTabView extends ViewBase {
     @Override
     public void init() {
 
-         this.setBackgroundColor(Color.RED);
+//         this.setBackgroundColor(Color.RED);
 
     }
 

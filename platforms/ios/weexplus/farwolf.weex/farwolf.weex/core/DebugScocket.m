@@ -7,7 +7,7 @@
 
 #import "DebugScocket.h"
 #import "weex.h"
-
+static UInt64 lastTime=0;
 @implementation DebugScocket
 
 
@@ -81,8 +81,19 @@
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
      NSLog(@"连接不上");
-    [[Weex getRefreshManager] send:@"opendebug"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    UInt64 now = [[NSDate date] timeIntervalSince1970]*1000;
+    if(now-lastTime<500)
+    {
+        return;
+    }
+    else
+    {
+         NSLog(@"请求打开debug");
+        lastTime=now;
+        [[Weex getRefreshManager] send:@"opendebug"];
+    }
+   
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
         [DebugScocket reload];
     });
     

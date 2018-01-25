@@ -48,6 +48,8 @@
 #import <UIKit/UINavigationController.h>
 #import <UIKit/UITouch.h>
 #import <UIKit/NSLayoutConstraint.h>
+#import "farwolf.h"
+#import "WXNormalViewContrller.h"
 
 
 NSInteger const kIQDoneButtonToolbarTag             =   -1002;
@@ -1712,6 +1714,7 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 -(BOOL)canGoPrevious
 {
     //Getting all responder view's.
+    
     NSArray *textFields = [self responderViews];
 
     //Getting index of current textField.
@@ -1830,7 +1833,7 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 -(NSArray*)responderViews
 {
     UIView *superConsideredView;
-    
+  
     //If find any consider responderView in it's upper hierarchy then will get deepResponderView.
     for (Class consideredClass in _toolbarPreviousNextAllowedClasses)
     {

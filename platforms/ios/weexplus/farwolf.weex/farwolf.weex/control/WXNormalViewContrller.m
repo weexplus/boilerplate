@@ -139,9 +139,9 @@
     
     self.instance.pageObject=self;
     self.instance.pageName=[@"" addInt:arc4random()];
+    
+    
      [UIView setAnimationsEnabled:true];
-    
-    
     
     self.instance.renderFinish = ^(UIView *view) {
         

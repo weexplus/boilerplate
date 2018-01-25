@@ -61,16 +61,26 @@
         }
 
         NSURL *url=[NSURL URLWithString:newURL];
-        [WeexFactory render:url compelete:^(Page *p) {
-            WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-            vc.navbarVisibility=_navbarVisibility;
-            vc.hidesBottomBarWhenPushed = YES;
-            vc.page=p;
-            [self.weexInstance.viewController addVc:vc];
+//        [WeexFactory render:url compelete:^(Page *p) {
+//            WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
+//            vc.navbarVisibility=_navbarVisibility;
+//            vc.hidesBottomBarWhenPushed = YES;
+//            vc.page=p;
+////            [self.weexInstance.viewController addVc:vc];
+//            
+//            [[self.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
+//           
+//        }];
+        
+        
+        [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc) {
+ 
+            [[self.weexInstance.viewController navigationController] pushViewController:vc animated:true];
             
-            [[self.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
-           
-        }];
+        } fail:^(NSString *msg) {
+            
+        }  frame:[UIApplication sharedApplication].keyWindow.bounds];
+        
             
    
        
