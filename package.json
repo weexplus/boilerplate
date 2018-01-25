@@ -46,7 +46,7 @@
         "webpack-dev-server": "^2.4.2",
         "weex-builder": "0.2.6",
         "weex-loader": "^0.4.1",
-        "weexplus": "^1.2.8"
+        "weexplus": "^1.2.12"
     },
     "optionalDependencies": {
         "ios-deploy": "^1.9.0"
