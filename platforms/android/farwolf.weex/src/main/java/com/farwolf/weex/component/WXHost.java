@@ -35,6 +35,7 @@ public class WXHost extends WXComponent<WXTabView> {
         WXTabView w= WXTabView_.build(context);
 //        WXTabView w= new WXTabView(context);
 //        w.holdComponent(this);
+
         return w;
     }
 
