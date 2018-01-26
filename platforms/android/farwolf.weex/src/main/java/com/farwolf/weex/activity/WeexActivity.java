@@ -355,7 +355,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance.registerRenderListener(this);
 
             mWXSDKInstance.setBundleUrl(url);
-            Weex.setBaseUrl(mWXSDKInstance);
+//            Weex.setBaseUrl(mWXSDKInstance);
             if(url.startsWith("http"))
             {
                 mWXSDKInstance.renderByUrl("farwolf", url, null, null, WXRenderStrategy.APPEND_ASYNC);

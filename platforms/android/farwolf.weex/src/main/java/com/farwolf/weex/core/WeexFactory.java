@@ -6,7 +6,6 @@ import android.view.View;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
-import com.farwolf.weex.util.Weex;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.WXRenderStrategy;
@@ -115,10 +114,10 @@ public class WeexFactory  extends ServiceBase{
 
         p.instance=new WXSDKInstance(context);
         p.instance.setBundleUrl(url);
-        if(Weex.baseurl==null)
-        {
-            Weex.setBaseUrl(p.instance);
-        }
+//        if(Weex.baseurl==null)
+//        {
+//            Weex.setBaseUrl(p.instance);
+//        }
         p.id=url;
         if(p.id==null)
             p.id=new Random().nextLong()+"";
@@ -164,10 +163,10 @@ public class WeexFactory  extends ServiceBase{
 
         p.instance=new WXSDKInstance(context);
         p.instance.setBundleUrl(url);
-        if(Weex.baseurl==null)
-        {
-            Weex.setBaseUrl(p.instance);
-        }
+//        if(Weex.baseurl==null)
+//        {
+//            Weex.setBaseUrl(p.instance);
+//        }
         p.id=pageid;
         if(p.id==null)
             p.id=new Random().nextLong()+"";

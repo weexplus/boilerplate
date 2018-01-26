@@ -88,17 +88,7 @@ public class WXA extends WXDiv {
       return;
     }
 //    url= Weex.getRootUrl(url,this.mWXSDKInstance);
-    String realurl="";
-//    if(url.startsWith("root:"))
-//    {
-//      realurl=url.replace("root:", Weex.baseurl);
-//    }
-//    else
-//    {
-//      url= Weex.getRootUrl(url,this.getInstance());
-//      realurl=getRealUrl(url,this.getInstance().getBundleUrl());
-//    }
-    realurl=Weex.getRelativeUrl(url,this.getInstance());
+    String realurl=Weex.getRelativeUrl(url,this.getInstance());
     WeexFactory w= WeexFactory_.getInstance_(this.getInstance().getContext());
     WeexActivity a=  (WeexActivity)this.getInstance().getContext();
     w.jump(realurl, WeexActivity_.class,a.rootid);

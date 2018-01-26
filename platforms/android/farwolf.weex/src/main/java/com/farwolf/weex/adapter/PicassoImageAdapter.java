@@ -29,6 +29,7 @@ import android.widget.ImageView;
 
 import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
+import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.util.Weex;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -68,17 +69,8 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
           return;
         }
 
-
-//        if(url.contains("root:"))
-//        {
-//          String q[]=url.split("root:");
-//          temp= Weex.baseurl+q[1];
-//        }
-//        else
-//        {
-//            temp=Weex.getSingleRealUrl(url);
-//        }
-        temp=Weex.getRelativeUrl(url);
+          WeexActivity a= (WeexActivity)view.getContext();
+        temp=Weex.getRelativeUrl(url,a.mWXSDKInstance);
 
         if(temp.startsWith("http"))
         {
@@ -110,9 +102,12 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
       }
       else
       {
-        if(strategy.placeHolder!=null&&Weex.baseurl!=null)
+        if(strategy.placeHolder!=null)
         {
-          String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
+            WeexActivity a= (WeexActivity)view.getContext();
+            String  placeholder=Weex.getRelativeUrl(strategy.placeHolder,a.mWXSDKInstance);
+//          String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
+            placeholder=placeholder.replace(Weex.getBaseUrl(a.mWXSDKInstance),"app");
           Bitmap bm= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
           pladrawable =new BitmapDrawable(bm);
           placeholders.put(strategy.placeHolder,pladrawable);
@@ -160,9 +155,11 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
           }
           else
           {
-              if(strategy.placeHolder!=null&&Weex.baseurl!=null)
+              if(strategy.placeHolder!=null)
               {
-                  String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
+//                  String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
+                  WeexActivity a= (WeexActivity)view.getContext();
+                  String  placeholder=Weex.getRelativeUrl(strategy.placeHolder,a.mWXSDKInstance);
                   Bitmap bmx= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
                   pladrawable =new BitmapDrawable(bmx);
                   placeholders.put(strategy.placeHolder,pladrawable);

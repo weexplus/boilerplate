@@ -2,7 +2,6 @@ package com.farwolf.weex.module;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 
 import com.farwolf.weex.activity.PresentActivity_;
@@ -123,6 +122,11 @@ public class WXNavgationModule extends WXModuleBase {
 
     }
 
+    public void openOther(String url)
+    {
+
+    }
+
     @JSMethod
     public void setPageId(String id)
     {
@@ -199,11 +203,7 @@ public class WXNavgationModule extends WXModuleBase {
                 in.putExtra("rootid",wa.rootid);
         }
 
-        if(url.startsWith("root:"))
-        {
-            url=url.replace("root:",Weex.baseurl);
-        }
-        else
+
             url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
         in.putExtra("url",url);
         if(callback!=null)

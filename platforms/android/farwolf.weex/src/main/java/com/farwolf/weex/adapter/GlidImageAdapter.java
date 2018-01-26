@@ -14,6 +14,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
+import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.adapter.IWXImgLoaderAdapter;
 import com.taobao.weex.common.WXImageStrategy;
@@ -38,15 +39,7 @@ public class GlidImageAdapter implements IWXImgLoaderAdapter {
 
         if(url==null)
             return;
-        if(url.contains("base64==="))
-        {
-            url="base64==="+url.split("base64===")[1];
-        }
-        if(url.contains("root:"))
-        {
-            String q[]=url.split("root:");
-            url=Weex.baseurl+q[1];
-        }
+
 
         if(url.startsWith("http"))
         {
@@ -59,9 +52,11 @@ public class GlidImageAdapter implements IWXImgLoaderAdapter {
                 }
                 else
                 {
-                    if(strategy.placeHolder!=null&&Weex.baseurl!=null)
+                    if(strategy.placeHolder!=null)
                     {
-                        String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
+                        WeexActivity a= (WeexActivity)view.getContext();
+                        String  placeholder=Weex.getRelativeUrl(strategy.placeHolder,a.mWXSDKInstance);
+//                        String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
                         Bitmap bm= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
                         pladrawable =new BitmapDrawable(bm);
                         placeholders.put(strategy.placeHolder,pladrawable);

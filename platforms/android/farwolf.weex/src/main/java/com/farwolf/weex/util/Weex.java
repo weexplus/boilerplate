@@ -71,7 +71,7 @@ public class Weex extends ServiceBase{
     WeexPref_ pref;
 
     public static String basedir;
-    public static String baseurl;
+//    public static String baseurl;
 
 
     public   void startDebug(final String ip) {
@@ -211,18 +211,52 @@ public class Weex extends ServiceBase{
 
 
 
-    public static void setBaseUrl(WXSDKInstance instance)
+//    public static void setBaseUrl(WXSDKInstance instance)
+//    {
+//
+//        setBaseUrl(instance.getBundleUrl());
+//
+//    }
+
+
+//    public static String
+
+//    public static void setBaseUrl(String  url)
+//    {
+//
+//        if(baseurl!=null)
+//            return;
+//        baseurl=getBaseUrl(url);
+////        String s= url;
+////
+////        if(s.startsWith("http"))
+////        {
+////            String x[]=url.split("\\/");
+////
+////            if(x.length>3)
+////            {
+////                String res= x[0]+"//"+x[2]+"/"+Weex.basedir;
+////                if(!res.endsWith("/"))
+////                    res+="/";
+////                baseurl=res;
+////            }
+////        }
+////        else
+////        {
+////            baseurl="app/";
+////
+////        }
+//    }
+    public static String getBaseUrl(WXSDKInstance  instance)
     {
-
-        setBaseUrl(instance.getBundleUrl());
-
+          return  getBaseUrl(instance.getBundleUrl());
     }
 
-    public static void setBaseUrl(String  url)
+
+    public static String getBaseUrl(String  url)
     {
 
-        if(baseurl!=null)
-            return;
+        String baseurl="";
         String s= url;
 
         if(s.startsWith("http"))
@@ -242,8 +276,8 @@ public class Weex extends ServiceBase{
             baseurl="app/";
 
         }
+        return baseurl;
     }
-
 
     public static float length(float length)
     {
@@ -260,20 +294,20 @@ public class Weex extends ServiceBase{
 //    }
 
 
-    public static String getRelativeUrl(String url)
-    {
-        String temp="";
-        if(url.contains("root:"))
-        {
-            String q[]=url.split("root:");
-            temp= Weex.baseurl+q[1];
-        }
-        else
-        {
-            temp=Weex.getSingleRealUrl(url);
-        }
-        return temp;
-    }
+//    public static String getRelativeUrl(String url)
+//    {
+//        String temp="";
+//        if(url.contains("root:"))
+//        {
+//            String q[]=url.split("root:");
+//            temp= Weex.baseurl+q[1];
+//        }
+//        else
+//        {
+//            temp=Weex.getSingleRealUrl(url);
+//        }
+//        return temp;
+//    }
 
     public static String getSingleRealUrl(String url)
     {
@@ -310,9 +344,13 @@ public class Weex extends ServiceBase{
 
     public static String getRelativeUrl(String url, WXSDKInstance  instance)
     {
+        if(url.startsWith("http"))
+        {
+            return url;
+        }
         if(url.startsWith("root:"))
         {
-            return url.replace("root:", Weex.baseurl);
+            return url.replace("root:", getBaseUrl(instance));
         }
         if(url.startsWith("./"))
         {

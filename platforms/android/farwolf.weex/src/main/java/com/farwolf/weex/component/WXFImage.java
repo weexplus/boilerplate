@@ -25,24 +25,20 @@ public class WXFImage extends WXImage {
     public void setSrc(String src) {
 
 
-//        if(src.startsWith("root:"))
-//        super.setSrc(Weex.getRootUrl(src,this.getInstance()));
-//        else
-        String placeholder=null;
 
+        String placeholder=null;
         if(getDomObject().getAttrs().containsKey(Constants.Name.PLACEHOLDER)){
             placeholder= (String) getDomObject().getAttrs().get(Constants.Name.PLACEHOLDER);
         }else if(getDomObject().getAttrs().containsKey(Constants.Name.PLACE_HOLDER)){
             placeholder=(String)getDomObject().getAttrs().get(Constants.Name.PLACE_HOLDER);
         }
-        if(Weex.baseurl==null)
-            Weex.setBaseUrl(this.getInstance());
+
         if(placeholder!=null)
         {
-            if(Weex.baseurl.startsWith("http"))
+            if(Weex.getBaseUrl(getInstance()).startsWith("http"))
             {
                 placeholder= Weex.getRootUrl(placeholder,this.getInstance());
-                placeholder= placeholder.replace(Weex.baseurl,"app/");
+                placeholder= placeholder.replace(Weex.getBaseUrl(getInstance()),"app/");
             }
             else
             {

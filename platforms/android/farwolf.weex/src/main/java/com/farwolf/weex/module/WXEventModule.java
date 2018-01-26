@@ -29,7 +29,7 @@ public class WXEventModule extends WXModule {
     String realurl="";
     if(url.startsWith("root:"))
     {
-        realurl=url.replace("root:",Weex.baseurl);
+        realurl=Weex.getRelativeUrl(url,this.mWXSDKInstance);
     }
     else
     {
