@@ -13,6 +13,7 @@ import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.WeexFactory;
+import com.taobao.weex.WXSDKInstance;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -78,10 +79,13 @@ public class SplashActivity extends WeexActivity {
     }
     public  void jump()
     {
+        this.mWXSDKInstance=new WXSDKInstance(this);
+
         List l= Config.preload(this);
         l.add(Config.entry(this));
         if(!Config.debug(this))
         {
+            this.mWXSDKInstance.setBundleUrl(Config.entry(this));
             List temp=new ArrayList();
             for(Object q:l)
             {
@@ -111,6 +115,7 @@ public class SplashActivity extends WeexActivity {
                 url=Config.entry(this);
             }
             Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
+            this.mWXSDKInstance.setBundleUrl(url);
             in.putExtra("url",url);
             startActivity(in);
             finish();

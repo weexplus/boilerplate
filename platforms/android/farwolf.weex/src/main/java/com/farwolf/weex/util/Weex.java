@@ -249,6 +249,8 @@ public class Weex extends ServiceBase{
 //    }
     public static String getBaseUrl(WXSDKInstance  instance)
     {
+        if(instance==null)
+            return "";
           return  getBaseUrl(instance.getBundleUrl());
     }
 
