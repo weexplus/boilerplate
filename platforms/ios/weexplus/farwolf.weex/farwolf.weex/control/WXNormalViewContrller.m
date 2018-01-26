@@ -368,8 +368,7 @@ BOOL isshowErr;
     if (!sourceURL) {
         return;
     }
-    if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
-        [Weex setBaseUrl:sourceURL.absoluteString];
+
     
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];

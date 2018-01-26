@@ -28,7 +28,7 @@ static DebugScocket *debugScocket;
 +(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance;
 +(NSString*)getBaseDir;
 +(void)setBaseDir:(NSString*)url;
-+(NSString*)getBaseUrl;
+//+(NSString*)getBaseUrl;
 +(void)setBaseUrl:(NSString*)url;
 +(UIViewController*)start:(NSString*)image url:(NSString*)url;
 +(NSMutableDictionary*)conifg;
@@ -37,6 +37,7 @@ static DebugScocket *debugScocket;
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance;
 +(RefreshManager*)getRefreshManager;
 +(DebugScocket*)getDebugScocket;
++(NSString*)getBaseUrl:(WXSDKInstance*)instance;
 
 +(NSString*)getEntry;
 +(NSString*)getDebugIp;

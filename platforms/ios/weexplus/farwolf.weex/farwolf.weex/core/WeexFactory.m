@@ -40,8 +40,8 @@ static NSMutableDictionary *pageCache;
 + (void)render:(NSURL *)sourceURL  compelete:(void(^)(Page*))complete
 {
  
-    if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
-        [Weex setBaseUrl:sourceURL.absoluteString];
+//    if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
+//        [Weex setBaseUrl:sourceURL.absoluteString];
     Page *p=[Page new];
     p.instance = [[WXSDKInstance alloc] init];
     p.instance.frame = CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
@@ -101,8 +101,8 @@ static NSMutableDictionary *pageCache;
 + (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame
 {
 
-    if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
-        [Weex setBaseUrl:sourceURL.absoluteString];
+//    if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
+//        [Weex setBaseUrl:sourceURL.absoluteString];
     Page *p=[Page new];
     p.instance = [[WXSDKInstance alloc] init];
     p.instance.frame =frame;
@@ -222,7 +222,7 @@ static NSMutableDictionary *pageCache;
 {
     if([url startWith:@"root:"])
     {
-        url=[url replace:@"root:" withString:[Weex getBaseUrl]];
+        url=[url replace:@"root:" withString:[Weex getBaseUrl:instance]];
     }
     NSString *newURL = url;
     if ([url hasPrefix:@"//"]) {

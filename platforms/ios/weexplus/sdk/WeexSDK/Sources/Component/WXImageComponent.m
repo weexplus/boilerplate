@@ -490,6 +490,8 @@ WX_EXPORT_METHOD(@selector(save:))
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         imageLoader = [WXHandlerFactory handlerForProtocol:@protocol(WXImgLoaderProtocol)];
+        //zjr add
+        imageLoader.weexInstance=self.weexInstance;
     });
     return imageLoader;
 }

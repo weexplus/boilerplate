@@ -57,7 +57,7 @@
       
         if([newURL startWith:@"root:"])
         {
-            newURL=[newURL replace:@"root:" withString:[Weex getBaseUrl]];
+            newURL=[newURL replace:@"root:" withString:[Weex getBaseUrl:self.weexInstance]];
         }
 
         NSURL *url=[NSURL URLWithString:newURL];
@@ -73,7 +73,7 @@
 //        }];
         
         
-        [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc) {
+        [WeexFactory renderNew:[URL getFinalUrl:newURL weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc) {
  
             [[self.weexInstance.viewController navigationController] pushViewController:vc animated:true];
             

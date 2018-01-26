@@ -15,7 +15,7 @@
 {
     if([url startWith:@"root:"])
     {
-        url=[url replace:@"root:" withString:[Weex getBaseUrl]];
+        url=[url replace:@"root:" withString:[Weex getBaseUrl:weexInstance]];
         
         return [NSURL URLWithString:url];
     }

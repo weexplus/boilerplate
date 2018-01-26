@@ -74,7 +74,7 @@
 -(NSString*)getUrl:(NSString*)s weexInstance:(WXSDKInstance *)weexInstance
 {
     NSString *url= weexInstance.scriptURL.absoluteString;
-    s=[s replace:@"root:" withString:[Weex getBaseUrl]];
+    s=[s replace:@"root:" withString:[Weex getBaseUrl:weexInstance]];
     
     
     return s;
