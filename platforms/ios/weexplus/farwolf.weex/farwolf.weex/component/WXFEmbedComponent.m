@@ -14,8 +14,6 @@
 
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{
     
-    
-    
     [instance renderWithURL:[Weex getFinalUrl:url weexInstance:self.weexInstance] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
 
 }

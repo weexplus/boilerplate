@@ -201,17 +201,20 @@
 +(void)startDebug:(NSString*)ip port:(NSString*)port
 {
     
+//    NSString *url=[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"];
+//    [WXDevTool launchDevToolDebugWithUrl:url];
+    
     DebugScocket  *debug=[Weex getDebugScocket];
     debug.success=^(NSString*channelId){
-        
-        
+
+
         [WXDevTool setDebug:YES];
         NSString *url=[[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"] add:channelId];
         [WXDevTool launchDevToolDebugWithUrl:url];
         [[Weex getRefreshManager] send:[@"open=" add:channelId]];
     };
     debug.fail=^(){
-        
+
     };
     [debug open:ip port:port];
     

@@ -56,7 +56,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
          vc.param=param;
-         vc.callback=callback;
+        vc.callback = callback;
          [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
         
     } fail:^(NSString *msg) {
@@ -174,7 +174,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 //
 //
 //    }];
-    
+ 
     
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         

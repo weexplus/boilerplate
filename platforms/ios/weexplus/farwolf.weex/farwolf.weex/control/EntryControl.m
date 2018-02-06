@@ -58,13 +58,13 @@
 
 -(void)gotoMain
 {
-    if([self.url startWith:@"app"])
-    {
-       NSURL *nl=  [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
-        [Weex setBaseUrl:nl.absoluteString];
-    }
-    else
-     [Weex setBaseUrl:self.url];
+//    if([self.url startWith:@"app"])
+//    {
+//       NSURL *nl=  [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
+//        [Weex setBaseUrl:nl.absoluteString];
+//    }
+//    else
+//     [Weex setBaseUrl:self.url];
     
     NSURL *url=[NSURL URLWithString:self.url];
     if([self.url startWith:@"http"])

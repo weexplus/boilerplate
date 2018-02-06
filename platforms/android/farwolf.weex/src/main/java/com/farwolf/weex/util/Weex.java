@@ -44,6 +44,7 @@ import com.farwolf.weex.module.WXQRModule;
 import com.farwolf.weex.module.WXSlidpopModule;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.pref.WeexPref_;
+import com.lzy.okgo.OkGo;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
@@ -139,6 +140,7 @@ public class Weex extends ServiceBase{
 
     public void init(Application application, String name, String groupname,String basedir)
     {
+        OkGo.init(application);
         Weex.basedir=basedir;
         WXSDKEngine.addCustomOptions("appName", name);
         WXSDKEngine.addCustomOptions("appGroup", groupname);

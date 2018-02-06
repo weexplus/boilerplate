@@ -29,7 +29,7 @@ static DebugScocket *debugScocket;
 +(NSString*)getBaseDir;
 +(void)setBaseDir:(NSString*)url;
 //+(NSString*)getBaseUrl;
-+(void)setBaseUrl:(NSString*)url;
+//+(void)setBaseUrl:(NSString*)url;
 +(UIViewController*)start:(NSString*)image url:(NSString*)url;
 +(NSMutableDictionary*)conifg;
 +(NSString*)socketPort;

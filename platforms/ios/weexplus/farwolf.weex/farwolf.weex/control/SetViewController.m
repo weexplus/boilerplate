@@ -76,13 +76,13 @@
     [nav.navigationBar setHidden:false];
     vc.scanSuccess=^(NSString* s){
         
-        if([s startWith:@"app"])
-        {
-            NSURL *nl=  [[NSBundle mainBundle] URLForResource:[s replace:@".js" withString:@""]  withExtension:@"js"];
-            [Weex setBaseUrl:nl.absoluteString];
-        }
-        else
-            [Weex setBaseUrl:s];
+//        if([s startWith:@"app"])
+//        {
+//            NSURL *nl=  [[NSBundle mainBundle] URLForResource:[s replace:@".js" withString:@""]  withExtension:@"js"];
+//            [Weex setBaseUrl:nl.absoluteString];
+//        }
+//        else
+//            [Weex setBaseUrl:s];
         [s save:@"url"];
         NSMutableDictionary *dic=[NSMutableDictionary new];
         [dic setValue:s forKey:@"url"];
