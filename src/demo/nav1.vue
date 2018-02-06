@@ -5,7 +5,7 @@
 
       </head>
       <div style="width: 750;align-items: center;margin-top: 50">
-          <text style="color: #ffffff;">传过来的参数值：{{param}}</text>
+          <text style="color: #000000;">传过来的参数值：{{param}}</text>
       </div>
 
       <div  class="btn" @click="back()"  ><text style="color:white" > navigator.backFull({ok:this.param},true) 带参数返回</text></div>

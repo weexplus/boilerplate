@@ -1,17 +1,14 @@
 <template>
-    <!--<scroller style="flex: 1;background-color: yellow">-->
-        <!--<head title="demo"  @titleClick="update"></head>-->
-        <!--<text >{{target}}</text>-->
-      <!--<div @click="update" style="width: 750px;height: 100px; background-color: red" >-->
 
-      <!--</div>-->
-        <!--<image style="width: 200;height: 200" :src="logoUrl"></image>-->
-        <!--<image style="width: 200;height: 200" src="root:img/cat.png"></image>-->
-        <!--<text>{{target}}</text>-->
-    <!--</scroller>-->
    <div style="background-color: yellow">
        <head title="demo"  @titleClick="update"></head>
-
+        <flist>
+            <cell  slot="cell" v-for="(item,index) in [1,1,1,1,1,1,1,1,1,1,1,1]">
+                <div style="height: 200;margin-top: 20;background-color: red;align-items: center;justify-content: center">
+                   <text>{{index}}</text>
+                </div>
+            </cell>
+        </flist>
 
    </div>
 </template>
@@ -37,10 +34,11 @@
 
 <script>
     var head = require('./demo/component/header.vue')
+    var flist = require('./demo/component/flist.vue')
     const net = require('./demo/util/net.js')
     var p = undefined;
     export default {
-        components: {head},
+        components: {head,flist},
         data: {
             logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
             target: weex.config.env.deviceWidth,

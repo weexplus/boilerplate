@@ -124,7 +124,7 @@ static NSMutableDictionary *pageCache;
         newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
     }
     [p.instance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
-    
+    p.instance.scriptURL=[NSURL URLWithString:newURL];
     p.url=sourceURL;
     __strong __typeof(p) weakP = p;
     p.instance.onCreate = ^(UIView *view) {

@@ -129,37 +129,37 @@
     basedir=dir;
 }
 
-+(void)setBaseUrl:(NSString *)url
-{
-    //    NSString *url= weexInstance.scriptURL.absoluteString;
-    NSString *s=[s replace:@"root:" withString:@""];
-    
-    if([url startWith:@"http"])
-    {
-        NSArray *n=  [url split:@":"];
-        if(n.count==3)
-        {
-            url=[[[[[[@"" add:n[0]] add:@":"] add:n[1]] add:@":"] add:[n[2] split:@"/"][0]] add:@"/"];
-        }
-        else if(n.count==3)
-        {
-            url=[[[@"" add:n[0]] add:[n[1] split:@"/"][0]] add:@"/"] ;
-        }
-        
-        url=[url add:s];
-        
-        if(![basedir isEqualToString:@""])
-            url=[[url add:basedir]add:@"/"];
-    }
-    else
-    {
-        NSArray *n= [url split:@"/app/"];
-        url=[n[0] add:@"/app/"] ;
-//        url=@"app/";
-    }
-    baseurl=url;
-    
-}
+//+(void)setBaseUrl:(NSString *)url
+//{
+//    //    NSString *url= weexInstance.scriptURL.absoluteString;
+//    NSString *s=[s replace:@"root:" withString:@""];
+//
+//    if([url startWith:@"http"])
+//    {
+//        NSArray *n=  [url split:@":"];
+//        if(n.count==3)
+//        {
+//            url=[[[[[[@"" add:n[0]] add:@":"] add:n[1]] add:@":"] add:[n[2] split:@"/"][0]] add:@"/"];
+//        }
+//        else if(n.count==3)
+//        {
+//            url=[[[@"" add:n[0]] add:[n[1] split:@"/"][0]] add:@"/"] ;
+//        }
+//
+//        url=[url add:s];
+//
+//        if(![basedir isEqualToString:@""])
+//            url=[[url add:basedir]add:@"/"];
+//    }
+//    else
+//    {
+//        NSArray *n= [url split:@"/app/"];
+//        url=[n[0] add:@"/app/"] ;
+////        url=@"app/";
+//    }
+//    baseurl=url;
+//
+//}
 +(NSString*)getBaseUrl:(WXSDKInstance*)instance
 {
     

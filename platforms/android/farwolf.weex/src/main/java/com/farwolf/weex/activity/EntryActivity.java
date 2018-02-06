@@ -50,6 +50,9 @@ public class EntryActivity extends WeexActivity {
             this.weextool.setVisibility(View.GONE);
             this.refresh.setVisibility(View.GONE);
         }
+//        this.set.setVisibility(View.VISIBLE);
+//        this.weextool.setVisibility(View.VISIBLE);
+//        this.refresh.setVisibility(View.VISIBLE);
 //       String url= Config.entry(this);
 //       render(url);
 

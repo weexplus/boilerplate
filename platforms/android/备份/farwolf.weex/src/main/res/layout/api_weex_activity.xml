@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.farwolf.weex.view.CustomInsetsLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    android:background="#333333"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rootContainer"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+
+            android:background="#ffffff"
+
+            android:id="@+id/container"
+
+            >
+
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+
+            android:visibility="gone"
+            android:id="@+id/lodingimg"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="130dp"
+            android:id="@+id/fail_layout"
+            android:visibility="gone"
+            >
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/fail"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/fail_img"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fail_img"
+                android:textSize="12sp"
+                android:textColor="#dddddd"
+                android:layout_centerHorizontal="true"
+                android:text="加载失败了,点击重新加载"
+                />
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_red_light"
+            android:orientation="vertical"
+            android:id="@+id/err_layout"
+            android:visibility="gone"
+            >
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="30dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:id="@+id/scroll"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:gravity="top"
+                    android:editable="false"
+
+                    android:textColor="#ffffff"
+                    android:enabled="false"
+                    android:textSize="12sp"
+                    android:id="@+id/err"
+                    />
+
+            </ScrollView>
+            <View
+                android:layout_width="match_parent"
+                android:background="#ffffff"
+                android:layout_height="1px"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="关闭"
+
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/holo_red_light"
+                android:id="@+id/close_err"
+                android:textColor="#ffffff"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.farwolf.view.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:visibility="gone"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:visibility="invisible"
+        android:id="@+id/mask"
+        >
+
+    </RelativeLayout>
+</com.farwolf.weex.view.CustomInsetsLinearLayout>

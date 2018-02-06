@@ -17,7 +17,7 @@
 #import "RefreshManager.h"
 #import "DebugScocket.h"
 static NSString *basedir;
-static NSString *baseurl;
+//static NSString *baseurl;
 static RefreshManager *refreshManager;
 static DebugScocket *debugScocket;
 

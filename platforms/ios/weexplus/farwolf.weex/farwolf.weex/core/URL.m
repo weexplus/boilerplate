@@ -13,6 +13,11 @@
 
 +(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance
 {
+    if(weexInstance==nil)
+    {
+        int k=0;
+        k++;
+    }
     if([url startWith:@"root:"])
     {
         url=[url replace:@"root:" withString:[Weex getBaseUrl:weexInstance]];

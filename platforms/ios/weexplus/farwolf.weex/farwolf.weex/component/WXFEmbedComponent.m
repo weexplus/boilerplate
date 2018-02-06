@@ -16,7 +16,7 @@
     
     
     
-    [instance renderWithURL:[Weex getFinalUrl:url weexInstance:instance] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+    [instance renderWithURL:[Weex getFinalUrl:url weexInstance:self.weexInstance] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
 
 }
 

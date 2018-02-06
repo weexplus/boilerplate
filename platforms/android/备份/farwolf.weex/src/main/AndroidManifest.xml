@@ -1,0 +1,57 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.farwolf.weex">
+    <application
+
+        >
+
+        <activity android:name="com.farwolf.weex.activity.QrActivity_"
+            android:theme="@style/pop"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+        <activity android:name="com.farwolf.weex.activity.PresentActivity_"
+            android:theme="@style/pop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            >
+
+        </activity>
+
+
+
+        <activity android:name="com.farwolf.weex.activity.EntryActivity_"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+
+
+
+        <activity android:name="com.farwolf.weex.activity.WeexActivity_"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"
+
+            >
+
+        </activity>
+
+        <activity android:name="com.farwolf.weex.activity.SplashActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="adjustNothing"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+
+</manifest>

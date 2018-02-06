@@ -50,6 +50,8 @@ dependencies {
 
     compile project(':sdk')
 //    compile project(':weex_debug')
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.lzy.net:okgo:2.0.0'
 }
 
 apt {

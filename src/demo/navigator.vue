@@ -5,11 +5,9 @@
         </head>
         <div style="width: 750;height: 600;align-items: center;justify-content: center">
             <div  class="btn" @click="push()"><text style="color:white" >push不带参数</text></div>
-          <div  class="btn" @click="pushwidthparam()"><text style="color:white" >push带参数</text></div>
-          <text style="color:#ffffff">返回参数：{{callbackdata}}</text>
-          <div  class="btn" @click="present()"><text style="color:white" >present</text></div>
-
-
+            <div  class="btn" @click="pushwidthparam()"><text style="color:white" >push带参数</text></div>
+            <text style="color:#000000">返回参数：{{callbackdata}}</text>
+            <div  class="btn" @click="present()"><text style="color:white" >present</text></div>
         </div>
     </div>
 </template>

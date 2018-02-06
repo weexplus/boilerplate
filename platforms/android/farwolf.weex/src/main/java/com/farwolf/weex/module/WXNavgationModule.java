@@ -135,7 +135,7 @@ public class WXNavgationModule extends WXModuleBase {
     }
 
     @JSMethod(uiThread = false)
-    public HashMap param()
+    public Map param()
     {
         return this.mWXSDKInstance.param;
     }

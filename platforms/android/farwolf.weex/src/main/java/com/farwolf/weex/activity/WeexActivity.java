@@ -327,6 +327,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance.setContext(this);
             mWXSDKInstance.registerRenderListener(this);
             mWXSDKInstance.onActivityCreate();
+            mWXSDKInstance.param=(HashMap) getIntent().getSerializableExtra("param");
             mWXSDKInstance.fireGlobalEventCallback("onPageInit",null);
             ViewGroup.LayoutParams lp= this.root.getLayoutParams();
             mWXSDKInstance.setSize(lp.width,lp.height);
@@ -353,7 +354,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance=new WXSDKInstance(this);
             mWXSDKInstance.setSize(screenTool.getScreenWidth(),screenTool.getScreenHeight());
             mWXSDKInstance.registerRenderListener(this);
-
+            mWXSDKInstance.param=(HashMap) getIntent().getSerializableExtra("param");
             mWXSDKInstance.setBundleUrl(url);
 //            Weex.setBaseUrl(mWXSDKInstance);
             if(url.startsWith("http"))

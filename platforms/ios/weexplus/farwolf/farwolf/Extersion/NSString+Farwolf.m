@@ -76,6 +76,8 @@
 
 -(NSString*)replace:(NSString*)find withString:(NSString*)withString
 {
+    if(withString==nil)
+        return self;
     return [self stringByReplacingOccurrencesOfString:find withString:withString];
 }
 -(NSString*)add:(NSObject*)o

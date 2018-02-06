@@ -93,22 +93,7 @@
 /***/ 181:
 /***/ (function(module, exports) {
 
-	module.exports = {
-	  "title": {
-	    "paddingTop": 40,
-	    "paddingBottom": 40,
-	    "fontSize": 48
-	  },
-	  "logo": {
-	    "width": 360,
-	    "height": 156
-	  },
-	  "desc": {
-	    "paddingTop": 20,
-	    "color": "#888888",
-	    "fontSize": 24
-	  }
-	}
+	module.exports = {}
 
 /***/ }),
 
@@ -120,8 +105,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	//
-	//
 	//
 	//
 	//
