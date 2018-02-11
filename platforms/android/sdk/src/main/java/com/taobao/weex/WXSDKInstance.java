@@ -105,7 +105,6 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
 
   //Performance
   public boolean mEnd = false;
-  public HashMap param=new HashMap();
   public static final String BUNDLE_URL = "bundleUrl";
   private IWXUserTrackAdapter mUserTrackAdapter;
   private IWXRenderListener mRenderListener;
@@ -114,6 +113,7 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
   private final String mInstanceId;
   private RenderContainer mRenderContainer;
   private WXComponent mRootComp;
+  public HashMap param;
   private boolean mRendered;
   private WXRefreshData mLastRefreshData;
   private NestedInstanceInterceptor mNestedInstanceInterceptor;
@@ -1306,7 +1306,9 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
 
   public synchronized void destroy() {
     if(!isDestroy()) {
-      WXSDKManager.getInstance().destroyInstance(mInstanceId);
+      if(mRendered) {
+        WXSDKManager.getInstance().destroyInstance(mInstanceId);
+      }
       WXComponentFactory.removeComponentTypesByInstanceId(getInstanceId());
 
       if (mGlobalEventReceiver != null) {

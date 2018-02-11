@@ -143,6 +143,7 @@
         newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
     }
     
+    //zjr add
     [self loadUrl:newURL instance:_embedInstance sourceurl:sourceURL];
 //    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
     
@@ -180,24 +181,12 @@
     _embedInstance.renderFinish = ^(UIView *view) {
          weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
-           [self onRenderFinish];
     };
 }
 
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{
     
-    
-    
     [instance renderWithURL:[NSURL URLWithString:url] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
-    
-}
-
--(WXSDKInstance*)getInstance
-{
-    return self.embedInstance;
-}
--(void)onRenderFinish
-{
     
 }
 

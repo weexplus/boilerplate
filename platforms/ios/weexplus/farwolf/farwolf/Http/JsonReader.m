@@ -249,7 +249,7 @@
         for(NSString *key in n)
         {
             NSString *value=self.param[key];
-            value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//            value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             [temp setValue:value forKey:key];
         }
        return [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -348,7 +348,7 @@
         {
             NSObject *value=self.param[key];
             NSString *t=[@"" add:value];
-            t = [t stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//            t = [t stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             [temp setValue:t forKey:key];
         }
         //        value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

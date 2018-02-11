@@ -332,11 +332,12 @@ public class WXImage extends WXComponent<ImageView> {
         }else if(getDomObject().getAttrs().containsKey(Constants.Name.PLACE_HOLDER)){
             placeholder=(String)getDomObject().getAttrs().get(Constants.Name.PLACE_HOLDER);
         }
-    if(placeholder!=null){
-      //zjr add
-      imageStrategy.placeHolder=placeholder;
+        if(!TextUtils.isEmpty(placeholder)){
+          //zjr add
+          imageStrategy.placeHolder=placeholder;
 //            imageStrategy.placeHolder = getInstance().rewriteUri(Uri.parse(placeholder),URIAdapter.IMAGE).toString();
-    }
+
+        }
 
       IWXImgLoaderAdapter imgLoaderAdapter = getInstance().getImgLoaderAdapter();
       if (imgLoaderAdapter != null) {

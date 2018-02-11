@@ -47,8 +47,6 @@
 @property (nonatomic, strong) NSMutableDictionary *tracingTasks;  // every instance have a task
 @property (nonatomic, copy) NSString *currentInstanceId;  // every instance have a task
 @property(nonatomic)BOOL traceEnable; ////zjr add
-
-
 @end
 
 @implementation WXTracingManager
@@ -66,6 +64,8 @@
     return instance;
 }
 
+
+
 //zjr add
 +(BOOL)isTracingEnable
 {
@@ -77,6 +77,7 @@
     [WXTracingManager sharedInstance].traceEnable=enable;
 }
 
+
 - (instancetype) initPrivate{
     self = [super init];
     if(self){
@@ -85,7 +86,6 @@
     
     return self;
 }
- 
 
 +(void)switchTracing:(BOOL )isTracing
 {

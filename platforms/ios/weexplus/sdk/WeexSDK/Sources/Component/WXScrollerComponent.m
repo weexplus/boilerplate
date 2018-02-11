@@ -33,7 +33,7 @@
 @end
 
 @implementation WXScrollerComponnetView
-@end;
+@end
 
 @interface WXScrollerComponnetView(WXScrollerComponnetView_ContentInsetAdjustmentBehavior)
 @property(nonatomic, assign)NSUInteger contentInsetAdjustmentBehavior;
@@ -68,10 +68,9 @@
     BOOL _scrollStartEvent;
     BOOL _scrollEndEvent;
     BOOL _isScrolling;
+    CGFloat _loadMoreOffset;
     //zjr add
     BOOL _bounce;
-    
-    CGFloat _loadMoreOffset;
     CGFloat _previousLoadMoreContentHeight;
     CGFloat _offsetAccuracy;
     CGPoint _lastContentOffset;
@@ -87,9 +86,8 @@
     BOOL _showScrollBar;
     BOOL _pagingEnabled;
     
-
-    
     BOOL _shouldNotifiAppearDescendantView;
+    BOOL _shouldRemoveScrollerListener;
 
     css_node_t *_scrollerCSSNode;
     
@@ -135,7 +133,6 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
         _showScrollBar = attributes[@"showScrollbar"] ? [WXConvert BOOL:attributes[@"showScrollbar"]] : YES;
         //zjr add
         _bounce = attributes[@"bounce"] ? [WXConvert BOOL:attributes[@"bounce"]] : YES;
-        
         if (attributes[@"alwaysScrollableVertical"]) {
             _alwaysScrollableVertical = [WXConvert NSString:attributes[@"alwaysScrollableVertical"]];
         }
@@ -162,6 +159,8 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
         if ([configCenter respondsToSelector:@selector(configForKey:defaultValue:isDefault:)]) {
             BOOL shouldNotifiAppearDescendantView = [[configCenter configForKey:@"iOS_weex_ext_config.shouldNotifiAppearDescendantView" defaultValue:@(YES) isDefault:NULL] boolValue];
             _shouldNotifiAppearDescendantView = shouldNotifiAppearDescendantView;
+            BOOL shouldRemoveScrollerListener = [[configCenter configForKey:@"iOS_weex_ext_config.shouldRemoveScrollerListener" defaultValue:@(YES) isDefault:NULL] boolValue];
+            _shouldRemoveScrollerListener = shouldRemoveScrollerListener;
             
         }
     }
@@ -187,12 +186,8 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
     scrollView.showsHorizontalScrollIndicator = _showScrollBar;
     scrollView.scrollEnabled = _scrollable;
     scrollView.pagingEnabled = _pagingEnabled;
-    
-    
-   
     //zjr add
     scrollView.alwaysBounceVertical=_bounce;
-    
     if (_alwaysScrollableHorizontal) {
         scrollView.alwaysBounceHorizontal = [WXConvert BOOL:_alwaysScrollableHorizontal];
     }
@@ -407,14 +402,17 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
 
 - (void)removeScrollToListener:(WXComponent *)target
 {
-    WXScrollToTarget *targetData = nil;
-    for (WXScrollToTarget *targetData in self.listenerArray) {
-        if (targetData.target == target) {
-            break;
+    if (_shouldRemoveScrollerListener) {
+        WXScrollToTarget *targetData = nil;
+        for (WXScrollToTarget *targetDataTemp in self.listenerArray) {
+            if (targetDataTemp.target == target) {
+                targetData = targetDataTemp;
+                break;
+            }
         }
-    }
-    if(targetData) {
-        [self.listenerArray removeObject:targetData];
+        if(targetData) {
+            [self.listenerArray removeObject:targetData];
+        }
     }
 }
 

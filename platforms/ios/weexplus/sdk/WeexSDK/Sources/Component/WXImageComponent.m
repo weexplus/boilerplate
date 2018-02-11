@@ -471,6 +471,8 @@ WX_EXPORT_METHOD(@selector(save:))
 - (void)readyToRender
 {
     // when image download completely (success or failed)
+    //zjr add
+    self.imageLoader.weexInstance=self.weexInstance;
     if (self.weexInstance.trackComponent && _imageDownloadFinish) {
         [super readyToRender];
     }

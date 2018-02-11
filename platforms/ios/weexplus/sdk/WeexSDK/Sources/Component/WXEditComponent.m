@@ -169,7 +169,7 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
         toolbar.items = [NSArray arrayWithObjects:space, barButton, nil];
-        //zjr add
+        
 //        self.inputAccessoryView = toolbar;
     }
 
@@ -786,7 +786,7 @@ WX_EXPORT_METHOD(@selector(getSelectionRange:))
     };
     CGRect inputFrame = [self.view.superview convertRect:self.view.frame toView:rootView];
     if (keyboardRect.origin.y - inputFrame.size.height <= inputFrame.origin.y) {
-        [self setViewMovedUp:YES];
+//        [self setViewMovedUp:YES];
         self.weexInstance.isRootViewFrozen = YES;
     }
     
