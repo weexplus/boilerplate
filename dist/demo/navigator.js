@@ -543,8 +543,6 @@
 	//
 	//
 	//
-	//
-	//
 
 	var head = __webpack_require__(117);
 	exports.default = {

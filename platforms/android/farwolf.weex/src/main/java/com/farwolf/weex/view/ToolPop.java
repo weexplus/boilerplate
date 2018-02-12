@@ -7,18 +7,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.farwolf.base.ViewBase;
+import com.farwolf.qrcode.zxing.android.CaptureActivity;
 import com.farwolf.util.RegexBase;
 import com.farwolf.util.StringUtil;
 import com.farwolf.view.FreeDialog;
 import com.farwolf.weex.R;
-import com.farwolf.weex.activity.QrActivity_;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.bean.Config;
+import com.farwolf.weex.event.PermissionEvent;
 import com.farwolf.weex.pref.WeexPref_;
+import com.farwolf.weex.util.CameraPermission;
 import com.farwolf.weex.util.HotRefreshManager;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
+import com.ypy.eventbus.EventBus;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -94,9 +97,20 @@ public class ToolPop extends ViewBase{
         {
             ip.setText("debug_ip:"+ Config.debugIp(a));
         }
-
+        EventBus.getDefault().register(this);
 //        debug_reconnetc.setText("关闭Debug");
 
+
+    }
+
+    public void onEventMainThread(PermissionEvent event) {
+
+          if(event.type==PermissionEvent.CAMREA)
+          {
+              f.dismiss();
+              Intent in=new Intent(getActivity(), CaptureActivity.class);
+              getActivity().startActivityForResult(in,1);
+          }
 
     }
 
@@ -105,6 +119,10 @@ public class ToolPop extends ViewBase{
     {
         return  "ws://" + pref.ip().get() + ":8088/debugProxy/native";
     }
+
+
+
+
 
 
     boolean isHotReloadOpen()
@@ -139,8 +157,14 @@ public class ToolPop extends ViewBase{
     @Click
     public void qrClicked() {
 
+        if(!CameraPermission.check(getActivity()))
+        {
+            CameraPermission.requestCameraPermission(getActivity());
+            return;
+        }
+
         f.dismiss();
-        Intent in=new Intent(getActivity(), QrActivity_.class);
+        Intent in=new Intent(getActivity(), CaptureActivity.class);
         getActivity().startActivityForResult(in,1);
 
     }

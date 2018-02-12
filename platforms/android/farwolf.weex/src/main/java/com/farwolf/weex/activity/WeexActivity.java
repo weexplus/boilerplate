@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,6 +29,7 @@ import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
+import com.farwolf.weex.event.PermissionEvent;
 import com.farwolf.weex.event.RefreshEvent;
 import com.farwolf.weex.module.WXNavgationModule;
 import com.farwolf.weex.module.WXStaticModule;
@@ -553,7 +555,24 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+
+        switch (requestCode) {
+            //就像onActivityResult一样这个地方就是判断你是从哪来的。
+            case 222:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission Granted
+                   EventBus.getDefault().post(new PermissionEvent(PermissionEvent.CAMREA));
+                } else {
+                    // Permission Denied
+                    Toast.makeText(this, "很遗憾你把相机权限禁用了。请务必开启相机权限享受我们提供的服务吧。", Toast.LENGTH_SHORT)
+                            .show();
+//                    openCamera();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
         if(mWXSDKInstance!=null){
             mWXSDKInstance.onRequestPermissionsResult(requestCode,permissions,grantResults);
         }

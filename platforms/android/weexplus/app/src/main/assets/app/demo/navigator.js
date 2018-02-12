@@ -543,8 +543,6 @@
 	//
 	//
 	//
-	//
-	//
 
 	var head = __webpack_require__(117);
 	exports.default = {
@@ -640,7 +638,7 @@
 	    }
 	  }, [_vm._v("push带参数")])]), _c('text', {
 	    staticStyle: {
-	      color: "#ffffff"
+	      color: "#000000"
 	    }
 	  }, [_vm._v("返回参数：" + _vm._s(_vm.callbackdata))]), _c('div', {
 	    staticClass: ["btn"],

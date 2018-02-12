@@ -563,7 +563,7 @@
 	    }
 	  }, [_c('text', {
 	    staticStyle: {
-	      color: "#ffffff"
+	      color: "#000000"
 	    }
 	  }, [_vm._v("传过来的参数值：" + _vm._s(_vm.param))])]), _c('div', {
 	    staticClass: ["btn"],

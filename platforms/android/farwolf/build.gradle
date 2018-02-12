@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin:'android-apt'
 def AAVersion='4.0.0'
 android {
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion "21.1.2"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 23
     }
 
     buildTypes {
@@ -16,10 +16,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    useLibrary 'org.apache.http.legacy'
 }
 
+
+
 dependencies {
-    compile 'com.android.support:support-v4:21.0.0'
+    compile 'com.android.support:support-v4:23.0.0'
     compile project(':galleryfinal')
     compile 'com.google.code.gson:gson:2.2.2'
 
@@ -35,6 +38,7 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     compile 'com.google.zxing:core:3.2.1'
+
 }
 
 apt {

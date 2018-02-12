@@ -52,7 +52,7 @@
 	    value: true
 	});
 
-	var data = __webpack_require__(246);
+	var data = __webpack_require__(250);
 
 	exports.default = {
 	    get: function get(res) {
@@ -116,7 +116,7 @@
 
 /***/ }),
 
-/***/ 246:
+/***/ 250:
 /***/ (function(module, exports) {
 
 	"use strict";
