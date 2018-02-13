@@ -3,19 +3,12 @@
 <template>
  <scroller>
      <head title="二维码扫描"  append="tree">
-
      </head>
         <div  style="margin-bottom:50" >
             <div  class="cl" >
                 <div  @click="read()" class="btn"><text style="color:#ffffff" >二维码扫描</text></div>
                 <text style="color:#0000000">{{back}}</text>
-
-
             </div>
-
-
-
-
         </div>
 
  </scroller>

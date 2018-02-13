@@ -56,7 +56,7 @@ public class WXCenterPopModule extends WXModuleBase {
         this.param = param;
         this.style = style;
         this.clickDismiss = clickDismiss;
-        clear(null);
+        clear();
 
         WeexFactory factory = WeexFactory_.getInstance_(getActivity());
         factory.preRender(this.url, new WeexFactory.OnRenderFinishListener() {
@@ -79,8 +79,11 @@ public class WXCenterPopModule extends WXModuleBase {
 
     public void onEventMainThread(PopEvent event) {
 
-        if("centerpop".equals(event.type))
-            this.clear(event.param);
+        if("centerpop".equals(event.type)) {
+            this.clear();
+            this.invoke(event.param);
+        }
+
 
     }
 
@@ -105,7 +108,8 @@ public class WXCenterPopModule extends WXModuleBase {
             @Override
             public void onAnimationEnd(Animation animation) {
                 popView.clearAnimation();
-                clear(null);
+                clear();
+                invoke(null);
             }
             @Override
             public void onAnimationRepeat(Animation animation) {
@@ -113,15 +117,21 @@ public class WXCenterPopModule extends WXModuleBase {
         });
     }
 
-    void clear(HashMap param) {
+
+    void invoke(HashMap param)
+    {
+        if(callback!=null)
+            callback.invokeAndKeepAlive(param);
+    }
+
+    void clear() {
         if (maskView != null) {
             maskView.removeView(popView);
             getActivity().root.removeView(maskView);
         }
         popView = null;
         maskView = null;
-        if(callback!=null)
-            callback.invokeAndKeepAlive(param);
+
         Log.e("删除");
     }
 
