@@ -5,7 +5,6 @@
     <drawerlayout
      src="../../busi/tab/mainpage.js"
      slidSrc="center.js"
-
     >
 
     </drawerlayout>

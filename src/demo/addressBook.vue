@@ -9,13 +9,7 @@
             <div  class="cl" >
                 <div  @click="read()" class="btn"><text style="color:#ffffff" >读取联系人</text></div>
                 <text style="color:#0000000">{{back}}</text>
-
-
             </div>
-
-
-
-
         </div>
 
  </scroller>
