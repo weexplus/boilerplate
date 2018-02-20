@@ -71,10 +71,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/searchbox.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/searchbox.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-00c9368a"
+	__vue_options__._scopeId = "data-v-15c88575"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -499,6 +499,16 @@
 	        this.visiable = !this.value == '';
 	    },
 	    ready: function ready() {}
+	    //        watch: {
+	    //
+	    //
+	    //            disabled:{
+	    //                immediate: true,
+	    //                handler (val) {
+	    //
+	    //                }
+	    //            }
+	    //        }
 	};
 	module.exports = exports['default'];
 
@@ -530,10 +540,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/input.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/input.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-39d3e99e"
+	__vue_options__._scopeId = "data-v-3960f0c8"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {

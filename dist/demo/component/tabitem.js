@@ -71,10 +71,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/tabitem.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/tabitem.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-526ef662"
+	__vue_options__._scopeId = "data-v-a2d6db0c"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -286,6 +286,16 @@
 	        this.visiable = !this.value == '';
 	    },
 	    ready: function ready() {}
+	    //        watch: {
+	    //
+	    //
+	    //            disabled:{
+	    //                immediate: true,
+	    //                handler (val) {
+	    //
+	    //                }
+	    //            }
+	    //        }
 	};
 	module.exports = exports['default'];
 

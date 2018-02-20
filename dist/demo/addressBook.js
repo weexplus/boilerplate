@@ -71,10 +71,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/addressBook.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/addressBook.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-5bf7e1f6"
+	__vue_options__._scopeId = "data-v-4a9e4be1"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -208,12 +208,6 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 
 	var head = __webpack_require__(117);
@@ -276,10 +270,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/header.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/header.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-9a3f0db8"
+	__vue_options__._scopeId = "data-v-25b44859"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -492,6 +486,16 @@
 	        this.adjust();
 	    },
 	    ready: function ready() {}
+	    //        watch: {
+	    //
+	    //
+	    //            disabled:{
+	    //                immediate: true,
+	    //                handler (val) {
+	    //
+	    //                }
+	    //            }
+	    //        }
 	};
 	module.exports = exports['default'];
 
