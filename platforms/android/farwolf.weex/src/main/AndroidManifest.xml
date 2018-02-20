@@ -46,16 +46,7 @@
 
         </activity>
 
-        <activity android:name="com.farwolf.weex.activity.SplashActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme"
-            android:windowSoftInputMode="adjustNothing"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
 
 
     </application>
