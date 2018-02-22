@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(155)
+	__vue_styles__.push(__webpack_require__(42)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(156)
+	__vue_exports__ = __webpack_require__(43)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(157)
+	var __vue_template__ = __webpack_require__(44)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/input.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/input.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-39d3e99e"
+	__vue_options__._scopeId = "data-v-3960f0c8"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -90,7 +90,7 @@
 
 /***/ }),
 
-/***/ 155:
+/***/ 42:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -103,7 +103,7 @@
 
 /***/ }),
 
-/***/ 156:
+/***/ 43:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -210,7 +210,7 @@
 
 /***/ }),
 
-/***/ 157:
+/***/ 44:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

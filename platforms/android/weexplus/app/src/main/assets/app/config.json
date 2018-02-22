@@ -3,7 +3,7 @@
   "debug":true,
   "debugIp":"127.0.0.1",
   "entry":"app/demo/qrcode.js",
-  "preload":["root:busi/tab/mainpage.js","root:busi/tab/movie.js","root:busi/tab/serial.js","root:busi/tab/collection.js","root:busi/detail.js"],
+  "preload":[],
   "splash":"splash1",
   "static":
   {

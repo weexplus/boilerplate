@@ -41,25 +41,24 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(114)
+	__vue_styles__.push(__webpack_require__(1)
 	)
-	__vue_styles__.push(__webpack_require__(115)
+	__vue_styles__.push(__webpack_require__(2)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(116)
+	__vue_exports__ = __webpack_require__(3)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(122)
+	var __vue_template__ = __webpack_require__(9)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -71,10 +70,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/addressBook.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/addressBook.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-5bf7e1f6"
+	__vue_options__._scopeId = "data-v-4a9e4be1"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -91,8 +90,7 @@
 
 
 /***/ }),
-
-/***/ 114:
+/* 1 */
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -102,8 +100,7 @@
 	}
 
 /***/ }),
-
-/***/ 115:
+/* 2 */
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -169,8 +166,7 @@
 	}
 
 /***/ }),
-
-/***/ 116:
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -208,21 +204,11 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 
-	var head = __webpack_require__(117);
+	var head = __webpack_require__(4);
 	var globalEvent = weex.requireModule('globalEvent');
-	globalEvent.addEventListener("onPageInit", function (e) {
-	    var nav = weex.requireModule('navbar');
-	    nav.setTitle('网络请求');
-	    var navigator = weex.requireModule('navigator');
-	});
+	globalEvent.addEventListener("onPageInit", function (e) {});
 
 	exports.default = {
 	    components: { head: head },
@@ -247,24 +233,23 @@
 	module.exports = exports['default'];
 
 /***/ }),
-
-/***/ 117:
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(118)
+	__vue_styles__.push(__webpack_require__(5)
 	)
-	__vue_styles__.push(__webpack_require__(119)
+	__vue_styles__.push(__webpack_require__(6)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(120)
+	__vue_exports__ = __webpack_require__(7)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(121)
+	var __vue_template__ = __webpack_require__(8)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -276,10 +261,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/header.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/header.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-9a3f0db8"
+	__vue_options__._scopeId = "data-v-25b44859"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -294,8 +279,7 @@
 
 
 /***/ }),
-
-/***/ 118:
+/* 5 */
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -361,8 +345,7 @@
 	}
 
 /***/ }),
-
-/***/ 119:
+/* 6 */
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -377,8 +360,7 @@
 	}
 
 /***/ }),
-
-/***/ 120:
+/* 7 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -492,12 +474,21 @@
 	        this.adjust();
 	    },
 	    ready: function ready() {}
+	    //        watch: {
+	    //
+	    //
+	    //            disabled:{
+	    //                immediate: true,
+	    //                handler (val) {
+	    //
+	    //                }
+	    //            }
+	    //        }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
-
-/***/ 121:
+/* 8 */
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -592,8 +583,7 @@
 	module.exports.render._withStripped = true
 
 /***/ }),
-
-/***/ 122:
+/* 9 */
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -629,5 +619,4 @@
 	module.exports.render._withStripped = true
 
 /***/ })
-
-/******/ });
+/******/ ]);

@@ -50,16 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(147)
+	__vue_styles__.push(__webpack_require__(34)
 	)
-	__vue_styles__.push(__webpack_require__(148)
+	__vue_styles__.push(__webpack_require__(35)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(149)
+	__vue_exports__ = __webpack_require__(36)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(150)
+	var __vue_template__ = __webpack_require__(37)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -71,10 +71,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/header.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-b4f96a94"
+	__vue_options__._scopeId = "data-v-a70d48aa"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -92,7 +92,7 @@
 
 /***/ }),
 
-/***/ 147:
+/***/ 34:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -159,7 +159,7 @@
 
 /***/ }),
 
-/***/ 148:
+/***/ 35:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -175,7 +175,7 @@
 
 /***/ }),
 
-/***/ 149:
+/***/ 36:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -288,12 +288,22 @@
 	        this.adjust();
 	    },
 	    ready: function ready() {}
+	    //        watch: {
+	    //
+	    //
+	    //            disabled:{
+	    //                immediate: true,
+	    //                handler (val) {
+	    //
+	    //                }
+	    //            }
+	    //        }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 150:
+/***/ 37:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

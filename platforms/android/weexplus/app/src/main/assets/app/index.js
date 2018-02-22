@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(254)
+	__vue_styles__.push(__webpack_require__(141)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(255)
+	__vue_exports__ = __webpack_require__(142)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(257)
+	var __vue_template__ = __webpack_require__(144)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/index.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/index.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-c7dbd106"
+	__vue_options__._scopeId = "data-v-1e2a9b1c"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -90,7 +90,7 @@
 
 /***/ }),
 
-/***/ 139:
+/***/ 26:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -151,7 +151,7 @@
 
 /***/ }),
 
-/***/ 140:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -287,8 +287,8 @@
 	//
 	//
 
-	var pull = __webpack_require__(141);
-	var net = __webpack_require__(145);
+	var pull = __webpack_require__(28);
+	var net = __webpack_require__(32);
 
 	exports.default = {
 	    components: { pull: pull },
@@ -484,21 +484,21 @@
 
 /***/ }),
 
-/***/ 141:
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(142)
+	__vue_styles__.push(__webpack_require__(29)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(143)
+	__vue_exports__ = __webpack_require__(30)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(144)
+	var __vue_template__ = __webpack_require__(31)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -510,10 +510,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/pullrefresh.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/pullrefresh.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-0219a31d"
+	__vue_options__._scopeId = "data-v-56fe3970"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -529,7 +529,7 @@
 
 /***/ }),
 
-/***/ 142:
+/***/ 29:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -576,7 +576,7 @@
 
 /***/ }),
 
-/***/ 143:
+/***/ 30:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -709,7 +709,7 @@
 
 /***/ }),
 
-/***/ 144:
+/***/ 31:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -756,7 +756,7 @@
 
 /***/ }),
 
-/***/ 145:
+/***/ 32:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -860,7 +860,7 @@
 
 /***/ }),
 
-/***/ 146:
+/***/ 33:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -992,7 +992,7 @@
 
 /***/ }),
 
-/***/ 147:
+/***/ 34:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -1059,7 +1059,7 @@
 
 /***/ }),
 
-/***/ 148:
+/***/ 35:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -1075,7 +1075,7 @@
 
 /***/ }),
 
-/***/ 149:
+/***/ 36:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1188,12 +1188,22 @@
 	        this.adjust();
 	    },
 	    ready: function ready() {}
+	    //        watch: {
+	    //
+	    //
+	    //            disabled:{
+	    //                immediate: true,
+	    //                handler (val) {
+	    //
+	    //                }
+	    //            }
+	    //        }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 150:
+/***/ 37:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1289,23 +1299,23 @@
 
 /***/ }),
 
-/***/ 186:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(147)
+	__vue_styles__.push(__webpack_require__(34)
 	)
-	__vue_styles__.push(__webpack_require__(148)
+	__vue_styles__.push(__webpack_require__(35)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(149)
+	__vue_exports__ = __webpack_require__(36)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(150)
+	var __vue_template__ = __webpack_require__(37)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -1317,10 +1327,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/header.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-b4f96a94"
+	__vue_options__._scopeId = "data-v-a70d48aa"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -1336,7 +1346,7 @@
 
 /***/ }),
 
-/***/ 254:
+/***/ 141:
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -1358,7 +1368,7 @@
 
 /***/ }),
 
-/***/ 255:
+/***/ 142:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1401,9 +1411,9 @@
 	//
 	//
 
-	var head = __webpack_require__(186);
-	var flist = __webpack_require__(256);
-	var net = __webpack_require__(145);
+	var head = __webpack_require__(73);
+	var flist = __webpack_require__(143);
+	var net = __webpack_require__(32);
 	var p = undefined;
 	exports.default = {
 	    components: { head: head, flist: flist },
@@ -1459,21 +1469,21 @@
 
 /***/ }),
 
-/***/ 256:
+/***/ 143:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(139)
+	__vue_styles__.push(__webpack_require__(26)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(140)
+	__vue_exports__ = __webpack_require__(27)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(146)
+	var __vue_template__ = __webpack_require__(33)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -1485,10 +1495,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/farwolf.weex/src/demo/component/flist.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/flist.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-3e5dd72a"
+	__vue_options__._scopeId = "data-v-3deade54"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -1504,7 +1514,7 @@
 
 /***/ }),
 
-/***/ 257:
+/***/ 144:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1519,7 +1529,7 @@
 	    on: {
 	      "titleClick": _vm.update
 	    }
-	  }), _c('flist', _vm._l(([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]), function(item, index) {
+	  }), _c('flist', _vm._l(([1, 1, 1, 1]), function(item, index) {
 	    return _c('cell', {
 	      appendAsTree: true,
 	      attrs: {
