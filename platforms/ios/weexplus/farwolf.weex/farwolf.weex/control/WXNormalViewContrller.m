@@ -145,13 +145,13 @@
     
     self.instance.renderFinish = ^(UIView *view) {
         
-        [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+        [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
         
         
         [self loadCompelete];
     };
     [self.view addSubview:self.weexView];
-    [self.instance fireGlobalEvent:@"onPageInit" params:nil];
+    [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
     if(_debug)
     {
         
@@ -323,8 +323,8 @@ BOOL isshowErr;
     [_instance fireGlobalEvent:WX_APPLICATION_DID_BECOME_ACTIVE params:nil];
     [self _updateInstanceState:WeexInstanceAppear];
     
-    if(self.page.hasload)
-        [_instance fireGlobalEvent:@"onPageInit" params:nil];
+//    if(self.page.hasload)
+//        [_instance fireGlobalEvent:@"onPageInit" params:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -373,7 +373,7 @@ BOOL isshowErr;
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];
     
-    
+    _instance.param=self.param;
     [self resetFrame];
     _instance.pageObject = self;
     _instance.pageName = [[WXUtility urlByDeletingParameters:sourceURL] absoluteString];
@@ -410,7 +410,7 @@ BOOL isshowErr;
     
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
-        [_instance fireGlobalEvent:@"onPageInit" params:nil];
+        [_instance fireGlobalEvent:@"onPageInit" params:self.param];
         if(_debug)
         {
             [self.view bringSubviewToFront:self.set];

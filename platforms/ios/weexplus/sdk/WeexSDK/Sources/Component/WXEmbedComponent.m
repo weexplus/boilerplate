@@ -160,6 +160,7 @@
             [weakSelf.view addSubview:weakSelf.embedView];
             
             weakSelf.createFinished = YES;
+           
         });
     };
     
@@ -181,6 +182,7 @@
     _embedInstance.renderFinish = ^(UIView *view) {
          weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
+         [weakSelf onRenderFinish];
     };
 }
 
@@ -204,7 +206,10 @@
         }
     }
 }
-
+-(WXSDKInstance*)getInstance
+{
+    return self.embedInstance;
+}
 - (void)_frameDidCalculated:(BOOL)isChanged
 {
     [super _frameDidCalculated:isChanged];

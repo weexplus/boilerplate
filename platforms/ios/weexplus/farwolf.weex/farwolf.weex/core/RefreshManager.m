@@ -14,7 +14,7 @@
 +(void)reload
 {
     [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
-    [self notify:@"refreshpage" value:nil];
+//    [self notify:@"refreshpage" value:nil];
 }
 -(void)send:(NSString*)msg
 {

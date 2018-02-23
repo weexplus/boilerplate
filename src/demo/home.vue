@@ -4,6 +4,7 @@
 
       </head>
       <scroller>
+           <text> {{param}}</text>
           <a class="btn" href="./navigator.js">
           <text class="text">导航</text>
           </a>
@@ -58,7 +59,7 @@
     data () {
       return {
         text: 'Hello World.',
-          param:''
+          param:{}
       }
     }
     ,
@@ -88,9 +89,8 @@
           globalEvent.addEventListener("onPageInit", function (e) {
 
               var navigator = weex.requireModule('navigator') ;
-              navigator.setPageId('index');
-              navigator.setRoot('index');
 
+              self.param=e
 
 
 

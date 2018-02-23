@@ -50,14 +50,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(38)
+	__vue_styles__.push(__webpack_require__(154)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(39)
+	__vue_exports__ = __webpack_require__(76)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(42)
+	var __vue_template__ = __webpack_require__(79)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +69,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/indicator.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/indicator.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-12b59661"
+	__vue_options__._scopeId = "data-v-7a5b7a1a"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -90,14 +90,7 @@
 
 /***/ }),
 
-/***/ 38:
-/***/ (function(module, exports) {
-
-	module.exports = {}
-
-/***/ }),
-
-/***/ 39:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -125,7 +118,7 @@
 	//
 	//
 
-	var he = __webpack_require__(40);
+	var he = __webpack_require__(77);
 	exports.default = {
 	  props: {
 	    text: {
@@ -246,7 +239,7 @@
 
 /***/ }),
 
-/***/ 40:
+/***/ 77:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/he v1.1.1 by @mathias | MIT license */
@@ -590,11 +583,11 @@
 
 	}(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(78)(module), (function() { return this; }())))
 
 /***/ }),
 
-/***/ 41:
+/***/ 78:
 /***/ (function(module, exports) {
 
 	module.exports = function(module) {
@@ -611,7 +604,7 @@
 
 /***/ }),
 
-/***/ 42:
+/***/ 79:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -692,6 +685,13 @@
 	  })])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 154:
+/***/ (function(module, exports) {
+
+	module.exports = {}
 
 /***/ })
 

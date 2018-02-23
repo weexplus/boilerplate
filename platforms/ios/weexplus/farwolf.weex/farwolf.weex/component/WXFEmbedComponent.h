@@ -10,5 +10,5 @@
 #import "WXEmbedComponent.h"
 
 @interface WXFEmbedComponent: WXEmbedComponent
-
+@property (nonatomic, strong) NSMutableDictionary *param;
 @end

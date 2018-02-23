@@ -56,7 +56,8 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
          vc.param=param;
-        vc.callback = callback;
+         vc.callback = callback;
+         vc.instance.param=param;
          [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
         
     } fail:^(NSString *msg) {
@@ -68,8 +69,8 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 -(id)param
 {
-    WXNormalViewContrller *vc=weexInstance.viewController;
-    return vc.param;
+//    WXNormalViewContrller *vc=weexInstance.viewController;
+    return weexInstance.param;
 }
 
 -(void)setPageId:(NSString*)pid
@@ -181,6 +182,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
         vc.param=param;
         vc.callback=callback;
+        vc.instance.param=param;
         [weexInstance.viewController presentViewController:nav animated:animated completion:^{
             
         }];

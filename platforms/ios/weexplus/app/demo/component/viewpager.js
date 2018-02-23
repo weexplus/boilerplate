@@ -50,14 +50,16 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(38)
+	__vue_styles__.push(__webpack_require__(59)
+	)
+	__vue_styles__.push(__webpack_require__(60)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(39)
+	__vue_exports__ = __webpack_require__(61)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(42)
+	var __vue_template__ = __webpack_require__(63)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -69,10 +71,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/indicator.vue"
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/viewpager.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-12b59661"
+	__vue_options__._scopeId = "data-v-7ef485e0"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -690,6 +692,276 @@
 	      backgroundColor: "#E7E7E7"
 	    }
 	  })])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 59:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "header": {
+	    "backgroundColor": "#FF0000",
+	    "flex": 1,
+	    "flexDirection": "row"
+	  },
+	  "tz": {
+	    "color": "#FF0000"
+	  },
+	  "logo": {
+	    "width": 300,
+	    "height": 300,
+	    "marginTop": 80
+	  },
+	  "k1": {
+	    "alignItems": "center"
+	  },
+	  "titleback": {
+	    "flex": 1,
+	    "alignItems": "center"
+	  },
+	  "title": {
+	    "color": "#FFFFFF",
+	    "flex": 1,
+	    "marginTop": 73,
+	    "fontWeight": "bold"
+	  },
+	  "leftimage": {
+	    "width": 30,
+	    "height": 45,
+	    "bottom": 25,
+	    "left": 30,
+	    "position": "absolute"
+	  },
+	  "rightimage": {
+	    "width": 45,
+	    "height": 45,
+	    "bottom": 23,
+	    "right": 32,
+	    "position": "absolute"
+	  },
+	  "bottomline": {
+	    "height": 1,
+	    "backgroundColor": "#000000",
+	    "position": "absolute",
+	    "bottom": 0,
+	    "left": 0,
+	    "right": 0,
+	    "flex": 1
+	  },
+	  "btn": {
+	    "backgroundColor": "#0085ee",
+	    "height": 100,
+	    "width": 500,
+	    "marginTop": 50,
+	    "borderRadius": 20,
+	    "alignItems": "center",
+	    "justifyContent": "center",
+	    "backgroundColor:active": "#006ce7"
+	  }
+	}
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, exports) {
+
+	module.exports = {
+	  "content": {
+	    "position": "absolute",
+	    "top": 0,
+	    "left": 0,
+	    "right": 0,
+	    "bottom": 0,
+	    "marginTop": 0,
+	    "marginBottom": 0
+	  }
+	}
+
+/***/ }),
+
+/***/ 61:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+
+	var indicate = __webpack_require__(62);
+	exports.default = {
+	    components: { indicate: indicate },
+	    props: {
+	        lineWidth: {
+	            default: 200
+	        },
+	        lineLeft: {
+	            default: 85
+	        },
+	        gape: {
+	            default: 0
+	        },
+	        items: [{ selectSrc: 'root:img/linkSelect.png', src: 'root:img/link.png', text: '已关联', url: 'root:busi/contract/thirdcontract/link.js' }, { selectSrc: 'root:img/linkSelect.png', src: 'root:img/link.png', text: '已关联', url: 'root:busi/contract/thirdcontract/link.js' }],
+	        headerTextColor: {
+	            default: '#8d8d8d'
+	        }
+
+	    },
+	    data: function data() {
+	        return {
+	            //                list:[1,1,1,1,1,1,1,1,1,11,1,],
+	            //                headers:[{selectSrc:'root:img/linkSelect.png',src:'root:img/link.png',text:'已关联'},{selectSrc:'root:img/cancellinkselect.png',src:'root:img/cancellink.png',text:'未关联'}],
+
+	            selectIndex: 0
+	        };
+	    },
+
+	    methods: {
+	        changeheader: function changeheader(index) {
+	            this.selectIndex = index;
+	        },
+	        change: function change(e) {
+
+	            this.selectIndex = e.index;
+	            this.$refs.indicator.move(e.index);
+	        }
+	    },
+
+	    created: function created() {
+
+	        //            var domModule=weex.requireModule("font");
+	        //            domModule.addRule('fontFace',{
+	        //                'fontFamily':'iconfont',
+	        //                'src':"url(\'./../../font/icomoon.ttf\')"
+	        //            })
+
+	        var nav = weex.requireModule('navbar');
+	        nav.setStatusBarStyle('white');
+	    }
+
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = []
+
+	/* styles */
+	__vue_styles__.push(__webpack_require__(38)
+	)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(39)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(42)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/indicator.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-12b59661"
+	__vue_options__.style = __vue_options__.style || {}
+	__vue_styles__.forEach(function (module) {
+	  for (var name in module) {
+	    __vue_options__.style[name] = module[name]
+	  }
+	})
+	if (typeof __register_static_styles__ === "function") {
+	  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+	}
+
+	module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 63:
+/***/ (function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: ["bg"],
+	    staticStyle: {
+	      flex: "1"
+	    }
+	  }, [_c('div', {
+	    staticStyle: {
+	      backgroundColor: "#ffffff"
+	    }
+	  }, [_c('indicate', {
+	    ref: "indicator",
+	    attrs: {
+	      "items": _vm.items,
+	      "textColor": _vm.headerTextColor,
+	      "lineWidth": _vm.lineWidth,
+	      "lineLeft": _vm.lineLeft
+	    },
+	    on: {
+	      "change": _vm.changeheader
+	    }
+	  })], 1), _c('cycleslider', {
+	    staticStyle: {
+	      width: "750",
+	      flex: "1"
+	    },
+	    style: {
+	      'margin-top': _vm.gape
+	    },
+	    attrs: {
+	      "index": _vm.selectIndex,
+	      "infinite": false
+	    },
+	    on: {
+	      "change": _vm.change
+	    }
+	  }, _vm._l((_vm.items), function(item) {
+	    return _c('div', {
+	      key: "k1",
+	      staticClass: ["content"]
+	    }, [_c('embed', {
+	      staticClass: ["content"],
+	      attrs: {
+	        "src": item.url,
+	        "type": "weex",
+	        "param": item.param
+	      }
+	    })], 1)
+	  }))], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

@@ -1,8 +1,6 @@
 package com.farwolf.weex.component;
 
 
-import android.content.Context;
-import android.text.TextUtils;
 import android.view.ViewGroup;
 
 import com.farwolf.weex.util.Weex;
@@ -11,14 +9,12 @@ import com.taobao.weex.annotation.Component;
 import com.taobao.weex.common.WXPerformance;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXEmbed;
 import com.taobao.weex.ui.component.WXVContainer;
 import com.taobao.weex.utils.WXFileUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.HashMap;
 
 /**
  * Created by zhengjiangrong on 2017/6/26.
@@ -28,13 +24,18 @@ import java.io.InputStreamReader;
 public class WXFEmbed extends WXEmbed {
 
 
+    HashMap param;
+
+
     public WXFEmbed(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
         super(instance, node, parent);
+
 
     }
 
     public void loadUrl(String url,WXSDKInstance instance,ViewGroup.LayoutParams layoutParams)
     {
+
 
         if(url.startsWith("root:"))
         {
@@ -55,24 +56,16 @@ public class WXFEmbed extends WXEmbed {
         }
     }
 
-    public static String loadAsset(String path, Context context) throws IOException {
-        if (context == null || TextUtils.isEmpty(path)) {
-            return null;
-        }
-        InputStream inputStream = null;
-        BufferedReader bufferedReader = null;
+    @WXComponentProp(name = "param")
+    public void setParam(HashMap param) {
+      this.param=param;
+    }
 
-        inputStream = context.getAssets().open(path);
-        StringBuilder builder = new StringBuilder(inputStream.available() + 10);
-        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        char[] data = new char[4096];
-        int len = -1;
-        while ((len = bufferedReader.read(data)) > 0) {
-            builder.append(data, 0, len);
-        }
-
-        return builder.toString();
+    public void onRenderFinish()
+    {
+        this.getChildInstance().fireGlobalEventCallback("onPageInit",this.param);
 
 
     }
+
 }

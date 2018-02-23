@@ -1,124 +1,150 @@
 <template>
+  <div style="height: 90;">
+    <div style="flex-direction: row;flex:1;align-items: center;justify-content: center;">
+      <div v-for="(item,index) in items" @click="itemClick(index)" style="flex: 1;justify-content: center;">
+        <div style="flex-direction: row;justify-content: center;">
+          <!--<image v-if="item.src" style="width: 40;height: 40;margin-right: 10" :src="index==selectIndex?item.selectSrc:item.src"></image>-->
+          <text  @click="itemClick(index)" v-if="item.src" style="margin-right: 3;font-family: erp;font-size: 45;margin-top: 0;" :style="{'color':index==selectIndex?selectedColor:textColor}" >{{item.src | getFontName}}</text>
 
+          <text :ref="'text'+index" @click="itemClick(index)" style="font-size: 28;margin-top: 3"
+              :style="{'color':index==selectIndex?selectedColor:textColor,'font-size':size}">{{item.text}}</text>
 
-        <div style="border-radius: 10;border-width: 3;flex-direction: row" :style="{'border-color':theme}">
-         <div  :class="[selectIndex==index? 'item_sel':'item']" :style="{'border-right-width':index==items.length-1?0:3,'background-color':getBg(index),'border-color':getBorderColor(index)}" @click="onitemclick(index)" v-for="(item,index) in items" >
-             <text style="color: #ffffff;font-size: 30;">{{item}}</text>
-         </div>
         </div>
-
-
+      </div>
+    </div>
+    <div ref="line" :style="{'width':lineWidth,'margin-left':lineLeft,'background-color':selectedColor}"
+        style="height: 5;"></div>
+    <div style="height: 2;background-color: #E7E7E7"></div>
+  </div>
 </template>
-<style src="../css/style.css"></style>
-<style scoped>
-
-
-   .item
-   {
-        flex: 1;
-       align-items: center;
-       justify-content: center;
-       height: 55;
-       border-right-width: 3;
-       border-color: #1296db;
-        font-size: 30;
-   }
-
-
-   .item_sel
-   {
-       flex: 1;
-       align-items: center;
-       justify-content: center;
-       height: 55;
-       background-color: #1296db;
-      font-size: 30;
-   }
-
-
-
-</style>
 <script>
+    var he = require('he');
+export default {
+  props: {
+    text: {
+      type: String,
 
-    export default {
-        props:{
-            theme:{
-              default:'red'
-            },
-            items:{
-                default:['剧集','简介','简介']
+    },
+    color: {
+      type: String,
 
-            },
-            selectIndex:{
-                default:0
-            }
+    },
+    selectedColor: {
+      default: '#007aff'
+    },
+      textColor: {
+          default: '#8d8d8d'
+      },
+    disabled: {
 
+      default: false
+    },
+
+    type: {
+      type: String,
+      default: 'text'
+    },
+    size: {
+      default: 28
+    },
+    selectIndex: {
+      default: 0
+    },
+    lineWidth: {
+      default: 65
+    },
+    lineLeft: {
+      default: 60
+    },
+    items: {
+      default: []
+    }
+
+  },
+  data() {
+    return {
+
+      visiable: true,
+
+    }
+  },
+    filters:{
+        getFontName: function(text) {
+            return he.decode(text)
+        }
+    },
+  methods: {
+
+    move(index) {
+      this.itemClick(index);
+    },
+
+    itemClick(index) {
+
+      this.animateLine(this.selectIndex, index);
+      this.selectIndex = index;
+      this.$emit('change', this.selectIndex)
+    },
+    animateLine: function(fromindex, toindex) {
+      if (fromindex == toindex) {
+        return;
+      }
+      const animation = weex.requireModule('animation')
+
+      var c = this.$refs.line;
+      var delt = 750 / this.items.length;
+
+      var p = c.style.transform;
+      var from = (fromindex + 1) * delt;
+      var to = (toindex) * delt;
+
+//              modal.toast({ message: dis })
+
+      animation.transition(c, {
+        styles: {
+
+          transform: "translateX( " + to + ")",
+//                            transform: "translateX(150, 600)",
+//                            transformOrigin:'x-axis:0'
 
         },
-        data () {
-            return {
 
-                visiable:true,
+        duration: 100, //ms
+        timingFunction: 'ease',
+        delay: 0 //ms
+      }, function() {
 
+      })
 
-            }
-        },
-        methods: {
+    },
 
-            onitemclick(index)
-            {
-               this.selectIndex=index
-               this.$emit('change',index);
-            },
-            getBorderColor(index)
-            {
-//                return this.theme
-                if(this.items.length-1!=index)
-                {
-                    return this.theme
-                }
-                else
-                {
-                    return 'transparent';
-                }
-            },
-            getBg(index)
-            {
-                if(this.selectIndex==index)
-                {
-                    return this.theme
-                }
-                else
-                {
-                     return 'transparent';
-                }
-            }
+  },
 
+  created: function() {
 
+    this.visiable = !this.value == '';
+      var font=weex.requireModule("font");
+      font.addFont('erp','root:font/agriculture.ttf')
 
-        },
+  },
+  ready: function() {
 
-        created:function(){
-
-            this.visiable=!this.value=='';
-
-
-        },
-        ready:function()
-        {
-
-
-
-        },
+  },
 //        watch: {
 //
 //
-//            disabled:{
+//            selectIndex:{
 //                immediate: true,
 //                handler (val) {
 //
 //                }
 //            }
 //        }
-    }
+}
 </script>
+
+<style scoped>
+
+
+
+</style>

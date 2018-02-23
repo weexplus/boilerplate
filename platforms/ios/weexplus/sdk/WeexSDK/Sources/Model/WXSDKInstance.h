@@ -32,6 +32,8 @@ extern NSString *const bundleUrlOptionKey;
  **/
 @property (nonatomic, weak) UIViewController *viewController;
 
+//zjr add
+@property (nonatomic, strong) NSMutableDictionary *param;
 /**
  * The Native root container used to bear the view rendered by weex file. 
  * The root view is controlled by WXSDKInstance, so you can only get it, but not change it.

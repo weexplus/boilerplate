@@ -155,6 +155,17 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     }
   }
 
+
+  public void onRenderFinish(){
+
+  }
+
+
+  public WXSDKInstance getChildInstance()
+  {
+      return mNestedInstance;
+  }
+
   static class EmbedRenderListener implements IWXRenderListener {
     WXEmbed mComponent;
     OnNestedInstanceEventListener mEventListener;
@@ -169,6 +180,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
       FrameLayout hostView = mComponent.getHostView();
       hostView.removeAllViews();
       hostView.addView(view);
+      mComponent.onRenderFinish();
     }
 
     @Override
