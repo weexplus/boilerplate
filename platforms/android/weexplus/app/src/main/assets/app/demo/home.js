@@ -564,7 +564,7 @@
 
 	            var navigator = weex.requireModule('navigator');
 
-	            self.param = navigator.param();
+	            self.param = e;
 	        });
 	    }
 	};

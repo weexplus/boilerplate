@@ -1356,7 +1356,7 @@
 	    components: { viewpager: viewpager, head: head },
 	    data: {
 
-	        items: [{ text: '已关联', url: 'root:demo/home.js', param: { a: 'ss' } }, { text: '22', url: 'root:demo/net.js' }]
+	        items: [{ text: '已关联', url: 'root:demo/home.js', param: { a: 'ss' } }, { text: '22', url: 'root:demo/net.js', param: { b: 'dsds' } }]
 	    },
 	    methods: {
 	        update: function update(e) {

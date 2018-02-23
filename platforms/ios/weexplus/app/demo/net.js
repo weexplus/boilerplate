@@ -528,7 +528,7 @@
 /***/ 98:
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -575,11 +575,6 @@
 
 
 	var head = __webpack_require__(4);
-	var globalEvent = weex.requireModule('globalEvent');
-	globalEvent.addEventListener("onPageInit", function (e) {
-
-	    var navigator = weex.requireModule('navigator');
-	});
 
 	exports.default = {
 	    components: { head: head },
@@ -626,9 +621,18 @@
 	            });
 	        }
 	    },
-	    created: function created() {}
+	    created: function created() {
+	        var _this = this;
+
+	        var globalEvent = weex.requireModule('globalEvent');
+
+	        globalEvent.addEventListener("onPageInit", function (e) {
+
+	            _this.header = e;
+	        });
+	    }
 	};
-	module.exports = exports['default'];
+	module.exports = exports["default"];
 
 /***/ }),
 
@@ -675,7 +679,7 @@
 	    }
 	  }, [_vm._v("get")])]), _c('text', {
 	    staticStyle: {
-	      color: "#ffffff"
+	      color: "#000000"
 	    }
 	  }, [_vm._v(_vm._s(_vm.header))]), _c('text', {
 	    staticStyle: {
