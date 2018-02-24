@@ -1,5 +1,3 @@
-
-
 <template>
  <scroller>
      <head title="二维码扫描"  append="tree">
@@ -10,21 +8,13 @@
                 <text style="color:#0000000">{{back}}</text>
             </div>
         </div>
-
  </scroller>
-
-
 </template>
-
 <style>
 .cl
 {
-
     align-items: center;
-
 }
-
-
 </style>
 <style src="./css/style.css"></style>
 <script>

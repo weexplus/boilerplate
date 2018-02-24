@@ -2,13 +2,7 @@
 
    <div style="background-color: yellow">
        <head title="demo"  @titleClick="update"></head>
-        <flist>
-            <cell  slot="cell" v-for="(item,index) in [1,1,1,1]">
-                <div style="height: 200;margin-top: 20;background-color: red;align-items: center;justify-content: center">
-                   <text>{{index}}</text>
-                </div>
-            </cell>
-        </flist>
+         <image src="root:load.gif" style="width: 200;height: 200"></image>
 
    </div>
 </template>

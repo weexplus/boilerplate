@@ -27,6 +27,8 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
 import com.farwolf.weex.activity.WeexActivity;
@@ -72,6 +74,7 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
           WeexActivity a= (WeexActivity)view.getContext();
         temp=Weex.getRelativeUrl(url,a.mWXSDKInstance);
 
+
         if(temp.startsWith("http"))
         {
           loadHttp(temp,view,quality,strategy);
@@ -115,6 +118,20 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
 
       }
     }
+
+      if(url.toLowerCase().contains(".gif"))
+      {
+          Glide
+                  .with((Activity)view.getContext())
+                  .load(url)
+                  .asGif()
+
+                  .placeholder(pladrawable)
+                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                  .into(view);
+
+          return;
+      }
 
     Picasso.with(WXEnvironment.getApplication())
             .load(url)
@@ -168,7 +185,19 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
           }
       }
       view.setImageDrawable(pladrawable);
+      if(url.toLowerCase().contains(".gif"))
+      {
+          Glide
+                  .with((Activity)view.getContext())
+                  .load("file:///android_asset/"+url)
+                  .asGif()
 
+                  .placeholder(pladrawable)
+                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                  .into(view);
+
+          return;
+      }
 
 
       if(url.startsWith("sdcard:"))

@@ -59,7 +59,7 @@
     [WXSDKEngine registerModule:@"qr" withClass:[WXQRModule class]];
     [WXSDKEngine registerModule:@"centerpop" withClass:[WXCenterPop class]];
     [WXSDKEngine registerModule:@"slidpop" withClass:[WXSlidPopModule class]];
-    [WXSDKEngine registerModule:@"pagemodule" withClass:[WXPageModule class]];
+    [WXSDKEngine registerModule:@"page" withClass:[WXPageModule class]];
     [WXSDKEngine registerModule:@"font" withClass:[WXFontModule class]];
     
     

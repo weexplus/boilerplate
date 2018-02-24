@@ -2,7 +2,7 @@
   "schema":"",
   "debug":true,
   "debugIp":"127.0.0.1",
-  "entry":"app/demo/qrcode.js",
+  "entry":"app/index.js",
   "preload":[],
   "splash":"splash1",
   "static":
