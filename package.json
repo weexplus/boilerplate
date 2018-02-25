@@ -4,7 +4,7 @@
     "description": "a weex project",
     "main": "index.js",
     "scripts": {
-        "build": "weex-builder src dist",
+        "build": "weex-builder src dist --min",
         "build_plugin": "webpack --config ./tools/webpack.config.plugin.js --color",
         "dev": "weex-builder src dist -w",
         "weexplus": "weexplus start  --serverport 9999  --socketport 9897",

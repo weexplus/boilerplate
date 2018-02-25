@@ -2,7 +2,7 @@
   "schema":"",
   "debug":true,
   "debugIp":"127.0.0.1",
-  "entry":"app/index.js",
+  "entry":"app/test/input.js",
   "preload":[],
   "splash":"splash1",
   "static":

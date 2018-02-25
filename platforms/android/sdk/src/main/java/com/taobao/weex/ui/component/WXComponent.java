@@ -130,7 +130,7 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
 
   private volatile WXVContainer mParent;
   private volatile ImmutableDomObject mDomObj;
-  private WXSDKInstance mInstance;
+  public WXSDKInstance mInstance;
   private Context mContext;
 
   private int mAbsoluteY = 0;

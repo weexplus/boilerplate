@@ -135,19 +135,6 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     }
 
 
-//    public void startHotRefresh() {
-//
-//        String wsUrl = "ws://" + pref.ip().get() + ":8082";
-//        mWXHandler.obtainMessage(Constants.HOT_REFRESH_CONNECT, 0, 0, wsUrl).sendToTarget();
-//
-//    }
-//
-//    public void stopHotRefresh() {
-//
-//        String wsUrl = "ws://" + pref.ip().get() + ":8082";
-//        mWXHandler.obtainMessage(Constants.HOT_REFRESH_DISCONNECT, 0, 0, wsUrl).sendToTarget();
-//
-//    }
 
 
     boolean hasInit=false;
@@ -176,32 +163,12 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     {
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT);
-//        if(AppTool.OSVersion()>=19)
-//        {
-//
-//            lp.setMargins(0, screenTool.toDip(60), 0, 0);
-//
-//        }
-//        else
-//        {
-//            lp.setMargins(0, screenTool.toDip(52), 0, 0);
-//        }
+
         rootContainer.setLayoutParams(lp);
 
-//        if("transparent".equals(navbarVisibility))
-//        {
-//            makeTransparent();
-//        }
-//        else if("visiable".equals(navbarVisibility))
-//        {
-//
-//
-//        }
-//        else
-//        {
+
             makeHidden();
 
-//        }
     }
 
     @AfterViews
@@ -326,6 +293,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance= page.instance;
             pageid=page.id;
             this.url=url;
+
             mWXSDKInstance.setContext(this);
             mWXSDKInstance.registerRenderListener(this);
             mWXSDKInstance.onActivityCreate();
