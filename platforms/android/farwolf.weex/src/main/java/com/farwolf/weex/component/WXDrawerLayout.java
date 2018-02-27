@@ -60,6 +60,11 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
         drawerLayoutView_.setMainUrl(url);
     }
 
+    @WXComponentProp(name = "leftWidth")
+    public void setLeftWidth(float leftwidth)
+    {
+        drawerLayoutView_.setLeftWidth((int)Weex.length(leftwidth));
+    }
 
 
 }

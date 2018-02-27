@@ -40,6 +40,7 @@ import com.farwolf.weex.view.ToolPop_;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
+import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.utils.WXFileUtils;
@@ -87,6 +88,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     public ScreenTool screenTool;
 
 
+    public JSCallback backkeyCallback;
+
+
     public String url;
 
 
@@ -114,6 +118,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
 
     public  boolean exitEnable;
+    public  boolean backKeyEnable;
 
 
     public HashMap param;
@@ -631,6 +636,15 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
 
+        if(!backKeyEnable)
+        {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                    backkeyCallback.invokeAndKeepAlive(null);
+                    return true;
+                }
+            }
+        }
         if(exitEnable)
         {
             if (event.getAction() == KeyEvent.ACTION_DOWN) {

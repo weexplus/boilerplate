@@ -3,6 +3,7 @@ package com.farwolf.weex.module;
 import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.WeexFactory_;
 import com.taobao.weex.annotation.JSMethod;
+import com.taobao.weex.bridge.JSCallback;
 
 /**
  * Created by zhengjiangrong on 2017/6/15.
@@ -36,14 +37,26 @@ public class WXPageModule extends WXModuleBase {
 
 
 
-    @JSMethod(uiThread = true)
+    @JSMethod
     public void doubleBack()
     {
         getActivity().exitEnable=true;
     }
 
+    @JSMethod
+    public void enableBackKey(boolean enable)
+    {
+        getActivity().backKeyEnable=enable;
+    }
 
-    @JSMethod(uiThread = true)
+    @JSMethod
+    public void setBackKeyCallback(JSCallback callback)
+    {
+        getActivity().backkeyCallback=callback;
+    }
+
+
+    @JSMethod
     public void exit()
     {
         System.exit(0);

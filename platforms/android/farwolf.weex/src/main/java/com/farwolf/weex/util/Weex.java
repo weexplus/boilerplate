@@ -165,7 +165,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("addressBook", WXAddressBookModule.class);
             WXSDKEngine.registerModule("slidpop", WXSlidpopModule.class);
             WXSDKEngine.registerModule("centerpop", WXCenterPopModule.class);
-            WXSDKEngine.registerModule("pagemodule", WXPageModule.class);
+            WXSDKEngine.registerModule("page", WXPageModule.class);
             WXSDKEngine.registerModule("font", WXFontModule.class);
 
 

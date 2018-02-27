@@ -19,7 +19,7 @@
 
     <com.farwolf.weex.view.WXPageView_
         android:id="@+id/nav_view"
-        android:layout_width="match_parent"
+        android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@android:color/holo_green_dark"

@@ -61,6 +61,20 @@ public class DrawerLayoutView extends ViewBase {
         Log.e("main_view url", url);
     }
 
+
+    public void setLeftWidth(int width)
+    {
+        DrawerLayout.LayoutParams o= ( DrawerLayout.LayoutParams) nav_view.getLayoutParams();
+        o.width=width;
+        nav_view.setLayoutParams(null);
+        nav_view.setLayoutParams(o);
+
+
+
+    }
+
+
+
     @Click
     public void main_viewClicked() {
 

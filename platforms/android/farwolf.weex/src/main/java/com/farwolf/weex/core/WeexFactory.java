@@ -224,16 +224,16 @@ public class WeexFactory  extends ServiceBase{
     public void jump(String url, final Intent in,final boolean forResult)
     {
 
-        if(url.startsWith("http"))
-        {
-
-            in.putExtra("url",url);
-            if(!forResult)
-                context.startActivity(in);
-            else
-                getActivity().startActivityForResult(in,10001);
-            return;
-        }
+//        if(url.startsWith("http"))
+//        {
+//
+//            in.putExtra("url",url);
+//            if(!forResult)
+//                context.startActivity(in);
+//            else
+//                getActivity().startActivityForResult(in,10001);
+//            return;
+//        }
 
 
         if(hasCache(url))
