@@ -12,6 +12,7 @@ import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
 import com.farwolf.weex.bean.Config;
+import com.farwolf.weex.component.WXArc;
 import com.farwolf.weex.component.WXDrawerLayout;
 import com.farwolf.weex.component.WXFEmbed;
 import com.farwolf.weex.component.WXFImage;
@@ -184,6 +185,7 @@ public class Weex extends ServiceBase{
             registerComponent("looper",WXLooperText.class);
             registerComponent("drawerlayout",WXDrawerLayout.class);
             registerComponent("input",WXFInput.class);
+            registerComponent("arc",WXArc.class);
         } catch (WXException e) {
             e.printStackTrace();
         }

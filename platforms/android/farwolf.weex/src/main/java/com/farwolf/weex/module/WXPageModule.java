@@ -43,4 +43,11 @@ public class WXPageModule extends WXModuleBase {
     }
 
 
+    @JSMethod(uiThread = true)
+    public void exit()
+    {
+        System.exit(0);
+    }
+
+
 }

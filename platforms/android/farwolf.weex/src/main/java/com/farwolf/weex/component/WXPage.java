@@ -95,6 +95,8 @@ public class WXPage extends WXDiv implements WXSDKInstance.OnInstanceVisibleList
         loadContent();
     }
 
+
+
     @Override
     public void reload() {
         if (!TextUtils.isEmpty(src)) {

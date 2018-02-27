@@ -2,7 +2,7 @@
 
    <div style="background-color: yellow">
        <head title="demo"  @titleClick="update"></head>
-         <image src="root:load.gif" style="width: 200;height: 200"></image>
+       <image src="root:load.gif" style="width: 200;height: 200"></image>
 
    </div>
 </template>

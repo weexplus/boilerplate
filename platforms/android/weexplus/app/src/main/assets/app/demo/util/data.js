@@ -1,87 +1,113 @@
-// { "framework": "Vue" }
+// { "framework": "Vue"} 
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-
+/******/ 		module.l = true;
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 475);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports) {
+/******/ ({
 
-	"use strict";
+/***/ 475:
+/***/ (function(module, exports, __webpack_require__) {
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = {
+"use strict";
 
-	    getClassData: function getClassData() {
 
-	        var pref = weex.requireModule("pref");
-	        var s = pref.get('serial_class');
-	        var modal = weex.requireModule("modal");
-	        // modal.alert({message:"l"+s+"l"})
-	        if (s != undefined && s != '') {
-	            return s;
-	        }
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
 
-	        var l = { "msg": "成功", "err": 0, "list": [{ "name": "魔幻", "id": 5 }, { "name": "青春", "id": 6 }, { "name": "都市", "id": 7 }, { "name": "迷你剧", "id": 8 }, { "name": "谍战", "id": 9 }, { "name": "记录", "id": 10 }, { "name": "西部", "id": 11 }, { "name": "血腥", "id": 12 }, { "name": "罪案", "id": 13 }, { "name": "综艺", "id": 14 }, { "name": "科幻", "id": 15 }, { "name": "真人秀", "id": 16 }, { "name": "爱情", "id": 17 }, { "name": "歌舞", "id": 18 }, { "name": "暴力", "id": 19 }, { "name": "政治", "id": 20 }, { "name": "战争", "id": 21 }, { "name": "惊悚", "id": 22 }, { "name": "悬疑", "id": 23 }, { "name": "律政", "id": 24 }, { "name": "家庭", "id": 25 }, { "name": "奇幻", "id": 26 }, { "name": "喜剧", "id": 27 }, { "name": "吸血鬼", "id": 28 }, { "name": "同性", "id": 29 }, { "name": "史诗", "id": 30 }, { "name": "古装", "id": 31 }, { "name": "历史", "id": 32 }, { "name": "医务", "id": 33 }, { "name": "动画", "id": 34 }, { "name": "动作", "id": 35 }, { "name": "剧情", "id": 36 }, { "name": "冒险", "id": 37 }, { "name": "传记", "id": 38 }, { "name": "丧尸", "id": 39 }, { "name": "情景喜剧", "id": 40 }] };
-	        return l.list;
-	    },
-	    getMovieClassData: function getMovieClassData() {
+    getClassData: function getClassData() {
 
-	        var pref = weex.requireModule("pref");
-	        var s = pref.get('movie_class');
-	        var modal = weex.requireModule("modal");
-	        // modal.alert({message:"l"+s+"l"})
-	        if (s != undefined && s != '') {
-	            return s;
-	        }
+        var pref = weex.requireModule("pref");
+        var s = pref.get('serial_class');
+        var modal = weex.requireModule("modal");
+        // modal.alert({message:"l"+s+"l"})
+        if (s != undefined && s != '') {
+            return s;
+        }
 
-	        var l = { "msg": "成功", "err": 0, "list": [{ "name": "动作", "id": 41 }, { "name": "剧情", "id": 42 }, { "name": "悬疑", "id": 43 }, { "name": "喜剧", "id": 44 }, { "name": "爱情", "id": 45 }, { "name": "战争", "id": 46 }, { "name": "科幻", "id": 47 }, { "name": "灾难", "id": 48 }, { "name": "恐怖", "id": 49 }, { "name": "犯罪", "id": 50 }, { "name": "动漫", "id": 51 }, { "name": "惊悚", "id": 52 }, { "name": "奇幻", "id": 53 }, { "name": "冒险", "id": 54 }, { "name": "动作", "id": 41 }, { "name": "剧情", "id": 42 }, { "name": "悬疑", "id": 43 }, { "name": "喜剧", "id": 44 }, { "name": "爱情", "id": 45 }, { "name": "战争", "id": 46 }, { "name": "科幻", "id": 47 }, { "name": "灾难", "id": 48 }, { "name": "恐怖", "id": 49 }, { "name": "犯罪", "id": 50 }, { "name": "动漫", "id": 51 }, { "name": "惊悚", "id": 52 }, { "name": "奇幻", "id": 53 }, { "name": "冒险", "id": 54 }] };
+        var l = { "msg": "成功", "err": 0, "list": [{ "name": "魔幻", "id": 5 }, { "name": "青春", "id": 6 }, { "name": "都市", "id": 7 }, { "name": "迷你剧", "id": 8 }, { "name": "谍战", "id": 9 }, { "name": "记录", "id": 10 }, { "name": "西部", "id": 11 }, { "name": "血腥", "id": 12 }, { "name": "罪案", "id": 13 }, { "name": "综艺", "id": 14 }, { "name": "科幻", "id": 15 }, { "name": "真人秀", "id": 16 }, { "name": "爱情", "id": 17 }, { "name": "歌舞", "id": 18 }, { "name": "暴力", "id": 19 }, { "name": "政治", "id": 20 }, { "name": "战争", "id": 21 }, { "name": "惊悚", "id": 22 }, { "name": "悬疑", "id": 23 }, { "name": "律政", "id": 24 }, { "name": "家庭", "id": 25 }, { "name": "奇幻", "id": 26 }, { "name": "喜剧", "id": 27 }, { "name": "吸血鬼", "id": 28 }, { "name": "同性", "id": 29 }, { "name": "史诗", "id": 30 }, { "name": "古装", "id": 31 }, { "name": "历史", "id": 32 }, { "name": "医务", "id": 33 }, { "name": "动画", "id": 34 }, { "name": "动作", "id": 35 }, { "name": "剧情", "id": 36 }, { "name": "冒险", "id": 37 }, { "name": "传记", "id": 38 }, { "name": "丧尸", "id": 39 }, { "name": "情景喜剧", "id": 40 }] };
+        return l.list;
+    },
+    getMovieClassData: function getMovieClassData() {
 
-	        return l.list;
-	    }
+        var pref = weex.requireModule("pref");
+        var s = pref.get('movie_class');
+        var modal = weex.requireModule("modal");
+        // modal.alert({message:"l"+s+"l"})
+        if (s != undefined && s != '') {
+            return s;
+        }
 
-	};
-	module.exports = exports["default"];
+        var l = { "msg": "成功", "err": 0, "list": [{ "name": "动作", "id": 41 }, { "name": "剧情", "id": 42 }, { "name": "悬疑", "id": 43 }, { "name": "喜剧", "id": 44 }, { "name": "爱情", "id": 45 }, { "name": "战争", "id": 46 }, { "name": "科幻", "id": 47 }, { "name": "灾难", "id": 48 }, { "name": "恐怖", "id": 49 }, { "name": "犯罪", "id": 50 }, { "name": "动漫", "id": 51 }, { "name": "惊悚", "id": 52 }, { "name": "奇幻", "id": 53 }, { "name": "冒险", "id": 54 }, { "name": "动作", "id": 41 }, { "name": "剧情", "id": 42 }, { "name": "悬疑", "id": 43 }, { "name": "喜剧", "id": 44 }, { "name": "爱情", "id": 45 }, { "name": "战争", "id": 46 }, { "name": "科幻", "id": 47 }, { "name": "灾难", "id": 48 }, { "name": "恐怖", "id": 49 }, { "name": "犯罪", "id": 50 }, { "name": "动漫", "id": 51 }, { "name": "惊悚", "id": 52 }, { "name": "奇幻", "id": 53 }, { "name": "冒险", "id": 54 }] };
+
+        return l.list;
+    }
+
+};
 
 /***/ })
-/******/ ]);
+
+/******/ });
