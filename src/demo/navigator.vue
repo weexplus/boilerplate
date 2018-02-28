@@ -40,6 +40,7 @@
             var self=this;
             var nav = weex.requireModule('navigator') ;
             nav.presentFull('present.js',{a:'okoko'},function (e) {
+                if(e!=undefined)
                 self.callbackdata=e.ok;
             },true);
         },
@@ -52,6 +53,7 @@
             nav.setPageId('index');
 //            nav.pushParam('nav1.js',{a:'这是传过来的值'});
             nav.pushFull('nav1.js',{a:'这是传过来的值'},function (e) {
+                if(e!=undefined)
               self.callbackdata=e.ok;
             },true);
         }

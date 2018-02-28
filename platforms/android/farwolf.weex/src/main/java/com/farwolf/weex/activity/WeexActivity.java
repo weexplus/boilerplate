@@ -118,7 +118,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
 
     public  boolean exitEnable;
-    public  boolean backKeyEnable;
+    public  boolean backKeyEnable=true;
 
 
     public HashMap param;
@@ -640,6 +640,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         {
             if (event.getAction() == KeyEvent.ACTION_DOWN) {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                    if(backkeyCallback!=null)
                     backkeyCallback.invokeAndKeepAlive(null);
                     return true;
                 }
