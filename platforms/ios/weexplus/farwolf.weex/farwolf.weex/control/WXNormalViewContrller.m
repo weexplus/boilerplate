@@ -79,6 +79,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
      [self regist:@"refreshpage" method:@selector(scoketrefresh)];
     [self regist:@"qrrefreshpage" method:@selector(onqr:)];
     
@@ -200,12 +201,7 @@
 BOOL isshowErr;
 -(void)onWeexError:(NSNotification*)n
 {
-#ifdef DEBUG
-    
-    
-    [self showError:n.userInfo[@"msg"]] ;
-    
-#endif
+ 
 }
 -(void)openScan
 {
@@ -256,43 +252,6 @@ BOOL isshowErr;
 
 
 
--(void)showError:(NSString*)msg
-{
-//    if(isshowErr)
-//    {
-//        return;
-//    }
-//    [self.fail_layout setHidden:false];
-//    isshowErr=true;
-//
-//    ErrorControl *vc=[ErrorControl new];
-//    vc.errmsg=msg;
-//    vc.onClose=^(){
-//        isshowErr=false;
-//        [self.fail_layout setHidden:false];
-//    };
-//
-    
-    
-//    dispatch_sync(dispatch_get_main_queue(), ^{
-//
-//        　 [self presentViewController:vc animated:true completion:^{
-//
-//        }];
-//
-//    });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
 
 
 
@@ -300,6 +259,7 @@ BOOL isshowErr;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+   
     [self setBackBar:nil color:nil];
     [_instance fireGlobalEvent:@"viewWillDisappear" params:nil];
     [_instance fireGlobalEvent:WX_APPLICATION_WILL_RESIGN_ACTIVE params:nil];
@@ -308,6 +268,7 @@ BOOL isshowErr;
 
 -(void)viewWillAppear:(BOOL)animated
 {
+  
     [_instance fireGlobalEvent:@"viewWillAppear" params:nil];
     
     [self.navigationController setNavigationBarHidden:true animated:animated];
@@ -347,7 +308,7 @@ BOOL isshowErr;
     [self.fail_layout setHidden:true];
     [self _renderWithURL:_sourceURL];
 }
-
+ 
 - (void)addEdgePop
 {
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
@@ -404,7 +365,7 @@ BOOL isshowErr;
     _instance.onFailed = ^(NSError *error) {
         
         NSString *msg=error.userInfo[@"NSLocalizedDescription"];
-        [self showError:msg];
+    
     };
     
     
@@ -641,6 +602,9 @@ BOOL isshowErr;
     self.set.center = CGPointMake(toolCenter.x, toolCenter.y - CGRectGetWidth(self.set.bounds) / 2);
     self.refresh.center = CGPointMake(toolCenter.x, toolCenter.y + CGRectGetWidth(self.refresh.bounds) / 2);
 }
+
+
+
 
 -(void)gotoset
 {

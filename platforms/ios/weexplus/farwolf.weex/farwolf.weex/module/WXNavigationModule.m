@@ -12,10 +12,10 @@
 @synthesize weexInstance;
 WX_EXPORT_METHOD(@selector(push:))
 WX_EXPORT_METHOD(@selector(pushParam:param:))
-WX_EXPORT_METHOD(@selector(pushFull:param:callback:animated:))
+WX_EXPORT_METHOD(@selector(pushFull:callback:))
 WX_EXPORT_METHOD(@selector(back))
 WX_EXPORT_METHOD(@selector(backFull:animated:))
-WX_EXPORT_METHOD(@selector(presentFull:param:callback:animated:))
+WX_EXPORT_METHOD(@selector(presentFull:callback:))
 
 WX_EXPORT_METHOD(@selector(present:))
 WX_EXPORT_METHOD(@selector(dismiss))
@@ -43,29 +43,77 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 -(void)push:(NSString *)url
 {
-    [self pushFull:url param:nil   callback:nil animated:true];
+     NSMutableDictionary *dic=[NSMutableDictionary new];
+     [dic setValue:url forKey:@"url"];
+     [dic setValue:nil forKey:@"param"];
+     [dic setValue:@(true) forKey:@"animated"];
+     [dic setValue:@(true) forKey:@"isPortrait"];
+    [self pushFull:dic callback:nil];
 
 }
 -(void)pushParam:(NSString *)url param:(NSDictionary*)param
 {
-     [self pushFull:url param:param callback:nil animated:true];
+    NSMutableDictionary *dic=[NSMutableDictionary new];
+    [dic setValue:url forKey:@"url"];
+    [dic setValue:param forKey:@"param"];
+    [dic setValue:@(true) forKey:@"animated"];
+    [dic setValue:@(true) forKey:@"isPortrait"];
+    [self pushFull:dic callback:nil];
+    
+//     [self pushFull:url param:param callback:nil animated:true];
 }
--(void)pushFull:(NSString *)url param:(NSDictionary*)param   callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
+
+-(void)pushFull:(NSDictionary*)parameters   callback:(WXModuleKeepAliveCallback)callback
 {
+    NSString *url=[parameters objectForKey:@"url"];
+    NSDictionary *param=[parameters objectForKey:@"param"];
+    BOOL animated=true;
+    if([parameters objectForKey:@"animated"]!=nil)
+    {
+       animated=[parameters[@"animated"] boolValue];
+    }
+    BOOL isPortrait=true;
+    if([parameters objectForKey:@"isPortrait"]!=nil)
+    {
+        isPortrait=[parameters[@"isPortrait"] boolValue];
+       
+    }
+    if(!isPortrait)
+    {
+        [self presentFull:parameters callback:callback];
+        return;
+    }
     
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
-         vc.param=param;
-         vc.callback = callback;
-         vc.instance.param=param;
-         [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
+        vc.param=param;
+        vc.callback = callback;
+        vc.instance.param=param;
+        [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
         
     } fail:^(NSString *msg) {
         
-    }  frame:[UIApplication sharedApplication].keyWindow.bounds];
- 
- 
+    }  frame:[UIApplication sharedApplication].keyWindow.bounds isPortrait:isPortrait];
+    
+    
 }
+
+//-(void)pushFull:(NSString *)url param:(NSDictionary*)param   callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
+//{
+//
+//    [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
+//
+//         vc.param=param;
+//         vc.callback = callback;
+//         vc.instance.param=param;
+//         [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
+//
+//    } fail:^(NSString *msg) {
+//
+//    }  frame:[UIApplication sharedApplication].keyWindow.bounds];
+//
+//
+//}
 
 -(id)param
 {
@@ -145,37 +193,32 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 -(void)present:(NSString *)url
 {
-    [self presentFull:url param:nil callback:nil animated:true];
+    NSMutableDictionary *dic=[NSMutableDictionary new];
+    [dic setValue:url forKey:@"url"];
+    [dic setValue:nil forKey:@"param"];
+    [dic setValue:@(true) forKey:@"animated"];
+    [dic setValue:@(true) forKey:@"isPortrait"];
+    [self presentFull:dic callback:nil];
 }
 
--(void)presentFull:(NSString *)url param:(NSDictionary*)param    callback:(WXModuleKeepAliveCallback)callback animated:(BOOL)animated
+-(void)presentFull:(NSDictionary*)parameters   callback:(WXModuleKeepAliveCallback)callback
 {
    
-//    NSURL *nurl=[URL getFinalUrl:url weexInstance:weexInstance];
-//    [WeexFactory render:nurl compelete:^(Page *p) {
-//        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-//        vc.navbarVisibility=navbarVisibility;
-//        vc.hidesBottomBarWhenPushed = YES;
-//        vc.page=p;
-//        vc.instance=p.instance;
-//        vc.param=param;
-//        vc.callback=callback;
-//        if(createNav)
-//        {
-//            UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-//            [weexInstance.viewController presentViewController:nav animated:animated completion:^{
-////                 [weexInstance fireGlobalEvent:@"onPageInit" params:nil];
-//            }];
-//        }
-//        else
-//        {
-//            [weexInstance.viewController presentViewController:vc animated:animated completion:^{
-//            }];
-//        }
-//
-//
-//    }];
- 
+    NSString *url=[parameters objectForKey:@"url"];
+    NSDictionary *param=[parameters objectForKey:@"param"];
+    BOOL animated=true;
+    if([parameters objectForKey:@"animated"]!=nil)
+    {
+        animated=[parameters[@"animated"] boolValue];
+    }
+    BOOL isPortrait=true;
+    if([parameters objectForKey:@"isPortrait"]!=nil)
+    {
+        isPortrait=[parameters[@"isPortrait"] boolValue];
+        
+    }
+   
+    
     
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
@@ -189,7 +232,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         
     } fail:^(NSString *msg) {
     
-    }   frame:[UIApplication sharedApplication].keyWindow.bounds];
+    }   frame:[UIApplication sharedApplication].keyWindow.bounds isPortrait:isPortrait];
     
    
  

@@ -117,7 +117,7 @@
             
         }  fail:^(NSString *msg) {
         
-        }  frame:r];
+        }  frame:r isPortrait:true];
     
     }
      [self show];

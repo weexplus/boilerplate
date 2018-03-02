@@ -18,28 +18,18 @@
  */
 package com.taobao.weex.ui.component;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.Layout;
 
-import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.WXSDKManager;
 import com.taobao.weex.annotation.Component;
 import com.taobao.weex.common.Constants;
-import com.taobao.weex.dom.DOMActionContext;
-import com.taobao.weex.dom.WXDomHandler;
 import com.taobao.weex.dom.WXDomObject;
 import com.taobao.weex.ui.ComponentCreator;
 import com.taobao.weex.ui.flat.FlatComponent;
 import com.taobao.weex.ui.flat.widget.TextWidget;
 import com.taobao.weex.ui.view.WXTextView;
-import com.taobao.weex.utils.TypefaceUtil;
-import com.taobao.weex.utils.WXLogUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -58,6 +48,9 @@ public class WXText extends WXComponent<WXTextView> implements FlatComponent<Tex
 
   @Override
   public boolean promoteToView(boolean checkAncestor) {
+    //zjr add
+    if(getInstance().getFlatUIContext()==null)
+      return false;
     return getInstance().getFlatUIContext().promoteToView(this, checkAncestor, WXText.class);
   }
 

@@ -8,6 +8,7 @@
 
 #import "WeexFactory.h"
 #import "Weex.h"
+#import "LanscapeViewContoller.h"
 static NSMutableDictionary *pageCache;
 @implementation WeexFactory
 
@@ -89,16 +90,22 @@ static NSMutableDictionary *pageCache;
 +(void)preRender:(NSURL *)sourceURL
 {
     
+//    [self renderNew:sourceURL compelete:^(WXNormalViewContrller *vc) {
+//
+//        [self addCache:sourceURL.absoluteString vc:vc];
+//
+//    } fail:^(NSString *s) {
+//
+//    }  frame:[[UIApplication sharedApplication] keyWindow].bound isPortrait:true];
+    
     [self renderNew:sourceURL compelete:^(WXNormalViewContrller *vc) {
-        
-        [self addCache:sourceURL.absoluteString vc:vc];
-        
+         [self addCache:sourceURL.absoluteString vc:vc];
     } fail:^(NSString *s) {
         
-    }  frame:[[UIApplication sharedApplication] keyWindow].bounds];
+    } frame:[[UIApplication sharedApplication] keyWindow].bounds isPortrait:true];
 }
 
-+ (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame
++ (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame isPortrait:(BOOL)isPortrait
 {
 
 //    if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
@@ -131,8 +138,12 @@ static NSMutableDictionary *pageCache;
         
  
         weakP.weexView=view;
-        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
-        
+        WXNormalViewContrller *vc=nil;
+        if(isPortrait)
+        vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
+        else
+           vc= [[LanscapeViewContoller alloc]initWithSourceURL:sourceURL.absoluteString];
+//        LanscapeViewContoller
         vc.hidesBottomBarWhenPushed = YES;
         vc.page=p;
         vc.navbarVisibility=@"hidden";
@@ -214,7 +225,7 @@ static NSMutableDictionary *pageCache;
         } fail:^(NSString *msg) {
             fail(msg);
             c=-1;
-        }  frame:[UIApplication sharedApplication].keyWindow.bounds];
+        }  frame:[UIApplication sharedApplication].keyWindow.bounds isPortrait:true];
     }
 }
 

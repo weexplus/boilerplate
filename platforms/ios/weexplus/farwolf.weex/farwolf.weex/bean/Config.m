@@ -41,7 +41,12 @@
   
    return [d[@"debug"] boolValue];
 }
-
++(BOOL)isPortrait
+{
+    NSMutableDictionary *d=  [Weex conifg];
+    
+    return [d[@"isPortrait"] boolValue];
+}
 
 +(NSString*)getUMAndroidKey
 {

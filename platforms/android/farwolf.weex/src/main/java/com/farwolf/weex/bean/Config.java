@@ -46,6 +46,11 @@ public class Config {
     }
 
 
+    public static boolean isPortrait(Context c)
+    {
+        return config(c).optBoolean("isPortrait");
+    }
+
     public static String socketPort(Context c)
     {
         return config(c).optString("socketPort","9897");

@@ -113,7 +113,7 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
   private final String mInstanceId;
   private RenderContainer mRenderContainer;
   private WXComponent mRootComp;
-  public HashMap param;
+  public Map param;
   private boolean mRendered;
   private WXRefreshData mLastRefreshData;
   private NestedInstanceInterceptor mNestedInstanceInterceptor;
@@ -247,6 +247,9 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
   @RestrictTo(Scope.LIBRARY)
   public @NonNull
   FlatGUIContext getFlatUIContext(){
+    //zjr add
+    if(mFlatGUIContext==null)
+      mFlatGUIContext=new FlatGUIContext();
     return mFlatGUIContext;
   }
 

@@ -21,7 +21,7 @@
 @interface WXNormalViewContrller : UIViewController<SRWebSocketDelegate>
 //- (instancetype)initWith:(NSString *)url;
 //@property (nonatomic, strong) IQKeyboardReturnKeyHandler    *returnKeyHandler;
-
+ 
 @property (strong, nonatomic) UIView *toolView;
 @property(strong,nonatomic) UIButton *set;
 @property(strong,nonatomic) UIButton *refresh;

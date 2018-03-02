@@ -3,6 +3,7 @@ package com.farwolf.weex.core;
 import android.content.Intent;
 import android.view.View;
 
+import com.alibaba.fastjson.JSONObject;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
@@ -254,7 +255,7 @@ public class WeexFactory  extends ServiceBase{
         String pageid=new Random().nextLong()+"";
         in.putExtra("url",pageid);
         p.id=pageid;
-        p.instance.param=(HashMap)in.getSerializableExtra("param");
+        p.instance.param=(JSONObject)in.getSerializableExtra("param");
         p.instance.registerRenderListener(new IWXRenderListener() {
             @Override
             public void onViewCreated(WXSDKInstance instance, final View view) {

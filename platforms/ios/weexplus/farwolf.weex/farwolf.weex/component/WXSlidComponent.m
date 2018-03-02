@@ -60,10 +60,10 @@
               
           } fail:^(NSString *msg) {
               
-          }  frame:CGRectMake(0, 0, _leftWidth, [self.weexInstance.viewController screenHeight])];
+          }  frame:CGRectMake(0, 0, _leftWidth, [self.weexInstance.viewController screenHeight]) isPortrait:true];
      } fail:^(NSString *msg) {
          
-     }  frame:r];
+     }  frame:r isPortrait:true];
 //
 
    

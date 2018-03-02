@@ -121,13 +121,13 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     public  boolean backKeyEnable=true;
 
 
-    public HashMap param;
+    public Map param;
 
-//    public String navbarVisibility;
 
     public String pageid;
 
     public String rootid;
+
 
     @Bean
     public AppTool apptool;
@@ -138,6 +138,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     public int getViewId() {
         return R.layout.api_weex_activity;
     }
+
 
 
 
@@ -161,6 +162,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         }
 
         super.onCreate(arg0);
+
 
     }
 
@@ -194,7 +196,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         String url=getIntent().getStringExtra("url");
 
         this.isRoot = getIntent().getBooleanExtra("isRoot",false);
-        this.param=(HashMap) getIntent().getSerializableExtra("param");
+        this.param=(Map) getIntent().getSerializableExtra("param");
         this.rootid= getIntent().getStringExtra("rootid");
         WXNavgationModule.addActivity(this.rootid,this);
 //        AndroidBug5497Workaround.assistActivity(root);
@@ -302,7 +304,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance.setContext(this);
             mWXSDKInstance.registerRenderListener(this);
             mWXSDKInstance.onActivityCreate();
-            mWXSDKInstance.param=(HashMap) getIntent().getSerializableExtra("param");
+            mWXSDKInstance.param=(Map) getIntent().getSerializableExtra("param");
             mWXSDKInstance.fireGlobalEventCallback("onPageInit",null);
             ViewGroup.LayoutParams lp= this.root.getLayoutParams();
             mWXSDKInstance.setSize(lp.width,lp.height);
@@ -329,7 +331,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance=new WXSDKInstance(this);
             mWXSDKInstance.setSize(screenTool.getScreenWidth(),screenTool.getScreenHeight());
             mWXSDKInstance.registerRenderListener(this);
-            mWXSDKInstance.param=(HashMap) getIntent().getSerializableExtra("param");
+            mWXSDKInstance.param=(Map) getIntent().getSerializableExtra("param");
             mWXSDKInstance.setBundleUrl(url);
 //            Weex.setBaseUrl(mWXSDKInstance);
             if(url.startsWith("http"))

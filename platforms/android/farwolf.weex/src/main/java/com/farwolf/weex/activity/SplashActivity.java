@@ -114,9 +114,11 @@ public class SplashActivity extends WeexActivity {
             {
                 url=Config.entry(this);
             }
+            boolean isPotrait=  Config.isPortrait(this);
             Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
             this.mWXSDKInstance.setBundleUrl(url);
             in.putExtra("url",url);
+            in.putExtra("isPortrait",isPotrait);
             startActivity(in);
             finish();
             releaseImageViewResouce(img);
@@ -128,6 +130,8 @@ public class SplashActivity extends WeexActivity {
     {
         Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
         in.putExtra("url",Config.entry(SplashActivity.this));
+        boolean isPotrait=  Config.isPortrait(this);
+        in.putExtra("isPortrait",isPotrait);
         startActivity(in);
         finish();
         releaseImageViewResouce(img);

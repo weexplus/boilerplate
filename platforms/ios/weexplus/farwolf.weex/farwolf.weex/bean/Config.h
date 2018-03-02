@@ -14,6 +14,7 @@
 +(NSString*)entry;
 +(NSString*)splash;
 +(NSString*)debugIp;
++(BOOL)isPortrait;
 
 +(NSMutableArray*)preload;
 +(BOOL)isDebug;

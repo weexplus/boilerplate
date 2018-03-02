@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 
+import com.alibaba.fastjson.JSONObject;
+import com.farwolf.weex.activity.LanscapeActivity_;
 import com.farwolf.weex.activity.PresentActivity_;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.activity.WeexActivity_;
@@ -37,7 +39,12 @@ public class WXNavgationModule extends WXModuleBase {
     public void push(String url)
     {
 
-        this.pushFull(url,null,null,true);
+        HashMap pa=new HashMap();
+        pa.put("url",url);
+        pa.put("param",null);
+        pa.put("isPortrait",true);
+        this.pushFull(pa,null);
+//        this.pushFull(url,null,null,true,true);
     }
 
     public static void addActivity(String rootid,Activity a)
@@ -63,23 +70,40 @@ public class WXNavgationModule extends WXModuleBase {
     }
 
     @JSMethod
-    public void pushParam(String url,HashMap param )
+    public void pushParam(String url,JSONObject param )
     {
-
-        this.pushFull(url,param,null,true);
+        HashMap pa=new HashMap();
+        pa.put("url",url);
+        pa.put("param",param);
+        pa.put("isPortrait",true);
+        this.pushFull(pa,null);
     }
-
 
     @JSMethod
-    public void pushFull(String url, HashMap param, JSCallback callback, boolean animate)
+    public void pushFull(HashMap parameters, JSCallback callback)
     {
 
-
-        this.goNext(url,param,callback,WeexActivity_.class,false);
+        String url=parameters.get("url")+"";
+        JSONObject param= (JSONObject)parameters.get("param");
+        boolean isPortrait= true;
+        if(parameters.containsKey("isPortrait"))
+            isPortrait=(boolean)parameters.get("isPortrait");
+        this.goNext(url,param,callback,WeexActivity_.class,false,isPortrait);
 
 
 
     }
+
+//    @JSMethod
+//    public void pushFull(String url, HashMap param, JSCallback callback, boolean animate,boolean isPortrait)
+//    {
+//
+//
+//        this.goNext(url,param,callback,WeexActivity_.class,false,isPortrait);
+//
+//
+//
+//    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
 
@@ -131,6 +155,7 @@ public class WXNavgationModule extends WXModuleBase {
     public void setPageId(String id)
     {
         WeexActivity a=  (WeexActivity)this.mWXSDKInstance.getContext();
+        if(a!=null)
         a.pageid=id;
     }
 
@@ -175,26 +200,46 @@ public class WXNavgationModule extends WXModuleBase {
     @JSMethod
     public void present(String url)
     {
-        this.presentFull(url,null,null,true);
+        HashMap pa=new HashMap();
+        pa.put("url",url);
+        pa.put("param",null);
+        pa.put("isPortrait",true);
+        this.presentFull(pa,null);
     }
+
+//    @JSMethod
+//    public void presentFull(String url, HashMap param, JSCallback callback,boolean animate,boolean isPortrait )
+//    {
+//        this.goNext(url,param,callback,PresentActivity_.class,true,isPortrait);
+//
+//    }
+
 
     @JSMethod
-    public void presentFull(String url, HashMap param, JSCallback callback,boolean animate)
+    public void presentFull( HashMap parameters, JSCallback callback )
     {
-        this.goNext(url,param,callback,PresentActivity_.class,true);
+        String url=parameters.get("url")+"";
+        JSONObject param= (JSONObject)parameters.get("param");
+        boolean isPortrait= true;
+        if(parameters.containsKey("isPortrait"))
+            isPortrait=(boolean)parameters.get("isPortrait");
+        this.goNext(url,param,callback,PresentActivity_.class,true,isPortrait);
 
     }
 
 
-    public void goNext(String url,HashMap param,JSCallback callback,Class c,boolean isroot )
+    public void goNext(String url,JSONObject param,JSCallback callback,Class c,boolean isroot,boolean isPortrait )
     {
 
 
 
         WeexFactory w= WeexFactory_.getInstance_(mWXSDKInstance.getContext());
+        if(!isPortrait)
+            c= LanscapeActivity_.class;
         Intent in=new Intent(mWXSDKInstance.getContext(),c);
         Activity a=  (Activity)this.mWXSDKInstance.getContext();
         in.putExtra("param",param);
+        in.putExtra("isPortrait",isPortrait);
 //        in.putExtra("navbarVisibility",navbarVisibility);
         if(!isroot)
         {

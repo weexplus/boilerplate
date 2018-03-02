@@ -258,14 +258,7 @@ exports.default = {
         globalEvent.addEventListener("onPageInit", function (e) {
 
             var nav = weex.requireModule('navbar');
-            nav.setTitle('带参数页面');
-            nav.setTitleColor('#ffffff');
-            nav.setBack(true);
-            nav.setBackgroundColor('#000000');
-            nav.setRightImage('img/scan.png', function (res) {
 
-                modal.alert({ message: "ok" });
-            });
             var navigator = weex.requireModule('navigator');
             self.param = navigator.param().a;
         });

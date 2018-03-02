@@ -223,6 +223,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 var head = __webpack_require__(9);
 exports.default = {
@@ -243,9 +249,12 @@ exports.default = {
         present: function present() {
             var self = this;
             var nav = weex.requireModule('navigator');
-            nav.presentFull('present.js', { a: 'okoko' }, function (e) {
-                self.callbackdata = e.ok;
-            }, true);
+            nav.presentFull({
+                url: 'present.js',
+                param: { a: 'okoko' }
+            }, function (e) {
+                if (e != undefined) self.callbackdata = e.ok;
+            });
         },
         pushwidthparam: function pushwidthparam() {
 
@@ -254,9 +263,13 @@ exports.default = {
 
             nav.setPageId('index');
             //            nav.pushParam('nav1.js',{a:'这是传过来的值'});
-            nav.pushFull('nav1.js', { a: '这是传过来的值' }, function (e) {
-                self.callbackdata = e.ok;
-            }, true);
+            nav.pushFull({
+                url: 'nav1.js',
+                param: { a: '这是传过来的值' },
+                isPortrait: false
+            }, function (e) {
+                if (e != undefined) self.callbackdata = e.ok;
+            });
         }
     },
 

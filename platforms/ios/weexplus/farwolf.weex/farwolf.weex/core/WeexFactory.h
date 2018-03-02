@@ -11,7 +11,7 @@
 #import "WXNormalViewContrller.h"
 @interface WeexFactory : NSObject
 + (void)render:(NSURL *)sourceURL compelete:(void(^)(Page*))complete;
-+ (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame;
++ (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame isPortrait:(BOOL)isPortrait;
 +(void)addCache:(NSString*)url vc:(WXNormalViewContrller*)vc;
 +(WXNormalViewContrller*)getCache:(NSString*)url;
 +(void)preRender:(NSURL *)sourceURL;

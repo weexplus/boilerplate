@@ -46,6 +46,15 @@
 
         </activity>
 
+        <activity android:name="com.farwolf.weex.activity.LanscapeActivity_"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="landscape"
+
+            >
+
+        </activity>
+
 
         <activity android:name="com.farwolf.weex.activity.SplashActivity_"
             android:screenOrientation="portrait"

@@ -10,6 +10,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.alibaba.fastjson.JSONObject;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.ScreenTool_;
 import com.farwolf.view.imgae.crop.Log;
@@ -26,6 +27,7 @@ import com.taobao.weex.bridge.JSCallback;
 import com.ypy.eventbus.EventBus;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zhengjiangrong on 2017/12/8.
@@ -43,11 +45,11 @@ public class WXCenterPopModule extends WXModuleBase {
 
     String url;
     HashMap style;
-    HashMap param;
+    Map param;
     Boolean clickDismiss;
 
     @JSMethod
-    public void show(String url, HashMap style, HashMap param, Boolean clickDismiss, JSCallback callback)
+    public void show(String url, HashMap style, Map param, Boolean clickDismiss, JSCallback callback)
     {
         if(!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);

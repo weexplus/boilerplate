@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "farwolf_weex.h"
 #import "RefreshManager.h"
+#import "Config.h"
 
 @interface AppDelegate ()
 
@@ -34,12 +35,21 @@
 //    [Weex startDebug:@"127.0.0.1" port:@"8088"];
     if([Config isDebug])
       [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
+    
+    
      return YES;
 }
 
 
 
-
+//-(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
+//
+//    if(![Config isPortrait])
+//    {
+//        return UIInterfaceOrientationMaskLandscape;
+//    }
+//    return UIInterfaceOrientationMaskPortrait;
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

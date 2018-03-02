@@ -64,7 +64,7 @@ public class WXSlidpopModule  extends WXModuleBase {
         this.offset = offset;
         this.side = side;
         if(!EventBus.getDefault().isRegistered(this))
-        EventBus.getDefault().register(this);
+            EventBus.getDefault().register(this);
 
 
         WeexFactory factory =WeexFactory_.getInstance_(getActivity());
@@ -109,7 +109,7 @@ public class WXSlidpopModule  extends WXModuleBase {
         if(maskView!=null)
             getActivity().root.removeView(maskView);
         if(slidView!=null)
-        getActivity().root.removeView(slidView);
+            getActivity().root.removeView(slidView);
     }
 
 
@@ -125,8 +125,11 @@ public class WXSlidpopModule  extends WXModuleBase {
             maskView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
+                    if(slidView==null)
+                        return false;
                     if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                         hideAnimation.setDuration(160);
+
                         slidView.startAnimation(hideAnimation);
                         hideAnimation.startNow();
 
@@ -138,7 +141,10 @@ public class WXSlidpopModule  extends WXModuleBase {
                             public void onAnimationEnd(Animation animation) {
                                 slidView.clearAnimation();
                                 maskView.removeView(slidView);
-                                getActivity().root.removeView(maskView);
+                                if( getActivity()!=null&& getActivity().root!=null)
+                                {
+                                    getActivity().root.removeView(maskView);
+                                }
                                 slidView = null;
                                 maskView = null;
                                 Log.e("删除");
@@ -161,6 +167,11 @@ public class WXSlidpopModule  extends WXModuleBase {
         int width = wm.getDefaultDisplay().getWidth();
         int height = wm.getDefaultDisplay().getHeight();
 
+        if(slidView!=null&&slidView.getParent()!=null)
+        {
+            ((ViewGroup)slidView.getParent()).removeView(slidView);
+            slidView=null;
+        }
         if (slidView == null) {
             slidView = WXPageView_.build(getActivity());
         }

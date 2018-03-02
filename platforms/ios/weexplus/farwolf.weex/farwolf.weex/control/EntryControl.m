@@ -65,6 +65,7 @@
 //    }
 //    else
 //     [Weex setBaseUrl:self.url];
+    BOOL isPortrait=[Config isPortrait];
     
     NSURL *url=[NSURL URLWithString:self.url];
     if([self.url startWith:@"http"])
@@ -102,7 +103,7 @@
             } fail:^(NSString *msg) {
             
                   [self failGo];
-            }  frame:[UIApplication sharedApplication].keyWindow.frame ];
+            }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
             
         } fail:^(NSString *s) {
             
@@ -116,7 +117,7 @@
                 
             } fail:^(NSString *msg) {
                   [self failGo];
-            }  frame:[UIApplication sharedApplication].keyWindow.frame ];
+            }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
             
         }];
     }
@@ -132,7 +133,7 @@
             
         } fail:^(NSString *msg) {
             [self failGo];
-        }  frame:[UIApplication sharedApplication].keyWindow.frame ];
+        }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
     }
     
     

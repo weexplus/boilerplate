@@ -79,7 +79,7 @@
             
         } fail:^(NSString *msg) {
             
-        }  frame:[UIApplication sharedApplication].keyWindow.bounds];
+        }  frame:[UIApplication sharedApplication].keyWindow.bounds isPortrait:true];
         
             
    
