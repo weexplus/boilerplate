@@ -82,6 +82,7 @@
     {
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
         vc.debug=[Config isDebug];
+        vc.isLanscape=![Config isPortrait];
         UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
         [self presentViewController:nav animated:false completion:^{
             
@@ -95,6 +96,7 @@
             [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
                 
                 vc.debug=[Config isDebug];
+                vc.isLanscape=![Config isPortrait];
                 UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
                 [self presentViewController:nav animated:false completion:^{
                     
@@ -110,6 +112,7 @@
             [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
                 
                 vc.debug=[Config isDebug];
+                vc.isLanscape=![Config isPortrait];
                 UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
                 [self presentViewController:nav animated:false completion:^{
                     
@@ -126,6 +129,7 @@
         [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
             
              vc.debug=[Config isDebug];
+            vc.isLanscape=![Config isPortrait];
             UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
             [self presentViewController:nav animated:false completion:^{
                 

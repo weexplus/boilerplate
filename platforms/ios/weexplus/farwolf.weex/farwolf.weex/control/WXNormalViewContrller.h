@@ -26,7 +26,7 @@
 @property(strong,nonatomic) UIButton *set;
 @property(strong,nonatomic) UIButton *refresh;
 @property(nonatomic)BOOL isInView;
-
+@property(nonatomic)BOOL isLanscape;
 @property(nonatomic)BOOL debug;
 
 @property(nonatomic) CGPoint beginpoint;
@@ -48,6 +48,7 @@
 @property (nonatomic, strong) NSMutableArray *textfields;
 - (instancetype)initWithSourceURL:(NSURL *)sourceURL;
 - (void)preRender:(NSString *)url finish:(void(^)())finish;
+- (void)interfaceOrientation:(UIInterfaceOrientation)orientation;
 
 
 - (void)refreshWeex;

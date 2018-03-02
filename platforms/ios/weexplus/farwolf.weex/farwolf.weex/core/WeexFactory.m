@@ -8,7 +8,6 @@
 
 #import "WeexFactory.h"
 #import "Weex.h"
-#import "LanscapeViewContoller.h"
 static NSMutableDictionary *pageCache;
 @implementation WeexFactory
 
@@ -138,11 +137,12 @@ static NSMutableDictionary *pageCache;
         
  
         weakP.weexView=view;
-        WXNormalViewContrller *vc=nil;
-        if(isPortrait)
-        vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
-        else
-           vc= [[LanscapeViewContoller alloc]initWithSourceURL:sourceURL.absoluteString];
+        WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
+        vc.isLanscape=!isPortrait;
+//        if(isPortrait)
+//        vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
+//        else
+//           vc= [[LanscapeViewContoller alloc]initWithSourceURL:sourceURL.absoluteString];
 //        LanscapeViewContoller
         vc.hidesBottomBarWhenPushed = YES;
         vc.page=p;

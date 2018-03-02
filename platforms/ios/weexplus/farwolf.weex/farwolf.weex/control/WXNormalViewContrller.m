@@ -79,7 +79,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    if(self.isLanscape)
+    {
+         [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
+    }
      [self regist:@"refreshpage" method:@selector(scoketrefresh)];
     [self regist:@"qrrefreshpage" method:@selector(onqr:)];
     
@@ -268,7 +271,14 @@ BOOL isshowErr;
 
 -(void)viewWillAppear:(BOOL)animated
 {
-  
+    if(self.isLanscape)
+    {
+        [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
+    }
+    else
+    {
+         [self interfaceOrientation:UIInterfaceOrientationPortrait];
+    }
     [_instance fireGlobalEvent:@"viewWillAppear" params:nil];
     
     [self.navigationController setNavigationBarHidden:true animated:animated];
@@ -604,7 +614,18 @@ BOOL isshowErr;
 }
 
 
-
+- (void)interfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector             = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val                  = orientation;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+}
 
 -(void)gotoset
 {
