@@ -93,7 +93,7 @@
     {
         [self debugInit];
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWeex) name:@"RefreshInstance" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RefreshInstanc) name:@"RefreshInstance" object:nil];
     if(self.page!=nil)
     {
         [self loadPage];
@@ -311,6 +311,18 @@ BOOL isshowErr;
     [super didReceiveMemoryWarning];
     [self _updateInstanceState:WeexInstanceMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)RefreshInstanc
+{
+//    NSDate *date      = NSDate.date;
+//
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    NSString *dateString       = [formatter stringFromDate: date];
+//    NSLog(@"服务器返回的时间戳对应的时间是:%@",dateString);
+ 
+    [self refreshWeex];
 }
 
 - (void)refreshWeex

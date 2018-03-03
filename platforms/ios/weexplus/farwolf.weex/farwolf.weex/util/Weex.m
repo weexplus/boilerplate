@@ -208,7 +208,7 @@
     debug.success=^(NSString*channelId){
 
 
-        [WXDevTool setDebug:YES];
+//        [WXDevTool setDebug:YES];
         NSString *url=[[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"] add:channelId];
         [WXDevTool launchDevToolDebugWithUrl:url];
         [[Weex getRefreshManager] send:[@"open=" add:channelId]];
