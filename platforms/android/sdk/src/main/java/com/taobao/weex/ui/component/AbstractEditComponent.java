@@ -527,13 +527,13 @@ public abstract class AbstractEditComponent extends WXComponent<WXEditText> {
 
   //zjr add
   @JSMethod
-  public void clear()
+  public void val(String v)
   {
     WXEditText view;
     if ((view = getHostView()) == null) {
       return;
     }
-    view.setText("");
+    view.setText(v);
 
   }
 

@@ -75,8 +75,8 @@
             set()
             {
 //                this.name=this.name+'ss'
-                this.$refs.inp.clear();
-               this.name="";
+                this.$refs.inp.val('xx');
+                 this.name="xx";
             }
 
         },
