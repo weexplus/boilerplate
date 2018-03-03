@@ -113,6 +113,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     @Bean
     public WeexFactory weexFactory;
 
+    private BroadcastReceiver mReloadReceiver;
+
     @Bean
     public Weex weex;
 
@@ -163,6 +165,13 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         super.onCreate(arg0);
 
+//        mReloadReceiver = new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                reload();
+//            }
+//        };
+//        LocalBroadcastManager.getInstance(this).registerReceiver(mReloadReceiver, new IntentFilter(WXSDKEngine.JS_FRAMEWORK_RELOAD));
 
     }
 
@@ -323,6 +332,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             fail_layout.setVisibility(View.GONE);
             if(mWXSDKInstance!=null)
             {
+                mWXSDKInstance.registerRenderListener(null);
                 mWXSDKInstance.destroy();
             }
             this.url=url;

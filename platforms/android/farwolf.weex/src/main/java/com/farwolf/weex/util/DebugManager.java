@@ -113,12 +113,27 @@ public class DebugManager {
     Buffer b=new Buffer();
     b.writeUtf8(msg);
     try {
+      if(mWebSocket!=null)
       mWebSocket.sendMessage(WebSocket.PayloadType.TEXT,b);
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
+
+  public void disconnect()
+  {
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        HashMap m=new HashMap();
+        m.put("method","WxDebug.deviceDisconnect");
+        JSONObject j=new JSONObject(m);
+        send(j.toJSONString());
+      }
+    }).start();
+
+  }
 
 
 
@@ -155,6 +170,12 @@ public class DebugManager {
            if(debugListener!=null)
            debugListener.onSuccess(id);
          }
+         else if("WxDebug.reload".equals(method))
+         {
+//           LocalBroadcastManager.getInstance(this).sendBroadcast(new IntentFilter(WXSDKEngine.JS_FRAMEWORK_RELOAD));
+//           WXSDKEngine.reload();
+         }
+
 
       }
     }

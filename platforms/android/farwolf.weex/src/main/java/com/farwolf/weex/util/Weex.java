@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
+import com.farwolf.weex.adapter.display.DefaultWebSocketAdapterFactory;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.component.WXArc;
 import com.farwolf.weex.component.WXDrawerLayout;
@@ -50,6 +51,7 @@ import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
+import com.taobao.weex.bridge.WXBridgeManager;
 import com.taobao.weex.common.WXException;
 import com.taobao.weex.ui.component.WXBasicComponentType;
 import com.taobao.weex.utils.WXFileUtils;
@@ -87,16 +89,17 @@ public class Weex extends ServiceBase{
             }
         });
         final DebugManager debugManager= DebugManager.getInstance();
+
         debugManager.setDebugListener(new DebugManager.DebugListener() {
             @Override
             public void onSuccess(String channelId) {
 
-                WXEnvironment.sDebugServerConnectable = false;
-                WXEnvironment.sRemoteDebugMode = true;
+                WXEnvironment.sDebugServerConnectable = true;
+//                WXEnvironment.sRemoteDebugMode = true;
                 WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8088/debugProxy/native/"+channelId;
                 WXSDKEngine.reload();
                 HotRefreshManager.getInstance().send("open="+channelId);
-                DebugManager.getInstance().destory();
+//                DebugManager.getInstance().destory();
             }
 
             @Override
@@ -145,9 +148,11 @@ public class Weex extends ServiceBase{
         Weex.basedir=basedir;
         WXSDKEngine.addCustomOptions("appName", name);
         WXSDKEngine.addCustomOptions("appGroup", groupname);
+        WXBridgeManager.updateGlobalConfig("wson_on");
         WXSDKEngine.initialize(application,
                 new InitConfig.Builder()
                         .setImgAdapter(new PicassoImageAdapter())
+                        .setWebSocketAdapterFactory(new DefaultWebSocketAdapterFactory())
                         .build());
         try {
             WXSDKEngine.registerModule("event", WXEventModule.class);

@@ -2,6 +2,8 @@ package com.farwolf.weex.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,6 +47,7 @@ public class ToolPop extends ViewBase{
     TextView url;
 
 
+
     @Bean
     Weex weex;
     @ViewById
@@ -73,7 +76,7 @@ public class ToolPop extends ViewBase{
     public void init() {
 
         WeexActivity a=(WeexActivity)getActivity();
-        if(HotRefreshManager.getInstance().isOpen)
+        if(WXEnvironment.sDebugServerConnectable)
         {
             hotreload.setText("关闭热更新");
 
@@ -82,7 +85,7 @@ public class ToolPop extends ViewBase{
         {
             hotreload.setText("开启热更新");
         }
-        debug_reconnetc.setText(!WXEnvironment.sRemoteDebugMode?"开启Debug":"关闭Debug");
+        debug_reconnetc.setText(!WXEnvironment.sDebugServerConnectable?"开启Debug":"关闭Debug");
         url.setText(a.url);
 //        ip.setText("debug_ip:"+ Config.debugIp(a));
 
@@ -173,10 +176,11 @@ public class ToolPop extends ViewBase{
     public void debug_reconnetcClicked() {
 
 
-        if(WXEnvironment.sRemoteDebugMode)
+        if(WXEnvironment.sDebugServerConnectable)
         {
             stopDebug();
             debug_reconnetc.setText("开启Debug");
+
         }
         else
         {
@@ -192,6 +196,7 @@ public class ToolPop extends ViewBase{
             }
 
             debug_reconnetc.setText("关闭Debug");
+
         }
 
         f.dismiss();
@@ -200,12 +205,30 @@ public class ToolPop extends ViewBase{
 
     void stopDebug()
     {
-        if(WXEnvironment.sRemoteDebugMode)
-        {
+//        if(WXEnvironment.sDebugServerConnectable)
+//        {
             WXEnvironment.sDebugServerConnectable = false;
             WXEnvironment.sRemoteDebugMode = false;
             WXSDKEngine.reload();
-        }
+
+        final Handler achandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+
+                ((WeexActivity)getActivity()).reload();
+
+            }
+        };
+        achandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                achandler.sendEmptyMessage(0);
+            }
+        }, 300);
+
+//        }
+
 
     }
 

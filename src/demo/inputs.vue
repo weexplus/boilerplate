@@ -76,6 +76,8 @@
             {
 //                this.name=this.name+'ss'
                 this.$refs.inp.val('xx');
+                this.$refs.inp.val('xx1');
+                this.$refs.inp.val('x2');
                  this.name="xx";
             }
 

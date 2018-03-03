@@ -63,7 +63,7 @@ public class WXFEmbed extends WXEmbed {
 
     public void onRenderFinish()
     {
-        this.getChildInstance().fireGlobalEventCallback("onPageInit",this.param);
+//        this.getChildInstance().fireGlobalEventCallback("onPageInit",this.param);
 
 
     }
