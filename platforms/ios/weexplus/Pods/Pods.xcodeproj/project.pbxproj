@@ -347,8 +347,6 @@
 		4C2FDB6C1C87C6E393095E4A933C3AF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668F54B100B0CFEA291CBDD752392D7E /* UIKit.framework */; };
 		4C475DBEDE9246078447F3E75BFC6F9B /* WXSlidComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CD2123E16ABC132D8E3F3383749613 /* WXSlidComponent.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4C4A20CBC02C1DF5C33819F2DFA3D69A /* PNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C71A8870F339EFB9EC4F9EF71592D55A /* PNColor.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		4D14F0912048FF87004E95E6 /* LanscapeViewContoller.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D14F08F2048FF87004E95E6 /* LanscapeViewContoller.h */; };
-		4D14F0922048FF87004E95E6 /* LanscapeViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D14F0902048FF87004E95E6 /* LanscapeViewContoller.m */; };
 		4E5834358C48595E40A1944227673458 /* WXRecyclerDragController.h in Headers */ = {isa = PBXBuildFile; fileRef = A67955154548AFB3AD48EF8F128CAD11 /* WXRecyclerDragController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4EBBEC21B457DB96A3DD9F043BD02387 /* Region.h in Headers */ = {isa = PBXBuildFile; fileRef = 59B24AE513CC2D18BFC9E3CE39107C7F /* Region.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F2B740A38F4435D55C7500863196088 /* WXBoxShadow.h in Headers */ = {isa = PBXBuildFile; fileRef = 5415CF4BF015C7E3DA7929C365D59FC3 /* WXBoxShadow.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2089,8 +2087,6 @@
 		4C69DC85C9EBC62AB66B0AC7670605D9 /* WXPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = WXPage.m; sourceTree = "<group>"; };
 		4C7903694EA78931A2783409DFF428C5 /* WXComponentMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = WXComponentMethod.h; sourceTree = "<group>"; };
 		4CAC0D690BFEFCBB2A6372C69F37C986 /* WeexFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = WeexFactory.m; sourceTree = "<group>"; };
-		4D14F08F2048FF87004E95E6 /* LanscapeViewContoller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanscapeViewContoller.h; sourceTree = "<group>"; };
-		4D14F0902048FF87004E95E6 /* LanscapeViewContoller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanscapeViewContoller.m; sourceTree = "<group>"; };
 		4D5D5E1DD68F2BAE8CB3D50DA363F6B7 /* PNBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBarChart.h; path = PNChart/PNBarChart.h; sourceTree = "<group>"; };
 		4DDDC1249BE8CD2B99EA6BF7E0E8785B /* JsonReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JsonReader.h; sourceTree = "<group>"; };
 		4DF8BF30FD86690E12A7A31FCD55F358 /* NSObject+WXRuntimePropertyDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WXRuntimePropertyDescriptor.m"; sourceTree = "<group>"; };
@@ -4176,8 +4172,6 @@
 				612ACF6665C1C90859C6D0D119E4CD89 /* SetViewController.m */,
 				622CEFB04EFA5B79D35A09412493225C /* WXNormalViewContrller.h */,
 				649093B29B732D2191839C7BC0628449 /* WXNormalViewContrller.m */,
-				4D14F08F2048FF87004E95E6 /* LanscapeViewContoller.h */,
-				4D14F0902048FF87004E95E6 /* LanscapeViewContoller.m */,
 			);
 			path = control;
 			sourceTree = "<group>";
@@ -5998,7 +5992,6 @@
 				2A15612698778DBFB97B2187A639BB30 /* AFSecurityPolicy.h in Headers */,
 				2BC1B5F5D50F83191EA5BFCA1B6334CE /* AFURLConnectionOperation.h in Headers */,
 				F0D921811AE432028F1ADC677A33EBCC /* AFURLRequestSerialization.h in Headers */,
-				4D14F0912048FF87004E95E6 /* LanscapeViewContoller.h in Headers */,
 				9A30F4D87576CA33B0BC7B982F67E13E /* AFURLResponseSerialization.h in Headers */,
 				F69805747C3AE1C560A7F4455867192C /* AFURLSessionManager.h in Headers */,
 				8903BE6A5309E4A5B12B526E26CD3DBF /* UIActivityIndicatorView+AFNetworking.h in Headers */,
@@ -7485,7 +7478,6 @@
 				B7B68F6C4C7AB9B5534E302C0294363B /* AFSecurityPolicy.m in Sources */,
 				9CD045C05109B439531678FFFD3AB3AA /* AFURLConnectionOperation.m in Sources */,
 				FDA9997EE6394039FFACE9D14EF45FC6 /* AFURLRequestSerialization.m in Sources */,
-				4D14F0922048FF87004E95E6 /* LanscapeViewContoller.m in Sources */,
 				EB9D6721087F60A8142E49E40E8D41AF /* AFURLResponseSerialization.m in Sources */,
 				3DA3BAA7ECA955ED5CCDEF669BC7D019 /* AFURLSessionManager.m in Sources */,
 				69695557EF00D89A2594B2F9ADF437EE /* UIActivityIndicatorView+AFNetworking.m in Sources */,

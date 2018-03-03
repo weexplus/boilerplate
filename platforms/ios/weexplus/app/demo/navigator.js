@@ -229,6 +229,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
 
 var head = __webpack_require__(9);
 exports.default = {
@@ -256,6 +259,17 @@ exports.default = {
                 if (e != undefined) self.callbackdata = e.ok;
             });
         },
+        lanscape: function lanscape() {
+            var nav = weex.requireModule('navigator');
+
+            nav.pushFull({
+                url: 'navlanscape.js',
+                param: { a: '这是传过来的值' },
+                isPortrait: false
+            }, function (e) {
+                if (e != undefined) self.callbackdata = e.ok;
+            });
+        },
         pushwidthparam: function pushwidthparam() {
 
             var self = this;
@@ -266,7 +280,7 @@ exports.default = {
             nav.pushFull({
                 url: 'nav1.js',
                 param: { a: '这是传过来的值' },
-                isPortrait: false
+                isPortrait: true
             }, function (e) {
                 if (e != undefined) self.callbackdata = e.ok;
             });
@@ -318,6 +332,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       color: "white"
     }
   }, [_vm._v("push不带参数")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.lanscape()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v("横屏跳转")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": function($event) {
@@ -423,7 +448,6 @@ module.exports = {
   "layout": {
     "backgroundColor": "#333333",
     "height": 128,
-    "width": 750,
     "flexDirection": "row",
     "alignItems": "center",
     "justifyContent": "center"

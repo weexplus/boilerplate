@@ -1,35 +1,39 @@
 
 
 <template>
-  <scroller>
 
 
- <div style="align-items: center;">
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
-   <input class="it" placeholder="姓名"/>
+
+ <div style="align-items: center;justify-content: center;">
+   <text style="color: #000000;font-size: 32">{{name}}</text>
+   <input ref="inp" type="input" class="it" placeholder="姓名" v-model="name"/>
+     <div style="width: 100;height: 100;background-color: red" @click="set">
+
+     </div>
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
+   <!--<input class="it" placeholder="姓名"/>-->
  </div>
-  </scroller>
+
 </template>
 
 <style>
@@ -51,31 +55,29 @@
 <script>
 
     var head =require('./header.vue')
+    var cinput =require('./component/input.vue')
     var globalEvent = weex.requireModule('globalEvent') ;
     globalEvent.addEventListener("onPageInit", function (e) {
-        const nav = weex.requireModule('navbar');
-        nav.setTitle('网络请求');
-        var navigator = weex.requireModule('navigator') ;
+
 
     });
 
     export default {
-        components:{head},
+        components:{head,cinput},
         data () {
             return {
-               back:""
+                name:"111",
+                age:""
             }
         },
         methods: {
-            read()
+
+            set()
             {
-
-               var r=weex.requireModule("addressBook")
-                r.read((res)=>{
-                    this.back=res;
-                })
-
-            },
+//                this.name=this.name+'ss'
+                this.$refs.inp.clear();
+               this.name="";
+            }
 
         },
         created:function(){

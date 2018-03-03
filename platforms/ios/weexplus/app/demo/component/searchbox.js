@@ -494,7 +494,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
 
 
 exports.default = {
@@ -592,7 +591,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       flexDirection: "row",
       height: "100",
-      alignItems: "center"
+      alignItems: "center",
+      backgroundColor: "red"
     }
   }, [_c('input', {
     ref: "input",

@@ -62,28 +62,28 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 488);
+/******/ 	return __webpack_require__(__webpack_require__.s = 492);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 488:
+/***/ 492:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(489)
+__vue_styles__.push(__webpack_require__(493)
 )
-__vue_styles__.push(__webpack_require__(490)
+__vue_styles__.push(__webpack_require__(494)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(491)
+__vue_exports__ = __webpack_require__(495)
 
 /* template */
-var __vue_template__ = __webpack_require__(498)
+var __vue_template__ = __webpack_require__(502)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -116,7 +116,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 489:
+/***/ 493:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -127,7 +127,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 490:
+/***/ 494:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -194,7 +194,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 491:
+/***/ 495:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -204,7 +204,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _wxcButton = __webpack_require__(492);
+var _wxcButton = __webpack_require__(496);
 
 var _wxcButton2 = _interopRequireDefault(_wxcButton);
 
@@ -260,7 +260,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 492:
+/***/ 496:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -270,7 +270,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(493);
+var _index = __webpack_require__(497);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -283,21 +283,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 
-/***/ 493:
+/***/ 497:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(494)
+__vue_styles__.push(__webpack_require__(498)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(495)
+__vue_exports__ = __webpack_require__(499)
 
 /* template */
-var __vue_template__ = __webpack_require__(497)
+var __vue_template__ = __webpack_require__(501)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -328,7 +328,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 494:
+/***/ 498:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -349,7 +349,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 495:
+/***/ 499:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -373,7 +373,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var _type = __webpack_require__(496);
+var _type = __webpack_require__(500);
 
 exports.default = {
   props: {
@@ -422,95 +422,6 @@ exports.default = {
     }
   }
 };
-
-/***/ }),
-
-/***/ 496:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var STYLE_MAP = exports.STYLE_MAP = {
-  red: {
-    backgroundColor: '#FF5000'
-  },
-  yellow: {
-    backgroundColor: '#FFC900'
-  },
-  normal: {
-    backgroundColor: '#FFFFFF',
-    borderColor: '#A5A5A5',
-    borderWidth: '1px'
-  },
-  highlight: {
-    backgroundColor: '#FFFFFF',
-    borderColor: '#EE9900',
-    borderWidth: '1px'
-  }
-};
-
-var TEXT_STYLE_MAP = exports.TEXT_STYLE_MAP = {
-  taobao: {
-    color: '#FFFFFF'
-  },
-  fliggy: {
-    color: '#3D3D3D'
-  },
-  normal: {
-    color: '#3D3D3D'
-  },
-  highlight: {
-    color: '#EE9900'
-  }
-};
-
-/***/ }),
-
-/***/ 497:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wxc-btn"],
-    style: _vm.mrBtnStyle,
-    attrs: {
-      "accessible": true,
-      "ariaLabel": _vm.text
-    },
-    on: {
-      "click": _vm.onClicked
-    }
-  }, [_c('text', {
-    staticClass: ["btn-text"],
-    style: _vm.mrTextStyle
-  }, [_vm._v(_vm._s(_vm.text))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 498:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    attrs: {
-      "title": "weex-ui"
-    }
-  }), _c('wxc-button', {
-    attrs: {
-      "text": "Open Popup"
-    },
-    on: {
-      "wxcButtonClicked": _vm.buttonClicked
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -581,6 +492,95 @@ module.exports = {
 
 /***/ }),
 
+/***/ 500:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var STYLE_MAP = exports.STYLE_MAP = {
+  red: {
+    backgroundColor: '#FF5000'
+  },
+  yellow: {
+    backgroundColor: '#FFC900'
+  },
+  normal: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#A5A5A5',
+    borderWidth: '1px'
+  },
+  highlight: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#EE9900',
+    borderWidth: '1px'
+  }
+};
+
+var TEXT_STYLE_MAP = exports.TEXT_STYLE_MAP = {
+  taobao: {
+    color: '#FFFFFF'
+  },
+  fliggy: {
+    color: '#3D3D3D'
+  },
+  normal: {
+    color: '#3D3D3D'
+  },
+  highlight: {
+    color: '#EE9900'
+  }
+};
+
+/***/ }),
+
+/***/ 501:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wxc-btn"],
+    style: _vm.mrBtnStyle,
+    attrs: {
+      "accessible": true,
+      "ariaLabel": _vm.text
+    },
+    on: {
+      "click": _vm.onClicked
+    }
+  }, [_c('text', {
+    staticClass: ["btn-text"],
+    style: _vm.mrTextStyle
+  }, [_vm._v(_vm._s(_vm.text))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 502:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    attrs: {
+      "title": "weex-ui"
+    }
+  }), _c('wxc-button', {
+    attrs: {
+      "text": "Open Popup"
+    },
+    on: {
+      "wxcButtonClicked": _vm.buttonClicked
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -588,7 +588,6 @@ module.exports = {
   "layout": {
     "backgroundColor": "#333333",
     "height": 128,
-    "width": 750,
     "flexDirection": "row",
     "alignItems": "center",
     "justifyContent": "center"

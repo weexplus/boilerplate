@@ -346,7 +346,6 @@ module.exports = {
   "layout": {
     "backgroundColor": "#333333",
     "height": 128,
-    "width": 750,
     "flexDirection": "row",
     "alignItems": "center",
     "justifyContent": "center"

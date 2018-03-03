@@ -524,6 +524,20 @@ public abstract class AbstractEditComponent extends WXComponent<WXEditText> {
     view.setSelection(value == null ? 0 : index);
   }
 
+
+  //zjr add
+  @JSMethod
+  public void clear()
+  {
+    WXEditText view;
+    if ((view = getHostView()) == null) {
+      return;
+    }
+    view.setText("");
+
+  }
+
+
   @WXComponentProp(name = Constants.Name.COLOR)
   public void setColor(String color) {
     if (getHostView() != null && !TextUtils.isEmpty(color)) {

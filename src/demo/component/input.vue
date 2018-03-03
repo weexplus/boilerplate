@@ -1,11 +1,10 @@
 <template>
-    <div style="flex-direction: row;height: 100;align-items: center" >
+    <div style="flex-direction: row;height: 100;align-items: center;background-color: red" >
         <input ref="input" @return = "onreturn" :return-key-type="return_key_type" style="flex: 1;padding-left: 20;height:100;"  @focus="onfocus"  :autofocus="autofocus" :placeholder="placeholder" :type="type"  v-model="value" @change="onchange"  @input="oninput"    :style="{'color':color,'placeholder-color':placeholder_color}"/>
         <div  style="width: 50px;height: 100px;margin-right: 10;align-items: center;justify-content: center;"  v-if="visiable" @click="onclose()">
             <image src="root:img/delete.png"   style="width: 30px;height: 30px;" ></image>
         </div>
     </div>
-
 </template>
 <script>
 

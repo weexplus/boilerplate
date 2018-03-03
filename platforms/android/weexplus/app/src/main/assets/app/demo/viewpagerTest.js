@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 479);
+/******/ 	return __webpack_require__(__webpack_require__.s = 483);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1299,21 +1299,21 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 479:
+/***/ 483:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(480)
+__vue_styles__.push(__webpack_require__(484)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(481)
+__vue_exports__ = __webpack_require__(485)
 
 /* template */
-var __vue_template__ = __webpack_require__(483)
+var __vue_template__ = __webpack_require__(487)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -1346,14 +1346,14 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 480:
+/***/ 484:
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
 
-/***/ 481:
+/***/ 485:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1378,7 +1378,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var viewpager = __webpack_require__(482);
+var viewpager = __webpack_require__(486);
 var head = __webpack_require__(87);
 exports.default = {
     components: { viewpager: viewpager, head: head },
@@ -1414,7 +1414,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 482:
+/***/ 486:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -1461,7 +1461,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 483:
+/***/ 487:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
