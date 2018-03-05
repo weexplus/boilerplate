@@ -40,6 +40,8 @@
 <script>
 
     var head =require('./header.vue')
+    var netx =require('./util/net')
+    var test =require('./util/test')
 
 
     export default {
@@ -53,6 +55,11 @@
         methods: {
             post()
             {
+
+                test.gt();
+                netx.post('getBanners.do',{},(res)=>{
+
+                })
                  var self=this;
                 self.back="";
                 const net = weex.requireModule('net');
@@ -61,7 +68,7 @@
                 },function(e){
                     //success
                     self.back=e.res;
-                    self.header=r.headers;
+//                    self.header=r.headers;
                 },function(e){
                   //exception
 

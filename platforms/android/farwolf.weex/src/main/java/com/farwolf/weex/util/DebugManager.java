@@ -29,6 +29,7 @@ import com.squareup.okhttp.ws.WebSocketCall;
 import com.squareup.okhttp.ws.WebSocketListener;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.util.HashMap;
 
 import okio.Buffer;
@@ -194,9 +195,13 @@ public class DebugManager {
     @Override
     public void onFailure(IOException e) {
       mWebSocket = null;
-      HotRefreshManager.getInstance().send("opendebug");
-      if(debugListener!=null)
-        debugListener.onFail();
+      if(e instanceof ConnectException)
+      {
+        HotRefreshManager.getInstance().send("opendebug");
+        if(debugListener!=null)
+          debugListener.onFail();
+      }
+
 
 
     }
