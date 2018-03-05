@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 483);
+/******/ 	return __webpack_require__(__webpack_require__.s = 485);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -368,7 +368,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 24:
+/***/ 25:
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -378,7 +378,7 @@ module.exports = __webpack_amd_options__;
 
 /***/ }),
 
-/***/ 26:
+/***/ 27:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -445,7 +445,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 27:
+/***/ 28:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -461,7 +461,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 28:
+/***/ 29:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -589,7 +589,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 30:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1160,7 +1160,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	// Some AMD build optimizers, like r.js, check for specific condition patterns
 	// like the following:
-	if ("function" == 'function' && _typeof(__webpack_require__(24)) == 'object' && __webpack_require__(24)) {
+	if ("function" == 'function' && _typeof(__webpack_require__(25)) == 'object' && __webpack_require__(25)) {
 		!(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return he;
 		}).call(exports, __webpack_require__, exports, module),
@@ -1299,21 +1299,21 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 483:
+/***/ 485:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(484)
+__vue_styles__.push(__webpack_require__(486)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(485)
+__vue_exports__ = __webpack_require__(487)
 
 /* template */
-var __vue_template__ = __webpack_require__(487)
+var __vue_template__ = __webpack_require__(489)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -1346,14 +1346,14 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 484:
+/***/ 486:
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
 
-/***/ 485:
+/***/ 487:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1378,7 +1378,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var viewpager = __webpack_require__(486);
+var viewpager = __webpack_require__(488);
 var head = __webpack_require__(90);
 exports.default = {
     components: { viewpager: viewpager, head: head },
@@ -1414,7 +1414,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 486:
+/***/ 488:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -1461,7 +1461,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 487:
+/***/ 489:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1490,16 +1490,16 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(26)
-)
 __vue_styles__.push(__webpack_require__(27)
+)
+__vue_styles__.push(__webpack_require__(28)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(28)
+__vue_exports__ = __webpack_require__(29)
 
 /* template */
-var __vue_template__ = __webpack_require__(29)
+var __vue_template__ = __webpack_require__(30)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

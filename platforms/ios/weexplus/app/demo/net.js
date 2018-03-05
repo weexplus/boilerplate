@@ -67,7 +67,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 37:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -187,7 +187,7 @@ __vue_styles__.push(__webpack_require__(421)
 __vue_exports__ = __webpack_require__(422)
 
 /* template */
-var __vue_template__ = __webpack_require__(423)
+var __vue_template__ = __webpack_require__(424)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -349,8 +349,8 @@ Object.defineProperty(exports, "__esModule", {
 
 
 var head = __webpack_require__(9);
-var netx = __webpack_require__(37);
-var test = __webpack_require__(508);
+var netx = __webpack_require__(24);
+var test = __webpack_require__(423);
 
 exports.default = {
     components: { head: head },
@@ -415,6 +415,18 @@ exports.default = {
 /***/ }),
 
 /***/ 423:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function gt() {}
+
+module.exports = { gt: gt };
+
+/***/ }),
+
+/***/ 424:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -533,18 +545,6 @@ module.exports = {
     "backgroundColor:active": "#006ce7"
   }
 }
-
-/***/ }),
-
-/***/ 508:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function gt() {}
-
-module.exports = { gt: gt };
 
 /***/ }),
 

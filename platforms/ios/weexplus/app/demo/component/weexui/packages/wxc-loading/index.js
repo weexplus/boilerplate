@@ -431,7 +431,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(25);
+var _type = __webpack_require__(26);
 
 var _utils = __webpack_require__(0);
 
@@ -1033,7 +1033,7 @@ module.exports = URL;
 
 /***/ }),
 
-/***/ 25:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

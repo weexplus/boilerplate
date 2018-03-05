@@ -114,7 +114,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 37:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -645,7 +645,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 var pull = __webpack_require__(98);
-var net = __webpack_require__(37);
+var net = __webpack_require__(24);
 
 exports.default = {
     components: { pull: pull },

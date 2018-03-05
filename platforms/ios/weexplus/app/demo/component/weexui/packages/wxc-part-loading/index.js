@@ -77,7 +77,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(25);
+var _type = __webpack_require__(26);
 
 exports.default = {
   props: {
@@ -145,7 +145,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 25:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
