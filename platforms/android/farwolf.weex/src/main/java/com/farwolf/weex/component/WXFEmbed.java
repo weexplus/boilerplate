@@ -58,6 +58,8 @@ public class WXFEmbed extends WXEmbed {
 
     @WXComponentProp(name = "param")
     public void setParam(HashMap param) {
+        if(param==null||param.size()==0)
+            return;
       this.param=param;
     }
 
