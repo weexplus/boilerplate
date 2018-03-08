@@ -18,12 +18,15 @@ project (':sdk').projectDir = new File('../sdk')
 include ':umeng'
 project(':umeng').projectDir = new File('../umeng')
 
+include ':jpush'
+project(':jpush').projectDir = new File('../jpush')
 
-//include ':weex_debug'
-//project(':weex_debug').projectDir = new File('../weex_debug')
 
 include ':alipay'
 project(':alipay').projectDir = new File('../alipay')
 
 include ':wxpay'
 project(':wxpay').projectDir = new File('../wxpay')
+
+include ':oss'
+project(':oss').projectDir = new File('../oss')

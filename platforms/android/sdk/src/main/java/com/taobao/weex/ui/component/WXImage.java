@@ -202,15 +202,17 @@ public class WXImage extends WXComponent<ImageView> {
 
   @WXComponentProp(name = Constants.Name.SRC)
   public void setSrc(String src) {
-    if (src == null) {
-      return;
-    }
+    //zjr add
+//    if (src == null) {
+//      return;
+//    }
 
     ImageView image = getHostView();
-    if("".equals(src) && image != null){
-      image.setImageDrawable(null);
-      return;
-    }
+    //zjr add
+//    if("".equals(src) && image != null){
+//      image.setImageDrawable(null);
+//      return;
+//    }
 
     if(image != null){
       if(image.getDrawable() != null){

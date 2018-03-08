@@ -1,9 +1,8 @@
 <template>
 
    <div style="background-color: yellow">
-       <head title="demo"  @titleClick="update"></head>
-       <image src="root:load.gif" style="width: 200;height: 200"></image>
-
+       <!--<head title="demo"  @titleClick="update"></head>-->
+       <image src="ds"  placeholder="root:img/cat.png" style="width: 200;height: 200;background-color: red"></image>
    </div>
 </template>
 <style>

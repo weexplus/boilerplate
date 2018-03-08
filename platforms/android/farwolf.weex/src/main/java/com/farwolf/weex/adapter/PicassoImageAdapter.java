@@ -36,7 +36,6 @@ import com.farwolf.weex.util.Weex;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.taobao.weex.WXEnvironment;
-import com.taobao.weex.WXSDKManager;
 import com.taobao.weex.adapter.IWXImgLoaderAdapter;
 import com.taobao.weex.common.WXImageStrategy;
 import com.taobao.weex.dom.WXImageQuality;
@@ -54,16 +53,17 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
   public void setImage(final String url, final ImageView view,
                        final WXImageQuality quality, final WXImageStrategy strategy) {
 
-    WXSDKManager.getInstance().postOnUiThread(new Runnable() {
-
-      @Override
-      public void run() {
+//    WXSDKManager.getInstance().postOnUiThread(new Runnable() {
+//
+//      @Override
+//      public void run() {
         if(view==null||view.getLayoutParams()==null){
           return;
         }
         if (TextUtils.isEmpty(url)) {
           view.setImageBitmap(null);
-          return;
+            if(strategy==null||strategy.placeHolder==null)
+             return;
         }
         String temp = url;
 
@@ -86,8 +86,8 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
 
 
 
-      }
-    },0);
+//      }
+//    },0);
   }
 
 
@@ -110,7 +110,7 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
             WeexActivity a= (WeexActivity)view.getContext();
             String  placeholder=Weex.getRelativeUrl(strategy.placeHolder,a.mWXSDKInstance);
 //          String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
-            placeholder=placeholder.replace(Weex.getBaseUrl(a.mWXSDKInstance),"app");
+            placeholder=placeholder.replace(Weex.getBaseUrl(a.mWXSDKInstance),"app/");
           Bitmap bm= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
           pladrawable =new BitmapDrawable(bm);
           placeholders.put(strategy.placeHolder,pladrawable);

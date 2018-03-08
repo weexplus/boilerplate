@@ -649,7 +649,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         if(!backKeyEnable)
         {
-            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (event.getAction() == KeyEvent.ACTION_UP) {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
                     if(backkeyCallback!=null)
                     backkeyCallback.invokeAndKeepAlive(null);
