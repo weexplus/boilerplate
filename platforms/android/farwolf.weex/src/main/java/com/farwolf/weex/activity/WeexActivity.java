@@ -43,7 +43,6 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
-import com.taobao.weex.utils.WXFileUtils;
 import com.taobao.weex.utils.WXUtils;
 import com.ypy.eventbus.EventBus;
 
@@ -350,7 +349,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             }
             else
             {
-                String s= WXFileUtils.loadAsset(url, this);
+                String s= Weex.loadAsset(url, this);
 //                mWXSDKInstance.render("farwolf",s, null, null, WXRenderStrategy.APPEND_ASYNC);
                 this.renderPage(s,url);
             }

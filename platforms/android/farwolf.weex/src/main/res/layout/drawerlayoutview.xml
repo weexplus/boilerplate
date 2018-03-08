@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/main_view"
-        android:background="@android:color/holo_blue_dark"
+
         ></com.farwolf.weex.view.WXPageView_>
 
 
@@ -22,7 +22,7 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/holo_green_dark"
+
         ></com.farwolf.weex.view.WXPageView_>
 
 

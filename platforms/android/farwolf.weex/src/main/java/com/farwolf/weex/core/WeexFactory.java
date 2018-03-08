@@ -7,10 +7,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
+import com.farwolf.weex.util.Weex;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.WXRenderStrategy;
-import com.taobao.weex.utils.WXFileUtils;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -307,7 +307,7 @@ public class WeexFactory  extends ServiceBase{
         }
         else
         {
-            instance.render("farwolf", WXFileUtils.loadAsset(url, context), null, null, WXRenderStrategy.APPEND_ASYNC);
+            instance.render("farwolf", Weex.loadAsset(url, context), null, null, WXRenderStrategy.APPEND_ASYNC);
 
         }
 

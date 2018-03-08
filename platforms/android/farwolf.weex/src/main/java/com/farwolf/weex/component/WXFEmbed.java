@@ -12,7 +12,6 @@ import com.taobao.weex.dom.WXDomObject;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXEmbed;
 import com.taobao.weex.ui.component.WXVContainer;
-import com.taobao.weex.utils.WXFileUtils;
 
 import java.util.HashMap;
 
@@ -51,7 +50,7 @@ public class WXFEmbed extends WXEmbed {
         else
         {
 
-            instance.render(url, WXFileUtils.loadAsset(url,  this.getParent().getInstance().getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
+            instance.render(url, Weex.loadAsset(url,  this.getParent().getInstance().getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
 
         }
     }
