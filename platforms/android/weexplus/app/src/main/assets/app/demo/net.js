@@ -1,1 +1,838 @@
-!function(t){function e(i){if(o[i])return o[i].exports;var n=o[i]={i:i,l:!1,exports:{}};return t[i].call(n.exports,n,n.exports,e),n.l=!0,n.exports}var o={};e.m=t,e.c=o,e.d=function(t,o,i){e.o(t,o)||Object.defineProperty(t,o,{configurable:!1,enumerable:!0,get:i})},e.n=function(t){var o=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(o,"a",o),o},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=419)}({24:function(t,e,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0});e.default={postShort:function(t,e,o,i,n,r){var s=weex.requireModule("modal");this.postFull(t,e,o,i,n,function(t){s.toast({message:t.msg})},function(){s.toast({message:"网络异常！"})},function(){r()})},postFull:function(t,e,o,i,n,r,s,c){var l=weex.requireModule("net"),a=(weex.requireModule("modal"),"http://59.110.169.246/movie/"+t),u=weex.requireModule("static"),f=u.getString("token");void 0!=f&&""!=f&&(o.token=f),l.post(a,e,o,function(){i()},function(t){if(0==t.res.err)n(t.res);else{if(void 0!=f&&""!=f)return void u.remove("token");1e3==t.res.err||r(t.res)}},function(t){c()},function(t){s()})},post:function(t,e,o){var i=weex.requireModule("progress");this.postShort(t,e,{},function(){i.show()},o,function(){i.dismiss()})},postSilent:function(t,e,o){this.postFull(t,e,{},function(){},o,function(t){},function(){},function(){})}}},419:function(t,e,o){var i,n,r=[];r.push(o(420)),r.push(o(421)),i=o(422);var s=o(424);n=i=i||{},"object"!=typeof i.default&&"function"!=typeof i.default||(Object.keys(i).some(function(t){return"default"!==t&&"__esModule"!==t})&&console.error("named exports are not supported in *.vue files."),n=i=i.default),"function"==typeof n&&(n=n.options),n.__file="/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/net.vue",n.render=s.render,n.staticRenderFns=s.staticRenderFns,n._scopeId="data-v-3be40081",n.style=n.style||{},r.forEach(function(t){for(var e in t)n.style[e]=t[e]}),"function"==typeof __register_static_styles__&&__register_static_styles__(n._scopeId,r),t.exports=i,t.exports.el="true",new Vue(t.exports)},420:function(t,e){t.exports={cl:{alignItems:"center"}}},421:function(t,e){t.exports={header:{backgroundColor:"#FF0000",flex:1,flexDirection:"row"},tz:{color:"#FF0000"},logo:{width:300,height:300,marginTop:80},k1:{alignItems:"center"},titleback:{flex:1,alignItems:"center"},title:{color:"#FFFFFF",flex:1,marginTop:73,fontWeight:"bold"},leftimage:{width:30,height:45,bottom:25,left:30,position:"absolute"},rightimage:{width:45,height:45,bottom:23,right:32,position:"absolute"},bottomline:{height:1,backgroundColor:"#000000",position:"absolute",bottom:0,left:0,right:0,flex:1},btn:{backgroundColor:"#0085ee",height:100,width:200,marginTop:50,borderRadius:10,alignItems:"center",justifyContent:"center","backgroundColor:active":"#006ce7"}}},422:function(t,e,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i=o(9),n=o(24),r=o(423);e.default={components:{head:i},data:function(){return{back:"",header:{}}},methods:{post:function(){r.gt(),n.post("getBanners.do",{},function(t){});var t=this;t.back="",weex.requireModule("net").post("http://121.40.81.1:9080/edu/getBanners.do",{a:"1",b:"2"},{},function(){},function(e){t.back=e.res},function(t){},function(){})},get:function(){var t=this,e=weex.requireModule("net");t.back="",e.get("http://121.40.81.1:9080/edu/getBanners.do",{},{},function(){},function(e){t.back=e.res},function(t){},function(){})}},created:function(){var t=this;weex.requireModule("globalEvent").addEventListener("onPageInit",function(e){t.header=e})}}},423:function(t,e,o){"use strict";function i(){}t.exports={gt:i}},424:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,o=t._self._c||e;return o("scroller",[o("head",{appendAsTree:!0,attrs:{title:"网络请求sss",append:"tree"}}),o("div",{staticStyle:{marginBottom:"50"}},[o("div",{staticClass:["cl"]},[o("div",{staticClass:["btn"],on:{click:function(e){t.post()}}},[o("text",{staticStyle:{color:"#ffffff"}},[t._v("post")])]),o("div",{staticClass:["btn"],staticStyle:{width:"500"},on:{click:function(e){t.get()}}},[o("text",{staticStyle:{color:"#ffffff"}},[t._v("get")])]),o("text",{staticStyle:{color:"#000000"}},[t._v(t._s(t.header))]),o("text",{staticStyle:{color:"#ffffff"}},[t._v(t._s(t.back))])])])],1)},staticRenderFns:[]},t.exports.render._withStripped=!0},5:function(t,e){t.exports={header:{backgroundColor:"#FF0000",flex:1,flexDirection:"row"},tz:{color:"#FF0000"},logo:{width:300,height:300,marginTop:80},k1:{alignItems:"center"},titleback:{flex:1,alignItems:"center"},title:{color:"#FFFFFF",flex:1,marginTop:73,fontWeight:"bold"},leftimage:{width:30,height:45,bottom:25,left:30,position:"absolute"},rightimage:{width:45,height:45,bottom:23,right:32,position:"absolute"},bottomline:{height:1,backgroundColor:"#000000",position:"absolute",bottom:0,left:0,right:0,flex:1},btn:{backgroundColor:"#0085ee",height:100,width:500,marginTop:50,borderRadius:20,alignItems:"center",justifyContent:"center","backgroundColor:active":"#006ce7"}}},6:function(t,e){t.exports={layout:{backgroundColor:"#333333",height:128,flexDirection:"row",alignItems:"center",justifyContent:"center"}}},7:function(t,e,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={props:{title:{default:""},back:{default:!0},bgcolor:{default:"#222222"},isloading:{default:!1},disabled:{default:!1},type:{type:String,default:"text"},font_size:{default:20},height:{default:128},top:{default:40},titletop:{default:10}},data:function(){return{}},methods:{titleClick:function(){this.$emit("titleClick")},rightclick:function(){this.$emit("rightClick")},backTo:function(){weex.requireModule("navigator").back(),this.$emit("backClick")},onclick:function(){this.disabled||this.$emit("onclick")},adjust:function(){if("android"==weex.config.env.platform){var t=weex.config.env.osVersion;t=t.replace(/\./g,""),t.length<3&&(t+="0"),t<="440"&&(this.height=108,this.top=16,this.titletop=4)}}},created:function(){this.adjust()},ready:function(){}}},8:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,o=t._self._c||e;return o("div",{staticClass:["layout"],style:{"background-color":t.bgcolor,height:t.height}},[o("div",{staticStyle:{flexDirection:"row"},style:{top:t.titletop}},[t.isloading?o("div",{staticStyle:{height:"40",width:"40",marginRight:"10"}}):t._e(),o("text",{staticStyle:{flex:"1",color:"#ffffff",textAlign:"center",fontSize:"38"},on:{click:t.titleClick}},[t._v(t._s(t.title))]),t.isloading?o("floading",{staticStyle:{height:"40",width:"40",marginLeft:"10",marginTop:"5"},attrs:{color:"#ffffff",loadingStyle:"small"}}):t._e()],1),t.back?o("div",{staticStyle:{width:"200",top:"40",position:"absolute",left:"0"},style:{height:t.height,top:t.top},on:{click:t.backTo}},[o("image",{staticStyle:{width:"80",height:"80"},attrs:{src:"root:img/back.png"}})]):t._e(),o("div",{staticStyle:{width:"200",position:"absolute",right:"0",top:"0",alignItems:"center",justifyContent:"center"},style:{height:t.height},on:{click:t.rightclick}},[t._t("right")],2),o("div",{staticStyle:{height:"1",backgroundColor:"#111111",position:"absolute",bottom:"0",left:"0",right:"0"}})])},staticRenderFns:[]},t.exports.render._withStripped=!0},9:function(t,e,o){var i,n,r=[];r.push(o(5)),r.push(o(6)),i=o(7);var s=o(8);n=i=i||{},"object"!=typeof i.default&&"function"!=typeof i.default||(Object.keys(i).some(function(t){return"default"!==t&&"__esModule"!==t})&&console.error("named exports are not supported in *.vue files."),n=i=i.default),"function"==typeof n&&(n=n.options),n.__file="/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/header.vue",n.render=s.render,n.staticRenderFns=s.staticRenderFns,n._scopeId="data-v-25b44859",n.style=n.style||{},r.forEach(function(t){for(var e in t)n.style[e]=t[e]}),"function"==typeof __register_static_styles__&&__register_static_styles__(n._scopeId,r),t.exports=i}});
+// { "framework": "Vue"} 
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 419);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var host = 'http://59.110.169.246/movie/';
+// var host='http://192.168.1.101:8080/'
+
+
+exports.default = {
+
+    postShort: function postShort(weg, param, header, start, success, compelete) {
+        var modal = weex.requireModule("modal");
+        this.postFull(weg, param, header, start, success, function (res) {
+            //fail
+            modal.toast({ message: res.msg });
+        }, function () {
+            //exception
+            modal.toast({ message: '网络异常！' });
+        }, function () {
+            //compelete
+
+            compelete();
+        });
+    },
+
+    postFull: function postFull(weg, param, header, start, success, fail, exception, compelete) {
+        var net = weex.requireModule("net");
+        var modal = weex.requireModule("modal");
+        var self = this;
+        var url = host + weg;
+        var st = weex.requireModule('static');
+        var token = st.getString('token');
+        if (token != undefined && token != '') {
+            header.token = token;
+        }
+        // param.token='95d594d7b18fd1c7db37e81dd5bae9c9'
+        net.post(url, param, header, function () {
+            //start
+            start();
+        }, function (e) {
+            //success
+            // modal.toast({message:e.res.err})
+            if (e.res.err == 0) {
+
+                success(e.res);
+            } else {
+                // modal.toast({message:e.res.msg})
+                if (token != undefined && token != '') {
+                    st.remove('token');
+                    return;
+                }
+                if (e.res.err == 1000) {
+                    // var nav=weex.requireModule("navigator")
+                    // nav.presentFull('root:busi/account/login.js',{},'transparent',true,function(){
+                    //     self.postFull(weg,param,header,start,success,fail,exception,compelete);
+
+                    // },true);
+                } else fail(e.res);
+            }
+        }, function (e) {
+            //compelete
+
+
+            compelete();
+        }, function (e) {
+            // exception
+            exception();
+        });
+    },
+
+    post: function post(weg, param, success) {
+        var progress = weex.requireModule("progress");
+        this.postShort(weg, param, {}, function () {
+            progress.show();
+        }, success, function () {
+            progress.dismiss();
+        });
+    },
+
+    postSilent: function postSilent(weg, param, success) {
+
+        this.postFull(weg, param, {}, function () {}, success, function (res) {
+            //fail
+
+        }, function () {
+            //exception
+
+        }, function () {
+            //compelete
+
+
+        });
+    }
+
+};
+
+/***/ }),
+
+/***/ 419:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(420)
+)
+__vue_styles__.push(__webpack_require__(421)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(422)
+
+/* template */
+var __vue_template__ = __webpack_require__(424)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/net.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3be40081"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 420:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "cl": {
+    "alignItems": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 421:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 200,
+    "marginTop": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 422:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var head = __webpack_require__(9);
+var netx = __webpack_require__(24);
+var test = __webpack_require__(423);
+
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            back: "",
+            header: {}
+        };
+    },
+
+    methods: {
+        post: function post() {
+
+            test.gt();
+            netx.post('getBanners.do', {}, function (res) {});
+            var self = this;
+            self.back = "";
+            var net = weex.requireModule('net');
+            net.post('http://121.40.81.1:9080/edu/getBanners.do', { a: "1", b: "2" }, {}, function () {
+                //start
+            }, function (e) {
+                //success
+                self.back = e.res;
+                //                    self.header=r.headers;
+            }, function (e) {
+                //exception
+
+            }, function () {
+                //compelete
+            });
+        },
+        get: function get() {
+
+            var self = this;
+            var net = weex.requireModule('net');
+            self.back = "";
+            net.get('http://121.40.81.1:9080/edu/getBanners.do', {}, {}, function () {
+                //start
+            }, function (e) {
+                //success
+                self.back = e.res;
+            }, function (e) {
+                //exception
+
+            }, function () {
+                //compelete
+            });
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        var globalEvent = weex.requireModule('globalEvent');
+
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            _this.header = e;
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 423:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function gt() {}
+
+module.exports = { gt: gt };
+
+/***/ }),
+
+/***/ 424:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('scroller', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "网络请求sss",
+      "append": "tree"
+    }
+  }), _c('div', {
+    staticStyle: {
+      marginBottom: "50"
+    }
+  }, [_c('div', {
+    staticClass: ["cl"]
+  }, [_c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.post()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("post")])]), _c('div', {
+    staticClass: ["btn"],
+    staticStyle: {
+      width: "500"
+    },
+    on: {
+      "click": function($event) {
+        _vm.get()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("get")])]), _c('text', {
+    staticStyle: {
+      color: "#000000"
+    }
+  }, [_vm._v(_vm._s(_vm.header))]), _c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v(_vm._s(_vm.back))])])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 500,
+    "marginTop": 50,
+    "borderRadius": 20,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "layout": {
+    "backgroundColor": "#333333",
+    "height": 128,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    props: {
+        title: {
+            default: ''
+
+        },
+        back: {
+            default: true
+        },
+        bgcolor: {
+            default: '#222222'
+
+        },
+        isloading: {
+            default: false
+        },
+        disabled: {
+
+            default: false
+        },
+
+        type: {
+            type: String,
+            default: 'text'
+        },
+        font_size: {
+            default: 20
+        },
+        height: {
+            default: 128
+        },
+        top: {
+            default: 40
+        },
+        titletop: {
+            default: 10
+        }
+
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        titleClick: function titleClick() {
+            this.$emit('titleClick');
+        },
+        rightclick: function rightclick() {
+            this.$emit('rightClick');
+        },
+        backTo: function backTo() {
+            var nav = weex.requireModule("navigator");
+            nav.back();
+            this.$emit('backClick');
+        },
+        onclick: function onclick() {
+            if (!this.disabled) this.$emit('onclick');
+        },
+        adjust: function adjust() {
+            if (weex.config.env.platform == 'android') {
+                //                    if(weex.config.env.osVersion=)
+                var p = weex.config.env.osVersion;
+                p = p.replace(/\./g, '');
+                if (p.length < 3) p = p + "0";
+                if (p <= '440') {
+                    this.height = 108;
+                    this.top = 16;
+                    this.titletop = 4;
+                }
+            }
+        }
+    },
+
+    created: function created() {
+
+        this.adjust();
+    },
+    ready: function ready() {}
+    //        watch: {
+    //
+    //
+    //            disabled:{
+    //                immediate: true,
+    //                handler (val) {
+    //
+    //                }
+    //            }
+    //        }
+};
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["layout"],
+    style: {
+      'background-color': _vm.bgcolor,
+      'height': _vm.height
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row"
+    },
+    style: {
+      'top': _vm.titletop
+    }
+  }, [(_vm.isloading) ? _c('div', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginRight: "10"
+    }
+  }) : _vm._e(), _c('text', {
+    staticStyle: {
+      flex: "1",
+      color: "#ffffff",
+      textAlign: "center",
+      fontSize: "38"
+    },
+    on: {
+      "click": _vm.titleClick
+    }
+  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginLeft: "10",
+      marginTop: "5"
+    },
+    attrs: {
+      "color": "#ffffff",
+      "loadingStyle": "small"
+    }
+  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
+    staticStyle: {
+      width: "200",
+      top: "40",
+      position: "absolute",
+      left: "0"
+    },
+    style: {
+      'height': _vm.height,
+      'top': _vm.top
+    },
+    on: {
+      "click": _vm.backTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "80",
+      height: "80"
+    },
+    attrs: {
+      "src": "root:img/back.png"
+    }
+  })]) : _vm._e(), _c('div', {
+    staticStyle: {
+      width: "200",
+      position: "absolute",
+      right: "0",
+      top: "0",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    style: {
+      'height': _vm.height
+    },
+    on: {
+      "click": _vm.rightclick
+    }
+  }, [_vm._t("right")], 2), _c('div', {
+    staticStyle: {
+      height: "1",
+      backgroundColor: "#111111",
+      position: "absolute",
+      bottom: "0",
+      left: "0",
+      right: "0"
+    }
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(5)
+)
+__vue_styles__.push(__webpack_require__(6)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(7)
+
+/* template */
+var __vue_template__ = __webpack_require__(8)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/header.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-25b44859"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ })
+
+/******/ });

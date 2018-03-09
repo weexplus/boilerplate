@@ -1,1 +1,396 @@
-!function(e){function t(n){if(i[n])return i[n].exports;var s=i[n]={i:n,l:!1,exports:{}};return e[n].call(s.exports,s,s.exports,t),s.l=!0,s.exports}var i={};t.m=e,t.c=i,t.d=function(e,i,n){t.o(e,i)||Object.defineProperty(e,i,{configurable:!1,enumerable:!0,get:n})},t.n=function(e){var i=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(i,"a",i),i},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=363)}({184:function(e,t){e.exports={"slide-nav":{position:"absolute",zIndex:1e3}}},185:function(e,t,i){"use strict";function n(e){return"number"==typeof e?e:parseFloat((e||"").replace(/px$/i,""))}function s(e,t){e&&(e.__cacheHeight?e.__cacheHeight&&t&&t(e.__cacheHeight):r.getComponentRect(e,function(i){var n=(parseFloat(i&&i.size&&i.size.height)||0)/a;n&&t&&t(e.__cacheHeight=n)}))}Object.defineProperty(t,"__esModule",{value:!0});var r=weex.requireModule("dom"),o=weex.requireModule("animation"),a="web"===weex.config.env.platform.toLowerCase()?2:1;t.default={props:{position:{type:String,default:"top"},height:[String,Number]},data:function(){return{visible:!0}},watch:{visible:function(e){e?this._slideIn():this._slideOut()}},created:function(){this._height=n(this.height)||0,this._isBottom="bottom"===this.position,this._direction=this._isBottom?1:-1},methods:{_slideOut:function(){var e=this;this.getHeight(function(t){e.$emit("slideOut"),e.slideY(t*e._direction*a,function(){e.$emit("slideOutEnd")})})},_slideIn:function(){var e=this;this.getHeight(function(t){e.$emit("slideIn"),e.slideY(0,function(){e.$emit("slideInEnd")})})},getHeight:function(e){return s(this.$refs.wrapper,e)},slideOut:function(){this.visible=!1},slideIn:function(){this.visible=!0},slideY:function(e,t){o.transition(this.$refs.wrapper,{styles:{transform:"translateY("+e+"px)"},duration:150,timingFunction:"ease",delay:0},t)}},handleTouchStart:function(e){var t=e.changedTouches[0];this._touchParams={pageY:t.screenY,startY:t.screenY,lastPageY:t.screenY,timeStamp:e.timeStamp,direction:-1}},handleTouchMove:function(e,t){var i=this._touchParams,n=e.changedTouches[0],s=void 0;if(!i||i.hasEnd)return this._touchParams={pageY:n.screenY,startY:n.screenY,lastPageY:n.screenY,timeStamp:e.timeStamp,direction:-1};s=n.screenY-i.pageY,i.lastPageY=i.pageY,i.lastDirection=i.direction,i.direction=s>0?1:-1,i.lastDirection!==i.direction&&(i.startY=i.lastPageY),i.pageY=n.screenY,i.offsetY=i.pageY-i.startY,!this.__scrollable&&t&&(i.offsetY<=-10?t.slideOut():i.offsetY>=10&&t.slideIn())},handleTouchEnd:function(){var e=this._touchParams;e&&(e.hasEnd=!0)},handleScroll:function(e,t,i,n,r){var o=this,a=arguments.length>5&&void 0!==arguments[5]?arguments[5]:5,c=e.contentOffset.y,u=i||n,l=function(e){if(!(-c>e))if(e=Math.abs(e),Math.abs(c)<r)if(Math.abs(c)>=e-10){var t=o._touchParams;if(!t)return;var s=t.offsetY;s<-10?n&&n.slideOut():s>10&&n&&n.slideIn()}else i&&i.slideIn(),n&&n.slideIn();else{var u=o._touchParams;if(!u)return;var l=u.offsetY;Math.abs(l)>=a&&(l>0?(i&&i.slideIn(),n&&n.slideIn()):(i&&i.slideOut(),n&&n.slideOut()))}},f=function(e){o.__scrollable&&(r?l(e):u.getHeight(function(t){r=t,l(e)}))};u&&s(t,function(t){var i=e.contentSize.height-t;o.__scrollable=i>=10,n?n.getHeight(function(e){o.__scrollable=i>=e,f(i)}):f(i)})}}},186:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("div",{ref:"wrapper",staticClass:["slide-nav"]},[e._t("default")],2)},staticRenderFns:[]},e.exports.render._withStripped=!0},363:function(e,t,i){var n,s,r=[];r.push(i(184)),n=i(185);var o=i(186);s=n=n||{},"object"!=typeof n.default&&"function"!=typeof n.default||(Object.keys(n).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),s=n=n.default),"function"==typeof s&&(s=s.options),s.__file="/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-slide-nav/index.vue",s.render=o.render,s.staticRenderFns=o.staticRenderFns,s._scopeId="data-v-5498d6c9",s.style=s.style||{},r.forEach(function(e){for(var t in e)s.style[t]=e[t]}),"function"==typeof __register_static_styles__&&__register_static_styles__(s._scopeId,r),e.exports=n,e.exports.el="true",new Vue(e.exports)}});
+// { "framework": "Vue"} 
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 363);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 184:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "slide-nav": {
+    "position": "absolute",
+    "zIndex": 1000
+  }
+}
+
+/***/ }),
+
+/***/ 185:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var DOM = weex.requireModule('dom');
+var Animation = weex.requireModule('animation');
+var OFFSET_ACCURACY = 10;
+var SCALE = weex.config.env.platform.toLowerCase() === 'web' ? 2 : 1;
+
+function _toNum(str) {
+  return typeof str === 'number' ? str : parseFloat((str || '').replace(/px$/i, ''));
+}
+
+function _getHeight(element, callback) {
+  if (!element) {
+    return;
+  }
+  if (element.__cacheHeight) {
+    element.__cacheHeight && callback && callback(element.__cacheHeight);
+  } else {
+    DOM.getComponentRect(element, function (res) {
+      var height = (parseFloat(res && res.size && res.size.height) || 0) / SCALE;
+      height && callback && callback(element.__cacheHeight = height);
+    });
+  }
+}
+
+exports.default = {
+
+  props: {
+    position: {
+      'type': String,
+      'default': 'top'
+    },
+
+    height: [String, Number]
+  },
+
+  data: function data() {
+    return {
+      visible: true
+    };
+  },
+
+
+  watch: {
+    visible: function visible(newVal) {
+      newVal ? this._slideIn() : this._slideOut();
+    }
+  },
+
+  created: function created() {
+    this._height = _toNum(this.height) || 0;
+    this._isBottom = this.position === 'bottom';
+    this._direction = this._isBottom ? 1 : -1;
+  },
+
+
+  methods: {
+    _slideOut: function _slideOut() {
+      var _this = this;
+
+      this.getHeight(function (height) {
+        _this.$emit('slideOut');
+        _this.slideY(height * _this._direction * SCALE, function () {
+          _this.$emit('slideOutEnd');
+        });
+      });
+    },
+    _slideIn: function _slideIn() {
+      var _this2 = this;
+
+      this.getHeight(function (height) {
+        _this2.$emit('slideIn');
+        _this2.slideY(0, function () {
+          _this2.$emit('slideInEnd');
+        });
+      });
+    },
+    getHeight: function getHeight(callback) {
+      return _getHeight(this.$refs.wrapper, callback);
+    },
+    slideOut: function slideOut() {
+      this.visible = false;
+    },
+    slideIn: function slideIn() {
+      this.visible = true;
+    },
+    slideY: function slideY(y, callback) {
+      Animation.transition(this.$refs.wrapper, {
+        styles: { transform: 'translateY(' + y + 'px)' },
+        duration: 150, //ms
+        timingFunction: 'ease',
+        delay: 0 //ms
+      }, callback);
+    }
+  },
+
+  handleTouchStart: function handleTouchStart(e) {
+    var touch = e.changedTouches[0];
+    this._touchParams = {
+      pageY: touch.screenY,
+      startY: touch.screenY,
+      lastPageY: touch.screenY,
+      timeStamp: e.timeStamp,
+      direction: -1
+    };
+  },
+  handleTouchMove: function handleTouchMove(e, bottomNav) {
+    var tp = this._touchParams;
+    var touch = e.changedTouches[0];
+    var offsetY = void 0;
+
+    // 安卓下滚动的时候经常不触发touchstart事件
+    if (!tp || tp.hasEnd) {
+      return this._touchParams = {
+        pageY: touch.screenY,
+        startY: touch.screenY,
+        lastPageY: touch.screenY,
+        timeStamp: e.timeStamp,
+        direction: -1
+      };
+    }
+
+    offsetY = touch.screenY - tp.pageY;
+
+    tp.lastPageY = tp.pageY;
+    tp.lastDirection = tp.direction;
+    tp.direction = offsetY > 0 ? 1 : -1;
+
+    if (tp.lastDirection !== tp.direction) {
+      tp.startY = tp.lastPageY;
+    }
+
+    tp.pageY = touch.screenY;
+    tp.offsetY = tp.pageY - tp.startY;
+
+    if (!this.__scrollable && bottomNav) {
+      if (tp.offsetY <= -OFFSET_ACCURACY) {
+        bottomNav.slideOut();
+      } else if (tp.offsetY >= OFFSET_ACCURACY) {
+        bottomNav.slideIn();
+      }
+    }
+  },
+  handleTouchEnd: function handleTouchEnd() {
+    var tp = this._touchParams;
+    tp && (tp.hasEnd = true);
+  },
+  handleScroll: function handleScroll(e, scroller, topNav, bottomNav, startThreshold) {
+    var _this3 = this;
+
+    var moveThreshold = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 5;
+
+    var scrollY = e.contentOffset.y;
+    var nav = topNav || bottomNav;
+    var scrollFn = function scrollFn(maxScrollY) {
+      if (-scrollY > maxScrollY) {
+        return;
+      }
+      maxScrollY = Math.abs(maxScrollY);
+      if (Math.abs(scrollY) < startThreshold) {
+        if (Math.abs(scrollY) >= maxScrollY - OFFSET_ACCURACY) {
+          var tp = _this3._touchParams;
+          if (!tp) {
+            return;
+          }
+          var offsetY = tp.offsetY;
+          if (offsetY < -OFFSET_ACCURACY) {
+            bottomNav && bottomNav.slideOut();
+          } else if (offsetY > OFFSET_ACCURACY) {
+            bottomNav && bottomNav.slideIn();
+          }
+        } else {
+          topNav && topNav.slideIn();
+          bottomNav && bottomNav.slideIn();
+        }
+      } else {
+        var _tp = _this3._touchParams;
+        if (!_tp) {
+          return;
+        }
+        var _offsetY = _tp.offsetY;
+        if (Math.abs(_offsetY) >= moveThreshold) {
+          if (_offsetY > 0) {
+            topNav && topNav.slideIn();
+            bottomNav && bottomNav.slideIn();
+          } else {
+            topNav && topNav.slideOut();
+            bottomNav && bottomNav.slideOut();
+          }
+        }
+      }
+    };
+
+    var maxScrollYCheck = function maxScrollYCheck(maxScrollY) {
+      if (!_this3.__scrollable) {
+        return;
+      }
+      if (startThreshold) {
+        scrollFn(maxScrollY);
+      } else {
+        nav.getHeight(function (navHeight) {
+          startThreshold = navHeight;
+          scrollFn(maxScrollY);
+        });
+      }
+    };
+
+    if (!nav) {
+      return;
+    }
+
+    _getHeight(scroller, function (scrollerHeight) {
+      var maxScrollY = e.contentSize.height - scrollerHeight;
+      _this3.__scrollable = maxScrollY >= OFFSET_ACCURACY;
+
+      if (bottomNav) {
+        bottomNav.getHeight(function (height) {
+          _this3.__scrollable = maxScrollY >= height;
+          maxScrollYCheck(maxScrollY);
+        });
+      } else {
+        maxScrollYCheck(maxScrollY);
+      }
+    });
+  }
+};
+
+/***/ }),
+
+/***/ 186:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    ref: "wrapper",
+    staticClass: ["slide-nav"]
+  }, [_vm._t("default")], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 363:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(184)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(185)
+
+/* template */
+var __vue_template__ = __webpack_require__(186)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-slide-nav/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-5498d6c9"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ })
+
+/******/ });

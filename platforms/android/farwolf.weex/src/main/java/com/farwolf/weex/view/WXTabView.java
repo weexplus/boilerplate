@@ -49,6 +49,16 @@ public class WXTabView extends ViewBase {
 
     }
 
+
+
+    public void setChildContext(Context c)
+    {
+        for(WXPageView p:pages)
+        {
+            p.instance.setContext(c);
+        }
+    }
+
     public void setItems(List<String> l)
     {
         if(this.urls.size()>0)

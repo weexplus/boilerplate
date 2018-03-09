@@ -61,5 +61,12 @@ public class WXHost extends WXComponent<WXTabView> {
     }
 
 
+    @Override
+    public void onActivityResume() {
+        super.onActivityResume();
+        Context c=  mInstance.getContext();
+        getHostView().setChildContext(c);
+    }
+
 
 }

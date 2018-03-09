@@ -1,1 +1,232 @@
-!function(e){function t(o){if(r[o])return r[o].exports;var s=r[o]={i:o,l:!1,exports:{}};return e[o].call(s.exports,s,s.exports,t),s.l=!0,s.exports}var r={};t.m=e,t.c=r,t.d=function(e,r,o){t.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=349)}({166:function(e,t){e.exports={"wxc-progress":{backgroundColor:"#f2f3f4"},progress:{position:"absolute",backgroundColor:"#FFC900"}}},167:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={props:{barColor:{type:String,default:"#FFC900"},barWidth:{type:Number,default:600},barHeight:{type:Number,default:8},value:{type:Number,default:0}},computed:{runWayStyle:function(){return{width:this.barWidth+"px",height:this.barHeight+"px"}},progressStyle:function(){var e=this.value,t=this.barWidth,r=this.barHeight;return{backgroundColor:this.barColor,height:r+"px",width:(e<0?0:e>100?100:e)/100*t+"px"}}}}},168:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,r=e._self._c||t;return r("div",{staticClass:["wxc-progress"],style:e.runWayStyle,attrs:{accessible:!0,ariaLabel:"进度为百分之"+e.value}},[r("div",{staticClass:["progress"],style:e.progressStyle})])},staticRenderFns:[]},e.exports.render._withStripped=!0},349:function(e,t,r){var o,s,n=[];n.push(r(166)),o=r(167);var i=r(168);s=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(Object.keys(o).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),s=o=o.default),"function"==typeof s&&(s=s.options),s.__file="/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-progress/index.vue",s.render=i.render,s.staticRenderFns=i.staticRenderFns,s._scopeId="data-v-1c679ac1",s.style=s.style||{},n.forEach(function(e){for(var t in e)s.style[t]=e[t]}),"function"==typeof __register_static_styles__&&__register_static_styles__(s._scopeId,n),e.exports=o,e.exports.el="true",new Vue(e.exports)}});
+// { "framework": "Vue"} 
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 349);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 166:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wxc-progress": {
+    "backgroundColor": "#f2f3f4"
+  },
+  "progress": {
+    "position": "absolute",
+    "backgroundColor": "#FFC900"
+  }
+}
+
+/***/ }),
+
+/***/ 167:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: {
+    barColor: {
+      type: String,
+      default: '#FFC900'
+    },
+    barWidth: {
+      type: Number,
+      default: 600
+    },
+    barHeight: {
+      type: Number,
+      default: 8
+    },
+    value: {
+      type: Number,
+      default: 0
+    }
+  },
+  computed: {
+    runWayStyle: function runWayStyle() {
+      var barWidth = this.barWidth,
+          barHeight = this.barHeight;
+
+      return {
+        width: barWidth + 'px',
+        height: barHeight + 'px'
+      };
+    },
+    progressStyle: function progressStyle() {
+      var value = this.value,
+          barWidth = this.barWidth,
+          barHeight = this.barHeight,
+          barColor = this.barColor;
+
+      var newValue = value < 0 ? 0 : value > 100 ? 100 : value;
+      return {
+        backgroundColor: barColor,
+        height: barHeight + 'px',
+        width: newValue / 100 * barWidth + 'px'
+      };
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 168:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wxc-progress"],
+    style: _vm.runWayStyle,
+    attrs: {
+      "accessible": true,
+      "ariaLabel": ("进度为百分之" + _vm.value)
+    }
+  }, [_c('div', {
+    staticClass: ["progress"],
+    style: _vm.progressStyle
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 349:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(166)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(167)
+
+/* template */
+var __vue_template__ = __webpack_require__(168)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-progress/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-1c679ac1"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ })
+
+/******/ });

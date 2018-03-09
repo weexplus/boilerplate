@@ -1,1 +1,300 @@
-!function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=230)}({230:function(e,t,n){var o,r,i=[];i.push(n(48)),o=n(49);var u=n(50);r=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(Object.keys(o).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),r=o=o.default),"function"==typeof r&&(r=r.options),r.__file="/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/input.vue",r.render=u.render,r.staticRenderFns=u.staticRenderFns,r._scopeId="data-v-3960f0c8",r.style=r.style||{},i.forEach(function(e){for(var t in e)r.style[t]=e[t]}),"function"==typeof __register_static_styles__&&__register_static_styles__(r._scopeId,i),e.exports=o,e.exports.el="true",new Vue(e.exports)},48:function(e,t){e.exports={text:{fontSize:"50",textAlign:"center",color:"#41B883"}}},49:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={props:{placeholder:{default:""},placeholder_color:{default:"#ffffff"},color:{default:"#000000"},value:{default:""},type:{type:String,default:"text"},font_size:{default:20},autofocus:{default:!1},return_key_type:{default:"defalut"}},data:function(){return{pulldistance:180,visiable:!0}},methods:{onchange:function(e){this.visiable=""==!e.value,this.value=e.value},onfocus:function(){this.$emit("focus")},focus:function(){this.$refs.input.focus()},blur:function(){this.$refs.input.blur(),this.$emit("blur")},oninput:function(e){this.value=e.value,this.visiable=""!=e.value,this.$emit("onchange",e.value)},onreturn:function(e){this.$emit("return",e)},onclose:function(){this.value="",this.visiable=!1,this.$emit("onchange","")}},created:function(){weex.requireModule("globalEvent").addEventListener("onPageInit",function(e){}),this.visiable=""==!this.value},ready:function(){}}},50:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticStyle:{flexDirection:"row",height:"100",alignItems:"center",backgroundColor:"red"}},[n("input",{ref:"input",staticStyle:{flex:"1",paddingLeft:"20",height:"100"},style:{color:e.color,"placeholder-color":e.placeholder_color},attrs:{returnKeyType:e.return_key_type,autofocus:e.autofocus,placeholder:e.placeholder,type:e.type,value:e.value},on:{return:e.onreturn,focus:e.onfocus,change:e.onchange,input:[function(t){e.value=t.target.attr.value},e.oninput]}}),e.visiable?n("div",{staticStyle:{width:"50px",height:"100px",marginRight:"10",alignItems:"center",justifyContent:"center"},on:{click:function(t){e.onclose()}}},[n("image",{staticStyle:{width:"30px",height:"30px"},attrs:{src:"root:img/delete.png"}})]):e._e()])},staticRenderFns:[]},e.exports.render._withStripped=!0}});
+// { "framework": "Vue"} 
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 230);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 230:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(48)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(49)
+
+/* template */
+var __vue_template__ = __webpack_require__(50)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/input.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3960f0c8"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 48:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": "50",
+    "textAlign": "center",
+    "color": "#41B883"
+  }
+}
+
+/***/ }),
+
+/***/ 49:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    props: {
+        placeholder: {
+            default: ''
+
+        },
+        placeholder_color: {
+            default: '#ffffff'
+
+        },
+        color: {
+            default: '#000000'
+
+        },
+        value: {
+            default: ''
+        },
+
+        type: {
+            type: String,
+            default: 'text'
+        },
+        font_size: {
+            default: 20
+        },
+        autofocus: {
+            default: false
+        },
+        return_key_type: {
+            default: 'defalut'
+        }
+
+    },
+    data: function data() {
+        return {
+
+            pulldistance: 180,
+            visiable: true
+
+        };
+    },
+
+    methods: {
+        onchange: function onchange(event) {
+            this.visiable = !event.value == '';
+            //                this.$emit('onchange',event.value);
+            this.value = event.value;
+            //                this.name="xxx"
+        },
+        onfocus: function onfocus() {
+            this.$emit('focus');
+        },
+        focus: function focus() {
+            this.$refs.input.focus();
+        },
+        blur: function blur() {
+            this.$refs.input.blur();
+            this.$emit('blur');
+        },
+        oninput: function oninput(e) {
+
+            //                this.$emit('oninput');
+            this.value = e.value;
+            this.visiable = e.value != '';
+            this.$emit('onchange', e.value);
+        },
+        onreturn: function onreturn(e) {
+            this.$emit('return', e);
+        },
+        onclose: function onclose() {
+            this.value = '';
+            this.visiable = false;
+            this.$emit('onchange', '');
+        }
+    },
+
+    created: function created() {
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {});
+
+        this.visiable = !this.value == '';
+    },
+    ready: function ready() {}
+};
+
+/***/ }),
+
+/***/ 50:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "100",
+      alignItems: "center",
+      backgroundColor: "red"
+    }
+  }, [_c('input', {
+    ref: "input",
+    staticStyle: {
+      flex: "1",
+      paddingLeft: "20",
+      height: "100"
+    },
+    style: {
+      'color': _vm.color,
+      'placeholder-color': _vm.placeholder_color
+    },
+    attrs: {
+      "returnKeyType": _vm.return_key_type,
+      "autofocus": _vm.autofocus,
+      "placeholder": _vm.placeholder,
+      "type": _vm.type,
+      "value": (_vm.value)
+    },
+    on: {
+      "return": _vm.onreturn,
+      "focus": _vm.onfocus,
+      "change": _vm.onchange,
+      "input": [function($event) {
+        _vm.value = $event.target.attr.value
+      }, _vm.oninput]
+    }
+  }), (_vm.visiable) ? _c('div', {
+    staticStyle: {
+      width: "50px",
+      height: "100px",
+      marginRight: "10",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.onclose()
+      }
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "30px",
+      height: "30px"
+    },
+    attrs: {
+      "src": "root:img/delete.png"
+    }
+  })]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ })
+
+/******/ });

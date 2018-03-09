@@ -1,1 +1,435 @@
-!function(t){function e(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};e.m=t,e.c=n,e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=318)}({121:function(t,e){t.exports={"time-dot-wrap":{flexDirection:"row",alignItems:"center"}}},122:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var o=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t};e.default={props:{time:{type:Number,default:15012e8},interval:{type:Number,default:1e3},tpl:{type:String,default:"{h}:{m}:{s}"},timeWrapStyle:Object,timeBoxStyle:Object,dotBoxStyle:Object,timeTextStyle:Object,dotTextStyle:Object},data:function(){return{NOW_DATE:(new Date).getTime(),completed:!1,tplIndexOfDays:-1,tplIndexOfHours:-1,tplIndexOfMinutes:-1,tplIndexOfSeconds:-1,TIME_WRAP_STYLE:{flexDirection:"row",alignItems:"center",marginLeft:"12px",marginRight:"12px"},TIME_BOX_STYLE:{flexDirection:"row",justifyContent:"center",alignItems:"center",backgroundColor:"#333333",height:"30px",width:"30px"},DOT_BOX_STYLE:{width:"18px",flexDirection:"row",justifyContent:"center",alignItems:"center"},TIME_TEXT_STYLE:{color:"#FFCC80",fontSize:"18px"},DOT_TEXT_STYLE:{color:"#333333",fontSize:"18px",fontWeight:"bold"}}},mounted:function(){var t=this;setInterval(function(){t.NOW_DATE=(new Date).getTime()},this.interval),this.tplIndexOfDays=this.tpl.indexOf("d"),this.tplIndexOfHours=this.tpl.indexOf("h"),this.tplIndexOfMinutes=this.tpl.indexOf("m"),this.tplIndexOfSeconds=this.tpl.indexOf("s")},computed:{mrTimeWrapStyle:function(){return o({},this.TIME_WRAP_STYLE,this.timeWrapStyle)},mrTimeBoxStyle:function(){return o({},this.TIME_BOX_STYLE,this.timeBoxStyle)},mrDotBoxStyle:function(){return o({},this.DOT_BOX_STYLE,this.dotBoxStyle)},mrTimeTextStyle:function(){return o({},this.TIME_TEXT_STYLE,this.timeTextStyle)},mrDotTextStyle:function(){return o({},this.DOT_TEXT_STYLE,this.dotTextStyle)},countDownData:function(){var t=this.time-this.NOW_DATE;if(t<0)return!1===this.completed&&this.$emit("wxcOnComplete"),this.completed=!0,{day:"00",hour:"00",minute:"00",second:"00"};var e=0,n=0,o=0,r=0;return-1!==this.tplIndexOfDays?(e=Math.floor(t/864e5),n=Math.floor(t%864e5/36e5)):(e=0,n=Math.floor(t/36e5)),-1!==this.tplIndexOfHours?(n=Math.floor((t-24*e*60*60*1e3)/36e5),o=Math.floor((t-24*e*60*60*1e3)%36e5/6e4)):(n=0,o=Math.floor((t-24*e*60*60*1e3)/6e4)),-1!==this.tplIndexOfMinutes?(o=Math.floor((t-24*e*60*60*1e3-60*n*60*1e3)/6e4),r=Math.floor((t-24*e*60*60*1e3-60*n*60*1e3)%6e4/1e3)):(o=0,r=Math.floor((t-24*e*60*60*1e3-60*n*60*1e3)/1e3)),{day:e<10?"0"+e:""+e,hour:n<10?"0"+n:""+n,minute:o<10?"0"+o:""+o,second:r<10?"0"+r:""+r}}},methods:{getDot:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:-1;return-1===e?this.tpl.slice(t+2):this.tpl.slice(t+2,e-1)}}}},123:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{style:t.mrTimeWrapStyle},[n("div",{staticClass:["time-dot-wrap"]},[-1!==t.tplIndexOfDays?n("div",{style:t.mrTimeBoxStyle,attrs:{accessible:!0,ariaLabel:t.countDownData.day+"天"}},[n("text",{style:t.mrTimeTextStyle},[t._v(t._s(t.countDownData.day))])]):t._e(),-1!==t.tplIndexOfDays?n("div",{style:t.mrDotBoxStyle,attrs:{ariaHidden:!0}},[n("text",{style:t.mrDotTextStyle},[t._v(t._s(t.getDot(t.tplIndexOfDays,t.tplIndexOfHours)))])]):t._e(),-1!==t.tplIndexOfHours?n("div",{style:t.mrTimeBoxStyle,attrs:{accessible:!0,ariaLabel:t.countDownData.hour+"时"}},[n("text",{style:t.mrTimeTextStyle},[t._v(t._s(t.countDownData.hour))])]):t._e(),-1!==t.tplIndexOfHours?n("div",{style:t.mrDotBoxStyle,attrs:{ariaHidden:!0}},[n("text",{style:t.mrDotTextStyle},[t._v(t._s(t.getDot(t.tplIndexOfHours,t.tplIndexOfMinutes)))])]):t._e(),-1!==t.tplIndexOfMinutes?n("div",{style:t.mrTimeBoxStyle,attrs:{accessible:!0,ariaLabel:t.countDownData.minute+"分"}},[n("text",{style:t.mrTimeTextStyle},[t._v(t._s(t.countDownData.minute))])]):t._e(),-1!==t.tplIndexOfMinutes?n("div",{style:t.mrDotBoxStyle,attrs:{ariaHidden:!0}},[n("text",{style:t.mrDotTextStyle},[t._v(t._s(t.getDot(t.tplIndexOfMinutes,t.tplIndexOfSeconds)))])]):t._e(),-1!==t.tplIndexOfSeconds?n("div",{style:t.mrTimeBoxStyle,attrs:{accessible:!0,ariaLabel:t.countDownData.second+"秒"}},[n("text",{style:t.mrTimeTextStyle},[t._v(t._s(t.countDownData.second))])]):t._e(),-1!==t.tplIndexOfSeconds?n("div",{style:t.mrDotBoxStyle,attrs:{ariaHidden:!0}},[n("text",{style:t.mrDotTextStyle},[t._v(t._s(t.getDot(t.tplIndexOfSeconds,-1)))])]):t._e()])])},staticRenderFns:[]},t.exports.render._withStripped=!0},318:function(t,e,n){var o,r,i=[];i.push(n(121)),o=n(122);var s=n(123);r=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(Object.keys(o).some(function(t){return"default"!==t&&"__esModule"!==t})&&console.error("named exports are not supported in *.vue files."),r=o=o.default),"function"==typeof r&&(r=r.options),r.__file="/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-countdown/index.vue",r.render=s.render,r.staticRenderFns=s.staticRenderFns,r._scopeId="data-v-1a74a573",r.style=r.style||{},i.forEach(function(t){for(var e in t)r.style[e]=t[e]}),"function"==typeof __register_static_styles__&&__register_static_styles__(r._scopeId,i),t.exports=o,t.exports.el="true",new Vue(t.exports)}});
+// { "framework": "Vue"} 
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 318);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 121:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "time-dot-wrap": {
+    "flexDirection": "row",
+    "alignItems": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 122:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: {
+    // 时间戳
+    time: {
+      type: Number,
+      default: 1501200000000
+    },
+    // 倒计时的间隔,单位为"毫秒"
+    interval: {
+      type: Number,
+      default: 1000
+    },
+    tpl: {
+      type: String,
+      default: '{h}:{m}:{s}'
+    },
+    // 最外层包裹 style
+    timeWrapStyle: Object,
+    // 数字盒子 style
+    timeBoxStyle: Object,
+    // : 盒子Style
+    dotBoxStyle: Object,
+    // 数字文字 Style
+    timeTextStyle: Object,
+    // : 文字Style
+    dotTextStyle: Object
+  },
+  data: function data() {
+    return {
+      NOW_DATE: new Date().getTime(),
+      completed: false,
+      tplIndexOfDays: -1,
+      tplIndexOfHours: -1,
+      tplIndexOfMinutes: -1,
+      tplIndexOfSeconds: -1,
+      TIME_WRAP_STYLE: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: '12px',
+        marginRight: '12px'
+      },
+      TIME_BOX_STYLE: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#333333',
+        height: '30px',
+        width: '30px'
+      },
+      DOT_BOX_STYLE: {
+        width: '18px',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      TIME_TEXT_STYLE: {
+        color: '#FFCC80',
+        fontSize: '18px'
+      },
+      DOT_TEXT_STYLE: {
+        color: '#333333',
+        fontSize: '18px',
+        fontWeight: 'bold'
+      }
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    setInterval(function () {
+      _this.NOW_DATE = new Date().getTime();
+    }, this.interval);
+
+    this.tplIndexOfDays = this.tpl.indexOf('d');
+    this.tplIndexOfHours = this.tpl.indexOf('h');
+    this.tplIndexOfMinutes = this.tpl.indexOf('m');
+    this.tplIndexOfSeconds = this.tpl.indexOf('s');
+  },
+
+  computed: {
+    mrTimeWrapStyle: function mrTimeWrapStyle() {
+      return _extends({}, this.TIME_WRAP_STYLE, this.timeWrapStyle);
+    },
+    mrTimeBoxStyle: function mrTimeBoxStyle() {
+      return _extends({}, this.TIME_BOX_STYLE, this.timeBoxStyle);
+    },
+    mrDotBoxStyle: function mrDotBoxStyle() {
+      return _extends({}, this.DOT_BOX_STYLE, this.dotBoxStyle);
+    },
+    mrTimeTextStyle: function mrTimeTextStyle() {
+      return _extends({}, this.TIME_TEXT_STYLE, this.timeTextStyle);
+    },
+    mrDotTextStyle: function mrDotTextStyle() {
+      return _extends({}, this.DOT_TEXT_STYLE, this.dotTextStyle);
+    },
+    countDownData: function countDownData() {
+      var timeSpacing = this.time - this.NOW_DATE;
+
+      // 倒计时结束了
+      if (timeSpacing < 0) {
+        if (this.completed === false) {
+          this.$emit('wxcOnComplete');
+        }
+        this.completed = true;
+        return {
+          day: '00',
+          hour: '00',
+          minute: '00',
+          second: '00'
+        };
+      }
+
+      var day = 0;
+      var hour = 0;
+      var minute = 0;
+      var second = 0;
+
+      if (this.tplIndexOfDays !== -1) {
+        day = Math.floor(timeSpacing / (24 * 60 * 60 * 1000));
+        hour = Math.floor(timeSpacing % (24 * 60 * 60 * 1000) / (60 * 60 * 1000));
+      } else {
+        day = 0;
+        hour = Math.floor(timeSpacing / (60 * 60 * 1000));
+      }
+
+      if (this.tplIndexOfHours !== -1) {
+        hour = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000) / (60 * 60 * 1000));
+        minute = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000) % (60 * 60 * 1000) / (60 * 1000));
+      } else {
+        hour = 0;
+        minute = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000) / (60 * 1000));
+      }
+
+      if (this.tplIndexOfMinutes !== -1) {
+        minute = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000 - hour * 60 * 60 * 1000) / (60 * 1000));
+        second = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000 - hour * 60 * 60 * 1000) % (60 * 1000) / 1000);
+      } else {
+        minute = 0;
+        second = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000 - hour * 60 * 60 * 1000) / 1000);
+      }
+
+      return {
+        day: day < 10 ? '0' + day : '' + day,
+        hour: hour < 10 ? '0' + hour : '' + hour,
+        minute: minute < 10 ? '0' + minute : '' + minute,
+        second: second < 10 ? '0' + second : '' + second
+      };
+    }
+  },
+
+  methods: {
+    getDot: function getDot(prevTagIndex) {
+      var nextTagIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+
+      if (nextTagIndex === -1) {
+        return this.tpl.slice(prevTagIndex + 2);
+      }
+      return this.tpl.slice(prevTagIndex + 2, nextTagIndex - 1);
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 123:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    style: _vm.mrTimeWrapStyle
+  }, [_c('div', {
+    staticClass: ["time-dot-wrap"]
+  }, [(_vm.tplIndexOfDays !== -1) ? _c('div', {
+    style: _vm.mrTimeBoxStyle,
+    attrs: {
+      "accessible": true,
+      "ariaLabel": ((_vm.countDownData.day) + "天")
+    }
+  }, [_c('text', {
+    style: _vm.mrTimeTextStyle
+  }, [_vm._v(_vm._s(_vm.countDownData.day))])]) : _vm._e(), (_vm.tplIndexOfDays !== -1) ? _c('div', {
+    style: _vm.mrDotBoxStyle,
+    attrs: {
+      "ariaHidden": true
+    }
+  }, [_c('text', {
+    style: _vm.mrDotTextStyle
+  }, [_vm._v(_vm._s(_vm.getDot(_vm.tplIndexOfDays, _vm.tplIndexOfHours)))])]) : _vm._e(), (_vm.tplIndexOfHours !== -1) ? _c('div', {
+    style: _vm.mrTimeBoxStyle,
+    attrs: {
+      "accessible": true,
+      "ariaLabel": ((_vm.countDownData.hour) + "时")
+    }
+  }, [_c('text', {
+    style: _vm.mrTimeTextStyle
+  }, [_vm._v(_vm._s(_vm.countDownData.hour))])]) : _vm._e(), (_vm.tplIndexOfHours !== -1) ? _c('div', {
+    style: _vm.mrDotBoxStyle,
+    attrs: {
+      "ariaHidden": true
+    }
+  }, [_c('text', {
+    style: _vm.mrDotTextStyle
+  }, [_vm._v(_vm._s(_vm.getDot(_vm.tplIndexOfHours, _vm.tplIndexOfMinutes)))])]) : _vm._e(), (_vm.tplIndexOfMinutes !== -1) ? _c('div', {
+    style: _vm.mrTimeBoxStyle,
+    attrs: {
+      "accessible": true,
+      "ariaLabel": ((_vm.countDownData.minute) + "分")
+    }
+  }, [_c('text', {
+    style: _vm.mrTimeTextStyle
+  }, [_vm._v(_vm._s(_vm.countDownData.minute))])]) : _vm._e(), (_vm.tplIndexOfMinutes !== -1) ? _c('div', {
+    style: _vm.mrDotBoxStyle,
+    attrs: {
+      "ariaHidden": true
+    }
+  }, [_c('text', {
+    style: _vm.mrDotTextStyle
+  }, [_vm._v(_vm._s(_vm.getDot(_vm.tplIndexOfMinutes, _vm.tplIndexOfSeconds)))])]) : _vm._e(), (_vm.tplIndexOfSeconds !== -1) ? _c('div', {
+    style: _vm.mrTimeBoxStyle,
+    attrs: {
+      "accessible": true,
+      "ariaLabel": ((_vm.countDownData.second) + "秒")
+    }
+  }, [_c('text', {
+    style: _vm.mrTimeTextStyle
+  }, [_vm._v(_vm._s(_vm.countDownData.second))])]) : _vm._e(), (_vm.tplIndexOfSeconds !== -1) ? _c('div', {
+    style: _vm.mrDotBoxStyle,
+    attrs: {
+      "ariaHidden": true
+    }
+  }, [_c('text', {
+    style: _vm.mrDotTextStyle
+  }, [_vm._v(_vm._s(_vm.getDot(_vm.tplIndexOfSeconds, -1)))])]) : _vm._e()])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 318:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(121)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(122)
+
+/* template */
+var __vue_template__ = __webpack_require__(123)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-countdown/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-1a74a573"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ })
+
+/******/ });

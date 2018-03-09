@@ -1,1 +1,186 @@
-!function(e){function n(a){if(i[a])return i[a].exports;var d=i[a]={i:a,l:!1,exports:{}};return e[a].call(d.exports,d,d.exports,n),d.l=!0,d.exports}var i={};n.m=e,n.c=i,n.d=function(e,i,a){n.o(e,i)||Object.defineProperty(e,i,{configurable:!1,enumerable:!0,get:a})},n.n=function(e){var i=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(i,"a",i),i},n.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},n.p="",n(n.s=481)}({481:function(e,n,i){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var a=i(482);n.default={get:function(e){var n=this,i=weex.requireModule("fpicker"),d=a.getAddressData(),t=d.list;i.setCount(3),i.setItems1(this.toArray(t)),i.setItems2(this.toArray(t[0].children)),i.setTheme("#f9f9f9","#4c4c4c");var r=0;x;var m=0,s=0;return i.setChange(function(e){r=e.index,i.setItems2(n.toArray(t[r].children)),i.select(2,0),t[r].children.length>0?(i.setItems3(n.toArray(t[r].children[0].children)),i.select(3,0)):i.setItems3([])},function(e){m=e.index,t[r].children[m].children.length>0?(i.setItems3(n.toArray(t[r].children[m].children)),i.select(3,0)):i.setItems3([])},function(e){s=e.index}),i.setDone(function(n){var i=t[n.index1],a=t[n.index1].children[n.index2],d=t[n.index1].children[n.index2].children[n.index3];e(i,a,d)}),i},toArray:function(e){for(var n=[],i=0;i<e.length;i++)n.push(e[i].name);return n}}},482:function(e,n,i){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default={getClassData:function(){var e=weex.requireModule("pref"),n=e.get("serial_class");weex.requireModule("modal");return void 0!=n&&""!=n?n:{msg:"成功",err:0,list:[{name:"魔幻",id:5},{name:"青春",id:6},{name:"都市",id:7},{name:"迷你剧",id:8},{name:"谍战",id:9},{name:"记录",id:10},{name:"西部",id:11},{name:"血腥",id:12},{name:"罪案",id:13},{name:"综艺",id:14},{name:"科幻",id:15},{name:"真人秀",id:16},{name:"爱情",id:17},{name:"歌舞",id:18},{name:"暴力",id:19},{name:"政治",id:20},{name:"战争",id:21},{name:"惊悚",id:22},{name:"悬疑",id:23},{name:"律政",id:24},{name:"家庭",id:25},{name:"奇幻",id:26},{name:"喜剧",id:27},{name:"吸血鬼",id:28},{name:"同性",id:29},{name:"史诗",id:30},{name:"古装",id:31},{name:"历史",id:32},{name:"医务",id:33},{name:"动画",id:34},{name:"动作",id:35},{name:"剧情",id:36},{name:"冒险",id:37},{name:"传记",id:38},{name:"丧尸",id:39},{name:"情景喜剧",id:40}]}.list},getMovieClassData:function(){var e=weex.requireModule("pref"),n=e.get("movie_class");weex.requireModule("modal");return void 0!=n&&""!=n?n:{msg:"成功",err:0,list:[{name:"动作",id:41},{name:"剧情",id:42},{name:"悬疑",id:43},{name:"喜剧",id:44},{name:"爱情",id:45},{name:"战争",id:46},{name:"科幻",id:47},{name:"灾难",id:48},{name:"恐怖",id:49},{name:"犯罪",id:50},{name:"动漫",id:51},{name:"惊悚",id:52},{name:"奇幻",id:53},{name:"冒险",id:54},{name:"动作",id:41},{name:"剧情",id:42},{name:"悬疑",id:43},{name:"喜剧",id:44},{name:"爱情",id:45},{name:"战争",id:46},{name:"科幻",id:47},{name:"灾难",id:48},{name:"恐怖",id:49},{name:"犯罪",id:50},{name:"动漫",id:51},{name:"惊悚",id:52},{name:"奇幻",id:53},{name:"冒险",id:54}]}.list}}}});
+// { "framework": "Vue"} 
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 481);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 481:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var data = __webpack_require__(482);
+
+exports.default = {
+    get: function get(res) {
+        var self = this;
+        var picker = weex.requireModule("fpicker");
+        var d = data.getAddressData();
+        var l = d.list;
+        //务必调用此方法，此方法有初始化的功能，最多3列
+        picker.setCount(3);
+        picker.setItems1(this.toArray(l));
+        picker.setItems2(this.toArray(l[0].children));
+        picker.setTheme('#f9f9f9', '#4c4c4c');
+
+        var index1 = 0;x;
+        var index2 = 0;
+        var index3 = 0;
+        //每个滚轮的change事件
+        picker.setChange(function (e) {
+
+            index1 = e.index;
+            picker.setItems2(self.toArray(l[index1].children));
+            picker.select(2, 0);
+            if (l[index1].children.length > 0) {
+
+                picker.setItems3(self.toArray(l[index1].children[0].children));
+
+                picker.select(3, 0);
+            } else {
+                picker.setItems3([]);
+            }
+        }, function (e) {
+            index2 = e.index;
+            if (l[index1].children[index2].children.length > 0) {
+                picker.setItems3(self.toArray(l[index1].children[index2].children));
+                picker.select(3, 0);
+            } else {
+                picker.setItems3([]);
+            }
+        }, function (e) {
+            index3 = e.index;
+        });
+        //点击完成的事件
+        picker.setDone(function (e) {
+            var p1 = l[e.index1];
+            var p2 = l[e.index1].children[e.index2];
+            var p3 = l[e.index1].children[e.index2].children[e.index3];
+            res(p1, p2, p3);
+        });
+        // picker.show()
+        return picker;
+    },
+    toArray: function toArray(list) {
+        var p = [];
+        for (var i = 0; i < list.length; i++) {
+            p.push(list[i].name);
+        }
+        return p;
+    }
+};
+
+/***/ }),
+
+/***/ 482:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+
+    getClassData: function getClassData() {
+
+        var pref = weex.requireModule("pref");
+        var s = pref.get('serial_class');
+        var modal = weex.requireModule("modal");
+        // modal.alert({message:"l"+s+"l"})
+        if (s != undefined && s != '') {
+            return s;
+        }
+
+        var l = { "msg": "成功", "err": 0, "list": [{ "name": "魔幻", "id": 5 }, { "name": "青春", "id": 6 }, { "name": "都市", "id": 7 }, { "name": "迷你剧", "id": 8 }, { "name": "谍战", "id": 9 }, { "name": "记录", "id": 10 }, { "name": "西部", "id": 11 }, { "name": "血腥", "id": 12 }, { "name": "罪案", "id": 13 }, { "name": "综艺", "id": 14 }, { "name": "科幻", "id": 15 }, { "name": "真人秀", "id": 16 }, { "name": "爱情", "id": 17 }, { "name": "歌舞", "id": 18 }, { "name": "暴力", "id": 19 }, { "name": "政治", "id": 20 }, { "name": "战争", "id": 21 }, { "name": "惊悚", "id": 22 }, { "name": "悬疑", "id": 23 }, { "name": "律政", "id": 24 }, { "name": "家庭", "id": 25 }, { "name": "奇幻", "id": 26 }, { "name": "喜剧", "id": 27 }, { "name": "吸血鬼", "id": 28 }, { "name": "同性", "id": 29 }, { "name": "史诗", "id": 30 }, { "name": "古装", "id": 31 }, { "name": "历史", "id": 32 }, { "name": "医务", "id": 33 }, { "name": "动画", "id": 34 }, { "name": "动作", "id": 35 }, { "name": "剧情", "id": 36 }, { "name": "冒险", "id": 37 }, { "name": "传记", "id": 38 }, { "name": "丧尸", "id": 39 }, { "name": "情景喜剧", "id": 40 }] };
+        return l.list;
+    },
+    getMovieClassData: function getMovieClassData() {
+
+        var pref = weex.requireModule("pref");
+        var s = pref.get('movie_class');
+        var modal = weex.requireModule("modal");
+        // modal.alert({message:"l"+s+"l"})
+        if (s != undefined && s != '') {
+            return s;
+        }
+
+        var l = { "msg": "成功", "err": 0, "list": [{ "name": "动作", "id": 41 }, { "name": "剧情", "id": 42 }, { "name": "悬疑", "id": 43 }, { "name": "喜剧", "id": 44 }, { "name": "爱情", "id": 45 }, { "name": "战争", "id": 46 }, { "name": "科幻", "id": 47 }, { "name": "灾难", "id": 48 }, { "name": "恐怖", "id": 49 }, { "name": "犯罪", "id": 50 }, { "name": "动漫", "id": 51 }, { "name": "惊悚", "id": 52 }, { "name": "奇幻", "id": 53 }, { "name": "冒险", "id": 54 }, { "name": "动作", "id": 41 }, { "name": "剧情", "id": 42 }, { "name": "悬疑", "id": 43 }, { "name": "喜剧", "id": 44 }, { "name": "爱情", "id": 45 }, { "name": "战争", "id": 46 }, { "name": "科幻", "id": 47 }, { "name": "灾难", "id": 48 }, { "name": "恐怖", "id": 49 }, { "name": "犯罪", "id": 50 }, { "name": "动漫", "id": 51 }, { "name": "惊悚", "id": 52 }, { "name": "奇幻", "id": 53 }, { "name": "冒险", "id": 54 }] };
+
+        return l.list;
+    }
+
+};
+
+/***/ })
+
+/******/ });

@@ -1,1 +1,287 @@
-!function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=388)}({388:function(e,t,n){var o,i,r=[];r.push(n(389)),o=n(390);var s=n(391);i=o=o||{},"object"!=typeof o.default&&"function"!=typeof o.default||(Object.keys(o).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),i=o=o.default),"function"==typeof i&&(i=i.options),i.__file="/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/host.vue",i.render=s.render,i.staticRenderFns=s.staticRenderFns,i._scopeId="data-v-374f9a18",i.style=i.style||{},r.forEach(function(e){for(var t in e)i.style[t]=e[t]}),"function"==typeof __register_static_styles__&&__register_static_styles__(i._scopeId,r),e.exports=o,e.exports.el="true",new Vue(e.exports)},389:function(e,t){e.exports={}},390:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={components:{},data:{logoUrl:"http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png",target:"World",index:0,items:["../../busi/tab/mainpage.js","../../busi/tab/serial.js","../../busi/tab/movie.js","../../busi/tab/collection.js"]},methods:{update:function(e){this.target="Weex",console.log("target:",this.target)},change:function(e){this.index=e},show:function(){var e=weex.requireModule("modal"),t=weex.config.env.osVersion;t=t.replace(/\./g,""),e.alert({message:t})}},created:function(){var e=weex.requireModule("globalEvent");e.addEventListener("onPageInit",function(e){weex.requireModule("navbar").hide()})}}},391:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticStyle:{flex:"1"}},[n("host",{staticStyle:{position:"absolute",left:"0",top:"0",right:"0",bottom:"100"},attrs:{index:e.index,items:e.items}}),n("div",{staticStyle:{height:"100",width:"750",position:"absolute",bottom:"0",left:"0",right:"0",flexDirection:"row",backgroundColor:"#0088fb"}},[n("div",{staticStyle:{flex:"1",alignItems:"center",justifyContent:"center"},on:{click:function(t){e.change(0)}}},[n("text",[e._v("推荐")])]),n("div",{staticStyle:{flex:"1",alignItems:"center",justifyContent:"center"},on:{click:function(t){e.change(1)}}},[n("text",[e._v("电视剧")])]),n("div",{staticStyle:{flex:"1",alignItems:"center",justifyContent:"center"},on:{click:function(t){e.change(2)}}},[n("text",[e._v("电影")])]),n("div",{staticStyle:{flex:"1",alignItems:"center",justifyContent:"center"},on:{click:function(t){e.change(3)}}},[n("text",[e._v("收藏")])])])],1)},staticRenderFns:[]},e.exports.render._withStripped=!0}});
+// { "framework": "Vue"} 
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 388);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 388:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(389)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(390)
+
+/* template */
+var __vue_template__ = __webpack_require__(391)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/host.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-374f9a18"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 389:
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+
+/***/ 390:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    components: {},
+    data: {
+        logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
+        target: 'World',
+        index: 0,
+        items: ['../../busi/tab/mainpage.js', '../../busi/tab/serial.js', '../../busi/tab/movie.js', '../../busi/tab/collection.js']
+    },
+    methods: {
+        update: function update(e) {
+            this.target = 'Weex';
+            console.log('target:', this.target);
+        },
+        change: function change(i) {
+            this.index = i;
+        },
+        show: function show() {
+            var modal = weex.requireModule("modal");
+            var p = weex.config.env.osVersion;
+            //              p=p.replace('.', "")
+            //          p=p.replace(/./g,"");
+            p = p.replace(/\./g, '');
+            modal.alert({ message: p });
+        }
+    },
+
+    created: function created() {
+
+        var globalEvent = weex.requireModule('globalEvent');
+        var self = this;
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            var nav = weex.requireModule('navbar');
+            nav.hide();
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 391:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      flex: "1"
+    }
+  }, [_c('host', {
+    staticStyle: {
+      position: "absolute",
+      left: "0",
+      top: "0",
+      right: "0",
+      bottom: "100"
+    },
+    attrs: {
+      "index": _vm.index,
+      "items": _vm.items
+    }
+  }), _c('div', {
+    staticStyle: {
+      height: "100",
+      width: "750",
+      position: "absolute",
+      bottom: "0",
+      left: "0",
+      right: "0",
+      flexDirection: "row",
+      backgroundColor: "#0088fb"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flex: "1",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.change(0)
+      }
+    }
+  }, [_c('text', [_vm._v("推荐")])]), _c('div', {
+    staticStyle: {
+      flex: "1",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.change(1)
+      }
+    }
+  }, [_c('text', [_vm._v("电视剧")])]), _c('div', {
+    staticStyle: {
+      flex: "1",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.change(2)
+      }
+    }
+  }, [_c('text', [_vm._v("电影")])]), _c('div', {
+    staticStyle: {
+      flex: "1",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.change(3)
+      }
+    }
+  }, [_c('text', [_vm._v("收藏")])])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ })
+
+/******/ });

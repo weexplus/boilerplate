@@ -313,7 +313,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance.registerRenderListener(this);
             mWXSDKInstance.onActivityCreate();
             mWXSDKInstance.param=(Map) getIntent().getSerializableExtra("param");
-            mWXSDKInstance.fireGlobalEventCallback("onPageInit",null);
+            mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
             ViewGroup.LayoutParams lp= this.root.getLayoutParams();
             mWXSDKInstance.setSize(lp.width,lp.height);
             page=null;
@@ -453,7 +453,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         container.addView(view);
         container.requestLayout();
-        mWXSDKInstance.fireGlobalEventCallback("onPageInit",null);
+        mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
         mWXSDKInstance.onActivityCreate();
     }
 
