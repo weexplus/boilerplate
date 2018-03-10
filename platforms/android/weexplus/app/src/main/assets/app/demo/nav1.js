@@ -205,7 +205,7 @@ exports.default = {
         },
         backto: function backto() {
             var navigator = weex.requireModule('navigator');
-            navigator.backTo('index');
+            navigator.backTo('root');
         }
     },
 

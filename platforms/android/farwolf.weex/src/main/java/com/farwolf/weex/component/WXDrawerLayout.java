@@ -67,4 +67,10 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
     }
 
 
+    @Override
+    public void onActivityResume() {
+        super.onActivityResume();
+        drawerLayoutView_.setChildContext(getInstance().getContext());
+
+    }
 }

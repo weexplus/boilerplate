@@ -737,6 +737,8 @@ exports.default = {
 
             var navigator = weex.requireModule('navigator');
             navigator.addBackGestureSelfControl();
+            navigator.setRoot('index');
+            navigator.setPageId('root');
 
             nav.setStatusBarStyle('white');
         });

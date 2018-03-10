@@ -73,6 +73,13 @@ public class DrawerLayoutView extends ViewBase {
 
     }
 
+    public void setChildContext(Context c)
+    {
+        this.main_view.instance.setContext(c);
+        this.nav_view.instance.setContext(c);
+
+    }
+
 
 
     @Click

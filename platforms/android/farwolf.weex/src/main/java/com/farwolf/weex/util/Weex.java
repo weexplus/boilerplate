@@ -363,6 +363,10 @@ public class Weex extends ServiceBase{
 
     public static String getRelativeUrl(String url, WXSDKInstance  instance)
     {
+        if(url.startsWith("sdcard:"))
+        {
+            return url;
+        }
         if(url.startsWith("http"))
         {
             return url;
