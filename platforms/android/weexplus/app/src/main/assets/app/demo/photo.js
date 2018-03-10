@@ -258,25 +258,25 @@ exports.default = {
             photo.openPhoto(500, 800, '#000000', '#ffffff', '#ffffff', function (e) {
 
                 self.src = e.path;
-                var net = weex.requireModule("net");
-                net.postFile('http://10.39.1.72:8081/cdtp/file/uploadReturnName', {//param
-
-                }, {
-                    // header
-                }, { file: e.path }, function () {
-                    //start
-                }, function (e) {
-                    //succcess
-                    var modal = weex.requireModule("modal");
-                    modal.toast({ message: '上传成功！' });
-                }, function () {
-                    //compelete
-
-                }, function () {
-                    //exception
-                    var modal = weex.requireModule("modal");
-                    modal.toast({ message: '上传异常！' });
-                });
+                //                    var net=weex.requireModule("net");
+                //                    net.postFile('http://10.39.1.72:8081/cdtp/file/uploadReturnName',{//param
+                //
+                //                    },{
+                //                        // header
+                //                    },{file:e.path},()=>{
+                //                        //start
+                //                    },(e)=>{
+                //                        //succcess
+                //                        var modal=weex.requireModule("modal")
+                //                        modal.toast({message:'上传成功！'})
+                //                    },()=>{
+                //                        //compelete
+                //
+                //                    },()=>{
+                //                        //exception
+                //                        var modal=weex.requireModule("modal")
+                //                        modal.toast({message:'上传异常！'})
+                //                    })
             });
         },
         openCamera: function openCamera() {
@@ -286,25 +286,25 @@ exports.default = {
 
                 self.src = e.path;
 
-                var net = weex.requireModule("net");
-                net.postFile('http://59.110.169.246/movie/imgupload.do', {//param
-
-                }, {
-                    // header
-                }, { file: e.path }, function () {
-                    //start
-                }, function (e) {
-                    //succcess
-                    var modal = weex.requireModule("modal");
-                    modal.toast({ message: '上传成功！' });
-                }, function () {
-                    //compelete
-
-                }, function () {
-                    //exception
-                    var modal = weex.requireModule("modal");
-                    modal.toast({ message: '上传异常！' });
-                });
+                //                    var net=weex.requireModule("net");
+                //                    net.postFile('http://59.110.169.246/movie/imgupload.do',{//param
+                //
+                //                       },{
+                //                        // header
+                //                         },{file:e.path},()=>{
+                //                        //start
+                //                    },(e)=>{
+                //                        //succcess
+                //                        var modal=weex.requireModule("modal")
+                //                        modal.toast({message:'上传成功！'})
+                //                    },()=>{
+                //                        //compelete
+                //
+                //                    },()=>{
+                //                        //exception
+                //                        var modal=weex.requireModule("modal")
+                //                        modal.toast({message:'上传异常！'})
+                //                    })
             });
         },
         jk: function jk() {

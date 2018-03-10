@@ -86,7 +86,7 @@ public class Picture {
 	    * @param b
 	    * @return
 	    */
-       public boolean saveImageToSDCard(String path,Bitmap b)
+       public static boolean saveImageToSDCard(String path,Bitmap b)
        {
     	   
     	   

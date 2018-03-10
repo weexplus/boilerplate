@@ -12,6 +12,7 @@
 
 @property(nonatomic,strong) NSString* ip;
 @property(nonatomic,strong) NSString* port;
+@property(nonatomic) UInt64 lastrefresh;
 @property (nonatomic, strong) SRWebSocket *hotReloadSocket;
 //(NSString*)ip port:(NSString*)port
 -(void)open:(NSString*)ip port:(NSString*)port;

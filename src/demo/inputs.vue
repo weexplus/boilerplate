@@ -10,28 +10,28 @@
      <div style="width: 100;height: 100;background-color: red" @click="set">
 
      </div>
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
-   <!--<input class="it" placeholder="姓名"/>-->
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
+   <input class="it" placeholder="姓名"/>
  </div>
 
 </template>

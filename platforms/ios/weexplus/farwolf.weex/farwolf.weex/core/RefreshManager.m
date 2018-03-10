@@ -40,7 +40,18 @@
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
     if ([@"refresh" isEqualToString:message]) {
-        [self notify:@"refreshpage" value:nil];
+ 
+        UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000;
+        if(recordTime-_lastrefresh>300)
+        {
+            _lastrefresh=recordTime;
+            [self notify:@"refreshpage" value:nil];
+        }
+        else
+        {
+            NSLog(@"多余:d%",recordTime-_lastrefresh);
+        }
+        
     }
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error

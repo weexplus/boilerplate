@@ -109,7 +109,10 @@
 +(RefreshManager*)getRefreshManager
 {
    if(refreshManager==nil)
+   {
        refreshManager=[RefreshManager new];
+       refreshManager.lastrefresh=0;
+   }
     return refreshManager;
 }
 
