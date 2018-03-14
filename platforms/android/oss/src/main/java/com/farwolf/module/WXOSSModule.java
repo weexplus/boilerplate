@@ -2,6 +2,7 @@ package com.farwolf.module;
 
 import android.util.Log;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.sdk.android.oss.ClientConfiguration;
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.OSS;
@@ -15,7 +16,6 @@ import com.alibaba.sdk.android.oss.common.auth.OSSStsTokenCredentialProvider;
 import com.alibaba.sdk.android.oss.internal.OSSAsyncTask;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
-import com.farwolf.util.DateTool;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
@@ -30,9 +30,12 @@ public class WXOSSModule extends WXModule {
 
 
     @JSMethod
-    public void upload(String url, HashMap param, final JSCallback progress, final JSCallback compelete)
+    public void upload(HashMap params, final JSCallback progress, final JSCallback compelete)
     {
 
+        String url=params.get("url")+"";
+        JSONObject param=(JSONObject)params.get("param");
+        String objectkey=params.get("objectkey")+"";
         String endpoint =param.get("Endpoint")+"";
         String AccessKeyId =param.get("AccessKeyId")+"";
         String AccessKeySecret =param.get("AccessKeySecret")+"";
@@ -49,10 +52,9 @@ public class WXOSSModule extends WXModule {
         OSSLog.enableLog();
         OSS oss = new OSSClient(this.mWXSDKInstance.getContext(), endpoint, credentialProvider);
 
-
-        String timestamp=DateTool.Date().replace("-","/")+"/"+DateTool.TimeTampMili();
+//        String timestamp=DateTool.Date().replace("-","/")+"/"+DateTool.TimeTampMili();
         url=url.replace("sdcard:","");
-        PutObjectRequest put = new PutObjectRequest(BucketName, timestamp, url);
+        PutObjectRequest put = new PutObjectRequest(BucketName, objectkey, url);
 // 异步上传时可以设置进度回调
         put.setProgressCallback(new OSSProgressCallback<PutObjectRequest>() {
             @Override
@@ -70,6 +72,8 @@ public class WXOSSModule extends WXModule {
                 Log.d("PutObject", "UploadSuccess");
                 HashMap m=new HashMap();
                 m.put("err",0);
+                m.put("id",result.getETag());
+
                 compelete.invokeAndKeepAlive(m);
             }
             @Override
@@ -79,15 +83,17 @@ public class WXOSSModule extends WXModule {
                     // 本地异常如网络异常等
                     clientExcepion.printStackTrace();
                 }
+                HashMap m=new HashMap();
                 if (serviceException != null) {
                     // 服务异常
-                    Log.e("ErrorCode", serviceException.getErrorCode());
-                    Log.e("RequestId", serviceException.getRequestId());
-                    Log.e("HostId", serviceException.getHostId());
-                    Log.e("RawMessage", serviceException.getRawMessage());
+                    m.put("ErrorCode", serviceException.getErrorCode());
+                    m.put("RequestId", serviceException.getRequestId());
+                    m.put("HostId", serviceException.getHostId());
+                    m.put("RawMessage", serviceException.getRawMessage());
                 }
 
-                HashMap m=new HashMap();
+
+
                 m.put("err",1);
                 compelete.invokeAndKeepAlive(m);
             }
