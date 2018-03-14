@@ -71,7 +71,7 @@ public class WXTabView extends ViewBase {
             WXPageView p=WXPageView_.build(getContext());
 //            p.setBackgroundColor(Color.GREEN);
             p.setVisibility(View.VISIBLE);
-            p.setSrc(q);
+            p.setSrc(q,getContext());
             ViewGroup.LayoutParams lp=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             p.setLayoutParams(lp);
             pages.add(p);

@@ -51,13 +51,13 @@ public class DrawerLayoutView extends ViewBase {
     public void setSlidUrl(String url)
     {
 
-        nav_view.setSrc(url);
+        nav_view.setSrc(url,getContext());
         Log.e("nav_view url", url);
     }
 
     public void setMainUrl(String url)
     {
-        main_view.setSrc(url);
+        main_view.setSrc(url,getContext());
         Log.e("main_view url", url);
     }
 

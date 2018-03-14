@@ -10,7 +10,6 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.alibaba.fastjson.JSONObject;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.ScreenTool_;
 import com.farwolf.view.imgae.crop.Log;
@@ -224,7 +223,7 @@ public class WXCenterPopModule extends WXModuleBase {
                 Log.e("点击了pop页面");
             }
         });
-        popView.setSrc(url);
+        popView.setSrc(url,mWXSDKInstance.getContext());
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(0, 0);
         params.setMargins(endLP.leftMargin, endLP.topMargin, endLP.rightMargin, endLP.bottomMargin);
         popView.instance.setSize(width,height);

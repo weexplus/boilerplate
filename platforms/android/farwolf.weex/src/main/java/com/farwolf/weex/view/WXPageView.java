@@ -82,7 +82,7 @@ public class WXPageView extends ViewBase   {
     }
 
 
-    public void setSrc(String src) {
+    public void setSrc(String src,Context c) {
 
         this.src = src;
         if (instance != null) {
@@ -93,6 +93,8 @@ public class WXPageView extends ViewBase   {
         if(page!=null)
         {
             instance=page.instance;
+            if(c!=null)
+                instance.setContext(c);
             root.removeAllViews();
             ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 

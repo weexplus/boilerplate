@@ -40,6 +40,12 @@ public class WeexFactory  extends ServiceBase{
         return m.containsKey(url);
     }
 
+    public static void addCache(String id,Page p)
+    {
+        if(m==null)
+            m=new HashMap<>();
+        m.put(id,p);
+    }
     public Page getPage(String id)
     {
         if(m.containsKey(id))
@@ -171,6 +177,7 @@ public class WeexFactory  extends ServiceBase{
         p.id=pageid;
         if(p.id==null)
             p.id=new Random().nextLong()+"";
+        addCache(url,p);
         p.instance.registerRenderListener(new IWXRenderListener() {
             @Override
             public void onViewCreated(WXSDKInstance instance, View view) {
@@ -202,7 +209,7 @@ public class WeexFactory  extends ServiceBase{
                 }
             }
         });
-        m.put(p.id,p);
+
         render(p.instance,url);
     }
 
@@ -253,7 +260,8 @@ public class WeexFactory  extends ServiceBase{
         p.instance=new WXSDKInstance(context);
         p.instance.setBundleUrl(url);
         String pageid=new Random().nextLong()+"";
-        in.putExtra("url",pageid);
+        in.putExtra("url",url);
+        addCache(url,p);
         p.id=pageid;
         p.instance.param=(JSONObject)in.getSerializableExtra("param");
         p.instance.registerRenderListener(new IWXRenderListener() {
@@ -291,7 +299,7 @@ public class WeexFactory  extends ServiceBase{
             }
         });
 
-        m.put(p.id,p);
+
         render(p.instance,url);
     }
 
