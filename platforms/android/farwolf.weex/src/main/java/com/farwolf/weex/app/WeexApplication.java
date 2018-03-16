@@ -8,6 +8,7 @@ import android.os.Message;
 import android.os.StrictMode;
 import android.util.Log;
 
+import com.alibaba.android.bindingx.plugin.weex.BindingX;
 import com.farwolf.util.RegexBase;
 import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
@@ -54,6 +55,14 @@ public class WeexApplication extends Application {
         if(schema==null)
             schema="";
         weex.init(this,"farwolf","farwolf",schema);
+        try {
+            BindingX.register();
+        }
+        catch (Exception e)
+        {
+         e.printStackTrace();
+        }
+
         mWXHandler=new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

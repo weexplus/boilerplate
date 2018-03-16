@@ -24,6 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## BindingX
+
+Alibaba-INC copyright
+
+
 ## CHXBannerView
 
 The MIT License (MIT)
@@ -586,6 +591,11 @@ SOFTWARE.
 
 
 ## WXDevtool
+
+Alibaba-INC copyright
+
+
+## WeexPluginLoader
 
 Alibaba-INC copyright
 

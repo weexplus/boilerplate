@@ -20,6 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BindingX (1.0.1):
+    - WeexPluginLoader
+    - WeexSDK
   - CHXBannerView (0.8.3)
   - CocoaAsyncSocket (7.6.2)
   - DACircularProgress (2.3.1)
@@ -71,6 +74,8 @@ PODS:
   - UCZProgressView (1.0.2)
   - UICountingLabel (1.2.0)
   - UIViewController_PopUp (0.0.2)
+  - WeexPluginLoader (0.0.1.9.1):
+    - WeexSDK
   - WeexSDK (0.17.0):
     - SocketRocket
   - WXDevtool (0.15.3):
@@ -80,6 +85,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
+  - BindingX
   - CHXBannerView (~> 0.8.2)
   - DOPDropDownMenu-Enhanced (~> 1.0.0)
   - farwolf (from `farwolf`)
@@ -117,6 +123,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  BindingX: 82936549871ff4c936abcab62f8fecc84acfaa52
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
@@ -140,11 +147,12 @@ SPEC CHECKSUMS:
   UCZProgressView: 55836987c15ee6efb7cd6dfe297556602ee46c94
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   UIViewController_PopUp: 1f5133c841e811103d6b3f143618f3a00080a590
+  WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: f6b02dd10e8b60e902b552bd62054e3ad52fa510
   WXDevtool: b6205c022286e070db2f89397d72b18b45da7498
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
 
-PODFILE CHECKSUM: 2baac15a93da754c250407b20f9307023cffba91
+PODFILE CHECKSUM: bd7ed4125ea42b2a11c67fb4599f196ad8f309b7
 
 COCOAPODS: 1.1.1

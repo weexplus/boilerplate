@@ -1,6 +1,7 @@
 package com.farwolf.weex.component;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.farwolf.weex.util.Weex;
@@ -71,6 +72,78 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
     public void onActivityResume() {
         super.onActivityResume();
         drawerLayoutView_.setChildContext(getInstance().getContext());
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.main_view.instance.onActivityResume();
+        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+            drawerLayoutView_.nav_view.instance.onActivityResume();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.main_view.instance.onActivityResult(requestCode,resultCode,data);
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.nav_view.instance.onActivityResult(requestCode,resultCode,data);
+    }
+
+
+    @Override
+    public void onActivityCreate() {
+        super.onActivityCreate();
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.main_view.instance.onActivityCreate();
+        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+            drawerLayoutView_.nav_view.instance.onActivityCreate();
+    }
+
+
+//    @Override
+//    public void onActivityDestroy() {
+//        super.onActivityDestroy();
+//        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+//            drawerLayoutView_.main_view.instance.onActivityDestroy();
+//        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+//            drawerLayoutView_.nav_view.instance.onActivityDestroy();
+//    }
+
+
+    @Override
+    public void onActivityPause() {
+        super.onActivityPause();
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.main_view.instance.onActivityPause();
+        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+            drawerLayoutView_.nav_view.instance.onActivityPause();
+    }
+
+    @Override
+    public void onActivityStart() {
+        super.onActivityStart();
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.main_view.instance.onActivityStart();
+        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+            drawerLayoutView_.nav_view.instance.onActivityStart();
+    }
+
+    @Override
+    public boolean onActivityBack() {
+
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.main_view.instance.onActivityBack();
+        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+            drawerLayoutView_.nav_view.instance.onActivityBack();
+
+        return super.onActivityBack();
+    }
+
+    @Override
+    public void onActivityStop() {
+        super.onActivityStop();
+        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+            drawerLayoutView_.main_view.instance.onActivityStop();
+        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+            drawerLayoutView_.nav_view.instance.onActivityStop();
 
     }
 }

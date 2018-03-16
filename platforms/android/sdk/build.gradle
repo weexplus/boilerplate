@@ -85,7 +85,7 @@ android {
         buildConfigField "long", "X86_Size", "${X86_Size}"
         buildConfigField "String", "buildJavascriptFrameworkVersion", "\"${jsfmVersion}\""
         buildConfigField "String", "buildVersion", "\"${version}\""
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion project.targetSdkVersion
         versionCode 1
         versionName "1.0"

@@ -56,7 +56,7 @@ def mypod
         
     pod 'YZHeaderScaleImage', '~> 1.0.1'
     
- 
+    pod 'BindingX' 
 
     pod  'WeexSDK',:path => 'sdk' 
 

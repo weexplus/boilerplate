@@ -1,5 +1,6 @@
 package com.farwolf.weex.activity;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -57,6 +58,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 import java.io.File;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -647,22 +649,24 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
 
-        if(!backKeyEnable)
-        {
-            if (event.getAction() == KeyEvent.ACTION_UP) {
-                if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-                    if(backkeyCallback!=null)
-                    backkeyCallback.invokeAndKeepAlive(null);
-                    return true;
-                }
-            }
-        }
+
         if(exitEnable)
         {
             if (event.getAction() == KeyEvent.ACTION_DOWN) {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 
                     return exit();
+                }
+            }
+        }
+
+        if(!backKeyEnable)
+        {
+            if (event.getAction() == KeyEvent.ACTION_UP) {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                    if(backkeyCallback!=null)
+                        backkeyCallback.invokeAndKeepAlive(null);
+                    return true;
                 }
             }
         }
@@ -676,6 +680,11 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         long n = Calendar.getInstance().getTime().getTime();
 
         if (n - lasttime < 2000) {
+            List<Activity> l= ActivityManager.getActivitiesByApplication(getApplication());
+            for(Activity a:l)
+            {
+                a.finish();
+            }
             System.exit(0);
         }
         else {

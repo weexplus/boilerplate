@@ -1,6 +1,7 @@
 package com.farwolf.weex.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.farwolf.base.ViewBase;
 import com.farwolf.weex.R;
+import com.farwolf.weex.util.EventEnum;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
@@ -59,11 +61,15 @@ public class WXTabView extends ViewBase {
         }
     }
 
+
+
+
+
     public void setItems(List<String> l)
     {
         if(this.urls.size()>0)
             return;
-          this.urls=l;
+        this.urls=l;
         root.removeAllViews();
         pages.clear();
         for(String q:urls)
@@ -97,4 +103,51 @@ public class WXTabView extends ViewBase {
             }
         }
     }
+
+
+    public void onEventInvoke(EventEnum event, int requestcode, int resultcode, Intent data)
+    {
+        for(WXPageView p:pages)
+        {
+            switch (event)
+            {
+                case OnActivityCreate:
+                    p.instance.onActivityCreate();
+                    break;
+                case OnActivityStart:
+                    p.instance.onActivityStart();
+                    break;
+                case OnActivityResume:
+                    p.instance.onActivityResume();
+                    break;
+                case OnActivityPause:
+                    p.instance.onActivityPause();
+                    break;
+                case OnActivityStop:
+                    p.instance.onActivityStop();
+                    break;
+                case OnActivityDestroy:
+                    p.instance.onActivityDestroy();
+                    break;
+                case OnActivityBack:
+                    p.instance.onActivityBack();
+                    break;
+                case OnActivityResult:
+                    p.instance.onActivityResult(requestcode,resultcode,data);
+
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
