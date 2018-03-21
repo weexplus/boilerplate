@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 400);
+/******/ 	return __webpack_require__(__webpack_require__.s = 327);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -112,23 +112,105 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 400:
+/***/ 2:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 500,
+    "marginTop": 50,
+    "borderRadius": 20,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "layout": {
+    "backgroundColor": "#333333",
+    "height": 128,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 327:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(401)
+__vue_styles__.push(__webpack_require__(328)
 )
-__vue_styles__.push(__webpack_require__(402)
+__vue_styles__.push(__webpack_require__(329)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(403)
+__vue_exports__ = __webpack_require__(330)
 
 /* template */
-var __vue_template__ = __webpack_require__(404)
+var __vue_template__ = __webpack_require__(331)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -161,7 +243,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 401:
+/***/ 328:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -177,7 +259,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 402:
+/***/ 329:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -244,7 +326,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 403:
+/***/ 330:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -309,7 +391,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 
-var head = __webpack_require__(9);
+var head = __webpack_require__(6);
 var cinput = __webpack_require__(100);
 var globalEvent = weex.requireModule('globalEvent');
 globalEvent.addEventListener("onPageInit", function (e) {});
@@ -337,7 +419,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 404:
+/***/ 331:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -489,272 +571,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 48:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": "50",
-    "textAlign": "center",
-    "color": "#41B883"
-  }
-}
-
-/***/ }),
-
-/***/ 49:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-exports.default = {
-    props: {
-        placeholder: {
-            default: ''
-
-        },
-        placeholder_color: {
-            default: '#ffffff'
-
-        },
-        color: {
-            default: '#000000'
-
-        },
-        value: {
-            default: ''
-        },
-
-        type: {
-            type: String,
-            default: 'text'
-        },
-        font_size: {
-            default: 20
-        },
-        autofocus: {
-            default: false
-        },
-        return_key_type: {
-            default: 'defalut'
-        }
-
-    },
-    data: function data() {
-        return {
-
-            pulldistance: 180,
-            visiable: true
-
-        };
-    },
-
-    methods: {
-        onchange: function onchange(event) {
-            this.visiable = !event.value == '';
-            //                this.$emit('onchange',event.value);
-            this.value = event.value;
-            //                this.name="xxx"
-        },
-        onfocus: function onfocus() {
-            this.$emit('focus');
-        },
-        focus: function focus() {
-            this.$refs.input.focus();
-        },
-        blur: function blur() {
-            this.$refs.input.blur();
-            this.$emit('blur');
-        },
-        oninput: function oninput(e) {
-
-            //                this.$emit('oninput');
-            this.value = e.value;
-            this.visiable = e.value != '';
-            this.$emit('onchange', e.value);
-        },
-        onreturn: function onreturn(e) {
-            this.$emit('return', e);
-        },
-        onclose: function onclose() {
-            this.value = '';
-            this.visiable = false;
-            this.$emit('onchange', '');
-        }
-    },
-
-    created: function created() {
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {});
-
-        this.visiable = !this.value == '';
-    },
-    ready: function ready() {}
-};
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 500,
-    "marginTop": 50,
-    "borderRadius": 20,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 50:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      flexDirection: "row",
-      height: "100",
-      alignItems: "center",
-      backgroundColor: "red"
-    }
-  }, [_c('input', {
-    ref: "input",
-    staticStyle: {
-      flex: "1",
-      paddingLeft: "20",
-      height: "100"
-    },
-    style: {
-      'color': _vm.color,
-      'placeholder-color': _vm.placeholder_color
-    },
-    attrs: {
-      "returnKeyType": _vm.return_key_type,
-      "autofocus": _vm.autofocus,
-      "placeholder": _vm.placeholder,
-      "type": _vm.type,
-      "value": (_vm.value)
-    },
-    on: {
-      "return": _vm.onreturn,
-      "focus": _vm.onfocus,
-      "change": _vm.onchange,
-      "input": [function($event) {
-        _vm.value = $event.target.attr.value
-      }, _vm.oninput]
-    }
-  }), (_vm.visiable) ? _c('div', {
-    staticStyle: {
-      width: "50px",
-      height: "100px",
-      marginRight: "10",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    on: {
-      "click": function($event) {
-        _vm.onclose()
-      }
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "30px",
-      height: "30px"
-    },
-    attrs: {
-      "src": "root:img/delete.png"
-    }
-  })]) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "layout": {
-    "backgroundColor": "#333333",
-    "height": 128,
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center"
-  }
-}
-
-/***/ }),
-
-/***/ 7:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -883,7 +700,126 @@ exports.default = {
 
 /***/ }),
 
-/***/ 8:
+/***/ 48:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": "50",
+    "textAlign": "center",
+    "color": "#41B883"
+  }
+}
+
+/***/ }),
+
+/***/ 49:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    props: {
+        placeholder: {
+            default: ''
+
+        },
+        placeholder_color: {
+            default: '#ffffff'
+
+        },
+        color: {
+            default: '#000000'
+
+        },
+        value: {
+            default: ''
+        },
+
+        type: {
+            type: String,
+            default: 'text'
+        },
+        font_size: {
+            default: 20
+        },
+        autofocus: {
+            default: false
+        },
+        return_key_type: {
+            default: 'defalut'
+        }
+
+    },
+    data: function data() {
+        return {
+
+            pulldistance: 180,
+            visiable: true
+
+        };
+    },
+
+    methods: {
+        onchange: function onchange(event) {
+            this.visiable = !event.value == '';
+            //                this.$emit('onchange',event.value);
+            this.value = event.value;
+            //                this.name="xxx"
+        },
+        onfocus: function onfocus() {
+            this.$emit('focus');
+        },
+        focus: function focus() {
+            this.$refs.input.focus();
+        },
+        blur: function blur() {
+            this.$refs.input.blur();
+            this.$emit('blur');
+        },
+        oninput: function oninput(e) {
+
+            //                this.$emit('oninput');
+            this.value = e.value;
+            this.visiable = e.value != '';
+            this.$emit('onchange', e.value);
+        },
+        onreturn: function onreturn(e) {
+            this.$emit('return', e);
+        },
+        onclose: function onclose() {
+            this.value = '';
+            this.visiable = false;
+            this.$emit('onchange', '');
+        }
+    },
+
+    created: function created() {
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {});
+
+        this.visiable = !this.value == '';
+    },
+    ready: function ready() {}
+};
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -979,23 +915,87 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 9:
+/***/ 50:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "100",
+      alignItems: "center",
+      backgroundColor: "red"
+    }
+  }, [_c('input', {
+    ref: "input",
+    staticStyle: {
+      flex: "1",
+      paddingLeft: "20",
+      height: "100"
+    },
+    style: {
+      'color': _vm.color,
+      'placeholder-color': _vm.placeholder_color
+    },
+    attrs: {
+      "returnKeyType": _vm.return_key_type,
+      "autofocus": _vm.autofocus,
+      "placeholder": _vm.placeholder,
+      "type": _vm.type,
+      "value": (_vm.value)
+    },
+    on: {
+      "return": _vm.onreturn,
+      "focus": _vm.onfocus,
+      "change": _vm.onchange,
+      "input": [function($event) {
+        _vm.value = $event.target.attr.value
+      }, _vm.oninput]
+    }
+  }), (_vm.visiable) ? _c('div', {
+    staticStyle: {
+      width: "50px",
+      height: "100px",
+      marginRight: "10",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.onclose()
+      }
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "30px",
+      height: "30px"
+    },
+    attrs: {
+      "src": "root:img/delete.png"
+    }
+  })]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(5)
+__vue_styles__.push(__webpack_require__(2)
 )
-__vue_styles__.push(__webpack_require__(6)
+__vue_styles__.push(__webpack_require__(3)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(7)
+__vue_exports__ = __webpack_require__(4)
 
 /* template */
-var __vue_template__ = __webpack_require__(8)
+var __vue_template__ = __webpack_require__(5)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

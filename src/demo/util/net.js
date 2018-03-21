@@ -3,7 +3,7 @@ var host='http://59.110.169.246/movie/'
 // var host='http://192.168.1.101:8080/'
 
 
-export default {
+const net ={
 
     postShort:  function (weg,param,header,start,success,compelete)
     {
@@ -108,5 +108,5 @@ export default {
     }
 
 }
-
+export default net
 

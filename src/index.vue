@@ -80,15 +80,10 @@
             var self = this;
             globalEvent.addEventListener("onPageInit", function (e) {
 
-
-                const nav = weex.requireModule('navbar');
-//                nav.hide();
-
-                const navigator = weex.requireModule('navigator');
-                navigator.addBackGestureSelfControl();
-
-
-                nav.setStatusBarStyle('balck');
+                net.default.post('movie.do',{},(res)=>{
+                     var modal=weex.requireModule('modal')
+                    modal.alert({message:res})
+                })
 
 
             });

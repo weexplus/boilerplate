@@ -121,6 +121,22 @@ public class WXNetModule extends WXModule {
 
 
     @JSMethod(uiThread = false)
+    public String getSessionId(String url)
+    {
+        PersistentCookieStore p= new PersistentCookieStore();
+        HttpUrl h=  HttpUrl.parse(url);
+        List<Cookie> l=  p.loadCookies(h);
+        for(Cookie c:l)
+        {
+            if("SESSION".equals(c.name()))
+            {
+                return c.name();
+            }
+        }
+        return null;
+    }
+
+    @JSMethod(uiThread = false)
     public boolean hasSessionId(String url)
     {
         PersistentCookieStore p= new PersistentCookieStore();

@@ -62,246 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 494);
+/******/ 	return __webpack_require__(__webpack_require__.s = 416);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 494:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(495)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(496)
-
-/* template */
-var __vue_template__ = __webpack_require__(497)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/web.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-16fe6eb8"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 495:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": 50
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "marginTop": 50,
-    "marginLeft": 50,
-    "marginRight": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 496:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var head = __webpack_require__(9);
-var progress = weex.requireModule("progress");
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            text: '',
-            param: '',
-            data: {},
-            src: ''
-        };
-    },
-
-    methods: {
-        load: function load() {
-            this.src = 'https://www.baidu.com';
-        },
-        pagestart: function pagestart() {
-            progress.show();
-        },
-        pagefinish: function pagefinish() {
-            progress.dismiss();
-        },
-        save: function save() {
-            var pref = weex.requireModule("pref");
-            pref.set('key', this.text);
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功' });
-        },
-        get: function get() {
-            var pref = weex.requireModule("pref");
-            var s = pref.get('key');
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功的值' + s });
-        },
-        remove: function remove() {
-            var pref = weex.requireModule("pref");
-            pref.remove('key');
-            pref.remove('objkey');
-            var s = pref.get('key');
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '删除成功：' + s });
-        },
-        saveObj: function saveObj() {
-            var pref = weex.requireModule("pref");
-            var obj = {};
-            obj.a = 1;
-            obj.b = 2;
-            pref.setObj('objkey', obj);
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功' });
-        },
-        getObj: function getObj() {
-            var pref = weex.requireModule("pref");
-            var p = pref.getObj('objkey');
-            this.data = p;
-            //              var modal=weex.requireModule("modal")
-            //              modal.toast({message:p});
-        }
-    },
-
-    created: function created() {
-
-        var self = this;
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {});
-    }
-};
-
-/***/ }),
-
-/***/ 497:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "web",
-      "append": "tree"
-    }
-  }), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.load
-    }
-  }, [_c('text', [_vm._v("加载")])]), _c('div', {
-    staticStyle: {
-      flex: "1"
-    }
-  }, [_c('web', {
-    staticStyle: {
-      position: "absolute",
-      left: "0",
-      top: "0",
-      right: "0",
-      bottom: "0",
-      backgroundColor: "red"
-    },
-    attrs: {
-      "src": _vm.src,
-      "bounce": "false"
-    },
-    on: {
-      "pagestart": _vm.pagestart,
-      "pagefinish": _vm.pagefinish,
-      "error": _vm.pagefinish
-    }
-  })])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 5:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -368,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -383,7 +149,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -512,7 +278,241 @@ exports.default = {
 
 /***/ }),
 
-/***/ 8:
+/***/ 416:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(417)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(418)
+
+/* template */
+var __vue_template__ = __webpack_require__(419)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/web.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-16fe6eb8"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 417:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": 50
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "marginTop": 50,
+    "marginLeft": 50,
+    "marginRight": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 418:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var head = __webpack_require__(6);
+var progress = weex.requireModule("progress");
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            text: '',
+            param: '',
+            data: {},
+            src: ''
+        };
+    },
+
+    methods: {
+        load: function load() {
+            this.src = 'https://www.baidu.com';
+        },
+        pagestart: function pagestart() {
+            progress.show();
+        },
+        pagefinish: function pagefinish() {
+            progress.dismiss();
+        },
+        save: function save() {
+            var pref = weex.requireModule("pref");
+            pref.set('key', this.text);
+            var modal = weex.requireModule("modal");
+            modal.toast({ message: '存储成功' });
+        },
+        get: function get() {
+            var pref = weex.requireModule("pref");
+            var s = pref.get('key');
+            var modal = weex.requireModule("modal");
+            modal.toast({ message: '存储成功的值' + s });
+        },
+        remove: function remove() {
+            var pref = weex.requireModule("pref");
+            pref.remove('key');
+            pref.remove('objkey');
+            var s = pref.get('key');
+            var modal = weex.requireModule("modal");
+            modal.toast({ message: '删除成功：' + s });
+        },
+        saveObj: function saveObj() {
+            var pref = weex.requireModule("pref");
+            var obj = {};
+            obj.a = 1;
+            obj.b = 2;
+            pref.setObj('objkey', obj);
+            var modal = weex.requireModule("modal");
+            modal.toast({ message: '存储成功' });
+        },
+        getObj: function getObj() {
+            var pref = weex.requireModule("pref");
+            var p = pref.getObj('objkey');
+            this.data = p;
+            //              var modal=weex.requireModule("modal")
+            //              modal.toast({message:p});
+        }
+    },
+
+    created: function created() {
+
+        var self = this;
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {});
+    }
+};
+
+/***/ }),
+
+/***/ 419:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "web",
+      "append": "tree"
+    }
+  }), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.load
+    }
+  }, [_c('text', [_vm._v("加载")])]), _c('div', {
+    staticStyle: {
+      flex: "1"
+    }
+  }, [_c('web', {
+    staticStyle: {
+      position: "absolute",
+      left: "0",
+      top: "0",
+      right: "0",
+      bottom: "0",
+      backgroundColor: "red"
+    },
+    attrs: {
+      "src": _vm.src,
+      "bounce": "false"
+    },
+    on: {
+      "pagestart": _vm.pagestart,
+      "pagefinish": _vm.pagefinish,
+      "error": _vm.pagefinish
+    }
+  })])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -608,23 +608,23 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 9:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(5)
+__vue_styles__.push(__webpack_require__(2)
 )
-__vue_styles__.push(__webpack_require__(6)
+__vue_styles__.push(__webpack_require__(3)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(7)
+__vue_exports__ = __webpack_require__(4)
 
 /* template */
-var __vue_template__ = __webpack_require__(8)
+var __vue_template__ = __webpack_require__(5)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

@@ -62,280 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 476);
+/******/ 	return __webpack_require__(__webpack_require__.s = 403);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 476:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(477)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(478)
-
-/* template */
-var __vue_template__ = __webpack_require__(479)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/static1.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-7f12ad67"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 477:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": 50
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "marginTop": 50,
-    "marginLeft": 50,
-    "marginRight": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 478:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var head = __webpack_require__(9);
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            text: '',
-            param: '',
-            data: {}
-        };
-    },
-
-    methods: {
-        save: function save() {
-            var pref = weex.requireModule("static");
-            pref.setString('key', this.text);
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功' });
-        },
-        get: function get() {
-            var pref = weex.requireModule("static");
-            var s = pref.getString('key');
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功的值:' + s });
-        },
-        saveObj: function saveObj() {
-            var pref = weex.requireModule("static");
-            var obj = {};
-            obj.a = 1;
-            obj.b = 2;
-            pref.set('objkey', obj);
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功' });
-        },
-        gonext: function gonext() {
-            var nav = weex.requireModule("navigator");
-            nav.push('');
-        },
-        getObj: function getObj() {
-            var pref = weex.requireModule("static");
-            var p = pref.get('objkey');
-            this.data = p;
-            //              var modal=weex.requireModule("modal")
-            //              modal.toast({message:p});
-        }
-    },
-
-    created: function created() {
-
-        var self = this;
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {});
-    }
-};
-
-/***/ }),
-
-/***/ 479:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "内存存储跨界面",
-      "append": "tree"
-    }
-  }), _c('input', {
-    staticStyle: {
-      width: "750",
-      paddingLeft: "10",
-      height: "100",
-      color: "#000000"
-    },
-    attrs: {
-      "type": "text",
-      "placeholder": "请输入要存储的值",
-      "value": (_vm.text)
-    },
-    on: {
-      "input": function($event) {
-        _vm.text = $event.target.attr.value
-      }
-    }
-  }), _c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v(_vm._s(_vm.data))]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.save
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("存储字符串")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.get
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("获取字符串")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.saveObj
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("存储对象{a:1}")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.getObj
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("获取对象")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.gonext
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("跳转到下一个界面")])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 5:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -402,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -417,7 +149,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -546,7 +278,275 @@ exports.default = {
 
 /***/ }),
 
-/***/ 8:
+/***/ 403:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(404)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(405)
+
+/* template */
+var __vue_template__ = __webpack_require__(406)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/static1.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-7f12ad67"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 404:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": 50
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "marginTop": 50,
+    "marginLeft": 50,
+    "marginRight": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 405:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var head = __webpack_require__(6);
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            text: '',
+            param: '',
+            data: {}
+        };
+    },
+
+    methods: {
+        save: function save() {
+            var pref = weex.requireModule("static");
+            pref.setString('key', this.text);
+            var modal = weex.requireModule("modal");
+            modal.toast({ message: '存储成功' });
+        },
+        get: function get() {
+            var pref = weex.requireModule("static");
+            var s = pref.getString('key');
+            var modal = weex.requireModule("modal");
+            modal.toast({ message: '存储成功的值:' + s });
+        },
+        saveObj: function saveObj() {
+            var pref = weex.requireModule("static");
+            var obj = {};
+            obj.a = 1;
+            obj.b = 2;
+            pref.set('objkey', obj);
+            var modal = weex.requireModule("modal");
+            modal.toast({ message: '存储成功' });
+        },
+        gonext: function gonext() {
+            var nav = weex.requireModule("navigator");
+            nav.push('');
+        },
+        getObj: function getObj() {
+            var pref = weex.requireModule("static");
+            var p = pref.get('objkey');
+            this.data = p;
+            //              var modal=weex.requireModule("modal")
+            //              modal.toast({message:p});
+        }
+    },
+
+    created: function created() {
+
+        var self = this;
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {});
+    }
+};
+
+/***/ }),
+
+/***/ 406:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "内存存储跨界面",
+      "append": "tree"
+    }
+  }), _c('input', {
+    staticStyle: {
+      width: "750",
+      paddingLeft: "10",
+      height: "100",
+      color: "#000000"
+    },
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入要存储的值",
+      "value": (_vm.text)
+    },
+    on: {
+      "input": function($event) {
+        _vm.text = $event.target.attr.value
+      }
+    }
+  }), _c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v(_vm._s(_vm.data))]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.save
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("存储字符串")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.get
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("获取字符串")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.saveObj
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("存储对象{a:1}")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.getObj
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("获取对象")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.gonext
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("跳转到下一个界面")])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -642,23 +642,23 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 9:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(5)
+__vue_styles__.push(__webpack_require__(2)
 )
-__vue_styles__.push(__webpack_require__(6)
+__vue_styles__.push(__webpack_require__(3)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(7)
+__vue_exports__ = __webpack_require__(4)
 
 /* template */
-var __vue_template__ = __webpack_require__(8)
+var __vue_template__ = __webpack_require__(5)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

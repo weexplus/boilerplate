@@ -62,10 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 332);
+/******/ 	return __webpack_require__(__webpack_require__.s = 268);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ 139:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "indicator": {
+    "position": "absolute",
+    "itemColor": "rgba(255,195,0,0.5)",
+    "itemSelectedColor": "#ffc300",
+    "itemSize": "20",
+    "height": "20",
+    "bottom": "24"
+  }
+}
+
+/***/ }),
 
 /***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
@@ -90,23 +106,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 
-/***/ 141:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "indicator": {
-    "position": "absolute",
-    "itemColor": "rgba(255,195,0,0.5)",
-    "itemSelectedColor": "#ffc300",
-    "itemSize": "20",
-    "height": "20",
-    "bottom": "24"
-  }
-}
-
-/***/ }),
-
-/***/ 142:
+/***/ 140:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -207,7 +207,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 143:
+/***/ 141:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -252,7 +252,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 144:
+/***/ 142:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -503,21 +503,21 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 332:
+/***/ 268:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(141)
+__vue_styles__.push(__webpack_require__(139)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(142)
+__vue_exports__ = __webpack_require__(140)
 
 /* template */
-var __vue_template__ = __webpack_require__(144)
+var __vue_template__ = __webpack_require__(142)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -888,7 +888,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(143);
+var _index = __webpack_require__(141);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
