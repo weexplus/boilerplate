@@ -11,17 +11,17 @@
 
 
 @implementation WXPrefModule
+WX_EXPORT_METHOD_SYNC(@selector(getString:))
 WX_EXPORT_METHOD_SYNC(@selector(get:))
-WX_EXPORT_METHOD_SYNC(@selector(getObj:))
 WX_EXPORT_METHOD(@selector(remove:))
+WX_EXPORT_METHOD(@selector(setString:value:))
 WX_EXPORT_METHOD(@selector(set:value:))
-WX_EXPORT_METHOD(@selector(setObj:value:))
--(void)set:(NSString*)key value:(NSString*)v
+-(void)setString:(NSString*)key value:(NSString*)v
 {
     [v save:key];
 }
 
--(void)setObj:(NSString*)key value:(id)v
+-(void)set:(NSString*)key value:(id)v
 {
      
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:v
@@ -31,13 +31,13 @@ WX_EXPORT_METHOD(@selector(setObj:value:))
     [result save:key];
 }
 
--(NSString*)get:(NSString*)key
+-(NSString*)getString:(NSString*)key
 {
     return  [self getSaveValue:key];
 }
 
 
--(id)getObj:(NSString*)key
+-(id)get:(NSString*)key
 {
     NSString *s=  [self getSaveValue:key];
     if(s==nil)

@@ -179,6 +179,8 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
 //    [manager.requestSerializer setValue:@"multipart/form-data;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [manager POST:url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
+        
+        
         NSArray *nx= self.stream.allKeys;
         
         for(NSString *key in nx)
@@ -197,6 +199,8 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
     } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
         @try {
+          
+            
           
             NSLog(@"Success: %@", responseObject );
             NSHTTPURLResponse* response = operation.response;

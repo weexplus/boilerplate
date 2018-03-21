@@ -33,13 +33,13 @@ public class SplashActivity extends WeexActivity {
 
 
     @Bean
-    WeexFactory weexFactory;
+    public WeexFactory weexFactory;
 
     @Bean
-    FileTool tool;
+    public FileTool tool;
 
     @ViewById
-    ImageView img;
+    public ImageView img;
 
 
 

@@ -15,6 +15,10 @@ WX_EXPORT_METHOD(@selector(post:param:header:start:success:compelete:exception:)
 WX_EXPORT_METHOD(@selector(postJson:param:header:start:success:compelete:exception:))
 WX_EXPORT_METHOD(@selector(get:param:header:start:success:compelete:exception:))
 WX_EXPORT_METHOD(@selector(postFile:param:header:path:start:success:compelete:exception:))
+WX_EXPORT_METHOD(@selector(removeAllCookies))
+WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
+
+
 -(void)fetch:(BOOL)usepost url:(NSString*)url param:(NSDictionary*)param header:(NSDictionary*)header start:(WXModuleKeepAliveCallback)start exception:(WXModuleKeepAliveCallback)exception success:(WXModuleKeepAliveCallback)success compelete:(WXModuleKeepAliveCallback)compelete
 {
     JsonReader *j=[JsonReader new];
@@ -50,7 +54,25 @@ WX_EXPORT_METHOD(@selector(postFile:param:header:path:start:success:compelete:ex
     [self fetch:true url:url param:param header:header start:start exception:exception success:success compelete:compelete];
 }
 
+-(void)removeAllCookies
+{
+     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+}
 
+-(NSString*)getSessionId:(NSString*)url
+{
+     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+     NSArray *n=  [storage cookiesForURL:[NSURL URLWithString:url]];
+     for(NSHTTPCookie *c in n)
+    {
+        if([@"SESSION" isEqualToString:c.name])
+        {
+            return  c.value;
+        }
+    
+    }
+     return nil;
+}
 -(void)get:(NSString*)url param:(NSDictionary*)param header:(NSDictionary*)header start:(WXModuleKeepAliveCallback)start  success:(WXModuleKeepAliveCallback)success  compelete:(WXModuleKeepAliveCallback)compelete exception:(WXModuleKeepAliveCallback)exception
 {
     [self fetch:false url:url param:param header:header start:start exception:exception success:success compelete:compelete];

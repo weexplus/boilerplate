@@ -15,6 +15,7 @@ WX_EXPORT_METHOD(@selector(pushParam:param:))
 WX_EXPORT_METHOD(@selector(pushFull:callback:))
 WX_EXPORT_METHOD(@selector(back))
 WX_EXPORT_METHOD(@selector(backFull:animated:))
+WX_EXPORT_METHOD(@selector(presentParam:param:))
 WX_EXPORT_METHOD(@selector(presentFull:callback:))
 
 WX_EXPORT_METHOD(@selector(present:))
@@ -201,6 +202,15 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     [self presentFull:dic callback:nil];
 }
 
+-(void)presentParam:(NSString*)url param:(NSDictionary*)param
+{
+    NSMutableDictionary *dic=[NSMutableDictionary new];
+    [dic setValue:url forKey:@"url"];
+    [dic setValue:param forKey:@"param"];
+    [dic setValue:@(true) forKey:@"animated"];
+    [dic setValue:@(true) forKey:@"isPortrait"];
+    [self presentFull:dic callback:nil];
+}
 -(void)presentFull:(NSDictionary*)parameters   callback:(WXModuleKeepAliveCallback)callback
 {
    

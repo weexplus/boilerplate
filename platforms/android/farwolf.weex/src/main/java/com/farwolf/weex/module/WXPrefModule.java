@@ -28,7 +28,7 @@ public class WXPrefModule extends WXModule {
     }
 
     @JSMethod(uiThread = false)
-    public String setString(String key)
+    public String getString(String key)
     {
         SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
         String  s=  sharedPreferences.getString(key,null);

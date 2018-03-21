@@ -315,7 +315,10 @@
     if(usePost)
     {
       return  [manager POST:url parameters:self.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
+          NSDictionary *fields= [operation.response allHeaderFields];
+          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
+      
+ 
             NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSLog(result);
             NSHTTPURLResponse* response = operation.response;
@@ -328,6 +331,8 @@
             res.backString=result;
             success(res);
             compelete();
+          
+         
             
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -353,7 +358,10 @@
         }
         //        value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
       return  [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
+          
+          NSDictionary *fields= [operation.response allHeaderFields];
+          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
+          
             NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSLog(result);
             NSHTTPURLResponse* response = operation.response;
