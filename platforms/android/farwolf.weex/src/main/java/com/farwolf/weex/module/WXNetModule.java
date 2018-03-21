@@ -20,9 +20,12 @@ import com.taobao.weex.common.WXModule;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.Call;
+import okhttp3.Cookie;
+import okhttp3.HttpUrl;
 import okhttp3.Response;
 
 /**
@@ -35,7 +38,6 @@ public class WXNetModule extends WXModule {
 
     public void fetch(boolean usepost,boolean usejson, final  String url, HashMap param,  HashMap header, final JSCallback start, final JSCallback success, final JSCallback compelete, final JSCallback exception)
     {
-
 
         BaseRequest req= OkGo.get(url);
         OkGo.getInstance().setCookieStore(new PersistentCookieStore());
@@ -115,6 +117,30 @@ public class WXNetModule extends WXModule {
 
 
 
+    }
+
+
+    @JSMethod(uiThread = false)
+    public boolean isLogin(String url)
+    {
+        PersistentCookieStore p= new PersistentCookieStore();
+        HttpUrl h=  HttpUrl.parse(url);
+        List<Cookie> l=  p.loadCookies(h);
+        for(Cookie c:l)
+        {
+            if("SESSION".equals(c.name()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @JSMethod
+    public void removeAllCookies()
+    {
+        PersistentCookieStore p= new PersistentCookieStore();
+        p.removeAllCookie();
     }
 
     /**

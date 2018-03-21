@@ -126,7 +126,7 @@ public class SplashActivity extends WeexActivity {
 
     }
 
-    void gotoMain()
+    public void gotoMain()
     {
         Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
         in.putExtra("url",Config.entry(SplashActivity.this));

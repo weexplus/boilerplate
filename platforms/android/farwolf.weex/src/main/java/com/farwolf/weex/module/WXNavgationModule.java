@@ -94,16 +94,6 @@ public class WXNavgationModule extends WXModuleBase {
 
     }
 
-//    @JSMethod
-//    public void pushFull(String url, HashMap param, JSCallback callback, boolean animate,boolean isPortrait)
-//    {
-//
-//
-//        this.goNext(url,param,callback,WeexActivity_.class,false,isPortrait);
-//
-//
-//
-//    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
 
@@ -146,10 +136,7 @@ public class WXNavgationModule extends WXModuleBase {
 
     }
 
-    public void openOther(String url)
-    {
 
-    }
 
     @JSMethod
     public void setPageId(String id)
@@ -207,13 +194,15 @@ public class WXNavgationModule extends WXModuleBase {
         this.presentFull(pa,null);
     }
 
-//    @JSMethod
-//    public void presentFull(String url, HashMap param, JSCallback callback,boolean animate,boolean isPortrait )
-//    {
-//        this.goNext(url,param,callback,PresentActivity_.class,true,isPortrait);
-//
-//    }
-
+    @JSMethod
+    public void presentParam(String url,JSONObject param )
+    {
+        HashMap pa=new HashMap();
+        pa.put("url",url);
+        pa.put("param",param);
+        pa.put("isPortrait",true);
+        this.presentFull(pa,null);
+    }
 
     @JSMethod
     public void presentFull( HashMap parameters, JSCallback callback )
