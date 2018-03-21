@@ -301,7 +301,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         Page page= weexFactory.getPage(url);
         if(page!=null)
         {
-
+            if(page.v==null)
+                return;
             RelativeLayout parent=  (RelativeLayout)page.v.getParent();
             if(parent!=null)
                 parent.removeAllViews();

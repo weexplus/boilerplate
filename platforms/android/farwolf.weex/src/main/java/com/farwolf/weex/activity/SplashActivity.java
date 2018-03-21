@@ -103,7 +103,7 @@ public class SplashActivity extends WeexActivity {
 
                 @Override
                 public void onRenderFailed() {
-                    gotoMain();
+//                    gotoMain();
                 }
             });
         }

@@ -1,5 +1,7 @@
 package com.farwolf.weex.module;
 
+import android.app.Activity;
+
 import com.farwolf.view.FreeDialog;
 import com.farwolf.weex.view.LoadingDialog;
 import com.farwolf.weex.view.LoadingDialog_;
@@ -22,22 +24,24 @@ public class WXProgressModule extends WXModule {
     @JSMethod
     public void show()
     {
-        showFull("加载中");
+        showFull("加载中",true);
     }
 
 
 
     @JSMethod
-    public void showFull(String txt)
+    public void showFull(String txt,boolean cancle)
     {
         if(f==null)
         {
 
-
+            Activity a= (Activity)this.mWXSDKInstance.getContext();
+            if(a==null||a.isFinishing())
+                return;
             progress = LoadingDialog_.build(this.mWXSDKInstance.getContext());
             progress.txt.setText(txt);
             f=new FreeDialog(this.mWXSDKInstance.getContext(),progress);
-            f.setCancelable(false);
+            f.setCancelable(cancle);
             progress.f=f;
 
         }
@@ -51,8 +55,23 @@ public class WXProgressModule extends WXModule {
     @JSMethod
     public void dismiss()
     {
-        if(f!=null)
+        if(f==null||!f.isShowing())
+            return;
+        Activity a= (Activity)this.mWXSDKInstance.getContext();
+        if(a==null||a.isFinishing())
+        {
+            return;
+        }
         f.dismiss();
     }
 
+
+    @Override
+    public void onActivityDestroy() {
+        super.onActivityDestroy();
+        if(f==null||f.isShowing())
+        {
+            f.dismiss();
+        }
+    }
 }

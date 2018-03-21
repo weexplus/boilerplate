@@ -25,7 +25,7 @@
 
     var head =require('./header.vue')
 //    var WxcButton=require('./component/packages/wxc-button')
-    import { WxcButton } from 'weex-ui';
+    import { WxcButton } from './component/weexui';
 
 
     export default {
