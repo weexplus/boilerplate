@@ -18,8 +18,8 @@ public class WXFImage extends WXImage {
         super(instance, node, parent);
     }
 
-    @WXComponentProp(name = Constants.Name.SRC)
-    public void setSrc(String src) {
+//    @WXComponentProp(name = Constants.Name.SRC)
+//    public void setSrc(String src) {
 
 
 
@@ -55,15 +55,15 @@ public class WXFImage extends WXImage {
 //        }
 
 //        String p=getDomObject().getAttrs().get(Constants.Name.PLACE_HOLDER)+"";
-        super.setSrc(src);
-
-
-    }
-
-    @WXComponentProp(name = Constants.Name.PLACEHOLDER)
-    public void setPlaceHolder(String placeHolder) {
-
-    }
+//        super.setSrc(src);
+//
+//
+//    }
+//
+//    @WXComponentProp(name = Constants.Name.PLACEHOLDER)
+//    public void setPlaceHolder(String placeHolder) {
+//
+//    }
 
 
 

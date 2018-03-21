@@ -88,14 +88,14 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
     }
 
 
-    @Override
-    public void onActivityCreate() {
-        super.onActivityCreate();
-        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
-            drawerLayoutView_.main_view.instance.onActivityCreate();
-        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
-            drawerLayoutView_.nav_view.instance.onActivityCreate();
-    }
+//    @Override
+//    public void onActivityCreate() {
+//        super.onActivityCreate();
+//        if(drawerLayoutView_.main_view!=null&&drawerLayoutView_.main_view.instance!=null)
+//            drawerLayoutView_.main_view.instance.onActivityCreate();
+//        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
+//            drawerLayoutView_.nav_view.instance.onActivityCreate();
+//    }
 
 
 //    @Override

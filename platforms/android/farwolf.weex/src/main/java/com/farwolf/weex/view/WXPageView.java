@@ -11,6 +11,7 @@ import com.farwolf.util.ScreenTool;
 import com.farwolf.weex.R;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
+import com.farwolf.weex.util.Weex;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.WXPerformance;
@@ -19,8 +20,6 @@ import com.taobao.weex.common.WXRenderStrategy;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
-
-import static com.taobao.weex.utils.WXFileUtils.loadAsset;
 
 /**
  * Created by zhengjiangrong on 2017/8/19.
@@ -178,7 +177,7 @@ public class WXPageView extends ViewBase   {
         {
 
 //            instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
-            instance.render(url, loadAsset(url, instance.getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
+            instance.render(url, Weex.loadAsset(url, instance.getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
 
         }
 

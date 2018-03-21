@@ -2,6 +2,7 @@ package com.farwolf.weex.module;
 
 
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -78,6 +79,7 @@ public class WXNetModule extends WXModule {
                 public void onSuccess(String s, Call call, Response response) {
 
 
+                    Log.i("back",s);
                     HashMap res=new HashMap();
                     res.put("res",JSONObject.parse(s));
                     String cookie=response.headers().get("Set-Cookie");

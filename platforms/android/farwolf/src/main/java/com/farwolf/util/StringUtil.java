@@ -1,5 +1,7 @@
 package com.farwolf.util;
 
+import android.graphics.Color;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +18,14 @@ public class StringUtil {
 			return true;
 		return false;
 		
+	}
+
+	public static int getColor(String color,float percent)
+	{
+		int c= Color.parseColor(color);
+		float alph=percent*255;
+		return Color.argb((int)alph,Color.red(c),Color.green(c),Color.blue(c));
+
 	}
 
 	public static String streamToString(InputStream is) {
