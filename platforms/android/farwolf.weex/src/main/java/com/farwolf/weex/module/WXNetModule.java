@@ -121,7 +121,7 @@ public class WXNetModule extends WXModule {
 
 
     @JSMethod(uiThread = false)
-    public boolean isLogin(String url)
+    public boolean hasSessionId(String url)
     {
         PersistentCookieStore p= new PersistentCookieStore();
         HttpUrl h=  HttpUrl.parse(url);
