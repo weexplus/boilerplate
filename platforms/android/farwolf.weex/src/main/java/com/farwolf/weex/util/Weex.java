@@ -45,6 +45,7 @@ import com.farwolf.weex.module.WXProgressModule;
 import com.farwolf.weex.module.WXQRModule;
 import com.farwolf.weex.module.WXSlidpopModule;
 import com.farwolf.weex.module.WXStaticModule;
+import com.farwolf.weex.module.WXUpdateModule;
 import com.farwolf.weex.pref.WeexPref_;
 import com.lzy.okgo.OkGo;
 import com.taobao.weex.InitConfig;
@@ -172,6 +173,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("centerpop", WXCenterPopModule.class);
             WXSDKEngine.registerModule("page", WXPageModule.class);
             WXSDKEngine.registerModule("font", WXFontModule.class);
+            WXSDKEngine.registerModule("updater", WXUpdateModule.class);
 
 
             registerComponent("image",WXFImage.class);

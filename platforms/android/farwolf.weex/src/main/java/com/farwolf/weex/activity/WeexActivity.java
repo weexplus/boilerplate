@@ -689,7 +689,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             System.exit(0);
         }
         else {
-            Toast.makeText(this, "在按一次退出应用", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
             lasttime = n;
         }
         return true;

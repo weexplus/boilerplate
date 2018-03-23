@@ -204,13 +204,46 @@
 BOOL isshowErr;
 -(void)onWeexError:(NSNotification*)n
 {
- 
+    if([Config isDebug])
+    {
+        [self showError:n.userInfo[@"msg"]] ;
+    }
 }
 -(void)openScan
 {
 #ifdef DEBUG
     [self openQR];
 #endif
+    
+}
+
+-(void)showError:(NSString*)msg
+{
+    if(isshowErr)
+    {
+        return;
+    }
+    [self.fail_layout setHidden:false];
+    isshowErr=true;
+    
+    ErrorControl *vc=[ErrorControl new];
+    vc.errmsg=msg;
+    vc.onClose=^(){
+        isshowErr=false;
+        [self.fail_layout setHidden:false];
+    };
+    
+    
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        
+        　 [self presentViewController:vc animated:true completion:^{
+            
+        }];
+        
+    });
+    
+    
     
 }
 
@@ -246,6 +279,9 @@ BOOL isshowErr;
         make.bottom.equalTo(self.fail_layout);
     }];
     
+//    [failimg addClick:^{
+//        [self refreshWeex];
+//    }];
     [self.fail_layout addClick:@selector(refreshWeex) host:self];
     [self.fail_layout setHidden:true];
     //    [self.fail_layout addSubview:lable];
@@ -398,6 +434,8 @@ BOOL isshowErr;
         {
             [self.view bringSubviewToFront:self.set];
             [self.view bringSubviewToFront:self.refresh];
+             [self.view bringSubviewToFront:self.fail_layout];
+         
         }
         [self loadCompelete];
     };
@@ -476,7 +514,7 @@ BOOL isshowErr;
 {
     
     if (self.isViewLoaded && self.view.window!=nil) {
-        NSLog(@"屏幕上");
+//        NSLog(@"屏幕上");
         
         [self refreshWeex];
         
@@ -567,6 +605,9 @@ BOOL isshowErr;
     [self.view bringSubviewToFront:self.toolView];
     [self.view bringSubviewToFront:self.set];
       [self.view bringSubviewToFront:self.refresh];
+    [self regist:@"weexError" method:@selector(onWeexError:)];
+    [self addFailLayout];
+     
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

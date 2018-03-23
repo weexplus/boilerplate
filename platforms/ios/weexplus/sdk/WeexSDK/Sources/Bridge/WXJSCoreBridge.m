@@ -143,6 +143,11 @@
                                 [appMonitorHandler commitAppMonitorAlarm:@"weex" monitorPoint:@"jswarning" success:FALSE errorCode:@"99999" errorMsg:string arg:[WXSDKEngine topInstance].pageName];
                             }
                         }
+                        //zjr add
+                        NSNotification *n=[[NSNotification alloc]initWithName:@"weexError" object:nil userInfo:@{@"msg":string}];
+                        [[NSNotificationCenter defaultCenter]postNotification:n];
+                        ///////////
+                        
                         WX_LOG([flag unsignedIntegerValue], @"%@", string);
                     } else {
                         [string appendFormat:@"%@ ", jsVal];

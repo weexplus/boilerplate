@@ -80,6 +80,12 @@ public class WXPageView extends ViewBase   {
         instance.fireGlobalEventCallback("onResume",null);
     }
 
+    public void fireLeave()
+    {
+
+        instance.fireGlobalEventCallback("onLeave",null);
+    }
+
 
     public void setSrc(String src,Context c) {
 

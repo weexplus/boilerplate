@@ -1,19 +1,19 @@
 package com.farwolf.util;
 
-import java.io.File;
-
 import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
+
+import java.io.File;
 
 public class SDCard {
 
 	
 	public static String getBasePath(Context context)
 	{
-		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
-        	return Environment.getExternalStorageDirectory().getPath();
-        else
+//		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+//        	return Environment.getExternalStorageDirectory().getPath();
+//        else
         	return context.getCacheDir()+"";
 	}
 	

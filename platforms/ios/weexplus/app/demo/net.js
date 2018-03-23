@@ -148,7 +148,7 @@ var host = 'http://59.110.169.246/movie/';
 // var host='http://192.168.1.101:8080/'
 
 
-exports.default = {
+var net = {
 
     postShort: function postShort(weg, param, header, start, success, compelete) {
         var modal = weex.requireModule("modal");
@@ -235,6 +235,7 @@ exports.default = {
     }
 
 };
+exports.default = net;
 
 /***/ }),
 

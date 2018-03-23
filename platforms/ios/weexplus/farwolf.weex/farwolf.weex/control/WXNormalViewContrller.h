@@ -58,4 +58,5 @@
 -(void)onaddWeexView;
 -(void)onCreateWeexView;
 -(void)resetFrame;
+-(void)loadtextfields;
 @end

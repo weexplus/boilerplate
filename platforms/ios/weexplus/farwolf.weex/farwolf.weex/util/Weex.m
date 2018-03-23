@@ -34,6 +34,7 @@
 #import "WXSlidPopModule.h"
 #import "WXPageModule.h"
 #import "WXFontModule.h"
+#import "JSExceptionProtocolImpl.h"
 
 @implementation Weex
 
@@ -65,6 +66,8 @@
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
+    [WXSDKEngine registerHandler:[JSExceptionProtocolImpl new] withProtocol:@protocol(WXJSExceptionProtocol)];
+    
     [WXSDKEngine registerComponent:@"a" withClass:[WXPushComponent class]];
     [WXSDKEngine registerComponent:@"floading" withClass:[WXLoadingView class]];
     [WXSDKEngine registerComponent:@"image" withClass:[WXFImageComponent class]];

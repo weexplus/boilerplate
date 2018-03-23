@@ -100,6 +100,7 @@ public class WXTabView extends ViewBase {
             else
             {
                 p.setVisibility(View.GONE);
+                p.fireLeave();
             }
         }
     }

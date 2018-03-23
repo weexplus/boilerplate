@@ -87,6 +87,13 @@
     {
         WXNormalViewContrller *cv=vc;
         BOOL t=cv.key.integerValue!=self.index;
+        if(!t)
+        {
+            [cv.instance fireGlobalEvent:@"onResume" params:nil];
+        }
+        else{
+            [cv.instance fireGlobalEvent:@"onLeave" params:nil];
+        }
         [vc.view setHidden:t];
     }
 }

@@ -1,11 +1,20 @@
 <template>
 
-   <div style="background-color: yellow">
-       <!--<head title="demo"  @titleClick="update"></head>-->
-       <image src="ds"  placeholder="root:img/cat.png" style="width: 200;height: 200;background-color: red"></image>
-   </div>
+    <div style="background-color: yellow">
+        <!--<head title="demo"  @titleClick="update"></head>-->
+        <image src="ds" placeholder="root:img/cat.png" style="width: 200;height: 200;background-color: red"></image>
+        <text>{{ty.kl.io}}</text>
+        <div class="btn" @click="btnclick"></div>
+        <!--<div class="btn"></div>-->
+    </div>
 </template>
 <style>
+
+    .btn {
+        width: 500;
+        height: 100;
+        background-color: red;
+    }
 
     .title {
         padding-top: 40px;
@@ -31,14 +40,59 @@
     const net = require('./demo/util/net.js')
     var p = undefined;
     export default {
-        components: {head,flist},
+        components: {head, flist},
         data: {
             logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
             target: weex.config.env.deviceWidth,
-            index: 0
+            index: 0,
+            ty: ''
 
         },
         methods: {
+
+
+            dopost(url, param)
+            {
+//                weg,param,header,start,success,fail,exception,compelete
+                return new Promise((resolve, reject) => {
+
+                    var progress=weex.requireModule("progress")
+                    var net = weex.requireModule('net')
+                    var modal = weex.requireModule('modal')
+                    net.post(url,param,{},function(){
+                        //start
+                        progress.show()
+                    },function(e){
+                        //success
+                        // modal.toast({message:e.res.err})
+                        if(e.res.err==0)
+                        {
+                            resolve(e.res)
+                        }
+                        else
+                        {
+
+                            modal.toast({message:e.res.err})
+                        }
+
+                    },function(e){
+                        //compelete
+                        progress.dismiss()
+
+                    },function(e){
+                        // exception
+                        modal.toast({message:'网络异常！'})
+                    });
+                })
+            },
+            test()
+            {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(function () {
+                        resolve('123');
+                    }, 1000);
+                })
+            },
             update: function (e) {
                 this.target = 'Weex'
                 console.log('target:', this.target)
@@ -47,6 +101,16 @@
             {
                 var modal = weex.requireModule("modal")
                 modal.toast({message: 'ok'})
+            },
+
+            async btnclick()
+            {
+
+                var jk;
+                jk.op();
+//                this.ty= await this.dopost('http://59.110.169.246/movie/movie.do',{})
+//                 this.ty=await this.test();
+
             },
 
 
@@ -75,15 +139,15 @@
 
         created: function () {
 
-            this.target=weex.config.env.deviceWidth+'*'+weex.config.env.deviceHeight;
+            this.target = weex.config.env.deviceWidth + '*' + weex.config.env.deviceHeight;
             var globalEvent = weex.requireModule('globalEvent');
             var self = this;
             globalEvent.addEventListener("onPageInit", function (e) {
 
-                net.default.post('movie.do',{},(res)=>{
-                     var modal=weex.requireModule('modal')
-                    modal.alert({message:res})
-                })
+//                net.default.post('movie.do',{},(res)=>{
+//                     var modal=weex.requireModule('modal')
+//                    modal.alert({message:res})
+//                })
 
 
             });
