@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 485);
+/******/ 	return __webpack_require__(__webpack_require__.s = 489);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2166,21 +2166,21 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 485:
+/***/ 489:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(486)
+__vue_styles__.push(__webpack_require__(490)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(487)
+__vue_exports__ = __webpack_require__(491)
 
 /* template */
-var __vue_template__ = __webpack_require__(488)
+var __vue_template__ = __webpack_require__(492)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2192,10 +2192,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/index.vue"
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/index1.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1e2a9b1c"
+__vue_options__._scopeId = "data-v-2c752daf"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -2213,7 +2213,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 486:
+/***/ 490:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2240,7 +2240,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 487:
+/***/ 491:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2258,10 +2258,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
-//
-//
-//
 //
 //
 //
@@ -2357,22 +2353,16 @@ exports.default = {
             var _this = this;
 
             return _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var page;
+                var jk;
                 return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
+                                jk.op();
+                                //                this.ty= await this.dopost('http://59.110.169.246/movie/movie.do',{})
+                                //                 this.ty=await this.test();
 
-                                //                var jk;
-                                //                jk.op();
-                                ////                this.ty= await this.dopost('http://59.110.169.246/movie/movie.do',{})
-                                ////                 this.ty=await this.test();
-
-                                page = weex.requireModule("page");
-
-                                page.setMainPage('root:index1.js');
-
-                            case 2:
+                            case 1:
                             case 'end':
                                 return _context.stop();
                         }
@@ -2415,31 +2405,18 @@ exports.default = {
 
 /***/ }),
 
-/***/ 488:
+/***/ 492:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticStyle: {
       backgroundColor: "yellow"
     }
-  }, [_c('image', {
-    staticStyle: {
-      width: "200",
-      height: "200",
-      backgroundColor: "red"
-    },
-    attrs: {
-      "src": "ds",
-      "placeholder": "root:img/cat.png"
-    }
-  }), _c('text', [_vm._v(_vm._s(_vm.ty))]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.btnclick
-    }
-  })])
-},staticRenderFns: []}
+  }, [_c('text', [_vm._v("this is dex1")])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ })

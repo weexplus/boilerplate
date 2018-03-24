@@ -1,7 +1,11 @@
 package com.farwolf.weex.module;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.WeexFactory_;
+import com.farwolf.weex.util.Weex;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 
@@ -33,6 +37,18 @@ public class WXPageModule extends WXModuleBase {
     public void reload()
     {
        getActivity().reload();
+    }
+
+
+    @JSMethod(uiThread = true)
+    public void setMainPage(String url)
+    {
+          url=Weex.getRelativeUrl(url,mWXSDKInstance);
+        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+        editor.putString("mainurl", url).commit();
+
+
     }
 
 

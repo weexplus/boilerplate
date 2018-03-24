@@ -28,7 +28,7 @@
     
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
-    NSString *entry=[Weex getEntry];
+   
     UIViewController *vc= [Weex start:[Config splash] url:[Weex getEntry]];
     _window.rootViewController=vc;
     [_window makeKeyAndVisible];

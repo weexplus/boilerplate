@@ -62,79 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 350);
+/******/ 	return __webpack_require__(__webpack_require__.s = 354);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 500,
-    "marginTop": 50,
-    "borderRadius": 20,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 24:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -239,6 +172,73 @@ exports.default = net;
 
 /***/ }),
 
+/***/ 2:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 500,
+    "marginTop": 50,
+    "borderRadius": 20,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
 /***/ 3:
 /***/ (function(module, exports) {
 
@@ -254,23 +254,23 @@ module.exports = {
 
 /***/ }),
 
-/***/ 350:
+/***/ 354:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(351)
+__vue_styles__.push(__webpack_require__(355)
 )
-__vue_styles__.push(__webpack_require__(352)
+__vue_styles__.push(__webpack_require__(356)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(353)
+__vue_exports__ = __webpack_require__(357)
 
 /* template */
-var __vue_template__ = __webpack_require__(355)
+var __vue_template__ = __webpack_require__(359)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -303,7 +303,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 351:
+/***/ 355:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -314,7 +314,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 352:
+/***/ 356:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -381,7 +381,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 353:
+/***/ 357:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -432,8 +432,8 @@ Object.defineProperty(exports, "__esModule", {
 
 
 var head = __webpack_require__(6);
-var netx = __webpack_require__(24);
-var test = __webpack_require__(354);
+var netx = __webpack_require__(15);
+var test = __webpack_require__(358);
 
 exports.default = {
     components: { head: head },
@@ -497,7 +497,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 354:
+/***/ 358:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -509,7 +509,7 @@ module.exports = { gt: gt };
 
 /***/ }),
 
-/***/ 355:
+/***/ 359:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

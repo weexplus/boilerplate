@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 411);
+/******/ 	return __webpack_require__(__webpack_require__.s = 415);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -273,14 +273,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(44)
+__vue_styles__.push(__webpack_require__(49)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(45)
+__vue_exports__ = __webpack_require__(50)
 
 /* template */
-var __vue_template__ = __webpack_require__(47)
+var __vue_template__ = __webpack_require__(52)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -368,17 +368,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 25:
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(exports, {}))
-
-/***/ }),
-
-/***/ 27:
+/***/ 21:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -445,7 +435,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 28:
+/***/ 22:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -461,7 +451,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -589,7 +579,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 30:
+/***/ 24:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -685,7 +675,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 31:
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -716,21 +706,31 @@ module.exports = function (module) {
 
 /***/ }),
 
-/***/ 411:
+/***/ 30:
+/***/ (function(module, exports) {
+
+/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
+module.exports = __webpack_amd_options__;
+
+/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ }),
+
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(412)
+__vue_styles__.push(__webpack_require__(416)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(413)
+__vue_exports__ = __webpack_require__(417)
 
 /* template */
-var __vue_template__ = __webpack_require__(415)
+var __vue_template__ = __webpack_require__(419)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -763,14 +763,14 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 412:
+/***/ 416:
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
 
-/***/ 413:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -795,8 +795,8 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var viewpager = __webpack_require__(414);
-var head = __webpack_require__(90);
+var viewpager = __webpack_require__(418);
+var head = __webpack_require__(42);
 exports.default = {
     components: { viewpager: viewpager, head: head },
     data: {
@@ -831,7 +831,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 414:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -878,7 +878,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 415:
+/***/ 419:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -900,14 +900,61 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 44:
+/***/ 42:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(21)
+)
+__vue_styles__.push(__webpack_require__(22)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(23)
+
+/* template */
+var __vue_template__ = __webpack_require__(24)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-a70d48aa"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 49:
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
 
-/***/ 45:
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -936,7 +983,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var he = __webpack_require__(46);
+var he = __webpack_require__(51);
 exports.default = {
   props: {
     text: {
@@ -1056,7 +1103,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 46:
+/***/ 51:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1375,7 +1422,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	// Some AMD build optimizers, like r.js, check for specific condition patterns
 	// like the following:
-	if ("function" == 'function' && _typeof(__webpack_require__(25)) == 'object' && __webpack_require__(25)) {
+	if ("function" == 'function' && _typeof(__webpack_require__(30)) == 'object' && __webpack_require__(30)) {
 		!(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return he;
 		}).call(exports, __webpack_require__, exports, module),
@@ -1395,11 +1442,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		root.he = he;
 	}
 })(undefined);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)(module), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)(module), __webpack_require__(1)))
 
 /***/ }),
 
-/***/ 47:
+/***/ 52:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1480,53 +1527,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 90:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(27)
-)
-__vue_styles__.push(__webpack_require__(28)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(29)
-
-/* template */
-var __vue_template__ = __webpack_require__(30)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-a70d48aa"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
 
 /***/ })
 

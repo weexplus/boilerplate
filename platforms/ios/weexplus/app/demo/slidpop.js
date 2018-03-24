@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 394);
+/******/ 	return __webpack_require__(__webpack_require__.s = 398);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -149,23 +149,23 @@ module.exports = {
 
 /***/ }),
 
-/***/ 394:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(395)
+__vue_styles__.push(__webpack_require__(399)
 )
-__vue_styles__.push(__webpack_require__(396)
+__vue_styles__.push(__webpack_require__(400)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(397)
+__vue_exports__ = __webpack_require__(401)
 
 /* template */
-var __vue_template__ = __webpack_require__(398)
+var __vue_template__ = __webpack_require__(402)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -198,7 +198,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 395:
+/***/ 399:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -206,179 +206,6 @@ module.exports = {
     "alignItems": "center"
   }
 }
-
-/***/ }),
-
-/***/ 396:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 200,
-    "marginTop": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 397:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-var head = __webpack_require__(6);
-var globalEvent = weex.requireModule('globalEvent');
-globalEvent.addEventListener("onPageInit", function (e) {});
-
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            back: "",
-            header: {}
-        };
-    },
-
-    methods: {
-        ok: function ok() {
-            var pop = weex.requireModule("slidpop");
-            pop.show('center.js', {}, 600, {}, 'bottom');
-        },
-        close: function close() {
-            var pop = weex.requireModule("slidpop");
-            pop.dismiss();
-        }
-    },
-    created: function created() {}
-};
-
-/***/ }),
-
-/***/ 398:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#ffffff"
-    }
-  }, [_c('div', {
-    staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "red",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    on: {
-      "click": _vm.ok
-    }
-  }, [_c('text', [_vm._v("open")])]), _c('div', {
-    staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "red",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: "20"
-    },
-    on: {
-      "click": _vm.close
-    }
-  }, [_c('text', [_vm._v("close")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -508,6 +335,179 @@ exports.default = {
     //            }
     //        }
 };
+
+/***/ }),
+
+/***/ 400:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 200,
+    "marginTop": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 401:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var head = __webpack_require__(6);
+var globalEvent = weex.requireModule('globalEvent');
+globalEvent.addEventListener("onPageInit", function (e) {});
+
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            back: "",
+            header: {}
+        };
+    },
+
+    methods: {
+        ok: function ok() {
+            var pop = weex.requireModule("slidpop");
+            pop.show('center.js', {}, 600, {}, 'bottom');
+        },
+        close: function close() {
+            var pop = weex.requireModule("slidpop");
+            pop.dismiss();
+        }
+    },
+    created: function created() {}
+};
+
+/***/ }),
+
+/***/ 402:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#ffffff"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100",
+      backgroundColor: "red",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": _vm.ok
+    }
+  }, [_c('text', [_vm._v("open")])]), _c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100",
+      backgroundColor: "red",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "20"
+    },
+    on: {
+      "click": _vm.close
+    }
+  }, [_c('text', [_vm._v("close")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 

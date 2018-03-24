@@ -237,7 +237,10 @@
 {
     if(![Config isDebug])
     {
-        return [Config entry];;
+          NSString *entry=[self getSaveValue:@"mainurl"];
+        if([@"" isEqualToString:entry]||entry==nil)
+            entry=[Config entry];
+        return entry;
     }
     NSString *s= [self getSaveValue:@"url"];
     if(s==nil||[s isEqualToString:@""])

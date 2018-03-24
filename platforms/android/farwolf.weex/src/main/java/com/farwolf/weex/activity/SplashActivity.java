@@ -1,6 +1,8 @@
 package com.farwolf.weex.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -82,10 +84,12 @@ public class SplashActivity extends WeexActivity {
         this.mWXSDKInstance=new WXSDKInstance(this);
 
         List l= Config.preload(this);
-        l.add(Config.entry(this));
+        String entry=getEntryUrl();
+        l.add(entry);
         if(!Config.debug(this))
         {
-            this.mWXSDKInstance.setBundleUrl(Config.entry(this));
+
+            this.mWXSDKInstance.setBundleUrl(entry);
             List temp=new ArrayList();
             for(Object q:l)
             {
@@ -103,7 +107,7 @@ public class SplashActivity extends WeexActivity {
 
                 @Override
                 public void onRenderFailed() {
-//                    gotoMain();
+
                 }
             });
         }
@@ -126,10 +130,24 @@ public class SplashActivity extends WeexActivity {
 
     }
 
+
+    public String getEntryUrl()
+    {
+        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+        String url=sharedPreferences.getString("mainurl","");
+        if(StringUtil.isNullOrEmpty(url))
+        {
+            url=Config.entry(this);
+        }
+        return url;
+    }
+
     public void gotoMain()
     {
+
         Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
-        in.putExtra("url",Config.entry(SplashActivity.this));
+        in.putExtra("url",getEntryUrl());
         boolean isPotrait=  Config.isPortrait(this);
         in.putExtra("isPortrait",isPotrait);
         startActivity(in);

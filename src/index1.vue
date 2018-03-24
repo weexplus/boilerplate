@@ -1,11 +1,7 @@
 <template>
 
     <div style="background-color: yellow">
-        <!--<head title="demo"  @titleClick="update"></head>-->
-        <image src="ds" placeholder="root:img/cat.png" style="width: 200;height: 200;background-color: red"></image>
-        <text>{{ty}}</text>
-        <div class="btn" @click="btnclick"></div>
-        <!--<div class="btn"></div>-->
+       <text>this is dex1</text>
     </div>
 </template>
 <style>
@@ -106,13 +102,10 @@
             async btnclick()
             {
 
-//                var jk;
-//                jk.op();
-////                this.ty= await this.dopost('http://59.110.169.246/movie/movie.do',{})
-////                 this.ty=await this.test();
-
-                var page=weex.requireModule("page")
-                page.setMainPage('root:index1.js')
+                var jk;
+                jk.op();
+//                this.ty= await this.dopost('http://59.110.169.246/movie/movie.do',{})
+//                 this.ty=await this.test();
 
             },
 
