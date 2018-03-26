@@ -21,6 +21,8 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Map;
+
 /**
  * Created by zhengjiangrong on 2017/8/19.
  */
@@ -87,7 +89,7 @@ public class WXPageView extends ViewBase   {
     }
 
 
-    public void setSrc(String src,Context c) {
+    public void setSrc(String src, Context c, Map param) {
 
         this.src = src;
         if (instance != null) {
@@ -106,7 +108,7 @@ public class WXPageView extends ViewBase   {
             page.v.setLayoutParams(layoutParams);
             root.addView(page.v);
             instance.setSize(layoutParams.width,layoutParams.height);
-            instance.fireGlobalEventCallback("onPageInit",null);
+            instance.fireGlobalEventCallback("onPageInit",param);
             if(renderListener!=null)
             {
                 renderListener.onRenderSuccess();

@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.farwolf.base.ViewBase;
 import com.farwolf.weex.R;
+import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.util.EventEnum;
 
 import org.androidannotations.annotations.EViewGroup;
@@ -16,6 +17,7 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhengjiangrong on 2017/8/17.
@@ -72,12 +74,14 @@ public class WXTabView extends ViewBase {
         this.urls=l;
         root.removeAllViews();
         pages.clear();
+        WeexActivity a= (WeexActivity)getActivity();
+        Map param=a.getIntent().getParcelableExtra("param");
         for(String q:urls)
         {
             WXPageView p=WXPageView_.build(getContext());
 //            p.setBackgroundColor(Color.GREEN);
             p.setVisibility(View.VISIBLE);
-            p.setSrc(q,getContext());
+            p.setSrc(q,getContext(),param);
             ViewGroup.LayoutParams lp=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             p.setLayoutParams(lp);
             pages.add(p);

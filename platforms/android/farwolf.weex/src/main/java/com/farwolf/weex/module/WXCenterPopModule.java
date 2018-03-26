@@ -223,7 +223,7 @@ public class WXCenterPopModule extends WXModuleBase {
                 Log.e("点击了pop页面");
             }
         });
-        popView.setSrc(url,mWXSDKInstance.getContext());
+        popView.setSrc(url,mWXSDKInstance.getContext(),this.param);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(0, 0);
         params.setMargins(endLP.leftMargin, endLP.topMargin, endLP.rightMargin, endLP.bottomMargin);
         popView.instance.setSize(width,height);

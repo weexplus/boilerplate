@@ -8,11 +8,14 @@ import android.util.Log;
 import com.farwolf.base.ViewBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.weex.R;
+import com.farwolf.weex.activity.WeexActivity;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.Map;
 
 /**
  * Created by even on 2017/10/18.
@@ -50,14 +53,17 @@ public class DrawerLayoutView extends ViewBase {
 
     public void setSlidUrl(String url)
     {
-
-        nav_view.setSrc(url,getContext());
+         WeexActivity a= (WeexActivity)getActivity();
+        Map param=a.getIntent().getParcelableExtra("param");
+        nav_view.setSrc(url,getContext(),param);
         Log.e("nav_view url", url);
     }
 
     public void setMainUrl(String url)
     {
-        main_view.setSrc(url,getContext());
+        WeexActivity a= (WeexActivity)getActivity();
+        Map param=a.getIntent().getParcelableExtra("param");
+        main_view.setSrc(url,getContext(),param);
         Log.e("main_view url", url);
     }
 
