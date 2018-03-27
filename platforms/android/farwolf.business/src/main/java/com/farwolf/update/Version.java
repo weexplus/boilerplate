@@ -8,6 +8,8 @@ public class Version {
 
     public Long id;
 
+    public int level;
+
     public String name;
 
     public String versionName;

@@ -79,7 +79,7 @@ public class UpdateService {
             @Override
             public void start() {
                 if(showprogress)
-                super.start();
+                    super.start();
             }
 
             @Override
@@ -90,7 +90,7 @@ public class UpdateService {
             @Override
             public void compelete() {
                 if(showprogress)
-                super.compelete();
+                    super.compelete();
             }
 
 
@@ -102,7 +102,14 @@ public class UpdateService {
                 }
             }
 
+            @Override
+            public void exception(Object o) {
 
+                if(failtoast)
+                {
+                    super.exception(o);
+                }
+            }
 
             @Override
             public void success(JsonReader j) {
@@ -111,29 +118,38 @@ public class UpdateService {
                 Version v=  j.toBean("version",Version.class);
                 a.f=f;
                 f.setCanceledOnTouchOutside(false);
+                f.setCancelable(v.level!=2);
                 a.init(v);
-                if(v.versionName!=null&&v.versionName.equals(pref.version().get()))
+                if(v.level==0)
                 {
-                    long delt= System.currentTimeMillis()-pref.time().get();
-                    long week=1000*60*60*24*7;
-                    long min=1000*20;
-                    if(delt<min)
+                    if(v.versionName!=null&&v.versionName.equals(pref.version().get()))
                     {
-                        return;
+                        long delt= System.currentTimeMillis()-pref.time().get();
+                        long week=1000*60*60*24*7;
+                        long min=1000*20;
+                        if(delt<min)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            pref.edit().time().put(0);
+                            pref.edit().version().put("");
+                            f.show();
+                        }
+
                     }
                     else
                     {
-                        pref.edit().time().put(0);
-                        pref.edit().version().put("");
+
                         f.show();
                     }
-
                 }
                 else
                 {
-
                     f.show();
                 }
+
             }
         });
 
@@ -146,28 +162,28 @@ public class UpdateService {
     public  File getFileFromServer(String path, ProgressDialog pd) throws Exception{
         //如果相等的话表示当前的sdcard挂载在手机上并且是可用的
 
-            URL url = new URL(path);
-            HttpURLConnection conn =  (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(5000);
-            //获取到文件的大小
-            pd.setMax(conn.getContentLength());
-            InputStream is = conn.getInputStream();
-            File file = new File(SDCard.getBasePath(context), "updata.apk");
-            FileOutputStream fos = new FileOutputStream(file);
-            BufferedInputStream bis = new BufferedInputStream(is);
-            byte[] buffer = new byte[1024];
-            int len ;
-            int total=0;
-            while((len =bis.read(buffer))!=-1){
-                fos.write(buffer, 0, len);
-                total+= len;
-                //获取当前下载量
-                pd.setProgress(total);
-            }
-            fos.close();
-            bis.close();
-            is.close();
-            return file;
+        URL url = new URL(path);
+        HttpURLConnection conn =  (HttpURLConnection) url.openConnection();
+        conn.setConnectTimeout(5000);
+        //获取到文件的大小
+        pd.setMax(conn.getContentLength());
+        InputStream is = conn.getInputStream();
+        File file = new File(SDCard.getBasePath(context), "updata.apk");
+        FileOutputStream fos = new FileOutputStream(file);
+        BufferedInputStream bis = new BufferedInputStream(is);
+        byte[] buffer = new byte[1024];
+        int len ;
+        int total=0;
+        while((len =bis.read(buffer))!=-1){
+            fos.write(buffer, 0, len);
+            total+= len;
+            //获取当前下载量
+            pd.setProgress(total);
+        }
+        fos.close();
+        bis.close();
+        is.close();
+        return file;
 
     }
     private class  UpdateReader extends JsonReader

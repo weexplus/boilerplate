@@ -12,6 +12,5 @@
 
 @property(nonatomic,strong) NSString*  url;
 @property(nonatomic,strong) NSString*  appid;
--(void)doCheck:(void(^)(Version*v))success;
-
+-(void)doCheck:(NSString*)appid vcode:(NSString*)vcode  showprogress:(BOOL)showprogress failtoast:(BOOL)failtoast vc:(UIViewController*)vc success :(void(^)(Version*v))success;
 @end

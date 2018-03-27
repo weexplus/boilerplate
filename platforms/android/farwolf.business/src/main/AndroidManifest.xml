@@ -3,10 +3,13 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
- 
+
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
     <application
       >
+        <service android:name="com.farwolf.update.download.UpdateService" />
+        <receiver android:name="com.farwolf.update.download.UpdateService$NotificationClickReceiver" />
     </application>
 
 </manifest>

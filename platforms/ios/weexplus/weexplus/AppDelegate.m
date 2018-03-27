@@ -10,7 +10,7 @@
 #import "farwolf_weex.h"
 #import "RefreshManager.h"
 #import "Config.h"
-
+#import "UpdateDialogControl.h"
 @interface AppDelegate ()
 
 @end
@@ -30,6 +30,8 @@
     self.window.frame = [UIScreen mainScreen].bounds;
    
     UIViewController *vc= [Weex start:[Config splash] url:[Weex getEntry]];
+    
+//    UpdateDialogControl *uvc=[[UpdateDialogControl alloc]initWithNibName:@"updater" bundle:nil];
     _window.rootViewController=vc;
     [_window makeKeyAndVisible];
 

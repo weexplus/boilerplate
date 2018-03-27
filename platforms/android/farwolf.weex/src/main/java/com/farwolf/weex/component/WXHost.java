@@ -81,7 +81,7 @@ public class WXHost extends WXComponent<WXTabView> {
     @Override
     public void onActivityCreate() {
         super.onActivityCreate();
-        getHostView().onEventInvoke(OnActivityCreate,-1,-1,null);
+//        getHostView().onEventInvoke(OnActivityCreate,-1,-1,null);
     }
 
 

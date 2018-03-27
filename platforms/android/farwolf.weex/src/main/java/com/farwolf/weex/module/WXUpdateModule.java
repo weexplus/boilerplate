@@ -19,7 +19,7 @@ public class WXUpdateModule extends WXModule {
     public void docheck(HashMap param)
     {
         String appid=param.get("appid")+"";
-        String vcurl=param.get("vcurl")+"";
+        String vcurl=param.get("url")+"";
         boolean failtoast=(boolean)param.get("failtoast");
         boolean showprogress=(boolean)param.get("showprogress");
 

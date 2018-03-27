@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   
 
   s.dependency 'farwolf'
+   s.dependency 'farwolf.business'
   s.dependency 'WeexSDK'
   s.dependency 'SDWebImage', '~> 3.8'
   s.dependency 'WXDevtool'

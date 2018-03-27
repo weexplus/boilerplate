@@ -15,6 +15,11 @@
     "Source",
     "farwolf.business/**/*.{h,m,mm,c}"
   ],
+  "resources": [
+    "farwolf.business/resources/storyboard/**",
+    "farwolf.business/resources/image/**",
+    "farwolf.business/resources/xib/**"
+  ],
   "exclude_files": "Source/Exclude",
   "dependencies": {
     "TOCropViewController": [

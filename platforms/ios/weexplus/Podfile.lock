@@ -46,6 +46,7 @@ PODS:
   - farwolf.weex (0.0.1):
     - CocoaAsyncSocket (~> 7.6.2)
     - farwolf
+    - farwolf.business
     - Masonry (~> 0.6.3)
     - RHAddressBook
     - SDWebImage (~> 3.8)
@@ -129,8 +130,8 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   farwolf: 7faa516c516d9493a3c48c08639307bfafe04183
-  farwolf.business: dac235353f260775f36ad022cb361d2a61fa951b
-  farwolf.weex: b1fc5100b9af27845c2cbf4ae897245528c3779a
+  farwolf.business: 6bb8ac0b1d72340d7c2be924ea7410ce6b628daa
+  farwolf.weex: 53269af8af3ba861059bc09a5acd82b4038a8f80
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f

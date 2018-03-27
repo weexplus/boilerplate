@@ -35,6 +35,7 @@
 #import "WXPageModule.h"
 #import "WXFontModule.h"
 #import "JSExceptionProtocolImpl.h"
+#import "WXUpdateModule.h"
 
 @implementation Weex
 
@@ -62,6 +63,7 @@
     [WXSDKEngine registerModule:@"slidpop" withClass:[WXSlidPopModule class]];
     [WXSDKEngine registerModule:@"page" withClass:[WXPageModule class]];
     [WXSDKEngine registerModule:@"font" withClass:[WXFontModule class]];
+    [WXSDKEngine registerModule:@"updater" withClass:[WXUpdateModule class]];
     
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];

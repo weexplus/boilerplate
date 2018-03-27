@@ -97,6 +97,7 @@ WX_EXPORT_METHOD(@selector(reset))
    
     [WeexFactory renderNew:[Weex getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
+        vc.instance.param=param;
         [self render:vc param:param delt:_delt side:side offset:offset compelete:^(UINavigationController *n) {
             _popView=n.view;
             _nav=n;

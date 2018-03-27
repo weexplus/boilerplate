@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.author             = { "veryitman" => "veryitman@126.com" }
   s.source =  { :path => '.' }
   s.source_files  = "Source", "farwolf.business/**/*.{h,m,mm,c}"
-
+  s.resources = 'farwolf.business/resources/storyboard/**','farwolf.business/resources/image/**','farwolf.business/resources/xib/**'
  
 
 

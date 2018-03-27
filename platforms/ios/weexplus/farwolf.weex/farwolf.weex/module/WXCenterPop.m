@@ -34,6 +34,7 @@ WX_EXPORT_METHOD(@selector(dismiss:))
         weakself.vc=nav;
         vc.freeFrame=true;
         vc.param=param;
+        vc.instance.param=param;
         [weakself.backgroundView addSubview:nav.view];
         nav.view.frame = CGRectMake(0, 0, width*0.5, height*0.5);
         nav.view.center = self.backgroundView.center;
