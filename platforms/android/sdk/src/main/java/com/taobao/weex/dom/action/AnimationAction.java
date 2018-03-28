@@ -79,7 +79,7 @@ class AnimationAction implements DOMAction, RenderAction {
 
   @Nullable
   private
-  final String animation;
+  final JSONObject animation;
 
   @Nullable
   private
@@ -89,7 +89,7 @@ class AnimationAction implements DOMAction, RenderAction {
   private
   WXAnimationBean mAnimationBean;
 
-  AnimationAction(@NonNull final String ref, @Nullable String animation,
+  AnimationAction(@NonNull final String ref, @Nullable JSONObject animation,
                   @Nullable final String callBack) {
     this.ref = ref;
     this.animation = animation;
@@ -113,9 +113,9 @@ class AnimationAction implements DOMAction, RenderAction {
     try {
       WXDomObject domObject;
       if (!context.isDestory() &&
-          !TextUtils.isEmpty(animation) &&
+          animation != null &&
           (domObject = context.getDomByRef(ref)) != null) {
-        WXAnimationBean animationBean = JSONObject.parseObject(animation, WXAnimationBean.class);
+        WXAnimationBean animationBean =  JSONObject.toJavaObject(animation, WXAnimationBean.class);
         if (animationBean != null && animationBean.styles != null) {
           int width = (int) domObject.getLayoutWidth();
           int height = (int) domObject.getLayoutHeight();
@@ -128,7 +128,7 @@ class AnimationAction implements DOMAction, RenderAction {
       }
     } catch (RuntimeException e) {
 	  WXExceptionUtils.commitCriticalExceptionRT(context.getInstance().getInstanceId(),
-			  WXErrorCode.WX_KEY_EXCEPTION_DOM_ANIMATION.getErrorCode(),
+			  WXErrorCode.WX_KEY_EXCEPTION_DOM_ANIMATION,
 			  "animationAction",
 			  WXErrorCode.WX_KEY_EXCEPTION_DOM_ANIMATION.getErrorMsg() + WXLogUtils.getStackTrace(e),null);
       WXLogUtils.e(TAG, WXLogUtils.getStackTrace(e));
@@ -174,7 +174,7 @@ class AnimationAction implements DOMAction, RenderAction {
           }
         } catch (RuntimeException e) {
 		  WXExceptionUtils.commitCriticalExceptionRT(instance.getInstanceId(),
-				  WXErrorCode.WX_KEY_EXCEPTION_DOM_ANIMATION.getErrorCode(),
+				  WXErrorCode.WX_KEY_EXCEPTION_DOM_ANIMATION,
 				  "animationAction",
 				  WXErrorCode.WX_KEY_EXCEPTION_DOM_ANIMATION.getErrorMsg() + WXLogUtils.getStackTrace(e),null);
 		  WXLogUtils.e(TAG, WXLogUtils.getStackTrace(e));        }

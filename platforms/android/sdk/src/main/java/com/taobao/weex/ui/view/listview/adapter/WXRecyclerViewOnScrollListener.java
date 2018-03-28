@@ -98,6 +98,8 @@ public class WXRecyclerViewOnScrollListener extends RecyclerView.OnScrollListene
         }
       }
     }
+
+
   }
 
   @Override

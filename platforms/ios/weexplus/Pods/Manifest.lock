@@ -77,7 +77,7 @@ PODS:
   - UIViewController_PopUp (0.0.2)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
-  - WeexSDK (0.17.0):
+  - WeexSDK (0.18.0):
     - SocketRocket
   - WXDevtool (0.15.3):
     - WeexSDK
@@ -149,7 +149,7 @@ SPEC CHECKSUMS:
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   UIViewController_PopUp: 1f5133c841e811103d6b3f143618f3a00080a590
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
-  WeexSDK: f6b02dd10e8b60e902b552bd62054e3ad52fa510
+  WeexSDK: 54ea4df993888605e5f1e5f8e7d01e131730fad3
   WXDevtool: b6205c022286e070db2f89397d72b18b45da7498
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793

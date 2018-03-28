@@ -134,7 +134,6 @@ public class WXSlider extends WXVContainer<FrameLayout> {
   {
     setAutoPlay("true");
   }
-
   /**
    * Slider is not a regular container,top/left/right/bottom not apply to view,expect indicator.
    */

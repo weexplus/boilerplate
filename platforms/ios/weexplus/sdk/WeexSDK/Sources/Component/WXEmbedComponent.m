@@ -145,8 +145,7 @@
     
     //zjr add
     [self loadUrl:newURL instance:_embedInstance sourceurl:sourceURL];
-//    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
-    
+    //    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
     __weak typeof(self) weakSelf = self;
     _embedInstance.onCreate = ^(UIView *view) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -160,7 +159,6 @@
             [weakSelf.view addSubview:weakSelf.embedView];
             
             weakSelf.createFinished = YES;
-           
         });
     };
     
@@ -182,16 +180,14 @@
     _embedInstance.renderFinish = ^(UIView *view) {
          weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
-         [weakSelf onRenderFinish];
     };
 }
-
+//zjr add
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{
     
     [instance renderWithURL:[NSURL URLWithString:url] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
     
 }
-
 - (void)_updateState:(WXState)state
 {
     if (_renderFinished && _embedInstance && _embedInstance.state != state) {
@@ -206,10 +202,7 @@
         }
     }
 }
--(WXSDKInstance*)getInstance
-{
-    return self.embedInstance;
-}
+
 - (void)_frameDidCalculated:(BOOL)isChanged
 {
     [super _frameDidCalculated:isChanged];

@@ -115,10 +115,10 @@ public class WXDomObject extends CSSNode implements Cloneable,ImmutableDomObject
 
   private  boolean cloneThis = false;
 
-  public void traverseTree(Consumer...consumers){
+  public int traverseTree(Consumer...consumers){
     long startNanos = System.nanoTime();
     if (consumers == null) {
-      return;
+      return 0;
     }
 
     for (Consumer consumer:consumers){
@@ -127,11 +127,14 @@ public class WXDomObject extends CSSNode implements Cloneable,ImmutableDomObject
 
     int count = childCount();
     WXDomObject child;
+    int maxChildDep = 0;
     for (int i = 0; i < count; ++i) {
       child = getChild(i);
-      child.traverseTree(consumers);
+      int depNum = child.traverseTree(consumers);
+      maxChildDep= maxChildDep > depNum? maxChildDep:depNum;
     }
     mDomThreadNanos += (System.nanoTime() - startNanos);
+    return maxChildDep+1;
   }
 
   /**
@@ -151,7 +154,7 @@ public class WXDomObject extends CSSNode implements Cloneable,ImmutableDomObject
     WXDomObject child;
     for (int i = 0; i < count; ++i) {
       child = getChild(i);
-      child.traverseTree(consumers);
+      child.traverseUpdateTree(consumers);
     }
   }
 
@@ -828,6 +831,7 @@ public class WXDomObject extends CSSNode implements Cloneable,ImmutableDomObject
     if(updates == null){
       return  false;
     }
+    /**
     Set<Map.Entry<String,Object>> entries = updates.entrySet();
     Iterator<Map.Entry<String,Object>> it = entries.iterator();
     while (it.hasNext()){
@@ -844,7 +848,7 @@ public class WXDomObject extends CSSNode implements Cloneable,ImmutableDomObject
         it.remove();
         continue;
       }
-    }
+    }*/
     return updates.size() > 0;
   }
 

@@ -2038,7 +2038,6 @@
 		2D3A7B74C1E8F67D33DE6AC02F57239D /* RHPerson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RHPerson.m; path = RHAddressBook/RHPerson.m; sourceTree = "<group>"; };
 		2D6DEE7AA7A4C2937AA83A422C628216 /* EBExpressionProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EBExpressionProperty.h; path = core/ios/BindingX/EBExpressionProperty.h; sourceTree = "<group>"; };
 		2D79D9F06C228FB6235947F44B5ADB60 /* SDWebImageCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCompat.h; path = SDWebImage/SDWebImageCompat.h; sourceTree = "<group>"; };
-		2E5C23699F6EBBB24A335EAF89B80BDD /* wx_load_error@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "wx_load_error@3x.png"; sourceTree = "<group>"; };
 		2F58446906083A111F9B642491069E79 /* WXDatabaseTypes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = WXDatabaseTypes.m; sourceTree = "<group>"; };
 		2F7AF2E6625FCAC06FB4854688F1BADF /* FSCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar-dummy.m"; sourceTree = "<group>"; };
 		2FCEB76D86F8AB8B5CA06A28D337C302 /* ZDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZDatePicker.m; sourceTree = "<group>"; };
@@ -2653,6 +2652,7 @@
 		A5D4AB93F858FA4F65F7DECBB3EA63A2 /* WeexSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = WeexSDK.h; sourceTree = "<group>"; };
 		A5EDE79953D03D76DEEAE54D1BD7AEE6 /* farwolf-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "farwolf-prefix.pch"; sourceTree = "<group>"; };
 		A5FABCD0CA6783B27B0B2C8715B0614E /* WXApplicationCacheTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = WXApplicationCacheTypes.h; sourceTree = "<group>"; };
+		A68E8686A62AD777E707BF29315C7CD3 /* wx_load_error@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "wx_load_error@3x.png"; sourceTree = "<group>"; };
 		A69C51F8EE6F3C93E167546D4EE6E77E /* WXResourceRequestHandlerDefaultImpl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = WXResourceRequestHandlerDefaultImpl.m; sourceTree = "<group>"; };
 		A6A9EDF51C55B7E161EE60691AAD1BF9 /* WXPageDomain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = WXPageDomain.m; sourceTree = "<group>"; };
 		A6DD156A8534FC38C04B005B1B649193 /* SSLunarDate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSLunarDate.m; path = SSLunarDate/SSLunarDate.m; sourceTree = "<group>"; };
@@ -2836,7 +2836,6 @@
 		CAEB889EF24568F0EB9BFBE2B9C352B6 /* ExtView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ExtView.m; sourceTree = "<group>"; };
 		CAFCF568D5B3CF6C20CE599C16B7D72F /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		CB47CBD1D5F78D3CDA1C8DB2160F3E67 /* SSLunarDateHoliday.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSLunarDateHoliday.h; path = SSLunarDate/SSLunarDateHoliday.h; sourceTree = "<group>"; };
-		CB8D254B4666697D9117E51A94180C7C /* native-bundle-main.js */ = {isa = PBXFileReference; includeInIndex = 1; path = "native-bundle-main.js"; sourceTree = "<group>"; };
 		CB97BA47E27ACC773E79FA325F5AE2D8 /* TOCroppedImageAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCroppedImageAttributes.m; path = TOCropViewController/Models/TOCroppedImageAttributes.m; sourceTree = "<group>"; };
 		CBB4F6186D1B34F0F7213B180C97335A /* libLPPhotoViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libLPPhotoViewer.a; path = libLPPhotoViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFEACFF0860CE41DB58123FEC84E908 /* WXResources.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = WXResources.m; sourceTree = "<group>"; };
@@ -3681,7 +3680,7 @@
 		200C646088C8BBC55D875B6531D910ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				63F9C34327C45971E6B947E109571BFA /* WeexSDK */,
+				28F4F394FCF193C4CB2989E692E3B3F0 /* WeexSDK */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -3768,6 +3767,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		28F4F394FCF193C4CB2989E692E3B3F0 /* WeexSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3F8A122990A22C2DD2360E6F62852FB0 /* Resources */,
+			);
+			name = WeexSDK;
+			path = WeexSDK;
+			sourceTree = "<group>";
+		};
 		2CD5428E05B06802C3AF5922EB1BC4ED /* DACircularProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -3827,6 +3835,15 @@
 				6A5B59EF5083DE84B5BB6545A3419A37 /* AFSecurityPolicy.m */,
 			);
 			name = Security;
+			sourceTree = "<group>";
+		};
+		3F8A122990A22C2DD2360E6F62852FB0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A68E8686A62AD777E707BF29315C7CD3 /* wx_load_error@3x.png */,
+			);
+			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		3FEB25151CD3AAF54975AB93F3E568D1 /* WebSocket */ = {
@@ -4354,15 +4371,6 @@
 			);
 			name = protocol;
 			path = protocol;
-			sourceTree = "<group>";
-		};
-		63F9C34327C45971E6B947E109571BFA /* WeexSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B380FB3C48CFC8B81E682E951182C121 /* Resources */,
-			);
-			name = WeexSDK;
-			path = WeexSDK;
 			sourceTree = "<group>";
 		};
 		66A77F0DCE03BC184040EFE0C12FCF56 /* Support Files */ = {
@@ -5273,16 +5281,6 @@
 			);
 			name = RHAddressBook;
 			path = RHAddressBook;
-			sourceTree = "<group>";
-		};
-		B380FB3C48CFC8B81E682E951182C121 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CB8D254B4666697D9117E51A94180C7C /* native-bundle-main.js */,
-				2E5C23699F6EBBB24A335EAF89B80BDD /* wx_load_error@3x.png */,
-			);
-			name = Resources;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		B6711D7699893A8E60B740BF614321BA /* UIKit */ = {

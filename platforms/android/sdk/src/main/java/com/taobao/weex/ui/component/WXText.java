@@ -30,6 +30,7 @@ import com.taobao.weex.ui.ComponentCreator;
 import com.taobao.weex.ui.flat.FlatComponent;
 import com.taobao.weex.ui.flat.widget.TextWidget;
 import com.taobao.weex.ui.view.WXTextView;
+import com.taobao.weex.utils.WXUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -48,9 +49,6 @@ public class WXText extends WXComponent<WXTextView> implements FlatComponent<Tex
 
   @Override
   public boolean promoteToView(boolean checkAncestor) {
-    //zjr add
-    if(getInstance().getFlatUIContext()==null)
-      return false;
     return getInstance().getFlatUIContext().promoteToView(this, checkAncestor, WXText.class);
   }
 
@@ -136,6 +134,12 @@ public class WXText extends WXComponent<WXTextView> implements FlatComponent<Tex
       case Constants.Name.VALUE:
         return true;
       case Constants.Name.FONT_FAMILY:
+        return true;
+      case Constants.Name.ENABLE_COPY:
+        boolean enabled = WXUtils.getBoolean(param, false);
+        if (getHostView() != null) {
+          getHostView().enableCopy(enabled);
+        }
         return true;
       default:
         return super.setProperty(key, param);

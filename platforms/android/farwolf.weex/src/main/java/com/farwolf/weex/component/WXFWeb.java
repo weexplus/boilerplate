@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.farwolf.weex.view.WXWebView;
 import com.taobao.weex.WXSDKInstance;
+import com.taobao.weex.WXSDKManager;
 import com.taobao.weex.adapter.URIAdapter;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.dom.WXDomObject;
@@ -42,7 +43,21 @@ public class WXFWeb extends WXComponent {
     }
 
     protected void  createWebView(){
-        mWebView = new WXWebView(getContext());
+//        mWebView =new WXWebView(getContext())
+
+        String origin = null;
+        try {
+            String bundleUrl = WXSDKManager.getInstance().getSDKInstance(getInstanceId()).getBundleUrl();
+            Uri uri = Uri.parse(bundleUrl);
+            String scheme = uri.getScheme();
+            String authority = uri.getAuthority();
+            if (!TextUtils.isEmpty(scheme) && !TextUtils.isEmpty(authority)) {
+                origin = scheme + "://" + authority;
+            }
+        } catch (Exception e) {
+            // do noting
+        }
+        mWebView = new com.taobao.weex.ui.view.WXWebView(getContext(), origin);
     }
 
     @Override

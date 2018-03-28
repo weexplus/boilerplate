@@ -86,11 +86,7 @@ WX_EXPORT_METHOD(@selector(setListData:))
 
 - (UIView *)loadView
 {
-    WXRecycleListLayout *layout = [WXRecycleListLayout new];
-    layout.delegate = self;
-    // to show cells that original width / height is zero, otherwise cellForItemAtIndexPath will not be called
-    layout.minimumLineSpacing = 0.01;
-    layout.minimumInteritemSpacing = 0.01;
+    WXRecycleListLayout *layout = [self recycleListLayout];
     return [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
 }
 
@@ -118,6 +114,8 @@ WX_EXPORT_METHOD(@selector(setListData:))
 
 - (void)updateAttributes:(NSDictionary *)attributes
 {
+    [super updateAttributes:attributes];
+    
     if (attributes[@"listData"]) {
         NSArray *listData = attributes[@"listData"];
         [self _updateListData:listData withCompletion:nil animation:NO];
@@ -130,6 +128,10 @@ WX_EXPORT_METHOD(@selector(setListData:))
     }
     if (attributes[@"index"]) {
         _indexKey = [WXConvert NSString:attributes[@"index"]];
+    }
+    if (attributes[@"scrollDirection"]) {
+        WXScrollDirection newScrollDirection = attributes[@"scrollDirection"] ? [WXConvert WXScrollDirection:attributes[@"scrollDirection"]] : WXScrollDirectionVertical;
+        [self _updateScrollDirection:newScrollDirection];
     }
 }
 
@@ -358,7 +360,7 @@ WX_EXPORT_METHOD(@selector(setListData:))
     [_collectionView scrollToItemAtIndexPath:toIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:animated];
 }
 
-#pragma mark - WXComonent Internal Methods
+#pragma mark - WXComponent Internal Methods
 
 - (void)_insertSubcomponent:(WXComponent *)subcomponent atIndex:(NSInteger)index
 {
@@ -442,6 +444,25 @@ WX_EXPORT_METHOD(@selector(setListData:))
     
     NSArray *oldData = [_dataManager data];
     [_updateManager updateWithNewData:newData oldData:oldData completion:completion animation:animation];
+}
+
+- (void)_updateScrollDirection:(WXScrollDirection)newScrollDirection
+{   
+    WXRecycleListLayout *layout = [self recycleListLayout];
+    _collectionView.collectionViewLayout = layout;
+}
+
+- (WXRecycleListLayout *)recycleListLayout
+{
+    WXRecycleListLayout *layout = [WXRecycleListLayout new];
+    layout.delegate = self;
+    // to show cells that original width / height is zero, otherwise cellForItemAtIndexPath will not be called
+    layout.minimumLineSpacing = 0.01;
+    layout.minimumInteritemSpacing = 0.01;
+    if (WXScrollDirectionHorizontal == self.scrollDirection) {
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    }
+    return layout;
 }
 
 #pragma mark - UICollectionViewDataSource
