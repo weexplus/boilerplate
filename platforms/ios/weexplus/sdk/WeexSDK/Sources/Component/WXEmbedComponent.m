@@ -38,7 +38,7 @@
 
 @end
 
-@implementation WXEmbedComponent 
+@implementation WXEmbedComponent
 
 #pragma mark Life Cycle
 
@@ -153,7 +153,7 @@
                 [weakSelf.errorView removeFromSuperview];
                 weakSelf.errorView = nil;
             }
-        
+            
             [weakSelf.embedView removeFromSuperview];
             weakSelf.embedView = view;
             [weakSelf.view addSubview:weakSelf.embedView];
@@ -178,9 +178,22 @@
     };
     
     _embedInstance.renderFinish = ^(UIView *view) {
-         weakSelf.renderFinished = YES;
+        weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
+        //zjr add
+        [weakSelf onRenderFinish];
     };
+}
+
+//zjr add
+-(WXSDKInstance*)getInstance
+{
+    return self.embedInstance;
+}
+//zjr add
+-(void)onRenderFinish
+{
+    
 }
 //zjr add
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{

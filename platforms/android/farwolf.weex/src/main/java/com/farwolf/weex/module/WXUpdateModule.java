@@ -23,10 +23,11 @@ public class WXUpdateModule extends WXModule {
         String appid=param.get("appid")+"";
         String vcurl=param.get("url")+"";
         String theme=param.containsKey("theme")?param.get("theme")+"":null;
-        boolean failtoast=(boolean)param.get("failtoast");
-        boolean showprogress=(boolean)param.get("showprogress");
+        boolean failtoast=param.containsKey("failtoast")?(boolean)param.get("failtoast"):false;
+        boolean showprogress=param.containsKey("showprogress")?(boolean)param.get("showprogress"):false;
 
-         UpdateService updateService= UpdateService_.getInstance_(mWXSDKInstance.getContext());
+
+        UpdateService updateService= UpdateService_.getInstance_(mWXSDKInstance.getContext());
          updateService.init(appid,vcurl,theme);
          updateService.doCheck(failtoast,showprogress);
     }

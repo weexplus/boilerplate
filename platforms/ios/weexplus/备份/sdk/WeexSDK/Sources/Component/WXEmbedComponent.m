@@ -182,6 +182,7 @@
     _embedInstance.renderFinish = ^(UIView *view) {
          weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
+         //zjr add
          [weakSelf onRenderFinish];
     };
 }

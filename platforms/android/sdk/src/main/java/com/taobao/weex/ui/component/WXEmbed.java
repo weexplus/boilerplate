@@ -115,7 +115,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     @Override
     public void onException(NestedContainer container, String errCode, String msg) {
       if (TextUtils.equals(errCode, WXErrorCode.
-			  WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getErrorCode()) && container instanceof WXEmbed) {
+              WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getErrorCode()) && container instanceof WXEmbed) {
         final WXEmbed comp = ((WXEmbed)container);
         final ImageView imageView = new ImageView(comp.getContext());
         imageView.setImageResource(R.drawable.error);
@@ -155,6 +155,10 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     }
   }
 
+  public void onRenderFinish(){
+
+  }
+
   //zjr add
   public WXSDKInstance getChildInstance()
   {
@@ -175,6 +179,8 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
       FrameLayout hostView = mComponent.getHostView();
       hostView.removeAllViews();
       hostView.addView(view);
+      //zjr add
+      mComponent.onRenderFinish();
     }
 
     @Override
@@ -237,7 +243,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
       case Constants.Name.PRIORITY:
         String priority = WXUtils.getString(param,null);
         if (priority != null){
-           setPriority(priority);
+          setPriority(priority);
         }
         return true;
     }
@@ -286,10 +292,10 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
   @WXComponentProp(name = Constants.Name.PRIORITY)
   public void setPriority(String priority) {
-       if(TextUtils.isEmpty(priority)){
-         return;
-       }
-       this.priority = priority;
+    if(TextUtils.isEmpty(priority)){
+      return;
+    }
+    this.priority = priority;
   }
 
   /**
@@ -335,9 +341,9 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
     if(TextUtils.isEmpty(url)){
       mListener.mEventListener.onException(this,
-			  WXErrorCode.WX_DEGRAD_ERR_BUNDLE_CONTENTTYPE_ERROR.getErrorCode(),
+              WXErrorCode.WX_DEGRAD_ERR_BUNDLE_CONTENTTYPE_ERROR.getErrorCode(),
               WXErrorCode.WX_DEGRAD_ERR_BUNDLE_CONTENTTYPE_ERROR.getErrorMsg() + "!!wx embed src url is null"
-	  );
+      );
       return sdkInstance;
     }
 
@@ -514,16 +520,16 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
   private void destoryNestInstance(){
     if(getInstance().hiddenEmbeds != null && getInstance().hiddenEmbeds.contains(this)){
-        getInstance().hiddenEmbeds.remove(this);
+      getInstance().hiddenEmbeds.remove(this);
     }
     if (mNestedInstance != null) {
-       mNestedInstance.destroy();
-       mNestedInstance = null;
+      mNestedInstance.destroy();
+      mNestedInstance = null;
     }
     if(WXEnvironment.isApkDebugable()){
-       WXLogUtils.w("WXEmbed destoryNestInstance priority " + priority + " index " + getDomObject().getAttrs().get("index")
-        + "  " + hiddenTime  + " embeds size " + (getInstance().hiddenEmbeds == null ?  0 : getInstance().hiddenEmbeds.size())
-       + " strategy " + this.strategy);
+      WXLogUtils.w("WXEmbed destoryNestInstance priority " + priority + " index " + getDomObject().getAttrs().get("index")
+              + "  " + hiddenTime  + " embeds size " + (getInstance().hiddenEmbeds == null ?  0 : getInstance().hiddenEmbeds.size())
+              + " strategy " + this.strategy);
     }
   }
 }
