@@ -43,7 +43,7 @@ WX_EXPORT_METHOD_SYNC(@selector(isVoiceOverOn))
     }
     return self;
 }
-- (void)read:(NSDictionary*)param callback:(WXKeepAliveCallback)callback
+- (void)read:(NSDictionary*)param callback:(WXCallback)callback
 {
     if (![param isKindOfClass:[NSDictionary class]]) {
         WXLogError(@"first param must be json type");
@@ -58,7 +58,7 @@ WX_EXPORT_METHOD_SYNC(@selector(isVoiceOverOn))
         NSString * errorDesc = @"you didn't specify any value to read";
         WXLogError(@"%@", errorDesc);
         if (callback) {
-            callback(@{@"success":@false,@"errorDesc": errorDesc}, NO);
+            callback(@{@"success":@false,@"errorDesc": errorDesc});
         }
         return;
     }
@@ -67,7 +67,7 @@ WX_EXPORT_METHOD_SYNC(@selector(isVoiceOverOn))
         NSString * errorDesc = @"please check the voice status";
         WXLogInfo(@"%@",errorDesc);
         if (callback) {
-            callback(@{@"success":@false, @"errorDesc":errorDesc}, NO);
+            callback(@{@"success":@false, @"errorDesc":errorDesc});
         }
         return;
     }
@@ -107,9 +107,9 @@ WX_EXPORT_METHOD_SYNC(@selector(isVoiceOverOn))
         return;
     }
     
-    for (WXKeepAliveCallback callback in callbacks) {
+    for (WXCallback callback in callbacks) {
         callback(@{@"success":@(announcementResult),
-                   @"value":string}, NO);
+                   @"value":string});
     }
 }
 

@@ -21,7 +21,6 @@
 #import "WXHandlerFactory.h"
 #import "WXURLRewriteProtocol.h"
 #import "WXSDKEngine.h"
-#import "WXImgLoaderProtocol.h"
 
 #import <AVFoundation/AVPlayer.h>
 #import <AVKit/AVPlayerViewController.h>
@@ -42,9 +41,6 @@
 @property (nonatomic, strong) UIViewController* playerViewController;
 @property (nonatomic, strong) AVPlayerItem* playerItem;
 @property (nonatomic, strong) WXSDKInstance* weexSDKInstance;
-@property (nonatomic, strong) UIImageView *posterImageView;
-@property (nonatomic, strong) id<WXImageOperationProtocol> imageOperation;
-@property (nonatomic, assign) BOOL playerDidPlayed;
 
 @end
 
@@ -192,24 +188,6 @@
     }
 }
 
-- (void)setPosterURL:(NSURL *)posterURL {
-    if (!posterURL) {
-        return;
-    }
-    
-    [self cancelImage];
-    __weak typeof(self) weakSelf = self;
-    weakSelf.imageOperation = [[self imageLoader] downloadImageWithURL:posterURL.absoluteString imageFrame:self.posterImageView.frame userInfo:nil completed:^(UIImage *image, NSError *error, BOOL finished) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            __strong typeof(self) strongSelf = weakSelf;
-            if (!error) {
-                strongSelf.posterImageView.image = image;
-                strongSelf.posterImageView.hidden = strongSelf.playerDidPlayed;
-            }
-        });
-    }];
-}
-
 - (void)playFinish
 {
     if (_playbackStateChanged)
@@ -225,7 +203,6 @@
 
 - (void)play
 {
-    _posterImageView.hidden = YES;
     if ([self greater8SysVer]) {
         AVPlayerViewController *AVVC = (AVPlayerViewController*)_playerViewController;
 
@@ -247,47 +224,12 @@
     }
 }
 
-- (void)posterTapHandler {
-    if (self.posterClickHandle) {
-        self.posterClickHandle();
-    }
-}
-
-- (UIImageView *)posterImageView {
-    if (!_posterImageView) {
-        _posterImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        _posterImageView.userInteractionEnabled = YES;
-        [_posterImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(posterTapHandler)]];
-        _posterImageView.hidden = YES;
-        [self addSubview:_posterImageView];
-        [self bringSubviewToFront:_posterImageView];
-    }
-    return _posterImageView;
-}
-
-- (id<WXImgLoaderProtocol>)imageLoader
-{
-    static id<WXImgLoaderProtocol> imageLoader;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        imageLoader = [WXHandlerFactory handlerForProtocol:@protocol(WXImgLoaderProtocol)];
-    });
-    return imageLoader;
-}
-
-- (void)cancelImage
-{
-    [_imageOperation cancel];
-    _imageOperation = nil;
-}
-
 @end
 
 @interface WXVideoComponent()
 
 @property (nonatomic, weak) WXVideoView *videoView;
 @property (nonatomic, strong) NSURL *videoURL;
-@property (nonatomic, strong) NSURL *posterURL;
 @property (nonatomic) BOOL autoPlay;
 @property (nonatomic) BOOL playStatus;
 
@@ -310,9 +252,6 @@
         if ([attributes[@"playStatus"] compare:@"pause" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
             _playStatus = false;
         }
-        if (attributes[@"poster"]) {
-            _posterURL = [NSURL URLWithString: attributes[@"poster"]];
-        }
     }
     return self;
 }
@@ -329,7 +268,6 @@
 {
     _videoView = (WXVideoView *)self.view;
     [_videoView setURL:_videoURL];
-    [_videoView setPosterURL:_posterURL];
     if (_playStatus) {
         [_videoView play];
     } else {
@@ -339,9 +277,6 @@
         [_videoView play];
     }
     __weak __typeof__(self) weakSelf = self;
-    _videoView.posterClickHandle = ^{
-        [weakSelf.videoView play];
-    };
     _videoView.playbackStateChanged = ^(WXPlaybackState state) {
         NSString *eventType = nil;
         switch (state) {
@@ -383,10 +318,6 @@
     if ([attributes[@"playStatus"] compare:@"pause" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
         _playStatus = false;
         [_videoView pause];
-    }
-    if (attributes[@"poster"]) {
-        _posterURL = [NSURL URLWithString: attributes[@"poster"]];
-        [_videoView setPosterURL:_posterURL];
     }
 }
 

@@ -32,13 +32,14 @@ extern NSString *const bundleUrlOptionKey;
  **/
 @property (nonatomic, weak) UIViewController *viewController;
 
-//zjr add
-@property (nonatomic, strong) NSMutableDictionary *param;
 /**
  * The Native root container used to bear the view rendered by weex file. 
  * The root view is controlled by WXSDKInstance, so you can only get it, but not change it.
  **/
 @property (nonatomic, strong) UIView *rootView;
+
+
+@property (nonatomic, strong) NSDictionary *param;
 
 /**
  * Component can freeze the rootview frame through the variable isRootViewFrozen
@@ -167,6 +168,13 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
  * @return A block that takes response which the server response,request which send to server,data which the server returned and an error
  */
 @property (nonatomic, copy) void(^onJSDownloadedFinish)(WXResourceResponse *response,WXResourceRequest *request,NSData *data, NSError* error);
+
+/**
+ * The callback triggered when the bundleJS request finished in the renderWithURL. If the callback returns YES, the render process will terminate.
+ * @return A block that takes response which the server response,request which send to server,data which the server returned and an error
+ */
+@property (nonatomic, copy) BOOL (^onRenderTerminateWhenJSDownloadedFinish)(WXResourceResponse *response,WXResourceRequest *request,NSData *data, NSError* error);
+
 
 /**
  *  the frame of current instance.

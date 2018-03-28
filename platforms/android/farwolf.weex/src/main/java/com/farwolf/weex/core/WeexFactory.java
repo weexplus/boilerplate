@@ -261,6 +261,7 @@ public class WeexFactory  extends ServiceBase{
         p.instance.setBundleUrl(url);
         String pageid=new Random().nextLong()+"";
         in.putExtra("url",url);
+        final boolean ispotrait=in.getBooleanExtra("isPortrait",true);
         addCache(url,p);
         p.id=pageid;
         p.instance.param=(JSONObject)in.getSerializableExtra("param");
@@ -271,7 +272,10 @@ public class WeexFactory  extends ServiceBase{
 
 //                ((WeexActivity)context).mask.addView(view);
                 p.v=view;
-                p.instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
+                if(ispotrait)
+                    p.instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
+                else
+                    p.instance.setSize(tool.getScreenHeight(),tool.getScreenWidth());
                 if(!forResult)
                     context.startActivity(in);
                 else

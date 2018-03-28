@@ -26,7 +26,6 @@
 #import "WXAssert.h"
 #import "WXComponent_internal.h"
 #import "WXComponent+PseudoClassManagement.h"
-#import "WXTextInputComponent.h"
 
 @interface WXEditComponent()
 
@@ -62,16 +61,6 @@
 @property (nonatomic, strong) NSString *changeEventString;
 @property (nonatomic, assign) CGSize keyboardSize;
 
-// formatter
-@property (nonatomic, strong) NSString * formatRule;
-@property (nonatomic, strong) NSString * formatReplace;
-@property (nonatomic, strong) NSString * recoverRule;
-@property (nonatomic, strong) NSString * recoverReplace;
-@property (nonatomic, strong) NSDictionary * formaterData;
-
-// disable move rootView up as the keyboard show up.
-@property (nonatomic, assign) BOOL disableMoveViewUp;
-
 @end
 
 @implementation WXEditComponent
@@ -84,7 +73,6 @@ WX_EXPORT_METHOD(@selector(focus))
 WX_EXPORT_METHOD(@selector(blur))
 WX_EXPORT_METHOD(@selector(setSelectionRange:selectionEnd:))
 WX_EXPORT_METHOD(@selector(getSelectionRange:))
-WX_EXPORT_METHOD(@selector(setTextFormatter:))
 
 - (instancetype)initWithRef:(NSString *)ref type:(NSString *)type styles:(NSDictionary *)styles attributes:(NSDictionary *)attributes events:(NSArray *)events weexInstance:(WXSDKInstance *)weexInstance
 {
@@ -120,9 +108,6 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         
         if (attributes[@"hideDoneButton"]) {
             _hideDoneButton = [attributes[@"hideDoneButton"] boolValue];
-        }
-        if (attributes[@"disableMoveViewUp"]) {
-            _disableMoveViewUp = [WXConvert BOOL:attributes[@"disableMoveViewUp"]];
         }
         
         // handle styles
@@ -185,8 +170,7 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
         toolbar.items = [NSArray arrayWithObjects:space, barButton, nil];
         
-        //zjr add
-        //    self.inputAccessoryView = toolbar;
+//        self.inputAccessoryView = toolbar;
     }
 
     [self handlePseudoClass];
@@ -233,42 +217,14 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
     [self setEditSelectionRange:selectionStart selectionEnd:selectionEnd];
 }
 
--(void)getSelectionRange:(WXKeepAliveCallback)callback
+-(void)getSelectionRange:(WXCallback)callback
 {
     NSDictionary *res = [self getEditSelectionRange];
     if(callback) {
-        callback(res,NO);
+        callback(res);
     }
 }
 
-- (void)setTextFormatter:(NSDictionary*)formater
-{
-    _formaterData = formater;
-    if (formater[@"formatRule"]) {;
-        _formatRule = [self _preProcessInputTextFormatter:[WXConvert NSString:formater[@"formatRule"]]];
-    }
-    if (formater[@"formatReplace"]) {
-        _formatReplace = [self _preProcessInputTextFormatter:[WXConvert NSString:formater[@"formatReplace"]]];
-    }
-    if (formater[@"recoverRule"]) {
-        _recoverRule = [self _preProcessInputTextFormatter:[WXConvert NSString:formater[@"recoverRule"]]];
-    }
-    if (formater[@"recoverReplace"]) {
-        _recoverReplace = [self _preProcessInputTextFormatter:[WXConvert NSString:formater[@"recoverReplace"]]];
-    }
-}
-
-- (NSString*)_preProcessInputTextFormatter:(NSString*)formater
-{
-    NSRange start = [formater rangeOfString:@"/"];
-    NSRange end = [formater rangeOfString:@"/g"];
-    if (start.location == NSNotFound || end.location == NSNotFound || end.location < start.location) {
-        return formater;
-    }
-    NSRange subStringRange = NSMakeRange(start.location+1, end.location - start.location-1);
-    
-    return [formater substringWithRange:subStringRange];
-}
 
 #pragma mark - Overwrite Method
 -(NSString *)text
@@ -413,10 +369,6 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
     if (attributes[@"maxlength"]) {
         _maxLength = [NSNumber numberWithInteger:[attributes[@"maxlength"] integerValue]];
     }
-    
-    if (attributes[@"disableMoveViewUp"]) {
-        _disableMoveViewUp = [WXConvert BOOL:attributes[@"disableMoveViewUp"]];
-    }
     if (attributes[@"value"]) {
         _value = [WXConvert NSString:attributes[@"value"]]?:@"";
         if (_maxLength && [_value length] > [_maxLength integerValue]&& [_maxLength integerValue] >= 0) {
@@ -560,14 +512,6 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (!string.length) {
-        ((WXTextInputView*)textField).deleteWords = YES;
-        ((WXTextInputView*)textField).editWords = [textField.text substringWithRange:range];
-    } else {
-        ((WXTextInputView*)textField).deleteWords = FALSE;
-        ((WXTextInputView*)textField).editWords = string;
-    }
-    
     if (_maxLength) {
         NSUInteger oldLength = [textField.text length];
         NSUInteger replacementLength = [string length];
@@ -577,7 +521,6 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         
         return newLength <= [_maxLength integerValue] ;
     }
-    
     return YES;
 }
 
@@ -608,36 +551,8 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
 
 - (void)textFiledEditChanged:(NSNotification *)notifi
 {
-    WXTextInputView *textField = (WXTextInputView *)notifi.object;
-    if (_formaterData && _recoverRule && _recoverReplace && _formatRule && _formatReplace) {
-        UITextRange * textRange = textField.selectedTextRange;
-        NSInteger cursorPosition = [textField offsetFromPosition:textField.beginningOfDocument toPosition:textRange.start];
-        NSMutableString * preText = [[textField.text substringToIndex:cursorPosition] mutableCopy];
-        NSMutableString * lastText = [[textField.text substringFromIndex:cursorPosition] mutableCopy];
-        
-        NSRegularExpression *recoverRule = [NSRegularExpression regularExpressionWithPattern:_recoverRule options:NSRegularExpressionCaseInsensitive error:NULL];
-        [recoverRule replaceMatchesInString:preText options:0 range:NSMakeRange(0, preText.length) withTemplate:_recoverReplace];
-        [recoverRule replaceMatchesInString:lastText options:0 range:NSMakeRange(0, lastText.length) withTemplate:_recoverReplace];
-        NSMutableString * newString = [NSMutableString stringWithFormat:@"%@%@", preText, lastText];
-        NSRegularExpression *formatRule = [NSRegularExpression regularExpressionWithPattern:_formatRule options:NSRegularExpressionCaseInsensitive error:NULL];
-        [formatRule replaceMatchesInString:newString options:0 range:NSMakeRange(0, newString.length) withTemplate:_formatReplace];
-        NSString * oldText = textField.text;
-        NSInteger adjust = 0;
-        
-        if (cursorPosition == textField.text.length) {
-            adjust = newString.length-oldText.length;
-        }
-        if (textField.deleteWords &&[textField.editWords isKindOfClass:[NSString class]] && [_recoverRule isEqualToString:textField.editWords]) {
-            // do nothing
-        } else {
-            textField.text = [newString copy];
-            UITextPosition * newPosition = [textField positionFromPosition:textField.beginningOfDocument offset:cursorPosition+adjust];
-            
-            textField.selectedTextRange = [textField textRangeFromPosition:newPosition toPosition:newPosition];
-        }
-
-    }
     if (_inputEvent) {
+        UITextField *textField = (UITextField *)notifi.object;
         // bind each other , the key must be attrs
         [self fireEvent:@"input" params:@{@"value":[textField text]} domChanges:@{@"attrs":@{@"value":[textField text]}}];
     }
@@ -860,22 +775,19 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
     if(![self.view isFirstResponder]) {
         return;
     }
-    if (!_disableMoveViewUp) {
-        CGRect end = [[[notification userInfo] objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-        _keyboardSize = end.size;
-        UIView * rootView = self.weexInstance.rootView;
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGRect keyboardRect = (CGRect){
-            .origin.x = 0,
-            .origin.y = CGRectGetMaxY(screenRect) - _keyboardSize.height - 54,
-            .size = _keyboardSize
-        };
-        CGRect inputFrame = [self.view.superview convertRect:self.view.frame toView:rootView];
-        if (keyboardRect.origin.y - inputFrame.size.height <= inputFrame.origin.y) {
-            //zjr 修改
-            //[self setViewMovedUp:YES];
-            self.weexInstance.isRootViewFrozen = YES;
-        }
+    CGRect end = [[[notification userInfo] objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    _keyboardSize = end.size;
+    UIView * rootView = self.weexInstance.rootView;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGRect keyboardRect = (CGRect){
+        .origin.x = 0,
+        .origin.y = CGRectGetMaxY(screenRect) - _keyboardSize.height - 54,
+        .size = _keyboardSize
+    };
+    CGRect inputFrame = [self.view.superview convertRect:self.view.frame toView:rootView];
+    if (keyboardRect.origin.y - inputFrame.size.height <= inputFrame.origin.y) {
+//        [self setViewMovedUp:YES];
+        self.weexInstance.isRootViewFrozen = YES;
     }
     
     if (_keyboardEvent) {
@@ -888,12 +800,10 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
     if (![self.view isFirstResponder]) {
         return;
     }
-    if (!_disableMoveViewUp) {
-        UIView * rootView = self.weexInstance.rootView;
-        if (!CGRectEqualToRect(self.weexInstance.frame, rootView.frame)) {
-            [self setViewMovedUp:NO];
-            self.weexInstance.isRootViewFrozen = NO;
-        }
+    UIView * rootView = self.weexInstance.rootView;
+    if (!CGRectEqualToRect(self.weexInstance.frame, rootView.frame)) {
+        [self setViewMovedUp:NO];
+        self.weexInstance.isRootViewFrozen = NO;
     }
     if (_keyboardEvent) {
         [self fireEvent:@"keyboard" params:@{ @"isShow": @NO }];

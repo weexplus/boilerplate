@@ -34,7 +34,7 @@ WX_EXPORT_METHOD(@selector(getString:))
     clipboard.string = (content ? : @"");
 }
 
-- (void)getString:(WXModuleKeepAliveCallback)callback{
+- (void)getString:(WXModuleCallback)callback{
     UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
     NSDictionary *result = [@{} mutableCopy];
     if(clipboard.string)
@@ -47,7 +47,7 @@ WX_EXPORT_METHOD(@selector(getString:))
         [result setValue:@"fail" forKey:@"result"];
     }
     if (callback) {
-        callback(result, NO);
+        callback(result);
     }
 
 }

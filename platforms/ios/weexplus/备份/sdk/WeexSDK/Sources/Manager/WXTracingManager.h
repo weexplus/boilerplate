@@ -153,7 +153,6 @@ typedef enum : NSUInteger {
  *  @param instanceId the instanceId.
  */
 +(void)destroyTraincgTaskWithInstance:(NSString *)instanceId;
-
 //zjr add
 +(BOOL)isTracingEnable;
 //zjr add
