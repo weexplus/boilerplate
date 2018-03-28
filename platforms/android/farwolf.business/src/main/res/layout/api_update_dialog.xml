@@ -15,6 +15,7 @@
         android:layout_gravity="center_horizontal"
         android:text="发现新版本"
         android:layout_marginTop="10dp"
+        android:id="@+id/title"
         android:textSize="15sp"
         android:textColor="#0891f1"
         />
@@ -23,6 +24,7 @@
         android:layout_height="1dp"
         android:background="#0891f1"
         android:layout_marginTop="5dp"
+        android:id="@+id/line"
         ></View>
 
     <LinearLayout

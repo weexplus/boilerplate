@@ -2,6 +2,9 @@ package com.farwolf.update;
 
 import android.app.Notification;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
 import android.view.View;
@@ -47,6 +50,12 @@ public class UpdateDialog extends ViewBase {
     CheckBox ignore;
     @ViewById
     Button cancel;
+    @ViewById
+    TextView title;
+    @ViewById
+    View line;
+    @ViewById
+    Button ok;
 
     public UpdateDialog(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -67,9 +76,22 @@ public class UpdateDialog extends ViewBase {
     }
 
 
-    public void init(Version v)
+    public void init(Version v,String theme)
     {
-      this.data=v;
+
+        if(theme==null)
+        {
+            theme="#0891f1";
+        }
+        title.setTextColor(Color.parseColor(theme));
+        line.setBackgroundColor(Color.parseColor(theme));
+        StateListDrawable stateListDrawable=new StateListDrawable();
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, new ColorDrawable(Color.parseColor(theme)));// 按下显示的图片
+        stateListDrawable.addState(new int[]{}, new ColorDrawable(Color.parseColor(theme)));// 抬起显示的图片
+        ok.setBackground(stateListDrawable);
+
+
+        this.data=v;
         this.desc.setText(v.desc);
         this.version_name.setText("最新版本:"+v.versionName);
         this.size.setText("版本大小:"+v.size);

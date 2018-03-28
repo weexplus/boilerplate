@@ -45,10 +45,13 @@ public class UpdateService {
 
     String vcurl;
 
-    public void init(String appid,String vcurl)
+    String theme;
+
+    public void init(String appid,String vcurl,String theme)
     {
         this.appid=appid;
         this.vcurl=vcurl;
+        this.theme=theme;
 
     }
 
@@ -119,7 +122,7 @@ public class UpdateService {
                 a.f=f;
                 f.setCanceledOnTouchOutside(false);
                 f.setCancelable(v.level!=2);
-                a.init(v);
+                a.init(v,theme);
                 if(v.level==0)
                 {
                     if(v.versionName!=null&&v.versionName.equals(pref.version().get()))

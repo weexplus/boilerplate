@@ -14,12 +14,12 @@
 @implementation UpdateChecker
 
  
--(void)doCheck:(NSString*)appid vcode:(NSString*)vcode  showprogress:(BOOL)showprogress failtoast:(BOOL)failtoast vc:(UIViewController*)vc success :(void(^)(Version*v))success;
+-(void)doCheck:(NSString*)appid vcode:(NSString*)vcode  showprogress:(BOOL)showprogress failtoast:(BOOL)failtoast vc:(UIViewController*)vc success :(void(^)(Version*v))success theme:(NSString*)theme;
 {
     UpdateJsonReader *j=[[UpdateJsonReader alloc]init];
     j.url=self.url;
     [j addParam:@"appid" value:appid];
-    [j addParam:@"systype" value:@"1"];
+    [j addParam:@"systype" value:@"0"];
     [j addParam:@"vcode" value:vcode];
     
  
@@ -54,6 +54,7 @@
         UpdateDialogControl *cvc=[[UpdateDialogControl alloc]initWithNibName:@"updater" bundle:nil];
         cvc.view.frame=[UIApplication sharedApplication].keyWindow.frame;
         [cvc initBean:v];
+        cvc.themeColor=theme;
         [vc.parentViewController addVc:cvc];
         
         success(v);

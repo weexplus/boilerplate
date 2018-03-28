@@ -49,15 +49,23 @@
 }
 
 - (IBAction)update:(id)sender {
-    
-    
+  
+    NSURL * url = [NSURL URLWithString:_version.downloadUrl];
+     [[UIApplication sharedApplication] openURL:url];
+    [self dismissPop];
 }
 - (IBAction)cancel:(id)sender {
     
+    
+    [self dismissPop];
+    
+    
+}
+
+-(void)dismissPop
+{
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
-    
-    
 }
 
 - (IBAction)checkChange:(id)sender {
