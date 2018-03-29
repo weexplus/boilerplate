@@ -38,7 +38,7 @@
 
 @end
 
-@implementation WXEmbedComponent
+@implementation WXEmbedComponent 
 
 #pragma mark Life Cycle
 
@@ -145,7 +145,8 @@
     
     //zjr add
     [self loadUrl:newURL instance:_embedInstance sourceurl:sourceURL];
-    //    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+//    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+    
     __weak typeof(self) weakSelf = self;
     _embedInstance.onCreate = ^(UIView *view) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -153,12 +154,13 @@
                 [weakSelf.errorView removeFromSuperview];
                 weakSelf.errorView = nil;
             }
-            
+        
             [weakSelf.embedView removeFromSuperview];
             weakSelf.embedView = view;
             [weakSelf.view addSubview:weakSelf.embedView];
             
             weakSelf.createFinished = YES;
+           
         });
     };
     
@@ -178,29 +180,19 @@
     };
     
     _embedInstance.renderFinish = ^(UIView *view) {
-        weakSelf.renderFinished = YES;
+         weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
-        //zjr add
-        [weakSelf onRenderFinish];
+         //zjr add
+         [weakSelf onRenderFinish];
     };
 }
 
-//zjr add
--(WXSDKInstance*)getInstance
-{
-    return self.embedInstance;
-}
-//zjr add
--(void)onRenderFinish
-{
-    
-}
-//zjr add
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{
     
     [instance renderWithURL:[NSURL URLWithString:url] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
     
 }
+
 - (void)_updateState:(WXState)state
 {
     if (_renderFinished && _embedInstance && _embedInstance.state != state) {
@@ -215,7 +207,10 @@
         }
     }
 }
-
+-(WXSDKInstance*)getInstance
+{
+    return self.embedInstance;
+}
 - (void)_frameDidCalculated:(BOOL)isChanged
 {
     [super _frameDidCalculated:isChanged];

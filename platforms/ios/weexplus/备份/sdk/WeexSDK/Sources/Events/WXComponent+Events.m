@@ -310,13 +310,7 @@ if ([removeEventName isEqualToString:@#eventName]) {\
                 [self.view removeGestureRecognizer:_tapGesture];
             }
         }
-        @try {
-            [_tapGesture removeTarget:self action:@selector(onClick:)];
-        }@catch(NSException *exception) {
-            WXLog(@"%@", exception);
-        } @finally {
-            
-        }
+        [_tapGesture removeTarget:self action:@selector(onClick:)];
         _tapGesture = nil;
     }
 }
@@ -386,20 +380,14 @@ if ([removeEventName isEqualToString:@#eventName]) {\
         return;
     }
   
-    @try {
-        for (UISwipeGestureRecognizer *recognizer in _swipeGestures) {
-            recognizer.delegate = nil;
-            if([self isViewLoaded]) {
-                if ([[self.view gestureRecognizers] containsObject:recognizer]) {
-                    [self.view removeGestureRecognizer:recognizer];
-                }
+    for (UISwipeGestureRecognizer *recognizer in _swipeGestures) {
+        recognizer.delegate = nil;
+        if([self isViewLoaded]) {
+            if ([[self.view gestureRecognizers] containsObject:recognizer]) {
+                [self.view removeGestureRecognizer:recognizer];
             }
-            [recognizer removeTarget:self action:@selector(onSwipe:)];
         }
-    }@catch(NSException *exception) {
-        WXLog(@"%@", exception);
-    }@finally {
-        
+        [recognizer removeTarget:self action:@selector(onSwipe:)];
     }
     _swipeGestures = nil;
 }
@@ -457,13 +445,7 @@ if ([removeEventName isEqualToString:@#eventName]) {\
                 [self.view removeGestureRecognizer:_longPressGesture];
             }
         }
-        @try {
-            [_longPressGesture removeTarget:self action:@selector(onLongPress:)];
-        }@catch(NSException * exception) {
-            WXLog(@"%@", exception);
-        }@finally {
-            
-        }
+        [_longPressGesture removeTarget:self action:@selector(onLongPress:)];
         _longPressGesture = nil;
     }
 }
@@ -617,13 +599,7 @@ if ([removeEventName isEqualToString:@#eventName]) {\
         }
         
         _panGesture.delegate = nil;
-        @try {
-            [_panGesture removeTarget:self action:@selector(onPan:)];
-        }@catch(NSException * exception) {
-            WXLog(@"%@", exception);
-        }@finally {
-            
-        }
+        [_panGesture removeTarget:self action:@selector(onPan:)];
         _panGesture = nil;
     }
 }

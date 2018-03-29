@@ -75,6 +75,7 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/TOCropViewController/TOCropViewControllerBundle.bundle"
+  install_resource "../sdk/WeexSDK/Resources/native-bundle-main.js"
   install_resource "../sdk/WeexSDK/Resources/wx_load_error@3x.png"
   install_resource "../farwolf.business/farwolf.business/resources/xib/updater.xib"
   install_resource "../farwolf.weex/farwolf.weex/resources/storyboard/weex.storyboard"
@@ -88,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/TOCropViewController/TOCropViewControllerBundle.bundle"
+  install_resource "../sdk/WeexSDK/Resources/native-bundle-main.js"
   install_resource "../sdk/WeexSDK/Resources/wx_load_error@3x.png"
   install_resource "../farwolf.business/farwolf.business/resources/xib/updater.xib"
   install_resource "../farwolf.weex/farwolf.weex/resources/storyboard/weex.storyboard"

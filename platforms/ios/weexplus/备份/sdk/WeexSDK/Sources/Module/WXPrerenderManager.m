@@ -87,11 +87,11 @@ static NSString *const MSG_PRERENDER_SUCCESS = @"success";
     self.prerenderTasks = nil;
 }
 
-+ (void) addTask:(NSString *)url instanceId:(NSString *)instanceId callback:(WXModuleKeepAliveCallback)callback{
++ (void) addTask:(NSString *)url instanceId:(NSString *)instanceId callback:(WXModuleCallback)callback{
     NSURL *newUrl = [NSURL URLWithString:url];
     if(!newUrl){
         if(callback){
-            callback(@{@"url":url,@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"}, NO);
+            callback(@{@"url":url,@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"});
         }
         return;
     }
@@ -103,12 +103,12 @@ static NSString *const MSG_PRERENDER_SUCCESS = @"success";
     });
 }
 
-+ (void) addGlobalTask:(NSString *) url callback:(WXModuleKeepAliveCallback)callback
++ (void) addGlobalTask:(NSString *) url callback:(WXModuleCallback)callback
 {
     NSURL *newUrl = [NSURL URLWithString:url];
     if(!newUrl){
         if(callback){
-            callback(@{@"url":url,@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"}, NO);
+            callback(@{@"url":url,@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"});
         }
         return;
     }
@@ -136,12 +136,12 @@ static NSString *const MSG_PRERENDER_SUCCESS = @"success";
     return YES;
 }
 
-- (void) prerender:(NSURL *)url instanceId:(NSString *)instanceId isCache:(BOOL)isCache callback:(WXModuleKeepAliveCallback) callback{
+- (void) prerender:(NSURL *)url instanceId:(NSString *)instanceId isCache:(BOOL)isCache callback:(WXModuleCallback) callback{
 
     NSString *str = url.absoluteString;
     if(str.length==0){
         if(callback){
-            callback(@{@"url":[url absoluteString],@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"}, NO);
+            callback(@{@"url":[url absoluteString],@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"});
         }
         return;
     }
@@ -149,7 +149,7 @@ static NSString *const MSG_PRERENDER_SUCCESS = @"success";
     id configCenter = [WXSDKEngine handlerForProtocol:@protocol(WXConfigCenterProtocol)];
     if(![self isSwitchOn]){
         if(callback){
-            callback(@{@"url":[url absoluteString],@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"}, NO);
+            callback(@{@"url":[url absoluteString],@"message":MSG_PRERENDER_INTERNAL_ERROR,@"result":@"error"});
         }
         return;
     }
@@ -197,7 +197,7 @@ static NSString *const MSG_PRERENDER_SUCCESS = @"success";
             [instance renderWithURL:url options:@{@"bundleUrl":url.absoluteString} data:nil];
         });
         if(callback){
-            callback(@{@"url":url.absoluteString,@"message":MSG_PRERENDER_SUCCESS,@"result":@"success"}, NO);
+            callback(@{@"url":url.absoluteString,@"message":MSG_PRERENDER_SUCCESS,@"result":@"success"});
         }
     }
 }
