@@ -66,7 +66,7 @@ def mypod
     
     pod ‘farwolf.weex’, :path => 'farwolf.weex’ 
 
-    #pod  ‘oss’,:path => ‘oss’
+    pod  ‘oss’,:path => ‘oss’
     
     pod ‘WXDevtool’, :path => 'WXDevtool’
 

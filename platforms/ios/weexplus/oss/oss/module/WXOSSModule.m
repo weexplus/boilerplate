@@ -7,37 +7,52 @@
 
 #import "WXOSSModule.h"
 #import <AliyunOSSiOS/OSSService.h>
+#import <WeexSDK/WXSDKInstance.h>
+#import <WeexSDK/WXSDKEngine.h>
+#import "farwolf.h"
 
 @implementation WXOSSModule
 
-WX_EXPORT_METHOD(@selector(upload:param:))
+WX_EXPORT_METHOD(@selector(upload:param:progress:callback:))
 
 
++(void)initWXOSSModule
+{
+    [WXSDKEngine registerModule:@"oss" withClass:[WXOSSModule class]];
+}
 
--(void)upload:(NSURL*)url param:(NSMutableDictionary*)param
+
+-(void)upload:(NSMutableDictionary*)params progress:(WXModuleKeepAliveCallback)progress callback:(WXModuleKeepAliveCallback)callback
 {
     
-    NSString *endpoint = [param objectForKey:@"endpoint"];
+    
+    NSMutableDictionary *param=[params objectForKey:@"param"];
+    NSString *url = [params objectForKey:@"url"];
+    NSString *objectkey = [params objectForKey:@"objectkey"];
+    NSString *endpoint = [param objectForKey:@"Endpoint"];
     NSString *AccessKeyId = [param objectForKey:@"AccessKeyId"];
     NSString *AccessKeySecret = [param objectForKey:@"AccessKeySecret"];
     NSString *SecurityToken = [param objectForKey:@"SecurityToken"];
+    NSString *BucketName = [param objectForKey:@"BucketName"];
     
-    
-    // 由阿里云颁发的AccessKeyId/AccessKeySecret构造一个CredentialProvider。
-    // 移动端建议使用STS方式初始化OSSClient。可以通过sample中STS使用说明了解更多(https://github.com/aliyun/aliyun-oss-ios-sdk/tree/master/DemoByOC)
     id<OSSCredentialProvider> credential = [[OSSStsTokenCredentialProvider alloc] initWithAccessKeyId:AccessKeyId secretKeyId:AccessKeySecret securityToken:SecurityToken];
-   OSSClient *client = [[OSSClient alloc] initWithEndpoint:endpoint credentialProvider:credential];
+    OSSClient *client = [[OSSClient alloc] initWithEndpoint:endpoint credentialProvider:credential];
     
     OSSPutObjectRequest * put = [OSSPutObjectRequest new];
     // 必填字段
-    put.bucketName = @"<bucketName>";
-    put.objectKey = @"<objectKey>";
-    put.uploadingFileURL =url;
+    put.bucketName = BucketName;
+    put.objectKey =objectkey;
+    put.uploadingFileURL =[NSURL URLWithString:url];
+    
+    
+    
     // put.uploadingData = <NSData *>; // 直接上传NSData
     // 可选字段，可不设置
     put.uploadProgress = ^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
         // 当前上传段长度、当前已经上传总长度、一共需要上传的总长度
         NSLog(@"%lld, %lld, %lld", bytesSent, totalByteSent, totalBytesExpectedToSend);
+        
+        progress(@{@"send":@(totalByteSent),@"total":@(totalBytesExpectedToSend)},true);
     };
     // 以下可选字段的含义参考： https://docs.aliyun.com/#/pub/oss/api-reference/object&PutObject
     // put.contentType = @"";
@@ -48,12 +63,16 @@ WX_EXPORT_METHOD(@selector(upload:param:))
     OSSTask * putTask = [client putObject:put];
     [putTask continueWithBlock:^id(OSSTask *task) {
         if (!task.error) {
-            NSLog(@"upload object success!");
+            
+            callback(@{@"err":@0},true);
+            
         } else {
             NSLog(@"upload object failed, error: %@" , task.error);
+            callback(@{@"err":@1},true);
         }
         return nil;
     }];
 }
 
 @end
+

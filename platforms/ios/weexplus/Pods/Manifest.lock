@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AliyunOSSiOS (2.9.2)
   - BindingX (1.0.1):
     - WeexPluginLoader
     - WeexSDK
@@ -60,6 +61,11 @@ PODS:
     - SDWebImage (~> 3.8)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
+  - oss (0.0.1):
+    - AliyunOSSiOS
+    - farwolf
+    - farwolf.weex
+    - WeexSDK
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
   - RHAddressBook (1.1.1)
@@ -97,6 +103,7 @@ DEPENDENCIES:
   - LPPhotoViewer (~> 0.0.7)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
+  - oss (from `oss`)
   - PNChart (~> 0.8.8)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.8)
@@ -117,6 +124,8 @@ EXTERNAL SOURCES:
     :path: farwolf.business
   farwolf.weex:
     :path: farwolf.weex
+  oss:
+    :path: oss
   WeexSDK:
     :path: sdk
   WXDevtool:
@@ -124,6 +133,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AliyunOSSiOS: 0396d0483f7c83edc34e748b0ae17ffa0d7adc8d
   BindingX: 82936549871ff4c936abcab62f8fecc84acfaa52
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
@@ -137,6 +147,7 @@ SPEC CHECKSUMS:
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  oss: ceaccfa83827ed221fc413193fb8e584428c4313
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   RHAddressBook: 870e9e0b34cb917b9c4c600fc3b7d5b530b23b13
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
@@ -154,6 +165,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
 
-PODFILE CHECKSUM: bd7ed4125ea42b2a11c67fb4599f196ad8f309b7
+PODFILE CHECKSUM: 01e03583c0d1f720733d7b0d23173c35b4cf1583
 
 COCOAPODS: 1.1.1

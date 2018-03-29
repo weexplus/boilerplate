@@ -10,5 +10,5 @@
 #import <WeexSDK/WXModuleProtocol.h>
 #import "farwolf.h"
 @interface WXOSSModule : NSObject<WXModuleProtocol>
-
++(void)initWXOSSModule;
 @end

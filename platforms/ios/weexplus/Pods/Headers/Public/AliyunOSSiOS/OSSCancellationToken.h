@@ -1,0 +1,1 @@
+../../../AliyunOSSiOS/AliyunOSSSDK/OSSTask/OSSCancellationToken.h
