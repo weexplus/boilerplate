@@ -12,16 +12,16 @@
 @synthesize weexInstance;
 
 WX_EXPORT_METHOD(@selector(show))
-WX_EXPORT_METHOD(@selector(showFull:))
+WX_EXPORT_METHOD(@selector(showFull:cancel:))
 WX_EXPORT_METHOD(@selector(dismiss))
 
 
 
 -(void)show
 {
-    [self showFull:@"加载中..."];
+    [self showFull:@"加载中..." cancel:true];
 }
--(void)showFull:(NSString*)txt
+-(void)showFull:(NSString*)txt cancel:(BOOL)cancel
 {
     if(_p==nil)
         _p=[[LockScreenProgress alloc]initWith:self.weexInstance.viewController.view];
@@ -32,7 +32,8 @@ WX_EXPORT_METHOD(@selector(dismiss))
 -(void)dismiss
 {
     [_p hide];
-   
+    
 }
 
 @end
+

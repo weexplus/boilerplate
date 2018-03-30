@@ -30,10 +30,10 @@ import android.widget.ImageView;
 import com.taobao.weappplus_sdk.R;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXEnvironment;
-import com.taobao.weex.WXRenderErrorCode;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.Component;
 import com.taobao.weex.common.Constants;
+import com.taobao.weex.common.WXErrorCode;
 import com.taobao.weex.common.WXPerformance;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.dom.WXDomObject;
@@ -114,8 +114,8 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
   public static class ClickToReloadListener implements OnNestedInstanceEventListener {
     @Override
     public void onException(NestedContainer container, String errCode, String msg) {
-      if (TextUtils.equals(errCode, WXRenderErrorCode.DegradPassivityCode.
-			  WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getDegradErrorCode()) && container instanceof WXEmbed) {
+      if (TextUtils.equals(errCode, WXErrorCode.
+              WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getErrorCode()) && container instanceof WXEmbed) {
         final WXEmbed comp = ((WXEmbed)container);
         final ImageView imageView = new ImageView(comp.getContext());
         imageView.setImageResource(R.drawable.error);
@@ -155,15 +155,14 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     }
   }
 
-
   public void onRenderFinish(){
 
   }
 
-
+  //zjr add
   public WXSDKInstance getChildInstance()
   {
-      return mNestedInstance;
+    return mNestedInstance;
   }
 
   static class EmbedRenderListener implements IWXRenderListener {
@@ -180,6 +179,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
       FrameLayout hostView = mComponent.getHostView();
       hostView.removeAllViews();
       hostView.addView(view);
+      //zjr add
       mComponent.onRenderFinish();
     }
 
@@ -243,7 +243,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
       case Constants.Name.PRIORITY:
         String priority = WXUtils.getString(param,null);
         if (priority != null){
-           setPriority(priority);
+          setPriority(priority);
         }
         return true;
     }
@@ -292,10 +292,10 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
   @WXComponentProp(name = Constants.Name.PRIORITY)
   public void setPriority(String priority) {
-       if(TextUtils.isEmpty(priority)){
-         return;
-       }
-       this.priority = priority;
+    if(TextUtils.isEmpty(priority)){
+      return;
+    }
+    this.priority = priority;
   }
 
   /**
@@ -341,9 +341,9 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
     if(TextUtils.isEmpty(url)){
       mListener.mEventListener.onException(this,
-			  WXRenderErrorCode.DegradPassivityCode.WX_DEGRAD_ERR_BUNDLE_CONTENTTYPE_ERROR.getDegradErrorCode(),
-			  WXRenderErrorCode.DegradPassivityCode.WX_DEGRAD_ERR_BUNDLE_CONTENTTYPE_ERROR.getDegradErrorMsg() + "!!wx embed src url is null"
-	  );
+              WXErrorCode.WX_DEGRAD_ERR_BUNDLE_CONTENTTYPE_ERROR.getErrorCode(),
+              WXErrorCode.WX_DEGRAD_ERR_BUNDLE_CONTENTTYPE_ERROR.getErrorMsg() + "!!wx embed src url is null"
+      );
       return sdkInstance;
     }
 
@@ -371,13 +371,12 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
     }
   }
-
   @Override
   public void setVisibility(String visibility) {
     super.setVisibility(visibility);
     boolean visible = TextUtils.equals(visibility, Constants.Value.VISIBLE);
     if(mIsVisible != visible){
-      
+
       if (!TextUtils.isEmpty(src) && visible) {
         if (mNestedInstance == null) {
           loadContent();
@@ -521,16 +520,16 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
   private void destoryNestInstance(){
     if(getInstance().hiddenEmbeds != null && getInstance().hiddenEmbeds.contains(this)){
-        getInstance().hiddenEmbeds.remove(this);
+      getInstance().hiddenEmbeds.remove(this);
     }
     if (mNestedInstance != null) {
-       mNestedInstance.destroy();
-       mNestedInstance = null;
+      mNestedInstance.destroy();
+      mNestedInstance = null;
     }
     if(WXEnvironment.isApkDebugable()){
-       WXLogUtils.w("WXEmbed destoryNestInstance priority " + priority + " index " + getDomObject().getAttrs().get("index")
-        + "  " + hiddenTime  + " embeds size " + (getInstance().hiddenEmbeds == null ?  0 : getInstance().hiddenEmbeds.size())
-       + " strategy " + this.strategy);
+      WXLogUtils.w("WXEmbed destoryNestInstance priority " + priority + " index " + getDomObject().getAttrs().get("index")
+              + "  " + hiddenTime  + " embeds size " + (getInstance().hiddenEmbeds == null ?  0 : getInstance().hiddenEmbeds.size())
+              + " strategy " + this.strategy);
     }
   }
 }

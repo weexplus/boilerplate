@@ -45,6 +45,11 @@ public class Config {
         return config(c).optBoolean("debug");
     }
 
+    public static boolean showError(Context c)
+    {
+        return config(c).optBoolean("showerror");
+    }
+
 
     public static boolean isPortrait(Context c)
     {

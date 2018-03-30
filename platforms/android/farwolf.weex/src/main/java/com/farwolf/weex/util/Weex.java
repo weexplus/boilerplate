@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
+import com.farwolf.weex.adapter.ExceptionAdapter;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
 import com.farwolf.weex.adapter.display.DefaultWebSocketAdapterFactory;
 import com.farwolf.weex.bean.Config;
@@ -153,6 +154,7 @@ public class Weex extends ServiceBase{
         WXSDKEngine.initialize(application,
                 new InitConfig.Builder()
                         .setImgAdapter(new PicassoImageAdapter())
+                        .setJSExceptionAdapter(new ExceptionAdapter())
                         .setWebSocketAdapterFactory(new DefaultWebSocketAdapterFactory())
                         .build());
         try {

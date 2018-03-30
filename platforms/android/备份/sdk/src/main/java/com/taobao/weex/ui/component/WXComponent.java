@@ -66,6 +66,7 @@ import com.taobao.weex.bridge.EventResult;
 import com.taobao.weex.bridge.Invoker;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.common.IWXObject;
+import com.taobao.weex.common.WXPerformance;
 import com.taobao.weex.common.WXRuntimeException;
 import com.taobao.weex.dom.ImmutableDomObject;
 import com.taobao.weex.dom.WXDomHandler;
@@ -130,6 +131,7 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
 
   private volatile WXVContainer mParent;
   private volatile ImmutableDomObject mDomObj;
+  //zjr add
   public WXSDKInstance mInstance;
   private Context mContext;
 
@@ -246,7 +248,7 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
     void onHostViewClick();
   }
 
-  interface OnFocusChangeListener{
+  public interface OnFocusChangeListener{
     void onFocusChange(boolean hasFocus);
   }
 
@@ -535,6 +537,10 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
       return;
     }
 
+    if (realHeight >= WXPerformance.VIEW_LIMIT_HEIGHT && realWidth>=WXPerformance.VIEW_LIMIT_WIDTH){
+      mInstance.getWXPerformance().cellExceedNum++;
+    }
+
     mAbsoluteY = (int) (nullParent?0:mParent.getAbsoluteY() + mDomObj.getLayoutY());
     mAbsoluteX = (int) (nullParent?0:mParent.getAbsoluteX() + mDomObj.getLayoutX());
 
@@ -553,13 +559,14 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
 
   private void setComponentLayoutParams(int realWidth, int realHeight, int realLeft, int realTop,
       int realRight, int realBottom, Point rawOffset) {
-    FlatGUIContext UIImp = getInstance().getFlatUIContext();
-    //zjr
-    if(UIImp==null)
+    if(getInstance() == null || getInstance().isDestroy()){
       return;
+    }
+
+    FlatGUIContext UIImp = getInstance().getFlatUIContext();
     WidgetContainer ancestor;
     Widget widget;
-    if ((ancestor = UIImp.getFlatComponentAncestor(this)) != null) {
+    if (UIImp != null && (ancestor = UIImp.getFlatComponentAncestor(this)) != null) {
       if (this instanceof FlatComponent && !((FlatComponent) this).promoteToView(true)) {
         widget = ((FlatComponent) this).getOrCreateFlatWidget();
       } else {
@@ -1164,7 +1171,7 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
         }
       }
     }
-    if(Constants.Event.SHOULD_STOP_PROPAGATION.equals(type)){
+    if(Constants.Event.STOP_PROPAGATION.equals(type)){
       return  true;
     }
     return false;

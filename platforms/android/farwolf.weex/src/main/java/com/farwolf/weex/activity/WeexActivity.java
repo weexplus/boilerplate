@@ -44,6 +44,7 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
+import com.taobao.weex.event.ErrorEvent;
 import com.taobao.weex.utils.WXUtils;
 import com.ypy.eventbus.EventBus;
 
@@ -184,7 +185,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         rootContainer.setLayoutParams(lp);
 
 
-            makeHidden();
+        makeHidden();
 
     }
 
@@ -232,6 +233,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
 
 
+
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -255,6 +258,18 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         if( ActivityManager.getInstance().getCurrentActivity()==this&&"refresh".equals(event.type))
         {
             this.render(this.url,false);
+        }
+
+
+
+    }
+
+    public void onEventMainThread(ErrorEvent event) {
+
+        if( ActivityManager.getInstance().getCurrentActivity()==this)
+        {
+
+            this.showError(event.msg);
         }
 
 
@@ -289,7 +304,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         this.rootContainer.setLayoutParams(lp);
         ViewGroup.LayoutParams lpx= this.rootContainer.getLayoutParams();
         if(mWXSDKInstance!=null)
-        mWXSDKInstance.setSize(lpx.width,lpx.height);
+            mWXSDKInstance.setSize(lpx.width,lpx.height);
     }
 
     public void render(String url,boolean showProgress)
@@ -435,12 +450,13 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     }
     public void showError(String err)
     {
-        if(Config.debug(this))
+        if(Config.showError(this))
         {
             fail_layout.setVisibility(View.VISIBLE);
             this.err.setText(err+"");
             this.err_layout.setVisibility(View.VISIBLE);
         }
+        hideLoading();
 
     }
 
@@ -470,6 +486,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         hideLoading();
 
     }
+
 
     @Override
     public void onException(WXSDKInstance instance, String errCode, String msg) {
@@ -549,7 +566,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             case 222:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
-                   EventBus.getDefault().post(new PermissionEvent(PermissionEvent.CAMREA));
+                    EventBus.getDefault().post(new PermissionEvent(PermissionEvent.CAMREA));
                 } else {
                     // Permission Denied
                     Toast.makeText(this, "很遗憾你把相机权限禁用了。请务必开启相机权限享受我们提供的服务吧。", Toast.LENGTH_SHORT)
@@ -623,9 +640,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     public String getSocketPortByUrl(String url)
     {
-          if(url.contains("?"))
-              return null;
-         String q[]= url.split("\\?");
+        if(url.contains("?"))
+            return null;
+        String q[]= url.split("\\?");
         if(q.length!=2)
             return null;
         String p[]=q[1].split("&");

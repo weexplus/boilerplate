@@ -23,6 +23,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.taobao.weex.WXEnvironment;
+import com.taobao.weex.event.ErrorEvent;
+import com.ypy.eventbus.EventBus;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -145,6 +147,7 @@ public class WXLogUtils {
 
 		/** This log method will be invoked from jni code, so try to extract loglevel from message. **/
 		writeConsoleLog("debug", tag + ":" + msg);
+        sendError(tag,msg);
 		if(msg.contains(" | __")){
 		  String[] msgs=msg.split(" | __");
 		  LogLevel level;
@@ -155,6 +158,16 @@ public class WXLogUtils {
 		}
 	  }
 	}
+  }
+
+  public static void sendError(String tag,String msg)
+  {
+
+
+      if(msg.contains("TypeError"))
+      {
+        EventBus.getDefault().post(new ErrorEvent(msg.replace("__ERROR", "")));
+      }
   }
 
   private static LogLevel getLogLevel(String level) {
