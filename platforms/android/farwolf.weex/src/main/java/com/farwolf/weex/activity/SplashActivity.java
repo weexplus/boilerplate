@@ -86,7 +86,7 @@ public class SplashActivity extends WeexActivity {
         List l= Config.preload(this);
         String entry=getEntryUrl();
         l.add(entry);
-        if(Config.debug(this))
+        if(!Config.debug(this))
         {
 
             this.mWXSDKInstance.setBundleUrl(entry);
