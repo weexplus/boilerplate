@@ -65,7 +65,7 @@ public class WXPrefModule extends WXModule {
         SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
         String s=  sharedPreferences.getString(key,null);
         if(s==null)
-            return new JSONObject();
+            return null;
         JSONObject j= JSONObject.parseObject(s);
         return j;
 

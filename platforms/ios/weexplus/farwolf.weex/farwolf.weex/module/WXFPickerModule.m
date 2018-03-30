@@ -32,9 +32,9 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 -(void)dismiss
 {
     [self initPicker];
-
-       [self gone];
-//        [_p dismiss];
+    
+    [self gone];
+    //        [_p dismiss];
 }
 
 
@@ -43,29 +43,30 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 {
     if(_p==nil)
     {
-//        UIWindow *w= [UIApplication sharedApplication].keyWindow;
+        //        UIWindow *w= [UIApplication sharedApplication].keyWindow;
         NSArray *n=  [[NSBundle mainBundle]loadNibNamed:@"Picker" owner:self options:nil];
+        UIViewController *vc=weexInstance.viewController.topViewController;
         _p=  (UIView*)n[0];
-        _p.frame=CGRectMake(0, weexInstance.viewController.screenHeight, weexInstance.viewController.screenWidth, 300.0);
-        _p.vc=weexInstance.viewController;
+        _p.frame=CGRectMake(0, vc.screenHeight, vc.screenWidth, 300.0);
+        _p.vc=vc;
         _layout=  [UIView new];
         _layout.backgroundColor=[@"#000000" toColor:0.3];
         _layout.frame=CGRectMake(0, 0, weexInstance.viewController.screenWidth, weexInstance.viewController.screenHeight);
         [_layout addSubview:_p];
-        [weexInstance.viewController.view addSubview:_layout];
-        [weexInstance.viewController.view bringSubviewToFront:_layout];
+        [vc.view addSubview:_layout];
+        [vc.view bringSubviewToFront:_layout];
         [_p setHidden:false];
         [_layout addClick:@selector(handletapPressGesture:) host:self];
         _p.onDismiss=^(){
             [_layout removeFromSuperview];
         };
- 
+        
     }
 }
 
 -(void)handletapPressGesture:(UITapGestureRecognizer*)sender{
     CGPoint point = [sender locationInView:weexInstance.viewController.view];
-   
+    
     if(point.y<=weexInstance.viewController.screenHeight-300)
     {
         
@@ -73,7 +74,7 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
             _p.frame = CGRectMake(0, weexInstance.viewController.screenHeight, weexInstance.viewController.screenWidth, 300);
             
         } completion:^(BOOL finished) {
-             [_layout removeFromSuperview];
+            [_layout removeFromSuperview];
         }];
     }
     
@@ -111,7 +112,7 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 
 -(void)setTheme:(NSString*)bgcolor btncolor:(NSString*)btncolor
 {
-      [self initPicker];
+    [self initPicker];
     [_p setTheme:bgcolor btncolor:btncolor];
 }
 
@@ -138,16 +139,17 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 
 
 - (void)com {
- 
+    
     [_layout removeFromSuperview];
-    [weexInstance.viewController.view addSubview:_layout];
-    [weexInstance.viewController.view bringSubviewToFront:_layout];
-        
+    UIViewController *vc=weexInstance.viewController.topViewController;
+    [vc.view addSubview:_layout];
+    [vc.view bringSubviewToFront:_layout];
+    
     [UIView animateWithDuration:0.15 animations:^{
         // 设置view弹出来的位置
-        _p.frame = CGRectMake(0, weexInstance.viewController.screenHeight-300, weexInstance.viewController.screenWidth, 300);
+        _p.frame = CGRectMake(0, vc.screenHeight-300,vc.screenWidth, 300);
     }];
- 
+    
 }
 
 
@@ -166,3 +168,4 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 }
 
 @end
+

@@ -55,5 +55,6 @@
 -(BOOL)checkNetRights;
 -(BOOL)checkCameraRights;
 -(BOOL)checkPhotoRights;
+- (UIViewController *)topViewController;
 
 @end

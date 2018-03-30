@@ -62,12 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 394);
+/******/ 	return __webpack_require__(__webpack_require__.s = 403);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -149,215 +149,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 394:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(395)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(396)
-
-/* template */
-var __vue_template__ = __webpack_require__(397)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/root.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-275edda4"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 395:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": 50
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "marginTop": 50,
-    "marginLeft": 50,
-    "marginRight": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 396:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var head = __webpack_require__(6);
-exports.default = {
-  components: { head: head },
-  data: function data() {
-    return {
-      text: 'Hello World.',
-      param: ''
-    };
-  },
-
-  methods: {
-    ok: function ok() {
-
-      this.param = "dsds";
-    },
-    gotonext: function gotonext() {
-      var nav = weex.requireModule("navigator");
-      nav.push('root:demo/demo/nav1.js');
-    }
-  },
-
-  created: function created() {
-
-    var self = this;
-    var globalEvent = weex.requireModule('globalEvent');
-    globalEvent.addEventListener("onPageInit", function (e) {});
-  }
-};
-
-/***/ }),
-
-/***/ 397:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "绝对路径",
-      "append": "tree"
-    }
-  }), _vm._m(0), _vm._m(1), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.gotonext
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "white"
-    }
-  }, [_vm._v("代码跳转")])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      alignItems: "center",
-      marginTop: "50"
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("以dist为根目录计算路径,\"root:\"等于dist,组件中的图片务必使用这个")]), _c('image', {
-    staticStyle: {
-      width: "281",
-      height: "217",
-      marginTop: "20"
-    },
-    attrs: {
-      "src": "root:img/fail.png"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    staticClass: ["btn"],
-    attrs: {
-      "href": "root:demo/demo/nav1.js"
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "white"
-    }
-  }, [_vm._v("跳转路径也可以用")])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 4:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -486,7 +278,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -582,6 +374,214 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
+/***/ 403:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(404)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(405)
+
+/* template */
+var __vue_template__ = __webpack_require__(406)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/root.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-275edda4"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 404:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": 50
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "marginTop": 50,
+    "marginLeft": 50,
+    "marginRight": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 405:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var head = __webpack_require__(6);
+exports.default = {
+  components: { head: head },
+  data: function data() {
+    return {
+      text: 'Hello World.',
+      param: ''
+    };
+  },
+
+  methods: {
+    ok: function ok() {
+
+      this.param = "dsds";
+    },
+    gotonext: function gotonext() {
+      var nav = weex.requireModule("navigator");
+      nav.push('root:demo/demo/nav1.js');
+    }
+  },
+
+  created: function created() {
+
+    var self = this;
+    var globalEvent = weex.requireModule('globalEvent');
+    globalEvent.addEventListener("onPageInit", function (e) {});
+  }
+};
+
+/***/ }),
+
+/***/ 406:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "绝对路径",
+      "append": "tree"
+    }
+  }), _vm._m(0), _vm._m(1), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.gotonext
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v("代码跳转")])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      alignItems: "center",
+      marginTop: "50"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("以dist为根目录计算路径,\"root:\"等于dist,组件中的图片务必使用这个")]), _c('image', {
+    staticStyle: {
+      width: "281",
+      height: "217",
+      marginTop: "20"
+    },
+    attrs: {
+      "src": "root:img/fail.png"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: ["btn"],
+    attrs: {
+      "href": "root:demo/demo/nav1.js"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v("跳转路径也可以用")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -589,16 +589,16 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(1)
 )
-__vue_styles__.push(__webpack_require__(3)
+__vue_styles__.push(__webpack_require__(2)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(4)
+__vue_exports__ = __webpack_require__(3)
 
 /* template */
-var __vue_template__ = __webpack_require__(5)
+var __vue_template__ = __webpack_require__(4)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

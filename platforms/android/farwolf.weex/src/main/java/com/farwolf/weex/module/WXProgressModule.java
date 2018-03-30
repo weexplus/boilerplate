@@ -42,6 +42,7 @@ public class WXProgressModule extends WXModule {
             progress.txt.setText(txt);
             f=new FreeDialog(this.mWXSDKInstance.getContext(),progress);
             f.setCancelable(cancle);
+            f.setCanceledOnTouchOutside(cancle);
             progress.f=f;
 
         }

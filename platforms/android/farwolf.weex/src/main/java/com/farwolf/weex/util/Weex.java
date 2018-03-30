@@ -224,8 +224,8 @@ public class Weex extends ServiceBase{
     public static String loadAsset(String path,Context c)
     {
         String s= WXFileUtils.loadAsset(path, c);
-        if(!s.startsWith("// { \"framework\": \"Vue\" }"))
-            s="// { \"framework\": \"Vue\" }\n"+s;
+        if(!s.startsWith("// { \"framework\": \"Vue\"}"))
+            s="// { \"framework\": \"Vue\"}\n"+s;
         return s;
     }
 

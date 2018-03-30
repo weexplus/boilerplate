@@ -62,100 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 289);
+/******/ 	return __webpack_require__(__webpack_require__.s = 206);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 161:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _type = __webpack_require__(31);
-
-exports.default = {
-  props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
-    width: {
-      type: [Number, String],
-      default: 36
-    },
-    height: {
-      type: [Number, String],
-      default: 36
-    }
-  },
-  data: function data() {
-    return {
-      PART: _type.PART
-    };
-  },
-  computed: {
-    loadingStyle: function loadingStyle() {
-      var height = this.height,
-          width = this.width;
-
-      return {
-        height: height + 'px',
-        width: width + 'px'
-      };
-    }
-  }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-
-/***/ 162:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.show) ? _c('image', {
-    style: _vm.loadingStyle,
-    attrs: {
-      "src": _vm.PART,
-      "resize": "contain",
-      "quality": "original"
-    }
-  }) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 289:
+/***/ 206:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
+/* styles */
+__vue_styles__.push(__webpack_require__(207)
+)
+
 /* script */
-__vue_exports__ = __webpack_require__(161)
+__vue_exports__ = __webpack_require__(208)
 
 /* template */
-var __vue_template__ = __webpack_require__(162)
+var __vue_template__ = __webpack_require__(209)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -167,9 +93,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-part-loading/index.vue"
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/clone.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-087bad06"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -187,22 +114,98 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 31:
+/***/ 207:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "btn": {
+    "width": 500,
+    "height": 100,
+    "backgroundColor": "#FF0000"
+  }
+}
+
+/***/ }),
+
+/***/ 208:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-/**
- * Created by Tw93 on 2016/10/29.
- */
 
-var GIF = exports.GIF = 'https://img.alicdn.com/tfs/TB1aks3PpXXXXcXXFXXXXXXXXXX-150-150.gif';
-var BLACK_GIF = exports.BLACK_GIF = 'https://img.alicdn.com/tfs/TB1Ep_9NVXXXXb8XVXXXXXXXXXX-74-74.gif';
-var PART = exports.PART = 'https://gtms02.alicdn.com/tfs/TB1y4QbSXXXXXbgapXXXXXXXXXX-50-50.gif';
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    components: {},
+    data: {
+        obj: {
+            a: [1, 1, 1, 1]
+        },
+        sd: {}
+
+    },
+    methods: {
+        copy: function copy(obj1, obj2) {
+            var temp = obj2 || {}; //最初的时候给它一个初始值=它自己或者是一个json
+            for (var name in obj1) {
+                if (_typeof(obj1[name]) === "object") {
+                    //先判断一下obj[name]是不是一个对象
+                    temp[name] = obj1[name].constructor === Array ? [] : {}; //我们让要复制的对象的name项=数组或者是json
+
+                    this.copy(obj1[name], temp[name]); //然后来无限调用函数自己 递归思想
+                } else {
+                    temp[name] = obj1[name]; //如果不是对象，直接等于即可，不会发生引用。
+                }
+            }
+            return temp; //然后在把复制好的对象给return出去
+        },
+        clk: function clk() {
+
+            this.sd = this.copy(this.obj, {});
+        }
+    }
+};
+
+/***/ }),
+
+/***/ 209:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      backgroundColor: "yellow"
+    }
+  }, [_c('text', [_vm._v(_vm._s(_vm.obj))]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.clk
+    }
+  }), _c('text', [_vm._v(_vm._s(_vm.sd))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ })
 

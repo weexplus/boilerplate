@@ -62,12 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 350);
+/******/ 	return __webpack_require__(__webpack_require__.s = 359);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -149,219 +149,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 350:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(351)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(352)
-
-/* template */
-var __vue_template__ = __webpack_require__(353)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/navlanscape.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3403bf54"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 351:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": 50
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "marginTop": 50,
-    "marginLeft": 50,
-    "marginRight": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 352:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var head = __webpack_require__(6);
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            text: 'Hello World.',
-            param: '',
-            width: 1334
-        };
-    },
-
-    methods: {
-        back: function back() {
-            var navigator = weex.requireModule('navigator');
-            navigator.dismiss();
-        },
-        getScreenHeight: function getScreenHeight() {
-
-            return 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;
-        }
-    },
-
-    created: function created() {
-
-        var self = this;
-        var globalEvent = weex.requireModule('globalEvent');
-        this.width = this.getScreenHeight();
-        globalEvent.addEventListener("onPageInit", function (e) {
-
-            var navigator = weex.requireModule('navigator');
-            self.param = navigator.param().a;
-            navigator.setPageId('nav1');
-        });
-    }
-};
-
-/***/ }),
-
-/***/ 353:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      backgroundColor: "red"
-    },
-    style: {
-      'width': _vm.width
-    }
-  }, [_c('div', {
-    staticStyle: {
-      width: "750",
-      height: "130",
-      backgroundColor: "#000000"
-    },
-    style: {
-      'width': _vm.width
-    }
-  }, [_c('div', {
-    staticStyle: {
-      width: "100",
-      height: "100"
-    },
-    on: {
-      "click": function($event) {
-        _vm.back()
-      }
-    }
-  }, [_c('text', [_vm._v("返回")])])]), _c('input', {
-    staticStyle: {
-      height: "90"
-    },
-    style: {
-      'width': _vm.width
-    }
-  }), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.back()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "white"
-    }
-  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 4:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -490,7 +278,219 @@ exports.default = {
 
 /***/ }),
 
-/***/ 5:
+/***/ 359:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(360)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(361)
+
+/* template */
+var __vue_template__ = __webpack_require__(362)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/navlanscape.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3403bf54"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 360:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": 50
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "marginTop": 50,
+    "marginLeft": 50,
+    "marginRight": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 361:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var head = __webpack_require__(6);
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            text: 'Hello World.',
+            param: '',
+            width: 1334
+        };
+    },
+
+    methods: {
+        back: function back() {
+            var navigator = weex.requireModule('navigator');
+            navigator.dismiss();
+        },
+        getScreenHeight: function getScreenHeight() {
+
+            return 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;
+        }
+    },
+
+    created: function created() {
+
+        var self = this;
+        var globalEvent = weex.requireModule('globalEvent');
+        this.width = this.getScreenHeight();
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            var navigator = weex.requireModule('navigator');
+            self.param = navigator.param().a;
+            navigator.setPageId('nav1');
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 362:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      backgroundColor: "red"
+    },
+    style: {
+      'width': _vm.width
+    }
+  }, [_c('div', {
+    staticStyle: {
+      width: "750",
+      height: "130",
+      backgroundColor: "#000000"
+    },
+    style: {
+      'width': _vm.width
+    }
+  }, [_c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100"
+    },
+    on: {
+      "click": function($event) {
+        _vm.back()
+      }
+    }
+  }, [_c('text', [_vm._v("返回")])])]), _c('input', {
+    staticStyle: {
+      height: "90"
+    },
+    style: {
+      'width': _vm.width
+    }
+  }), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.back()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -593,16 +593,16 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(1)
 )
-__vue_styles__.push(__webpack_require__(3)
+__vue_styles__.push(__webpack_require__(2)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(4)
+__vue_exports__ = __webpack_require__(3)
 
 /* template */
-var __vue_template__ = __webpack_require__(5)
+var __vue_template__ = __webpack_require__(4)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

@@ -62,12 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 411);
+/******/ 	return __webpack_require__(__webpack_require__.s = 420);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -149,7 +149,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -278,21 +278,117 @@ exports.default = {
 
 /***/ }),
 
-/***/ 411:
+/***/ 4:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["layout"],
+    style: {
+      'background-color': _vm.bgcolor,
+      'height': _vm.height
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row"
+    },
+    style: {
+      'top': _vm.titletop
+    }
+  }, [(_vm.isloading) ? _c('div', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginRight: "10"
+    }
+  }) : _vm._e(), _c('text', {
+    staticStyle: {
+      flex: "1",
+      color: "#ffffff",
+      textAlign: "center",
+      fontSize: "38"
+    },
+    on: {
+      "click": _vm.titleClick
+    }
+  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginLeft: "10",
+      marginTop: "5"
+    },
+    attrs: {
+      "color": "#ffffff",
+      "loadingStyle": "small"
+    }
+  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
+    staticStyle: {
+      width: "200",
+      top: "40",
+      position: "absolute",
+      left: "0"
+    },
+    style: {
+      'height': _vm.height,
+      'top': _vm.top
+    },
+    on: {
+      "click": _vm.backTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "80",
+      height: "80"
+    },
+    attrs: {
+      "src": "root:img/back.png"
+    }
+  })]) : _vm._e(), _c('div', {
+    staticStyle: {
+      width: "200",
+      position: "absolute",
+      right: "0",
+      top: "0",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    style: {
+      'height': _vm.height
+    },
+    on: {
+      "click": _vm.rightclick
+    }
+  }, [_vm._t("right")], 2), _c('div', {
+    staticStyle: {
+      height: "1",
+      backgroundColor: "#111111",
+      position: "absolute",
+      bottom: "0",
+      left: "0",
+      right: "0"
+    }
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 420:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(412)
+__vue_styles__.push(__webpack_require__(421)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(413)
+__vue_exports__ = __webpack_require__(422)
 
 /* template */
-var __vue_template__ = __webpack_require__(414)
+var __vue_template__ = __webpack_require__(423)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -325,7 +421,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 412:
+/***/ 421:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -348,7 +444,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 413:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -455,7 +551,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 414:
+/***/ 423:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -527,102 +623,6 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 5:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["layout"],
-    style: {
-      'background-color': _vm.bgcolor,
-      'height': _vm.height
-    }
-  }, [_c('div', {
-    staticStyle: {
-      flexDirection: "row"
-    },
-    style: {
-      'top': _vm.titletop
-    }
-  }, [(_vm.isloading) ? _c('div', {
-    staticStyle: {
-      height: "40",
-      width: "40",
-      marginRight: "10"
-    }
-  }) : _vm._e(), _c('text', {
-    staticStyle: {
-      flex: "1",
-      color: "#ffffff",
-      textAlign: "center",
-      fontSize: "38"
-    },
-    on: {
-      "click": _vm.titleClick
-    }
-  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
-    staticStyle: {
-      height: "40",
-      width: "40",
-      marginLeft: "10",
-      marginTop: "5"
-    },
-    attrs: {
-      "color": "#ffffff",
-      "loadingStyle": "small"
-    }
-  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
-    staticStyle: {
-      width: "200",
-      top: "40",
-      position: "absolute",
-      left: "0"
-    },
-    style: {
-      'height': _vm.height,
-      'top': _vm.top
-    },
-    on: {
-      "click": _vm.backTo
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "80",
-      height: "80"
-    },
-    attrs: {
-      "src": "root:img/back.png"
-    }
-  })]) : _vm._e(), _c('div', {
-    staticStyle: {
-      width: "200",
-      position: "absolute",
-      right: "0",
-      top: "0",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    style: {
-      'height': _vm.height
-    },
-    on: {
-      "click": _vm.rightclick
-    }
-  }, [_vm._t("right")], 2), _c('div', {
-    staticStyle: {
-      height: "1",
-      backgroundColor: "#111111",
-      position: "absolute",
-      bottom: "0",
-      left: "0",
-      right: "0"
-    }
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -630,16 +630,16 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(1)
 )
-__vue_styles__.push(__webpack_require__(3)
+__vue_styles__.push(__webpack_require__(2)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(4)
+__vue_exports__ = __webpack_require__(3)
 
 /* template */
-var __vue_template__ = __webpack_require__(5)
+var __vue_template__ = __webpack_require__(4)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

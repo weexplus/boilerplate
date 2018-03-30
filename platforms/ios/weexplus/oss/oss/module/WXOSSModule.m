@@ -13,8 +13,7 @@
 
 @implementation WXOSSModule
 
-WX_EXPORT_METHOD(@selector(upload:param:progress:callback:))
-
+WX_EXPORT_METHOD(@selector(upload:progress:callback:))
 
 +(void)initWXOSSModule
 {
@@ -75,4 +74,5 @@ WX_EXPORT_METHOD(@selector(upload:param:progress:callback:))
 }
 
 @end
+
 

@@ -62,12 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 370);
+/******/ 	return __webpack_require__(__webpack_require__.s = 379);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -149,23 +149,152 @@ module.exports = {
 
 /***/ }),
 
-/***/ 370:
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    props: {
+        title: {
+            default: ''
+
+        },
+        back: {
+            default: true
+        },
+        bgcolor: {
+            default: '#222222'
+
+        },
+        isloading: {
+            default: false
+        },
+        disabled: {
+
+            default: false
+        },
+
+        type: {
+            type: String,
+            default: 'text'
+        },
+        font_size: {
+            default: 20
+        },
+        height: {
+            default: 128
+        },
+        top: {
+            default: 40
+        },
+        titletop: {
+            default: 10
+        }
+
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        titleClick: function titleClick() {
+            this.$emit('titleClick');
+        },
+        rightclick: function rightclick() {
+            this.$emit('rightClick');
+        },
+        backTo: function backTo() {
+            var nav = weex.requireModule("navigator");
+            nav.back();
+            this.$emit('backClick');
+        },
+        onclick: function onclick() {
+            if (!this.disabled) this.$emit('onclick');
+        },
+        adjust: function adjust() {
+            if (weex.config.env.platform == 'android') {
+                //                    if(weex.config.env.osVersion=)
+                var p = weex.config.env.osVersion;
+                p = p.replace(/\./g, '');
+                if (p.length < 3) p = p + "0";
+                if (p <= '440') {
+                    this.height = 108;
+                    this.top = 16;
+                    this.titletop = 4;
+                }
+            }
+        }
+    },
+
+    created: function created() {
+
+        this.adjust();
+    },
+    ready: function ready() {}
+    //        watch: {
+    //
+    //
+    //            disabled:{
+    //                immediate: true,
+    //                handler (val) {
+    //
+    //                }
+    //            }
+    //        }
+};
+
+/***/ }),
+
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(371)
+__vue_styles__.push(__webpack_require__(380)
 )
-__vue_styles__.push(__webpack_require__(372)
+__vue_styles__.push(__webpack_require__(381)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(373)
+__vue_exports__ = __webpack_require__(382)
 
 /* template */
-var __vue_template__ = __webpack_require__(374)
+var __vue_template__ = __webpack_require__(383)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -198,7 +327,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 371:
+/***/ 380:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -209,7 +338,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 372:
+/***/ 381:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -276,7 +405,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 373:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -432,7 +561,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 374:
+/***/ 383:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -495,135 +624,6 @@ module.exports.render._withStripped = true
 /***/ }),
 
 /***/ 4:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-exports.default = {
-    props: {
-        title: {
-            default: ''
-
-        },
-        back: {
-            default: true
-        },
-        bgcolor: {
-            default: '#222222'
-
-        },
-        isloading: {
-            default: false
-        },
-        disabled: {
-
-            default: false
-        },
-
-        type: {
-            type: String,
-            default: 'text'
-        },
-        font_size: {
-            default: 20
-        },
-        height: {
-            default: 128
-        },
-        top: {
-            default: 40
-        },
-        titletop: {
-            default: 10
-        }
-
-    },
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        titleClick: function titleClick() {
-            this.$emit('titleClick');
-        },
-        rightclick: function rightclick() {
-            this.$emit('rightClick');
-        },
-        backTo: function backTo() {
-            var nav = weex.requireModule("navigator");
-            nav.back();
-            this.$emit('backClick');
-        },
-        onclick: function onclick() {
-            if (!this.disabled) this.$emit('onclick');
-        },
-        adjust: function adjust() {
-            if (weex.config.env.platform == 'android') {
-                //                    if(weex.config.env.osVersion=)
-                var p = weex.config.env.osVersion;
-                p = p.replace(/\./g, '');
-                if (p.length < 3) p = p + "0";
-                if (p <= '440') {
-                    this.height = 108;
-                    this.top = 16;
-                    this.titletop = 4;
-                }
-            }
-        }
-    },
-
-    created: function created() {
-
-        this.adjust();
-    },
-    ready: function ready() {}
-    //        watch: {
-    //
-    //
-    //            disabled:{
-    //                immediate: true,
-    //                handler (val) {
-    //
-    //                }
-    //            }
-    //        }
-};
-
-/***/ }),
-
-/***/ 5:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -726,16 +726,16 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(1)
 )
-__vue_styles__.push(__webpack_require__(3)
+__vue_styles__.push(__webpack_require__(2)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(4)
+__vue_exports__ = __webpack_require__(3)
 
 /* template */
-var __vue_template__ = __webpack_require__(5)
+var __vue_template__ = __webpack_require__(4)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

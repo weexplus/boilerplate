@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 340);
+/******/ 	return __webpack_require__(__webpack_require__.s = 322);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -131,51 +131,6 @@ module.exports = {
     "backgroundColor:active": "#006ce7"
   }
 }
-
-/***/ }),
-
-/***/ 100:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(53)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(54)
-
-/* template */
-var __vue_template__ = __webpack_require__(55)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/input.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3960f0c8"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
 
 /***/ }),
 
@@ -323,23 +278,23 @@ exports.default = {
 
 /***/ }),
 
-/***/ 340:
+/***/ 322:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(341)
+__vue_styles__.push(__webpack_require__(323)
 )
-__vue_styles__.push(__webpack_require__(342)
+__vue_styles__.push(__webpack_require__(324)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(343)
+__vue_exports__ = __webpack_require__(325)
 
 /* template */
-var __vue_template__ = __webpack_require__(344)
+var __vue_template__ = __webpack_require__(326)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -351,10 +306,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/inputs.vue"
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/font.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-0387f9b5"
+__vue_options__._scopeId = "data-v-0c0d9e1b"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -372,23 +327,18 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 341:
+/***/ 323:
 /***/ (function(module, exports) {
 
 module.exports = {
-  "it": {
-    "width": 700,
-    "height": 100,
-    "marginTop": 10,
-    "borderColor": "#006ce7",
-    "borderWidth": 1,
-    "borderRadius": 10
+  "cl": {
+    "alignItems": "center"
   }
 }
 
 /***/ }),
 
-/***/ 342:
+/***/ 324:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -455,7 +405,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 343:
+/***/ 325:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -490,68 +440,49 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 var head = __webpack_require__(6);
-var cinput = __webpack_require__(100);
 var globalEvent = weex.requireModule('globalEvent');
-globalEvent.addEventListener("onPageInit", function (e) {});
+globalEvent.addEventListener("onPageInit", function (e) {
+    var nav = weex.requireModule('navbar');
+    nav.setTitle('网络请求');
+    var navigator = weex.requireModule('navigator');
+});
 
 exports.default = {
-    components: { head: head, cinput: cinput },
+    components: { head: head },
     data: function data() {
         return {
-            name: "111",
-            age: ""
+            back: ""
         };
     },
 
     methods: {
-        set: function set() {
-            //                this.name=this.name+'ss'
-            this.$refs.inp.val('xx');
-            this.$refs.inp.val('xx1');
-            this.$refs.inp.val('x2');
-            this.name = "xx";
+        read: function read() {
+            var _this = this;
+
+            var r = weex.requireModule("addressBook");
+            r.read(function (res) {
+                _this.back = res;
+            });
         }
     },
-    created: function created() {}
+    created: function created() {
+
+        var font = weex.requireModule("font");
+        font.addFont('erp', 'http://at.alicdn.com/t/font_557063_l3ad49ffyz2utyb9.ttf');
+    }
 };
 
 /***/ }),
 
-/***/ 344:
+/***/ 326:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticStyle: {
       alignItems: "center",
@@ -559,143 +490,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticStyle: {
-      color: "#000000",
-      fontSize: "32"
+      fontFamily: "erp",
+      fontSize: "50"
     }
-  }, [_vm._v(_vm._s(_vm.name))]), _c('input', {
-    ref: "inp",
-    staticClass: ["it"],
-    attrs: {
-      "type": "input",
-      "placeholder": "姓名",
-      "value": (_vm.name)
-    },
-    on: {
-      "input": function($event) {
-        _vm.name = $event.target.attr.value
-      }
-    }
-  }), _c('div', {
+  }, [_vm._v("")]), _c('text', {
     staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "red"
-    },
-    on: {
-      "click": _vm.set
+      fontFamily: "erp",
+      fontSize: "50"
     }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
+  }, [_vm._v("")]), _c('text', {
+    staticStyle: {
+      fontFamily: "erp",
+      fontSize: "50"
     }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
+  }, [_vm._v("")]), _c('text', {
+    staticStyle: {
+      fontFamily: "erp",
+      fontSize: "50"
     }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
+  }, [_vm._v("")]), _c('text', {
+    staticStyle: {
+      fontFamily: "erp",
+      fontSize: "50"
     }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
+  }, [_vm._v("")]), _c('text', {
+    staticStyle: {
+      fontFamily: "erp",
+      fontSize: "50"
     }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  }), _c('input', {
-    staticClass: ["it"],
-    attrs: {
-      "placeholder": "姓名"
-    }
-  })])
-},staticRenderFns: []}
+  }, [_vm._v("")])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -791,189 +615,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       right: "0"
     }
   })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 53:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": "50",
-    "textAlign": "center",
-    "color": "#41B883"
-  }
-}
-
-/***/ }),
-
-/***/ 54:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-exports.default = {
-    props: {
-        placeholder: {
-            default: ''
-
-        },
-        placeholder_color: {
-            default: '#ffffff'
-
-        },
-        color: {
-            default: '#000000'
-
-        },
-        value: {
-            default: ''
-        },
-
-        type: {
-            type: String,
-            default: 'text'
-        },
-        font_size: {
-            default: 20
-        },
-        autofocus: {
-            default: false
-        },
-        return_key_type: {
-            default: 'defalut'
-        }
-
-    },
-    data: function data() {
-        return {
-
-            pulldistance: 180,
-            visiable: true
-
-        };
-    },
-
-    methods: {
-        onchange: function onchange(event) {
-            this.visiable = !event.value == '';
-            //                this.$emit('onchange',event.value);
-            this.value = event.value;
-            //                this.name="xxx"
-        },
-        onfocus: function onfocus() {
-            this.$emit('focus');
-        },
-        focus: function focus() {
-            this.$refs.input.focus();
-        },
-        blur: function blur() {
-            this.$refs.input.blur();
-            this.$emit('blur');
-        },
-        oninput: function oninput(e) {
-
-            //                this.$emit('oninput');
-            this.value = e.value;
-            this.visiable = e.value != '';
-            this.$emit('onchange', e.value);
-        },
-        onreturn: function onreturn(e) {
-            this.$emit('return', e);
-        },
-        onclose: function onclose() {
-            this.value = '';
-            this.visiable = false;
-            this.$emit('onchange', '');
-        }
-    },
-
-    created: function created() {
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {});
-
-        this.visiable = !this.value == '';
-    },
-    ready: function ready() {}
-};
-
-/***/ }),
-
-/***/ 55:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      flexDirection: "row",
-      height: "100",
-      alignItems: "center",
-      backgroundColor: "red"
-    }
-  }, [_c('input', {
-    ref: "input",
-    staticStyle: {
-      flex: "1",
-      paddingLeft: "20",
-      height: "100"
-    },
-    style: {
-      'color': _vm.color,
-      'placeholder-color': _vm.placeholder_color
-    },
-    attrs: {
-      "returnKeyType": _vm.return_key_type,
-      "autofocus": _vm.autofocus,
-      "placeholder": _vm.placeholder,
-      "type": _vm.type,
-      "value": (_vm.value)
-    },
-    on: {
-      "return": _vm.onreturn,
-      "focus": _vm.onfocus,
-      "change": _vm.onchange,
-      "input": [function($event) {
-        _vm.value = $event.target.attr.value
-      }, _vm.oninput]
-    }
-  }), (_vm.visiable) ? _c('div', {
-    staticStyle: {
-      width: "50px",
-      height: "100px",
-      marginRight: "10",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    on: {
-      "click": function($event) {
-        _vm.onclose()
-      }
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "30px",
-      height: "30px"
-    },
-    attrs: {
-      "src": "root:img/delete.png"
-    }
-  })]) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
