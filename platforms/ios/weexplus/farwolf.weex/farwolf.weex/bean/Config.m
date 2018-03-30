@@ -41,6 +41,12 @@
   
    return [d[@"debug"] boolValue];
 }
++(BOOL)showError
+{
+    NSMutableDictionary *d=  [Weex conifg];
+    
+    return [d[@"showerror"] boolValue];
+}
 +(BOOL)isPortrait
 {
     NSMutableDictionary *d=  [Weex conifg];

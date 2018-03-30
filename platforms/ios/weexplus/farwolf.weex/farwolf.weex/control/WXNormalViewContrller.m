@@ -204,7 +204,7 @@
 BOOL isshowErr;
 -(void)onWeexError:(NSNotification*)n
 {
-    if([Config isDebug])
+    if([Config showError])
     {
         [self showError:n.userInfo[@"msg"]] ;
     }
