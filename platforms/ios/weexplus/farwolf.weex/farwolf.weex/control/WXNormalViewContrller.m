@@ -400,12 +400,26 @@ BOOL isshowErr;
     
     NSString *newURL = nil;
     
-    if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
-        newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
-    } else {
-        newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
+    
+
+    
+    NSURL *url=nil;
+    if([sourceURL.absoluteString startWith:@"http"])
+    {
+            if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
+                newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
+            } else {
+                newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
+            }
+        url=[NSURL URLWithString:newURL];
+        
     }
-    [_instance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
+    else
+    {
+        url= [[NSBundle mainBundle] URLForResource:[sourceURL.absoluteString replace:@".js" withString:@""]  withExtension:@"js"];
+    }
+    
+    [_instance renderWithURL:url options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
     
     __weak typeof(self) weakSelf = self;
     _instance.onCreate = ^(UIView *view) {
@@ -606,8 +620,17 @@ BOOL isshowErr;
     [self.view bringSubviewToFront:self.set];
       [self.view bringSubviewToFront:self.refresh];
     [self regist:@"weexError" method:@selector(onWeexError:)];
+    [self regist:@"loaddefault" method:@selector(loaddefault)];
     [self addFailLayout];
+    
      
+}
+
+-(void)loaddefault
+{
+    self.sourceURL= [NSURL URLWithString:[Config entry]];
+    [self refreshWeex];
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

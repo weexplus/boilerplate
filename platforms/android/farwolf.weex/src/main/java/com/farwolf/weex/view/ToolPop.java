@@ -17,6 +17,7 @@ import com.farwolf.weex.R;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.event.PermissionEvent;
+import com.farwolf.weex.event.RefreshEvent;
 import com.farwolf.weex.pref.WeexPref_;
 import com.farwolf.weex.util.CameraPermission;
 import com.farwolf.weex.util.HotRefreshManager;
@@ -30,6 +31,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+
 
 /**
  * Created by zhengjiangrong on 2017/5/8.
@@ -58,6 +60,8 @@ public class ToolPop extends ViewBase{
 
     @ViewById
     Button clearcache;
+    @ViewById
+    Button loaddefault;
 
     public ToolPop(Context context) {
         super(context);
@@ -242,5 +246,16 @@ public class ToolPop extends ViewBase{
     public void clearcacheClicked() {
 
 //        Picasso.with(imageView.getContext()).load(imageUrl).networkPolicy(NetworkPolicy‌​.NO_CACHE).into(imageView)
+    }
+
+    @Click
+    public void loaddefaultClicked() {
+
+//        pref.url().put("").;
+        ((WeexActivity)getActivity()).url=Config.entry(getActivity());
+        pref.edit().url().put("").apply();
+        EventBus.getDefault().post(new RefreshEvent("refresh"));
+        f.dismiss();
+
     }
 }

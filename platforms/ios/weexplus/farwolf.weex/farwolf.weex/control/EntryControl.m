@@ -45,9 +45,13 @@
         make.top.equalTo(self.view);
         make.bottom.equalTo(self.view);
     }];
+    
+    
 
     
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -58,13 +62,7 @@
 
 -(void)gotoMain
 {
-//    if([self.url startWith:@"app"])
-//    {
-//       NSURL *nl=  [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
-//        [Weex setBaseUrl:nl.absoluteString];
-//    }
-//    else
-//     [Weex setBaseUrl:self.url];
+ 
     BOOL isPortrait=[Config isPortrait];
     
     NSURL *url=[NSURL URLWithString:self.url];

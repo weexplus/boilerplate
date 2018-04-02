@@ -147,6 +147,7 @@ public class WXLogUtils {
 
 		/** This log method will be invoked from jni code, so try to extract loglevel from message. **/
 		writeConsoleLog("debug", tag + ":" + msg);
+        //zjr add
         sendError(tag,msg);
 		if(msg.contains(" | __")){
 		  String[] msgs=msg.split(" | __");
@@ -160,6 +161,7 @@ public class WXLogUtils {
 	}
   }
 
+  //zjr add
   public static void sendError(String tag,String msg)
   {
 

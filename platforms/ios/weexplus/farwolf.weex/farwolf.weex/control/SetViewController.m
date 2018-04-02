@@ -144,64 +144,44 @@
          NSString *ip=[Weex getDebugIp];
          [Weex startDebug:ip port:@"8088"];
           [self dismissViewControllerAnimated:true completion:nil];
-//         [self closeClick:nil];
-//         UINavigationController  *nav=[self present:_QRControl anim:true];
-//         QRControl *vc=nav.childViewControllers[0];
-//         [nav.navigationBar setHidden:false];
-//         vc.scanSuccess=^(NSString* s){
-//
-//
-//
-//             [nav dismissViewControllerAnimated:true completion:nil];
-//             [self dismissViewControllerAnimated:true completion:nil];
-//             NSArray *n= [s split:@"="];
-//             NSString *url=n[1];
-//             [WXDevTool launchDevToolDebugWithUrl:url];
-//         };
+ 
          
      }
     else
     {
         [WXDevTool setDebug:false];
         [WXDebugger  setEnabled:false];
-//        [WXDebugger setEnabled:false];
         [[WXDebugger defaultInstance] disconnect ];
         [WXSDKEngine restart];
-//
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(200 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
             [self notify:@"RefreshInstance" value:nil];
         });
-     
-//  [[NSNotificationCenter defaultCenter] postNotificationName:kWXNetworkObserverEnabledStateChangedNotification object:self];
-//   [self notify:@"RefreshInstance" value:nil];
-//                NSString *url=[[[[[@"ws://" add:@"127"]add:@":"]add:@"98"]add:@"/debugProxy/native/"] add:@""];
-//        [WXDevTool launchDevToolDebugWithUrl:url];
         [[Weex getDebugScocket] close];
-         
-//        [WXDevTool launchDevToolDebugWithUrl:<#(NSString *)#>]
         [WXDevTool setDebug:NO];
             [self dismissViewControllerAnimated:true completion:nil];
     }
 
     
 
-//        [s save:@"url"];
-//        NSMutableDictionary *dic=[NSMutableDictionary new];
-//        [dic setValue:s forKey:@"url"];
-//        NSString *socketport=[self getSocketPort:s];
-//        if(socketport!=nil)
-//        {
-//            [socketport save:@"socketport"];
-//        }
-//        [self notifyDict:@"qrrefreshpage" value:dic];
-//        [self closeClick:nil];
-//
-//        [RefreshManager reload];
+ 
         
         
  
     
 }
+
+- (IBAction)loadDefault:(id)sender {
+    
+     [self dismiss:true];
+    [@"" save:@"url"];
+    [self notify:@"loaddefault" value:nil];
+ 
+    
+}
+
+
+
+
 - (IBAction)closeClick:(id)sender {
     
 //    [self removeFromParentViewController];
