@@ -1,9 +1,10 @@
 {
   "schema":"",
-  "debug":true,
+  "debug":false,
+  "showerror":true,
   "isPortrait":true,
   "debugIp":"127.0.0.1",
-  "entry":"app/clone.js",
+  "entry":"app/index.js",
   "preload":[],
   "splash":"splash1",
   "static":

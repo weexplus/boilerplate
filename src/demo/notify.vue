@@ -6,7 +6,7 @@
             <head title="无线通知"   append="tree">
 
             </head>
-            <text style="align-items:center;margin-left: 50;margin-top: 30;color: #ffffff">{{data}}</text>
+            <text style="align-items:center;margin-left: 50;margin-top: 30;color: #000000">{{data}}</text>
             <div  class="cl" >
                 <div   class="btn"  @click="send()"><text  style="color:#ffffff">发送</text></div>
 
@@ -62,8 +62,8 @@
             var globalEvent = weex.requireModule('globalEvent') ;
             globalEvent.addEventListener("onPageInit", function (e) {
                 const nav = weex.requireModule('navbar');
-                nav.setTitle('通知');
-                nav.setBack(true);
+//                nav.setTitle('通知');
+//                nav.setBack(true);
 
                 const notify = weex.requireModule('notify');
                 notify.regist("key",function (res) {

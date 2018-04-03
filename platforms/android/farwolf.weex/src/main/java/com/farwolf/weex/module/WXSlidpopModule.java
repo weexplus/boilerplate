@@ -16,17 +16,17 @@ import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.core.WeexFactory_;
-import com.farwolf.weex.event.Event;
 import com.farwolf.weex.event.PopEvent;
 import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXPageView;
 import com.farwolf.weex.view.WXPageView_;
 import com.taobao.weex.annotation.JSMethod;
-import com.ypy.eventbus.EventBus;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
-
-import static com.farwolf.weex.R.id.close;
 
 /**
  * Created by zhengjiangrong on 2017/12/8.
@@ -90,6 +90,7 @@ public class WXSlidpopModule  extends WXModuleBase {
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(PopEvent event) {
 
         if("slidpop".equals(event.type))

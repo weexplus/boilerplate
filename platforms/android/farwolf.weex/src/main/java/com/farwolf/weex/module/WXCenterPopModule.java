@@ -23,7 +23,10 @@ import com.farwolf.weex.view.WXPageView;
 import com.farwolf.weex.view.WXPageView_;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
-import com.ypy.eventbus.EventBus;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,6 +81,7 @@ public class WXCenterPopModule extends WXModuleBase {
 
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(PopEvent event) {
 
         if("centerpop".equals(event.type)) {

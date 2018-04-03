@@ -134,12 +134,12 @@
     <orderEntry type="library" exported="" name="urlconnection_interceptor-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="core-3.2.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.2" level="project" />
-    <orderEntry type="library" exported="" name="EventBus2.4" level="project" />
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
     <orderEntry type="library" exported="" name="httpmime-4.1.1" level="project" />
     <orderEntry type="library" exported="" name="volley" level="project" />
     <orderEntry type="library" exported="" name="calcite-linq4j-1.2.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="eventbus-3.1.1" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.5" level="project" />
     <orderEntry type="library" exported="" name="toolsfinal-1.1.4" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="backport-util-concurrent-3.1" level="project" />

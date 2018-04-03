@@ -46,7 +46,6 @@ import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.event.ErrorEvent;
 import com.taobao.weex.utils.WXUtils;
-import com.ypy.eventbus.EventBus;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -55,6 +54,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.util.Calendar;
@@ -253,6 +255,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         lodingimg.setVisibility(View.VISIBLE);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(RefreshEvent event) {
 
         if( ActivityManager.getInstance().getCurrentActivity()==this&&"refresh".equals(event.type))
@@ -264,6 +267,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(ErrorEvent event) {
 
         if( ActivityManager.getInstance().getCurrentActivity()==this)

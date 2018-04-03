@@ -150,7 +150,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/EventBus2.4.jar')
+    compile 'org.greenrobot:eventbus:3.1.1'
     provided "com.android.support:recyclerview-v7:${project.supportLibVersion}"
     provided "com.android.support:support-v4:${project.supportLibVersion}"
     provided "com.android.support:appcompat-v7:${project.supportLibVersion}"

@@ -9,7 +9,10 @@ import com.farwolf.weex.util.CameraPermission;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
-import com.ypy.eventbus.EventBus;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 
@@ -41,6 +44,7 @@ public class WXQRModule extends WXModule {
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(PermissionEvent event) {
 
         if(event.type==PermissionEvent.CAMREA)

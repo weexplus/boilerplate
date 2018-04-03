@@ -24,13 +24,15 @@ import com.farwolf.weex.util.HotRefreshManager;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
-import com.ypy.eventbus.EventBus;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 /**
@@ -110,6 +112,7 @@ public class ToolPop extends ViewBase{
 
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(PermissionEvent event) {
 
           if(event.type==PermissionEvent.CAMREA)

@@ -24,7 +24,8 @@ import android.util.Log;
 
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.event.ErrorEvent;
-import com.ypy.eventbus.EventBus;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.io.PrintWriter;

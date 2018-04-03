@@ -22,7 +22,10 @@ import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.util.Weex_;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.ypy.eventbus.EventBus;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Date;
 
@@ -104,6 +107,7 @@ public class WeexApplication extends Application {
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(RefreshEvent event) {
 
         if("reconnect".equals(event.type))
