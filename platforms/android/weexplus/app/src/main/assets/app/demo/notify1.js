@@ -454,9 +454,9 @@ Object.defineProperty(exports, "__esModule", {
 var head = __webpack_require__(6);
 var globalEvent = weex.requireModule('globalEvent');
 globalEvent.addEventListener("onPageInit", function (e) {
-    var nav = weex.requireModule('navbar');
-    nav.setTitle('通知');
-    nav.setBack(true);
+    //        const nav = weex.requireModule('navbar');
+    //        nav.setTitle('通知');
+    //        nav.setBack(true);
 
     var notify = weex.requireModule('notify');
     notify.regist("key", function (res) {
@@ -474,18 +474,12 @@ exports.default = {
     methods: {
         send: function send() {
             var notify = weex.requireModule('notify');
-            notify.send("key", { data: '这是数据' });
+            notify.send("key", { data: 'notify1数据' });
             var navigator = weex.requireModule('navigator');
             navigator.back();
         }
     },
-    created: function created() {
-
-        this.$on('rightClick', function (e) {
-            var modal = weex.requireModule('modal');
-            modal.toast({ message: '右边点击' });
-        });
-    }
+    created: function created() {}
 };
 
 /***/ }),

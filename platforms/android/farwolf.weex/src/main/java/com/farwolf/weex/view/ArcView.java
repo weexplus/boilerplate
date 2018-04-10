@@ -53,6 +53,7 @@ public class ArcView extends View {
 
     public void setSweepAngle(float sweepAngle) {
         this.sweepAngle = sweepAngle;
+        this.invalidate();
     }
 
     public void setColor(String color){

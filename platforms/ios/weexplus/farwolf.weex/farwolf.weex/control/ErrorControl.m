@@ -28,7 +28,7 @@
 }
 - (IBAction)closeClick:(id)sender {
     
-    [self dismiss:true];
+//    [self dismiss:true];
     self.onClose();
 }
 

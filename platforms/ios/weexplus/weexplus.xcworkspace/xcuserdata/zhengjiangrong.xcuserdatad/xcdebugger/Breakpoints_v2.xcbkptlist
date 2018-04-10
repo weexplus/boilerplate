@@ -799,7 +799,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"
             endingLineNumber = "366"
-            landmarkName = "-refreshWeex"
+            landmarkName = "-RefreshInstanc"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -975,7 +975,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "365"
             endingLineNumber = "365"
-            landmarkName = "-refreshWeex"
+            landmarkName = "-RefreshInstanc"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1135,7 +1135,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "367"
             endingLineNumber = "367"
-            landmarkName = "-refreshWeex"
+            landmarkName = "-RefreshInstanc"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

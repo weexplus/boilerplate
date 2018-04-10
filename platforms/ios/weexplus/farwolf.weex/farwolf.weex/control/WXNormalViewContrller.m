@@ -18,14 +18,22 @@
 #import "Config.h"
 #import "IQKeyboardManager.h"
 #import "RefreshManager.h"
-
+static BOOL isshowErr;
 @interface WXNormalViewContrller ()
 
 @end
 
 @implementation WXNormalViewContrller
 
++(BOOL)showError
+{
+    return isshowErr;
+}
 
++(void)setShowError:(BOOL)show
+{
+    isshowErr=show;
+}
 - (void)dealloc
 {
     
@@ -85,7 +93,7 @@
     }
      [self regist:@"refreshpage" method:@selector(scoketrefresh)];
     [self regist:@"qrrefreshpage" method:@selector(onqr:)];
-    
+    [self regist:@"weexError" method:@selector(onWeexError:)];
     self.navigationController.navigationBar.translucent=false;
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -200,8 +208,7 @@
     d[@"key"];
     
 }
-
-BOOL isshowErr;
+ 
 -(void)onWeexError:(NSNotification*)n
 {
     if([Config showError])
@@ -231,17 +238,17 @@ BOOL isshowErr;
     vc.onClose=^(){
         isshowErr=false;
         [self.fail_layout setHidden:false];
+        [vc dismiss:true completion:^{
+            
+        }];
     };
     
     
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    
+    [self.topViewController presentViewController:vc animated:true completion:^{
         
-        　 [self presentViewController:vc animated:true completion:^{
-            
-        }];
-        
-    });
+    }];
     
     
     
@@ -619,7 +626,7 @@ BOOL isshowErr;
     [self.view bringSubviewToFront:self.toolView];
     [self.view bringSubviewToFront:self.set];
       [self.view bringSubviewToFront:self.refresh];
-    [self regist:@"weexError" method:@selector(onWeexError:)];
+    
     [self regist:@"loaddefault" method:@selector(loaddefault)];
     [self addFailLayout];
     

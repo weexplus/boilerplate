@@ -478,8 +478,8 @@ exports.default = {
         var globalEvent = weex.requireModule('globalEvent');
         globalEvent.addEventListener("onPageInit", function (e) {
             var nav = weex.requireModule('navbar');
-            nav.setTitle('通知');
-            nav.setBack(true);
+            //                nav.setTitle('通知');
+            //                nav.setBack(true);
 
             var notify = weex.requireModule('notify');
             notify.regist("key", function (res) {
@@ -506,7 +506,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       alignItems: "center",
       marginLeft: "50",
       marginTop: "30",
-      color: "#ffffff"
+      color: "#000000"
     }
   }, [_vm._v(_vm._s(_vm.data))]), _c('div', {
     staticClass: ["cl"]

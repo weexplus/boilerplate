@@ -59,4 +59,6 @@
 -(void)onCreateWeexView;
 -(void)resetFrame;
 -(void)loadtextfields;
++(BOOL)showError;
++(void)setShowError:(BOOL)show;
 @end

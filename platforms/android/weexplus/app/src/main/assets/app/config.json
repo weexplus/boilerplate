@@ -42,7 +42,26 @@
        "appsecret":"",
        "url":""
      }
-  }
+  },
+  "proxys":
+  [
+
+    {
+      "port":9090,
+      "locations":
+      [
+        {
+          "from":"api",
+          "to":"http://59.110.169.246/movie/"
+        },
+        {
+          "from":"api1",
+          "to":"http://www1.1chemic.com/"
+        }
+      ]
+    }
+
+  ]
 
 }
 

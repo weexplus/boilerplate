@@ -171,6 +171,10 @@
             WXJSExceptionInfo * jsExceptionInfo = [[WXJSExceptionInfo alloc] initWithInstanceId:instance.instanceId bundleUrl:bundleUrl errorCode:errorCode functionName:@"" exception:message userInfo:userInfo];
             
             [WXExceptionUtils commitCriticalExceptionRT:jsExceptionInfo];
+            //zjr add
+            NSNotification *n=[[NSNotification alloc]initWithName:@"weexError" object:nil userInfo:@{@"msg":message}];
+            [[NSNotificationCenter defaultCenter]postNotification:n];
+            ///////////
             WX_MONITOR_FAIL(WXMTJSBridge, WX_ERR_JS_EXECUTE, message);
             if (instance.onJSRuntimeException) {
                 instance.onJSRuntimeException(jsExceptionInfo);
