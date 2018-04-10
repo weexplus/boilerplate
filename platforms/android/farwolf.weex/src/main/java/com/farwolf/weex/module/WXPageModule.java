@@ -1,13 +1,19 @@
 package com.farwolf.weex.module;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.farwolf.weex.activity.ActivityManager;
 import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.WeexFactory_;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
+
+import java.util.List;
+
+import static com.taobao.weex.WXEnvironment.getApplication;
 
 /**
  * Created by zhengjiangrong on 2017/6/15.
@@ -75,6 +81,11 @@ public class WXPageModule extends WXModuleBase {
     @JSMethod
     public void exit()
     {
+        List<Activity> l= ActivityManager.getActivitiesByApplication(getApplication());
+        for(Activity a:l)
+        {
+            a.finish();
+        }
         System.exit(0);
     }
 

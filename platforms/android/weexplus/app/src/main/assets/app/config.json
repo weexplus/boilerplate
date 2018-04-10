@@ -1,6 +1,6 @@
 {
   "schema":"",
-  "debug":false,
+  "debug":true,
   "showerror":true,
   "isPortrait":true,
   "debugIp":"127.0.0.1",

@@ -22,14 +22,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
 -(void)fetch:(BOOL)usepost url:(NSString*)url param:(NSDictionary*)param header:(NSDictionary*)header start:(WXModuleKeepAliveCallback)start exception:(WXModuleKeepAliveCallback)exception success:(WXModuleKeepAliveCallback)success compelete:(WXModuleKeepAliveCallback)compelete
 {
     
-    NSData *cookiesdata = [[NSUserDefaults standardUserDefaults] objectForKey:@"cookiecache"];
-    if([cookiesdata length]) {
-        NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookiesdata];
-        NSHTTPCookie *cookie;
-        for (cookie in cookies) {
-            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-        }
-    }
+     
     
     JsonReader *j=[JsonReader new];
     j.url=url;
@@ -53,10 +46,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
         exception(@{},false);
     } compelete:^{
         
-        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL: [NSURL URLWithString:url]];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookies];
-        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"cookiecache"];
-        
+     
         compelete(@{},false);
         
         
@@ -74,7 +64,8 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
 
 -(void)removeAllCookies
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cookiecache"];
+    NSDate *d= [@"1970-01-01" toDate:@"yyyy-MM-dd"];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] removeCookiesSinceDate:d];
 }
 
 -(NSString*)getSessionId:(NSString*)url
