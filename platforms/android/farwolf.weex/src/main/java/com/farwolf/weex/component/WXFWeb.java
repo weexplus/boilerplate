@@ -57,7 +57,7 @@ public class WXFWeb extends WXComponent {
         } catch (Exception e) {
             // do noting
         }
-        mWebView = new com.taobao.weex.ui.view.WXWebView(getContext(), origin);
+        mWebView = new WXWebView(getContext(), origin);
     }
 
     @Override

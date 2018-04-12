@@ -1,4 +1,4 @@
-package com.farwolf.movie;
+package com.farwolf.weexplus;
 
 import com.farwolf.weex.app.WeexApplication;
 

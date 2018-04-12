@@ -23,7 +23,14 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
 {
     
      
-    
+    NSData *cookiesdata = [[NSUserDefaults standardUserDefaults] objectForKey:@"cookiecache"];
+    if([cookiesdata length]) {
+        NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookiesdata];
+        NSHTTPCookie *cookie;
+        for (cookie in cookies) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        }
+    }
     JsonReader *j=[JsonReader new];
     j.url=url;
     j.header=header;
@@ -47,6 +54,9 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     } compelete:^{
         
      
+        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL: [NSURL URLWithString:url]];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookies];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"cookiecache"];
         compelete(@{},false);
         
         

@@ -5,7 +5,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.farwolf.movie"
+        applicationId "com.farwolf.weexplus"
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 1

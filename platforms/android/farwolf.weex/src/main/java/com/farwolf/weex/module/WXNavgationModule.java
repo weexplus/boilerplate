@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -99,22 +98,26 @@ public class WXNavgationModule extends WXModuleBase {
 
         if(requestCode==10001)
         {
-            if(resultCode==10002)
-            {
-                String id=  data.getStringExtra("callbackid");
-                Map m= (Map)data.getSerializableExtra("res");
-                if(id!=null)
-                {
-                    JSCallback j=  callbacks.get(id);
-                    callbacks.remove(id);
-                    if(j!=null)
-                    {
-                        j.invoke(m);
-                    }
+//            if(resultCode==10002)
+//            {
+            Map m=new HashMap();
 
+            WeexActivity ac= (WeexActivity)mWXSDKInstance.getContext();
+            String id=  ac.getViewId()+"";
+            if(data!=null)
+                m= (Map)data.getSerializableExtra("res");
+            if(id!=null)
+            {
+                JSCallback j=  callbacks.get(id);
+                callbacks.remove(id);
+                if(j!=null)
+                {
+                    j.invoke(m);
                 }
 
             }
+
+//            }
 
         }
 
@@ -143,7 +146,7 @@ public class WXNavgationModule extends WXModuleBase {
     {
         WeexActivity a=  (WeexActivity)this.mWXSDKInstance.getContext();
         if(a!=null)
-        a.pageid=id;
+            a.pageid=id;
     }
 
     @JSMethod(uiThread = false)
@@ -238,11 +241,12 @@ public class WXNavgationModule extends WXModuleBase {
         }
 
 
-            url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
+        url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
         in.putExtra("url",url);
         if(callback!=null)
         {
-            String id= new Random().nextLong()+"";
+            WeexActivity ac=  (WeexActivity)this.mWXSDKInstance.getContext();
+            String id= ac.getViewId()+"";
             callbacks.put(id,callback);
             in.putExtra("callbackid",id);
             w.jump(url,in,true);
