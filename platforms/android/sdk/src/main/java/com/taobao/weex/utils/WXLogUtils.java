@@ -114,7 +114,7 @@ public class WXLogUtils {
 
   public static void e(String msg) {
     e(WEEX_TAG,msg);
-    EventBus.getDefault().post(new ErrorEvent(msg.replace("__ERROR", "")));
+//    EventBus.getDefault().post(new ErrorEvent(msg.replace("__ERROR", "")));
   }
 
   public static void d(String tag, byte[] msg) {
