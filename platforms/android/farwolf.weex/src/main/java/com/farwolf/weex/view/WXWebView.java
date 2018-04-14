@@ -101,6 +101,36 @@ public class WXWebView implements IWebView {
 
         mMessageHandler = new MessageHandler(this);
 
+        mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // 重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不另跳浏览器
+                // 在2.3上面不加这句话，可以加载出页面，在4.0上面必须要加入，不然出现白屏
+                if (url.startsWith("http://") || url.startsWith("https://")) {
+                    view.loadUrl(url);
+                    mWebView.stopLoading();
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public void onReceivedError(WebView view, int errorCode,
+                                        String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
+            }
+        });
+
         return root;
     }
 
@@ -221,11 +251,23 @@ public class WXWebView implements IWebView {
         settings.setBuiltInZoomControls(false);
         wv.setWebViewClient(new WebViewClient() {
 
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                view.loadUrl(url);
+//                WXLogUtils.v("tag", "onPageOverride " + url);
+//                return true;
+//            }
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                WXLogUtils.v("tag", "onPageOverride " + url);
-                return true;
+                // 重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不另跳浏览器
+                // 在2.3上面不加这句话，可以加载出页面，在4.0上面必须要加入，不然出现白屏
+                if (url.startsWith("http://") || url.startsWith("https://")) {
+                    view.loadUrl(url);
+                    mWebView.stopLoading();
+                    return true;
+                }
+                return false;
             }
 
             @Override
@@ -253,6 +295,8 @@ public class WXWebView implements IWebView {
                             + "})");
                 }
             }
+
+
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
