@@ -193,7 +193,7 @@ public class ToolPop extends ViewBase{
         {
             String url= pref.url().get();
             String ip= RegexBase.regexOne(url,"http://",":");
-            if(StringUtil.isNullOrEmpty(ip))
+            if(StringUtil.isNullOrEmpty(url)||StringUtil.isNullOrEmpty(ip))
             {
                 weex.startDebug(getActivity());
             }
