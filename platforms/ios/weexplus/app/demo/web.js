@@ -67,7 +67,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -150,7 +150,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -279,7 +279,227 @@ exports.default = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 425:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(426)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(427)
+
+/* template */
+var __vue_template__ = __webpack_require__(428)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/web.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-16fe6eb8"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 426:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": 50
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "marginTop": 50,
+    "marginLeft": 50,
+    "marginRight": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 427:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var head = __webpack_require__(6);
+var progress = weex.requireModule("progress");
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            text: '',
+            param: '',
+            data: {},
+            src: 'sdsdsds'
+        };
+    },
+
+    methods: {
+        load: function load() {
+            //            this.src='https://www.baidu.com'
+            this.src = "<div>这是富文本<img src='https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=34f6ae03998fa0ec7fc7630b1eac3ed3/4034970a304e251fc3ec88c8af86c9177f3e53e2.jpg'></img></div>";
+        },
+        goForward: function goForward() {
+            this.$refs.web.goForward();
+        },
+        goBack: function goBack() {
+            this.$refs.web.goBack();
+        }
+    },
+
+    created: function created() {
+
+        var self = this;
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {});
+    }
+};
+
+/***/ }),
+
+/***/ 428:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "web",
+      "append": "tree"
+    }
+  }), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.load
+    }
+  }, [_c('text', [_vm._v("加载")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.goForward()
+      }
+    }
+  }, [_c('text', [_vm._v("前进")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.goBack()
+      }
+    }
+  }, [_c('text', [_vm._v("后退")])]), _c('div', {
+    staticStyle: {
+      flex: "1"
+    }
+  }, [_c('web', {
+    ref: "web",
+    staticStyle: {
+      position: "absolute",
+      left: "0",
+      top: "0",
+      right: "0",
+      bottom: "0",
+      backgroundColor: "red"
+    },
+    attrs: {
+      "source": _vm.src,
+      "bounce": "false"
+    },
+    on: {
+      "pagestart": _vm.pagestart,
+      "pagefinish": _vm.pagefinish,
+      "error": _vm.pagefinish
+    }
+  })])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -375,225 +595,6 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 425:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(426)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(427)
-
-/* template */
-var __vue_template__ = __webpack_require__(428)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/web.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-16fe6eb8"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 426:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": 50
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "marginTop": 50,
-    "marginLeft": 50,
-    "marginRight": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 427:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var head = __webpack_require__(6);
-var progress = weex.requireModule("progress");
-exports.default = {
-  components: { head: head },
-  data: function data() {
-    return {
-      text: '',
-      param: '',
-      data: {},
-      src: 'https://www.baidu.com'
-    };
-  },
-
-  methods: {
-    load: function load() {
-      this.src = 'https://www.baidu.com';
-    },
-    goForward: function goForward() {
-      this.$refs.web.goForward();
-    },
-    goBack: function goBack() {
-      this.$refs.web.goBack();
-    }
-  },
-
-  created: function created() {
-
-    var self = this;
-    var globalEvent = weex.requireModule('globalEvent');
-    globalEvent.addEventListener("onPageInit", function (e) {});
-  }
-};
-
-/***/ }),
-
-/***/ 428:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "web",
-      "append": "tree"
-    }
-  }), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.load
-    }
-  }, [_c('text', [_vm._v("加载")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.goForward()
-      }
-    }
-  }, [_c('text', [_vm._v("前进")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.goBack()
-      }
-    }
-  }, [_c('text', [_vm._v("后退")])]), _c('div', {
-    staticStyle: {
-      flex: "1"
-    }
-  }, [_c('web', {
-    ref: "web",
-    staticStyle: {
-      position: "absolute",
-      left: "0",
-      top: "0",
-      right: "0",
-      bottom: "0",
-      backgroundColor: "red"
-    },
-    attrs: {
-      "src": _vm.src,
-      "bounce": "false"
-    },
-    on: {
-      "pagestart": _vm.pagestart,
-      "pagefinish": _vm.pagefinish,
-      "error": _vm.pagefinish
-    }
-  })])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -601,16 +602,16 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(1)
-)
 __vue_styles__.push(__webpack_require__(2)
+)
+__vue_styles__.push(__webpack_require__(3)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(3)
+__vue_exports__ = __webpack_require__(4)
 
 /* template */
-var __vue_template__ = __webpack_require__(4)
+var __vue_template__ = __webpack_require__(5)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

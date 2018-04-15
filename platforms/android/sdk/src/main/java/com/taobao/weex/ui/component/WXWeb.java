@@ -153,6 +153,8 @@ public class WXWeb extends WXComponent {
         getWebView().setShowLoading(showLoading);
     }
 
+
+
     @WXComponentProp(name = Constants.Name.SRC)
     public void setUrl(String url) {
         if (TextUtils.isEmpty(url) || getHostView() == null) {

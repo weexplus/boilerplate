@@ -14,7 +14,7 @@
           <text>后退</text>
       </div>
       <div style="flex:1">
-          <web   :source="src" ref="web"  bounce="false" @pagestart="pagestart" @pagefinish="pagefinish"  @error="pagefinish" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red">
+          <web   :src="src" ref="web"  bounce="false"  :show-loading="false" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red">
 
           </web>
       </div>
@@ -55,7 +55,7 @@
         text: '',
           param:'',
           data:{},
-          src:'sdsdsds'
+          src:'https://www.baidu.com'
       }
     }
     ,

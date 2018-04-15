@@ -15,4 +15,7 @@ public class WXFWeb extends WXWeb {
     public WXFWeb(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, boolean isLazy) {
         super(instance, dom, parent, isLazy);
     }
+
+
+
 }
