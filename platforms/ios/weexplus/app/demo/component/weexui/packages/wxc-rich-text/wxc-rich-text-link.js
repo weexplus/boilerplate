@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 297);
+/******/ 	return __webpack_require__(__webpack_require__.s = 293);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -351,21 +351,21 @@ exports.default = Utils;
 
 /***/ }),
 
-/***/ 20:
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(27)
+__vue_styles__.push(__webpack_require__(21)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(28)
+__vue_exports__ = __webpack_require__(22)
 
 /* template */
-var __vue_template__ = __webpack_require__(29)
+var __vue_template__ = __webpack_require__(23)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -396,7 +396,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 27:
+/***/ 21:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -426,7 +426,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 28:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -520,7 +520,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 23:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -533,17 +533,17 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 297:
+/***/ 293:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* script */
-__vue_exports__ = __webpack_require__(90)
+__vue_exports__ = __webpack_require__(85)
 
 /* template */
-var __vue_template__ = __webpack_require__(91)
+var __vue_template__ = __webpack_require__(86)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -1069,6 +1069,103 @@ module.exports = function required(port, protocol) {
 
 /***/ }),
 
+/***/ 85:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _wxcRichTextText = __webpack_require__(19);
+
+var _wxcRichTextText2 = _interopRequireDefault(_wxcRichTextText);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  components: { WxcRichTextText: _wxcRichTextText2.default },
+  props: {
+    linkValue: {
+      type: [String, Number],
+      default: ''
+    },
+    hasTextMargin: {
+      type: Boolean,
+      default: true
+    },
+    linkHref: {
+      type: String,
+      default: ''
+    },
+    linkTheme: {
+      type: String,
+      default: 'black'
+    },
+    linkStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  data: function data() {
+    return {
+      defObj: {}
+    };
+  },
+  methods: {
+    onLinkClick: function onLinkClick(e) {
+      var self = this;
+      _utils2.default.goToH5Page(self.linkHref);
+      self.$emit('wxcRichTextLinkClick', { element: e, href: self.linkHref });
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    on: {
+      "click": _vm.onLinkClick
+    }
+  }, [_c('wxc-rich-text-text', {
+    attrs: {
+      "textValue": _vm.linkValue,
+      "hasTextMargin": _vm.hasTextMargin,
+      "textStyle": _vm.linkStyle ? _vm.linkStyle : _vm.defObj,
+      "textTheme": _vm.linkTheme ? _vm.linkTheme : 'black'
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
 /***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1142,103 +1239,6 @@ function querystringify(obj, prefix) {
 //
 exports.stringify = querystringify;
 exports.parse = querystring;
-
-/***/ }),
-
-/***/ 90:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-var _wxcRichTextText = __webpack_require__(20);
-
-var _wxcRichTextText2 = _interopRequireDefault(_wxcRichTextText);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  components: { WxcRichTextText: _wxcRichTextText2.default },
-  props: {
-    linkValue: {
-      type: [String, Number],
-      default: ''
-    },
-    hasTextMargin: {
-      type: Boolean,
-      default: true
-    },
-    linkHref: {
-      type: String,
-      default: ''
-    },
-    linkTheme: {
-      type: String,
-      default: 'black'
-    },
-    linkStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    }
-  },
-  data: function data() {
-    return {
-      defObj: {}
-    };
-  },
-  methods: {
-    onLinkClick: function onLinkClick(e) {
-      var self = this;
-      _utils2.default.goToH5Page(self.linkHref);
-      self.$emit('wxcRichTextLinkClick', { element: e, href: self.linkHref });
-    }
-  }
-};
-
-/***/ }),
-
-/***/ 91:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    on: {
-      "click": _vm.onLinkClick
-    }
-  }, [_c('wxc-rich-text-text', {
-    attrs: {
-      "textValue": _vm.linkValue,
-      "hasTextMargin": _vm.hasTextMargin,
-      "textStyle": _vm.linkStyle ? _vm.linkStyle : _vm.defObj,
-      "textTheme": _vm.linkTheme ? _vm.linkTheme : 'black'
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ })
 

@@ -34,6 +34,35 @@
             </objects>
             <point key="canvasLocation" x="4246" y="-1429"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="1nt-bM-Bht">
+            <objects>
+                <viewController id="zFI-xw-cpf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dew-XH-nYe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ifb-bL-yy5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W5f-aB-dUR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash1" translatesAutoresizingMaskIntoConstraints="NO" id="vdm-tw-dbw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vdm-tw-dbw" secondAttribute="trailing" id="Rvo-eD-zdN"/>
+                            <constraint firstItem="vdm-tw-dbw" firstAttribute="top" secondItem="Dew-XH-nYe" secondAttribute="bottom" id="hgg-Gt-ycD"/>
+                            <constraint firstItem="Ifb-bL-yy5" firstAttribute="top" secondItem="vdm-tw-dbw" secondAttribute="bottom" id="mZz-UT-AmR"/>
+                            <constraint firstItem="vdm-tw-dbw" firstAttribute="leading" secondItem="W5f-aB-dUR" secondAttribute="leading" id="oI0-EE-wuU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gnj-rI-B8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3679" y="-537"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="okO-7g-xEG">
             <objects>
@@ -311,5 +340,6 @@
     </scenes>
     <resources>
         <image name="backwhit" width="11" height="20"/>
+        <image name="splash1" width="1104" height="1104"/>
     </resources>
 </document>

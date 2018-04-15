@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 429);
+/******/ 	return __webpack_require__(__webpack_require__.s = 425);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -143,7 +143,8 @@ module.exports = {
     "height": 128,
     "flexDirection": "row",
     "alignItems": "center",
-    "justifyContent": "center"
+    "justifyContent": "center",
+    "width": "750"
   }
 }
 
@@ -374,21 +375,21 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 429:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(430)
+__vue_styles__.push(__webpack_require__(426)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(431)
+__vue_exports__ = __webpack_require__(427)
 
 /* template */
-var __vue_template__ = __webpack_require__(432)
+var __vue_template__ = __webpack_require__(428)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -421,7 +422,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 430:
+/***/ 426:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -443,15 +444,21 @@ module.exports = {
 
 /***/ }),
 
-/***/ 431:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -497,75 +504,39 @@ Object.defineProperty(exports, "__esModule", {
 var head = __webpack_require__(6);
 var progress = weex.requireModule("progress");
 exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            text: '',
-            param: '',
-            data: {},
-            src: 'https://www.baidu.com'
-        };
+  components: { head: head },
+  data: function data() {
+    return {
+      text: '',
+      param: '',
+      data: {},
+      src: 'https://www.baidu.com'
+    };
+  },
+
+  methods: {
+    load: function load() {
+      this.src = 'https://www.baidu.com';
     },
-
-    methods: {
-        load: function load() {
-            this.src = 'https://www.baidu.com';
-        },
-        pagestart: function pagestart() {
-            progress.show();
-        },
-        pagefinish: function pagefinish() {
-            progress.dismiss();
-        },
-        save: function save() {
-            var pref = weex.requireModule("pref");
-            pref.set('key', this.text);
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功' });
-        },
-        get: function get() {
-            var pref = weex.requireModule("pref");
-            var s = pref.get('key');
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功的值' + s });
-        },
-        remove: function remove() {
-            var pref = weex.requireModule("pref");
-            pref.remove('key');
-            pref.remove('objkey');
-            var s = pref.get('key');
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '删除成功：' + s });
-        },
-        saveObj: function saveObj() {
-            var pref = weex.requireModule("pref");
-            var obj = {};
-            obj.a = 1;
-            obj.b = 2;
-            pref.setObj('objkey', obj);
-            var modal = weex.requireModule("modal");
-            modal.toast({ message: '存储成功' });
-        },
-        getObj: function getObj() {
-            var pref = weex.requireModule("pref");
-            var p = pref.getObj('objkey');
-            this.data = p;
-            //              var modal=weex.requireModule("modal")
-            //              modal.toast({message:p});
-        }
+    goForward: function goForward() {
+      this.$refs.web.goForward();
     },
-
-    created: function created() {
-
-        var self = this;
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {});
+    goBack: function goBack() {
+      this.$refs.web.goBack();
     }
+  },
+
+  created: function created() {
+
+    var self = this;
+    var globalEvent = weex.requireModule('globalEvent');
+    globalEvent.addEventListener("onPageInit", function (e) {});
+  }
 };
 
 /***/ }),
 
-/***/ 432:
+/***/ 428:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -581,10 +552,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.load
     }
   }, [_c('text', [_vm._v("加载")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.goForward()
+      }
+    }
+  }, [_c('text', [_vm._v("前进")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.goBack()
+      }
+    }
+  }, [_c('text', [_vm._v("后退")])]), _c('div', {
     staticStyle: {
       flex: "1"
     }
   }, [_c('web', {
+    ref: "web",
     staticStyle: {
       position: "absolute",
       left: "0",

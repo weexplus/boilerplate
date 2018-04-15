@@ -29,6 +29,7 @@
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
    
+     
     UIViewController *vc= [Weex start:[Config splash] url:[Weex getEntry]];
     
 //    UpdateDialogControl *uvc=[[UpdateDialogControl alloc]initWithNibName:@"updater" bundle:nil];

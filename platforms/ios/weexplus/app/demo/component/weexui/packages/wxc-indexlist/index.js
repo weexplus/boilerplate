@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 275);
+/******/ 	return __webpack_require__(__webpack_require__.s = 271);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -351,21 +351,21 @@ exports.default = Utils;
 
 /***/ }),
 
-/***/ 275:
+/***/ 271:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(67)
+__vue_styles__.push(__webpack_require__(62)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(68)
+__vue_exports__ = __webpack_require__(63)
 
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(65)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -429,7 +429,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 67:
+/***/ 62:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -558,7 +558,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 68:
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -568,7 +568,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _format = __webpack_require__(69);
+var _format = __webpack_require__(64);
 
 var Format = _interopRequireWildcard(_format);
 
@@ -810,7 +810,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 69:
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -883,6 +883,123 @@ function getSpecialData(data) {
     return null;
   }
 }
+
+/***/ }),
+
+/***/ 65:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('list', {
+    staticClass: ["index-list"],
+    style: {
+      height: _vm.height + 'px'
+    }
+  }, [_c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_vm._t("head")], 2), _vm._l((_vm.formatList), function(v, i) {
+    return _c('cell', {
+      key: i,
+      ref: 'index-item-title-' + v.title,
+      refInFor: true,
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [(!_vm.onlyShowList) ? _c('text', {
+      class: ['index-list-title', v.type && v.type == 'group' && 'group-title'],
+      style: _vm.headerStyle
+    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), (v.type && v.type === 'group' && !_vm.onlyShowList) ? _c('div', {
+      staticClass: ["group"],
+      style: _vm.groupWrapStyle
+    }, _vm._l((v.data), function(group, index) {
+      return _c('div', {
+        key: index,
+        staticClass: ["group-list"]
+      }, _vm._l((group), function(item, i) {
+        return _c('div', {
+          key: i,
+          staticClass: ["group-item"],
+          style: _vm.groupItemStyle,
+          attrs: {
+            "accessible": true,
+            "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
+          },
+          on: {
+            "click": function($event) {
+              _vm.itemClicked(item)
+            }
+          }
+        }, [(item.isLocation) ? _c('image', {
+          staticClass: ["location-icon"],
+          attrs: {
+            "src": "https://gw.alicdn.com/tfs/TB1JUiUPFXXXXXUXXXXXXXXXXXX-32-32.png"
+          }
+        }) : _vm._e(), _c('div', [_c('text', {
+          staticClass: ["item-name"],
+          style: _vm.groupItemTextStyle
+        }, [_vm._v(_vm._s(item.name))]), (item.desc) ? _c('text', {
+          staticClass: ["item-desc"],
+          style: _vm.groupItemDescStyle
+        }, [_vm._v(_vm._s(item.desc))]) : _vm._e()])])
+      }))
+    })) : _vm._e(), (v.type === 'list') ? _c('div', _vm._l((v.data), function(item, index) {
+      return _c('div', {
+        key: index,
+        staticClass: ["index-list-item"],
+        style: _vm.itemStyle,
+        attrs: {
+          "accessible": true,
+          "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
+        },
+        on: {
+          "click": function($event) {
+            _vm.itemClicked(item)
+          }
+        }
+      }, [_c('text', {
+        staticClass: ["title"],
+        style: _vm.itemTextStyle
+      }, [_vm._v(_vm._s(item.name))]), _c('text', {
+        staticClass: ["desc"],
+        style: _vm.itemDescStyle
+      }, [_vm._v(_vm._s(item.desc))])])
+    })) : _vm._e()])
+  }), (_vm.isIPhoneX) ? _c('cell', {
+    staticClass: ["iphone-x"],
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }) : _vm._e()], 2), (_vm.showIndex && !_vm.onlyShowList) ? _c('div', {
+    staticClass: ["index-list-nav"],
+    style: _vm.navStyle
+  }, _vm._l((_vm.formatList), function(item, index) {
+    return _c('text', {
+      key: index,
+      staticClass: ["list-nav-key"],
+      style: _vm.navTextStyle,
+      attrs: {
+        "title": item.title
+      },
+      on: {
+        "click": function($event) {
+          _vm.go2Key(item.title)
+        }
+      }
+    }, [_vm._v(_vm._s(item.title))])
+  })) : _vm._e(), (_vm.popKeyShow) ? _c('div', {
+    staticClass: ["index-list-pop"],
+    style: _vm.popStyle
+  }, [_c('text', {
+    staticClass: ["list-pop-text"],
+    style: _vm.popTextStyle
+  }, [_vm._v(_vm._s(_vm.popKey))])]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -1300,123 +1417,6 @@ URL.qs = qs;
 
 module.exports = URL;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ }),
-
-/***/ 70:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('list', {
-    staticClass: ["index-list"],
-    style: {
-      height: _vm.height + 'px'
-    }
-  }, [_c('cell', {
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, [_vm._t("head")], 2), _vm._l((_vm.formatList), function(v, i) {
-    return _c('cell', {
-      key: i,
-      ref: 'index-item-title-' + v.title,
-      refInFor: true,
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }, [(!_vm.onlyShowList) ? _c('text', {
-      class: ['index-list-title', v.type && v.type == 'group' && 'group-title'],
-      style: _vm.headerStyle
-    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), (v.type && v.type === 'group' && !_vm.onlyShowList) ? _c('div', {
-      staticClass: ["group"],
-      style: _vm.groupWrapStyle
-    }, _vm._l((v.data), function(group, index) {
-      return _c('div', {
-        key: index,
-        staticClass: ["group-list"]
-      }, _vm._l((group), function(item, i) {
-        return _c('div', {
-          key: i,
-          staticClass: ["group-item"],
-          style: _vm.groupItemStyle,
-          attrs: {
-            "accessible": true,
-            "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
-          },
-          on: {
-            "click": function($event) {
-              _vm.itemClicked(item)
-            }
-          }
-        }, [(item.isLocation) ? _c('image', {
-          staticClass: ["location-icon"],
-          attrs: {
-            "src": "https://gw.alicdn.com/tfs/TB1JUiUPFXXXXXUXXXXXXXXXXXX-32-32.png"
-          }
-        }) : _vm._e(), _c('div', [_c('text', {
-          staticClass: ["item-name"],
-          style: _vm.groupItemTextStyle
-        }, [_vm._v(_vm._s(item.name))]), (item.desc) ? _c('text', {
-          staticClass: ["item-desc"],
-          style: _vm.groupItemDescStyle
-        }, [_vm._v(_vm._s(item.desc))]) : _vm._e()])])
-      }))
-    })) : _vm._e(), (v.type === 'list') ? _c('div', _vm._l((v.data), function(item, index) {
-      return _c('div', {
-        key: index,
-        staticClass: ["index-list-item"],
-        style: _vm.itemStyle,
-        attrs: {
-          "accessible": true,
-          "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
-        },
-        on: {
-          "click": function($event) {
-            _vm.itemClicked(item)
-          }
-        }
-      }, [_c('text', {
-        staticClass: ["title"],
-        style: _vm.itemTextStyle
-      }, [_vm._v(_vm._s(item.name))]), _c('text', {
-        staticClass: ["desc"],
-        style: _vm.itemDescStyle
-      }, [_vm._v(_vm._s(item.desc))])])
-    })) : _vm._e()])
-  }), (_vm.isIPhoneX) ? _c('cell', {
-    staticClass: ["iphone-x"],
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }) : _vm._e()], 2), (_vm.showIndex && !_vm.onlyShowList) ? _c('div', {
-    staticClass: ["index-list-nav"],
-    style: _vm.navStyle
-  }, _vm._l((_vm.formatList), function(item, index) {
-    return _c('text', {
-      key: index,
-      staticClass: ["list-nav-key"],
-      style: _vm.navTextStyle,
-      attrs: {
-        "title": item.title
-      },
-      on: {
-        "click": function($event) {
-          _vm.go2Key(item.title)
-        }
-      }
-    }, [_vm._v(_vm._s(item.title))])
-  })) : _vm._e(), (_vm.popKeyShow) ? _c('div', {
-    staticClass: ["index-list-pop"],
-    style: _vm.popStyle
-  }, [_c('text', {
-    staticClass: ["list-pop-text"],
-    style: _vm.popTextStyle
-  }, [_vm._v(_vm._s(_vm.popKey))])]) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ }),
 

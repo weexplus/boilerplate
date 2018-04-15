@@ -93,12 +93,13 @@
             
             [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
                 
-                vc.debug=[Config isDebug];
-                vc.isLanscape=![Config isPortrait];
-                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-                [self presentViewController:nav animated:false completion:^{
-                    
-                }];
+//                vc.debug=[Config isDebug];
+//                vc.isLanscape=![Config isPortrait];
+//                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+//                [self presentViewController:nav animated:false completion:^{
+//
+//                }];
+                 [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
                 
             } fail:^(NSString *msg) {
             

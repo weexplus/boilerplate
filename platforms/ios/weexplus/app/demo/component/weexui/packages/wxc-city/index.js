@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 267);
+/******/ 	return __webpack_require__(__webpack_require__.s = 263);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -396,15 +396,15 @@ var _tab = __webpack_require__(116);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _wxcSearchbar = __webpack_require__(95);
+var _wxcSearchbar = __webpack_require__(91);
 
 var _wxcSearchbar2 = _interopRequireDefault(_wxcSearchbar);
 
-var _wxcResult = __webpack_require__(96);
+var _wxcResult = __webpack_require__(92);
 
 var _wxcResult2 = _interopRequireDefault(_wxcResult);
 
-var _wxcIndexlist = __webpack_require__(97);
+var _wxcIndexlist = __webpack_require__(93);
 
 var _wxcIndexlist2 = _interopRequireDefault(_wxcIndexlist);
 
@@ -715,14 +715,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(56)
+__vue_styles__.push(__webpack_require__(51)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(57)
+__vue_exports__ = __webpack_require__(52)
 
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(53)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -760,14 +760,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(59)
+__vue_styles__.push(__webpack_require__(54)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(60)
+__vue_exports__ = __webpack_require__(55)
 
 /* template */
-var __vue_template__ = __webpack_require__(62)
+var __vue_template__ = __webpack_require__(57)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -805,14 +805,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(63)
+__vue_styles__.push(__webpack_require__(58)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(64)
+__vue_exports__ = __webpack_require__(59)
 
 /* template */
-var __vue_template__ = __webpack_require__(66)
+var __vue_template__ = __webpack_require__(61)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -850,14 +850,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(67)
+__vue_styles__.push(__webpack_require__(62)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(68)
+__vue_exports__ = __webpack_require__(63)
 
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(65)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -937,7 +937,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 267:
+/***/ 263:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -1015,7 +1015,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 56:
+/***/ 51:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1060,7 +1060,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 57:
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1162,7 +1162,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 58:
+/***/ 53:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1193,7 +1193,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 59:
+/***/ 54:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1308,7 +1308,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 60:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1318,7 +1318,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(61);
+var _type = __webpack_require__(56);
 
 exports.default = {
   props: {
@@ -1632,7 +1632,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 61:
+/***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1652,7 +1652,7 @@ var ARROW_ICON = exports.ARROW_ICON = "https://gw.alicdn.com/tfs/TB1vZB.pwMPMeJj
 
 /***/ }),
 
-/***/ 62:
+/***/ 57:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1749,7 +1749,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 63:
+/***/ 58:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1804,7 +1804,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 64:
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1814,7 +1814,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(65);
+var _type = __webpack_require__(60);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -1962,7 +1962,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 65:
+/***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2005,7 +2005,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 66:
+/***/ 61:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2043,7 +2043,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 67:
+/***/ 62:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2172,7 +2172,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 68:
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2182,7 +2182,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _format = __webpack_require__(69);
+var _format = __webpack_require__(64);
 
 var Format = _interopRequireWildcard(_format);
 
@@ -2424,7 +2424,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 69:
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2497,6 +2497,123 @@ function getSpecialData(data) {
     return null;
   }
 }
+
+/***/ }),
+
+/***/ 65:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('list', {
+    staticClass: ["index-list"],
+    style: {
+      height: _vm.height + 'px'
+    }
+  }, [_c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_vm._t("head")], 2), _vm._l((_vm.formatList), function(v, i) {
+    return _c('cell', {
+      key: i,
+      ref: 'index-item-title-' + v.title,
+      refInFor: true,
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [(!_vm.onlyShowList) ? _c('text', {
+      class: ['index-list-title', v.type && v.type == 'group' && 'group-title'],
+      style: _vm.headerStyle
+    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), (v.type && v.type === 'group' && !_vm.onlyShowList) ? _c('div', {
+      staticClass: ["group"],
+      style: _vm.groupWrapStyle
+    }, _vm._l((v.data), function(group, index) {
+      return _c('div', {
+        key: index,
+        staticClass: ["group-list"]
+      }, _vm._l((group), function(item, i) {
+        return _c('div', {
+          key: i,
+          staticClass: ["group-item"],
+          style: _vm.groupItemStyle,
+          attrs: {
+            "accessible": true,
+            "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
+          },
+          on: {
+            "click": function($event) {
+              _vm.itemClicked(item)
+            }
+          }
+        }, [(item.isLocation) ? _c('image', {
+          staticClass: ["location-icon"],
+          attrs: {
+            "src": "https://gw.alicdn.com/tfs/TB1JUiUPFXXXXXUXXXXXXXXXXXX-32-32.png"
+          }
+        }) : _vm._e(), _c('div', [_c('text', {
+          staticClass: ["item-name"],
+          style: _vm.groupItemTextStyle
+        }, [_vm._v(_vm._s(item.name))]), (item.desc) ? _c('text', {
+          staticClass: ["item-desc"],
+          style: _vm.groupItemDescStyle
+        }, [_vm._v(_vm._s(item.desc))]) : _vm._e()])])
+      }))
+    })) : _vm._e(), (v.type === 'list') ? _c('div', _vm._l((v.data), function(item, index) {
+      return _c('div', {
+        key: index,
+        staticClass: ["index-list-item"],
+        style: _vm.itemStyle,
+        attrs: {
+          "accessible": true,
+          "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
+        },
+        on: {
+          "click": function($event) {
+            _vm.itemClicked(item)
+          }
+        }
+      }, [_c('text', {
+        staticClass: ["title"],
+        style: _vm.itemTextStyle
+      }, [_vm._v(_vm._s(item.name))]), _c('text', {
+        staticClass: ["desc"],
+        style: _vm.itemDescStyle
+      }, [_vm._v(_vm._s(item.desc))])])
+    })) : _vm._e()])
+  }), (_vm.isIPhoneX) ? _c('cell', {
+    staticClass: ["iphone-x"],
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }) : _vm._e()], 2), (_vm.showIndex && !_vm.onlyShowList) ? _c('div', {
+    staticClass: ["index-list-nav"],
+    style: _vm.navStyle
+  }, _vm._l((_vm.formatList), function(item, index) {
+    return _c('text', {
+      key: index,
+      staticClass: ["list-nav-key"],
+      style: _vm.navTextStyle,
+      attrs: {
+        "title": item.title
+      },
+      on: {
+        "click": function($event) {
+          _vm.go2Key(item.title)
+        }
+      }
+    }, [_vm._v(_vm._s(item.title))])
+  })) : _vm._e(), (_vm.popKeyShow) ? _c('div', {
+    staticClass: ["index-list-pop"],
+    style: _vm.popStyle
+  }, [_c('text', {
+    staticClass: ["list-pop-text"],
+    style: _vm.popTextStyle
+  }, [_vm._v(_vm._s(_vm.popKey))])]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -2917,123 +3034,6 @@ module.exports = URL;
 
 /***/ }),
 
-/***/ 70:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('list', {
-    staticClass: ["index-list"],
-    style: {
-      height: _vm.height + 'px'
-    }
-  }, [_c('cell', {
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, [_vm._t("head")], 2), _vm._l((_vm.formatList), function(v, i) {
-    return _c('cell', {
-      key: i,
-      ref: 'index-item-title-' + v.title,
-      refInFor: true,
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }, [(!_vm.onlyShowList) ? _c('text', {
-      class: ['index-list-title', v.type && v.type == 'group' && 'group-title'],
-      style: _vm.headerStyle
-    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), (v.type && v.type === 'group' && !_vm.onlyShowList) ? _c('div', {
-      staticClass: ["group"],
-      style: _vm.groupWrapStyle
-    }, _vm._l((v.data), function(group, index) {
-      return _c('div', {
-        key: index,
-        staticClass: ["group-list"]
-      }, _vm._l((group), function(item, i) {
-        return _c('div', {
-          key: i,
-          staticClass: ["group-item"],
-          style: _vm.groupItemStyle,
-          attrs: {
-            "accessible": true,
-            "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
-          },
-          on: {
-            "click": function($event) {
-              _vm.itemClicked(item)
-            }
-          }
-        }, [(item.isLocation) ? _c('image', {
-          staticClass: ["location-icon"],
-          attrs: {
-            "src": "https://gw.alicdn.com/tfs/TB1JUiUPFXXXXXUXXXXXXXXXXXX-32-32.png"
-          }
-        }) : _vm._e(), _c('div', [_c('text', {
-          staticClass: ["item-name"],
-          style: _vm.groupItemTextStyle
-        }, [_vm._v(_vm._s(item.name))]), (item.desc) ? _c('text', {
-          staticClass: ["item-desc"],
-          style: _vm.groupItemDescStyle
-        }, [_vm._v(_vm._s(item.desc))]) : _vm._e()])])
-      }))
-    })) : _vm._e(), (v.type === 'list') ? _c('div', _vm._l((v.data), function(item, index) {
-      return _c('div', {
-        key: index,
-        staticClass: ["index-list-item"],
-        style: _vm.itemStyle,
-        attrs: {
-          "accessible": true,
-          "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
-        },
-        on: {
-          "click": function($event) {
-            _vm.itemClicked(item)
-          }
-        }
-      }, [_c('text', {
-        staticClass: ["title"],
-        style: _vm.itemTextStyle
-      }, [_vm._v(_vm._s(item.name))]), _c('text', {
-        staticClass: ["desc"],
-        style: _vm.itemDescStyle
-      }, [_vm._v(_vm._s(item.desc))])])
-    })) : _vm._e()])
-  }), (_vm.isIPhoneX) ? _c('cell', {
-    staticClass: ["iphone-x"],
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }) : _vm._e()], 2), (_vm.showIndex && !_vm.onlyShowList) ? _c('div', {
-    staticClass: ["index-list-nav"],
-    style: _vm.navStyle
-  }, _vm._l((_vm.formatList), function(item, index) {
-    return _c('text', {
-      key: index,
-      staticClass: ["list-nav-key"],
-      style: _vm.navTextStyle,
-      attrs: {
-        "title": item.title
-      },
-      on: {
-        "click": function($event) {
-          _vm.go2Key(item.title)
-        }
-      }
-    }, [_vm._v(_vm._s(item.title))])
-  })) : _vm._e(), (_vm.popKeyShow) ? _c('div', {
-    staticClass: ["index-list-pop"],
-    style: _vm.popStyle
-  }, [_c('text', {
-    staticClass: ["list-pop-text"],
-    style: _vm.popTextStyle
-  }, [_vm._v(_vm._s(_vm.popKey))])]) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
 /***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3156,7 +3156,7 @@ exports.parse = querystring;
 
 /***/ }),
 
-/***/ 95:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3179,7 +3179,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 
-/***/ 96:
+/***/ 92:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3202,7 +3202,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 
-/***/ 97:
+/***/ 93:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

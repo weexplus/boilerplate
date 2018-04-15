@@ -25,7 +25,7 @@
             globalEvent.addEventListener("onPageInit", function (e) {
 
                 var nav=weex.requireModule('navigator')
-//                nav.push('index1.js');
+                nav.pushFull({url:'index1.js',animated:false});
 
 
             });
