@@ -36,6 +36,7 @@ public class ArcView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         this.drawPie(canvas);
+
     }
 
     void drawPie(Canvas canvas)

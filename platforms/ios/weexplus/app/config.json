@@ -1,11 +1,11 @@
 {
   "schema":"js",
-  "debug":false,
+  "debug":true,
   "showerror":true,
   "isPortrait":true,
   "debugIp":"127.0.0.1",
   "entry":"app/index.js",
-  "preload":[],
+  "preload":["app/demo/home.js","app/demo/host.js"],
   "splash":"splash1",
   "static":
   {

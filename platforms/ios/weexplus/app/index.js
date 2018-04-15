@@ -162,7 +162,7 @@ exports.default = {
         globalEvent.addEventListener("onPageInit", function (e) {
 
             var nav = weex.requireModule('navigator');
-            nav.pushFull({ url: 'index1.js', animated: false });
+            nav.pushFull({ url: 'demo/host.js', animated: false });
         });
     }
 };

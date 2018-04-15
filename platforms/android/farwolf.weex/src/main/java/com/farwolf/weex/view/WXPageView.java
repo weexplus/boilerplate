@@ -21,6 +21,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -93,20 +94,31 @@ public class WXPageView extends ViewBase   {
     }
 
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        firePageInit();
 
-    public void firePageInit(Page p)
+    }
+
+    public void firePageInit()
     {
 
-//        if(Weex.hasLoad(p.v))
-//        {
-//            instance.fireGlobalEventCallback("onPageInit",null);
-//        }
+        if(isPageInit)
+            return;
+        isPageInit=true;
+        HashMap param=null;
+        if(getActivity()!=null)
+        {
+            param=(HashMap)getActivity().getIntent().getSerializableExtra("param");
+        }
 
+        instance.fireGlobalEventCallback("onPageInit",param);
 
     }
 
 
-    public void setSrc(String src, Context c, Map param) {
+    public void setSrc(String src, Context c,final Map param) {
 
         this.src = src;
         if (instance != null) {
@@ -125,7 +137,7 @@ public class WXPageView extends ViewBase   {
             page.v.setLayoutParams(layoutParams);
             root.addView(page.v);
             instance.setSize(layoutParams.width,layoutParams.height);
-            firePageInit(page);
+            firePageInit();
 //            instance.fireGlobalEventCallback("onPageInit",param);
             if(renderListener!=null)
             {
@@ -159,9 +171,10 @@ public class WXPageView extends ViewBase   {
                 view.setLayoutParams(lp);
                 root.addView(view);
 //                instance.fireGlobalEventCallback("onPageInit",null);
+
                 Page p=new Page();
                 p.v=view;
-                firePageInit(p);
+                firePageInit();
             }
 
             @Override

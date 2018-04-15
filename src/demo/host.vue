@@ -37,7 +37,7 @@
             logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
             target: 'World',
             index:0,
-            items:['../../busi/tab/mainpage.js','../../busi/tab/serial.js','../../busi/tab/movie.js','../../busi/tab/collection.js']
+            items:['home.js','inputs.js','lopper.js','nav1.js']
         },
         methods: {
             update: function (e) {
@@ -69,8 +69,8 @@
             globalEvent.addEventListener("onPageInit", function (e) {
 
 
-                const nav = weex.requireModule('navbar');
-                nav.hide();
+                const page = weex.requireModule('page');
+                page.closeSplash();
 
 
             });
