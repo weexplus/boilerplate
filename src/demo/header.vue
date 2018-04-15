@@ -154,7 +154,7 @@
 
 
     .layout {
-        background-color: #333333;height: 128;flex-direction: row;align-items: center;justify-content: center
+        background-color: #333333;height: 128;flex-direction: row;align-items: center;justify-content: center;width: 750px;
     }
 
 

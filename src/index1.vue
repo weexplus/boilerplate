@@ -141,7 +141,7 @@
             globalEvent.addEventListener("onPageInit", function (e) {
 
               var page=weex.requireModule('page')
-              page.closeSplash()
+//              page.closeSplash()
 
 
             });
