@@ -75,7 +75,7 @@ public class WXTabView extends ViewBase {
         root.removeAllViews();
         pages.clear();
         WeexActivity a= (WeexActivity)getActivity();
-        Map param=a.getIntent().getParcelableExtra("param");
+        final Map param=a.getIntent().getParcelableExtra("param");
         for(String q:urls)
         {
             WXPageView p=WXPageView_.build(getContext());
@@ -86,7 +86,17 @@ public class WXTabView extends ViewBase {
             p.setLayoutParams(lp);
             pages.add(p);
             this.root.addView(p);
+
         }
+//        a.addRenderListener(new RenderListener() {
+//            @Override
+//            public void onRenderSuccess(HashMap param) {
+//                for(WXPageView px:pages)
+//                {
+//                    px.firePageInit();
+//                }
+//            }
+//        });
 
         setIndex(0);
     }

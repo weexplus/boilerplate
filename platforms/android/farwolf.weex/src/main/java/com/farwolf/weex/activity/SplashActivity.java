@@ -14,7 +14,9 @@ import com.farwolf.util.FileTool;
 import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
+import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
+import com.farwolf.weex.event.Event;
 import com.taobao.weex.WXSDKInstance;
 
 import org.androidannotations.annotations.AfterViews;
@@ -22,6 +24,9 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Fullscreen;
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,15 +151,39 @@ public class SplashActivity extends WeexActivity {
     public void gotoMain()
     {
 
-        Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
-        in.putExtra("url",getEntryUrl());
-        boolean isPotrait=  Config.isPortrait(this);
-        in.putExtra("isPortrait",isPotrait);
-        startActivity(in);
-        finish();
-        releaseImageViewResouce(img);
+
+        weexFactory.preRender(getEntryUrl(), new WeexFactory.OnRenderFinishListener() {
+            @Override
+            public void onRenderFinish(Page p) {
+//                Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
+//                in.putExtra("url",getEntryUrl());
+//                boolean isPotrait=  Config.isPortrait(SplashActivity.this);
+//                in.putExtra("isPortrait",isPotrait);
+//                startActivity(in);
+//                finish();
+
+                p.instance.fireGlobalEventCallback("onPageInit",null);
+                p.instance.onActivityCreate();
+                releaseImageViewResouce(img);
+//                finish();
+            }
+
+            @Override
+            public void onRenderFailed(Page p) {
+
+            }
+        });
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(Event e)
+    {
+           if("closeSplash".equals(e.key))
+           {
+               finish();
+           }
+    }
 
 
     @AfterViews
@@ -165,6 +194,7 @@ public class SplashActivity extends WeexActivity {
 //        Bitmap bmx= FileTool.loadAssetImage(Config.splash(this),this);
 //        this.img.setImageBitmap(bmx);
         this.bindDelay(1000);
+        EventBus.getDefault().register(this);
 
     }
 

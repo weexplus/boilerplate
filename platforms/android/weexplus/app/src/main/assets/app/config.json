@@ -3,8 +3,8 @@
   "debug":true,
   "showerror":true,
   "isPortrait":true,
-  "debugIp":"172.20.10.3",
-  "entry":"app/busi/index.js",
+  "debugIp":"127.0.0.1",
+  "entry":"app/index.js",
   "preload":[],
   "splash":"splash1",
   "static":

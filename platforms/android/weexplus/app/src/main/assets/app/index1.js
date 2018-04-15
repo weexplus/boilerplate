@@ -2393,12 +2393,8 @@ exports.default = {
         var self = this;
         globalEvent.addEventListener("onPageInit", function (e) {
 
-            //                net.default.post('movie.do',{},(res)=>{
-            //                     var modal=weex.requireModule('modal')
-            //                    modal.alert({message:res})
-            //                })
-
-
+            var page = weex.requireModule('page');
+            page.closeSplash();
         });
     }
 };

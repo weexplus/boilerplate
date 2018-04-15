@@ -7,9 +7,12 @@ import android.content.SharedPreferences;
 import com.farwolf.weex.activity.ActivityManager;
 import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.WeexFactory_;
+import com.farwolf.weex.event.Event;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -54,9 +57,14 @@ public class WXPageModule extends WXModuleBase {
         SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
         editor.putString("mainurl", url).commit();
 
-
     }
 
+    @JSMethod
+    public void closeSplash()
+    {
+        EventBus.getDefault().post(new Event("closeSplash",null));
+
+    }
 
 
     @JSMethod

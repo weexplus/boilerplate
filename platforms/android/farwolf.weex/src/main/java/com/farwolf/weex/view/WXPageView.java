@@ -37,6 +37,10 @@ public class WXPageView extends ViewBase   {
 
     private boolean mIsVisible = true;
 
+    boolean isPageInit=false;
+
+
+
     @Bean
     public WeexFactory weexFactory;
 
@@ -89,6 +93,19 @@ public class WXPageView extends ViewBase   {
     }
 
 
+
+    public void firePageInit(Page p)
+    {
+
+//        if(Weex.hasLoad(p.v))
+//        {
+//            instance.fireGlobalEventCallback("onPageInit",null);
+//        }
+
+
+    }
+
+
     public void setSrc(String src, Context c, Map param) {
 
         this.src = src;
@@ -108,7 +125,8 @@ public class WXPageView extends ViewBase   {
             page.v.setLayoutParams(layoutParams);
             root.addView(page.v);
             instance.setSize(layoutParams.width,layoutParams.height);
-            instance.fireGlobalEventCallback("onPageInit",param);
+            firePageInit(page);
+//            instance.fireGlobalEventCallback("onPageInit",param);
             if(renderListener!=null)
             {
                 renderListener.onRenderSuccess();
@@ -140,7 +158,10 @@ public class WXPageView extends ViewBase   {
                 ViewGroup.LayoutParams lp=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 view.setLayoutParams(lp);
                 root.addView(view);
-                instance.fireGlobalEventCallback("onPageInit",null);
+//                instance.fireGlobalEventCallback("onPageInit",null);
+                Page p=new Page();
+                p.v=view;
+                firePageInit(p);
             }
 
             @Override
@@ -149,6 +170,7 @@ public class WXPageView extends ViewBase   {
                 {
                     renderListener.onRenderSuccess();
                 }
+
             }
 
             @Override

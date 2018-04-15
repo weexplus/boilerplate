@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.view.ViewParent;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -48,6 +50,7 @@ import com.farwolf.weex.module.WXSlidpopModule;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.module.WXUpdateModule;
 import com.farwolf.weex.pref.WeexPref_;
+import com.farwolf.weex.view.CustomInsetsLinearLayout;
 import com.lzy.okgo.OkGo;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
@@ -232,42 +235,24 @@ public class Weex extends ServiceBase{
     }
 
 
-//    public static void setBaseUrl(WXSDKInstance instance)
-//    {
-//
-//        setBaseUrl(instance.getBundleUrl());
-//
-//    }
+    public static boolean hasLoad(View v)
+    {
+        if(v==null)
+            return  false;
+        ViewParent parent=v.getParent();
+        while(parent!=null)
+        {
+            if((parent instanceof CustomInsetsLinearLayout))
+            {
+                return true;
+            }
+            parent=parent.getParent();
+        }
+        return false;
+
+    }
 
 
-//    public static String
-
-//    public static void setBaseUrl(String  url)
-//    {
-//
-//        if(baseurl!=null)
-//            return;
-//        baseurl=getBaseUrl(url);
-////        String s= url;
-////
-////        if(s.startsWith("http"))
-////        {
-////            String x[]=url.split("\\/");
-////
-////            if(x.length>3)
-////            {
-////                String res= x[0]+"//"+x[2]+"/"+Weex.basedir;
-////                if(!res.endsWith("/"))
-////                    res+="/";
-////                baseurl=res;
-////            }
-////        }
-////        else
-////        {
-////            baseurl="app/";
-////
-////        }
-//    }
     public static String getBaseUrl(WXSDKInstance  instance)
     {
         if(instance==null)

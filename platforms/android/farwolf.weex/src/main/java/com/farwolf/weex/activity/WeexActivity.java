@@ -32,6 +32,7 @@ import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.event.PermissionEvent;
 import com.farwolf.weex.event.RefreshEvent;
+import com.farwolf.weex.listener.RenderListener;
 import com.farwolf.weex.module.WXNavgationModule;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.pref.WeexPref_;
@@ -59,6 +60,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -139,6 +141,13 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     public AppTool apptool;
 
 
+    public boolean isPageInit=false;
+
+
+
+    public List<RenderListener> renderListeners=new ArrayList<>();
+
+
 
     @Override
     public int getViewId() {
@@ -177,6 +186,23 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 //        };
 //        LocalBroadcastManager.getInstance(this).registerReceiver(mReloadReceiver, new IntentFilter(WXSDKEngine.JS_FRAMEWORK_RELOAD));
 
+    }
+
+
+
+    public void addRenderListener(RenderListener l)
+    {
+
+        renderListeners.add(l);
+    }
+
+    public void invokeRenderListener()
+    {
+        HashMap m=(HashMap) getIntent().getSerializableExtra("param");
+        for(RenderListener r:renderListeners)
+        {
+            r.onRenderSuccess(m);
+        }
     }
 
     public void resetFrame()
@@ -316,6 +342,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         if(url==null)
             return;
+        this.isPageInit=false;
 
         Page page= weexFactory.getPage(url);
         if(page!=null)
@@ -336,6 +363,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance.onActivityCreate();
             mWXSDKInstance.param=(Map) getIntent().getSerializableExtra("param");
             mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
+            this.isPageInit=true;
+            this.invokeRenderListener();
             ViewGroup.LayoutParams lp= this.root.getLayoutParams();
             mWXSDKInstance.setSize(lp.width,lp.height);
             page=null;
@@ -478,6 +507,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         container.requestLayout();
         mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
         mWXSDKInstance.onActivityCreate();
+        this.invokeRenderListener();
+        this.isPageInit=true;
     }
 
     @Override
@@ -733,4 +764,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         tool.f=f;
         f.show();
     }
+
+
+
 }

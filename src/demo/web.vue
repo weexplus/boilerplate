@@ -49,7 +49,7 @@
         text: '',
           param:'',
           data:{},
-          src:''
+          src:'https://www.baidu.com'
       }
     }
     ,

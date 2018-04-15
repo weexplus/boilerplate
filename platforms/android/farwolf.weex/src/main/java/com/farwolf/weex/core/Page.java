@@ -2,6 +2,7 @@ package com.farwolf.weex.core;
 
 import android.view.View;
 
+import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
 
 import java.util.HashMap;
@@ -17,7 +18,15 @@ public class Page {
     public View v;
     public WXSDKInstance instance;
     public String url;
+    public boolean trigger=false;
     HashMap param;
+
+    public boolean hasLoad()
+    {
+
+       return Weex.hasLoad(this.v);
+
+    }
 
 
 }
