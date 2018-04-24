@@ -2,10 +2,13 @@ package com.farwolf.weex.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import com.alibaba.android.bindingx.plugin.weex.BindingX;
@@ -33,7 +36,7 @@ import java.util.Date;
  * Created by zhengjiangrong on 2018/3/10.
  */
 
-public class WeexApplication extends Application {
+public class WeexApplication extends MultiDexApplication {
 
     private Handler mWXHandler;
 
@@ -106,6 +109,12 @@ public class WeexApplication extends Application {
             connect();
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(RefreshEvent event) {
@@ -139,7 +148,7 @@ public class WeexApplication extends Application {
     }
 
     void registLifecycle(){
-        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+        registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
 

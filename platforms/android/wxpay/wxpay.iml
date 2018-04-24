@@ -129,6 +129,7 @@
     <orderEntry type="library" exported="" name="analytics-6.1.4" level="project" />
     <orderEntry type="library" exported="" name="design-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.2.1" level="project" />
+    <orderEntry type="library" exported="" name="multidex-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="okhttp-3.4.1" level="project" />
     <orderEntry type="library" exported="" name="urlconnection_interceptor-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="core-3.2.1" level="project" />
