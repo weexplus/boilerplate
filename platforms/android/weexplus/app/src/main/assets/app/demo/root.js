@@ -67,7 +67,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -150,54 +150,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 399:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(400)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(401)
-
-/* template */
-var __vue_template__ = __webpack_require__(402)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/root.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-275edda4"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 4:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -323,6 +276,149 @@ exports.default = {
     //            }
     //        }
 };
+
+/***/ }),
+
+/***/ 399:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(400)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(401)
+
+/* template */
+var __vue_template__ = __webpack_require__(402)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/root.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-275edda4"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["layout"],
+    style: {
+      'background-color': _vm.bgcolor,
+      'height': _vm.height
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row"
+    },
+    style: {
+      'top': _vm.titletop
+    }
+  }, [(_vm.isloading) ? _c('div', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginRight: "10"
+    }
+  }) : _vm._e(), _c('text', {
+    staticStyle: {
+      flex: "1",
+      color: "#ffffff",
+      textAlign: "center",
+      fontSize: "38"
+    },
+    on: {
+      "click": _vm.titleClick
+    }
+  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginLeft: "10",
+      marginTop: "5"
+    },
+    attrs: {
+      "color": "#ffffff",
+      "loadingStyle": "small"
+    }
+  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
+    staticStyle: {
+      width: "200",
+      top: "40",
+      position: "absolute",
+      left: "0"
+    },
+    style: {
+      'height': _vm.height,
+      'top': _vm.top
+    },
+    on: {
+      "click": _vm.backTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "80",
+      height: "80"
+    },
+    attrs: {
+      "src": "root:img/back.png"
+    }
+  })]) : _vm._e(), _c('div', {
+    staticStyle: {
+      width: "200",
+      position: "absolute",
+      right: "0",
+      top: "0",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    style: {
+      'height': _vm.height
+    },
+    on: {
+      "click": _vm.rightclick
+    }
+  }, [_vm._t("right")], 2), _c('div', {
+    staticStyle: {
+      height: "1",
+      backgroundColor: "#111111",
+      position: "absolute",
+      bottom: "0",
+      left: "0",
+      right: "0"
+    }
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -487,102 +583,6 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 5:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["layout"],
-    style: {
-      'background-color': _vm.bgcolor,
-      'height': _vm.height
-    }
-  }, [_c('div', {
-    staticStyle: {
-      flexDirection: "row"
-    },
-    style: {
-      'top': _vm.titletop
-    }
-  }, [(_vm.isloading) ? _c('div', {
-    staticStyle: {
-      height: "40",
-      width: "40",
-      marginRight: "10"
-    }
-  }) : _vm._e(), _c('text', {
-    staticStyle: {
-      flex: "1",
-      color: "#ffffff",
-      textAlign: "center",
-      fontSize: "38"
-    },
-    on: {
-      "click": _vm.titleClick
-    }
-  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
-    staticStyle: {
-      height: "40",
-      width: "40",
-      marginLeft: "10",
-      marginTop: "5"
-    },
-    attrs: {
-      "color": "#ffffff",
-      "loadingStyle": "small"
-    }
-  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
-    staticStyle: {
-      width: "200",
-      top: "40",
-      position: "absolute",
-      left: "0"
-    },
-    style: {
-      'height': _vm.height,
-      'top': _vm.top
-    },
-    on: {
-      "click": _vm.backTo
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "80",
-      height: "80"
-    },
-    attrs: {
-      "src": "root:img/back.png"
-    }
-  })]) : _vm._e(), _c('div', {
-    staticStyle: {
-      width: "200",
-      position: "absolute",
-      right: "0",
-      top: "0",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    style: {
-      'height': _vm.height
-    },
-    on: {
-      "click": _vm.rightclick
-    }
-  }, [_vm._t("right")], 2), _c('div', {
-    staticStyle: {
-      height: "1",
-      backgroundColor: "#111111",
-      position: "absolute",
-      bottom: "0",
-      left: "0",
-      right: "0"
-    }
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -590,16 +590,16 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(1)
 )
-__vue_styles__.push(__webpack_require__(3)
+__vue_styles__.push(__webpack_require__(2)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(4)
+__vue_exports__ = __webpack_require__(3)
 
 /* template */
-var __vue_template__ = __webpack_require__(5)
+var __vue_template__ = __webpack_require__(4)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

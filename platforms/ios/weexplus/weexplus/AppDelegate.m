@@ -11,6 +11,8 @@
 #import "RefreshManager.h"
 #import "Config.h"
 #import "UpdateDialogControl.h"
+#import "ZipDownloader.h"
+
 @interface AppDelegate ()
 
 @end
@@ -25,7 +27,15 @@
     [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
+ 
+//   NSString *s=@"/Users/zhengjiangrong/Library/Developer/CoreSimulator/Devices/5319AD64-DD67-4D89-81B3-E39231481EB9/data/Containers/Data/Application/90E53365-5516-4FAF-9C87-76FC2B8183E7/Documents/app";
+//    [s mkdir];
+//    [s delete];
+
+    [URL copyBundleToDisk];
     
+    
+   
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
    

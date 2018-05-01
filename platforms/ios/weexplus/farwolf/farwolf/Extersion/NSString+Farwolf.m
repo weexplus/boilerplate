@@ -195,6 +195,77 @@
     
 }
 
+-(BOOL)isExist
+{
+    NSFileManager *m=[NSFileManager defaultManager];
+//    [m removeItemAtPath:app error:nil];
+     BOOL isDir=true;
+    return [m fileExistsAtPath:self isDirectory:&isDir];
+}
+
+-(void)delete
+{
+    if([self isExist])
+    {
+        NSFileManager *m=[NSFileManager defaultManager];
+        [m removeItemAtPath:self error:nil];
+    }
+ 
+}
+
+
+-(void)copyToPath:(NSString *)toPath
+{
+    
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSArray* array = [fileManager contentsOfDirectoryAtPath:self error:nil];
+    for(int i = 0; i<[array count]; i++)
+    {
+        
+        NSString *fullPath = [self stringByAppendingPathComponent:[array objectAtIndex:i]];
+        NSString *fullToPath = [toPath stringByAppendingPathComponent:[array objectAtIndex:i]];
+//        NSLog(@"%@",fullPath);
+//        NSLog(@"%@",fullToPath);
+        //判断是不是文件夹
+        BOOL isFolder = NO;
+        //判断是不是存在路径 并且是不是文件夹
+        BOOL isExist = [fileManager fileExistsAtPath:fullPath isDirectory:&isFolder];
+        if (isExist)
+        {
+            
+            if (isFolder)
+            {
+                [fullToPath mkdir];
+                [fullPath copyToPath:fullToPath];
+                
+            }
+            else
+            {
+                NSError *err = nil;
+                [[NSFileManager defaultManager] copyItemAtPath:fullPath toPath:fullToPath error:&err];
+//                NSLog(@"%@",err);
+            }
+       
+            
+           
+            
+        }
+        
+    }
+    
+}
+
+-(BOOL)mkdir
+{
+    NSFileManager *fileManager = [[NSFileManager alloc]init];
+    if (![[NSFileManager defaultManager]fileExistsAtPath:self]) {
+        
+        [fileManager createDirectoryAtPath:self withIntermediateDirectories:YES attributes:nil error:nil];
+        
+    }
+    
+}
+
 
 
 @end

@@ -29,4 +29,8 @@
 -(NSDate*)toDate:(NSString*)format;
 -(NSString*)findone:(NSString*)start end:(NSString*)end;
 -(NSString*)findoneNoReplace:(NSString*)start end:(NSString*)end;
+-(void)copyToPath:(NSString *)toPath;
+-(void)delete;
+-(BOOL)isExist;
+-(BOOL)mkdir;
 @end

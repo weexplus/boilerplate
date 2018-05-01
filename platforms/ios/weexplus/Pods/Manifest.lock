@@ -89,6 +89,7 @@ PODS:
     - WeexSDK
   - YYModel (1.0.4)
   - YZHeaderScaleImage (1.0.1)
+  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
@@ -116,6 +117,7 @@ DEPENDENCIES:
   - WXDevtool (from `WXDevtool`)
   - YYModel
   - YZHeaderScaleImage (~> 1.0.1)
+  - ZipArchive (~> 1.4.0)
 
 EXTERNAL SOURCES:
   farwolf:
@@ -164,7 +166,8 @@ SPEC CHECKSUMS:
   WXDevtool: b6205c022286e070db2f89397d72b18b45da7498
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 01e03583c0d1f720733d7b0d23173c35b4cf1583
+PODFILE CHECKSUM: 0e297ec0fb1f0a2858eb6824e97762692906a0c3
 
 COCOAPODS: 1.1.1

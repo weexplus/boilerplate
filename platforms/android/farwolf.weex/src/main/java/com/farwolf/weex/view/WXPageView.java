@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.farwolf.base.ViewBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.weex.R;
 import com.farwolf.weex.core.Page;
@@ -21,24 +20,27 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by zhengjiangrong on 2017/8/19.
  */
 @EViewGroup
-public class WXPageView extends ViewBase   {
+public class WXPageView extends WeexView   {
 
+
+
+
+    WXSDKInstance parentInstance;
 
     @ViewById
     public FrameLayout root;
     private String src;
-    public WXSDKInstance instance;
+
 
     private boolean mIsVisible = true;
 
-    boolean isPageInit=false;
+
 
 
 
@@ -93,27 +95,36 @@ public class WXPageView extends ViewBase   {
         instance.fireGlobalEventCallback("onLeave",null);
     }
 
+    public WXSDKInstance getParentInstance() {
+        return parentInstance;
+    }
+
+    public void setParentInstance(WXSDKInstance parentInstance) {
+        this.parentInstance = parentInstance;
+    }
+
 
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        firePageInit();
+//        firePageInit();
 
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        firePageInit();
     }
 
     public void firePageInit()
     {
 
-        if(isPageInit)
-            return;
-        isPageInit=true;
-        HashMap param=null;
-        if(getActivity()!=null)
-        {
-            param=(HashMap)getActivity().getIntent().getSerializableExtra("param");
-        }
-
-        instance.fireGlobalEventCallback("onPageInit",param);
+//        if(!getParentInstance().isFirePageInit())
+//        {
+//            return;
+//        }
+        instance.firePageInit();
 
     }
 
@@ -131,12 +142,14 @@ public class WXPageView extends ViewBase   {
             instance=page.instance;
             if(c!=null)
                 instance.setContext(c);
+            instance.param=param;
             root.removeAllViews();
             ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
             page.v.setLayoutParams(layoutParams);
             root.addView(page.v);
             instance.setSize(layoutParams.width,layoutParams.height);
+            getParentInstance().addChildInstance(instance);
             firePageInit();
 //            instance.fireGlobalEventCallback("onPageInit",param);
             if(renderListener!=null)
@@ -158,6 +171,7 @@ public class WXPageView extends ViewBase   {
 
     private WXSDKInstance createInstance() {
         WXSDKInstance   instance =new WXSDKInstance(getContext());
+        getParentInstance().addChildInstance(instance);
         ViewGroup.LayoutParams layoutParams = root.getLayoutParams();
         instance.setSize(layoutParams.width,layoutParams.height);
         instance.registerRenderListener(new IWXRenderListener(){

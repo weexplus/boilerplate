@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.farwolf.base.ViewBase;
 import com.farwolf.weex.R;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.util.EventEnum;
@@ -23,9 +22,10 @@ import java.util.Map;
  * Created by zhengjiangrong on 2017/8/17.
  */
 @EViewGroup
-public class WXTabView extends ViewBase {
+public class WXTabView extends WeexView {
 
     public List<String> urls=new ArrayList<>();
+
 
     @ViewById
     LinearLayout root;
@@ -80,12 +80,14 @@ public class WXTabView extends ViewBase {
         {
             WXPageView p=WXPageView_.build(getContext());
 //            p.setBackgroundColor(Color.GREEN);
+            p.setParentInstance(instance);
             p.setVisibility(View.VISIBLE);
             p.setSrc(q,getContext(),param);
             ViewGroup.LayoutParams lp=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             p.setLayoutParams(lp);
             pages.add(p);
             this.root.addView(p);
+
 
         }
 //        a.addRenderListener(new RenderListener() {

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B0A86DCF7094B685C53FE00401880383'
+               BlueprintIdentifier = 'D0F898E82749331FBC7203E2D6CB5B38'
                BlueprintName = 'SSLunarDate'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libSSLunarDate.a'>

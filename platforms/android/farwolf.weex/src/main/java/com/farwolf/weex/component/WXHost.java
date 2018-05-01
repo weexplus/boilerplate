@@ -16,7 +16,6 @@ import com.taobao.weex.ui.component.WXVContainer;
 import java.util.ArrayList;
 
 import static com.farwolf.weex.util.EventEnum.OnActivityBack;
-import static com.farwolf.weex.util.EventEnum.OnActivityCreate;
 import static com.farwolf.weex.util.EventEnum.OnActivityPause;
 import static com.farwolf.weex.util.EventEnum.OnActivityResult;
 import static com.farwolf.weex.util.EventEnum.OnActivityResume;
@@ -42,6 +41,7 @@ public class WXHost extends WXComponent<WXTabView> {
     @Override
     protected WXTabView initComponentHostView(@NonNull Context context) {
         WXTabView w= WXTabView_.build(context);
+        w.setInstance(getInstance());
 //        WXTabView w= new WXTabView(context);
 //        w.holdComponent(this);
 

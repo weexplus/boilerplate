@@ -55,6 +55,13 @@ public class WXFEmbed extends WXEmbed {
         }
     }
 
+
+//    @Override
+//    public void onAppear() {
+//        super.onAppear();
+//        this.mInstance.setContext(getContext());
+//    }
+
     @WXComponentProp(name = "param")
     public void setParam(HashMap param) {
         if(param==null||param.size()==0)

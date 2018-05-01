@@ -18,6 +18,7 @@
                 <text>收藏</text>
             </div>
         </div>
+        <!--<prerender src="home.js"></prerender>-->
 
         <!--<prerender src="app/busi/tab/serial.js"></prerender>-->
         <!--<a href="demo/pagedemo.js" style="width: 100;height: 100;background-color: red;justify-content: center;align-items: center"><text>跳转</text></a>-->
@@ -71,6 +72,7 @@
 
                 const page = weex.requireModule('page');
                 page.closeSplash();
+
 
 
             });

@@ -362,7 +362,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             mWXSDKInstance.registerRenderListener(this);
             mWXSDKInstance.onActivityCreate();
             mWXSDKInstance.param=(Map) getIntent().getSerializableExtra("param");
-            mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
+//            mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
+            mWXSDKInstance.firePageInit();
             this.isPageInit=true;
             this.invokeRenderListener();
             ViewGroup.LayoutParams lp= this.root.getLayoutParams();
@@ -505,7 +506,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         container.addView(view);
         container.requestLayout();
-        mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
+//        mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
+        mWXSDKInstance.firePageInit();
         mWXSDKInstance.onActivityCreate();
         this.invokeRenderListener();
         this.isPageInit=true;

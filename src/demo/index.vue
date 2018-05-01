@@ -67,6 +67,11 @@
                 <div  class="item_flex"></div>
                 <image class="item_img" src="root:img/arrow.png" ></image>
             </a>
+            <a href="./updater.js" class="item">
+                <text class="item_text">更新检测（updater）</text>
+                <div  class="item_flex"></div>
+                <image class="item_img" src="root:img/arrow.png" ></image>
+            </a>
 
         </scroller>
     </div>

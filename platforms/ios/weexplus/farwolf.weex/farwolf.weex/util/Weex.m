@@ -97,12 +97,33 @@
 
 +(NSMutableDictionary*)conifg
 {
+
+    if([URL isDiskExist])
+    {
+        return [self diskConifg];
+    }
+    else
+    {
+        return [self bundleConifg];
+    }
+   
+}
+
++(NSMutableDictionary*)diskConifg
+{
     NSString *path = @"app/config";
-    NSURL *url= [[NSBundle mainBundle] URLForResource:path withExtension:@"json"];
+    NSURL *url=[URL loadFromDisk:[path add:@".json"]];
     NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     return [str toJson];
 }
 
++(NSMutableDictionary*)bundleConifg
+{
+    NSString *path = @"app/config";
+    NSURL *url=[URL loadFromBundle:path ext:@"json"];
+    NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    return [str toJson];
+}
 
 +(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance
 {

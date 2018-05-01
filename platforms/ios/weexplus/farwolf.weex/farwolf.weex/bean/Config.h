@@ -16,6 +16,9 @@
 +(NSString*)debugIp;
 +(BOOL)isPortrait;
 +(BOOL)showError;
++(NSString*)jsVersion;
++(NSString*)diskJsVersion;
++(NSString*)bundleJsVersion;
 
 +(NSMutableArray*)preload;
 +(BOOL)isDebug;

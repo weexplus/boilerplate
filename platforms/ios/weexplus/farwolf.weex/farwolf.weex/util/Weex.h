@@ -31,7 +31,11 @@ static DebugScocket *debugScocket;
 //+(NSString*)getBaseUrl;
 //+(void)setBaseUrl:(NSString*)url;
 +(UIViewController*)start:(NSString*)image url:(NSString*)url;
+
 +(NSMutableDictionary*)conifg;
++(NSMutableDictionary*)diskConifg;
++(NSMutableDictionary*)bundleConifg;
+
 +(NSString*)socketPort;
 +(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance;
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance;
@@ -41,6 +45,7 @@ static DebugScocket *debugScocket;
 
 +(NSString*)getEntry;
 +(NSString*)getDebugIp;
+
 
 @end
 

@@ -18,6 +18,8 @@
 #import "Config.h"
 #import "IQKeyboardManager.h"
 #import "RefreshManager.h"
+#import "SetViewController.h"
+
 static BOOL isshowErr;
 @interface WXNormalViewContrller ()
 
@@ -230,7 +232,7 @@ static BOOL isshowErr;
     {
         return;
     }
-    [self.fail_layout setHidden:false];
+//    [self.fail_layout setHidden:false];
     isshowErr=true;
     
     ErrorControl *vc=[ErrorControl new];
@@ -323,7 +325,6 @@ static BOOL isshowErr;
          [self interfaceOrientation:UIInterfaceOrientationPortrait];
     }
     [_instance fireGlobalEvent:@"viewWillAppear" params:nil];
-    
     [self.navigationController setNavigationBarHidden:true animated:animated];
     [self resetFrame];
     //    self.view.backgroundColor=[@"#ffffff" toColor];
@@ -346,6 +347,8 @@ static BOOL isshowErr;
     [super viewDidDisappear:animated];
     [_instance fireGlobalEvent:@"viewDidDisappear" params:nil];
     [self _updateInstanceState:WeexInstanceDisappear];
+    
+  
     
 }
 
@@ -511,7 +514,7 @@ static BOOL isshowErr;
         
     }
     
-    if(url!=nil&&url!=@"")
+    if(url!=nil&& ![@"" isEqualToString:url])
     {
         if([url startWith:@"http"])
         {
@@ -714,7 +717,8 @@ static BOOL isshowErr;
 {
 //    _setVc= [self fromStoryBoard:@"weex/SetViewController"];
 //        [self addVc:_setVc];
-  _setVc=  [self present:@"weex/SetViewController" anim:true];
+    _setVc=  [self present:@"weex/SetViewController" anim:true];
+    ((SetViewController*)((UINavigationController*)_setVc).childViewControllers[0]).vc=self;
 //   _setVc= [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
 }
 

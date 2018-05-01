@@ -49,30 +49,12 @@ public class TabFragment extends Fragment {
 
     public TabFragment()
     {
-//        List<String> l=new ArrayList<String>();
-//        l.add("app/busi/tab/movie.js");
-//        l.add("app/busi/tab/serial.js");
-//        for(String q:urls)
-//        {
-//            Intent in=new Intent(getContext(),WeexFragment_.class);
-//            in.putExtra("url",q);
-//            this.add(urls.indexOf(q)+"tag",in);
-//        }
-//        add(WeexFragment_.class);
+
     }
 
 
     public void init() {
 
-//        urls.add("app/busi/tab/movie.js");
-//        urls.add("app/busi/tab/serial.js");
-//        for(String q:urls)
-//        {
-//            Intent in=new Intent(getContext(),WeexFragment_.class);
-//            in.putExtra("url",q);
-//            add(WeexFragment_.class);
-//            this.add(urls.indexOf(q)+"tag",in);
-//        }
 
     }
 }

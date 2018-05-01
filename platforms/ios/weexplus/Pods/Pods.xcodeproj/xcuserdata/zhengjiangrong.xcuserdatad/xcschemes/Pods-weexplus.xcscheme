@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'EE5DA71B54C9B7F0B92062CBE9E84BF4'
+               BlueprintIdentifier = '604D063D10BB958661F6C77AC5978FB4'
                BlueprintName = 'Pods-weexplus'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-weexplus.a'>

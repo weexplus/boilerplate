@@ -117,6 +117,14 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
   private WXComponent mRootComp;
   //zjr add
   public Map param;
+  private List<WXSDKInstance> childInstances=new ArrayList<>();
+
+
+
+  public boolean firePageInit =false;
+  //zjr add
+
+
   private boolean mRendered;
   private WXRefreshData mLastRefreshData;
   private NestedInstanceInterceptor mNestedInstanceInterceptor;
@@ -135,6 +143,7 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
   private int mInstanceViewPortWidth = 750;
   private @NonNull
   FlatGUIContext mFlatGUIContext =new FlatGUIContext();
+
 
   public long mRenderStartNanos;
   public int mExecJSTraceId = WXTracing.nextId();
@@ -219,6 +228,32 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
     mRenderContainer = a;
   }
 
+
+  //zjr add
+  public void addChildInstance(WXSDKInstance instance)
+  {
+    childInstances.add(instance);
+  }
+
+  //zjr add
+  public void firePageInit()
+  {
+    if(firePageInit)
+      return;
+    firePageInit =true;
+    fireGlobalEventCallback("onPageInit",param);
+    for(WXSDKInstance instance:childInstances)
+    {
+        instance.setContext(getContext());
+        instance.firePageInit();
+    }
+  }
+
+
+  //zjr add
+  public boolean isFirePageInit() {
+    return firePageInit;
+  }
 
 
   private int mMaxDeepLayer;
@@ -554,6 +589,9 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
     WXSDKManager.getInstance().createInstance(this, template, renderOptions, jsonInitData);
     mRendered = true;
   }
+
+
+
 
   private void renderByUrlInternal(String pageName,
                                    final String url,

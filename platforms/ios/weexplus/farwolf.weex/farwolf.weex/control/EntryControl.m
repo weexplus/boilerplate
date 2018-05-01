@@ -45,10 +45,7 @@
         make.top.equalTo(self.view);
         make.bottom.equalTo(self.view);
     }];
-    
-    
-
-    
+   
 }
 
 
@@ -60,11 +57,11 @@
 //    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
+
 -(void)gotoMain
 {
- 
-    BOOL isPortrait=[Config isPortrait];
     
+    BOOL isPortrait=[Config isPortrait];
     NSURL *url=[NSURL URLWithString:self.url];
     if([self.url startWith:@"http"])
     {
@@ -73,7 +70,11 @@
     }
     else
     {
-        url= [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
+        
+//        url= [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
+//        url=[URL loadFromDisk:self.url];
+          url=[URL loadLocal:self.url];
+        int k=0;
     }
 
     if([Config isDebug])

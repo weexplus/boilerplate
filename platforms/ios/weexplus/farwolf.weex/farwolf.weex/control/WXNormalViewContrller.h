@@ -33,7 +33,7 @@
 
 @property (strong,nonatomic)   typeof(void(^)(NSObject*)) nativeCallback;
 @property (nonatomic, strong) UIViewController *setVc;
-@property (nonatomic, strong) WXSDKInstance *instance;
+@property (nonatomic, weak) WXSDKInstance *instance;
 @property (nonatomic, strong) UIView *weexView;
 @property (nonatomic, strong) NSString *pageid;
 @property (nonatomic, strong) NSString *key;
@@ -42,7 +42,7 @@
 @property (nonatomic)BOOL freeFrame;
 @property (nonatomic, strong) UIView *fail_layout;
 @property (nonatomic, strong) NSMutableDictionary *param;
-@property (nonatomic, strong) Page *page;
+@property (nonatomic, weak) Page *page;
 @property (nonatomic) NSString* navbarVisibility;
 @property (strong,nonatomic)  WXModuleKeepAliveCallback callback;
 @property (nonatomic, strong) NSMutableArray *textfields;

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
+import com.farwolf.util.SDCard;
 import com.farwolf.weex.adapter.ExceptionAdapter;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
 import com.farwolf.weex.adapter.display.DefaultWebSocketAdapterFactory;
@@ -198,6 +199,9 @@ public class Weex extends ServiceBase{
             registerComponent("drawerlayout",WXDrawerLayout.class);
             registerComponent("input",WXFInput.class);
             registerComponent("arc",WXArc.class);
+
+
+
         } catch (WXException e) {
             e.printStackTrace();
         }
@@ -228,6 +232,7 @@ public class Weex extends ServiceBase{
 
     public static String loadAsset(String path,Context c)
     {
+        String px= SDCard.getBasePath(c);
         String s= WXFileUtils.loadAsset(path, c);
         if(!s.startsWith("// { \"framework\": \"Vue\"}"))
             s="// { \"framework\": \"Vue\"}\n"+s;

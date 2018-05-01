@@ -24,7 +24,7 @@
 
 -(void)unregist:(NSString*)key
 {
-    
+ 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:key object:nil];
 }
 

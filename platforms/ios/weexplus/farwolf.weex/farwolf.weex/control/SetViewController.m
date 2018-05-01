@@ -32,8 +32,11 @@
 //    NSString *s= [self getSaveValue:@"url"];
 //            NSString *ip= [s findone:@"http://" end:@":"];
 
+   UINavigationController *nav=  (UINavigationController*)self.parentViewController;
+   int k= [nav childViewControllers].count;
+    
     ip=[Weex getDebugIp];
-    self.url.text=s;
+    self.url.text=_vc.sourceURL.absoluteString;
     self.debugip.text=[@"debugip=" add:ip];
     if([WXDevTool isDebug])
     {

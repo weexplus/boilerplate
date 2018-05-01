@@ -70,6 +70,7 @@ def mypod
     
     pod ‘WXDevtool’, :path => 'WXDevtool’
 
+    pod 'ZipArchive', '~> 1.4.0'
        
 
    

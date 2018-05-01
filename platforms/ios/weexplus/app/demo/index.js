@@ -690,6 +690,11 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
 
 var head = __webpack_require__(90);
 var net = __webpack_require__(24);
@@ -939,6 +944,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["item_text"]
   }, [_vm._v("网络访问（net）")]), _c('div', {
+    staticClass: ["item_flex"]
+  }), _c('image', {
+    staticClass: ["item_img"],
+    attrs: {
+      "src": "root:img/arrow.png"
+    }
+  })]), _c('a', {
+    staticClass: ["item"],
+    attrs: {
+      "href": "./updater.js"
+    }
+  }, [_c('text', {
+    staticClass: ["item_text"]
+  }, [_vm._v("更新检测（updater）")]), _c('div', {
     staticClass: ["item_flex"]
   }), _c('image', {
     staticClass: ["item_img"],

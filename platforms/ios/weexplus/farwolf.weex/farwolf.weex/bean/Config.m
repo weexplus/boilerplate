@@ -35,6 +35,30 @@
     return  [[Weex conifg] objectForKey:@"splash"];
 }
 
++(NSString*)jsVersion
+{
+    if([URL isDiskExist])
+    {
+        return [self diskJsVersion];
+    }
+    else
+    {
+         return [self bundleJsVersion];
+    }
+    
+}
+
++(NSString*)diskJsVersion
+{
+    return  [[Weex diskConifg] objectForKey:@"jsVersion"];
+}
+
++(NSString*)bundleJsVersion
+{
+    return  [[Weex bundleConifg] objectForKey:@"jsVersion"];
+}
+
+
 +(BOOL)isDebug
 {
     NSMutableDictionary *d=  [Weex conifg];

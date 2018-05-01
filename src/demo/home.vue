@@ -59,7 +59,7 @@
     data () {
       return {
         text: 'Hello World.',
-          param:{}
+          param:''
       }
     }
     ,
@@ -84,14 +84,14 @@
      ,
       created:function(){
 
+
+
           var self=this;
           var globalEvent = weex.requireModule('globalEvent') ;
           globalEvent.addEventListener("onPageInit", function (e) {
 
-              var navigator = weex.requireModule('navigator') ;
-
-              self.param=e
-
+              var modal = weex.requireModule('modal') ;
+              modal.toast({message:'home init'})
 
 
           });

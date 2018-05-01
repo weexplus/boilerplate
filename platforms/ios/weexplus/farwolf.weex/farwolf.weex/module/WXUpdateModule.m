@@ -8,11 +8,15 @@
 #import "WXUpdateModule.h"
 #import "UpdateChecker.h"
 #import "farwolf.h"
+#import "Config.h"
 
 @implementation WXUpdateModule
 @synthesize weexInstance;
 WX_EXPORT_METHOD(@selector(docheck:))
-WX_EXPORT_METHOD(@selector(download::))
+WX_EXPORT_METHOD(@selector(download:))
+WX_EXPORT_METHOD(@selector(doCheckJs:))
+
+
 -(void)docheck:(NSDictionary*)param
 {
     
@@ -34,6 +38,31 @@ WX_EXPORT_METHOD(@selector(download::))
     } theme:theme];
     
 }
+
+
+-(void)doCheckJs:(NSDictionary*)param
+{
+    
+    
+    
+    NSString *url=[param objectForKey:@"url"];
+    NSString *appid=[param objectForKey:@"appid"];
+    NSString *jsversion=[Config jsVersion];
+    NSString *theme=[param objectForKey:@"theme"];
+    BOOL failtoast=[[param objectForKey:@"failtoast"] boolValue];
+    BOOL showprogress=[[param objectForKey:@"showprogress"] boolValue];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *nativecode = [infoDictionary objectForKey:@"CFBundleVersion"];
+    UpdateChecker *u=[UpdateChecker new];
+    u.appid=appid;
+    u.url=url;
+    [u doCheckJs:appid jsversion:jsversion nativecode:nativecode showprogress:showprogress failtoast:failtoast vc:[weexInstance.viewController topViewController] success:^(Version *v) {
+        
+    } theme:theme];
+    
+    
+}
+
 
 -(void)download:(NSString*)url
 {
