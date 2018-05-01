@@ -438,14 +438,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(72)
+__vue_styles__.push(__webpack_require__(73)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(73)
+__vue_exports__ = __webpack_require__(74)
 
 /* template */
-var __vue_template__ = __webpack_require__(77)
+var __vue_template__ = __webpack_require__(78)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -997,7 +997,7 @@ module.exports = URL;
 
 /***/ }),
 
-/***/ 72:
+/***/ 73:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1009,7 +1009,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 73:
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1040,15 +1040,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var _animate = __webpack_require__(74);
+var _animate = __webpack_require__(75);
 
 var Ani = _interopRequireWildcard(_animate);
 
-var _config = __webpack_require__(75);
+var _config = __webpack_require__(76);
 
 var CFG = _interopRequireWildcard(_config);
 
-var _region = __webpack_require__(76);
+var _region = __webpack_require__(77);
 
 var _region2 = _interopRequireDefault(_region);
 
@@ -1172,7 +1172,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 74:
+/***/ 75:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1267,7 +1267,7 @@ function shakePig(ref, callback) {
 
 /***/ }),
 
-/***/ 75:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1288,7 +1288,7 @@ var DEFAULT = exports.DEFAULT = {
 
 /***/ }),
 
-/***/ 76:
+/***/ 77:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1380,7 +1380,7 @@ exports.default = Region;
 
 /***/ }),
 
-/***/ 77:
+/***/ 78:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

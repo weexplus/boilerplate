@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
-import com.farwolf.util.SDCard;
 import com.farwolf.weex.adapter.ExceptionAdapter;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
 import com.farwolf.weex.adapter.display.DefaultWebSocketAdapterFactory;
@@ -32,6 +31,7 @@ import com.farwolf.weex.component.WXLooperText;
 import com.farwolf.weex.component.WXPage;
 import com.farwolf.weex.component.WXPreRender;
 import com.farwolf.weex.component.WXWheelView;
+import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.module.WXAddressBookModule;
 import com.farwolf.weex.module.WXCenterPopModule;
 import com.farwolf.weex.module.WXEventModule;
@@ -150,6 +150,7 @@ public class Weex extends ServiceBase{
 
     public void init(Application application, String name, String groupname,String basedir)
     {
+
         OkGo.init(application);
         Weex.basedir=basedir;
         WXSDKEngine.addCustomOptions("appName", name);
@@ -230,10 +231,11 @@ public class Weex extends ServiceBase{
     }
 
 
-    public static String loadAsset(String path,Context c)
+    public static String loadLocal(String path, Context c)
     {
-        String px= SDCard.getBasePath(c);
-        String s= WXFileUtils.loadAsset(path, c);
+//        String px= SDCard.getBasePath(c);
+//        String s= WXFileUtils.loadAsset(path, c);
+        String s= Local.getString(c,path);
         if(!s.startsWith("// { \"framework\": \"Vue\"}"))
             s="// { \"framework\": \"Vue\"}\n"+s;
         return s;

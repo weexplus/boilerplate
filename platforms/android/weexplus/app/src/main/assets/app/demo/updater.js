@@ -67,7 +67,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 27:
+/***/ 20:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +134,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 28:
+/***/ 21:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -150,7 +150,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -278,7 +278,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 30:
+/***/ 23:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -374,6 +374,53 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
+/***/ 39:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(20)
+)
+__vue_styles__.push(__webpack_require__(21)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(22)
+
+/* template */
+var __vue_template__ = __webpack_require__(23)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-a70d48aa"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
 /***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -436,7 +483,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var head = __webpack_require__(90);
+var head = __webpack_require__(39);
 exports.default = {
 
     components: {
@@ -449,7 +496,7 @@ exports.default = {
             var p = {};
             p.url = 'http://127.0.0.1:8080/jsversion.do';
             p.appid = 1;
-            p.jsversion = 1;
+            //                p.jsversion=1
             p.theme = 1;
             p.nativeversion = 1;
             p.failtoast = true;
@@ -486,53 +533,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("更新js")])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 90:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(27)
-)
-__vue_styles__.push(__webpack_require__(28)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(29)
-
-/* template */
-var __vue_template__ = __webpack_require__(30)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-a70d48aa"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
 
 /***/ })
 

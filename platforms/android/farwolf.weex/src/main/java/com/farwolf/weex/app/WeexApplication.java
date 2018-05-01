@@ -17,6 +17,7 @@ import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
 import com.farwolf.weex.activity.ActivityManager;
 import com.farwolf.weex.bean.Config;
+import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.event.RefreshEvent;
 import com.farwolf.weex.pref.WeexPref_;
 import com.farwolf.weex.util.Constants;
@@ -52,6 +53,8 @@ public class WeexApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+//
+        Local.copyAssetToDisk(this);
         weex= Weex_.getInstance_(this);
         pref= new WeexPref_(this);
         initUnivsalImageloader();

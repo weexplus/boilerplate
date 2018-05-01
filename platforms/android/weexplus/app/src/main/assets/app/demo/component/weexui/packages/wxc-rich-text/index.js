@@ -389,7 +389,7 @@ exports.default = {
     WxcRichTextText: __webpack_require__(19),
     WxcRichTextLink: __webpack_require__(175),
     WxcRichTextIcon: __webpack_require__(176),
-    WxcRichTextTag: __webpack_require__(40)
+    WxcRichTextTag: __webpack_require__(41)
   },
   props: {
     configList: {
@@ -471,10 +471,10 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* script */
-__vue_exports__ = __webpack_require__(85)
+__vue_exports__ = __webpack_require__(86)
 
 /* template */
-var __vue_template__ = __webpack_require__(86)
+var __vue_template__ = __webpack_require__(87)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -511,14 +511,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(87)
+__vue_styles__.push(__webpack_require__(88)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(88)
+__vue_exports__ = __webpack_require__(89)
 
 /* template */
-var __vue_template__ = __webpack_require__(89)
+var __vue_template__ = __webpack_require__(90)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -598,14 +598,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(21)
+__vue_styles__.push(__webpack_require__(25)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(22)
+__vue_exports__ = __webpack_require__(26)
 
 /* template */
-var __vue_template__ = __webpack_require__(23)
+var __vue_template__ = __webpack_require__(27)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -636,7 +636,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 21:
+/***/ 25:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -666,7 +666,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 22:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -760,7 +760,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 23:
+/***/ 27:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1061,7 +1061,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 40:
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -1600,7 +1600,7 @@ module.exports = function required(port, protocol) {
 
 /***/ }),
 
-/***/ 85:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1676,7 +1676,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1697,7 +1697,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1710,7 +1710,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 88:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1791,29 +1791,6 @@ exports.default = {
 
 /***/ }),
 
-/***/ 89:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('image', {
-    staticClass: ["wxc-image"],
-    style: {
-      width: _vm.computedStyle.width,
-      height: _vm.computedStyle.height
-    },
-    attrs: {
-      "src": _vm.iconSrc,
-      "ariaHidden": true
-    },
-    on: {
-      "load": _vm.onLoad
-    }
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
 /***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1887,6 +1864,29 @@ function querystringify(obj, prefix) {
 //
 exports.stringify = querystringify;
 exports.parse = querystring;
+
+/***/ }),
+
+/***/ 90:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('image', {
+    staticClass: ["wxc-image"],
+    style: {
+      width: _vm.computedStyle.width,
+      height: _vm.computedStyle.height
+    },
+    attrs: {
+      "src": _vm.iconSrc,
+      "ariaHidden": true
+    },
+    on: {
+      "load": _vm.onLoad
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ })
 

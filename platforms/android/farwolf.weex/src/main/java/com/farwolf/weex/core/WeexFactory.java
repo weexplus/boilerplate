@@ -319,7 +319,7 @@ public class WeexFactory  extends ServiceBase{
         }
         else
         {
-            instance.render("farwolf", Weex.loadAsset(url, context), null, null, WXRenderStrategy.APPEND_ASYNC);
+            instance.render("farwolf", Weex.loadLocal(url, context), null, null, WXRenderStrategy.APPEND_ASYNC);
 
         }
 

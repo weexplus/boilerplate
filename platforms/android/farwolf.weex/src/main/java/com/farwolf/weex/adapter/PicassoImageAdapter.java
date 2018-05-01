@@ -32,6 +32,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
 import com.farwolf.weex.activity.WeexActivity;
+import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.util.Weex;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -41,6 +42,8 @@ import com.taobao.weex.common.WXImageStrategy;
 import com.taobao.weex.dom.WXImageQuality;
 
 import java.util.HashMap;
+
+import static com.farwolf.weex.core.local.Local.getBitmap;
 
 public class PicassoImageAdapter implements IWXImgLoaderAdapter {
 
@@ -111,9 +114,9 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
             String  placeholder=Weex.getRelativeUrl(strategy.placeHolder,a.mWXSDKInstance);
 //          String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
             placeholder=placeholder.replace(Weex.getBaseUrl(a.mWXSDKInstance),"app/");
-          Bitmap bm= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
-          pladrawable =new BitmapDrawable(bm);
-          placeholders.put(strategy.placeHolder,pladrawable);
+            Bitmap bm= getBitmap(((Activity)view.getContext()).getApplicationContext(),placeholder);
+            pladrawable =new BitmapDrawable(bm);
+            placeholders.put(strategy.placeHolder,pladrawable);
         }
 
       }
@@ -125,7 +128,6 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
                   .with((Activity)view.getContext())
                   .load(url)
                   .asGif()
-
                   .placeholder(pladrawable)
                   .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                   .into(view);
@@ -177,7 +179,8 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
 //                  String placeholder=strategy.placeHolder.replace("root:",Weex.baseurl);
                   WeexActivity a= (WeexActivity)view.getContext();
                   String  placeholder=Weex.getRelativeUrl(strategy.placeHolder,a.mWXSDKInstance);
-                  Bitmap bmx= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
+//                  Bitmap bmx= FileTool.loadAssetImage(placeholder,((Activity)view.getContext()).getApplicationContext());
+                  Bitmap bmx= getBitmap(((Activity)view.getContext()).getApplicationContext(),placeholder);
                   pladrawable =new BitmapDrawable(bmx);
                   placeholders.put(strategy.placeHolder,pladrawable);
               }
@@ -187,9 +190,12 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
       view.setImageDrawable(pladrawable);
       if(url.toLowerCase().contains(".gif"))
       {
+//          Glide.with((Activity)view.getContext()).load()
+          Bitmap bm= Local.getBitmap(((Activity)view.getContext()).getApplicationContext(),url);
           Glide
                   .with((Activity)view.getContext())
-                  .load("file:///android_asset/"+url)
+//                  .load("file:///android_asset/"+url)
+                  .load( Picture.bitmapToByte(bm))
                   .asGif()
 
                   .placeholder(pladrawable)

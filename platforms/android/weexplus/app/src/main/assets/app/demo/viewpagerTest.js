@@ -242,14 +242,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(44)
+__vue_styles__.push(__webpack_require__(45)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(45)
+__vue_exports__ = __webpack_require__(46)
 
 /* template */
-var __vue_template__ = __webpack_require__(47)
+var __vue_template__ = __webpack_require__(48)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -337,17 +337,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 25:
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(exports, {}))
-
-/***/ }),
-
-/***/ 27:
+/***/ 20:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -414,7 +404,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 28:
+/***/ 21:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -430,7 +420,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -558,7 +548,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 30:
+/***/ 23:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -654,6 +644,16 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
+/***/ 29:
+/***/ (function(module, exports) {
+
+/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
+module.exports = __webpack_amd_options__;
+
+/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ }),
+
 /***/ 31:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -682,6 +682,53 @@ module.exports = function (module) {
 	}
 	return module;
 };
+
+/***/ }),
+
+/***/ 39:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(20)
+)
+__vue_styles__.push(__webpack_require__(21)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(22)
+
+/* template */
+var __vue_template__ = __webpack_require__(23)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-a70d48aa"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
 
 /***/ }),
 
@@ -765,7 +812,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 var viewpager = __webpack_require__(426);
-var head = __webpack_require__(90);
+var head = __webpack_require__(39);
 exports.default = {
     components: { viewpager: viewpager, head: head },
     data: {
@@ -869,14 +916,14 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 44:
+/***/ 45:
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
 
-/***/ 45:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -905,7 +952,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var he = __webpack_require__(46);
+var he = __webpack_require__(47);
 exports.default = {
   props: {
     text: {
@@ -1025,7 +1072,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 46:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1344,7 +1391,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	// Some AMD build optimizers, like r.js, check for specific condition patterns
 	// like the following:
-	if ("function" == 'function' && _typeof(__webpack_require__(25)) == 'object' && __webpack_require__(25)) {
+	if ("function" == 'function' && _typeof(__webpack_require__(29)) == 'object' && __webpack_require__(29)) {
 		!(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return he;
 		}).call(exports, __webpack_require__, exports, module),
@@ -1368,7 +1415,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ 47:
+/***/ 48:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1480,53 +1527,6 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
-
-/***/ }),
-
-/***/ 90:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(27)
-)
-__vue_styles__.push(__webpack_require__(28)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(29)
-
-/* template */
-var __vue_template__ = __webpack_require__(30)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/header.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-a70d48aa"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
 
 /***/ })
 

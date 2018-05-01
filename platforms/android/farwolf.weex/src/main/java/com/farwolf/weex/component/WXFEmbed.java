@@ -50,7 +50,7 @@ public class WXFEmbed extends WXEmbed {
         else
         {
 
-            instance.render(url, Weex.loadAsset(url,  this.getParent().getInstance().getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
+            instance.render(url, Weex.loadLocal(url,  this.getParent().getInstance().getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
 
         }
     }

@@ -3,7 +3,7 @@ package com.farwolf.weex.bean;
 import android.content.Context;
 
 import com.farwolf.json.JsonTool;
-import com.taobao.weex.utils.WXFileUtils;
+import com.farwolf.weex.core.local.Local;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,7 +22,33 @@ public class Config {
 
 
     public static JSONObject config(Context c) {
-        String s = WXFileUtils.loadAsset("app/config.json", c);
+        String s = Local.getString(c,"app/config.json");
+
+
+        try {
+            JSONObject j = new JSONObject(s);
+            return j;
+        } catch (Exception var3) {
+            return null;
+        }
+    }
+
+
+    public static JSONObject assetConfig(Context c) {
+        String s =Local.getAssetManager(c).getString(c,"app/config.json");
+
+        try {
+            JSONObject j = new JSONObject(s);
+            return j;
+        } catch (Exception var3) {
+            return null;
+        }
+    }
+
+    public static JSONObject diskConfig(Context c) {
+
+
+        String s =Local.getDiskManager(c).getString(c,"app/config.json");
 
         try {
             JSONObject j = new JSONObject(s);
@@ -34,11 +60,26 @@ public class Config {
 
 
 
+
+
     public static String schema(Context c)
     {
         return config(c).optString("schema");
     }
+    public static int jsVersion(Context c)
+    {
+        return config(c).optInt("jsVersion");
+    }
 
+    public static int assetJsVersion(Context c)
+    {
+        return  assetConfig(c).optInt("jsVersion");
+    }
+
+    public static int diskJsVersion(Context c)
+    {
+        return  diskConfig(c).optInt("jsVersion");
+    }
 
     public static boolean debug(Context c)
     {
@@ -71,6 +112,9 @@ public class Config {
     {
         return config(c).optString("entry");
     }
+
+
+
 
 
     public static String splash(Context c)

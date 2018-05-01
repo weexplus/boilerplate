@@ -3,6 +3,7 @@ package com.farwolf.weex.module;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.JSMethod;
@@ -43,8 +44,17 @@ public class WXFontModule extends WXModule {
         }
         else
         {
-            fontDO.mType=FontDO.TYPE_LOCAL;
-            fontDO.mUrl="/"+url;
+            if(Local.isDiskExist(mWXSDKInstance.getContext())){
+
+                fontDO.mType=FontDO.TYPE_FILE;
+                fontDO.mUrl="/"+url;
+            }
+            else
+            {
+                fontDO.mType=FontDO.TYPE_LOCAL;
+                fontDO.mUrl="/"+url;
+            }
+
         }
         if (fontDO != null && !TextUtils.isEmpty(fontDO.getFontFamilyName())) {
             FontDO cacheFontDO = TypefaceUtil.getFontDO(fontDO.getFontFamilyName());

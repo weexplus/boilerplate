@@ -150,7 +150,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 24:
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -562,7 +562,7 @@ Object.defineProperty(exports, "__esModule", {
 
 
 var head = __webpack_require__(6);
-var netx = __webpack_require__(24);
+var netx = __webpack_require__(28);
 var test = __webpack_require__(363);
 
 exports.default = {

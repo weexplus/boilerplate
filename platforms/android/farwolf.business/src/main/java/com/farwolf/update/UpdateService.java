@@ -160,6 +160,97 @@ public class UpdateService {
 
 
 
+    public void doCheckJs(String jsversion,final boolean failtoast,final boolean showprogress)
+    {
+
+
+        FarwolfReq f=new FarwolfReq<UpdateReader>(context)
+        {
+            @Override
+            public String getUrl() {
+                return  vcurl;
+            }
+
+            @Override
+            public UpdateReader getJson(String s) {
+                return new UpdateReader(s);
+            }
+        };
+        f.addParam("appid",appid);
+        f.addParam("systype","1");
+        f.addParam("jsversion",jsversion);
+        f.addParam("nativeversion",appMainfest.getVersionCode());
+//        f.addParam("vcode","0");
+//        f.addParam("source","");
+
+        f.excute(new ProgressJsonListner(context) {
+
+            @Override
+            public void start() {
+                if(showprogress)
+                    super.start();
+            }
+
+            @Override
+            public String getTitle() {
+                return "检测中";
+            }
+
+            @Override
+            public void compelete() {
+                if(showprogress)
+                    super.compelete();
+            }
+
+
+            @Override
+            public void fail(JsonReader j, String code, String msg) {
+                if(failtoast)
+                {
+                    Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void exception(Object o) {
+
+                if(failtoast)
+                {
+                    super.exception(o);
+                }
+            }
+
+            @Override
+            public void success(JsonReader j) {
+
+                JsVersion v=  j.toBean("version",JsVersion.class);
+                if(v.mode==1)
+                {
+                    UpdateJsDialog a= UpdateJsDialog_.build(context);
+                    FreeDialog f=new FreeDialog(context,a);
+                    a.f=f;
+                    f.setCanceledOnTouchOutside(false);
+                    f.setCancelable(false);
+                    a.url=v.url;
+                    a.size=v.size;
+                    a.path=SDCard.getBasePath(context)+"zip/app.zip";
+                    f.show();
+                    a.start();
+                }
+                else if(v.mode==0)
+                {
+                    new JsDownloader().start(v.url, context, null);
+
+                }
+
+
+
+            }
+        });
+
+    }
+
+
 
 
     public  File getFileFromServer(String path, ProgressDialog pd) throws Exception{

@@ -401,7 +401,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             }
             else
             {
-                String s= Weex.loadAsset(url, this);
+                String s= Weex.loadLocal(url, this);
 //                mWXSDKInstance.render("farwolf",s, null, null, WXRenderStrategy.APPEND_ASYNC);
                 this.renderPage(s,url);
             }

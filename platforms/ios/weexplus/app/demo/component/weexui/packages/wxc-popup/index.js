@@ -77,7 +77,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(24);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -546,7 +546,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 20:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__

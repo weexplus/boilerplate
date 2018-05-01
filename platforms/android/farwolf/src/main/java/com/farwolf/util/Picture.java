@@ -178,7 +178,16 @@ public class Picture {
 	        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);  
 	        InputStream is = new ByteArrayInputStream(baos.toByteArray());  
 	        return is;  
-	    }  
+	    }
+
+
+	   public static byte[] bitmapToByte(Bitmap bitmap)
+	   {
+		   ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		   bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+		   byte[] datas = baos.toByteArray();
+		   return datas;
+	   }
 	    
 	    
 	    

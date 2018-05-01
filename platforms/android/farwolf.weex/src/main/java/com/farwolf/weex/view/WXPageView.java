@@ -234,7 +234,7 @@ public class WXPageView extends WeexView   {
         {
 
 //            instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
-            instance.render(url, Weex.loadAsset(url, instance.getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
+            instance.render(url, Weex.loadLocal(url, instance.getContext()), null, null, WXRenderStrategy.APPEND_ASYNC);
 
         }
 

@@ -4,6 +4,7 @@ import android.app.Notification;
 
 import com.farwolf.update.UpdateService;
 import com.farwolf.update.UpdateService_;
+import com.farwolf.weex.bean.Config;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.common.WXModule;
 
@@ -25,13 +26,24 @@ public class WXUpdateModule extends WXModule {
         String theme=param.containsKey("theme")?param.get("theme")+"":null;
         boolean failtoast=param.containsKey("failtoast")?(boolean)param.get("failtoast"):false;
         boolean showprogress=param.containsKey("showprogress")?(boolean)param.get("showprogress"):false;
-
-
         UpdateService updateService= UpdateService_.getInstance_(mWXSDKInstance.getContext());
-         updateService.init(appid,vcurl,theme);
-         updateService.doCheck(failtoast,showprogress);
+        updateService.init(appid,vcurl,theme);
+        updateService.doCheck(failtoast,showprogress);
     }
 
+
+    @JSMethod
+    public void doCheckJs(HashMap param)
+    {
+        String appid=param.get("appid")+"";
+        String vcurl=param.get("url")+"";
+        String theme=param.containsKey("theme")?param.get("theme")+"":null;
+        boolean failtoast=param.containsKey("failtoast")?(boolean)param.get("failtoast"):false;
+        boolean showprogress=param.containsKey("showprogress")?(boolean)param.get("showprogress"):false;
+        UpdateService updateService= UpdateService_.getInstance_(mWXSDKInstance.getContext());
+        updateService.init(appid,vcurl,theme);
+        updateService.doCheckJs(Config.jsVersion(mWXSDKInstance.getContext())+"",failtoast,showprogress);
+    }
 
 
     @JSMethod
