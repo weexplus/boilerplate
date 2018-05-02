@@ -16,6 +16,7 @@ import com.farwolf.view.FreeDialog;
 import com.farwolf.weex.R;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.bean.Config;
+import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.event.PermissionEvent;
 import com.farwolf.weex.event.RefreshEvent;
 import com.farwolf.weex.pref.WeexPref_;
@@ -92,7 +93,9 @@ public class ToolPop extends ViewBase{
             hotreload.setText("开启热更新");
         }
         debug_reconnetc.setText(!WXEnvironment.sDebugServerConnectable?"开启Debug":"关闭Debug");
-        url.setText(a.url);
+       String from= Local.isDiskExist(getContext())?"磁盘":"assets";
+        url.setText(from+" "+a.url);
+
 //        ip.setText("debug_ip:"+ Config.debugIp(a));
 
 

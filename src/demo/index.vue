@@ -31,6 +31,11 @@
                 <div  class="item_flex"></div>
                 <image class="item_img" src="root:img/arrow.png" ></image>
             </a>
+            <a href="./font.js" style="border-top-width: 1;border-top-color: #999999;margin-top: 20" class="item">
+                <text class="item_text">字体</text>
+                <div  class="item_flex"></div>
+                <image class="item_img" src="root:img/arrow.png" ></image>
+            </a>
             <a href="./notify.js" class="item">
                 <text class="item_text">通知</text>
                 <div  class="item_flex"></div>

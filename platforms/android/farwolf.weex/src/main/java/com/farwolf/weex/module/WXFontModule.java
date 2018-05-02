@@ -3,6 +3,7 @@ package com.farwolf.weex.module;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.farwolf.util.SDCard;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
@@ -46,8 +47,9 @@ public class WXFontModule extends WXModule {
         {
             if(Local.isDiskExist(mWXSDKInstance.getContext())){
 
+
                 fontDO.mType=FontDO.TYPE_FILE;
-                fontDO.mUrl="/"+url;
+                fontDO.mUrl=SDCard.getBasePath(mWXSDKInstance.getContext())+"/"+url;
             }
             else
             {

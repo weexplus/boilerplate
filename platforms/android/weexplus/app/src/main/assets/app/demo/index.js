@@ -695,6 +695,11 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
 
 var head = __webpack_require__(39);
 var net = __webpack_require__(28);
@@ -846,6 +851,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["item_text"]
   }, [_vm._v("导航")]), _c('div', {
+    staticClass: ["item_flex"]
+  }), _c('image', {
+    staticClass: ["item_img"],
+    attrs: {
+      "src": "root:img/arrow.png"
+    }
+  })]), _c('a', {
+    staticClass: ["item"],
+    staticStyle: {
+      borderTopWidth: "1",
+      borderTopColor: "#999999",
+      marginTop: "20"
+    },
+    attrs: {
+      "href": "./font.js"
+    }
+  }, [_c('text', {
+    staticClass: ["item_text"]
+  }, [_vm._v("字体")]), _c('div', {
     staticClass: ["item_flex"]
   }), _c('image', {
     staticClass: ["item_img"],

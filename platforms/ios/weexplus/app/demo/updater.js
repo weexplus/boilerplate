@@ -494,9 +494,8 @@ exports.default = {
 
             var updater = weex.requireModule('updater');
             var p = {};
-            p.url = 'http://127.0.0.1:8080/jsversion.do';
+            p.url = 'http://172.20.10.3:8080/jsversion.do';
             p.appid = 1;
-            //                p.jsversion=1
             p.theme = 1;
             p.nativeversion = 1;
             p.failtoast = true;

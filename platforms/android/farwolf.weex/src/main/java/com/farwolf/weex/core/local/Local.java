@@ -47,6 +47,8 @@ public class Local  {
     {
         String newpath= getBasePath(c)+"/app";
 
+        int aj=Config.assetJsVersion(c);
+        int dj=Config.diskJsVersion(c);
         if(!isDiskExist(c)||Config.assetJsVersion(c)>Config.diskJsVersion(c))
         {
             if(!FileTool.IsFileExist(newpath))

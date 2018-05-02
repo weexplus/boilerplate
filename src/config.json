@@ -5,7 +5,7 @@
   "isPortrait":true,
   "jsVersion":1,
   "debugIp":"127.0.0.1",
-  "entry":"http://127.0.0.1:8890/js/demo/index.js",
+  "entry":"app/demo/index.js",
   "preload":["app/demo/home.js","app/demo/host.js"],
   "splash":"splash1",
   "static":

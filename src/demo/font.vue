@@ -29,9 +29,9 @@
     var head =require('./header.vue')
     var globalEvent = weex.requireModule('globalEvent') ;
     globalEvent.addEventListener("onPageInit", function (e) {
-        const nav = weex.requireModule('navbar');
-        nav.setTitle('网络请求');
-        var navigator = weex.requireModule('navigator') ;
+//        const nav = weex.requireModule('navbar');
+//        nav.setTitle('网络请求');
+//        var navigator = weex.requireModule('navigator') ;
 
     });
 
@@ -57,7 +57,8 @@
         created:function(){
 
             var font=weex.requireModule("font");
-            font.addFont('erp','http://at.alicdn.com/t/font_557063_l3ad49ffyz2utyb9.ttf')
+//            font.addFont('erp','http://at.alicdn.com/t/font_557063_l3ad49ffyz2utyb9.ttf')
+            font.addFont('erp','root:font/nfont.ttf')
         }
     }
 </script>

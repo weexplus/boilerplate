@@ -446,9 +446,10 @@ Object.defineProperty(exports, "__esModule", {
 var head = __webpack_require__(6);
 var globalEvent = weex.requireModule('globalEvent');
 globalEvent.addEventListener("onPageInit", function (e) {
-    var nav = weex.requireModule('navbar');
-    nav.setTitle('网络请求');
-    var navigator = weex.requireModule('navigator');
+    //        const nav = weex.requireModule('navbar');
+    //        nav.setTitle('网络请求');
+    //        var navigator = weex.requireModule('navigator') ;
+
 });
 
 exports.default = {
@@ -472,7 +473,8 @@ exports.default = {
     created: function created() {
 
         var font = weex.requireModule("font");
-        font.addFont('erp', 'http://at.alicdn.com/t/font_557063_l3ad49ffyz2utyb9.ttf');
+        //            font.addFont('erp','http://at.alicdn.com/t/font_557063_l3ad49ffyz2utyb9.ttf')
+        font.addFont('erp', 'root:font/nfont.ttf');
     }
 };
 
