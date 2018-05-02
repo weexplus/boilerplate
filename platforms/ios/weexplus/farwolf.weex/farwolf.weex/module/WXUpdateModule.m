@@ -15,7 +15,7 @@
 WX_EXPORT_METHOD(@selector(docheck:))
 WX_EXPORT_METHOD(@selector(download:))
 WX_EXPORT_METHOD(@selector(doCheckJs:))
-
+WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
 
 -(void)docheck:(NSDictionary*)param
 {
@@ -70,6 +70,18 @@ WX_EXPORT_METHOD(@selector(doCheckJs:))
     [[UIApplication sharedApplication] openURL:ul];
 }
 
+
+-(void)hotUpdate:(NSString*)url start:(WXModuleCallback)start progress:(WXModuleCallback)progress compelete:(WXModuleCallback)compelete exception:(WXModuleCallback)exception
+{
+    UpdateChecker *up=[UpdateChecker new];
+    start(nil);
+    
+    [up updateJs:url progress:^(float p) {
+        progress(@(p));
+    } compelete:^(NSString *path) {
+        compelete(path);
+    }];
+}
 
 
 -(void)showDialog

@@ -2,10 +2,13 @@ package com.farwolf.weex.module;
 
 import android.app.Notification;
 
+import com.farwolf.interfac.IFullHttp;
+import com.farwolf.update.JsDownloader;
 import com.farwolf.update.UpdateService;
 import com.farwolf.update.UpdateService_;
 import com.farwolf.weex.bean.Config;
 import com.taobao.weex.annotation.JSMethod;
+import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
 
 import java.util.HashMap;
@@ -19,7 +22,7 @@ public class WXUpdateModule extends WXModule {
 
 
     @JSMethod
-    public void docheck(HashMap param)
+    public void doCheck(HashMap param)
     {
         String appid=param.get("appid")+"";
         String vcurl=param.get("url")+"";
@@ -44,6 +47,39 @@ public class WXUpdateModule extends WXModule {
         updateService.init(appid,vcurl,theme);
         updateService.doCheckJs(Config.jsVersion(mWXSDKInstance.getContext())+"",failtoast,showprogress);
     }
+
+
+    @JSMethod
+    public void hotUpdate(String url,final JSCallback start,final JSCallback progress,final JSCallback compelete,final JSCallback exception)
+    {
+        new JsDownloader().start(url, mWXSDKInstance.getContext(), new IFullHttp() {
+            @Override
+            public void OnPostProcess(int newProgress) {
+                if(progress!=null)
+                    progress.invoke(newProgress);
+            }
+
+            @Override
+            public void OnPostStart(Object o) {
+                if(start!=null)
+                    start.invoke(null);
+            }
+
+            @Override
+            public void OnPostCompelete(Object o) {
+                if(compelete!=null)
+                    compelete.invoke(null);
+            }
+
+            @Override
+            public void OnException(Object o) {
+                if(exception!=null)
+                    exception.invoke(null);
+            }
+        });
+    }
+
+
 
 
     @JSMethod
