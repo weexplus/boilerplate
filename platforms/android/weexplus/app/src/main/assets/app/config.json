@@ -3,7 +3,7 @@
   "debug":true,
   "showerror":true,
   "isPortrait":true,
-  "jsVersion":5,
+  "jsVersion":1,
   "debugIp":"127.0.0.1",
   "entry":"app/demo/index.js",
   "preload":["app/demo/home.js","app/demo/host.js"],

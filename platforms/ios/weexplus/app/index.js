@@ -62,26 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 495);
+/******/ 	return __webpack_require__(__webpack_require__.s = 500);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 495:
+/***/ 500:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(496)
+__vue_styles__.push(__webpack_require__(501)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(497)
+__vue_exports__ = __webpack_require__(502)
 
 /* template */
-var __vue_template__ = __webpack_require__(498)
+var __vue_template__ = __webpack_require__(503)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -114,20 +114,29 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 496:
+/***/ 501:
 /***/ (function(module, exports) {
 
 module.exports = {
-  "btn": {
-    "width": 500,
-    "height": 100,
-    "backgroundColor": "#FF0000"
+  "add": {
+    "width": "250",
+    "height": "250",
+    "backgroundColor": "#0088fb",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "pic": {
+    "width": "250",
+    "height": "250",
+    "backgroundColor": "#FF0000",
+    "borderWidth": 1,
+    "borderColor": "#ffffff"
   }
 }
 
 /***/ }),
 
-/***/ 497:
+/***/ 502:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -153,31 +162,74 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
+    data: function data() {
+        return {
+            items: [1, 1, 1, 1, 1, 1]
+        };
+    },
 
+    methods: {
+        add: function add() {
+            this.items.push(1);
+        },
+        remove: function remove(item) {
+            //                this.items.remove(0)
+            delete this.items[this.items.length - 1];
+        }
+    },
     created: function created() {
 
         var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {
-
-            var nav = weex.requireModule('navigator');
-            nav.pushFull({ url: 'demo/host.js', animated: false });
-        });
+        globalEvent.addEventListener("onPageInit", function (e) {});
     }
 };
 
 /***/ }),
 
-/***/ 498:
+/***/ 503:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('scroller', [_c('div', {
     staticStyle: {
-      backgroundColor: "yellow"
+      flexDirection: "row",
+      flexWrap: "wrap"
     }
-  })
+  }, [_c('div', {
+    staticClass: ["add"],
+    on: {
+      "click": _vm.add
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("添加")])]), _vm._l((_vm.items), function(item) {
+    return _c('div', {
+      staticClass: ["pic"],
+      on: {
+        "click": function($event) {
+          _vm.remove(item)
+        }
+      }
+    })
+  })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

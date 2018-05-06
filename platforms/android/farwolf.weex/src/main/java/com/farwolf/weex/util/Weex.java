@@ -57,6 +57,7 @@ import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
+import com.taobao.weex.appfram.pickers.WXPickersModule;
 import com.taobao.weex.bridge.WXBridgeManager;
 import com.taobao.weex.common.WXException;
 import com.taobao.weex.ui.component.WXBasicComponentType;
@@ -181,7 +182,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("page", WXPageModule.class);
             WXSDKEngine.registerModule("font", WXFontModule.class);
             WXSDKEngine.registerModule("updater", WXUpdateModule.class);
-
+            WXSDKEngine.registerModule("timepicker", WXPickersModule.class);
 
             registerComponent("image",WXFImage.class);
             registerComponent("web",WXFWeb.class);

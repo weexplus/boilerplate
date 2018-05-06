@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7C51DCBD7A9620FAE49B4BB7283AFE11'
-               BlueprintName = 'farwolf.weex'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libfarwolf.weex.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D4186FF31E4D9F846CC75B068A218CBB"
+               BlueprintName = "farwolf.weex"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libfarwolf.weex.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

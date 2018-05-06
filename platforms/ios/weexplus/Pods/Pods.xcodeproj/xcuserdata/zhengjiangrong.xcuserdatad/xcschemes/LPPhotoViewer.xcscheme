@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E587349FB17B8B6D4878BE7B832A2A95'
-               BlueprintName = 'LPPhotoViewer'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libLPPhotoViewer.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E587349FB17B8B6D4878BE7B832A2A95"
+               BlueprintName = "LPPhotoViewer"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libLPPhotoViewer.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

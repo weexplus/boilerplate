@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '50287A132692158BF0CF403CE3F6345B'
-               BlueprintName = 'farwolf.business'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libfarwolf.business.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "50287A132692158BF0CF403CE3F6345B"
+               BlueprintName = "farwolf.business"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libfarwolf.business.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

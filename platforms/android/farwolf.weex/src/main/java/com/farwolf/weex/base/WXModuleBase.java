@@ -1,6 +1,7 @@
 package com.farwolf.weex.base;
 
-import com.farwolf.view.TitleBar;
+import android.content.Context;
+
 import com.farwolf.weex.activity.WeexActivity;
 import com.taobao.weex.common.WXModule;
 
@@ -17,11 +18,17 @@ public class WXModuleBase extends WXModule {
         return a;
     }
 
-
-    public TitleBar getTitleBar()
+    public Context getContext()
     {
-        if(getActivity()==null)
-            return null;
-        return getActivity().getTitleBar();
+        return mWXSDKInstance.getContext();
+
     }
+
+
+    public void requirePermission(String per)
+    {
+        getActivity().requirePermission(per);
+    }
+
+
 }

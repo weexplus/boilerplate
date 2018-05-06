@@ -1,0 +1,6 @@
+framework module CHXBannerView {
+  umbrella header "CHXBannerView-umbrella.h"
+
+  export *
+  module * { export * }
+}

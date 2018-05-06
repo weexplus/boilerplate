@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin:'android-apt'
 def AAVersion='4.0.0'
 android {
-    compileSdkVersion 21
+    compileSdkVersion 24
     buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 21
+        targetSdkVersion 24
     }
 
     buildTypes {

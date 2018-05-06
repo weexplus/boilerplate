@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '115C30F3868708360F1A9395DC12AC8E'
-               BlueprintName = 'RHAddressBook'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libRHAddressBook.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AB11FF15C47B63A58A4CA666FF8E8620"
+               BlueprintName = "RHAddressBook"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libRHAddressBook.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

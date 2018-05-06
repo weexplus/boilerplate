@@ -1,0 +1,6 @@
+framework module UIViewController_PopUp {
+  umbrella header "UIViewController_PopUp-umbrella.h"
+
+  export *
+  module * { export * }
+}

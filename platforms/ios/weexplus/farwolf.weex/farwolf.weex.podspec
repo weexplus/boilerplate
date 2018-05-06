@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   
 
   s.dependency 'farwolf'
-   s.dependency 'farwolf.business'
+  s.dependency 'farwolf.business'
   s.dependency 'WeexSDK'
   s.dependency 'SDWebImage', '~> 3.8'
   s.dependency 'WXDevtool'
@@ -33,7 +33,8 @@ Pod::Spec.new do |s|
  # s.dependency 'IQKeyboardManager', '~> 4.0.6'
   s.dependency 'CocoaAsyncSocket', '~> 7.6.2'
 
-  
+  s.dependency 'HcdDateTimePicker', '~> 1.1.1'
+  s.dependency 'LMTowDatePicker'
 
 
 end

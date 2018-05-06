@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5D7C637DE195BB51E8D16348FE6CAC12'
-               BlueprintName = 'WXDevtool'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libWXDevtool.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F366B2DA68A466F5A12EA24F9365332F"
+               BlueprintName = "WXDevtool"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libWXDevtool.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

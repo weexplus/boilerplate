@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1174CAFB799295721E40B5BA44D33B2B'
-               BlueprintName = 'UIViewController_PopUp'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libUIViewController_PopUp.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1174CAFB799295721E40B5BA44D33B2B"
+               BlueprintName = "UIViewController_PopUp"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libUIViewController_PopUp.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

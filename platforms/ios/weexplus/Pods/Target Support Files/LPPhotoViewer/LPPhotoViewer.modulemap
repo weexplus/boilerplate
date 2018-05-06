@@ -1,0 +1,6 @@
+framework module LPPhotoViewer {
+  umbrella header "LPPhotoViewer-umbrella.h"
+
+  export *
+  module * { export * }
+}

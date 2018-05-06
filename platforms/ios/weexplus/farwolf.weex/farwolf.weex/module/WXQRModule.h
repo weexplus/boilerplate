@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WXModuleProtocol.h>
+#import "LMDisposeChooseTimeView.h"
 @interface WXQRModule : NSObject<WXModuleProtocol>
-
+@property (nonatomic,strong) LMDisposeChooseTimeView *chooseTimeView;
 @end

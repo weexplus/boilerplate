@@ -36,6 +36,8 @@
 #import "WXFontModule.h"
 #import "JSExceptionProtocolImpl.h"
 #import "WXUpdateModule.h"
+#import "WXTimePicker.h"
+#import "WXLocationModule.h"
 
 @implementation Weex
 
@@ -64,7 +66,8 @@
     [WXSDKEngine registerModule:@"page" withClass:[WXPageModule class]];
     [WXSDKEngine registerModule:@"font" withClass:[WXFontModule class]];
     [WXSDKEngine registerModule:@"updater" withClass:[WXUpdateModule class]];
-    
+    [WXSDKEngine registerModule:@"timepicker" withClass:[WXTimePicker class]];
+    [WXSDKEngine registerModule:@"location" withClass:[WXLocationModule class]];
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
@@ -113,7 +116,8 @@
 {
     NSString *path = @"app/config";
     NSURL *url=[URL loadFromDisk:[path add:@".json"]];
-    NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSError *err;
+    NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&err];
     return [str toJson];
 }
 

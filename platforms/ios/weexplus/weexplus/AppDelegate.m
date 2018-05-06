@@ -24,15 +24,19 @@
     // Override point for customization after application launch.
 //    [WXTracingManager setTracingEnable:NO];
 //    [WXTracingManager setTracingEnable:YES];
+     [URL copyBundleToDisk];
     [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
  
-//   NSString *s=@"/Users/zhengjiangrong/Library/Developer/CoreSimulator/Devices/5319AD64-DD67-4D89-81B3-E39231481EB9/data/Containers/Data/Application/90E53365-5516-4FAF-9C87-76FC2B8183E7/Documents/app";
-//    [s mkdir];
-//    [s delete];
+//    NSString *from=@"/Users/zhengjiangrong/Library/Developer/CoreSimulator/Devices/5319AD64-DD67-4D89-81B3-E39231481EB9/data/Containers/Bundle/Application/BF2A6AC0-8219-4C8F-9869-5B1C35203C61/weexplus.app/app/config.json";
+//   NSString *to=@"/Users/zhengjiangrong/Library/Developer/CoreSimulator/Devices/5319AD64-DD67-4D89-81B3-E39231481EB9/data/Containers/Data/Application/385D0FC0-A665-4B7A-9B02-34CD37CDEE72/Documents/app/config.json";
+//     NSError *err = nil;
+//    [[NSFileManager defaultManager] copyItemAtPath:from toPath:to error:&err];
+    
+//     NSLog(@"xxx=%@",err);
 
-    [URL copyBundleToDisk];
+   
     
     
    

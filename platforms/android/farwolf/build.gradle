@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin:'android-apt'
 def AAVersion='4.0.0'
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
     }
 
     buildTypes {
@@ -22,7 +22,7 @@ android {
 
 
 dependencies {
-    compile 'com.android.support:support-v4:23.0.0'
+    compile 'com.android.support:support-v4:24.0.0'
     compile project(':galleryfinal')
     compile 'com.google.code.gson:gson:2.2.2'
 
@@ -38,6 +38,8 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     compile 'com.google.zxing:core:3.2.1'
+    compile 'pub.devrel:easypermissions:0.4.2'
+
 
 }
 

@@ -65,6 +65,7 @@
     
     NSString *documentsDirectory = [self documentDirectory];
     NSString *pathx = [documentsDirectory stringByAppendingPathComponent:path];
+    pathx=[pathx replace:@"file://" withString:@""];
     NSURL *url = [NSURL fileURLWithPath:pathx];
     return url;
 }
@@ -141,8 +142,9 @@
     {
         NSString *disk= [self loadFromDisk:@"app"].absoluteString;
         disk=[disk replace:@"file://" withString:@""];
+         [disk delete];
         [disk mkdir];
-        [disk delete];
+       
         [bundle copyToPath:disk];
     }
    

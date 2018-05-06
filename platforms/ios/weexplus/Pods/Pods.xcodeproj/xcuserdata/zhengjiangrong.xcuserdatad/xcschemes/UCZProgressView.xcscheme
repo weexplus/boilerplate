@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BFB2B122D10352D586904A9E0BC8F724'
-               BlueprintName = 'UCZProgressView'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libUCZProgressView.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8B7C3ADDCC2891B37D1AA03C2BCA37C9"
+               BlueprintName = "UCZProgressView"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libUCZProgressView.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -4,6 +4,7 @@ package com.farwolf.base;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -11,8 +12,12 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.farwolf.util.AppTool;
+import com.farwolf.util.PerssionUtil;
 
 import org.androidannotations.annotations.EActivity;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 @EActivity
 public abstract class ActivityBase extends FragmentActivity{
@@ -58,6 +63,32 @@ public abstract class ActivityBase extends FragmentActivity{
 	{
 		this.toast(msg, 200);
 	}
+
+
+	@AfterPermissionGranted(10010)
+	public void requirePermission(String perssion) {
+		String[] perms = {
+				perssion
+		};
+		if (EasyPermissions.hasPermissions(this, perms)) {
+			// Already have permission, do the thing
+			// ...
+			Toast.makeText(this, "Permissions Granted!", Toast.LENGTH_LONG).show();
+		} else {
+			// Do not have permissions, request them now
+			EasyPermissions.requestPermissions(this, PerssionUtil.getPerssionName(perssion),
+					10010, perms);
+		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+		// EasyPermissions handles the request result.
+		EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+	}
+
 
 
 

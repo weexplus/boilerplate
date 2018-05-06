@@ -1,0 +1,6 @@
+framework module oss {
+  umbrella header "oss-umbrella.h"
+
+  export *
+  module * { export * }
+}

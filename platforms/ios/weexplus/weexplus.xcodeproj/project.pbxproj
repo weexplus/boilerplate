@@ -13,10 +13,11 @@
 		4D2665471ECD84CD00664B38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2665461ECD84CD00664B38 /* Assets.xcassets */; };
 		4D3CC5521FD4E6FB002D3ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */; };
 		4D92AA151F4D5BD900493BCF /* app in Resources */ = {isa = PBXBuildFile; fileRef = 4D92AA141F4D5BD900493BCF /* app */; };
-		897B06E97BCEF336A937DC90 /* libPods-weexplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0F0A6C07E99A2EAA1E2C84 /* libPods-weexplus.a */; };
+		78159CCE310AF4A59E8B7181 /* libPods-weexplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21C6950340ADFAC3C7AC6093 /* libPods-weexplus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21C6950340ADFAC3C7AC6093 /* libPods-weexplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weexplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2665371ECD84CD00664B38 /* weexplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weexplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D26653B1ECD84CD00664B38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D26653D1ECD84CD00664B38 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,7 +29,6 @@
 		4D92AA141F4D5BD900493BCF /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
 		B76DCF182E04FBDA1655EAEA /* Pods-weexplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.debug.xcconfig"; sourceTree = "<group>"; };
 		C51BE6763BC7E197A7AE63F3 /* Pods-weexplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.release.xcconfig"; sourceTree = "<group>"; };
-		DC0F0A6C07E99A2EAA1E2C84 /* libPods-weexplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weexplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				897B06E97BCEF336A937DC90 /* libPods-weexplus.a in Frameworks */,
+				78159CCE310AF4A59E8B7181 /* libPods-weexplus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 		B002B8620A99EC0B79AA68DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DC0F0A6C07E99A2EAA1E2C84 /* libPods-weexplus.a */,
+				21C6950340ADFAC3C7AC6093 /* libPods-weexplus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,8 +112,7 @@
 				4D2665331ECD84CD00664B38 /* Sources */,
 				4D2665341ECD84CD00664B38 /* Frameworks */,
 				4D2665351ECD84CD00664B38 /* Resources */,
-				6092393ACB38E9707E554249 /* [CP] Embed Pods Frameworks */,
-				DD11B7AEB5A1664C8EDD8BE8 /* [CP] Copy Pods Resources */,
+				13111F5912490E2ECE0B2D1A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,30 +172,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6092393ACB38E9707E554249 /* [CP] Embed Pods Frameworks */ = {
+		13111F5912490E2ECE0B2D1A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD11B7AEB5A1664C8EDD8BE8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+				"${PODS_ROOT}/../sdk/WeexSDK/Resources/native-bundle-main.js",
+				"${PODS_ROOT}/../sdk/WeexSDK/Resources/wx_load_error@3x.png",
+				"${PODS_ROOT}/../farwolf.business/farwolf.business/resources/xib/updater.xib",
+				"${PODS_ROOT}/../farwolf.business/farwolf.business/resources/xib/zipdownloader.xib",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/storyboard/weex.storyboard",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/backblack@3x.png",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/backwhit@3x.png",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/canvas@2x.png",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/fail.png",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/qrcodecase@2x.png",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/xib/Picker.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/wx_load_error@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/updater.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zipdownloader.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex.storyboardc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/backblack@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/backwhit@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/canvas@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fail.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/qrcodecase@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Picker.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -209,13 +220,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-weexplus-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

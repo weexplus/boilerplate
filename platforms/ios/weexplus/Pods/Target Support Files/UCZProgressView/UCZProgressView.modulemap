@@ -1,0 +1,6 @@
+framework module UCZProgressView {
+  umbrella header "UCZProgressView-umbrella.h"
+
+  export *
+  module * { export * }
+}

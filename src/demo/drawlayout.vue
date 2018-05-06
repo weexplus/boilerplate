@@ -3,7 +3,7 @@
 <template>
 
     <drawerlayout
-     src="../../busi/tab/mainpage.js"
+     src="font.js"
      slidSrc="center.js"
     >
 
@@ -28,9 +28,7 @@
     var head =require('./header.vue')
     var globalEvent = weex.requireModule('globalEvent') ;
     globalEvent.addEventListener("onPageInit", function (e) {
-        const nav = weex.requireModule('navbar');
-        nav.setTitle('网络请求');
-        var navigator = weex.requireModule('navigator') ;
+
 
     });
 

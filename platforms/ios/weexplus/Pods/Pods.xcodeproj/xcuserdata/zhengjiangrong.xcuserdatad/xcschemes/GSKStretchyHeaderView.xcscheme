@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DE3A8E37988294A734FDE200D637B92E'
-               BlueprintName = 'GSKStretchyHeaderView'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libGSKStretchyHeaderView.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DE3A8E37988294A734FDE200D637B92E"
+               BlueprintName = "GSKStretchyHeaderView"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libGSKStretchyHeaderView.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

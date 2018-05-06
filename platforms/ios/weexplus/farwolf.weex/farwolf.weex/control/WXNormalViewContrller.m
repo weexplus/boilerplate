@@ -348,8 +348,18 @@ static BOOL isshowErr;
     [_instance fireGlobalEvent:@"viewDidDisappear" params:nil];
     [self _updateInstanceState:WeexInstanceDisappear];
     
-  
     
+    NSLog([@"url== " add: self.sourceURL.absoluteString]);
+    NSLog([@"self== " addInt: self.naviIndex]);
+    NSLog([@"count== " addInt: self.topViewController.navigationController.childViewControllers.count]);
+    
+    if(self.naviIndex>self.topViewController.navigationController.childViewControllers.count)
+    {
+        //        WXNormalViewContrller *vc= self.weexInstance.viewController;
+        NSMutableDictionary *p=[NSMutableDictionary new];
+        [p setValue:self.sourceURL.absoluteString forKey:@"url"];
+        [self notifyDict:@"removeUrl" value:p];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -426,7 +436,7 @@ static BOOL isshowErr;
     }
     else
     {
-        url= [[NSBundle mainBundle] URLForResource:[sourceURL.absoluteString replace:@".js" withString:@""]  withExtension:@"js"];
+        url= sourceURL;
     }
     
     [_instance renderWithURL:url options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];

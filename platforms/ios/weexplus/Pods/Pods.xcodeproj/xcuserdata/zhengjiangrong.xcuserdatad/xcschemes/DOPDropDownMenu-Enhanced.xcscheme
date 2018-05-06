@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '2D0C5ACBB79D836FB8000BA64498F017'
-               BlueprintName = 'DOPDropDownMenu-Enhanced'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libDOPDropDownMenu-Enhanced.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2D0C5ACBB79D836FB8000BA64498F017"
+               BlueprintName = "DOPDropDownMenu-Enhanced"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libDOPDropDownMenu-Enhanced.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

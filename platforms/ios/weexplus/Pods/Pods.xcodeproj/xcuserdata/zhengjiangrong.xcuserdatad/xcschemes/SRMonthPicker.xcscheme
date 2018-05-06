@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5104AE6C30F3F96BA1851CDBF295F491'
-               BlueprintName = 'SRMonthPicker'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSRMonthPicker.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5104AE6C30F3F96BA1851CDBF295F491"
+               BlueprintName = "SRMonthPicker"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libSRMonthPicker.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

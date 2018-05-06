@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '604D063D10BB958661F6C77AC5978FB4'
-               BlueprintName = 'Pods-weexplus'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-weexplus.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FF08807C30E9ABD93551A43DF7159DA5"
+               BlueprintName = "Pods-weexplus"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libPods-weexplus.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

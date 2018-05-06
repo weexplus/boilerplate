@@ -1,0 +1,6 @@
+framework module DOPDropDownMenu_Enhanced {
+  umbrella header "DOPDropDownMenu-Enhanced-umbrella.h"
+
+  export *
+  module * { export * }
+}

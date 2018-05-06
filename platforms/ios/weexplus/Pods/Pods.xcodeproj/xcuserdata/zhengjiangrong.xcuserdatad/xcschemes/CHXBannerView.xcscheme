@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0A3499C5A4228CAF08C76B3EBCF5134A'
-               BlueprintName = 'CHXBannerView'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libCHXBannerView.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0A3499C5A4228CAF08C76B3EBCF5134A"
+               BlueprintName = "CHXBannerView"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libCHXBannerView.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

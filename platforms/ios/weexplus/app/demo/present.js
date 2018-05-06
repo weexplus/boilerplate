@@ -438,7 +438,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var head = __webpack_require__(6);
+var head = __webpack_require__(5);
 exports.default = {
     components: { head: head },
     data: function data() {
@@ -620,7 +620,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__

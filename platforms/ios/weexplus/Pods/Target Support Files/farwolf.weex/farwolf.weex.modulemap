@@ -1,0 +1,6 @@
+framework module farwolf_weex {
+  umbrella header "farwolf.weex-umbrella.h"
+
+  export *
+  module * { export * }
+}

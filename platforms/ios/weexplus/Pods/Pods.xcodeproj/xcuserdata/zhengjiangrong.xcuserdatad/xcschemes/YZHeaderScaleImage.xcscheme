@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3FD997B777807ED1C7D1C15DDF7BA56D'
-               BlueprintName = 'YZHeaderScaleImage'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libYZHeaderScaleImage.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "06B3362D63FEAC3E19136FB36F8A0204"
+               BlueprintName = "YZHeaderScaleImage"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libYZHeaderScaleImage.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

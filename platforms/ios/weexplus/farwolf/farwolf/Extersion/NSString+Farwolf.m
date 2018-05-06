@@ -243,7 +243,10 @@
             {
                 NSError *err = nil;
                 [[NSFileManager defaultManager] copyItemAtPath:fullPath toPath:fullToPath error:&err];
-//                NSLog(@"%@",err);
+                
+              
+               if(err!=nil)
+                NSLog(@"xxx=%@",err);
             }
        
             
@@ -260,11 +263,13 @@
     NSFileManager *fileManager = [[NSFileManager alloc]init];
     if (![[NSFileManager defaultManager]fileExistsAtPath:self]) {
         
-        [fileManager createDirectoryAtPath:self withIntermediateDirectories:YES attributes:nil error:nil];
+      return  [fileManager createDirectoryAtPath:self withIntermediateDirectories:YES attributes:nil error:nil];
         
     }
+    return false;
     
 }
+
 
 
 

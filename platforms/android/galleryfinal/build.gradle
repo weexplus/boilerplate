@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
 
     }
     buildTypes {
@@ -21,6 +21,6 @@ dependencies {
 
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'cn.finalteam:toolsfinal:1.1.4'
-    compile 'com.android.support:support-v4:23.0.0'
+    compile 'com.android.support:support-v4:24.0.0'
 }
 
