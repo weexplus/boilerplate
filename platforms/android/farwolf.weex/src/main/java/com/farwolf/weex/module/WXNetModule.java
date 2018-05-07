@@ -17,8 +17,7 @@ import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -228,18 +227,10 @@ public class WXNetModule extends WXModule {
         Object []keys= path.keySet().toArray();
         for(Object s:keys)
         {
-            try {
-                String key=s+"";
-                String p=path.get(s)+"";
-                p=p.replace("sdcard:","");
-                FileInputStream fs=new FileInputStream(p+"");
-                if(fs!=null)
-                {
-                    f.addFile(s+"",fs);
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            String key=s+"";
+            String p=path.get(s)+"";
+            p=p.replace("sdcard:","");
+            f.addFile(s+"",new File(p));
         }
         f.excute(url, param, header, new FileReader.HttpListener() {
             @Override

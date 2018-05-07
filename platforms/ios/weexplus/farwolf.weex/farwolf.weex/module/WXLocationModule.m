@@ -27,6 +27,7 @@ WX_EXPORT_METHOD(@selector(stop))
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = 100.0f;
+    
     if ([[[UIDevice currentDevice]systemVersion]doubleValue] >8.0)
     {
         [self.locationManager requestWhenInUseAuthorization];

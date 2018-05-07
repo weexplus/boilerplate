@@ -190,7 +190,8 @@ exports.default = {
         },
         remove: function remove(item) {
             //                this.items.remove(0)
-            delete this.items[this.items.length - 1];
+
+            this.items.splice(this.items.length - 1, 1);
         }
     },
     created: function created() {

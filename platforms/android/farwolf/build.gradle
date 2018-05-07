@@ -17,6 +17,7 @@ android {
         }
     }
     useLibrary 'org.apache.http.legacy'
+
 }
 
 
@@ -36,9 +37,11 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile 'com.android.support:support-annotations:23.1.1'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-
+    compile 'com.lzy.net:okgo:2.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.google.zxing:core:3.2.1'
     compile 'pub.devrel:easypermissions:0.4.2'
+
 
 
 }

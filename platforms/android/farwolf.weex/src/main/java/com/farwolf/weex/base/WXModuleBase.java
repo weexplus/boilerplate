@@ -25,10 +25,10 @@ public class WXModuleBase extends WXModule {
     }
 
 
-    public void requirePermission(String per)
-    {
-        getActivity().requirePermission(per);
-    }
+//    public boolean requirePermission(String per)
+//    {
+//        return getActivity().requirePermission(per);
+//    }
 
 
 }

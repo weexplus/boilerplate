@@ -1,16 +1,20 @@
 package com.farwolf.reader;
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.util.Log;
 
 import com.farwolf.net.HttpTool;
 import com.google.gson.Gson;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.request.PostRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public abstract class DataReader<T> {
@@ -20,7 +24,7 @@ public abstract class DataReader<T> {
 	protected Gson gson=new Gson();	
 	HashMap param=new HashMap();
 	HashMap header=new HashMap();
-	HashMap<String,InputStream> inputStream=new HashMap<String,InputStream>();
+	HashMap<String,File> files=new HashMap<String,File>();
 //	public  final static  String httpUrl="http://10.0.2.2:8080/edu/"; 
 //	public  final static  String httpUrl="http://192.168.0.137:8080/edu/"; 
 //	public  final static  String httpUrl="http://219.140.199.91:9080/edu/"; 
@@ -86,9 +90,9 @@ public abstract class DataReader<T> {
 	  {
 		  header.put(key, value);
 	  }
-	  public  void AddStream(String key,InputStream value)
+	  public  void AddStream(String key,File value)
 	  {
-		  inputStream.put(key, value);
+		  files.put(key, value);
 	  }
 	  
 	  public DataReader(String s)
@@ -124,9 +128,8 @@ public abstract class DataReader<T> {
 			Log.i("back", s);
 			 load(s);
 			return this;
-			
-		  
 	 }
+
 	 public  DataReader<T> get() throws Exception
 	 {
 		 String url=this.getUrl()+this.getInterfaceName();						 
@@ -136,20 +139,39 @@ public abstract class DataReader<T> {
 		 load(s);
 		 return this;
 	 }
-	 public  DataReader<T> postFile() throws Exception
-	 {
-		 String url=this.getUrl()+this.getInterfaceName();			
-		 
-		 Log.i("url", url);
- 
-		 String s= HttpTool.postFile(url, param, header, inputStream);
-		 
-		 Log.i("back", s);
-		 load(s);
-		 return this;
-		 
-		 
-	 }
+
+
+
+
+	public void upload(StringCallback callback) {
+
+		String url=this.getUrl()+this.getInterfaceName();
+		PostRequest post=OkGo.post(url)
+				.tag(this);
+		Object keys[]= param.keySet().toArray();
+		for(Object key:keys)
+		{
+			post=post.params(key+"",param.get(key)+"");
+		}
+		Object headerkeys[]= header.keySet().toArray();
+		for(Object key:headerkeys)
+		{
+			post=post.headers(key+"",param.get(key)+"");
+		}
+		Object filekeys[]= files.keySet().toArray();
+		for(Object key:filekeys)
+		{
+			ArrayList arry=new ArrayList<File>();
+			arry.add(files.get(key));
+			post.addFileParams(key+"",arry);
+		}
+
+		post.execute(callback);
+
+
+
+
+	}
 	 public String getDefaultTable()
 	 {
 		 try {

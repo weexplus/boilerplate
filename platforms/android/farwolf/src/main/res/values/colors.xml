@@ -19,5 +19,10 @@
     <color name="result_view">#b0000000</color>
     <color name="possible_result_points">#c0ffbd21</color>
     <color name="status_text">#ffffffff</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="text1">#000000</color>
+    <color name="text2">#333333</color>
+    <color name="split_line">#11112233</color>
  
 </resources>

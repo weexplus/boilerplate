@@ -1,18 +1,11 @@
 package com.farwolf.net;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.request.PostRequest;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -25,7 +18,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -38,8 +30,20 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class HttpTool {
 
@@ -248,6 +252,37 @@ public class HttpTool {
 			}
 		}
 
+
+
+	public static void upload(String url,StringCallback callback,HashMap param,HashMap header,HashMap files) {
+
+
+		PostRequest post= OkGo.post(url)
+				.tag(url);
+		Object keys[]= param.keySet().toArray();
+		for(Object key:keys)
+		{
+			post=post.params(key+"",param.get(key)+"");
+		}
+		Object headerkeys[]= header.keySet().toArray();
+		for(Object key:headerkeys)
+		{
+			post=post.headers(key+"",param.get(key)+"");
+		}
+		Object filekeys[]= files.keySet().toArray();
+		for(Object key:filekeys)
+		{
+			ArrayList arry=new ArrayList<File>();
+			arry.add(files.get(key));
+			post.addFileParams(key+"",arry);
+		}
+
+		post.execute(callback);
+
+
+
+
+	}
 		
 		public static String postFile(String url,HashMap param,HashMap header,HashMap<String,InputStream> file) throws ClientProtocolException, IOException, JSONException {
 		      HttpClient httpclient = new DefaultHttpClient();
