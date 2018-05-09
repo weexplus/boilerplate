@@ -35,6 +35,7 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
     @Override
     protected DrawerLayoutView initComponentHostView(@NonNull Context context) {
         drawerLayoutView_ = (DrawerLayoutView_) DrawerLayoutView_.build(context);
+        drawerLayoutView_.setParentInstance(getInstance());
         return drawerLayoutView_;
     }
 

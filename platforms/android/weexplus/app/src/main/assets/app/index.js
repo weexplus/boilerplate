@@ -176,6 +176,10 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
 
 exports.default = {
     data: function data() {
@@ -207,31 +211,43 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('scroller', [_c('div', {
     staticStyle: {
+      padding: "5",
       flexDirection: "row",
-      flexWrap: "wrap"
+      marginTop: "50"
     }
   }, [_c('div', {
-    staticClass: ["add"],
-    on: {
-      "click": _vm.add
+    staticStyle: {
+      borderRadius: "3",
+      marginLeft: "20",
+      width: "30",
+      height: "30",
+      backgroundColor: "red",
+      marginTop: "40",
+      transform: "rotate(-45deg)"
+    }
+  }), _c('div', {
+    staticStyle: {
+      backgroundColor: "red",
+      padding: "15",
+      borderRadius: "5",
+      paddingTop: "10",
+      paddingBottom: "10",
+      marginLeft: "-15"
     }
   }, [_c('text', {
     staticStyle: {
-      color: "#ffffff"
+      maxWidth: "300"
     }
-  }, [_vm._v("添加")])]), _vm._l((_vm.items), function(item) {
-    return _c('div', {
-      staticClass: ["pic"],
-      on: {
-        "click": function($event) {
-          _vm.remove(item)
-        }
-      }
-    })
-  })], 2)])
-},staticRenderFns: []}
+  }, [_vm._v("1111111111111111111111ssssssssssssssssssssssssssssssdssssssssssssssssssssssssssssssssssssssss")])]), _c('div', {
+    staticStyle: {
+      flex: "1"
+    }
+  })])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ })

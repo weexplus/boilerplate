@@ -1,15 +1,11 @@
 <template>
     <scroller>
-      <div style="padding: 5;flex-direction: row;margin-top: 50">
-          <div style="border-radius: 3; margin-left: 20;width: 30;height: 30;background-color:red;margin-top: 40;transform:rotate(-45deg) ">
-
-          </div>
-          <div style="background-color: red;padding: 15;border-radius: 5;padding-top: 10;padding-bottom: 10;margin-left:-15">
-              <text style="max-width: 300">1111111111111111111111ssssssssssssssssssssssssssssssdssssssssssssssssssssssssssssssssssssssss</text>
-          </div>
-          <div style="flex: 1">
-          </div>
-      </div>
+        <div style="flex-direction: row;flex-wrap: wrap">
+            <div class="add" @click="add">
+                <text style="color: #ffffff">添加</text>
+            </div>
+            <div class="pic" @click="remove(item)" v-for="item in items"></div>
+        </div>
     </scroller>
 </template>
 <style>

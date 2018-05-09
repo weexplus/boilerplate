@@ -85,13 +85,14 @@ public class WXPageView extends WeexView   {
 
     public void fireResume()
     {
-
+        if(instance!=null)
         instance.fireGlobalEventCallback("onResume",null);
     }
 
     public void fireLeave()
     {
 
+        if(instance!=null)
         instance.fireGlobalEventCallback("onLeave",null);
     }
 
@@ -124,6 +125,7 @@ public class WXPageView extends WeexView   {
 //        {
 //            return;
 //        }
+        if(instance!=null)
         instance.firePageInit();
 
     }

@@ -89,6 +89,7 @@ static BOOL isshowErr;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      self.naviIndex=self.topViewController.navigationController.childViewControllers.count;
     if(self.isLanscape)
     {
          [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
@@ -345,6 +346,7 @@ static BOOL isshowErr;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+   
     [_instance fireGlobalEvent:@"viewDidDisappear" params:nil];
     [self _updateInstanceState:WeexInstanceDisappear];
     

@@ -9,6 +9,7 @@ import com.farwolf.base.ViewBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.weex.R;
 import com.farwolf.weex.activity.WeexActivity;
+import com.taobao.weex.WXSDKInstance;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -85,6 +86,15 @@ public class DrawerLayoutView extends ViewBase {
     {
         this.main_view.instance.setContext(c);
         this.nav_view.instance.setContext(c);
+
+    }
+
+    public void setParentInstance(WXSDKInstance instance)
+    {
+
+        this.main_view.setParentInstance(instance);
+        this.nav_view.setParentInstance(instance);
+
 
     }
 

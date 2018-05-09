@@ -555,12 +555,10 @@ exports.default = {
         open: function open() {
             var _this = this;
 
-            //                var pick=weex.requireModule('timepicker')
-            ////                var pick=weex.requireModule('picker')
-            //                pick.pickTime({},(res)=>{
-            //                    this.back=res;
-            //                })
-
+            var pick = weex.requireModule('timepicker');
+            pick.pickTime({}, function (res) {
+                _this.back = res;
+            });
 
             var location = weex.requireModule('location');
             location.start({ once: true }, function (res) {
