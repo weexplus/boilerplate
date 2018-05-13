@@ -74,6 +74,17 @@ typedef enum : NSUInteger {
     BOOL _syncDestroyComponentManager;
 }
 
+
+-(void)addChildInstance:(WXSDKInstance*)instance
+{
+    if(_childInstance==nil)
+    {
+        _childInstance=[NSMutableArray new];
+    }
+    [_childInstance addObject:instance];
+}
+
+
 - (void)dealloc
 {
     [_moduleEventObservers removeAllObjects];
@@ -83,6 +94,42 @@ typedef enum : NSUInteger {
         WXPerformBlockSyncOnComponentThread(^{
             _componentManager = nil;
         });
+    }
+}
+
+-(void)firePageInit
+{
+    NSString *ul= self.scriptURL.absoluteString;
+    NSLog(ul);
+    if(_isFirePageInit)
+    {
+        return;
+    }
+    
+    if(_parentInstance!=nil)
+    {
+        if(_parentInstance.isFirePageInit)
+        {
+             [self fireSelfPageInit];
+        }
+    }
+    else
+    {
+        [self fireSelfPageInit];
+    }
+   
+}
+
+-(void)fireSelfPageInit
+{
+    _isFirePageInit=true;
+    [self fireGlobalEvent:@"onPageInit" params:self.param];
+    if(_childInstance!=nil)
+    {
+        for(WXSDKInstance *instance in _childInstance)
+        {
+            [instance firePageInit];
+        }
     }
 }
 

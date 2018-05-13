@@ -59,6 +59,15 @@
             var font=weex.requireModule("font");
 //            font.addFont('erp','http://at.alicdn.com/t/font_557063_l3ad49ffyz2utyb9.ttf')
             font.addFont('erp','root:font/nfont.ttf')
+
+            var globalEvent = weex.requireModule('globalEvent') ;
+            globalEvent.addEventListener("onPageInit", function (e) {
+
+                var modal = weex.requireModule('modal') ;
+                modal.toast({message:'font init'})
+
+
+            });
         }
     }
 </script>

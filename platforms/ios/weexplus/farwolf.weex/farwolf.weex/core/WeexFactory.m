@@ -148,6 +148,7 @@ static NSMutableDictionary *pageCache;
         vc.page=p;
         vc.navbarVisibility=@"hidden";
         vc.sourceURL=sourceURL;
+    
         vc.instance=p.instance;
         p.instance.frame=frame;
         p.instance.viewController=vc;
@@ -206,7 +207,9 @@ static NSMutableDictionary *pageCache;
         }
         else
         {
-            nurl= [[NSBundle mainBundle] URLForResource:[temp replace:@".js" withString:@""]  withExtension:@"js"];
+            
+           
+            nurl=  [URL loadLocal:url];
         }
         if(nurl==nil)
         {

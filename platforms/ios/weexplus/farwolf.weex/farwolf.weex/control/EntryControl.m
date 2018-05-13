@@ -100,7 +100,9 @@
 //                [self presentViewController:nav animated:false completion:^{
 //
 //                }];
-                 [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
+                [vc.view setHidden:true];
+                [self addVc:vc];
+//                 [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
                 
             } fail:^(NSString *msg) {
             
@@ -109,18 +111,18 @@
             
         } fail:^(NSString *s) {
             
-            [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
-                
-                vc.debug=[Config isDebug];
-                vc.isLanscape=![Config isPortrait];
-                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-                [self presentViewController:nav animated:false completion:^{
-                    
-                }];
-                
-            } fail:^(NSString *msg) {
-                  [self failGo];
-            }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
+//            [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
+//
+//                vc.debug=[Config isDebug];
+//                vc.isLanscape=![Config isPortrait];
+//                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+//                [self presentViewController:nav animated:false completion:^{
+//
+//                }];
+//
+//            } fail:^(NSString *msg) {
+//                  [self failGo];
+//            }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
             
         }];
     }

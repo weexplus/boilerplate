@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 504);
+/******/ 	return __webpack_require__(__webpack_require__.s = 508);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -784,21 +784,21 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 504:
+/***/ 508:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(505)
+__vue_styles__.push(__webpack_require__(509)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(506)
+__vue_exports__ = __webpack_require__(510)
 
 /* template */
-var __vue_template__ = __webpack_require__(511)
+var __vue_template__ = __webpack_require__(515)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -831,7 +831,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 505:
+/***/ 509:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -858,7 +858,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 506:
+/***/ 510:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -868,7 +868,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _regenerator = __webpack_require__(507);
+var _regenerator = __webpack_require__(511);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -910,7 +910,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 
 var head = __webpack_require__(39);
-var flist = __webpack_require__(510);
+var flist = __webpack_require__(514);
 var net = __webpack_require__(28);
 var p = undefined;
 exports.default = {
@@ -1011,7 +1011,8 @@ exports.default = {
         var self = this;
         globalEvent.addEventListener("onPageInit", function (e) {
 
-            var page = weex.requireModule('page');
+            var navigator = weex.requireModule('navigator');
+            navigator.push('demo/drawlayout.js');
             //              page.closeSplash()
 
         });
@@ -1020,17 +1021,17 @@ exports.default = {
 
 /***/ }),
 
-/***/ 507:
+/***/ 511:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(508);
+module.exports = __webpack_require__(512);
 
 /***/ }),
 
-/***/ 508:
+/***/ 512:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1052,7 +1053,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(509);
+module.exports = __webpack_require__(513);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -1068,7 +1069,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 509:
+/***/ 513:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1780,7 +1781,7 @@ function () {
 
 /***/ }),
 
-/***/ 510:
+/***/ 514:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -1825,7 +1826,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 511:
+/***/ 515:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 318);
+/******/ 	return __webpack_require__(__webpack_require__.s = 322);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -279,23 +279,23 @@ exports.default = {
 
 /***/ }),
 
-/***/ 318:
+/***/ 322:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(319)
+__vue_styles__.push(__webpack_require__(323)
 )
-__vue_styles__.push(__webpack_require__(320)
+__vue_styles__.push(__webpack_require__(324)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(321)
+__vue_exports__ = __webpack_require__(325)
 
 /* template */
-var __vue_template__ = __webpack_require__(322)
+var __vue_template__ = __webpack_require__(326)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -328,7 +328,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 319:
+/***/ 323:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -339,7 +339,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 320:
+/***/ 324:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -406,7 +406,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 321:
+/***/ 325:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -475,12 +475,19 @@ exports.default = {
         var font = weex.requireModule("font");
         //            font.addFont('erp','http://at.alicdn.com/t/font_557063_l3ad49ffyz2utyb9.ttf')
         font.addFont('erp', 'root:font/nfont.ttf');
+
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            var modal = weex.requireModule('modal');
+            modal.toast({ message: 'font init' });
+        });
     }
 };
 
 /***/ }),
 
-/***/ 322:
+/***/ 326:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

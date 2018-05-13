@@ -160,13 +160,17 @@ static BOOL isshowErr;
     
     self.instance.renderFinish = ^(UIView *view) {
         
-        [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
-        
-        
+//        [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
+        self.instance.param=_param;
+        self.instance.isInit=true;
+        [self.instance firePageInit];
         [self loadCompelete];
     };
     [self.view addSubview:self.weexView];
-    [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
+//    [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
+    self.instance.param=_param;
+    self.instance.isInit=true;
+    [self.instance firePageInit];
     if(_debug)
     {
         
@@ -465,7 +469,10 @@ static BOOL isshowErr;
     
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
-        [_instance fireGlobalEvent:@"onPageInit" params:self.param];
+//        [_instance fireGlobalEvent:@"onPageInit" params:self.param];
+        self.instance.isInit=true;
+        self.instance.param=self.param;
+        [self.instance firePageInit];
         if(_debug)
         {
             [self.view bringSubviewToFront:self.set];

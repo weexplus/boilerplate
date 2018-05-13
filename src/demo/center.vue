@@ -50,7 +50,14 @@
         },
         created:function(){
 
+            var globalEvent = weex.requireModule('globalEvent') ;
+            globalEvent.addEventListener("onPageInit", function (e) {
 
+                var modal = weex.requireModule('modal') ;
+                modal.toast({message:'center init'})
+
+
+            });
         }
     }
 </script>

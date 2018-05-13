@@ -40,10 +40,10 @@
         methods: {
             open()
             {
-                var pick=weex.requireModule('timepicker')
-                pick.pickTime({},(res)=>{
-                    this.back=res;
-                })
+//                var pick=weex.requireModule('timepicker')
+//                pick.pickTime({},(res)=>{
+//                    this.back=res;
+//                })
 
                 var location=weex.requireModule('location')
                 location.start({once:true},(res)=>{

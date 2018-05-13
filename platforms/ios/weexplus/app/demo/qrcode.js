@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 394);
+/******/ 	return __webpack_require__(__webpack_require__.s = 398);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -279,23 +279,23 @@ exports.default = {
 
 /***/ }),
 
-/***/ 394:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(395)
+__vue_styles__.push(__webpack_require__(399)
 )
-__vue_styles__.push(__webpack_require__(396)
+__vue_styles__.push(__webpack_require__(400)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(397)
+__vue_exports__ = __webpack_require__(401)
 
 /* template */
-var __vue_template__ = __webpack_require__(398)
+var __vue_template__ = __webpack_require__(402)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -328,7 +328,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 395:
+/***/ 399:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -336,170 +336,6 @@ module.exports = {
     "alignItems": "center"
   }
 }
-
-/***/ }),
-
-/***/ 396:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 500,
-    "marginTop": 50,
-    "borderRadius": 20,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 397:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-var head = __webpack_require__(5);
-var globalEvent = weex.requireModule('globalEvent');
-globalEvent.addEventListener("onPageInit", function (e) {});
-
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            back: ""
-        };
-    },
-
-    methods: {
-        read: function read() {
-            var _this = this;
-
-            var r = weex.requireModule("qr");
-            var p = {};
-            p.color = "#ffffff";
-            p.bgcolor = "#ffb375";
-            r.open(p, function (res) {
-                _this.back = res;
-            });
-        }
-    },
-    created: function created() {}
-};
-
-/***/ }),
-
-/***/ 398:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "二维码扫描",
-      "append": "tree"
-    }
-  }), _c('div', {
-    staticStyle: {
-      marginBottom: "50"
-    }
-  }, [_c('div', {
-    staticClass: ["cl"]
-  }, [_c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.read()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("二维码扫描")])]), _c('text', {
-    staticStyle: {
-      color: "#0000000"
-    }
-  }, [_vm._v(_vm._s(_vm.back))])])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -594,6 +430,170 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       right: "0"
     }
   })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 400:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 500,
+    "marginTop": 50,
+    "borderRadius": 20,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 401:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var head = __webpack_require__(5);
+var globalEvent = weex.requireModule('globalEvent');
+globalEvent.addEventListener("onPageInit", function (e) {});
+
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            back: ""
+        };
+    },
+
+    methods: {
+        read: function read() {
+            var _this = this;
+
+            var r = weex.requireModule("qr");
+            var p = {};
+            p.color = "#ffffff";
+            p.bgcolor = "#ffb375";
+            r.open(p, function (res) {
+                _this.back = res;
+            });
+        }
+    },
+    created: function created() {}
+};
+
+/***/ }),
+
+/***/ 402:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('scroller', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "二维码扫描",
+      "append": "tree"
+    }
+  }), _c('div', {
+    staticStyle: {
+      marginBottom: "50"
+    }
+  }, [_c('div', {
+    staticClass: ["cl"]
+  }, [_c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.read()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("二维码扫描")])]), _c('text', {
+    staticStyle: {
+      color: "#0000000"
+    }
+  }, [_vm._v(_vm._s(_vm.back))])])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

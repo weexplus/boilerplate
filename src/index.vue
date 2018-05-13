@@ -60,6 +60,8 @@
             var globalEvent = weex.requireModule('globalEvent');
             globalEvent.addEventListener("onPageInit", function (e) {
 
+                var t=weex.requireModule('modal')
+                t.toast({message:'111'})
 
             });
 

@@ -4,7 +4,7 @@
 
 
 
- <div style="align-items: center;justify-content: center;">
+ <scroller style="align-items: center;justify-content: center;">
    <text style="color: #000000;font-size: 32">{{name}}</text>
    <input ref="inp" type="input" class="it" placeholder="姓名" v-model="name"/>
      <div style="width: 100;height: 100;background-color: red" @click="set">
@@ -32,7 +32,7 @@
    <input class="it" placeholder="姓名"/>
    <input class="it" placeholder="姓名"/>
    <input class="it" placeholder="姓名"/>
- </div>
+ </scroller>
 
 </template>
 
@@ -56,11 +56,7 @@
 
     var head =require('./header.vue')
     var cinput =require('./component/input.vue')
-    var globalEvent = weex.requireModule('globalEvent') ;
-    globalEvent.addEventListener("onPageInit", function (e) {
 
-
-    });
 
     export default {
         components:{head,cinput},
@@ -84,7 +80,14 @@
         },
         created:function(){
 
+            var globalEvent = weex.requireModule('globalEvent') ;
+            globalEvent.addEventListener("onPageInit", function (e) {
 
+                var modal = weex.requireModule('modal') ;
+                modal.toast({message:'input init'})
+
+
+            });
         }
     }
 </script>

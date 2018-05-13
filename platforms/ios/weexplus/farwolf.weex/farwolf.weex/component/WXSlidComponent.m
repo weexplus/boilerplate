@@ -43,13 +43,20 @@
 -(void)viewDidLoad
 {
     CGRect r=self.view.frame;
+ 
+    
+    
     [WeexFactory renderNew:[Weex getFinalUrl:_src weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc)
      {
+         vc.instance.parentInstance=self.weexInstance;
+         [self.weexInstance addChildInstance:vc.instance];
+         
          [WeexFactory renderNew:[Weex getFinalUrl:_slidSrc weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc1)
           {
               vc1.freeFrame=true;
               vc1.instance.frame=CGRectMake(0, 0, _leftWidth, [vc1 screenHeight]);
- 
+              vc1.instance.parentInstance=self.weexInstance;
+              [self.weexInstance addChildInstance:vc1.instance];
               LGSideMenuController *sideMenuController = [LGSideMenuController sideMenuControllerWithRootViewController:vc leftViewController:vc1
                                                                        rightViewController:nil];
               

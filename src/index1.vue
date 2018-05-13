@@ -140,7 +140,8 @@
             var self = this;
             globalEvent.addEventListener("onPageInit", function (e) {
 
-              var page=weex.requireModule('page')
+              var navigator=weex.requireModule('navigator')
+                navigator.push('demo/drawlayout.js')
 //              page.closeSplash()
 
 

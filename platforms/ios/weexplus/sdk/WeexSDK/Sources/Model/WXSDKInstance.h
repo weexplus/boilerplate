@@ -39,7 +39,14 @@ extern NSString *const bundleUrlOptionKey;
 @property (nonatomic, strong) UIView *rootView;
 
 
-@property (nonatomic, strong) NSDictionary *param;
+@property (nonatomic, weak) NSDictionary *param;
+
+//zjr add
+@property (nonatomic, strong) NSMutableArray *childInstance;
+//zjr add
+@property (nonatomic) BOOL isInit;
+//zjr add
+@property (nonatomic) BOOL isFirePageInit;
 
 /**
  * Component can freeze the rootview frame through the variable isRootViewFrozen
@@ -241,6 +248,9 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
  **/
 - (void)reload:(BOOL)forcedReload;
 
+
+
+
 /**
  * Refreshes current instance with data.
  *
@@ -252,6 +262,13 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
  * Destroys current instance.
  **/
 - (void)destroyInstance;
+
+
+//zjr add
+-(void)firePageInit;
+
+//zjr add
+-(void)addChildInstance:(WXSDKInstance*)instance;
 
 /**
  * Trigger full GC, for dev and debug only.

@@ -161,6 +161,7 @@ public class WXLocationModule extends WXModuleBase {
                 });
             }
 
+
         } else {
             //无法定位：1、提示用户打开定位服务；2、跳转到设置界面
             Toast.makeText(getContext(), "无法定位，请打开定位服务", Toast.LENGTH_SHORT).show();
@@ -206,12 +207,20 @@ public class WXLocationModule extends WXModuleBase {
             e.printStackTrace();
         }
 
+
         HashMap res = new HashMap();
         res.putAll(param);
+        if(locationList==null)
+        {
+            res.put("err", 1);
+            callback.invokeAndKeepAlive(res);
+            return;
+        }
         Address address = locationList.get(0);//得到Address实例
         String countryName = address.getCountryName();//得到国家名称，比方：中国
         String locality = address.getLocality();//得到城市名称，比方：北京市
         res.put("country", countryName);
+        res.put("err", 0);
         res.put("countryCode", address.getCountryCode());
         res.put("country", address.getCountryName());
         res.put("province", address.getAdminArea());

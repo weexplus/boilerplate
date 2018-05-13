@@ -62,26 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 318);
+/******/ 	return __webpack_require__(__webpack_require__.s = 314);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 318:
+/***/ 314:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(319)
+__vue_styles__.push(__webpack_require__(315)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(320)
+__vue_exports__ = __webpack_require__(316)
 
 /* template */
-var __vue_template__ = __webpack_require__(321)
+var __vue_template__ = __webpack_require__(317)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -93,10 +93,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/floading.vue"
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/flexwrap.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-54219e62"
+__vue_options__._scopeId = "data-v-d0f12ce2"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -114,28 +114,36 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 319:
+/***/ 315:
 /***/ (function(module, exports) {
 
 module.exports = {
-  "indicator": {
-    "color": "#888888",
-    "height": 40,
-    "width": 40,
-    "marginRight": 10
+  "add": {
+    "width": "250",
+    "height": "250",
+    "backgroundColor": "#0088fb",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "pic": {
+    "width": "250",
+    "height": "250",
+    "backgroundColor": "#FF0000",
+    "borderWidth": 1,
+    "borderColor": "#ffffff"
   }
 }
 
 /***/ }),
 
-/***/ 320:
+/***/ 316:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -151,31 +159,78 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
-  components: {},
-  data: function data() {
-    return {};
-  },
+    data: function data() {
+        return {
+            items: [1, 1, 1, 1, 1, 1]
+        };
+    },
 
-  methods: {},
+    methods: {
+        add: function add() {
+            this.items.push(1);
+        },
+        remove: function remove(item) {
+            //                this.items.remove(0)
 
-  created: function created() {}
+            this.items.splice(this.items.length - 1, 1);
+        }
+    },
+    created: function created() {
+
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {});
+    }
 };
 
 /***/ }),
 
-/***/ 321:
+/***/ 317:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('floading', {
-    staticClass: ["indicator"],
-    attrs: {
-      "color": "#000000"
+  return _c('scroller', [_c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      flexWrap: "wrap"
     }
-  })], 1)
+  }, [_c('div', {
+    staticClass: ["add"],
+    on: {
+      "click": _vm.add
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("添加")])]), _vm._l((_vm.items), function(item) {
+    return _c('div', {
+      staticClass: ["pic"],
+      on: {
+        "click": function($event) {
+          _vm.remove(item)
+        }
+      }
+    })
+  })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

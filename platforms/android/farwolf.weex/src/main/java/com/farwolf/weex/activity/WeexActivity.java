@@ -506,6 +506,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         container.addView(view);
         container.requestLayout();
+        mWXSDKInstance.hasInit=true;
 //        mWXSDKInstance.fireGlobalEventCallback("onPageInit",mWXSDKInstance.param);
         mWXSDKInstance.firePageInit();
         mWXSDKInstance.onActivityCreate();

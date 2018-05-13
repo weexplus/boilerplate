@@ -85,6 +85,7 @@ public class WXNetModule extends WXModule {
                     res.put("res",JSONObject.parse(s));
                     String cookie=response.headers().get("Set-Cookie");
                     res.put("sessionid",cookie);
+
                     if(success!=null)
                         success.invoke(res);
                 }

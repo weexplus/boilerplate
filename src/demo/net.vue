@@ -56,10 +56,7 @@
             post()
             {
 
-                test.gt();
-                netx.post('getBanners.do',{},(res)=>{
 
-                })
                  var self=this;
                 self.back="";
                 const net = weex.requireModule('net');

@@ -17,7 +17,7 @@ WX_EXPORT_METHOD_SYNC(@selector(enableBackKey))
 WX_EXPORT_METHOD_SYNC(@selector(setBackKeyCallback:))
 WX_EXPORT_METHOD_SYNC(@selector(exit))
 WX_EXPORT_METHOD_SYNC(@selector(setMainPage:))
-
+WX_EXPORT_METHOD_SYNC(@selector(closeSplash))
 
 -(void)doubleBack
 {
@@ -46,6 +46,11 @@ WX_EXPORT_METHOD_SYNC(@selector(setMainPage:))
         s=[@"app/" add: n[1] ];
     }
     [s save:@"mainurl"];
+}
+
+-(void)closeSplash
+{
+    
 }
 -(void)exit
 {

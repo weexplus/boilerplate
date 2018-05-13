@@ -121,12 +121,25 @@ public class WXPageView extends WeexView   {
     public void firePageInit()
     {
 
-//        if(!getParentInstance().isFirePageInit())
-//        {
-//            return;
-//        }
-        if(instance!=null)
-        instance.firePageInit();
+        if(this.page!=null)
+        {
+            String url= instance.getBundleUrl();
+            String parent=null;
+            if(getParentInstance()!=null)
+                parent= getParentInstance().getBundleUrl();
+
+            if(getParentInstance()!=null)
+            {
+                boolean parentfired=getParentInstance().isFirePageInit();
+                if(!parentfired)
+                    return;
+            }
+            if(instance!=null)
+                instance.firePageInit();
+        }
+
+
+
 
     }
 
@@ -161,7 +174,7 @@ public class WXPageView extends WeexView   {
         }
         else
         {
-            this.loadUrl(src);
+            this.loadUrl(src,param);
         }
     }
 
@@ -190,7 +203,13 @@ public class WXPageView extends WeexView   {
 
                 Page p=new Page();
                 p.v=view;
-                firePageInit();
+
+                if(instance!=null)
+                {
+                    instance.hasInit=true;
+                    instance.firePageInit();
+                }
+
             }
 
             @Override
@@ -221,12 +240,13 @@ public class WXPageView extends WeexView   {
     }
 
     //zjr add
-    public void loadUrl(String url)
+    public void loadUrl(String url,Map param)
     {
 
 
         this.instance=createInstance();
         this.instance.setBundleUrl(url);
+        this.instance.param=param;
 
         if(url.startsWith("http"))
         {

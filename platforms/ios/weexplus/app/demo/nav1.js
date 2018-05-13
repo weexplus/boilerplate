@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 346);
+/******/ 	return __webpack_require__(__webpack_require__.s = 350);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -279,21 +279,21 @@ exports.default = {
 
 /***/ }),
 
-/***/ 346:
+/***/ 350:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(347)
+__vue_styles__.push(__webpack_require__(351)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(348)
+__vue_exports__ = __webpack_require__(352)
 
 /* template */
-var __vue_template__ = __webpack_require__(349)
+var __vue_template__ = __webpack_require__(353)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -326,7 +326,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 347:
+/***/ 351:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -348,7 +348,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 348:
+/***/ 352:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -427,16 +427,17 @@ exports.default = {
         var globalEvent = weex.requireModule('globalEvent');
         globalEvent.addEventListener("onPageInit", function (e) {
 
-            var navigator = weex.requireModule('navigator');
-            self.param = navigator.param().a;
-            navigator.setPageId('nav1');
+            //              var navigator = weex.requireModule('navigator') ;
+            self.param = e;
+            //              navigator.setPageId('nav1');
+
         });
     }
 };
 
 /***/ }),
 
-/***/ 349:
+/***/ 353:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

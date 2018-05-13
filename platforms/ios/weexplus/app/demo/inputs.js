@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 336);
+/******/ 	return __webpack_require__(__webpack_require__.s = 340);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -324,23 +324,23 @@ exports.default = {
 
 /***/ }),
 
-/***/ 336:
+/***/ 340:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(337)
+__vue_styles__.push(__webpack_require__(341)
 )
-__vue_styles__.push(__webpack_require__(338)
+__vue_styles__.push(__webpack_require__(342)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(339)
+__vue_exports__ = __webpack_require__(343)
 
 /* template */
-var __vue_template__ = __webpack_require__(340)
+var __vue_template__ = __webpack_require__(344)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -373,7 +373,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 337:
+/***/ 341:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -389,7 +389,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 338:
+/***/ 342:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -456,7 +456,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 339:
+/***/ 343:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -523,8 +523,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var head = __webpack_require__(5);
 var cinput = __webpack_require__(100);
-var globalEvent = weex.requireModule('globalEvent');
-globalEvent.addEventListener("onPageInit", function (e) {});
 
 exports.default = {
     components: { head: head, cinput: cinput },
@@ -544,16 +542,24 @@ exports.default = {
             this.name = "xx";
         }
     },
-    created: function created() {}
+    created: function created() {
+
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            var modal = weex.requireModule('modal');
+            modal.toast({ message: 'input init' });
+        });
+    }
 };
 
 /***/ }),
 
-/***/ 340:
+/***/ 344:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('scroller', {
     staticStyle: {
       alignItems: "center",
       justifyContent: "center"

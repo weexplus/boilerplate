@@ -133,6 +133,7 @@ public class WeexFactory  extends ServiceBase{
             public void onViewCreated(WXSDKInstance instance, View view) {
 
                 p.v=view;
+                p.instance.hasInit=true;
                 p.instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
                 m.put(p.id,p);
                 if(listener!=null)
@@ -183,11 +184,13 @@ public class WeexFactory  extends ServiceBase{
             public void onViewCreated(WXSDKInstance instance, View view) {
 
                 p.v=view;
+                p.instance.hasInit=true;
                 p.instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
                 if(listener!=null)
                 {
                     listener.onRenderFinish(p);
                 }
+
 
             }
 
@@ -272,6 +275,7 @@ public class WeexFactory  extends ServiceBase{
 
 //                ((WeexActivity)context).mask.addView(view);
                 p.v=view;
+                p.instance.hasInit=true;
                 if(ispotrait)
                     p.instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
                 else

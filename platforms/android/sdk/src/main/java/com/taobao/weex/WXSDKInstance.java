@@ -122,6 +122,7 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
 
 
   public boolean firePageInit =false;
+  public boolean hasInit =false;
   //zjr add
 
 
@@ -238,10 +239,12 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
   //zjr add
   public void firePageInit()
   {
-    if(firePageInit)
+     String url= getBundleUrl();
+    if(firePageInit||!hasInit)
       return;
     firePageInit =true;
     fireGlobalEventCallback("onPageInit",param);
+
     for(WXSDKInstance instance:childInstances)
     {
         instance.setContext(getContext());
@@ -1564,6 +1567,7 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
     List<String> callbacks=mGlobalEvents.get(eventName);
     if(callbacks!=null){
       for(String callback:callbacks){
+
         WXSDKManager.getInstance().callback(mInstanceId,callback,params,true);
       }
     }

@@ -266,13 +266,17 @@
     {
           NSString *entry=[self getSaveValue:@"mainurl"];
         if([@"" isEqualToString:entry]||entry==nil)
+        {
+              NSMutableDictionary *config=[Weex conifg];
             entry=[Config entry];
+        }
+      
         return entry;
     }
     NSString *s= [self getSaveValue:@"url"];
     if(s==nil||[s isEqualToString:@""])
     {
-        s=[Config entry];
+//        s=[Config entry];
     }
     return s;
 }

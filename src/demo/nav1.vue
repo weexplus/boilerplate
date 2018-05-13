@@ -73,9 +73,9 @@
           globalEvent.addEventListener("onPageInit", function (e) {
 
 
-              var navigator = weex.requireModule('navigator') ;
-              self.param=navigator.param().a;
-              navigator.setPageId('nav1');
+//              var navigator = weex.requireModule('navigator') ;
+              self.param=e;
+//              navigator.setPageId('nav1');
 
 
           });
