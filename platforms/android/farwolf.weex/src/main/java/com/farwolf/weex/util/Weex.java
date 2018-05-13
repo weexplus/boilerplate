@@ -34,6 +34,7 @@ import com.farwolf.weex.component.WXWheelView;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.module.WXAddressBookModule;
 import com.farwolf.weex.module.WXCenterPopModule;
+import com.farwolf.weex.module.WXEnvModule;
 import com.farwolf.weex.module.WXEventModule;
 import com.farwolf.weex.module.WXFPicker;
 import com.farwolf.weex.module.WXFarwolfModule;
@@ -185,6 +186,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("updater", WXUpdateModule.class);
             WXSDKEngine.registerModule("timepicker", WXTimePicker.class);
             WXSDKEngine.registerModule("location", WXLocationModule.class);
+            WXSDKEngine.registerModule("env", WXEnvModule.class);
 
             registerComponent("image",WXFImage.class);
             registerComponent("web",WXFWeb.class);

@@ -38,6 +38,7 @@
 #import "WXUpdateModule.h"
 #import "WXTimePicker.h"
 #import "WXLocationModule.h"
+#import "WXEnvModule.h"
 
 @implementation Weex
 
@@ -68,6 +69,9 @@
     [WXSDKEngine registerModule:@"updater" withClass:[WXUpdateModule class]];
     [WXSDKEngine registerModule:@"timepicker" withClass:[WXTimePicker class]];
     [WXSDKEngine registerModule:@"location" withClass:[WXLocationModule class]];
+    [WXSDKEngine registerModule:@"env" withClass:[WXEnvModule class]];
+    
+    
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
