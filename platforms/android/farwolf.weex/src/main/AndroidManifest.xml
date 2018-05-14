@@ -14,7 +14,7 @@
         <activity android:name="com.farwolf.weex.activity.PresentActivity_"
             android:theme="@style/pop"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
+            android:windowSoftInputMode="adjustNothing"
             >
 
         </activity>
@@ -29,7 +29,7 @@
 
         <activity android:name="com.farwolf.weex.activity.EntryActivity_"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan"
+            android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"
             >
 
@@ -38,7 +38,7 @@
 
 
         <activity android:name="com.farwolf.weex.activity.WeexActivity_"
-            android:windowSoftInputMode="adjustPan"
+            android:windowSoftInputMode="adjustNothing"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
 
