@@ -120,6 +120,7 @@ public class WXSlidpopModule  extends WXModuleBase {
             RelativeLayout.LayoutParams startLP = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
             maskView.setLayoutParams(startLP);
 
+            maskView.setParentInstance(mWXSDKInstance);
             getActivity().root.addView(maskView);
             maskView.setVisibility(View.VISIBLE);
             maskView.setBackgroundColor(Color.argb(140,Color.red(Color.BLACK),Color.green(Color.BLACK),Color.blue(Color.BLACK)));
@@ -177,7 +178,7 @@ public class WXSlidpopModule  extends WXModuleBase {
             slidView = WXPageView_.build(getActivity());
         }
         slidView.setSrc(url,mWXSDKInstance.getContext(),this.param);
-
+        slidView.setParentInstance(mWXSDKInstance);
         int left = offset.get("left") != null?(Integer) offset.get("left"):0;
         int right = offset.get("right") != null?(Integer) offset.get("right"):0;
         int top = offset.get("top") != null?(Integer) offset.get("top"):0;

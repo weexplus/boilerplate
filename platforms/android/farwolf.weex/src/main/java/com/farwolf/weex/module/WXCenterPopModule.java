@@ -221,6 +221,7 @@ public class WXCenterPopModule extends WXModuleBase {
         });
 
 
+        popView.setParentInstance(mWXSDKInstance);
         popView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
