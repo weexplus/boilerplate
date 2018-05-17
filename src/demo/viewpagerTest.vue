@@ -1,6 +1,7 @@
 <template>
     <div style="flex: 1;">
      <head title="viewpager"></head>
+        <div @click="kl" style="width: 150;height: 150;background-color: red"></div>
      <viewpager :items="items">
 
      </viewpager>
@@ -23,6 +24,12 @@
             items:[ {text:'已关联',url:'root:demo/home.js',param:{a:'ss'}},{text:'22',url:'root:demo/net.js',param:{b:'dsds'}}]
         },
         methods: {
+            kl()
+            {
+                var p={text:'已关联',url:'root:demo/home.js',param:{a:'ss'}}
+              this.items.push(p)
+            },
+
             update: function (e) {
                 this.target = 'Weex'
                 console.log('target:', this.target)
