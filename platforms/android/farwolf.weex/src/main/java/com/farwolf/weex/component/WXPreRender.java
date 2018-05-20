@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.core.WeexFactory_;
+import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.dom.WXDomObject;
@@ -36,7 +37,8 @@ public class WXPreRender extends WXDiv {
     public void setSrc(String src) {
        if(w==null)
            w= WeexFactory_.getInstance_(getContext());
-        w.preRender(src,src,null);
+       String url= Weex.getRelativeUrl(src,mInstance);
+        w.preRender(url, url, null);
     }
 
 

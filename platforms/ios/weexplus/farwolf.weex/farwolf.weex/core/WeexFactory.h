@@ -14,6 +14,6 @@
 + (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame isPortrait:(BOOL)isPortrait;
 +(void)addCache:(NSString*)url vc:(WXNormalViewContrller*)vc;
 +(WXNormalViewContrller*)getCache:(NSString*)url;
-+(void)preRender:(NSURL *)sourceURL;
++(void)preRender:(NSURL *)sourceURL success:(void(^)(NSString*url))success;
 +(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete fail:(void(^)(NSString *))fail;
 @end

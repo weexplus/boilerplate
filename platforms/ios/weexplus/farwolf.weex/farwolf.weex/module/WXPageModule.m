@@ -8,17 +8,27 @@
 #import "WXPageModule.h"
 #import "WXNormalViewContrller.h"
 #import "URL.h"
+#import "WeexFactory.h"
 
 @implementation WXPageModule
 @synthesize weexInstance;
 WX_EXPORT_METHOD_SYNC(@selector(doubleBack))
 WX_EXPORT_METHOD_SYNC(@selector(reload))
+WX_EXPORT_METHOD_SYNC(@selector(preRender:success:))
 WX_EXPORT_METHOD_SYNC(@selector(enableBackKey))
 WX_EXPORT_METHOD_SYNC(@selector(setBackKeyCallback:))
 WX_EXPORT_METHOD_SYNC(@selector(exit))
 WX_EXPORT_METHOD_SYNC(@selector(setMainPage:))
 WX_EXPORT_METHOD_SYNC(@selector(closeSplash))
 
+
+
+-(void)preRender:(NSString*)src success:(WXModuleCallback)success
+{
+    [WeexFactory preRender:[URL getFinalUrl:src weexInstance:weexInstance] success:^(NSString *url) {
+        success(url);
+    }];
+}
 -(void)doubleBack
 {
     

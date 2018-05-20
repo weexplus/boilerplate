@@ -34,21 +34,7 @@ WX_EXPORT_METHOD(@selector(sendNative:param:))
     }
     //    [self.callbacks setObject:c forKey:key];
     [self.callbacks setValue:c forKey:key];
-    //    if(notifymap==nil)
-    //    {
-    //        notifymap=[NSMutableDictionary new];
-    //    }
-    //    WXNormalViewContrller *vc= self.weexInstance.viewController;
-    //    if([notifymap objectForKey:vc.sourceURL.absoluteString]==nil)
-    //    {
-    //        [notifymap setObject:@"regist" forKey:vc.sourceURL.absoluteString];
-    //        NSMutableDictionary *p=[NSMutableDictionary new];
-    //        [p setValue:vc.sourceURL.absoluteString forKey:@"url"];
-    //        [self notifyDict:@"removeUrl" value:p];
-    //
-    //        [self regist:@"notify" method:@selector(onNotify:)];
-    //
-    //    }
+  
     
     
 }
@@ -56,29 +42,7 @@ WX_EXPORT_METHOD(@selector(sendNative:param:))
 
 
 
-//-(void)setWeexInstance:(WXSDKInstance *)weexInstance
-//{
-//    _weexInstance=weexInstance;
-//    if(notifymap==nil)
-//    {
-//        notifymap=[NSMutableDictionary new];
-//    }
-//     WXNormalViewContrller *vc= self.weexInstance.viewController;
-//    if([notifymap objectForKey:vc.sourceURL.absoluteString]==nil)
-//    {
-//        [notifymap setObject:@"regist" forKey:vc.sourceURL.absoluteString];
-//
-//        [self regist:@"notify" method:@selector(onNotify:)];
-//
-//    }
-//    else
-//    {
-//        NSMutableDictionary *p=[NSMutableDictionary new];
-//        [p setValue:vc.sourceURL.absoluteString forKey:@"url"];
-//        [self notifyDict:@"removeUrl" value:p];
-//        [self regist:@"notify" method:@selector(onNotify:)];
-//    }
-//}
+
 
 -(void)dealloc
 {
@@ -88,11 +52,29 @@ WX_EXPORT_METHOD(@selector(sendNative:param:))
 
 -(void)onNotify:(NSNotification*)n
 {
+    
     NSString *key=  n.userInfo[@"key"];
     NSDictionary *param=  n.userInfo[@"param"];
     WXModuleKeepAliveCallback c=[self.callbacks objectForKey:key];
-    if(c!=nil)
+  
+    
+    if ([NSThread isMainThread])
+    {
+        if(c!=nil)
         c(param,true);
+    }
+    else
+    {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            //Update UI in UI thread here
+            if(c!=nil)
+            c(param,true);
+            
+            
+        });
+    }
+     
+  
 }
 
 -(void)removeUrl:(NSNotification*)n

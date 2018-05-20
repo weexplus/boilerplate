@@ -12,6 +12,7 @@
 #import "WXNormalViewContrller.h"
 
 @implementation WXSlidComponent
+WX_EXPORT_METHOD(@selector(toggle))
 
 -(instancetype)initWithRef:(NSString *)ref type:(NSString *)type styles:(NSDictionary *)styles attributes:(NSDictionary *)attributes events:(NSArray *)events weexInstance:(WXSDKInstance *)weexInstance
 {
@@ -40,6 +41,7 @@
     return self;
 }
 
+
 -(void)viewDidLoad
 {
     CGRect r=self.view.frame;
@@ -59,11 +61,12 @@
               [self.weexInstance addChildInstance:vc1.instance];
               LGSideMenuController *sideMenuController = [LGSideMenuController sideMenuControllerWithRootViewController:vc leftViewController:vc1
                                                                        rightViewController:nil];
-              
+            
               sideMenuController.leftViewWidth = _leftWidth;
               sideMenuController.leftViewPresentationStyle = LGSideMenuPresentationStyleSlideAbove;
                [_host addSubviewFull:sideMenuController.view];
                 [self.weexInstance.viewController addChildViewController:sideMenuController];
+              _slidcontrol=sideMenuController;
               
           } fail:^(NSString *msg) {
               
@@ -77,6 +80,10 @@
 }
 
 
+-(void)toggle
+{
+    [_slidcontrol toggleLeftViewAnimated];
+}
 
 
 -(UIView*)loadView

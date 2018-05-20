@@ -86,7 +86,7 @@ static NSMutableDictionary *pageCache;
 }
 
 
-+(void)preRender:(NSURL *)sourceURL
++(void)preRender:(NSURL *)sourceURL success:(void(^)(NSString*url))success
 {
     
 //    [self renderNew:sourceURL compelete:^(WXNormalViewContrller *vc) {
@@ -99,6 +99,7 @@ static NSMutableDictionary *pageCache;
     
     [self renderNew:sourceURL compelete:^(WXNormalViewContrller *vc) {
          [self addCache:sourceURL.absoluteString vc:vc];
+         success(sourceURL.absoluteString);
     } fail:^(NSString *s) {
         
     } frame:[[UIApplication sharedApplication] keyWindow].bounds isPortrait:true];

@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 
 import com.farwolf.weex.activity.ActivityManager;
 import com.farwolf.weex.base.WXModuleBase;
+import com.farwolf.weex.core.Page;
+import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.core.WeexFactory_;
 import com.farwolf.weex.event.Event;
 import com.farwolf.weex.util.Weex;
@@ -34,10 +36,23 @@ public class WXPageModule extends WXModuleBase {
     }
 
     @JSMethod
-    public void prerender(String url)
+    public void preRender(String src,final JSCallback success)
     {
+        String url= Weex.getRelativeUrl(src,mWXSDKInstance);
         WeexFactory_ w=WeexFactory_.getInstance_(getActivity());
-        w.preRender(url,url,null);
+        w.preRender(url,url,new WeexFactory.OnRenderFinishListener() {
+            @Override
+            public void onRenderFinish(Page p) {
+
+                success.invoke(p.url);
+
+            }
+
+            @Override
+            public void onRenderFailed(Page p) {
+
+            }
+        });
 
     }
 
