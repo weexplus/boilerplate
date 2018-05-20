@@ -22,6 +22,7 @@ public class JPushUtil {
         jpushAdapter=cls;
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(context);     		// 初始化 JPush
+
         try {
             WXSDKEngine.registerModule("jpush",JpushModule.class);
         } catch (WXException e) {
