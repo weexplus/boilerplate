@@ -11,7 +11,7 @@
 @implementation Config
 
 
-+(NSString*)schema
++(NSString*)schema 
 {
     return  [[Weex conifg] objectForKey:@"schema"];
 }

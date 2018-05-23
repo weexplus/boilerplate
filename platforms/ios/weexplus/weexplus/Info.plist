@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>需要定位权限</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
@@ -33,6 +31,8 @@
 	<string>可以使用相机吗</string>
 	<key>NSContactsUsageDescription</key>
 	<string>请求读取通讯录</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>需要定位权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>可以使用相册吗</string>
 	<key>UILaunchStoryboardName</key>
@@ -52,6 +52,10 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

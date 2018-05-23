@@ -810,6 +810,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var viewpager = __webpack_require__(435);
 var head = __webpack_require__(39);
@@ -820,6 +821,12 @@ exports.default = {
         items: [{ text: '已关联', url: 'root:demo/home.js', param: { a: 'ss' } }, { text: '22', url: 'root:demo/net.js', param: { b: 'dsds' } }]
     },
     methods: {
+        kl: function kl() {
+            var p = { text: '已关联', url: 'root:demo/home.js', param: { a: 'ss' } };
+            this.items.push(p);
+        },
+
+
         update: function update(e) {
             this.target = 'Weex';
             console.log('target:', this.target);
@@ -905,6 +912,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('head', {
     attrs: {
       "title": "viewpager"
+    }
+  }), _c('div', {
+    staticStyle: {
+      width: "150",
+      height: "150",
+      backgroundColor: "red"
+    },
+    on: {
+      "click": _vm.kl
     }
   }), _c('viewpager', {
     attrs: {

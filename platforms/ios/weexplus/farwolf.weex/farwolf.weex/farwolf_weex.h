@@ -20,7 +20,7 @@
 #import "Weex.h"
 #import "WXEventModule.h"
 #import "WeexSDK/WXBaseViewController.h"
- 
+ #import "QRControl.h"
 #import "WXNavBarModule.h"
 #import "WXPage.h"
 #import "QRControl.h"

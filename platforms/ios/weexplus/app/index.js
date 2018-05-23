@@ -180,6 +180,20 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     data: function data() {
@@ -204,7 +218,7 @@ exports.default = {
         globalEvent.addEventListener("onPageInit", function (e) {
 
             var t = weex.requireModule('modal');
-            t.toast({ message: '111' });
+            //                t.toast({message:'111'})
         });
     }
 };
@@ -215,43 +229,31 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', [_c('div', {
+  return _c('div', [_c('div', {
     staticStyle: {
-      padding: "5",
-      flexDirection: "row",
-      marginTop: "50"
+      width: "750px",
+      height: "50px",
+      backgroundColor: "red"
     }
-  }, [_c('div', {
-    staticStyle: {
-      borderRadius: "3",
-      marginLeft: "20",
-      width: "30",
-      height: "30",
-      backgroundColor: "red",
-      marginTop: "40",
-      transform: "rotate(-45deg)"
-    }
-  }), _c('div', {
-    staticStyle: {
-      backgroundColor: "red",
-      padding: "15",
-      borderRadius: "5",
-      paddingTop: "10",
-      paddingBottom: "10",
-      marginLeft: "-15"
-    }
-  }, [_c('text', {
-    staticStyle: {
-      maxWidth: "300"
-    }
-  }, [_vm._v("1111111111111111111111ssssssssssssssssssssssssssssssdssssssssssssssssssssssssssssssssssssssss")])]), _c('div', {
+  }), _c('list', {
     staticStyle: {
       flex: "1"
     }
-  })])])
-}]}
+  }, _vm._l(([1, 1, 1, 1, 1, 11, 1]), function(item) {
+    return _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('div', {
+      staticStyle: {
+        height: "100px",
+        backgroundColor: "red",
+        marginTop: "10px"
+      }
+    })])
+  }))])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })

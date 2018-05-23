@@ -1,16 +1,30 @@
 <template>
-    <scroller>
-      <div style="padding: 5;flex-direction: row;margin-top: 50">
-          <div style="border-radius: 3; margin-left: 20;width: 30;height: 30;background-color:red;margin-top: 40;transform:rotate(-45deg) ">
+    <div>
+      <!--<div style="padding: 5;flex-direction: row;margin-top: 50">-->
+          <!--<div style="border-radius: 3; margin-left: 20;width: 30;height: 30;background-color:red;margin-top: 40;transform:rotate(-45deg) ">-->
 
-          </div>
-          <div style="background-color: red;padding: 15;border-radius: 5;padding-top: 10;padding-bottom: 10;margin-left:-15">
-              <text style="max-width: 300">1111111111111111111111ssssssssssssssssssssssssssssssdssssssssssssssssssssssssssssssssssssssss</text>
-          </div>
-          <div style="flex: 1">
-          </div>
-      </div>
-    </scroller>
+          <!--</div>-->
+          <!--<div style="background-color: red;padding: 15;border-radius: 5;padding-top: 10;padding-bottom: 10;margin-left:-15">-->
+              <!--<text style="max-width: 300">1111111111111111111111ssssssssssssssssssssssssssssssdssssssssssssssssssssssssssssssssssssssss</text>-->
+
+          <!--</div>-->
+
+          <!--<image src="root:img/cat.png" style="width: 100px;height: 100px;margin-left: 10"></image>-->
+          <!--<div style="flex: 1">-->
+          <!--</div>-->
+      <!--</div>-->
+        <div style="width: 750px;height: 50px;background-color: red">
+
+        </div>
+        <list style="flex: 1">
+            <cell v-for="item in [1,1,1,1,1,11,1]">
+              <div style="height: 100px;background-color: red;margin-top: 10px">
+
+              </div>
+            </cell>
+        </list>
+
+    </div>
 </template>
 <style>
 
@@ -61,7 +75,7 @@
             globalEvent.addEventListener("onPageInit", function (e) {
 
                 var t=weex.requireModule('modal')
-                t.toast({message:'111'})
+//                t.toast({message:'111'})
 
             });
 
