@@ -210,7 +210,7 @@ static NSMutableDictionary *pageCache;
         {
             
            
-            nurl=  [URL loadLocal:url];
+            nurl=  [URL loadLocal:temp];
         }
         if(nurl==nil)
         {

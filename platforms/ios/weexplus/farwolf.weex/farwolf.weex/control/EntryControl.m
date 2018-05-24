@@ -102,7 +102,7 @@
 //                }];
                 [vc.view setHidden:true];
                 [self addVc:vc];
-//                 [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
+                 [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
                 
             } fail:^(NSString *msg) {
             
