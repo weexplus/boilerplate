@@ -113,6 +113,11 @@ public class Config {
         return config(c).optString("entry");
     }
 
+    public static String notifyEntry(Context c)
+    {
+        return config(c).optString("notifyEntry");
+    }
+
 
 
 

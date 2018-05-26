@@ -59,6 +59,15 @@ PODS:
   - FSCalendar (2.7.9)
   - GSKStretchyHeaderView (0.12.2)
   - HcdDateTimePicker (1.1.1)
+  - JCore (1.1.7)
+  - jpush (0.0.1):
+    - farwolf
+    - farwolf.business
+    - JPush
+    - Masonry (~> 0.6.3)
+    - WeexSDK
+  - JPush (3.0.8):
+    - JCore (~> 1.1.7)
   - LMTowDatePicker (0.0.1):
     - FSCalendar (~> 2.7.9)
   - LPPhotoViewer (0.0.7):
@@ -106,6 +115,7 @@ DEPENDENCIES:
   - farwolf.weex (from `farwolf.weex`)
   - FSCalendar (~> 2.7.9)
   - GSKStretchyHeaderView (~> 0.12.2)
+  - jpush (from `jpush`)
   - LMTowDatePicker (from `LMTowDatePicker`)
   - LPPhotoViewer (~> 0.0.7)
   - Masonry
@@ -137,6 +147,8 @@ SPEC REPOS:
     - FSCalendar
     - GSKStretchyHeaderView
     - HcdDateTimePicker
+    - JCore
+    - JPush
     - LPPhotoViewer
     - Masonry
     - MBProgressHUD
@@ -163,6 +175,8 @@ EXTERNAL SOURCES:
     :path: farwolf.business
   farwolf.weex:
     :path: farwolf.weex
+  jpush:
+    :path: jpush
   LMTowDatePicker:
     :path: LMTowDatePicker
   oss:
@@ -186,6 +200,9 @@ SPEC CHECKSUMS:
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   HcdDateTimePicker: 187736981f667f699d4d8d6ccc21621b55a6edb8
+  JCore: f7459c81c135281a874a6beafdd321666adcc834
+  jpush: 376209a3da4b8af40a23e4c9f78012fd81e77a50
+  JPush: 9574d072cc37e93fa293ba69b43ce763c440943a
   LMTowDatePicker: eaee88a977b5841215c2fb06320c040e28d293b9
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
@@ -209,6 +226,6 @@ SPEC CHECKSUMS:
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 26841bf2aafd135197b5f7320ed3c43ee6af3752
+PODFILE CHECKSUM: 444e16f433836dcd80e2d353220245b48b739a8d
 
 COCOAPODS: 1.5.0

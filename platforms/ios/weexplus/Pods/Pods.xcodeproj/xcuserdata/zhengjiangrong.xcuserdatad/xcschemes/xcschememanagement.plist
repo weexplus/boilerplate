@@ -179,6 +179,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>jpush.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>oss.xcscheme</key>
 		<dict>
 			<key>isShown</key>

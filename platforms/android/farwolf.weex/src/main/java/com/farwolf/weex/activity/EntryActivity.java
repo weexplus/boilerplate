@@ -152,6 +152,7 @@ public class EntryActivity extends WeexActivity {
 
     @Click
     public void refreshClicked() {
+        this.isPageInit=false;
         render(url);
 
     }

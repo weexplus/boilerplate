@@ -77,7 +77,7 @@ def mypod
      pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
     
     
-    
+    pod ‘jpush’,  :path => ‘jpush’
     
 
    

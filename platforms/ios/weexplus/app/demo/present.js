@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 393);
+/******/ 	return __webpack_require__(__webpack_require__.s = 397);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -279,23 +279,23 @@ exports.default = {
 
 /***/ }),
 
-/***/ 393:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(394)
+__vue_styles__.push(__webpack_require__(398)
 )
-__vue_styles__.push(__webpack_require__(395)
+__vue_styles__.push(__webpack_require__(399)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(396)
+__vue_exports__ = __webpack_require__(400)
 
 /* template */
-var __vue_template__ = __webpack_require__(397)
+var __vue_template__ = __webpack_require__(401)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -328,7 +328,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 394:
+/***/ 398:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -339,7 +339,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 395:
+/***/ 399:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -403,124 +403,6 @@ module.exports = {
     "backgroundColor:active": "#006ce7"
   }
 }
-
-/***/ }),
-
-/***/ 396:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var head = __webpack_require__(5);
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            text: 'Hello World.',
-            param: ''
-        };
-    },
-
-    methods: {
-        ok: function ok() {
-
-            this.param = "dsds";
-        },
-        dismiss: function dismiss() {
-            var navigator = weex.requireModule('navigator');
-            navigator.dismissFull({ ok: this.param }, true);
-        },
-        back: function back() {
-            var navigator = weex.requireModule('navigator');
-            navigator.dismiss();
-        }
-    },
-
-    created: function created() {
-
-        var self = this;
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {
-
-            var nav = weex.requireModule('navbar');
-
-            var navigator = weex.requireModule('navigator');
-            self.param = navigator.param().a;
-        });
-    }
-};
-
-/***/ }),
-
-/***/ 397:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "弹出式导航",
-      "append": "tree"
-    },
-    on: {
-      "backClick": _vm.back
-    }
-  }), _c('div', {
-    staticStyle: {
-      width: "750",
-      height: "600",
-      alignItems: "center",
-      justifyContent: "center"
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("参数值：" + _vm._s(_vm.param))]), _c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("弹出式导航关闭时只能用dismiss,不能用back")]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.dismiss()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "white"
-    }
-  }, [_vm._v("(dismiss);返回")])])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -615,6 +497,124 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       right: "0"
     }
   })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 400:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var head = __webpack_require__(5);
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            text: 'Hello World.',
+            param: ''
+        };
+    },
+
+    methods: {
+        ok: function ok() {
+
+            this.param = "dsds";
+        },
+        dismiss: function dismiss() {
+            var navigator = weex.requireModule('navigator');
+            navigator.dismissFull({ ok: this.param }, true);
+        },
+        back: function back() {
+            var navigator = weex.requireModule('navigator');
+            navigator.dismiss();
+        }
+    },
+
+    created: function created() {
+
+        var self = this;
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            var nav = weex.requireModule('navbar');
+
+            var navigator = weex.requireModule('navigator');
+            self.param = navigator.param().a;
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 401:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "弹出式导航",
+      "append": "tree"
+    },
+    on: {
+      "backClick": _vm.back
+    }
+  }), _c('div', {
+    staticStyle: {
+      width: "750",
+      height: "600",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("参数值：" + _vm._s(_vm.param))]), _c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("弹出式导航关闭时只能用dismiss,不能用back")]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.dismiss()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v("(dismiss);返回")])])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

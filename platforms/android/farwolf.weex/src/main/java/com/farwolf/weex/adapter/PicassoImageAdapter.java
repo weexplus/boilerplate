@@ -74,10 +74,11 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
           return;
         }
 
+        if(view.getContext() instanceof WeexActivity)
+        {
           WeexActivity a= (WeexActivity)view.getContext();
-        temp=Weex.getRelativeUrl(url,a.mWXSDKInstance);
-
-
+          temp=Weex.getRelativeUrl(url,a.mWXSDKInstance);
+        }
         if(temp.startsWith("http"))
         {
           loadHttp(temp,view,quality,strategy);

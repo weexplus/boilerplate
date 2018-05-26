@@ -229,13 +229,13 @@ public class WXNavgationModule extends WXModuleBase {
         if(!isPortrait)
             c= LanscapeActivity_.class;
         Intent in=new Intent(mWXSDKInstance.getContext(),c);
-        Activity a=  (Activity)this.mWXSDKInstance.getContext();
+//        Activity a=  (Activity)this.mWXSDKInstance.getContext();
         in.putExtra("param",param);
         in.putExtra("isPortrait",isPortrait);
 //        in.putExtra("navbarVisibility",navbarVisibility);
-        if(!isroot)
+        if(!isroot&&(this.mWXSDKInstance.getContext() instanceof WeexActivity))
         {
-            WeexActivity  wa=  (WeexActivity)a;
+            WeexActivity  wa=  (WeexActivity)this.mWXSDKInstance.getContext();
             if(wa!=null)
                 in.putExtra("rootid",wa.rootid);
         }
@@ -243,7 +243,7 @@ public class WXNavgationModule extends WXModuleBase {
 
         url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
         in.putExtra("url",url);
-        if(callback!=null)
+        if(callback!=null&&(this.mWXSDKInstance.getContext() instanceof WeexActivity))
         {
             WeexActivity ac=  (WeexActivity)this.mWXSDKInstance.getContext();
             String id= ac.getViewId()+"";

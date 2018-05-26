@@ -1,6 +1,7 @@
 package com.farwolf.weex.core;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 import com.alibaba.fastjson.JSONObject;
@@ -304,6 +305,7 @@ public class WeexFactory  extends ServiceBase{
             @Override
             public void onException(WXSDKInstance instance, String errCode, String msg) {
 
+                Log.i(errCode,msg);
             }
         });
 

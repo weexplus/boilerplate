@@ -28,25 +28,12 @@ public class MyReceiver extends BroadcastReceiver {
 
 
 
-    public JPushAdapter getJPushAdapter()
-    {
-        Class<? extends JPushAdapter> c= JPushUtil.jpushAdapter;
-        try {
-            JPushAdapter a=  (JPushAdapter)c.newInstance();
-            return a;
-        }
-        catch (Exception e)
-        {
 
-        }
-        return  null;
-
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        JPushAdapter adapter= getJPushAdapter();
+        JPushAdapter adapter= new JPushAdapter();
         adapter.onReceive(context,intent);
     }
 
