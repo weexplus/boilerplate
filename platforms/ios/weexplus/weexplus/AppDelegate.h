@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PushProtocol.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property ( nonatomic,strong) id<PushProtocol> pushProtocol;
 @property(nonatomic) BOOL isPortrait;
 
 

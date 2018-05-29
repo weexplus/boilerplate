@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DF59EFCA3E2DE5436E08A8645D6F35F8"
+               BlueprintIdentifier = "205FC2E6CB84FC5C6DB22C267AFCB8C1"
                BlueprintName = "HcdDateTimePicker"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libHcdDateTimePicker.a">

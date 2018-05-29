@@ -12,12 +12,12 @@
 
 @implementation WXUpdateModule
 @synthesize weexInstance;
-WX_EXPORT_METHOD(@selector(docheck:))
+WX_EXPORT_METHOD(@selector(doCheck:))
 WX_EXPORT_METHOD(@selector(download:))
 WX_EXPORT_METHOD(@selector(doCheckJs:))
 WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
 
--(void)docheck:(NSDictionary*)param
+-(void)doCheck:(NSDictionary*)param
 {
     
     

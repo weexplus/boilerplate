@@ -12,6 +12,8 @@
 #import "Config.h"
 #import "UpdateDialogControl.h"
 #import "ZipDownloader.h"
+#import "jpush.h"
+
 
 @interface AppDelegate ()
 
@@ -21,43 +23,44 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    [WXTracingManager setTracingEnable:NO];
-//    [WXTracingManager setTracingEnable:YES];
-     [URL copyBundleToDisk];
+  
+    
+    
+    [URL copyBundleToDisk];
     [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
-
-   
+    self.pushProtocol=[self initgetPushProtocol];
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
-   
-     
     UIViewController *vc= [Weex start:[Config splash] url:[Weex getEntry]];
-    
-//    UpdateDialogControl *uvc=[[UpdateDialogControl alloc]initWithNibName:@"updater" bundle:nil];
     _window.rootViewController=vc;
     [_window makeKeyAndVisible];
-
-//    [Weex startDebug:@"127.0.0.1" port:@"8088"];
     if([Config isDebug])
       [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
-    
-    
+    NSString *appkey=@"";
+    [self.pushProtocol afterLanching:launchOptions appkey:appkey];
      return YES;
 }
 
+-(id<PushProtocol>)initgetPushProtocol
+{
+    return [jpush new];
+}
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    /// Required - 注册 DeviceToken
+    [self.pushProtocol registToken:deviceToken];
+}
 
 
-//-(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
-//
-//    if(![Config isPortrait])
-//    {
-//        return UIInterfaceOrientationMaskLandscape;
-//    }
-//    return UIInterfaceOrientationMaskPortrait;
-//}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    [self.pushProtocol handNotification:userInfo];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

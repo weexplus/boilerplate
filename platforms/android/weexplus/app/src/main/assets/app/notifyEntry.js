@@ -140,9 +140,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
 
 exports.default = {
     data: function data() {
@@ -155,11 +152,11 @@ exports.default = {
     created: function created() {
 
         var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {
+        globalEvent.addEventListener("onPageInit", function (param) {
 
             var t = weex.requireModule('modal');
             var navigator = weex.requireModule('navigator');
-            navigator.pushParam('root:demo/onNotifyRecieve.js', { ss: 'ss' });
+            navigator.pushParam('root:demo/onNotifyRecive.js', param);
         });
     }
 };

@@ -426,9 +426,8 @@ exports.default = {
         globalEvent.addEventListener("onPageInit", function (e) {
 
             //              var navigator = weex.requireModule('navigator') ;
-            //              self.param=e;
+            self.param = e;
             //              navigator.setPageId('nav1');
-
 
         });
     }

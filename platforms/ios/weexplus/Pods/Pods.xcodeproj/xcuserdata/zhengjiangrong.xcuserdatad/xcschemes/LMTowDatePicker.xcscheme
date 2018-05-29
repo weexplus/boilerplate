@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5985995B9FECCABBB6FE1B38B13C10AA"
+               BlueprintIdentifier = "08949D85DCC9BA326C3C29459DA7A71A"
                BlueprintName = "LMTowDatePicker"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libLMTowDatePicker.a">

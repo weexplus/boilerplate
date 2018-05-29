@@ -36,6 +36,8 @@ public class WXFEmbed extends WXEmbed {
     {
 
 
+//        instance.setContext( this.getParent().getInstance().getContext());
+        this.getParent().getInstance().addChildInstance(instance);
         if(url.startsWith("root:"))
         {
             url= Weex.getRootUrl(url, this.getParent().getInstance());
@@ -71,8 +73,8 @@ public class WXFEmbed extends WXEmbed {
 
     public void onRenderFinish()
     {
-        this.getChildInstance().fireGlobalEventCallback("onPageInit",this.param);
-
+        this.getChildInstance().hasInit=true;
+        this.getChildInstance().firePageInit();
 
     }
 
