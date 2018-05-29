@@ -7,8 +7,6 @@
   "debugIp":"127.0.0.1",
   "entry":"app/demo/index.js",
   "notifyEntry":"http://172.20.10.3:8890/js/notifyEntry.js",
-  "preload":["app/demo/home.js","app/demo/inputs.js"],
-  "splash":"splash1",
   "static":
   {
     "umeng":

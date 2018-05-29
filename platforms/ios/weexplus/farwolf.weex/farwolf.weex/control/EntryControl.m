@@ -88,59 +88,19 @@
         }];
         return;
     }
-    if([Config preload].count>0)
-    {
-        [WeexFactory preRenderAll:[Config preload] compelete:^{
-            
-            [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
-                
-//                vc.debug=[Config isDebug];
-//                vc.isLanscape=![Config isPortrait];
-//                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-//                [self presentViewController:nav animated:false completion:^{
-//
-//                }];
-                [vc.view setHidden:true];
-                [self addVc:vc];
-                 [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
-                
-            } fail:^(NSString *msg) {
-            
-                  [self failGo];
-            }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
-            
-        } fail:^(NSString *s) {
-            
-//            [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
-//
-//                vc.debug=[Config isDebug];
-//                vc.isLanscape=![Config isPortrait];
-//                UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-//                [self presentViewController:nav animated:false completion:^{
-//
-//                }];
-//
-//            } fail:^(NSString *msg) {
-//                  [self failGo];
-//            }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
-            
-        }];
-    }
-    else
-    {
-        [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
-            
-             vc.debug=[Config isDebug];
-            vc.isLanscape=![Config isPortrait];
-            UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-            [self presentViewController:nav animated:false completion:^{
-                
-            }];
-            
-        } fail:^(NSString *msg) {
-            [self failGo];
-        }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
-    }
+    
+    
+    [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
+        
+        [vc.view setHidden:true];
+        [self addVc:vc];
+        [vc.instance firePageInit];
+//        [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
+        
+    } fail:^(NSString *msg) {
+        
+        [self failGo];
+    }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
     
     
 

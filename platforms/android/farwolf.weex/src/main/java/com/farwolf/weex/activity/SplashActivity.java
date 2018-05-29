@@ -88,7 +88,8 @@ public class SplashActivity extends WeexActivity {
     {
         this.mWXSDKInstance=new WXSDKInstance(this);
 
-        List l= Config.preload(this);
+//        List l= Config.preload(this);
+        List l= new ArrayList();
         String entry=getEntryUrl();
         l.add(entry);
         if(!Config.debug(this))
@@ -115,6 +116,7 @@ public class SplashActivity extends WeexActivity {
 
                 }
             });
+
         }
         else
         {
@@ -155,17 +157,10 @@ public class SplashActivity extends WeexActivity {
         weexFactory.preRender(getEntryUrl(), new WeexFactory.OnRenderFinishListener() {
             @Override
             public void onRenderFinish(Page p) {
-//                Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
-//                in.putExtra("url",getEntryUrl());
-//                boolean isPotrait=  Config.isPortrait(SplashActivity.this);
-//                in.putExtra("isPortrait",isPotrait);
-//                startActivity(in);
-//                finish();
 
                 p.instance.fireGlobalEventCallback("onPageInit",null);
                 p.instance.onActivityCreate();
                 releaseImageViewResouce(img);
-//                finish();
             }
 
             @Override
