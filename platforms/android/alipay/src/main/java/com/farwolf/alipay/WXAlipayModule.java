@@ -34,7 +34,7 @@ public class WXAlipayModule extends WXModuleBase {
 
 
     @JSMethod
-    public void open(String signstr,String appScheme,JSCallback callback)
+    public void open(String signstr,JSCallback callback)
     {
         this.callback=callback;
         final String orderInfo = signstr;   // 订单信息
