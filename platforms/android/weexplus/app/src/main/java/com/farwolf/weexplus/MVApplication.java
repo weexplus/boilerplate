@@ -1,5 +1,6 @@
 package com.farwolf.weexplus;
 
+import com.farwolf.alipay.AlipayUtil;
 import com.farwolf.jpush.JPushUtil;
 import com.farwolf.weex.app.WeexApplication;
 
@@ -16,5 +17,6 @@ public class MVApplication extends WeexApplication {
     public void onCreate() {
         super.onCreate();
         JPushUtil.init(this);
+        AlipayUtil.init();
     }
 }
