@@ -74,6 +74,7 @@ public class WXFEmbed extends WXEmbed {
     public void onRenderFinish()
     {
         this.getChildInstance().hasInit=true;
+        this.getChildInstance().param=param;
         this.getChildInstance().firePageInit();
 
     }
