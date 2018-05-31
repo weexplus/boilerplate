@@ -119,7 +119,10 @@ public class Config {
     }
 
 
-
+    public static String wechatEntry(Context c)
+    {
+        return config(c).optString("wechatEntry");
+    }
 
 
     public static String splash(Context c)

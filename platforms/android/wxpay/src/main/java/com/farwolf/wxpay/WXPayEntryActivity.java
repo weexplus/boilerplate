@@ -24,6 +24,8 @@ public abstract class WXPayEntryActivity extends Activity {
             }
 
 
+
+
         }
     }
 
