@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D699D8EFB643E3EF6F71C48FA663FD2"
+               BlueprintIdentifier = "77927808BA9F4BECFB8BD98CF87E915E"
                BlueprintName = "UCZProgressView"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libUCZProgressView.a">

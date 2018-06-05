@@ -74,12 +74,13 @@ def mypod
 
     pod 'ZipArchive', '~> 1.4.0'
     
-     pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
-    
-    
+    pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
+     
     pod ‘jpush’,  :path => ‘jpush’
     
+    pod ‘alipay’,  :path => ‘alipay’
 
+    pod ‘wxpay’,  :path => ‘wxpay’
    
 end
 

@@ -25,8 +25,8 @@ project(':jpush').projectDir = new File('../jpush')
 include ':alipay'
 project(':alipay').projectDir = new File('../alipay')
 
-include ':wxpay'
-project(':wxpay').projectDir = new File('../wxpay')
+include ':wechat'
+project(':wechat').projectDir = new File('../wechat')
 
 include ':oss'
 project(':oss').projectDir = new File('../oss')

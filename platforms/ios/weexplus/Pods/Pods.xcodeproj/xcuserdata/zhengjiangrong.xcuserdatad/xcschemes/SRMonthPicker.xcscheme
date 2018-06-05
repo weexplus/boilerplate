@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5104AE6C30F3F96BA1851CDBF295F491"
+               BlueprintIdentifier = "BBB41127091039A623FA0E09C4C7CEF1"
                BlueprintName = "SRMonthPicker"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libSRMonthPicker.a">

@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "veryitman" => "veryitman@126.com" }
   s.source =  { :path => '.' }
-  s.source_files  = "Source", "jpush/**/*.{h,m,mm,c}"
+  s.source_files  = "Source", "**/**/*.{h,m,mm,c}"
   s.exclude_files = "Source/Exclude"
   s.resources = 'jpush/resources/storyboard/**','jpush/resources/image/**','jpush/resources/xib/**'
   s.platform     = :ios, "8.0"

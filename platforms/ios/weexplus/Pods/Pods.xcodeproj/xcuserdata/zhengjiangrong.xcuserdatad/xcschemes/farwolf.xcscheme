@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20567018B3D01DC8C135E3D9524232A9"
+               BlueprintIdentifier = "13CB6C11EA35F306E428205FC54A0855"
                BlueprintName = "farwolf"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libfarwolf.a">

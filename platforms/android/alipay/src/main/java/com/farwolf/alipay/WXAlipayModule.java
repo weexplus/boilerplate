@@ -1,7 +1,6 @@
 package com.farwolf.alipay;
 
-import android.os.Handler;
-import android.os.Message;
+import android.os.AsyncTask;
 
 import com.alipay.sdk.app.PayTask;
 import com.farwolf.weex.base.WXModuleBase;
@@ -17,45 +16,43 @@ import java.util.Map;
 public class WXAlipayModule extends WXModuleBase {
 
 
-    JSCallback callback;
 
-    private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-//            Result result = new Result((String) msg.obj);
-            PayResult payResult = new PayResult((Map<String, String>) msg.obj);
-            String resultInfo = payResult.getResult();// 同步返回需要验证的信息
-            String resultStatus = payResult.getResultStatus();
-
-            if(callback!=null)
-                callback.invokeAndKeepAlive(msg.obj);
-
-        };
-    };
 
 
     @JSMethod
-    public void open(String signstr,JSCallback callback)
+    public void open(String signstr,final JSCallback callback)
     {
-        this.callback=callback;
-        final String orderInfo = signstr;   // 订单信息
 
-        Runnable payRunnable = new Runnable() {
+        MyTask my=new MyTask(callback);
+        my.execute(signstr);
 
-            @Override
-            public void run() {
-                PayTask alipay = new PayTask(getActivity());
-                Map result = alipay.payV2(orderInfo,true);
-
-                Message msg = new Message();
-                msg.what = 1;
-                msg.obj = result;
-                mHandler.sendMessage(msg);
-            }
-        };
-        // 必须异步调用
-        Thread payThread = new Thread(payRunnable);
-        payThread.start();
     }
 
+
+    public class MyTask extends AsyncTask<String, Integer, Map>
+    {
+
+
+        JSCallback callback;
+        public MyTask(JSCallback callback) {
+            this.callback = callback;
+        }
+
+
+
+
+        @Override
+        protected Map doInBackground(String... params) {
+            PayTask alipay = new PayTask(getActivity());
+                Map result = alipay.payV2(params[0],true);
+                return result;
+        }
+
+        @Override
+        protected void onPostExecute(Map map) {
+            if(callback!=null)
+                callback.invokeAndKeepAlive(map);
+        }
+    }
 
 }

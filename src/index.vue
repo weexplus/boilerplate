@@ -2,9 +2,9 @@
     <div>
 
 
-
-        <image src="root:/img/cat.png" style="width: 300px;height: 300px;margin-top: 100px;margin-left: 20px"></image>
-
+ <div   @click="add" style="width: 100;height: 100;background-color: red"></div>
+ <div   :style="{'visibility':show?'visible':'hidden'}"  @click="add" style="width: 100;height: 100;background-color: blue;margin-top: 10;visibility:visible"></div>
+ <div   :style="{'visibility':!show?'visible':'hidden'}"  @click="add" style="width: 100;height: 100;background-color: green;margin-top: 10"></div>
 
     </div>
 </template>
@@ -35,20 +35,23 @@
         data()
         {
             return {
-                items: [1, 1, 1, 1, 1, 1]
+                items: [1, 1, 1, 1, 1, 1],
+                show:true
             }
         },
         methods: {
 
             add()
             {
-                this.items.push(1)
+//             this.show=!this.show;
+                var t=weex.requireModule('navbar')
+                t.setStatusBarStyle('black')
             },
             remove(item)
             {
 //                this.items.remove(0)
 
-                this.items.splice(this.items.length-1, 1);
+
             }
         },
         created: function () {

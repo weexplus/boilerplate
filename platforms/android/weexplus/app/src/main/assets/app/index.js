@@ -62,26 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 508);
+/******/ 	return __webpack_require__(__webpack_require__.s = 512);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 508:
+/***/ 512:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(509)
+__vue_styles__.push(__webpack_require__(513)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(510)
+__vue_exports__ = __webpack_require__(514)
 
 /* template */
-var __vue_template__ = __webpack_require__(511)
+var __vue_template__ = __webpack_require__(515)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -114,7 +114,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 509:
+/***/ 513:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -136,7 +136,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 510:
+/***/ 514:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -176,40 +176,25 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
     data: function data() {
         return {
-            items: [1, 1, 1, 1, 1, 1]
+            items: [1, 1, 1, 1, 1, 1],
+            show: true
         };
     },
 
     methods: {
         add: function add() {
-            this.items.push(1);
+            //             this.show=!this.show;
+            var t = weex.requireModule('navbar');
+            t.setStatusBarStyle('black');
         },
         remove: function remove(item) {
             //                this.items.remove(0)
 
-            this.items.splice(this.items.length - 1, 1);
+
         }
     },
     created: function created() {
@@ -225,34 +210,47 @@ exports.default = {
 
 /***/ }),
 
-/***/ 511:
+/***/ 515:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
     staticStyle: {
-      width: "750px",
-      height: "50px",
+      width: "100",
+      height: "100",
       backgroundColor: "red"
+    },
+    on: {
+      "click": _vm.add
     }
-  }), _c('list', {
+  }), _c('div', {
     staticStyle: {
-      flex: "1"
+      width: "100",
+      height: "100",
+      backgroundColor: "blue",
+      marginTop: "10",
+      visibility: "visible"
+    },
+    style: {
+      'visibility': _vm.show ? 'visible' : 'hidden'
+    },
+    on: {
+      "click": _vm.add
     }
-  }, _vm._l(([1, 1, 1, 1, 1, 11, 1]), function(item) {
-    return _c('cell', {
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }, [_c('div', {
-      staticStyle: {
-        height: "100px",
-        backgroundColor: "red",
-        marginTop: "10px"
-      }
-    })])
-  }))])
+  }), _c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100",
+      backgroundColor: "green",
+      marginTop: "10"
+    },
+    style: {
+      'visibility': !_vm.show ? 'visible' : 'hidden'
+    },
+    on: {
+      "click": _vm.add
+    }
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

@@ -14,5 +14,5 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 @interface jpush : NSObject<JPUSHRegisterDelegate,PushProtocol>
-
++(void)initPush;
 @end

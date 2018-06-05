@@ -13,7 +13,7 @@
   },
   "source_files": [
     "Source",
-    "jpush/**/*.{h,m,mm,c}"
+    "**/**/*.{h,m,mm,c}"
   ],
   "exclude_files": "Source/Exclude",
   "resources": [

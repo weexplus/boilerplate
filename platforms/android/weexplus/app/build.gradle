@@ -38,6 +38,6 @@ dependencies {
     compile project(':farwolf.weex')
     compile project(':umeng')
     compile project(':alipay')
-    compile project(':wxpay')
+    compile project(':wechat')
     compile project(':jpush')
 }

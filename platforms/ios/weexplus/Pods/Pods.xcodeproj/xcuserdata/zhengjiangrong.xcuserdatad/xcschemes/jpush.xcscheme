@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35E6C44B6FA90DE863342FC02B6A2392"
+               BlueprintIdentifier = "13771EA53326250EEA18E6A9D2B20EA9"
                BlueprintName = "jpush"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libjpush.a">

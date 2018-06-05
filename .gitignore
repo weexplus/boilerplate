@@ -6,4 +6,5 @@ build
 busi
 temp
 dist/*
+*.iml
 platforms/ios/weexplus/*.js

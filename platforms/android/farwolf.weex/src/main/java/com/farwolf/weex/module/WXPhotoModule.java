@@ -54,12 +54,9 @@ public class WXPhotoModule extends WXModule {
 
     public void takePhoto(int width,int height,String themeColor)
     {
-
-
         Intent in=new Intent(mWXSDKInstance.getContext(), ChoosePhotoActivity_.class);
         in.putExtra("resize", true);
         in.putExtra("width", width);
-
         in.putExtra("height", height);
         in.putExtra("themeColor",themeColor);
         ((Activity)mWXSDKInstance.getContext()).startActivityForResult(in,1);
@@ -110,6 +107,7 @@ public class WXPhotoModule extends WXModule {
 //        //配置功能
         FunctionConfig functionConfig = new FunctionConfig.Builder()
                 .setEnableCamera(true)
+                .setMutiSelectMaxSize(5)
                 .setEnableEdit(true)
                 .setEnableCrop(true)
                 .setEnableRotate(true)
@@ -123,7 +121,6 @@ public class WXPhotoModule extends WXModule {
                 .setFunctionConfig(functionConfig)
                 .setEditPhotoCacheFolder(editdir)
                 .setTakePhotoFolder(takephoto)
-
                 .build();
         GalleryFinal.init(coreConfig);
 

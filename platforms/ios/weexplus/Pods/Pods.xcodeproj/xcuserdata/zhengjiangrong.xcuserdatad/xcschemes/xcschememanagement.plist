@@ -164,6 +164,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>alipay.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>farwolf.business.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -185,6 +190,11 @@
 			<false/>
 		</dict>
 		<key>oss.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>wxpay.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

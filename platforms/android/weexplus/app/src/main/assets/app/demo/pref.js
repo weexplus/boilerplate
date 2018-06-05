@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 393);
+/******/ 	return __webpack_require__(__webpack_require__.s = 397);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -279,21 +279,21 @@ exports.default = {
 
 /***/ }),
 
-/***/ 393:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(394)
+__vue_styles__.push(__webpack_require__(398)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(395)
+__vue_exports__ = __webpack_require__(399)
 
 /* template */
-var __vue_template__ = __webpack_require__(396)
+var __vue_template__ = __webpack_require__(400)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -326,7 +326,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 394:
+/***/ 398:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -348,7 +348,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 395:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -468,88 +468,6 @@ exports.default = {
 
 /***/ }),
 
-/***/ 396:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "固定存储类似于cookie",
-      "append": "tree"
-    }
-  }), _c('input', {
-    staticStyle: {
-      width: "750",
-      paddingLeft: "10",
-      height: "100",
-      color: "#000000"
-    },
-    attrs: {
-      "type": "text",
-      "placeholder": "请输入要存储的值",
-      "value": (_vm.text)
-    },
-    on: {
-      "input": function($event) {
-        _vm.text = $event.target.attr.value
-      }
-    }
-  }), _c('text', {
-    staticStyle: {
-      color: "#000000"
-    }
-  }, [_vm._v(_vm._s(_vm.data))]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.save
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("存储字符串")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.get
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("获取字符串")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.remove
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("删除")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.saveObj
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("存储对象{a:1}")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.getObj
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("获取对象")])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -641,6 +559,88 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       right: "0"
     }
   })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 400:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "固定存储类似于cookie",
+      "append": "tree"
+    }
+  }), _c('input', {
+    staticStyle: {
+      width: "750",
+      paddingLeft: "10",
+      height: "100",
+      color: "#000000"
+    },
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入要存储的值",
+      "value": (_vm.text)
+    },
+    on: {
+      "input": function($event) {
+        _vm.text = $event.target.attr.value
+      }
+    }
+  }), _c('text', {
+    staticStyle: {
+      color: "#000000"
+    }
+  }, [_vm._v(_vm._s(_vm.data))]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.save
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("存储字符串")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.get
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("获取字符串")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.remove
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("删除")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.saveObj
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("存储对象{a:1}")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.getObj
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("获取对象")])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

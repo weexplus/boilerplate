@@ -58,12 +58,16 @@ WX_EXPORT_METHOD(@selector(stop))
             ((UIActivityIndicatorView*)self.view).color=[color toColor];
         }
     });
+   
 
 //    [self setNeedsDisplay];
     
     
     
 }
+
+
+
 
 -(void)viewDidLoad
 {

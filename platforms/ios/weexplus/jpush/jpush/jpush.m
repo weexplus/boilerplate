@@ -8,19 +8,22 @@
 
 #import "jpush.h"
 #import <AdSupport/AdSupport.h>
-
+#import <WeexSDK/WXSDKInstance.h>
+#import <WeexSDK/WXSDKEngine.h>
+#import "WXJPushModule.h"
 @implementation jpush
 
 
 
 
--(void)initPush
++(void)initPush
 {
     //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+     [WXSDKEngine registerModule:@"jpush" withClass:[WXJPushModule class]];
 }
 
 

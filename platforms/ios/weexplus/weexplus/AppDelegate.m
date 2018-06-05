@@ -38,8 +38,8 @@
     [_window makeKeyAndVisible];
     if([Config isDebug])
       [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
-    NSString *appkey=@"";
-    [self.pushProtocol afterLanching:launchOptions appkey:appkey];
+//    NSString *appkey=@"";
+//    [self.pushProtocol afterLanching:launchOptions appkey:appkey];
      return YES;
 }
 
@@ -52,15 +52,34 @@
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     /// Required - 注册 DeviceToken
-    [self.pushProtocol registToken:deviceToken];
+//    [self.pushProtocol registToken:deviceToken];
+    NSMutableDictionary *p=[NSMutableDictionary new];
+    p[@"deviceToken"]=deviceToken;
+    [self notifyDict:@"application_didRegisterForRemoteNotificationsWithDeviceToken" value:p];
 }
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
-    [self.pushProtocol handNotification:userInfo];
+    NSMutableDictionary *p=[NSMutableDictionary new];
+    p[@"userInfo"]=userInfo;
+    [self notifyDict:@"application_didReceiveRemoteNotification" value:p];
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    NSMutableDictionary *p=[NSMutableDictionary new];
+    p[@"url"]=url.absoluteString;
+    [self notifyDict:@"application_handleOpenURL" value:p];
+    return   true;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    NSMutableDictionary *p=[NSMutableDictionary new];
+    p[@"url"]=url.absoluteString;
+    [self notifyDict:@"application_openURL" value:p];
+    return   true;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
