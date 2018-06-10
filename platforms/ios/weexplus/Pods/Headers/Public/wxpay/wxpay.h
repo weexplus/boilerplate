@@ -1,1 +1,0 @@
-../../../../wxpay/wxpay/wxpay.h

@@ -359,11 +359,7 @@ public class WXSlider extends WXVContainer<FrameLayout> {
   @WXComponentProp(name = Constants.Name.INDEX)
   public void setIndex(int index) {
     if (mViewPager != null && mAdapter != null) {
-      for(int i=0;i<mViewPager.getRealCount();i++)
-      {
-        mViewPager.getChildAt(i).requestLayout();
-        mViewPager.getChildAt(i).invalidate();
-      }
+
       if (index >= mAdapter.getRealCount() || index < 0) {
         initIndex = index;
         return;

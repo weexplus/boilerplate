@@ -82,6 +82,8 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
 
       }
 
+
+
       @Override
       public void onPageScrollStateChanged(int state) {
         mState = state;
@@ -95,6 +97,8 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
           }
         }
       }
+
+
     });
 
     postInitViewPager();

@@ -138,7 +138,7 @@
     {
         return;
     }
-    if(![URL isDiskExist]||[Config bundleJsVersion]<[Config bundleJsVersion])
+    if([Config isDebug]||![URL isDiskExist]||[Config bundleJsVersion]<[Config bundleJsVersion])
     {
         NSString *disk= [self loadFromDisk:@"app"].absoluteString;
         disk=[disk replace:@"file://" withString:@""];

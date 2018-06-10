@@ -1,1 +1,0 @@
-../../../../wxpay/WXApiManager.h

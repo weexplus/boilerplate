@@ -30,7 +30,7 @@
     [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
-    self.pushProtocol=[self initgetPushProtocol];
+ 
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     UIViewController *vc= [Weex start:[Config splash] url:[Weex getEntry]];
@@ -40,13 +40,14 @@
       [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
 //    NSString *appkey=@"";
 //    [self.pushProtocol afterLanching:launchOptions appkey:appkey];
+    
+    NSMutableDictionary *p=[NSMutableDictionary new];
+    p[@"options"]=launchOptions;
+    [self notifyDict:APP_didFinishLaunchingWithOptions value:p];
      return YES;
 }
 
--(id<PushProtocol>)initgetPushProtocol
-{
-    return [jpush new];
-}
+ 
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -55,7 +56,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    [self.pushProtocol registToken:deviceToken];
     NSMutableDictionary *p=[NSMutableDictionary new];
     p[@"deviceToken"]=deviceToken;
-    [self notifyDict:@"application_didRegisterForRemoteNotificationsWithDeviceToken" value:p];
+    [self notifyDict:APP_didRegisterForRemoteNotificationsWithDeviceToken value:p];
 }
 
 
@@ -63,21 +64,21 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSMutableDictionary *p=[NSMutableDictionary new];
     p[@"userInfo"]=userInfo;
-    [self notifyDict:@"application_didReceiveRemoteNotification" value:p];
+    [self notifyDict:APP_didReceiveRemoteNotification value:p];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
     NSMutableDictionary *p=[NSMutableDictionary new];
     p[@"url"]=url.absoluteString;
-    [self notifyDict:@"application_handleOpenURL" value:p];
+    [self notifyDict:APP_handleOpenURL value:p];
     return   true;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     NSMutableDictionary *p=[NSMutableDictionary new];
     p[@"url"]=url.absoluteString;
-    [self notifyDict:@"application_openURL" value:p];
+    [self notifyDict:APP_openURL value:p];
     return   true;
 }
 

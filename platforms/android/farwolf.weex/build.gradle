@@ -52,6 +52,8 @@ dependencies {
 
     compile 'com.alibaba.android:bindingx-core:1.0.1'
     compile 'com.alibaba.android:bindingx_weex_plugin:1.0.1'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    compile "io.reactivex.rxjava2:rxjava:2.0.0"
 
     compile project(':sdk')
 //    compile project(':weex_debug')

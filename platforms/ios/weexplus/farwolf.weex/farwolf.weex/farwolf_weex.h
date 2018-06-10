@@ -27,6 +27,12 @@
 #import "WXConvert.h"
 #import "Page.h"
 #import "Config.h"
+#define APP_didRegisterForRemoteNotificationsWithDeviceToken @"application_didRegisterForRemoteNotificationsWithDeviceToken"
+#define APP_didReceiveRemoteNotification @"application_didReceiveRemoteNotification"
+#define APP_handleOpenURL @"application_handleOpenURL"
+#define APP_openURL @"application_openURL"
+#define APP_didFinishLaunchingWithOptions @"application_didFinishLaunchingWithOptions"
+
 @interface farwolf_weex : NSObject
 
 @end

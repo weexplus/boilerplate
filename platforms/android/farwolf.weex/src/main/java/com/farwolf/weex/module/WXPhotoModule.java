@@ -1,11 +1,14 @@
 package com.farwolf.weex.module;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Base64;
 
+import com.farwolf.perssion.Perssion;
+import com.farwolf.perssion.PerssionCallback;
 import com.farwolf.photochoose.ChoosePhotoActivity_;
 import com.farwolf.util.UILImageLoader;
 import com.taobao.weex.annotation.JSMethod;
@@ -46,17 +49,44 @@ public class WXPhotoModule extends WXModule {
      * @param callback
      */
     @JSMethod
-    public void open(int aspX, int aspY , String themeColor, String titleColor, String cancelColor, JSCallback callback)
+    public void open(final int aspX, final int aspY ,final String themeColor, final String titleColor,final String cancelColor,final JSCallback callback)
     {
-         takePhoto(aspX,aspY,themeColor);
-         this.callback=callback;
+
+
+
+
+        Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.CAMERA,new PerssionCallback(){
+
+
+            @Override
+            public void onGranted() {
+
+
+                Perssion.check((Activity) mWXSDKInstance.getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE , new PerssionCallback() {
+                    @Override
+                    public void onGranted() {
+
+                        takePhoto(aspX, aspY, themeColor);
+                        WXPhotoModule.this.callback=callback;
+                    }
+                });
+
+
+
+            }
+        });
+
     }
 
     public void takePhoto(int width,int height,String themeColor)
     {
+
+
+
         Intent in=new Intent(mWXSDKInstance.getContext(), ChoosePhotoActivity_.class);
         in.putExtra("resize", true);
         in.putExtra("width", width);
+
         in.putExtra("height", height);
         in.putExtra("themeColor",themeColor);
         ((Activity)mWXSDKInstance.getContext()).startActivityForResult(in,1);
@@ -75,13 +105,13 @@ public class WXPhotoModule extends WXModule {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-         if(requestCode==1)
-         {
-             if(resultCode==3||resultCode==4)
-             {
-                 onResult(data);
-             }
-         }
+        if(requestCode==1)
+        {
+            if(resultCode==3||resultCode==4)
+            {
+                onResult(data);
+            }
+        }
     }
 
     /**
@@ -94,55 +124,76 @@ public class WXPhotoModule extends WXModule {
      * @param callback
      */
     @JSMethod
-    public void openPhoto(int width,int height,String themeColor,String titleColor, String cancelColor,final JSCallback callback )
+    public void openPhoto(final int width,final int height,final String themeColor,final String titleColor, final String cancelColor,final JSCallback callback )
     {
-        File editdir=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/edit");
-        File takephoto=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/photo");
-        ThemeConfig theme = new ThemeConfig.Builder()
-                .setTitleBarBgColor(Color.parseColor(themeColor))
-                .setFabNornalColor(Color.parseColor(themeColor))
-                .setFabPressedColor(Color.parseColor(themeColor))
-                .setCropControlColor(Color.parseColor(themeColor))
-                .build();
-//        //配置功能
-        FunctionConfig functionConfig = new FunctionConfig.Builder()
-                .setEnableCamera(true)
-                .setMutiSelectMaxSize(5)
-                .setEnableEdit(true)
-                .setEnableCrop(true)
-                .setEnableRotate(true)
-                .setCropWidth(width)
-                .setCropHeight(height)
-                .setForceCrop(true)
-                .setForceCropEdit(true)
-                .setEnablePreview(true)
-                .build();
-        CoreConfig coreConfig = new CoreConfig.Builder(mWXSDKInstance.getContext(), new UILImageLoader(), theme)
-                .setFunctionConfig(functionConfig)
-                .setEditPhotoCacheFolder(editdir)
-                .setTakePhotoFolder(takephoto)
-                .build();
-        GalleryFinal.init(coreConfig);
 
-        GalleryFinal.openGallerySingle(1012,functionConfig, new GalleryFinal.OnHanlderResultCallback() {
+        Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.CAMERA,new PerssionCallback(){
+
+
             @Override
-            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                String url= resultList.get(0).getPhotoPath();
+            public void onGranted() {
+
+
+                Perssion.check((Activity) mWXSDKInstance.getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE , new PerssionCallback() {
+                    @Override
+                    public void onGranted() {
+
+                        File editdir=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/edit");
+                        File takephoto=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/photo");
+                        ThemeConfig theme = new ThemeConfig.Builder()
+                                .setTitleBarBgColor(Color.parseColor(themeColor))
+                                .setFabNornalColor(Color.parseColor(themeColor))
+                                .setFabPressedColor(Color.parseColor(themeColor))
+                                .setCropControlColor(Color.parseColor(themeColor))
+                                .build();
+//        //配置功能
+                        FunctionConfig functionConfig = new FunctionConfig.Builder()
+                                .setEnableCamera(true)
+                                .setEnableEdit(true)
+                                .setEnableCrop(true)
+                                .setEnableRotate(true)
+                                .setCropWidth(width)
+                                .setCropHeight(height)
+                                .setForceCrop(true)
+                                .setForceCropEdit(true)
+                                .setEnablePreview(true)
+                                .build();
+                        CoreConfig coreConfig = new CoreConfig.Builder(mWXSDKInstance.getContext(), new UILImageLoader(), theme)
+                                .setFunctionConfig(functionConfig)
+                                .setEditPhotoCacheFolder(editdir)
+                                .setTakePhotoFolder(takephoto)
+
+                                .build();
+                        GalleryFinal.init(coreConfig);
+
+                        GalleryFinal.openGallerySingle(1012,functionConfig, new GalleryFinal.OnHanlderResultCallback() {
+                            @Override
+                            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                                String url= resultList.get(0).getPhotoPath();
 //                Bitmap   bm = BitmapFactory.decodeFile(url);
 //                String s= bitmapToBase64(bm);
 //                s="base64==="+s;
-                HashMap m=new HashMap();
+                                HashMap m=new HashMap();
 //                m.put("base64",s);
-                m.put("path","sdcard:"+url);
-                callback.invoke(m);
+                                m.put("path","sdcard:"+url);
+                                callback.invoke(m);
 
-            }
+                            }
 
-            @Override
-            public void onHanlderFailure(int requestCode, String errorMsg) {
+                            @Override
+                            public void onHanlderFailure(int requestCode, String errorMsg) {
+
+                            }
+                        });
+                    }
+                });
+
+
 
             }
         });
+
+
     }
 
 
@@ -154,56 +205,85 @@ public class WXPhotoModule extends WXModule {
      * @param callback
      */
     @JSMethod
-    public void openCamera(int width,int height,String themeColor,final JSCallback callback )
+    public void openCamera(final int width,final int height,final String themeColor,final JSCallback callback )
     {
-        File editdir=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/edit");
-        File takephoto=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/photo");
-        ThemeConfig theme = new ThemeConfig.Builder()
-                .setTitleBarBgColor(Color.parseColor(themeColor))
-                .setFabNornalColor(Color.parseColor(themeColor))
-                .setFabPressedColor(Color.parseColor(themeColor))
-                .setCropControlColor(Color.parseColor(themeColor))
-                .build();
-//        //配置功能
-        FunctionConfig functionConfig = new FunctionConfig.Builder()
 
 
-                .setEnableEdit(true)
-                .setEnableCrop(true)
-                .setEnableRotate(true)
+        Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.CAMERA,new PerssionCallback(){
 
-                .setCropWidth(width)
-                .setCropHeight(height)
-                .setForceCrop(true)
-                .setForceCropEdit(true)
-                .setEnablePreview(true)
 
-                .build();
-        CoreConfig coreConfig = new CoreConfig.Builder(mWXSDKInstance.getContext(), new UILImageLoader(), theme)
-                .setFunctionConfig(functionConfig)
-                .setEditPhotoCacheFolder(editdir)
-                .setTakePhotoFolder(takephoto)
-
-                .build();
-        GalleryFinal.init(coreConfig);
-        GalleryFinal.openCamera(1011, functionConfig,new GalleryFinal.OnHanlderResultCallback() {
             @Override
-            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                String url= resultList.get(0).getPhotoPath();
+            public void onGranted() {
+
+
+                Perssion.check((Activity) mWXSDKInstance.getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE , new PerssionCallback() {
+                    @Override
+                    public void onGranted() {
+
+                        File editdir=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/edit");
+                        File takephoto=new File(mWXSDKInstance.getContext().getCacheDir()+"gallery/photo");
+                        ThemeConfig theme = new ThemeConfig.Builder()
+                                .setTitleBarBgColor(Color.parseColor(themeColor))
+                                .setFabNornalColor(Color.parseColor(themeColor))
+                                .setFabPressedColor(Color.parseColor(themeColor))
+                                .setCropControlColor(Color.parseColor(themeColor))
+                                .build();
+//        //配置功能
+                        FunctionConfig functionConfig = new FunctionConfig.Builder()
+
+
+                                .setEnableEdit(true)
+                                .setEnableCrop(true)
+                                .setEnableRotate(true)
+
+                                .setCropWidth(width)
+                                .setCropHeight(height)
+                                .setForceCrop(true)
+                                .setForceCropEdit(true)
+                                .setEnablePreview(true)
+
+                                .build();
+                        CoreConfig coreConfig = new CoreConfig.Builder(mWXSDKInstance.getContext(), new UILImageLoader(), theme)
+                                .setFunctionConfig(functionConfig)
+                                .setEditPhotoCacheFolder(editdir)
+                                .setTakePhotoFolder(takephoto)
+
+                                .build();
+                        GalleryFinal.init(coreConfig);
+                        GalleryFinal.openCamera(1011, functionConfig,new GalleryFinal.OnHanlderResultCallback() {
+                            @Override
+                            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                                String url= resultList.get(0).getPhotoPath();
 //                Bitmap   bm = BitmapFactory.decodeFile(url);
 //                String s= bitmapToBase64(bm);
 //                s="base64==="+s;
-                HashMap m=new HashMap();
-                m.put("path","sdcard:"+url);
+                                HashMap m=new HashMap();
+                                m.put("path","sdcard:"+url);
 //                m.put("base64",s);
-                callback.invoke(m);
-            }
+                                callback.invoke(m);
+                            }
 
-            @Override
-            public void onHanlderFailure(int requestCode, String errorMsg) {
+                            @Override
+                            public void onHanlderFailure(int requestCode, String errorMsg) {
+
+                            }
+                        });
+
+
+
+
+                    }
+                });
+
+
 
             }
         });
+
+
+
+
+
     }
 
     public InputStream Bitmap2InputStream(Bitmap bm) {

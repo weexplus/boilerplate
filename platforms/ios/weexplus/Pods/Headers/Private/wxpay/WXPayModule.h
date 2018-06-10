@@ -1,1 +1,0 @@
-../../../../wxpay/WXPayModule.h

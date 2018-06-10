@@ -1,5 +1,6 @@
 package com.farwolf.weex.view;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.farwolf.base.ViewBase;
+import com.farwolf.perssion.Perssion;
+import com.farwolf.perssion.PerssionCallback;
 import com.farwolf.qrcode.zxing.android.CaptureActivity;
 import com.farwolf.util.RegexBase;
 import com.farwolf.util.StringUtil;
@@ -20,7 +23,6 @@ import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.event.PermissionEvent;
 import com.farwolf.weex.event.RefreshEvent;
 import com.farwolf.weex.pref.WeexPref_;
-import com.farwolf.weex.util.CameraPermission;
 import com.farwolf.weex.util.HotRefreshManager;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXEnvironment;
@@ -170,15 +172,20 @@ public class ToolPop extends ViewBase{
     @Click
     public void qrClicked() {
 
-        if(!CameraPermission.check(getActivity()))
-        {
-            CameraPermission.requestCameraPermission(getActivity());
-            return;
-        }
+        Perssion.check(this.getActivity(), Manifest.permission.CAMERA,new PerssionCallback(){
 
-        f.dismiss();
-        Intent in=new Intent(getActivity(), CaptureActivity.class);
-        getActivity().startActivityForResult(in,1);
+
+            @Override
+            public void onGranted() {
+
+                f.dismiss();
+                Intent in=new Intent(getActivity(), CaptureActivity.class);
+                getActivity().startActivityForResult(in,1);
+
+            }
+        });
+
+
 
     }
 

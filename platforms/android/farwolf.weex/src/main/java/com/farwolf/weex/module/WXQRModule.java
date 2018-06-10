@@ -1,11 +1,13 @@
 package com.farwolf.weex.module;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.farwolf.perssion.Perssion;
+import com.farwolf.perssion.PerssionCallback;
 import com.farwolf.qrcode.zxing.android.CaptureActivity;
 import com.farwolf.weex.event.PermissionEvent;
-import com.farwolf.weex.util.CameraPermission;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
@@ -27,20 +29,36 @@ public class WXQRModule extends WXModule {
     HashMap param;
 
     @JSMethod
-    public void open(HashMap param, JSCallback callback){
+    public void open(final HashMap param, final JSCallback callback){
 
-        this.param=param;
-        this.callback=callback;
-        if(!EventBus.getDefault().isRegistered(this))
-        {
-            EventBus.getDefault().register(this);
-        }
-        if(!CameraPermission.check(mWXSDKInstance.getContext()))
-        {
-            CameraPermission.requestCameraPermission((Activity) mWXSDKInstance.getContext());
-            return;
-        }
-        dojob(param,callback);
+
+        Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.CAMERA,new PerssionCallback(){
+
+
+            @Override
+            public void onGranted() {
+
+
+                Perssion.check((Activity) mWXSDKInstance.getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE , new PerssionCallback() {
+                    @Override
+                    public void onGranted() {
+                        WXQRModule.this.param=param;
+                        WXQRModule.this.callback=callback;
+                        if(!EventBus.getDefault().isRegistered(this))
+                        {
+                            EventBus.getDefault().register(this);
+                        }
+
+                        dojob(param,callback);
+
+                    }
+                });
+
+
+
+            }
+        });
+
     }
 
 

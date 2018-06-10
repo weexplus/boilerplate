@@ -80,7 +80,7 @@ def mypod
     
     pod ‘alipay’,  :path => ‘alipay’
 
-    pod ‘wxpay’,  :path => ‘wxpay’
+    pod ‘wechat’,  :path => ‘wechat’
    
 end
 

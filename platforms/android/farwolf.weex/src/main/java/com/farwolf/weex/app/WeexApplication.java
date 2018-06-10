@@ -50,10 +50,12 @@ public class WeexApplication extends MultiDexApplication {
 
     long lastrefresh=0;
 
+    static WeexApplication instance;
+
     @Override
     public void onCreate() {
         super.onCreate();
-//
+        instance=this;
         Local.copyAssetToDisk(this);
         weex= Weex_.getInstance_(this);
         pref= new WeexPref_(this);
@@ -129,6 +131,11 @@ public class WeexApplication extends MultiDexApplication {
 
 
 
+    }
+
+    public static WeexApplication getInstance()
+    {
+        return instance;
     }
 
 

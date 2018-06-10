@@ -99,15 +99,15 @@ PODS:
   - UCZProgressView (1.0.2)
   - UICountingLabel (1.2.0)
   - UIViewController_PopUp (0.0.2)
+  - wechat (0.0.1):
+    - farwolf
+    - farwolf.business
+    - WeexSDK
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.18.0):
     - SocketRocket
   - WXDevtool (0.15.3):
-    - WeexSDK
-  - wxpay (0.0.1):
-    - farwolf
-    - farwolf.business
     - WeexSDK
   - YYModel (1.0.4)
   - YZHeaderScaleImage (1.0.1)
@@ -138,9 +138,9 @@ DEPENDENCIES:
   - TOCropViewController (~> 2.0.12)
   - UCZProgressView
   - UIViewController_PopUp (~> 0.0.2)
+  - wechat (from `wechat`)
   - WeexSDK (from `sdk`)
   - WXDevtool (from `WXDevtool`)
-  - wxpay (from `wxpay`)
   - YYModel
   - YZHeaderScaleImage (~> 1.0.1)
   - ZipArchive (~> 1.4.0)
@@ -193,12 +193,12 @@ EXTERNAL SOURCES:
     :path: LMTowDatePicker
   oss:
     :path: oss
+  wechat:
+    :path: wechat
   WeexSDK:
     :path: sdk
   WXDevtool:
     :path: WXDevtool
-  wxpay:
-    :path: wxpay
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -234,14 +234,14 @@ SPEC CHECKSUMS:
   UCZProgressView: 55836987c15ee6efb7cd6dfe297556602ee46c94
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   UIViewController_PopUp: 1f5133c841e811103d6b3f143618f3a00080a590
+  wechat: 6b1f294df01479f84669283932d08e314ed9219f
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 81fdcb7c2d283b8eb6aa17ada85271f89326990f
   WXDevtool: 2c12ba664a643a3b6c44a80ef092bc30d2778d44
-  wxpay: 355d4fb5986379439a19c3bdb9bcad8c3c462c8c
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 75fefdd3a8626c42e37d5a1ec653e588934d9389
+PODFILE CHECKSUM: 95edaeb6834bd07335d6f1c4ff41a1e06b6917b6
 
 COCOAPODS: 1.5.0
