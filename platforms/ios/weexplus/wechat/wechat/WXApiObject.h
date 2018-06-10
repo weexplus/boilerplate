@@ -91,7 +91,7 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
 /*! @brief log的级别
  *
  */
-typedef NS_ENUM(NSInteger,WXLogLevel){
+typedef NS_ENUM(NSInteger,WXLogLevelX){
     WXLogLevelNormal = 0,      // 打印日常的日志
     WXLogLevelDetail = 1,      // 打印详细的日志
 };

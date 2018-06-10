@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4DA9C04620C43740001938CB /* wxpay.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9C04520C43740001938CB /* wxpay.m */; };
-		4DA9C04720C43740001938CB /* wxpay.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4DA9C04420C43740001938CB /* wxpay.h */; };
+		4D66DFD920CD748C00E722F2 /* wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66DFD820CD748C00E722F2 /* wechat.m */; };
+		4D66DFDA20CD748C00E722F2 /* wechat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D66DFD720CD748C00E722F2 /* wechat.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4DA9C03F20C43740001938CB /* CopyFiles */ = {
+		4D66DFD220CD748C00E722F2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				4DA9C04720C43740001938CB /* wxpay.h in CopyFiles */,
+				4D66DFDA20CD748C00E722F2 /* wechat.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4DA9C04120C43740001938CB /* libwxpay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libwxpay.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DA9C04420C43740001938CB /* wxpay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wxpay.h; sourceTree = "<group>"; };
-		4DA9C04520C43740001938CB /* wxpay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wxpay.m; sourceTree = "<group>"; };
+		4D66DFD420CD748C00E722F2 /* libwechat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libwechat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D66DFD720CD748C00E722F2 /* wechat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wechat.h; sourceTree = "<group>"; };
+		4D66DFD820CD748C00E722F2 /* wechat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wechat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4DA9C03E20C43740001938CB /* Frameworks */ = {
+		4D66DFD120CD748C00E722F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,96 +41,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4DA9C03820C43740001938CB = {
+		4D66DFCB20CD748C00E722F2 = {
 			isa = PBXGroup;
 			children = (
-				4DA9C04320C43740001938CB /* wxpay */,
-				4DA9C04220C43740001938CB /* Products */,
+				4D66DFD620CD748C00E722F2 /* wechat */,
+				4D66DFD520CD748C00E722F2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4DA9C04220C43740001938CB /* Products */ = {
+		4D66DFD520CD748C00E722F2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DA9C04120C43740001938CB /* libwxpay.a */,
+				4D66DFD420CD748C00E722F2 /* libwechat.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4DA9C04320C43740001938CB /* wxpay */ = {
+		4D66DFD620CD748C00E722F2 /* wechat */ = {
 			isa = PBXGroup;
 			children = (
-				4DA9C04420C43740001938CB /* wxpay.h */,
-				4DA9C04520C43740001938CB /* wxpay.m */,
+				4D66DFD720CD748C00E722F2 /* wechat.h */,
+				4D66DFD820CD748C00E722F2 /* wechat.m */,
 			);
-			path = wxpay;
+			path = wechat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4DA9C04020C43740001938CB /* wxpay */ = {
+		4D66DFD320CD748C00E722F2 /* wechat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DA9C04A20C43740001938CB /* Build configuration list for PBXNativeTarget "wxpay" */;
+			buildConfigurationList = 4D66DFDD20CD748C00E722F2 /* Build configuration list for PBXNativeTarget "wechat" */;
 			buildPhases = (
-				4DA9C03D20C43740001938CB /* Sources */,
-				4DA9C03E20C43740001938CB /* Frameworks */,
-				4DA9C03F20C43740001938CB /* CopyFiles */,
+				4D66DFD020CD748C00E722F2 /* Sources */,
+				4D66DFD120CD748C00E722F2 /* Frameworks */,
+				4D66DFD220CD748C00E722F2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = wxpay;
-			productName = wxpay;
-			productReference = 4DA9C04120C43740001938CB /* libwxpay.a */;
+			name = wechat;
+			productName = wechat;
+			productReference = 4D66DFD420CD748C00E722F2 /* libwechat.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4DA9C03920C43740001938CB /* Project object */ = {
+		4D66DFCC20CD748C00E722F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "郑江荣";
 				TargetAttributes = {
-					4DA9C04020C43740001938CB = {
+					4D66DFD320CD748C00E722F2 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 4DA9C03C20C43740001938CB /* Build configuration list for PBXProject "wxpay" */;
+			buildConfigurationList = 4D66DFCF20CD748C00E722F2 /* Build configuration list for PBXProject "wechat" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 4DA9C03820C43740001938CB;
-			productRefGroup = 4DA9C04220C43740001938CB /* Products */;
+			mainGroup = 4D66DFCB20CD748C00E722F2;
+			productRefGroup = 4D66DFD520CD748C00E722F2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4DA9C04020C43740001938CB /* wxpay */,
+				4D66DFD320CD748C00E722F2 /* wechat */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4DA9C03D20C43740001938CB /* Sources */ = {
+		4D66DFD020CD748C00E722F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DA9C04620C43740001938CB /* wxpay.m in Sources */,
+				4D66DFD920CD748C00E722F2 /* wechat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4DA9C04820C43740001938CB /* Debug */ = {
+		4D66DFDB20CD748C00E722F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -185,7 +185,7 @@
 			};
 			name = Debug;
 		};
-		4DA9C04920C43740001938CB /* Release */ = {
+		4D66DFDC20CD748C00E722F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +234,7 @@
 			};
 			name = Release;
 		};
-		4DA9C04B20C43740001938CB /* Debug */ = {
+		4D66DFDE20CD748C00E722F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -246,7 +246,7 @@
 			};
 			name = Debug;
 		};
-		4DA9C04C20C43740001938CB /* Release */ = {
+		4D66DFDF20CD748C00E722F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -261,25 +261,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4DA9C03C20C43740001938CB /* Build configuration list for PBXProject "wxpay" */ = {
+		4D66DFCF20CD748C00E722F2 /* Build configuration list for PBXProject "wechat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DA9C04820C43740001938CB /* Debug */,
-				4DA9C04920C43740001938CB /* Release */,
+				4D66DFDB20CD748C00E722F2 /* Debug */,
+				4D66DFDC20CD748C00E722F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DA9C04A20C43740001938CB /* Build configuration list for PBXNativeTarget "wxpay" */ = {
+		4D66DFDD20CD748C00E722F2 /* Build configuration list for PBXNativeTarget "wechat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DA9C04B20C43740001938CB /* Debug */,
-				4DA9C04C20C43740001938CB /* Release */,
+				4D66DFDE20CD748C00E722F2 /* Debug */,
+				4D66DFDF20CD748C00E722F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4DA9C03920C43740001938CB /* Project object */;
+	rootObject = 4D66DFCC20CD748C00E722F2 /* Project object */;
 }

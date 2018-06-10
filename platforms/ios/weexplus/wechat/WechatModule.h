@@ -9,6 +9,6 @@
 #import <WeexSDK/WXEventModuleProtocol.h>
 #import <WeexSDK/WXModuleProtocol.h>
 #import "farwolf.h"
-@interface WechatModule : NSObject: <WXModuleProtocol>
+@interface WechatModule : NSObject<WXModuleProtocol>
 +(void)initWechat;
 @end

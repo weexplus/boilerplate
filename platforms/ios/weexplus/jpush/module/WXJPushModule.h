@@ -9,6 +9,6 @@
 #import <WeexSDK/WXEventModuleProtocol.h>
 #import <WeexSDK/WXModuleProtocol.h>
 #import "farwolf.h"
-@interface WXJPushModule : NSObject: <WXModuleProtocol>
+@interface WXJPushModule : NSObject<WXModuleProtocol>
 
 @end

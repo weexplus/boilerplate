@@ -17,7 +17,7 @@ WX_EXPORT_METHOD(@selector(pay:callback:))
 
 -(void)regist:(NSString*)appId
 {
-    [WXApi registerApp:@"wxb4ba3c02aa476ea1" enableMTA:YES];
+    [WXApi registerApp:appId enableMTA:YES];
 }
 -(void)pay:(NSDictionary*)param  callback:(WXModuleCallback)callback
 {

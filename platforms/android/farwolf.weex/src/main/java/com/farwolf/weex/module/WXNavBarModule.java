@@ -44,16 +44,17 @@ public class WXNavBarModule extends WXModuleBase {
 
     @JSMethod
     public   void setStatusBarStyle(String style){
-        if("white".equals(style))
-        {
-            return;
-        }
+
+        boolean dark=!"white".equals(style);
         if(isMIUI()){
-            MIUISetStatusBarLightMode(this.getActivity(), true);
+            MIUISetStatusBarLightMode(getActivity(), dark);
         }else if(isFlyme()){
-            FlymeSetStatusBarLightMode(getActivity().getWindow(), true);
+            FlymeSetStatusBarLightMode(getActivity().getWindow(), dark);
         }else {
-            getActivity().getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            if(dark)
+                getActivity().getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            else
+                getActivity().getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
     }
