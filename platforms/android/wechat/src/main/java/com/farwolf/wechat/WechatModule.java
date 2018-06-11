@@ -57,7 +57,6 @@ public class WechatModule extends WXModuleBase {
         WechatEntryActivity.callback=callback;
         String appId=param.get("appId")+"";
         PayReq request = JsonTool.toBean(new JSONObject(param),PayReq.class);
-
         wxApi.sendReq(request);
 
 
