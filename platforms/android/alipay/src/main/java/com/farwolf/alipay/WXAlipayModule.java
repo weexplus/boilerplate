@@ -20,9 +20,10 @@ public class WXAlipayModule extends WXModuleBase {
 
 
     @JSMethod
-    public void open(String signstr,final JSCallback callback)
+    public void open(Map param,final JSCallback callback)
     {
 
+        String signstr=param.get("signstr")+"";
         MyTask my=new MyTask(callback);
         my.execute(signstr);
 

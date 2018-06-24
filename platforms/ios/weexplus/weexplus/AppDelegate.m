@@ -44,6 +44,9 @@
     NSMutableDictionary *p=[NSMutableDictionary new];
     p[@"options"]=launchOptions;
     [self notifyDict:APP_didFinishLaunchingWithOptions value:p];
+    
+    
+    
      return YES;
 }
 

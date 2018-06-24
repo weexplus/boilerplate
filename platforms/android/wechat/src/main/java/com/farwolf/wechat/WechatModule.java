@@ -27,6 +27,7 @@ public class WechatModule extends WXModuleBase {
     @JSMethod
     public void regist(String appId)
     {
+
         wxApi = WXAPIFactory.createWXAPI(WeexApplication.getInstance(), appId, true);
         wxApi.registerApp(appId);
     }
@@ -54,6 +55,11 @@ public class WechatModule extends WXModuleBase {
             Toast.makeText(getContext(),"请先调用regist方法注册appId!",Toast.LENGTH_SHORT).show();
             return;
         }
+        if(!wxApi.isWXAppInstalled())
+        {
+            Toast.makeText(getContext(),"未安装微信!",Toast.LENGTH_SHORT).show();
+            return;
+        }
         WechatEntryActivity.callback=callback;
         String appId=param.get("appId")+"";
         PayReq request = JsonTool.toBean(new JSONObject(param),PayReq.class);
@@ -71,8 +77,12 @@ public class WechatModule extends WXModuleBase {
             Toast.makeText(getContext(),"请先调用regist方法注册appId!",Toast.LENGTH_SHORT).show();
             return;
         }
+        if(!wxApi.isWXAppInstalled())
+        {
+            Toast.makeText(getContext(),"未安装微信!",Toast.LENGTH_SHORT).show();
+            return;
+        }
         WechatEntryActivity.callback=callback;
-
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

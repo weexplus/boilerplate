@@ -23,6 +23,8 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.farwolf.weexplus</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>weexplus</string>

@@ -42,7 +42,7 @@ public class WebSocketModule extends WXSDKEngine.DestroyableModule {
     private static final String KEY_WAS_CLEAN = "wasClean";
 
     private IWebSocketAdapter webSocketAdapter;
-    private WebSocketEventListener eventListener;
+    private WebSocketEventListener eventListener = new WebSocketEventListener();;
 
     public WebSocketModule() {
         WXLogUtils.e(TAG, "create new instance");
@@ -56,7 +56,6 @@ public class WebSocketModule extends WXSDKEngine.DestroyableModule {
         }
         webSocketAdapter = mWXSDKInstance.getWXWebSocketAdapter();
         if (!reportErrorIfNoAdapter()) {
-            eventListener = new WebSocketEventListener();
             webSocketAdapter.connect(url, protocol, eventListener);
         }
     }

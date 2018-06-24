@@ -47,7 +47,7 @@ public abstract class WechatEntryActivity extends Activity implements IWXAPIEven
 
     public void onResp(BaseResp resp){
 
-        Log.e("接受到微信返回:"+resp.errStr);
+        Log.e("接受到微信返回:"+resp.errCode);
         String entry= Config.wechatEntry(this);
         entry=entry.replace("root:","app/");
         WeexFactory factory= WeexFactory_.getInstance_(this);

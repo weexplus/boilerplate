@@ -18,8 +18,8 @@ def mypod
     
     pod 'YYModel'
     
-    pod 'PNChart', '~> 0.8.8'
-    
+#    pod 'PNChart', '~> 0.8.8'
+
     pod 'CHXBannerView', '~> 0.8.2'
     
     pod 'FSCalendar', '~> 2.7.9’
@@ -57,6 +57,7 @@ def mypod
     pod 'UIViewController_PopUp', '~> 0.0.2'
         
     pod 'YZHeaderScaleImage', '~> 1.0.1'
+    
     
     pod 'BindingX' 
 

@@ -56,12 +56,6 @@ public class JPushAdapter  {
           m.put("msg",bundle.get(EXTRA_ALERT));
           m.put("extra",bundle.get(EXTRA_EXTRA));
 
-
-//          Object []keys= bundle.keySet().toArray();
-//          for(Object key:keys)
-//           {
-//               m.put(key,bundle.get(key+""));
-//           }
           m.put("action",action);
          factory.preRender(entry, new WeexFactory.OnRenderFinishListener() {
          @Override
