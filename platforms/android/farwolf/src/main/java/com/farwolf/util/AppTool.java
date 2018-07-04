@@ -67,5 +67,16 @@ public class AppTool {
     }
 
 
+    public static void exit(Activity ac)
+    {
+        List<Activity> l= com.farwolf.util.ActivityManager.getActivitiesByApplication(ac.getApplication());
+        for(Activity a:l)
+        {
+            a.finish();
+        }
+        System.exit(0);
+    }
+
+
 
     }

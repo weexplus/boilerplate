@@ -267,7 +267,7 @@ public class HttpTool {
 		Object headerkeys[]= header.keySet().toArray();
 		for(Object key:headerkeys)
 		{
-			post=post.headers(key+"",param.get(key)+"");
+			post=post.headers(key+"",header.get(key)+"");
 		}
 		Object filekeys[]= files.keySet().toArray();
 		for(Object key:filekeys)

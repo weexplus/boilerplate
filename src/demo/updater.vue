@@ -25,7 +25,7 @@
 
                 var updater=weex.requireModule('updater')
                 var p={}
-                p.url='http://172.20.10.3:8080/jsversion.do'
+                p.url='http://10.23.6.67:8080/jsversion.do'
                 p.appid=1
                 p.theme=1
                 p.nativeversion=1

@@ -12,10 +12,10 @@ import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import com.alibaba.android.bindingx.plugin.weex.BindingX;
+import com.farwolf.util.ActivityManager;
 import com.farwolf.util.RegexBase;
 import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
-import com.farwolf.weex.activity.ActivityManager;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.event.RefreshEvent;

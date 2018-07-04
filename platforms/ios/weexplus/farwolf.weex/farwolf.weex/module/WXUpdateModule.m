@@ -71,16 +71,24 @@ WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
 }
 
 
--(void)hotUpdate:(NSString*)url start:(WXModuleCallback)start progress:(WXModuleCallback)progress compelete:(WXModuleCallback)compelete exception:(WXModuleCallback)exception
+-(void)hotUpdate:(NSMutableDictionary*)param start:(WXModuleCallback)start progress:(WXModuleCallback)progress compelete:(WXModuleCallback)compelete exception:(WXModuleCallback)exception
 {
+    
+    NSString* url=param[@"url"];
+    int version=param[@"version"];
+    int mode=param[@"mode"];
+    JsVersion *j=[JsVersion new];
+    j.js_version=version;
+    j.mode=mode;
+    
     UpdateChecker *up=[UpdateChecker new];
     start(nil);
-    
-    [up updateJs:url progress:^(float p) {
+    [up updateJs:url version:j progress:^(float p) {
         progress(@(p));
     } compelete:^(NSString *path) {
         compelete(path);
     }];
+   
 }
 
 

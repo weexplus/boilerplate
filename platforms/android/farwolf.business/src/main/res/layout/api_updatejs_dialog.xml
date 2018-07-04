@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13.56%"
+            android:text="0%"
             android:layout_marginRight="10dp"
             android:id="@+id/percent"
             />

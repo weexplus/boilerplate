@@ -43,7 +43,8 @@
     
     UpdateChecker *up=[UpdateChecker new];
     
-    [up updateJs:url progress:^(float p) {
+    
+    [up updateJs:url version:self.jsVersion progress:^(float p) {
         self.progress.progress=p/100;
         self.percent.text=[[@"" addFloat:p]add:@"%"];
         if(p==100.0)
@@ -51,12 +52,12 @@
             self.lable.text=@"解压中";
         }
     } compelete:^(NSString *path) {
- 
         self.lable.text=@"解压完毕";
-//        [self dismiss:true];
+        //        [self dismiss:true];
         [self removeFromParentViewController];
         [self.view removeFromSuperview];
     }];
+    
     
     
 }

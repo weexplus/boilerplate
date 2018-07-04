@@ -125,7 +125,7 @@ public class UpdateService {
                 a.init(v,theme);
                 if(v.level==0)
                 {
-                    if(v.versionName!=null&&v.versionName.equals(pref.version().get()))
+                    if(v.version_name!=null&&v.version_name.equals(pref.version().get()))
                     {
                         long delt= System.currentTimeMillis()-pref.time().get();
                         long week=1000*60*60*24*7;
@@ -224,24 +224,25 @@ public class UpdateService {
             public void success(JsonReader j) {
 
                 JsVersion v=  j.toBean("version",JsVersion.class);
-                if(v.mode==1)
-                {
-                    UpdateJsDialog a= UpdateJsDialog_.build(context);
-                    FreeDialog f=new FreeDialog(context,a);
-                    a.f=f;
+                if(v.mode==1) {
+                    UpdateJsDialog a = UpdateJsDialog_.build(context);
+                    FreeDialog f = new FreeDialog(context, a);
+                    a.f = f;
                     f.setCanceledOnTouchOutside(false);
                     f.setCancelable(false);
-                    a.url=v.url;
-                    a.size=v.size;
-                    a.path=SDCard.getBasePath(context)+"zip/app.zip";
+                    a.url = v.url;
+                    a.size = v.size;
+                    a.version = v.js_version;
+                    a.path = SDCard.getBasePath(context) + "zip/app.zip";
                     f.show();
                     a.start();
+                    return;
                 }
-                else if(v.mode==0)
-                {
-                    new JsDownloader().start(v.url, context, null);
 
-                }
+
+                new JsDownloader().start(v.url, v.js_version, v.mode,context, null);
+
+
 
 
 

@@ -1,4 +1,4 @@
-package com.farwolf.weex.activity;
+package com.farwolf.util;
 
 import android.app.Activity;
 import android.app.Application;

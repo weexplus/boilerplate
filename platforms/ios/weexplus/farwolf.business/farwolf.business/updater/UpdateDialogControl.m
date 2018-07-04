@@ -31,7 +31,7 @@
 -(void)initBean:(Version*)v
 {
     _version=v;
-    self.versionname.text=[@"最新版本:" add:_version.versionName];
+    self.versionname.text=[@"最新版本:" add:_version.version_name];
     self.sizename.text=[@"版本大小：" add:_version.size];
     self.desc.text=_version.desc;
     if(_version.level==1)
@@ -50,7 +50,7 @@
 
 - (IBAction)update:(id)sender {
   
-    NSURL * url = [NSURL URLWithString:_version.downloadUrl];
+    NSURL * url = [NSURL URLWithString:_version.download_url];
      [[UIApplication sharedApplication] openURL:url];
     [self dismissPop];
 }

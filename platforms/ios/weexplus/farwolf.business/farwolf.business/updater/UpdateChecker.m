@@ -100,11 +100,14 @@
         
         JsVersion *v=  [JsVersion yy_modelWithJSON:[j getDict:@"version"]];
         
+        
+        
+        
         if(v.mode==0)
         {
 
-            [self updateJs:v.url progress:^(float p) {
-           
+            [self updateJs:_url version:v progress:^(float p) {
+                
             } compelete:^(NSString *path) {
                 
             }];
@@ -113,6 +116,7 @@
         {
             ZipDownloaderControl *cvc=[[ZipDownloaderControl alloc]initWithNibName:@"zipdownloader" bundle:nil];
             cvc.url=v.url;
+            cvc.jsVersion=v;
             cvc.view.frame=[UIApplication sharedApplication].keyWindow.frame;
             [vc addVc:cvc];
           
@@ -138,7 +142,7 @@
 }
 
 
--(void)updateJs:(NSString*)url  progress:(void(^)(float))progress compelete:(void(^)(NSString*))compelete
+-(void)updateJs:(NSString*)url version:(JsVersion*)jsversion  progress:(void(^)(float))progress compelete:(void(^)(NSString*))compelete
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
@@ -153,8 +157,31 @@
     } compelete:^(NSString *path) {
         compelete(path);
         
-        [URL unzip:@"zip/app.zip" to:@""];
-        NSLog(@"解压完毕");
+        NSString *version=[@"" addInt: jsversion.js_version];
+        [version save:@"downloadJsVersion"];
+        if(jsversion.mode==2)
+        {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"更新包️已下载完毕,是否退出应用重新加载?" preferredStyle: UIAlertControllerStyleAlert];
+            UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction *action) {
+                                                                     [alert dismiss:true];
+                                                                 }];
+            UIAlertAction *actionok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                [URL unzip:@"zip/app.zip" to:@""];
+                NSLog(@"解压完毕");
+                
+            }];
+        
+            [alert addAction:actionok];
+            [alert addAction:actionCancel];
+            UIViewController *rootVC = [[UIApplication sharedApplication].delegate window].rootViewController;
+            [ [rootVC topViewController] presentViewController:alert animated:YES completion:^{
+                
+            }];
+        }
+       
         
     }];
     

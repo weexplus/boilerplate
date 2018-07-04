@@ -1,6 +1,7 @@
 package com.farwolf.weex.core.local;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 
 import com.farwolf.util.FileTool;
@@ -61,6 +62,23 @@ public class Local  {
             }
             FileTool.copyAssets(c,"app",newpath);
         }
+        if(isDiskExist(c))
+        {
+//            &&Config.assetJsVersion(c)>Config.diskJsVersion(c)
+            SharedPreferences sharedPreferences = c.getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+            int version= sharedPreferences.getInt("downloadJsVersion",-1);
+
+            if(version>Config.diskJsVersion(c))
+            {
+                 if(isZipExist(c))
+                 {
+                     unzip(c);
+                     sharedPreferences.edit().remove("downloadJsVersion").apply();
+                 }
+
+            }
+
+        }
 
 
 
@@ -109,7 +127,15 @@ public class Local  {
         ZipHelper.unZipFile(is,to);
     }
 
+//    final String path= SDCard.getBasePath(c)+"/zip/app.zip";
+//    String zip=SDCard.getBasePath(c)+"/zip";
 
+    public static boolean isZipExist(Context c)
+    {
+        String path= SDCard.getBasePath(c)+"/zip/app.zip";
+        File f=new File(path);
+        return f.exists();
+    }
     public static boolean isDiskExist(Context c)
     {
         String path= getBasePath(c);

@@ -12,19 +12,19 @@ public class Version {
 
     public String name;
 
-    public String versionName;
+    public String version_name;
 
-    public Integer versionCode;
+    public Integer version_code;
 
-    public Integer systemType;
+    public Integer system_type;
 
-    public String appId;
+    public String app_id;
 
 
     public String desc;
     public String size;
 
-    public String downloadUrl;
+    public String download_url;
 
     public String source;
 

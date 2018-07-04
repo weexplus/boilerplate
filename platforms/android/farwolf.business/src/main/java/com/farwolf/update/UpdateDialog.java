@@ -93,7 +93,7 @@ public class UpdateDialog extends ViewBase {
 
         this.data=v;
         this.desc.setText(v.desc);
-        this.version_name.setText("最新版本:"+v.versionName);
+        this.version_name.setText("最新版本:"+v.version_name);
         this.size.setText("版本大小:"+v.size);
         this.desc.setText(v.desc);
         if(v.level==1)
@@ -111,7 +111,7 @@ public class UpdateDialog extends ViewBase {
     public void ignoreClicked() {
 
         Toast.makeText(getActivity(), pref.version().get(),Toast.LENGTH_LONG);
-        pref.edit().version().put(this.data.versionName).apply();
+        pref.edit().version().put(this.data.version_name).apply();
         pref.edit().time().put(System.currentTimeMillis()).apply();
         f.dismiss();
     }
@@ -121,7 +121,7 @@ public class UpdateDialog extends ViewBase {
 
 
 
-        UpdateService.Builder.create(data.downloadUrl)
+        UpdateService.Builder.create(data.download_url)
                 .setStoreDir(null)
                 .setDownloadSuccessNotificationFlag(Notification.DEFAULT_ALL)
                 .setDownloadErrorNotificationFlag(Notification.DEFAULT_ALL)

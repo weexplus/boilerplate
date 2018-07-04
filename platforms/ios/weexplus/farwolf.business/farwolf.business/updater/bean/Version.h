@@ -15,19 +15,19 @@
 
 @property (nonatomic,strong) NSString* name;
 
-@property (nonatomic,strong) NSString* versionName;
+@property (nonatomic,strong) NSString* version_name;
 
-@property (nonatomic) int versionCode;
+@property (nonatomic) int version_code;
 
-@property (nonatomic) int systemType;
+@property (nonatomic) int system_type;
 
-@property (nonatomic,strong) NSString* appId;
+@property (nonatomic,strong) NSString* app_id;
 
 
 @property (nonatomic,strong) NSString* desc;
 @property (nonatomic,strong) NSString* size;
 
-@property (nonatomic,strong) NSString* downloadUrl;
+@property (nonatomic,strong) NSString* download_url;
 
 @property (nonatomic,strong) NSString* source;
 @end

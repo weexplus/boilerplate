@@ -22,6 +22,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.farwolf.base.TitleActivityBase;
+import com.farwolf.util.ActivityManager;
 import com.farwolf.util.AppTool;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
@@ -486,7 +487,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     {
         if(Config.showError(this))
         {
-            fail_layout.setVisibility(View.VISIBLE);
+//            fail_layout.setVisibility(View.VISIBLE);
             this.err.setText(err+"");
             this.err_layout.setVisibility(View.VISIBLE);
         }

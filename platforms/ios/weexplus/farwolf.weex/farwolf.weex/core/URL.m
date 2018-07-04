@@ -138,16 +138,21 @@
     {
         return;
     }
-    if([Config isDebug]||![URL isDiskExist]||[Config bundleJsVersion]<[Config bundleJsVersion])
+    if([Config isDebug]||![URL isDiskExist]||[Config diskJsVersion]<[Config bundleJsVersion])
     {
         NSString *disk= [self loadFromDisk:@"app"].absoluteString;
         disk=[disk replace:@"file://" withString:@""];
          [disk delete];
         [disk mkdir];
-       
         [bundle copyToPath:disk];
     }
-   
+    NSString *key=@"downloadJsVersion";
+    int dv= [self getSaveValue:key];
+      if(dv>[Config diskJsVersion])
+      {
+           [URL unzip:@"zip/app.zip" to:@""];
+          [self remove:key];
+      }
 }
 
 

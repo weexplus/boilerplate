@@ -21,6 +21,7 @@ public class UpdateJsDialog extends ViewBase {
 
     public FreeDialog f;
     public String url="";
+    public int version=0;
     public String size="";
     public String path="";
     @ViewById
@@ -57,7 +58,7 @@ public class UpdateJsDialog extends ViewBase {
         progress.setIndeterminate(false);
         progress.setMax(100);
 
-        new JsDownloader().start(url, getContext(), new IFullHttp() {
+        new JsDownloader().start(url, version,2,getContext(), new IFullHttp() {
             @Override
             public void OnPostProcess(int newProgress) {
                 progress.setProgress(newProgress);
