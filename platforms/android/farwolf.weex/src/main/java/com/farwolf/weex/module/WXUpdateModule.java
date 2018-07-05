@@ -6,6 +6,7 @@ import com.farwolf.interfac.IFullHttp;
 import com.farwolf.update.JsDownloader;
 import com.farwolf.update.UpdateService;
 import com.farwolf.update.UpdateService_;
+import com.farwolf.util.Callback;
 import com.farwolf.weex.bean.Config;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
@@ -25,7 +26,7 @@ public class WXUpdateModule extends WXModule {
 
 
     @JSMethod
-    public void doCheck(HashMap param)
+    public void doCheck(HashMap param,final JSCallback callback)
     {
         String appid=param.get("appid")+"";
         String vcurl=param.get("url")+"";
@@ -34,7 +35,12 @@ public class WXUpdateModule extends WXModule {
         boolean showprogress=param.containsKey("showprogress")?(boolean)param.get("showprogress"):false;
         UpdateService updateService= UpdateService_.getInstance_(mWXSDKInstance.getContext());
         updateService.init(appid,vcurl,theme);
-        updateService.doCheck(failtoast,showprogress);
+        updateService.doCheck(failtoast, showprogress, new Callback() {
+            @Override
+            public void onInvoke(Object o) {
+                callback.invoke(new HashMap());
+            }
+        });
     }
 
 

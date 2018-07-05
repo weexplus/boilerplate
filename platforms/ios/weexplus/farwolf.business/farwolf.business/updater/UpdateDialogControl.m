@@ -8,6 +8,7 @@
 #import "UpdateDialogControl.h"
 
 #import "Masonry.h"
+#import <WeexSDK/WeexSDK.h>
 #import "farwolf.h"
 
 @interface UpdateDialogControl ()

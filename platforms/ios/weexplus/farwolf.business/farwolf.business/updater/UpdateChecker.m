@@ -14,12 +14,13 @@
 #import "ZipDownloader.h"
 #import "URL.h"
 #import "JsVersion.h"
+#import <WeexSDK/WeexSDK.h>
 #import "ZipDownloaderControl.h"
 
 @implementation UpdateChecker
 
  
--(void)doCheck:(NSString*)appid vcode:(NSString*)vcode  showprogress:(BOOL)showprogress failtoast:(BOOL)failtoast vc:(UIViewController*)vc success :(void(^)(Version*v))success theme:(NSString*)theme;
+-(void)doCheck:(NSString*)appid vcode:(NSString*)vcode  showprogress:(BOOL)showprogress failtoast:(BOOL)failtoast vc:(UIViewController*)vc success :(void(^)(Version*v))success theme:(NSString*)theme fail :(void(^)())fail;
 {
     UpdateJsonReader *j=[[UpdateJsonReader alloc]init];
     j.url=self.url;
@@ -67,6 +68,7 @@
         {
             [[self getCurrentVc] toast:msg];
         }
+        fail();
     } exception:^{
         if(failtoast)
         {

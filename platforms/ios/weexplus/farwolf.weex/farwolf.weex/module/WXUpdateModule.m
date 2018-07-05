@@ -17,7 +17,7 @@ WX_EXPORT_METHOD(@selector(download:))
 WX_EXPORT_METHOD(@selector(doCheckJs:))
 WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
 
--(void)doCheck:(NSDictionary*)param
+-(void)doCheck:(NSDictionary*)param fail:(WXModuleCallback)fail
 {
     
     
@@ -32,10 +32,13 @@ WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
     UpdateChecker *u=[UpdateChecker new];
     u.appid=appid;
     u.url=url;
+    
     [u doCheck:appid vcode:vcode showprogress:showprogress failtoast:failtoast vc:[weexInstance.viewController topViewController] success:^(Version *v) {
         
         
-    } theme:theme];
+    } theme:theme fail:^(){
+        fail(@{});
+    }];
     
 }
 

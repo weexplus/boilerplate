@@ -8,6 +8,7 @@ import com.farwolf.json.JsonReader;
 import com.farwolf.json.ProgressJsonListner;
 import com.farwolf.reader.FarwolfReq;
 import com.farwolf.util.AppMainfest;
+import com.farwolf.util.Callback;
 import com.farwolf.util.SDCard;
 import com.farwolf.view.FreeDialog;
 
@@ -55,8 +56,9 @@ public class UpdateService {
 
     }
 
-    public void doCheck(final boolean failtoast,final boolean showprogress)
+    public void doCheck(final boolean failtoast, final boolean showprogress, final Callback callback)
     {
+
 
 
         FarwolfReq f=new FarwolfReq<UpdateReader>(context)
@@ -103,6 +105,9 @@ public class UpdateService {
                 {
                     Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
                 }
+                if(callback!=null)
+                    callback.onInvoke(j);
+
             }
 
             @Override
@@ -152,6 +157,7 @@ public class UpdateService {
                 {
                     f.show();
                 }
+
 
             }
         });
