@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
@@ -23,8 +24,8 @@ import android.text.TextUtils;
 import com.farwolf.business.R;
 import com.farwolf.update.download.utils.DataCleanManager;
 import com.farwolf.update.download.utils.FileHelper;
-import com.farwolf.update.download.utils.GetToast;
 import com.farwolf.update.download.utils.LogUtil;
+import com.farwolf.util.AppMainfest_;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,7 +47,11 @@ public class UpdateService extends Service {
     public static final String ACTION = "me.shenfan.UPDATE_APP";
     public static final String STATUS = "status";
     public static final String PROGRESS = "progress";
+    public static final  String DOWNLOAD_APK_PATH="DOWNLOAD_APK_PATH";
+    public static final  String DOWNLOAD_APK_SPLIT="=====";
     public static boolean DEBUG = true;
+    public   boolean silent = true;
+    public   int versionCode = 0;
 
     //下载大小通知频率
     public static final int UPDATE_NUMBER_SIZE = 1;
@@ -93,6 +98,17 @@ public class UpdateService extends Service {
             UpdateService.this.setUpdateProgressListener(listener);
         }
     }
+
+    public UpdateService setSilent(boolean silent) {
+        this.silent = silent;
+        return this;
+    }
+
+    public UpdateService setVersionCode(int code) {
+        this.versionCode = code;
+        return this;
+    }
+
 
 
     private boolean startDownload;//开始下载
@@ -169,6 +185,7 @@ public class UpdateService extends Service {
         if (!startDownload && intent != null){
             startDownload = true;
             downloadUrl = intent.getStringExtra(URL);
+            silent = intent.getBooleanExtra("silent",true);
             icoResId = intent.getIntExtra(ICO_RES_ID, DEFAULT_RES_ID);
             icoSmallResId = intent.getIntExtra(ICO_SMALL_RES_ID, DEFAULT_RES_ID);
             storeDir = intent.getStringExtra(STORE_DIR);
@@ -285,6 +302,32 @@ public class UpdateService extends Service {
         }
     }
 
+
+
+    public void checkExistApk()
+    {
+        SharedPreferences sharedPreferences =getApplicationContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+       String msg=sharedPreferences.getString(DOWNLOAD_APK_PATH,"");
+        String path="";
+        int versionCode =0;
+       if(msg.contains(DOWNLOAD_APK_SPLIT))
+       {
+           path=  msg.split(DOWNLOAD_APK_SPLIT)[0];
+           versionCode=  Integer.parseInt( msg.split(DOWNLOAD_APK_SPLIT)[1]);
+           int  appVersion=AppMainfest_.getInstance_(getApplicationContext()).getVersionCode();
+           if(versionCode>appVersion)
+           {
+                this.install(path);
+           }
+           else
+           {
+               sharedPreferences.edit().remove(DOWNLOAD_APK_PATH).apply();
+               DataCleanManager.deleteFilesByDirectory2(storeDir);
+           }
+       }
+    }
+
+
     /**
      *
      * @param progress download percent , max 100
@@ -302,26 +345,42 @@ public class UpdateService extends Service {
         }
     }
 
-    private void success(String path) {
-
-        builder.setProgress(0, 0, false);
-        builder.setContentText(getString(R.string.update_app_model_success));
-        GetToast.useString(this,"asdfasdf");
-        manager.cancel(0);
+    public void install(String path)
+    {
         if(FileHelper.checkFileIsExists(path)){
-           Intent i = installIntent(path);
+            Intent i = installIntent(path);
             PendingIntent intent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
             builder.setContentIntent(intent)
-            .setAutoCancel(true)//用户点击就自动消失
-            .setDefaults(downloadSuccessNotificationFlag);
+                    .setAutoCancel(true)//用户点击就自动消失
+                    .setDefaults(downloadSuccessNotificationFlag);
             Notification n = builder.build();
             n.contentIntent = intent;
             manager.notify(notifyId, n);
             if (updateProgressListener != null){
                 updateProgressListener.success();
             }
-           startActivity(i);
+            startActivity(i);
             IntentFilter filter = new IntentFilter();
+        }
+    }
+
+    private void success(String path) {
+
+
+        if(silent)
+        {
+            SharedPreferences sharedPreferences =getApplicationContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+            SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+            String msg=this.versionCode+DOWNLOAD_APK_SPLIT+path;
+            editor.putString(DOWNLOAD_APK_PATH, msg).commit();
+            return;
+        }
+        builder.setProgress(0, 0, false);
+        builder.setContentText(getString(R.string.update_app_model_success));
+//        GetToast.useString(this,"asdfasdf");
+        manager.cancel(0);
+        if(FileHelper.checkFileIsExists(path)){
+            this.install(path);
         }else{
             DataCleanManager.deleteFilesByDirectory2(storeDir);
         }
@@ -493,6 +552,13 @@ public class UpdateService extends Service {
         private int downloadErrorNotificationFlag;
         private boolean isSendBroadcast;
 
+        public boolean isSilent() {
+            return silent;
+        }
+
+
+        private boolean silent;
+
         protected Builder(String downloadUrl){
             this.downloadUrl = downloadUrl;
         }
@@ -506,6 +572,12 @@ public class UpdateService extends Service {
 
         public String getDownloadUrl() {
             return downloadUrl;
+        }
+
+
+        public Builder setSilent(boolean silent) {
+            this.silent = silent;
+            return this;
         }
 
         public int getIcoResId() {
@@ -600,6 +672,7 @@ public class UpdateService extends Service {
             }
             intent.putExtra(ICO_RES_ID, icoResId);
             intent.putExtra(STORE_DIR, storeDir);
+            intent.putExtra("silent", silent);
             intent.putExtra(ICO_SMALL_RES_ID, icoSmallResId);
             intent.putExtra(UPDATE_PROGRESS, updateProgress);
             intent.putExtra(DOWNLOAD_NOTIFICATION_FLAG, downloadNotificationFlag);

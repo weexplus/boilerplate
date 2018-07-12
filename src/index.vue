@@ -1,11 +1,6 @@
 <template>
-    <div>
-
-
- <div   @click="add" style="width: 100;height: 100;background-color: red"></div>
- <div   :style="{'visibility':show?'visible':'hidden'}"  @click="add" style="width: 100;height: 100;background-color: blue;margin-top: 10;visibility:visible"></div>
- <div   :style="{'visibility':!show?'visible':'hidden'}"  @click="add" style="width: 100;height: 100;background-color: green;margin-top: 10"></div>
-
+    <div style="align-items: center;justify-content: center">
+      <image style="width: 300;height: 300;" src="root:img/success.gif"></image>
     </div>
 </template>
 <style>

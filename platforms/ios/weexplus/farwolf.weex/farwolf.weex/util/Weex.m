@@ -116,6 +116,21 @@
    
 }
 
++(NSURL*)toURL:(NSString*)url
+{
+    
+    NSURL *ul=nil;
+    if([url startWith:@"http"])
+    {
+        ul=[NSURL URLWithString:url];
+    }
+    else
+    {
+        ul=[URL loadLocal:url];
+    }
+    return ul;
+}
+
 +(NSMutableDictionary*)diskConifg
 {
     NSString *path = @"app/config";

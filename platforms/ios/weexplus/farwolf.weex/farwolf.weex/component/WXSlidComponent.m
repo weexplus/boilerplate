@@ -23,6 +23,11 @@ WX_EXPORT_METHOD(@selector(toggle))
         {
             _slidSrc=attributes[@"slidSrc"];
         }
+        if (attributes[@"isOpen"])
+        {
+            
+            _isOpen=attributes[@"isOpen"] ? [WXConvert BOOL:attributes[@"isOpen"]] : NO;
+        }
         if (attributes[@"src"])
         {
             _src=attributes[@"src"];
@@ -67,6 +72,12 @@ WX_EXPORT_METHOD(@selector(toggle))
                [_host addSubviewFull:sideMenuController.view];
                 [self.weexInstance.viewController addChildViewController:sideMenuController];
               _slidcontrol=sideMenuController;
+              if (self.isOpen) {
+                  [_slidcontrol  showLeftViewAnimated:true completionHandler:nil];
+              }
+              else {
+                  [_slidcontrol hideLeftViewAnimated:true completionHandler:nil];
+              }
               
           } fail:^(NSString *msg) {
               
@@ -77,6 +88,24 @@ WX_EXPORT_METHOD(@selector(toggle))
 //
 
    
+}
+
+-(void)updateAttributes:(NSDictionary *)attributes
+{
+    [super updateAttributes:attributes];
+    if (attributes[@"isOpen"])
+    {
+        _isOpen=attributes[@"isOpen"] ? [WXConvert BOOL:attributes[@"isOpen"]] : NO;
+    }
+    
+    if (self.isOpen) {
+        [_slidcontrol  showLeftViewAnimated:true completionHandler:nil];
+    }
+    else {
+        
+        [_slidcontrol hideLeftViewPrepareWithGesture:NO];
+        [_slidcontrol hideLeftViewAnimatedActions:true completionHandler:nil];
+    }
 }
 
 

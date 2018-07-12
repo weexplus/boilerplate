@@ -8,9 +8,9 @@
 #import "WXAlipayModule.h"
 #import <AlipaySDK/AlipaySDK.h>
 @implementation WXAlipayModule
-WX_EXPORT_METHOD(@selector(open:callback:))
+WX_EXPORT_METHOD(@selector(pay:callback:))
 WX_EXPORT_METHOD(@selector(login:callback:))
--(void)open:(NSDictionary*)param  callback:(WXModuleCallback)callback
+-(void)pay:(NSDictionary*)param  callback:(WXModuleCallback)callback
 {
     
     NSString* signstr=param[@"signstr"];
@@ -39,3 +39,4 @@ WX_EXPORT_METHOD(@selector(login:callback:))
     }
 }
 @end
+

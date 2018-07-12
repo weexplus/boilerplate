@@ -12,7 +12,7 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
-@interface JPushManager : NSObject
+@interface JPushManager : NSObject<JPUSHRegisterDelegate,PushProtocol>
 + (instancetype)sharedManager;
 -(void)initHanler;
 @end

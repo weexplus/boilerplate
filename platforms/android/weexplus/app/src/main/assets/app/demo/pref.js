@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 397);
+/******/ 	return __webpack_require__(__webpack_require__.s = 402);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -279,21 +279,117 @@ exports.default = {
 
 /***/ }),
 
-/***/ 397:
+/***/ 4:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["layout"],
+    style: {
+      'background-color': _vm.bgcolor,
+      'height': _vm.height
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row"
+    },
+    style: {
+      'top': _vm.titletop
+    }
+  }, [(_vm.isloading) ? _c('div', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginRight: "10"
+    }
+  }) : _vm._e(), _c('text', {
+    staticStyle: {
+      flex: "1",
+      color: "#ffffff",
+      textAlign: "center",
+      fontSize: "38"
+    },
+    on: {
+      "click": _vm.titleClick
+    }
+  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
+    staticStyle: {
+      height: "40",
+      width: "40",
+      marginLeft: "10",
+      marginTop: "5"
+    },
+    attrs: {
+      "color": "#ffffff",
+      "loadingStyle": "small"
+    }
+  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
+    staticStyle: {
+      width: "200",
+      top: "40",
+      position: "absolute",
+      left: "0"
+    },
+    style: {
+      'height': _vm.height,
+      'top': _vm.top
+    },
+    on: {
+      "click": _vm.backTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "80",
+      height: "80"
+    },
+    attrs: {
+      "src": "root:img/back.png"
+    }
+  })]) : _vm._e(), _c('div', {
+    staticStyle: {
+      width: "200",
+      position: "absolute",
+      right: "0",
+      top: "0",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    style: {
+      'height': _vm.height
+    },
+    on: {
+      "click": _vm.rightclick
+    }
+  }, [_vm._t("right")], 2), _c('div', {
+    staticStyle: {
+      height: "1",
+      backgroundColor: "#111111",
+      position: "absolute",
+      bottom: "0",
+      left: "0",
+      right: "0"
+    }
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(398)
+__vue_styles__.push(__webpack_require__(403)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(399)
+__vue_exports__ = __webpack_require__(404)
 
 /* template */
-var __vue_template__ = __webpack_require__(400)
+var __vue_template__ = __webpack_require__(405)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -326,7 +422,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 398:
+/***/ 403:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -348,7 +444,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 399:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -468,103 +564,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 4:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["layout"],
-    style: {
-      'background-color': _vm.bgcolor,
-      'height': _vm.height
-    }
-  }, [_c('div', {
-    staticStyle: {
-      flexDirection: "row"
-    },
-    style: {
-      'top': _vm.titletop
-    }
-  }, [(_vm.isloading) ? _c('div', {
-    staticStyle: {
-      height: "40",
-      width: "40",
-      marginRight: "10"
-    }
-  }) : _vm._e(), _c('text', {
-    staticStyle: {
-      flex: "1",
-      color: "#ffffff",
-      textAlign: "center",
-      fontSize: "38"
-    },
-    on: {
-      "click": _vm.titleClick
-    }
-  }, [_vm._v(_vm._s(_vm.title))]), (_vm.isloading) ? _c('floading', {
-    staticStyle: {
-      height: "40",
-      width: "40",
-      marginLeft: "10",
-      marginTop: "5"
-    },
-    attrs: {
-      "color": "#ffffff",
-      "loadingStyle": "small"
-    }
-  }) : _vm._e()], 1), (_vm.back) ? _c('div', {
-    staticStyle: {
-      width: "200",
-      top: "40",
-      position: "absolute",
-      left: "0"
-    },
-    style: {
-      'height': _vm.height,
-      'top': _vm.top
-    },
-    on: {
-      "click": _vm.backTo
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "80",
-      height: "80"
-    },
-    attrs: {
-      "src": "root:img/back.png"
-    }
-  })]) : _vm._e(), _c('div', {
-    staticStyle: {
-      width: "200",
-      position: "absolute",
-      right: "0",
-      top: "0",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    style: {
-      'height': _vm.height
-    },
-    on: {
-      "click": _vm.rightclick
-    }
-  }, [_vm._t("right")], 2), _c('div', {
-    staticStyle: {
-      height: "1",
-      backgroundColor: "#111111",
-      position: "absolute",
-      bottom: "0",
-      left: "0",
-      right: "0"
-    }
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 400:
+/***/ 405:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

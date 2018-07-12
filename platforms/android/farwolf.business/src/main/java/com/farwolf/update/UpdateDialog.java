@@ -40,6 +40,7 @@ public class UpdateDialog extends ViewBase {
     TextView desc;
 
     Version data;
+    boolean silent;
 
     @Bean
     AppMainfest appMainfest;
@@ -76,6 +77,10 @@ public class UpdateDialog extends ViewBase {
     }
 
 
+    public void setSilent(boolean silent)
+    {
+       this.silent=silent;
+    }
     public void init(Version v,String theme)
     {
 
@@ -125,6 +130,7 @@ public class UpdateDialog extends ViewBase {
                 .setStoreDir(null)
                 .setDownloadSuccessNotificationFlag(Notification.DEFAULT_ALL)
                 .setDownloadErrorNotificationFlag(Notification.DEFAULT_ALL)
+                .setSilent(this.silent)
                 .build(this.getContext());
         this.f.dismiss();
     }

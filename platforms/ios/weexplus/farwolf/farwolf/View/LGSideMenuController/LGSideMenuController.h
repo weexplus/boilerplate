@@ -640,6 +640,9 @@ LGSideMenuSwipeGestureRange LGSideMenuSwipeGestureRangeMake(CGFloat left, CGFloa
 - (BOOL)isLeftViewAlwaysVisibleForOrientation:(UIInterfaceOrientation)orientation;
 - (BOOL)isRightViewAlwaysVisibleForOrientation:(UIInterfaceOrientation)orientation;
 
+- (void)hideLeftViewPrepareWithGesture:(BOOL)withGesture ;
+- (void)hideLeftViewAnimatedActions:(BOOL)animated completionHandler:(LGSideMenuCompletionHandler)completionHandler ;
+
 #pragma mark - Left view actions
 
 - (void)showLeftView;

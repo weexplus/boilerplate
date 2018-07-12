@@ -62,26 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 516);
+/******/ 	return __webpack_require__(__webpack_require__.s = 521);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 516:
+/***/ 521:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(517)
+__vue_styles__.push(__webpack_require__(522)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(518)
+__vue_exports__ = __webpack_require__(523)
 
 /* template */
-var __vue_template__ = __webpack_require__(519)
+var __vue_template__ = __webpack_require__(524)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -114,7 +114,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 517:
+/***/ 522:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -136,7 +136,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 518:
+/***/ 523:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -145,11 +145,6 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -210,48 +205,27 @@ exports.default = {
 
 /***/ }),
 
-/***/ 519:
+/***/ 524:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "red"
-    },
-    on: {
-      "click": _vm.add
+      alignItems: "center",
+      justifyContent: "center"
     }
-  }), _c('div', {
+  }, [_c('image', {
     staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "blue",
-      marginTop: "10",
-      visibility: "visible"
+      width: "300",
+      height: "300"
     },
-    style: {
-      'visibility': _vm.show ? 'visible' : 'hidden'
-    },
-    on: {
-      "click": _vm.add
-    }
-  }), _c('div', {
-    staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "green",
-      marginTop: "10"
-    },
-    style: {
-      'visibility': !_vm.show ? 'visible' : 'hidden'
-    },
-    on: {
-      "click": _vm.add
+    attrs: {
+      "src": "root:img/success.gif"
     }
   })])
-},staticRenderFns: []}
+}]}
 module.exports.render._withStripped = true
 
 /***/ })

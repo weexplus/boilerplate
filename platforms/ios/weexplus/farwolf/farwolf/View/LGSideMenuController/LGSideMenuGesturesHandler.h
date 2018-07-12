@@ -44,4 +44,5 @@
 
 - (nonnull instancetype)initWithSideMenuController:(nonnull LGSideMenuController *)sideMenuController;
 
+
 @end

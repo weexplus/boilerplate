@@ -6,16 +6,20 @@
 //
 
 #import "WXJPushModule.h"
-
+#import "WXJPushModule.h"
+#import "JPushManager.h"
 @implementation WXJPushModule
 
 @synthesize weexInstance;
 
 WX_EXPORT_METHOD(@selector(getJPushId))
 
-
+ 
 -(NSString*)getJPushId
 {
-    return @"";
+    
+    
+     return [JPUSHService registrationID];
+   
 }
 @end

@@ -28,6 +28,7 @@ static DebugScocket *debugScocket;
 +(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance;
 +(NSString*)getBaseDir;
 +(void)setBaseDir:(NSString*)url;
++(NSURL*)toURL:(NSString*)url;
 //+(NSString*)getBaseUrl;
 //+(void)setBaseUrl:(NSString*)url;
 +(UIViewController*)start:(NSString*)image url:(NSString*)url;

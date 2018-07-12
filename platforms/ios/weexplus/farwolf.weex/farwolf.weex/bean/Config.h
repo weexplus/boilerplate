@@ -12,6 +12,7 @@
 @interface Config : NSObject
 +(NSString*)schema;
 +(NSString*)entry;
++(NSString*)notifyEntry;
 +(NSString*)splash;
 +(NSString*)debugIp;
 +(BOOL)isPortrait;

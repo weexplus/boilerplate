@@ -13,6 +13,7 @@
 @interface WXSlidComponent : WXComponent
 @property(nonatomic,strong)  NSString *src;
 @property(nonatomic,strong)  NSString *slidSrc;
+@property(nonatomic)  BOOL isOpen;
 @property(nonatomic)  CGFloat leftWidth;
 @property(nonatomic,strong) UIView *host;
 @property(nonatomic,strong) LGSideMenuController *slidcontrol;

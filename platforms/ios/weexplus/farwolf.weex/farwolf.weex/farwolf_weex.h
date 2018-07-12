@@ -28,6 +28,7 @@
 #import "Page.h"
 #import "Config.h"
 #define APP_didRegisterForRemoteNotificationsWithDeviceToken @"application_didRegisterForRemoteNotificationsWithDeviceToken"
+#define APP_didReceiveRemoteNotification_fetchCompletionHandler @"app_didReceiveRemoteNotification_fetchCompletionHandler"
 #define APP_didReceiveRemoteNotification @"application_didReceiveRemoteNotification"
 #define APP_handleOpenURL @"application_handleOpenURL"
 #define APP_openURL @"application_openURL"

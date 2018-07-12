@@ -69,6 +69,22 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
     }
 
 
+    @WXComponentProp(name = "isOpen")
+    public void setOpen(boolean open)
+    {
+        if (open) {
+            drawerLayoutView_.drawer_layout.openDrawer(drawerLayoutView_.nav_view);
+        }else {
+            drawerLayoutView_.drawer_layout.closeDrawer(drawerLayoutView_.nav_view);
+        }
+    }
+
+    public  boolean getIsOpen()
+    {
+        return drawerLayoutView_.drawer_layout.isDrawerOpen(drawerLayoutView_.drawer_layout);
+    }
+
+
     @Override
     public void onActivityResume() {
         super.onActivityResume();

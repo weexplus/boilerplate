@@ -13,6 +13,7 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
-@interface jpush : NSObject<JPUSHRegisterDelegate,PushProtocol>
-+(void)initPush;
+@interface jpush : NSObject
+-(void)initPush;
++(instancetype)sharedManager;
 @end

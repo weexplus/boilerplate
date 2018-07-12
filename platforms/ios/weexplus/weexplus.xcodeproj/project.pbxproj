@@ -27,6 +27,7 @@
 		4D26654B1ECD84CD00664B38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D92AA141F4D5BD900493BCF /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
+		4DA5883C20F343AB007D4B5E /* Appdefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Appdefine.h; sourceTree = "<group>"; };
 		B76DCF182E04FBDA1655EAEA /* Pods-weexplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.debug.xcconfig"; sourceTree = "<group>"; };
 		C51BE6763BC7E197A7AE63F3 /* Pods-weexplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +66,7 @@
 		4D2665391ECD84CD00664B38 /* weexplus */ = {
 			isa = PBXGroup;
 			children = (
+				4DA5883C20F343AB007D4B5E /* Appdefine.h */,
 				4D26653D1ECD84CD00664B38 /* AppDelegate.h */,
 				4D26653E1ECD84CD00664B38 /* AppDelegate.m */,
 				4D2665431ECD84CD00664B38 /* Main.storyboard */,

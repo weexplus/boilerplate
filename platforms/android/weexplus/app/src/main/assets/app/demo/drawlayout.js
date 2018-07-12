@@ -440,6 +440,10 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
 
 
 var head = __webpack_require__(5);
@@ -451,11 +455,18 @@ exports.default = {
     data: function data() {
         return {
             back: "",
-            header: {}
+            header: {},
+            open: false
         };
     },
 
     methods: {
+        setOpen: function setOpen() {
+            this.open = true;
+        },
+        setClose: function setClose() {
+            this.open = false;
+        },
         post: function post() {
             var self = this;
             self.back = "";
@@ -500,12 +511,40 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('drawerlayout', {
-    attrs: {
-      "src": "font.js",
-      "slidSrc": "center.js"
+  return _c('div', {
+    staticStyle: {
+      justifyContent: "center",
+      alignItems: "center"
     }
-  })
+  }, [_c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100",
+      backgroundColor: "red"
+    },
+    on: {
+      "click": _vm.setOpen
+    }
+  }, [_c('text', [_vm._v("打开")])]), _c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100",
+      backgroundColor: "red"
+    },
+    on: {
+      "click": _vm.setClose
+    }
+  }, [_c('text', [_vm._v("关闭")])]), _c('drawerlayout', {
+    staticStyle: {
+      width: "750",
+      height: "800"
+    },
+    attrs: {
+      "src": "root:demo/font.js",
+      "slidSrc": "root:demo/center.js",
+      "isOpen": _vm.open
+    }
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

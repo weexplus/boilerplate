@@ -13,6 +13,9 @@
 #import "UpdateDialogControl.h"
 #import "ZipDownloader.h"
 #import "jpush.h"
+#import "wechat.h"
+#import "alipay.h"
+#import "Appdefine.h"
 
 
 @interface AppDelegate ()
@@ -29,7 +32,7 @@
     [URL copyBundleToDisk];
     [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
-    [Weex initWeex:@"farwolf" appName:@"vshop" appVersion:@"1.0.0"];
+    [Weex initWeex:@"farwolf" appName:@"weexplus" appVersion:@"1.0.0"];
  
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
@@ -38,10 +41,16 @@
     [_window makeKeyAndVisible];
     if([Config isDebug])
       [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
+    [wechat initWechat];
+    [alipay initPay];
+    [[jpush  sharedManager]initPush];
 //    NSString *appkey=@"";
 //    [self.pushProtocol afterLanching:launchOptions appkey:appkey];
     
     NSMutableDictionary *p=[NSMutableDictionary new];
+    if(launchOptions==nil)
+        launchOptions=[NSMutableDictionary new];
+    [launchOptions setValue:JPUSHAppkey forKey:@"jpushAppkey"];
     p[@"options"]=launchOptions;
     [self notifyDict:APP_didFinishLaunchingWithOptions value:p];
     
@@ -51,6 +60,14 @@
 }
 
  
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+    NSMutableDictionary *p=[NSMutableDictionary new];
+    p[@"userInfo"]=userInfo;
+    [self notifyDict:APP_didReceiveRemoteNotification_fetchCompletionHandler value:p];
+    
+    completionHandler(UIBackgroundFetchResultNewData);
+}
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -73,14 +90,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
     NSMutableDictionary *p=[NSMutableDictionary new];
-    p[@"url"]=url.absoluteString;
+    p[@"url"]=url;
     [self notifyDict:APP_handleOpenURL value:p];
     return   true;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     NSMutableDictionary *p=[NSMutableDictionary new];
-    p[@"url"]=url.absoluteString;
+    p[@"url"]=url;
     [self notifyDict:APP_openURL value:p];
     return   true;
 }

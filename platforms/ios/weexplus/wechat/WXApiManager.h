@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "WXApi.h"
+#import <WeexSDK/WXEventModuleProtocol.h>
+#import <WeexSDK/WXModuleProtocol.h>
 
 @protocol WXApiManagerDelegate <NSObject>
 
@@ -18,6 +20,8 @@
 
 @interface WXApiManager : NSObject<WXApiDelegate>
 
+@property(nonatomic,copy) WXModuleKeepAliveCallback loginCallback;
+@property(nonatomic,copy) WXModuleKeepAliveCallback payCallback;
 @property (nonatomic, assign) id<WXApiManagerDelegate> delegate;
 
 + (instancetype)sharedManager;

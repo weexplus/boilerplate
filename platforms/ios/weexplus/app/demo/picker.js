@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 392);
+/******/ 	return __webpack_require__(__webpack_require__.s = 397);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -279,23 +279,23 @@ exports.default = {
 
 /***/ }),
 
-/***/ 392:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(393)
+__vue_styles__.push(__webpack_require__(398)
 )
-__vue_styles__.push(__webpack_require__(394)
+__vue_styles__.push(__webpack_require__(399)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(395)
+__vue_exports__ = __webpack_require__(400)
 
 /* template */
-var __vue_template__ = __webpack_require__(396)
+var __vue_template__ = __webpack_require__(401)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -328,7 +328,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 393:
+/***/ 398:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -339,7 +339,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 394:
+/***/ 399:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -403,149 +403,6 @@ module.exports = {
     "backgroundColor:active": "#006ce7"
   }
 }
-
-/***/ }),
-
-/***/ 395:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-var head = __webpack_require__(5);
-
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            src: ""
-        };
-    },
-
-    methods: {
-        jk1: function jk1() {
-            var nav = weex.requireModule("navigator");
-            nav.push('net.js');
-        },
-        jk: function jk() {
-
-            var picker = weex.requireModule("fpicker");
-            picker.setCount(3);
-            picker.setItems1(['猫猫猫猫', '狗', '鹦鹉']);
-            picker.setItems2(['猫猫猫猫', '狗', '鹦鹉']);
-            picker.setItems3(['猫猫猫猫猫', '狗', '鹦鹉']);
-            //                picker.setItems2(this.toArray(l[0].children))
-            picker.setTheme('#5261f7', '#ffffff');
-            picker.show();
-        }
-    },
-    created: function created() {
-
-        var globalEvent = weex.requireModule('globalEvent');
-
-        globalEvent.addEventListener("onPageInit", function (e) {
-            var nav = weex.requireModule('navbar');
-            nav.setTitle('照相');
-            nav.setBack(true);
-            nav.setRightImage('img/scan.png', function (res) {
-
-                var modal = weex.requireModule('modal');
-                modal.alert({ message: "ok" });
-            });
-        });
-    }
-};
-
-/***/ }),
-
-/***/ 396:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "picker",
-      "append": "tree"
-    }
-  }), _c('div', {
-    staticStyle: {
-      alignItems: "center"
-    }
-  }, [_c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.jk()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff",
-      fontSize: "30"
-    }
-  }, [_vm._v("picker单列")])])]), _c('div', {
-    staticStyle: {
-      alignItems: "center"
-    }
-  }, [_c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.jk1()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff",
-      fontSize: "30"
-    }
-  }, [_vm._v("跳转")])])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -640,6 +497,149 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       right: "0"
     }
   })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 400:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var head = __webpack_require__(5);
+
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            src: ""
+        };
+    },
+
+    methods: {
+        jk1: function jk1() {
+            var nav = weex.requireModule("navigator");
+            nav.push('net.js');
+        },
+        jk: function jk() {
+
+            var picker = weex.requireModule("fpicker");
+            picker.setCount(3);
+            picker.setItems1(['猫猫猫猫', '狗', '鹦鹉']);
+            picker.setItems2(['猫猫猫猫', '狗', '鹦鹉']);
+            picker.setItems3(['猫猫猫猫猫', '狗', '鹦鹉']);
+            //                picker.setItems2(this.toArray(l[0].children))
+            picker.setTheme('#5261f7', '#ffffff');
+            picker.show();
+        }
+    },
+    created: function created() {
+
+        var globalEvent = weex.requireModule('globalEvent');
+
+        globalEvent.addEventListener("onPageInit", function (e) {
+            var nav = weex.requireModule('navbar');
+            nav.setTitle('照相');
+            nav.setBack(true);
+            nav.setRightImage('img/scan.png', function (res) {
+
+                var modal = weex.requireModule('modal');
+                modal.alert({ message: "ok" });
+            });
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 401:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "picker",
+      "append": "tree"
+    }
+  }), _c('div', {
+    staticStyle: {
+      alignItems: "center"
+    }
+  }, [_c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.jk()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff",
+      fontSize: "30"
+    }
+  }, [_vm._v("picker单列")])])]), _c('div', {
+    staticStyle: {
+      alignItems: "center"
+    }
+  }, [_c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.jk1()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff",
+      fontSize: "30"
+    }
+  }, [_vm._v("跳转")])])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

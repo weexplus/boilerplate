@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 433);
+/******/ 	return __webpack_require__(__webpack_require__.s = 438);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -421,17 +421,17 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 433:
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* script */
-__vue_exports__ = __webpack_require__(434)
+__vue_exports__ = __webpack_require__(439)
 
 /* template */
-var __vue_template__ = __webpack_require__(435)
+var __vue_template__ = __webpack_require__(440)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -463,7 +463,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 434:
+/***/ 439:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -494,7 +494,7 @@ exports.default = {
 
             var updater = weex.requireModule('updater');
             var p = {};
-            p.url = 'http://172.20.10.3:8080/jsversion.do';
+            p.url = 'http://10.23.6.67:8080/jsversion.do';
             p.appid = 1;
             p.theme = 1;
             p.nativeversion = 1;
@@ -508,7 +508,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 435:
+/***/ 440:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

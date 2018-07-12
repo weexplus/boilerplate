@@ -20,6 +20,10 @@
 {
     return  [[Weex conifg] objectForKey:@"entry"];
 }
++(NSString*)notifyEntry
+{
+    return  [[Weex conifg] objectForKey:@"notifyEntry"];
+}
 
 +(NSString*)debugIp
 {
@@ -62,8 +66,8 @@
 +(BOOL)isDebug
 {
     NSMutableDictionary *d=  [Weex conifg];
-  
-   return [d[@"debug"] boolValue];
+    
+    return [[Weex bundleConifg][@"debug"] boolValue];
 }
 +(BOOL)showError
 {

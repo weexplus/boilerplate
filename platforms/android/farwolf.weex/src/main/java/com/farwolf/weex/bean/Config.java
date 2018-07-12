@@ -83,7 +83,7 @@ public class Config {
 
     public static boolean debug(Context c)
     {
-        return config(c).optBoolean("debug");
+        return assetConfig(c).optBoolean("debug");
     }
 
     public static boolean showError(Context c)

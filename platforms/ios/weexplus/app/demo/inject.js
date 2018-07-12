@@ -62,26 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 521);
+/******/ 	return __webpack_require__(__webpack_require__.s = 340);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 521:
+/***/ 340:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(522)
+__vue_styles__.push(__webpack_require__(341)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(523)
+__vue_exports__ = __webpack_require__(342)
 
 /* template */
-var __vue_template__ = __webpack_require__(524)
+var __vue_template__ = __webpack_require__(344)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -93,10 +93,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/index.vue"
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/inject.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1e2a9b1c"
+__vue_options__._scopeId = "data-v-28e8ed5d"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -114,36 +114,21 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 522:
+/***/ 341:
 /***/ (function(module, exports) {
 
-module.exports = {
-  "add": {
-    "width": "250",
-    "height": "250",
-    "backgroundColor": "#0088fb",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "pic": {
-    "width": "250",
-    "height": "250",
-    "backgroundColor": "#FF0000",
-    "borderWidth": 1,
-    "borderColor": "#ffffff"
-  }
-}
+module.exports = {}
 
 /***/ }),
 
-/***/ 523:
+/***/ 342:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -151,81 +136,33 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
+var inject = __webpack_require__(343);
+exports.default = {};
+
+/***/ }),
+
+/***/ 343:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = {
-    data: function data() {
-        return {
-            items: [1, 1, 1, 1, 1, 1],
-            show: true
-        };
-    },
-
-    methods: {
-        add: function add() {
-            //             this.show=!this.show;
-            var t = weex.requireModule('navbar');
-            t.setStatusBarStyle('black');
-        },
-        remove: function remove(item) {
-            //                this.items.remove(0)
-
-
-        }
-    },
-    created: function created() {
-
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {
-
-            var t = weex.requireModule('modal');
-            //                t.toast({message:'111'})
-        });
-    }
+  get: function get() {}
 };
 
 /***/ }),
 
-/***/ 524:
+/***/ 344:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      alignItems: "center",
-      justifyContent: "center"
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "300",
-      height: "300"
-    },
-    attrs: {
-      "src": "root:img/success.gif"
-    }
-  })])
-}]}
+  return _c('div')
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })

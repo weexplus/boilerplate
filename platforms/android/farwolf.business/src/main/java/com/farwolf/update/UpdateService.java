@@ -47,12 +47,14 @@ public class UpdateService {
     String vcurl;
 
     String theme;
+    boolean installNextOpen;
 
-    public void init(String appid,String vcurl,String theme)
+    public void init(String appid,String vcurl,String theme,boolean installNextOpen)
     {
         this.appid=appid;
         this.vcurl=vcurl;
         this.theme=theme;
+        this.installNextOpen=installNextOpen;
 
     }
 
@@ -127,6 +129,7 @@ public class UpdateService {
                 a.f=f;
                 f.setCanceledOnTouchOutside(false);
                 f.setCancelable(v.level!=2);
+                a.setSilent(installNextOpen);
                 a.init(v,theme);
                 if(v.level==0)
                 {

@@ -62,20 +62,8 @@
 {
     
     BOOL isPortrait=[Config isPortrait];
-    NSURL *url=[NSURL URLWithString:self.url];
-    if([self.url startWith:@"http"])
-    {
-        url=[NSURL URLWithString:self.url];
-       
-    }
-    else
-    {
-        
-//        url= [[NSBundle mainBundle] URLForResource:[self.url replace:@".js" withString:@""]  withExtension:@"js"];
-//        url=[URL loadFromDisk:self.url];
-          url=[URL loadLocal:self.url];
-        int k=0;
-    }
+    NSURL *url=url=[Weex toURL:self.url];
+    
 
     if([Config isDebug])
     {

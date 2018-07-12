@@ -29,12 +29,14 @@ public class WXUpdateModule extends WXModule {
     public void doCheck(HashMap param,final JSCallback callback)
     {
         String appid=param.get("appid")+"";
+        boolean installNextOpen=Boolean.valueOf( param.get("installNextOpen")+"");
         String vcurl=param.get("url")+"";
         String theme=param.containsKey("theme")?param.get("theme")+"":null;
         boolean failtoast=param.containsKey("failtoast")?(boolean)param.get("failtoast"):false;
         boolean showprogress=param.containsKey("showprogress")?(boolean)param.get("showprogress"):false;
         UpdateService updateService= UpdateService_.getInstance_(mWXSDKInstance.getContext());
-        updateService.init(appid,vcurl,theme);
+        updateService.init(appid,vcurl,theme,installNextOpen);
+
         updateService.doCheck(failtoast, showprogress, new Callback() {
             @Override
             public void onInvoke(Object o) {
@@ -53,7 +55,7 @@ public class WXUpdateModule extends WXModule {
         boolean failtoast=param.containsKey("failtoast")?(boolean)param.get("failtoast"):false;
         boolean showprogress=param.containsKey("showprogress")?(boolean)param.get("showprogress"):false;
         UpdateService updateService= UpdateService_.getInstance_(mWXSDKInstance.getContext());
-        updateService.init(appid,vcurl,theme);
+        updateService.init(appid,vcurl,theme,false);
         updateService.doCheckJs(Config.jsVersion(mWXSDKInstance.getContext())+"",failtoast,showprogress);
     }
 

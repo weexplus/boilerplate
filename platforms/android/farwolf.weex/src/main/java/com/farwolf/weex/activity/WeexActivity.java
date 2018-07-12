@@ -578,6 +578,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         super.onDestroy();
         if (mWXSDKInstance != null) {
             mWXSDKInstance.onActivityDestroy();
+            mWXSDKInstance.fireGlobalEventCallback("onDestroy",null);
         }
 
     }
