@@ -52,6 +52,11 @@
     
 }
 
++(NSString*)appBoard
+{
+    return [[Weex conifg] objectForKey:@"appBoard"];
+}
+
 +(NSString*)diskJsVersion
 {
     return  [[Weex diskConifg] objectForKey:@"jsVersion"];

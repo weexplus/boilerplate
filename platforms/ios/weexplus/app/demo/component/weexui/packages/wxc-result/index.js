@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 290);
+/******/ 	return __webpack_require__(__webpack_require__.s = 362);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -82,7 +82,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
                                                                                                                                                                                                                                                                                 * Created by Tw93 on 17/11/01
                                                                                                                                                                                                                                                                                 */
 
-var _urlParse = __webpack_require__(7);
+var _urlParse = __webpack_require__(2);
 
 var _urlParse2 = _interopRequireDefault(_urlParse);
 
@@ -351,109 +351,7 @@ exports.default = Utils;
 
 /***/ }),
 
-/***/ 290:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(59)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(60)
-
-/* template */
-var __vue_template__ = __webpack_require__(62)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-result/index.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-20ce0ef1"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 59:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "wrap": {
-    "position": "absolute",
-    "top": 0,
-    "left": 0,
-    "right": 0,
-    "bottom": 0
-  },
-  "wxc-result": {
-    "width": "750",
-    "flex": 1,
-    "alignItems": "center",
-    "backgroundColor": "#f2f3f4"
-  },
-  "result-image": {
-    "width": "320",
-    "height": "320"
-  },
-  "result-content": {
-    "marginTop": "36",
-    "alignItems": "center"
-  },
-  "content-text": {
-    "fontSize": "30",
-    "color": "#A5A5A5",
-    "height": "42",
-    "lineHeight": "42",
-    "textAlign": "center"
-  },
-  "content-desc": {
-    "marginTop": "10"
-  },
-  "result-button": {
-    "marginTop": "60",
-    "borderWidth": "1",
-    "borderColor": "#979797",
-    "backgroundColor": "#FFFFFF",
-    "borderRadius": "6",
-    "width": "240",
-    "height": "72",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "button-text": {
-    "color": "#666666",
-    "fontSize": "30"
-  }
-}
-
-/***/ }),
-
-/***/ 6:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -484,246 +382,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 60:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _type = __webpack_require__(61);
-
-var _type2 = _interopRequireDefault(_type);
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: {
-    type: {
-      type: String,
-      default: 'errorPage'
-    },
-    show: {
-      type: Boolean,
-      default: true
-    },
-    wrapStyle: Object,
-    paddingTop: {
-      type: [Number, String],
-      default: 232
-    },
-    customSet: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    }
-  },
-  computed: {
-    resultType: function resultType() {
-      var type = this.type,
-          customSet = this.customSet;
-
-      var allTypes = _utils2.default.isEmptyObject(customSet) ? _type2.default : _utils2.default.mergeDeep(_type2.default, customSet);
-      var types = allTypes['errorPage'];
-      if (['errorPage', 'noGoods', 'noNetwork', 'errorLocation'].indexOf(type) > -1) {
-        types = allTypes[type];
-      }
-      return types;
-    },
-    setPaddingTop: function setPaddingTop() {
-      var paddingTop = this.paddingTop;
-      return paddingTop + 'px';
-    }
-  },
-  methods: {
-    handleTouchEnd: function handleTouchEnd(e) {
-      // web上面有点击穿透问题
-      var platform = weex.config.env.platform;
-
-      platform === 'Web' && e.preventDefault && e.preventDefault();
-    },
-    onClick: function onClick() {
-      var type = this.type;
-      this.$emit('wxcResultButtonClicked', { type: type });
-    }
-  }
-};
-
-/***/ }),
-
-/***/ 61:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
- * Created by Tw93 on 2016/11/4.
- */
-
-exports.default = {
-  errorPage: {
-    pic: 'https://img.alicdn.com/tfs/TB17blphfDH8KJjy1XcXXcpdXXa-320-320.png',
-    content: '抱歉出错了，我们正在全力解决中',
-    button: '再试一次',
-    title: '出错啦'
-  },
-  noGoods: {
-    pic: 'https://img.alicdn.com/tfs/TB1mPWEeOqAXuNjy1XdXXaYcVXa-320-320.png',
-    content: '主人，这里什么都没有找到',
-    button: '再试一次',
-    title: '暂无商品'
-  },
-  noNetwork: {
-    pic: 'https://img.alicdn.com/tfs/TB1jkA5g9_I8KJjy0FoXXaFnVXa-320-320.png',
-    content: '哎呀，没有网络了......',
-    button: '刷新一下',
-    title: '无网络'
-  },
-  errorLocation: {
-    pic: 'https://img.alicdn.com/tfs/TB1zXXahhrI8KJjy0FpXXb5hVXa-320-320.png',
-    content: '哎呀，定位失败了......',
-    button: '刷新一下',
-    title: '定位失败'
-  }
-};
-
-/***/ }),
-
-/***/ 62:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.show) ? _c('div', {
-    staticClass: ["wrap"],
-    style: _vm.wrapStyle
-  }, [_c('div', {
-    staticClass: ["wxc-result"],
-    style: {
-      paddingTop: _vm.setPaddingTop
-    }
-  }, [_c('image', {
-    staticClass: ["result-image"],
-    attrs: {
-      "ariaHidden": true,
-      "src": _vm.resultType.pic
-    }
-  }), (_vm.resultType.content) ? _c('div', {
-    staticClass: ["result-content"]
-  }, [_c('text', {
-    staticClass: ["content-text"]
-  }, [_vm._v(_vm._s(_vm.resultType.content))]), (_vm.resultType.desc) ? _c('text', {
-    staticClass: ["content-text", "content-desc"]
-  }, [_vm._v(_vm._s(_vm.resultType.desc))]) : _vm._e()]) : _vm._e(), (_vm.resultType.button) ? _c('div', {
-    staticClass: ["result-button"],
-    on: {
-      "touchend": _vm.handleTouchEnd,
-      "click": _vm.onClick
-    }
-  }, [_c('text', {
-    staticClass: ["button-text"]
-  }, [_vm._v(_vm._s(_vm.resultType.button))])]) : _vm._e()])]) : _vm._e()
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 7:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -731,8 +390,8 @@ module.exports.render._withStripped = true
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var required = __webpack_require__(8),
-    qs = __webpack_require__(9),
+var required = __webpack_require__(3),
+    qs = __webpack_require__(4),
     protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i,
     slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
 
@@ -1136,11 +795,11 @@ URL.location = lolcation;
 URL.qs = qs;
 
 module.exports = URL;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 
-/***/ 8:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1186,7 +845,54 @@ module.exports = function required(port, protocol) {
 
 /***/ }),
 
-/***/ 9:
+/***/ 362:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(50)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(51)
+
+/* template */
+var __vue_template__ = __webpack_require__(53)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-result/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-20ce0ef1"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1259,6 +965,300 @@ function querystringify(obj, prefix) {
 //
 exports.stringify = querystringify;
 exports.parse = querystring;
+
+/***/ }),
+
+/***/ 50:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrap": {
+    "position": "absolute",
+    "top": 0,
+    "left": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "wxc-result": {
+    "width": "750",
+    "flex": 1,
+    "alignItems": "center",
+    "backgroundColor": "#f2f3f4"
+  },
+  "result-image": {
+    "width": "320",
+    "height": "320"
+  },
+  "result-content": {
+    "marginTop": "36",
+    "alignItems": "center"
+  },
+  "content-text": {
+    "fontSize": "30",
+    "color": "#A5A5A5",
+    "height": "42",
+    "lineHeight": "42",
+    "textAlign": "center"
+  },
+  "content-desc": {
+    "marginTop": "10"
+  },
+  "result-button": {
+    "marginTop": "60",
+    "borderWidth": "1",
+    "borderColor": "#979797",
+    "backgroundColor": "#FFFFFF",
+    "borderRadius": "6",
+    "width": "240",
+    "height": "72",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "button-text": {
+    "color": "#666666",
+    "fontSize": "30"
+  }
+}
+
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _type = __webpack_require__(52);
+
+var _type2 = _interopRequireDefault(_type);
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: {
+    type: {
+      type: String,
+      default: 'errorPage'
+    },
+    show: {
+      type: Boolean,
+      default: true
+    },
+    wrapStyle: Object,
+    paddingTop: {
+      type: [Number, String],
+      default: 232
+    },
+    customSet: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  computed: {
+    resultType: function resultType() {
+      var type = this.type,
+          customSet = this.customSet;
+
+      var allTypes = _utils2.default.isEmptyObject(customSet) ? _type2.default : _utils2.default.mergeDeep(_type2.default, customSet);
+      var types = allTypes['errorPage'];
+      if (['errorPage', 'noGoods', 'noNetwork', 'errorLocation'].indexOf(type) > -1) {
+        types = allTypes[type];
+      }
+      return types;
+    },
+    setPaddingTop: function setPaddingTop() {
+      var paddingTop = this.paddingTop;
+      return paddingTop + 'px';
+    }
+  },
+  methods: {
+    handleTouchEnd: function handleTouchEnd(e) {
+      // web上面有点击穿透问题
+      var platform = weex.config.env.platform;
+
+      platform === 'Web' && e.preventDefault && e.preventDefault();
+    },
+    onClick: function onClick() {
+      var type = this.type;
+      this.$emit('wxcResultButtonClicked', { type: type });
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 52:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
+ * Created by Tw93 on 2016/11/4.
+ */
+
+exports.default = {
+  errorPage: {
+    pic: 'https://img.alicdn.com/tfs/TB17blphfDH8KJjy1XcXXcpdXXa-320-320.png',
+    content: '抱歉出错了，我们正在全力解决中',
+    button: '再试一次',
+    title: '出错啦'
+  },
+  noGoods: {
+    pic: 'https://img.alicdn.com/tfs/TB1mPWEeOqAXuNjy1XdXXaYcVXa-320-320.png',
+    content: '主人，这里什么都没有找到',
+    button: '再试一次',
+    title: '暂无商品'
+  },
+  noNetwork: {
+    pic: 'https://img.alicdn.com/tfs/TB1jkA5g9_I8KJjy0FoXXaFnVXa-320-320.png',
+    content: '哎呀，没有网络了......',
+    button: '刷新一下',
+    title: '无网络'
+  },
+  errorLocation: {
+    pic: 'https://img.alicdn.com/tfs/TB1zXXahhrI8KJjy0FpXXb5hVXa-320-320.png',
+    content: '哎呀，定位失败了......',
+    button: '刷新一下',
+    title: '定位失败'
+  }
+};
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.show) ? _c('div', {
+    staticClass: ["wrap"],
+    style: _vm.wrapStyle
+  }, [_c('div', {
+    staticClass: ["wxc-result"],
+    style: {
+      paddingTop: _vm.setPaddingTop
+    }
+  }, [_c('image', {
+    staticClass: ["result-image"],
+    attrs: {
+      "ariaHidden": true,
+      "src": _vm.resultType.pic
+    }
+  }), (_vm.resultType.content) ? _c('div', {
+    staticClass: ["result-content"]
+  }, [_c('text', {
+    staticClass: ["content-text"]
+  }, [_vm._v(_vm._s(_vm.resultType.content))]), (_vm.resultType.desc) ? _c('text', {
+    staticClass: ["content-text", "content-desc"]
+  }, [_vm._v(_vm._s(_vm.resultType.desc))]) : _vm._e()]) : _vm._e(), (_vm.resultType.button) ? _c('div', {
+    staticClass: ["result-button"],
+    on: {
+      "touchend": _vm.handleTouchEnd,
+      "click": _vm.onClick
+    }
+  }, [_c('text', {
+    staticClass: ["button-text"]
+  }, [_vm._v(_vm._s(_vm.resultType.button))])]) : _vm._e()])]) : _vm._e()
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ })
 

@@ -62,12 +62,218 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 355);
+/******/ 	return __webpack_require__(__webpack_require__.s = 429);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
+/***/ 429:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(430)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(431)
+
+/* template */
+var __vue_template__ = __webpack_require__(432)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/nav1.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-707665ba"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 430:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": 50
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "marginTop": 50,
+    "marginLeft": 50,
+    "marginRight": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 431:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var head = __webpack_require__(9);
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            text: 'Hello World.',
+            param: ''
+        };
+    },
+
+    methods: {
+        ok: function ok() {
+
+            this.param = "dsds";
+        },
+        back: function back() {
+            var navigator = weex.requireModule('navigator');
+            navigator.backFull({ ok: '这是回传的值' }, true);
+        },
+        backto: function backto() {
+            var navigator = weex.requireModule('navigator');
+            navigator.backTo('root');
+        }
+    },
+
+    created: function created() {
+
+        var self = this;
+        var globalEvent = weex.requireModule('globalEvent');
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            //              var navigator = weex.requireModule('navigator') ;
+            self.param = e;
+            //              navigator.setPageId('nav1');
+
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 432:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "导航子界面",
+      "append": "tree"
+    }
+  }), _c('div', {
+    staticStyle: {
+      width: "750",
+      alignItems: "center",
+      marginTop: "50"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#000000"
+    }
+  }, [_vm._v("传过来的参数值：" + _vm._s(_vm.param))])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.back()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.backto()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v("（navigator.backTo('index');夸页返回")])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +340,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2:
+/***/ 6:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -150,7 +356,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -279,213 +485,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 355:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(356)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(357)
-
-/* template */
-var __vue_template__ = __webpack_require__(358)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/nav1.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-707665ba"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 356:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": 50
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "marginTop": 50,
-    "marginLeft": 50,
-    "marginRight": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 357:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var head = __webpack_require__(5);
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            text: 'Hello World.',
-            param: ''
-        };
-    },
-
-    methods: {
-        ok: function ok() {
-
-            this.param = "dsds";
-        },
-        back: function back() {
-            var navigator = weex.requireModule('navigator');
-            navigator.backFull({ ok: '这是回传的值' }, true);
-        },
-        backto: function backto() {
-            var navigator = weex.requireModule('navigator');
-            navigator.backTo('root');
-        }
-    },
-
-    created: function created() {
-
-        var self = this;
-        var globalEvent = weex.requireModule('globalEvent');
-        globalEvent.addEventListener("onPageInit", function (e) {
-
-            //              var navigator = weex.requireModule('navigator') ;
-            self.param = e;
-            //              navigator.setPageId('nav1');
-
-        });
-    }
-};
-
-/***/ }),
-
-/***/ 358:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "导航子界面",
-      "append": "tree"
-    }
-  }), _c('div', {
-    staticStyle: {
-      width: "750",
-      alignItems: "center",
-      marginTop: "50"
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#000000"
-    }
-  }, [_vm._v("传过来的参数值：" + _vm._s(_vm.param))])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.back()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "white"
-    }
-  }, [_vm._v(" navigator.backFull({ok:this.param},true) 带参数返回")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.backto()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "white"
-    }
-  }, [_vm._v("（navigator.backTo('index');夸页返回")])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 4:
+/***/ 8:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -581,23 +581,23 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 5:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(1)
+__vue_styles__.push(__webpack_require__(5)
 )
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(6)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(3)
+__vue_exports__ = __webpack_require__(7)
 
 /* template */
-var __vue_template__ = __webpack_require__(4)
+var __vue_template__ = __webpack_require__(8)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

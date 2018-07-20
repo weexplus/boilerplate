@@ -62,12 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 487);
+/******/ 	return __webpack_require__(__webpack_require__.s = 523);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 487:
+/***/ 523:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -81,7 +81,7 @@ var host = 'http://59.110.169.246/movie/';
 // var host='http://192.168.1.101:8080/'
 
 
-exports.default = {
+var net = {
 
     postShort: function postShort(weg, param, header, start, success, compelete) {
         var modal = weex.requireModule("modal");
@@ -93,7 +93,6 @@ exports.default = {
             modal.toast({ message: '网络异常！' });
         }, function () {
             //compelete
-
             compelete();
         });
     },
@@ -168,6 +167,7 @@ exports.default = {
     }
 
 };
+exports.default = net;
 
 /***/ })
 

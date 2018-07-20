@@ -74,6 +74,11 @@ public class AppTool {
         {
             a.finish();
         }
+    }
+
+
+    public static void kill()
+    {
         System.exit(0);
     }
 

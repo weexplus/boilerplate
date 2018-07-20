@@ -1,7 +1,6 @@
 <template>
     <div style="background-color: yellow">
         <text>{{obj}}</text>
-
         <div class="btn" @click="clk"></div>
         <text>{{sd}}</text>
     </div>

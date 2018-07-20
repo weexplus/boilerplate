@@ -124,6 +124,7 @@ const weexConfig = {
     ]
   },
   plugins: plugins,
+
 };
 
 var exports = [webConfig, weexConfig];

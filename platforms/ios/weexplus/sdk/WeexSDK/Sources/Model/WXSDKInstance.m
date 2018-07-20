@@ -83,6 +83,16 @@ typedef enum : NSUInteger {
     }
     [_childInstance addObject:instance];
 }
+//zjr add
++(NSString*)getAppBoardContent
+{
+    return appBoardContent;
+}
+//zjr add
++(void)setAppBoardContent:(NSString*)content
+{
+    appBoardContent=content;
+}
 
 
 - (void)dealloc
@@ -354,6 +364,10 @@ typedef enum : NSUInteger {
         }
         
         NSString *jsBundleString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if([WXSDKInstance getAppBoardContent]!=nil)
+        {
+            jsBundleString=[[WXSDKInstance getAppBoardContent] stringByAppendingString:jsBundleString];
+        }
         if (!jsBundleString) {
             WX_MONITOR_FAIL_ON_PAGE(WXMTJSDownload, WX_ERR_JSBUNDLE_STRING_CONVERT, @"data converting to string failed.", strongSelf.pageName)
             return;

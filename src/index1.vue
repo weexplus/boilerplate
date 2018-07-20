@@ -1,7 +1,6 @@
 <template>
-
     <div style="background-color: yellow">
-       <text>this is dex1</text>
+        <text>this is dex1</text>
     </div>
 </template>
 <style>
@@ -52,32 +51,30 @@
 //                weg,param,header,start,success,fail,exception,compelete
                 return new Promise((resolve, reject) => {
 
-                    var progress=weex.requireModule("progress")
+                    var progress = weex.requireModule("progress")
                     var net = weex.requireModule('net')
                     var modal = weex.requireModule('modal')
-                    net.post(url,param,{},function(){
+                    net.post(url, param, {}, function () {
                         //start
                         progress.show()
-                    },function(e){
+                    }, function (e) {
                         //success
                         // modal.toast({message:e.res.err})
-                        if(e.res.err==0)
-                        {
+                        if (e.res.err == 0) {
                             resolve(e.res)
                         }
-                        else
-                        {
+                        else {
 
-                            modal.toast({message:e.res.err})
+                            modal.toast({message: e.res.err})
                         }
 
-                    },function(e){
+                    }, function (e) {
                         //compelete
                         progress.dismiss()
 
-                    },function(e){
+                    }, function (e) {
                         // exception
-                        modal.toast({message:'网络异常！'})
+                        modal.toast({message: '网络异常！'})
                     });
                 })
             },
@@ -140,7 +137,7 @@
             var self = this;
             globalEvent.addEventListener("onPageInit", function (e) {
 
-              var navigator=weex.requireModule('navigator')
+                var navigator = weex.requireModule('navigator')
                 navigator.push('demo/drawlayout.js')
 //              page.closeSplash()
 

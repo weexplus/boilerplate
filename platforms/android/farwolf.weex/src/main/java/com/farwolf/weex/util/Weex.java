@@ -240,10 +240,26 @@ public class Weex extends ServiceBase{
     {
 //        String px= SDCard.getBasePath(c);
 //        String s= WXFileUtils.loadAsset(path, c);
+        String appboard=loadAppboard(c);
         String s= Local.getString(c,path);
         if(!s.startsWith("// { \"framework\": \"Vue\"}"))
             s="// { \"framework\": \"Vue\"}\n"+s;
+        return appboard+s;
+    }
+
+    public static String loadAppboard(Context c)
+    {
+        String path=Config.appBoard(c);
+        path=getLocalRootPath(path);
+        String s= Local.getString(c,path);
         return s;
+    }
+
+
+    public static String getLocalRootPath(String path)
+    {
+        path=path.replace("root:","app/");
+        return path;
     }
 
 

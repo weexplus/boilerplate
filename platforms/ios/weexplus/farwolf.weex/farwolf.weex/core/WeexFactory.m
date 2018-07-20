@@ -108,8 +108,7 @@ static NSMutableDictionary *pageCache;
 + (void)renderNew:(NSURL *)sourceURL  compelete:(void(^)(WXNormalViewContrller*))complete  fail:(void(^)(NSString*))fail frame:(CGRect)frame isPortrait:(BOOL)isPortrait
 {
 
-//    if([Weex getBaseUrl] ==nil||[[Weex getBaseUrl] isEqualToString:@""])
-//        [Weex setBaseUrl:sourceURL.absoluteString];
+    [Weex initAppBoardContent];
     Page *p=[Page new];
     p.instance = [[WXSDKInstance alloc] init];
     p.instance.frame =frame;

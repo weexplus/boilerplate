@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 293);
+/******/ 	return __webpack_require__(__webpack_require__.s = 366);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -82,7 +82,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
                                                                                                                                                                                                                                                                                 * Created by Tw93 on 17/11/01
                                                                                                                                                                                                                                                                                 */
 
-var _urlParse = __webpack_require__(7);
+var _urlParse = __webpack_require__(2);
 
 var _urlParse2 = _interopRequireDefault(_urlParse);
 
@@ -351,231 +351,7 @@ exports.default = Utils;
 
 /***/ }),
 
-/***/ 19:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(25)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(26)
-
-/* template */
-var __vue_template__ = __webpack_require__(27)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-rich-text/wxc-rich-text-text.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3086e869"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 25:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "wxc-text": {
-    "fontSize": "24",
-    "color": "#3d3d3d"
-  },
-  "black": {
-    "color": "#3D3D3D"
-  },
-  "yellow": {
-    "color": "#EE9900"
-  },
-  "blue": {
-    "color": "#30A0FF"
-  },
-  "gray": {
-    "color": "#A5A5A5"
-  },
-  "red": {
-    "color": "#FF5000"
-  },
-  "margin-text": {
-    "marginRight": "6"
-  }
-}
-
-/***/ }),
-
-/***/ 26:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: {
-    textValue: {
-      type: String,
-      default: ''
-    },
-    textTheme: {
-      type: String,
-      default: 'gray'
-    },
-    textStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    hasTextMargin: {
-      type: Boolean,
-      default: true
-    }
-  },
-  computed: {
-    themeStyle: function themeStyle() {
-      var style = {};
-      var textStyle = this.textStyle;
-      if (textStyle && textStyle.fontSize) {
-        style = _extends({}, style, {
-          fontSize: textStyle.fontSize + 'px',
-          height: textStyle.fontSize * 1.2 + 'px'
-        });
-      }
-      if (textStyle && textStyle.color) {
-        style = _extends({}, style, {
-          color: textStyle.color
-        });
-      }
-      return style;
-    }
-  }
-};
-
-/***/ }),
-
-/***/ 27:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('text', {
-    class: ['wxc-text', _vm.textTheme, _vm.hasTextMargin ? 'margin-text' : ''],
-    style: _vm.themeStyle
-  }, [_vm._v(_vm._s(_vm.textValue))])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 293:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* script */
-__vue_exports__ = __webpack_require__(86)
-
-/* template */
-var __vue_template__ = __webpack_require__(87)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-rich-text/wxc-rich-text-link.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 6:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -606,7 +382,52 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 7:
+/***/ 15:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(22)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(23)
+
+/* template */
+var __vue_template__ = __webpack_require__(24)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-rich-text/wxc-rich-text-text.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3086e869"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -614,8 +435,8 @@ module.exports = g;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var required = __webpack_require__(8),
-    qs = __webpack_require__(9),
+var required = __webpack_require__(3),
+    qs = __webpack_require__(4),
     protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i,
     slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
 
@@ -1019,11 +840,148 @@ URL.location = lolcation;
 URL.qs = qs;
 
 module.exports = URL;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 
-/***/ 8:
+/***/ 22:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wxc-text": {
+    "fontSize": "24",
+    "color": "#3d3d3d"
+  },
+  "black": {
+    "color": "#3D3D3D"
+  },
+  "yellow": {
+    "color": "#EE9900"
+  },
+  "blue": {
+    "color": "#30A0FF"
+  },
+  "gray": {
+    "color": "#A5A5A5"
+  },
+  "red": {
+    "color": "#FF5000"
+  },
+  "margin-text": {
+    "marginRight": "6"
+  }
+}
+
+/***/ }),
+
+/***/ 23:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: {
+    textValue: {
+      type: String,
+      default: ''
+    },
+    textTheme: {
+      type: String,
+      default: 'gray'
+    },
+    textStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    hasTextMargin: {
+      type: Boolean,
+      default: true
+    }
+  },
+  computed: {
+    themeStyle: function themeStyle() {
+      var style = {};
+      var textStyle = this.textStyle;
+      if (textStyle && textStyle.fontSize) {
+        style = _extends({}, style, {
+          fontSize: textStyle.fontSize + 'px',
+          height: textStyle.fontSize * 1.2 + 'px'
+        });
+      }
+      if (textStyle && textStyle.color) {
+        style = _extends({}, style, {
+          color: textStyle.color
+        });
+      }
+      return style;
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('text', {
+    class: ['wxc-text', _vm.textTheme, _vm.hasTextMargin ? 'margin-text' : ''],
+    style: _vm.themeStyle
+  }, [_vm._v(_vm._s(_vm.textValue))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1069,104 +1027,49 @@ module.exports = function required(port, protocol) {
 
 /***/ }),
 
-/***/ 86:
+/***/ 366:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
 
+/* script */
+__vue_exports__ = __webpack_require__(80)
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-var _wxcRichTextText = __webpack_require__(19);
-
-var _wxcRichTextText2 = _interopRequireDefault(_wxcRichTextText);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  components: { WxcRichTextText: _wxcRichTextText2.default },
-  props: {
-    linkValue: {
-      type: [String, Number],
-      default: ''
-    },
-    hasTextMargin: {
-      type: Boolean,
-      default: true
-    },
-    linkHref: {
-      type: String,
-      default: ''
-    },
-    linkTheme: {
-      type: String,
-      default: 'black'
-    },
-    linkStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    }
-  },
-  data: function data() {
-    return {
-      defObj: {}
-    };
-  },
-  methods: {
-    onLinkClick: function onLinkClick(e) {
-      var self = this;
-      _utils2.default.goToH5Page(self.linkHref);
-      self.$emit('wxcRichTextLinkClick', { element: e, href: self.linkHref });
-    }
+/* template */
+var __vue_template__ = __webpack_require__(81)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-rich-text/wxc-rich-text-link.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
   }
-};
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
 
 /***/ }),
 
-/***/ 87:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    on: {
-      "click": _vm.onLinkClick
-    }
-  }, [_c('wxc-rich-text-text', {
-    attrs: {
-      "textValue": _vm.linkValue,
-      "hasTextMargin": _vm.hasTextMargin,
-      "textStyle": _vm.linkStyle ? _vm.linkStyle : _vm.defObj,
-      "textTheme": _vm.linkTheme ? _vm.linkTheme : 'black'
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 9:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1239,6 +1142,103 @@ function querystringify(obj, prefix) {
 //
 exports.stringify = querystringify;
 exports.parse = querystring;
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _wxcRichTextText = __webpack_require__(15);
+
+var _wxcRichTextText2 = _interopRequireDefault(_wxcRichTextText);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  components: { WxcRichTextText: _wxcRichTextText2.default },
+  props: {
+    linkValue: {
+      type: [String, Number],
+      default: ''
+    },
+    hasTextMargin: {
+      type: Boolean,
+      default: true
+    },
+    linkHref: {
+      type: String,
+      default: ''
+    },
+    linkTheme: {
+      type: String,
+      default: 'black'
+    },
+    linkStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  data: function data() {
+    return {
+      defObj: {}
+    };
+  },
+  methods: {
+    onLinkClick: function onLinkClick(e) {
+      var self = this;
+      _utils2.default.goToH5Page(self.linkHref);
+      self.$emit('wxcRichTextLinkClick', { element: e, href: self.linkHref });
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    on: {
+      "click": _vm.onLinkClick
+    }
+  }, [_c('wxc-rich-text-text', {
+    attrs: {
+      "textValue": _vm.linkValue,
+      "hasTextMargin": _vm.hasTextMargin,
+      "textStyle": _vm.linkStyle ? _vm.linkStyle : _vm.defObj,
+      "textTheme": _vm.linkTheme ? _vm.linkTheme : 'black'
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ })
 

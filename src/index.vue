@@ -1,10 +1,18 @@
 <template>
-    <div style="align-items: center;justify-content: center">
-      <image style="width: 300;height: 300;" src="root:img/success.gif"></image>
+    <div style="align-items: center;">
+      <input class="in" v-model="name" />
+        <text>{{name}}</text>
     </div>
 </template>
 <style>
-
+    .in
+    {
+        width: 700px;
+        height: 100px;
+        border-color: #006ce7;
+        border-width: 1px;
+        margin-top: 200px;
+    }
     .add {
         width: 250px;
         height: 250px;
@@ -25,13 +33,16 @@
 </style>
 
 <script>
+
+//    const common=require('./common.vue')
     export default {
 
         data()
         {
             return {
                 items: [1, 1, 1, 1, 1, 1],
-                show:true
+                show:true,
+                text:''
             }
         },
         methods: {

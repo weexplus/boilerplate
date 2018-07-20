@@ -94,6 +94,10 @@
         ,
         created: function () {
             var globalEvent = weex.requireModule('globalEvent');
+            var notify = weex.requireModule('notify');
+            notify.regist('destory',(res)=>{
+                this.callbackdata='destory'
+            })
             globalEvent.addEventListener("onPageInit", function (e) {
 
 

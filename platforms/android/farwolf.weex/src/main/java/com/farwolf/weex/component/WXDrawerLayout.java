@@ -9,6 +9,7 @@ import com.farwolf.weex.view.DrawerLayoutView;
 import com.farwolf.weex.view.DrawerLayoutView_;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.JSMethod;
+import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.dom.WXDomObject;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
@@ -79,9 +80,11 @@ public class WXDrawerLayout extends WXComponent<DrawerLayoutView> {
         }
     }
 
-    public  boolean getIsOpen()
+
+    @JSMethod
+    public  void getIsOpen(JSCallback callback)
     {
-        return drawerLayoutView_.drawer_layout.isDrawerOpen(drawerLayoutView_.drawer_layout);
+        callback.invoke(drawerLayoutView_.drawer_layout.isDrawerOpen(drawerLayoutView_.nav_view));
     }
 
 

@@ -47,6 +47,16 @@ public class WXUpdateModule extends WXModule {
 
 
     @JSMethod
+    public void checkDownloadApk()
+    {
+        com.farwolf.update.download.UpdateService up=new com.farwolf.update.download.UpdateService();
+
+        up.checkExistApk(mWXSDKInstance.getContext());
+
+    }
+
+
+    @JSMethod
     public void doCheckJs(HashMap param)
     {
         String appid=param.get("appid")+"";

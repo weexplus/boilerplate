@@ -124,6 +124,10 @@ public class Config {
         return config(c).optString("wechatEntry");
     }
 
+    public static String appBoard(Context c)
+    {
+        return config(c).optString("appBoard");
+    }
 
     public static String splash(Context c)
     {

@@ -62,95 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 368);
+/******/ 	return __webpack_require__(__webpack_require__.s = 442);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 500,
-    "marginTop": 50,
-    "borderRadius": 20,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "layout": {
-    "backgroundColor": "#333333",
-    "height": 128,
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "width": "750"
-  }
-}
-
-/***/ }),
-
-/***/ 28:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -176,7 +93,6 @@ var net = {
             modal.toast({ message: '网络异常！' });
         }, function () {
             //compelete
-
             compelete();
         });
     },
@@ -255,7 +171,406 @@ exports.default = net;
 
 /***/ }),
 
-/***/ 3:
+/***/ 442:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(443)
+)
+__vue_styles__.push(__webpack_require__(444)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(445)
+
+/* template */
+var __vue_template__ = __webpack_require__(447)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/net.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3be40081"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 443:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "cl": {
+    "alignItems": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 444:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 200,
+    "marginTop": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 445:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var head = __webpack_require__(9);
+var netx = __webpack_require__(38);
+var test = __webpack_require__(446);
+
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            back: "",
+            header: {}
+        };
+    },
+
+    methods: {
+        post: function post() {
+
+            var self = this;
+            self.back = "";
+            var net = weex.requireModule('net');
+            net.post('http://121.40.81.1:9080/edu/getBanners.do', { a: "1", b: "2" }, {}, function () {
+                //start
+            }, function (e) {
+                //success
+                self.back = e.res;
+                //                    self.header=r.headers;
+            }, function (e) {
+                //exception
+
+            }, function () {
+                //compelete
+            });
+        },
+        get: function get() {
+
+            var self = this;
+            var net = weex.requireModule('net');
+            self.back = "";
+            net.get('http://121.40.81.1:9080/edu/getBanners.do', {}, {}, function () {
+                //start
+            }, function (e) {
+                //success
+                self.back = e.res;
+            }, function (e) {
+                //exception
+
+            }, function () {
+                //compelete
+            });
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        var globalEvent = weex.requireModule('globalEvent');
+
+        globalEvent.addEventListener("onPageInit", function (e) {
+
+            _this.header = e;
+        });
+        globalEvent.addEventListener("onDestory", function (e) {
+            //
+            //                var modal=weex.requireModule('modal')
+            //                modal.toast('xiaohui')
+
+            var notify = weex.requireModule('notify');
+            notify.send('destory', {});
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 446:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function gt() {}
+
+module.exports = { gt: gt };
+
+/***/ }),
+
+/***/ 447:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('scroller', [_c('head', {
+    appendAsTree: true,
+    attrs: {
+      "title": "网络请求sss",
+      "append": "tree"
+    }
+  }), _c('div', {
+    staticStyle: {
+      marginBottom: "50"
+    }
+  }, [_c('div', {
+    staticClass: ["cl"]
+  }, [_c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": function($event) {
+        _vm.post()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("post")])]), _c('div', {
+    staticClass: ["btn"],
+    staticStyle: {
+      width: "500"
+    },
+    on: {
+      "click": function($event) {
+        _vm.get()
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v("get")])]), _c('text', {
+    staticStyle: {
+      color: "#000000"
+    }
+  }, [_vm._v(_vm._s(_vm.header))]), _c('text', {
+    staticStyle: {
+      color: "#ffffff"
+    }
+  }, [_vm._v(_vm._s(_vm.back))])])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 500,
+    "marginTop": 50,
+    "borderRadius": 20,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "layout": {
+    "backgroundColor": "#333333",
+    "height": 128,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "width": "750"
+  }
+}
+
+/***/ }),
+
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -384,315 +699,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 368:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(369)
-)
-__vue_styles__.push(__webpack_require__(370)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(371)
-
-/* template */
-var __vue_template__ = __webpack_require__(373)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/net.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3be40081"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 369:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "cl": {
-    "alignItems": "center"
-  }
-}
-
-/***/ }),
-
-/***/ 370:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 200,
-    "marginTop": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 371:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-var head = __webpack_require__(5);
-var netx = __webpack_require__(28);
-var test = __webpack_require__(372);
-
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            back: "",
-            header: {}
-        };
-    },
-
-    methods: {
-        post: function post() {
-
-            var self = this;
-            self.back = "";
-            var net = weex.requireModule('net');
-            net.post('http://121.40.81.1:9080/edu/getBanners.do', { a: "1", b: "2" }, {}, function () {
-                //start
-            }, function (e) {
-                //success
-                self.back = e.res;
-                //                    self.header=r.headers;
-            }, function (e) {
-                //exception
-
-            }, function () {
-                //compelete
-            });
-        },
-        get: function get() {
-
-            var self = this;
-            var net = weex.requireModule('net');
-            self.back = "";
-            net.get('http://121.40.81.1:9080/edu/getBanners.do', {}, {}, function () {
-                //start
-            }, function (e) {
-                //success
-                self.back = e.res;
-            }, function (e) {
-                //exception
-
-            }, function () {
-                //compelete
-            });
-        }
-    },
-    created: function created() {
-        var _this = this;
-
-        var globalEvent = weex.requireModule('globalEvent');
-
-        globalEvent.addEventListener("onPageInit", function (e) {
-
-            _this.header = e;
-        });
-    }
-};
-
-/***/ }),
-
-/***/ 372:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function gt() {}
-
-module.exports = { gt: gt };
-
-/***/ }),
-
-/***/ 373:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', [_c('head', {
-    appendAsTree: true,
-    attrs: {
-      "title": "网络请求sss",
-      "append": "tree"
-    }
-  }), _c('div', {
-    staticStyle: {
-      marginBottom: "50"
-    }
-  }, [_c('div', {
-    staticClass: ["cl"]
-  }, [_c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": function($event) {
-        _vm.post()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("post")])]), _c('div', {
-    staticClass: ["btn"],
-    staticStyle: {
-      width: "500"
-    },
-    on: {
-      "click": function($event) {
-        _vm.get()
-      }
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v("get")])]), _c('text', {
-    staticStyle: {
-      color: "#000000"
-    }
-  }, [_vm._v(_vm._s(_vm.header))]), _c('text', {
-    staticStyle: {
-      color: "#ffffff"
-    }
-  }, [_vm._v(_vm._s(_vm.back))])])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 4:
+/***/ 8:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -788,23 +795,23 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 5:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(1)
+__vue_styles__.push(__webpack_require__(5)
 )
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(6)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(3)
+__vue_exports__ = __webpack_require__(7)
 
 /* template */
-var __vue_template__ = __webpack_require__(4)
+var __vue_template__ = __webpack_require__(8)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

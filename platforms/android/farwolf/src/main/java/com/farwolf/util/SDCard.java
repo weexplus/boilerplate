@@ -68,6 +68,8 @@ public class SDCard {
 	public static String getString(Context context,String path)
 	{
 		FileInputStream fs=getFileStream(context,path);
+		if(fs==null)
+			return "";
 	    return readStreamToString(fs);
 
 	}

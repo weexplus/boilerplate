@@ -30,6 +30,7 @@
     
     
     [URL copyBundleToDisk];
+    [Weex initAppBoardContent];
     [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"weexplus" appVersion:@"1.0.0"];

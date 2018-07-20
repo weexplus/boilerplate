@@ -1,7 +1,7 @@
 
 
 <template>
- <div style="align-items: center;justify-content: center;background-color: red">
+ <div style="align-items: center;justify-content: center;background-color: red;">
    <text >ssdsdsds</text>
  </div>
 

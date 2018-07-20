@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 271);
+/******/ 	return __webpack_require__(__webpack_require__.s = 336);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -82,7 +82,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
                                                                                                                                                                                                                                                                                 * Created by Tw93 on 17/11/01
                                                                                                                                                                                                                                                                                 */
 
-var _urlParse = __webpack_require__(7);
+var _urlParse = __webpack_require__(2);
 
 var _urlParse2 = _interopRequireDefault(_urlParse);
 
@@ -351,54 +351,7 @@ exports.default = Utils;
 
 /***/ }),
 
-/***/ 271:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(63)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(64)
-
-/* template */
-var __vue_template__ = __webpack_require__(66)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-indexlist/index.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1c57ecf2"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 6:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -429,581 +382,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 63:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "index-list": {
-    "width": "750",
-    "height": "1334"
-  },
-  "index-list-title": {
-    "borderBottomWidth": "1",
-    "borderBottomColor": "rgba(32,35,37,0.15)",
-    "backgroundColor": "#FBFBFB",
-    "fontSize": "24",
-    "color": "#666666",
-    "height": "48",
-    "lineHeight": "48",
-    "paddingLeft": "24",
-    "width": "750"
-  },
-  "group-title": {
-    "borderBottomWidth": 0,
-    "paddingBottom": 0,
-    "height": "60",
-    "paddingTop": "24"
-  },
-  "index-list-item": {
-    "width": "750",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "borderBottomWidth": "1",
-    "borderBottomColor": "#e0e0e0",
-    "height": "92",
-    "paddingLeft": "24",
-    "paddingRight": "24",
-    "backgroundColor": "#FFFFFF"
-  },
-  "iphone-x": {
-    "height": "68"
-  },
-  "title": {
-    "fontSize": "32",
-    "color": "#3D3D3D"
-  },
-  "desc": {
-    "fontSize": "24",
-    "color": "#A5A5A5",
-    "marginLeft": "30"
-  },
-  "index-list-nav": {
-    "position": "absolute",
-    "top": 0,
-    "right": 0,
-    "marginBottom": "60",
-    "marginTop": "60",
-    "paddingBottom": "20",
-    "paddingTop": "20",
-    "width": "70"
-  },
-  "list-nav-key": {
-    "textAlign": "center",
-    "fontSize": "24",
-    "height": "40",
-    "color": "#666666"
-  },
-  "index-list-pop": {
-    "position": "fixed",
-    "top": "550",
-    "left": "316",
-    "width": "120",
-    "height": "120",
-    "textAlign": "center",
-    "justifyContent": "center",
-    "backgroundColor": "rgba(32,35,37,0.6)",
-    "borderBottomLeftRadius": "60",
-    "borderBottomRightRadius": "60",
-    "borderTopLeftRadius": "60",
-    "borderTopRightRadius": "60",
-    "paddingLeft": 0,
-    "paddingRight": 0,
-    "paddingTop": "35",
-    "paddingBottom": "35",
-    "color": "#ffffff"
-  },
-  "list-pop-text": {
-    "fontSize": "40",
-    "textAlign": "center",
-    "color": "#ffffff"
-  },
-  "group": {
-    "paddingBottom": "18",
-    "paddingRight": "70",
-    "backgroundColor": "#FBFBFB"
-  },
-  "group-list": {
-    "flexDirection": "row",
-    "marginLeft": "18",
-    "marginTop": "18"
-  },
-  "group-item": {
-    "width": "146",
-    "height": "64",
-    "borderWidth": "1",
-    "borderColor": "#e0e0e0",
-    "marginRight": "18",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor": "#ffffff"
-  },
-  "item-name": {
-    "fontSize": "24",
-    "lineHeight": "26",
-    "color": "#333333"
-  },
-  "item-desc": {
-    "marginTop": "2",
-    "color": "#999999",
-    "fontSize": "20",
-    "textAlign": "center"
-  },
-  "location-icon": {
-    "width": "32",
-    "height": "32",
-    "marginRight": "8"
-  }
-}
-
-/***/ }),
-
-/***/ 64:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _format = __webpack_require__(65);
-
-var Format = _interopRequireWildcard(_format);
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var dom = weex.requireModule('dom');
-exports.default = {
-  props: {
-    height: {
-      type: [Number, String],
-      default: _utils2.default.env.getPageHeight()
-    },
-    normalList: {
-      type: Array,
-      default: function _default() {
-        return [];
-      }
-    },
-    onlyShowList: {
-      type: Boolean,
-      default: false
-    },
-    showIndex: {
-      type: Boolean,
-      default: true
-    },
-    hotListConfig: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    // 城市选择子组件 特殊情况支持
-    cityLocationConfig: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    headerStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    navStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    navTextStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    popStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    popTextStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    itemStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    itemTextStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    itemDescStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    groupWrapStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    groupItemStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    groupItemTextStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    groupItemDescStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    }
-  },
-  created: function created() {
-    this.isIPhoneX = _utils2.default.env.isIPhoneX();
-  },
-
-  computed: {
-    formatList: function formatList() {
-      var normalList = this.normalList,
-          hotListConfig = this.hotListConfig,
-          cityLocationConfig = this.cityLocationConfig;
-
-      return Format.totalList(normalList, hotListConfig, cityLocationConfig);
-    }
-  },
-  data: function data() {
-    return {
-      popKeyShow: false,
-      popKey: '',
-      navOffsetY: 0,
-      timer: null
-    };
-  },
-  methods: {
-    itemClicked: function itemClicked(item) {
-      this.$emit('wxcIndexlistItemClicked', {
-        item: item
-      });
-    },
-    go2Key: function go2Key(key) {
-      var _this = this;
-
-      var keyEl = this.$refs['index-item-title-' + key][0];
-      keyEl && dom.scrollToElement(keyEl, {
-        offset: 0
-      });
-      this.popKey = key;
-      this.popKeyShow = true;
-      this.timer && clearTimeout(this.timer);
-      this.timer = setTimeout(function () {
-        _this.popKeyShow = false;
-      }, 600);
-    }
-  }
-};
-
-/***/ }),
-
-/***/ 65:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.totalList = totalList;
-exports.getSpecialData = getSpecialData;
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * 根据26个字母取每一项首字母对数据进行排序,处理数据变换
- * @return {[array]}
- */
-function totalList(source, hotListConfig, cityLocationConfig) {
-  var LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var res = [];
-  LETTERS.split('').forEach(function (letter) {
-    var _data = source.filter(function (item) {
-      if (item.pinYin) {
-        return item.pinYin.slice(0, 1).toLowerCase() === letter.toLowerCase();
-      } else if (item.py) {
-        return item.py.slice(0, 1).toLowerCase() === letter.toLowerCase();
-      } else {
-        return false;
-      }
-    });
-    if (_data.length) {
-      res.push({
-        title: letter,
-        data: _data,
-        type: 'list'
-      });
-    }
-  });
-
-  // 处理热门数据
-  var hotList = getSpecialData(hotListConfig);
-  hotList && res.unshift(hotList);
-
-  // 处理特殊定位数据
-  var cityLocation = getSpecialData(cityLocationConfig);
-  cityLocation && res.unshift(cityLocation);
-
-  return res;
-} /**
-   * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
-   * Created by Tw93 on 17/11/01
-   */
-
-function getSpecialData(data) {
-  if (data && data.type && data.list && data.list.length > 0) {
-    var type = data.type,
-        title = data.title,
-        list = data.list;
-
-    return {
-      title: title,
-      type: type,
-      data: type === 'group' ? _utils2.default.arrayChunk(list) : list
-    };
-  } else {
-    return null;
-  }
-}
-
-/***/ }),
-
-/***/ 66:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('list', {
-    staticClass: ["index-list"],
-    style: {
-      height: _vm.height + 'px'
-    }
-  }, [_c('cell', {
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, [_vm._t("head")], 2), _vm._l((_vm.formatList), function(v, i) {
-    return _c('cell', {
-      key: i,
-      ref: 'index-item-title-' + v.title,
-      refInFor: true,
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }, [(!_vm.onlyShowList) ? _c('text', {
-      class: ['index-list-title', v.type && v.type == 'group' && 'group-title'],
-      style: _vm.headerStyle
-    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), (v.type && v.type === 'group' && !_vm.onlyShowList) ? _c('div', {
-      staticClass: ["group"],
-      style: _vm.groupWrapStyle
-    }, _vm._l((v.data), function(group, index) {
-      return _c('div', {
-        key: index,
-        staticClass: ["group-list"]
-      }, _vm._l((group), function(item, i) {
-        return _c('div', {
-          key: i,
-          staticClass: ["group-item"],
-          style: _vm.groupItemStyle,
-          attrs: {
-            "accessible": true,
-            "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
-          },
-          on: {
-            "click": function($event) {
-              _vm.itemClicked(item)
-            }
-          }
-        }, [(item.isLocation) ? _c('image', {
-          staticClass: ["location-icon"],
-          attrs: {
-            "src": "https://gw.alicdn.com/tfs/TB1JUiUPFXXXXXUXXXXXXXXXXXX-32-32.png"
-          }
-        }) : _vm._e(), _c('div', [_c('text', {
-          staticClass: ["item-name"],
-          style: _vm.groupItemTextStyle
-        }, [_vm._v(_vm._s(item.name))]), (item.desc) ? _c('text', {
-          staticClass: ["item-desc"],
-          style: _vm.groupItemDescStyle
-        }, [_vm._v(_vm._s(item.desc))]) : _vm._e()])])
-      }))
-    })) : _vm._e(), (v.type === 'list') ? _c('div', _vm._l((v.data), function(item, index) {
-      return _c('div', {
-        key: index,
-        staticClass: ["index-list-item"],
-        style: _vm.itemStyle,
-        attrs: {
-          "accessible": true,
-          "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
-        },
-        on: {
-          "click": function($event) {
-            _vm.itemClicked(item)
-          }
-        }
-      }, [_c('text', {
-        staticClass: ["title"],
-        style: _vm.itemTextStyle
-      }, [_vm._v(_vm._s(item.name))]), _c('text', {
-        staticClass: ["desc"],
-        style: _vm.itemDescStyle
-      }, [_vm._v(_vm._s(item.desc))])])
-    })) : _vm._e()])
-  }), (_vm.isIPhoneX) ? _c('cell', {
-    staticClass: ["iphone-x"],
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }) : _vm._e()], 2), (_vm.showIndex && !_vm.onlyShowList) ? _c('div', {
-    staticClass: ["index-list-nav"],
-    style: _vm.navStyle
-  }, _vm._l((_vm.formatList), function(item, index) {
-    return _c('text', {
-      key: index,
-      staticClass: ["list-nav-key"],
-      style: _vm.navTextStyle,
-      attrs: {
-        "title": item.title
-      },
-      on: {
-        "click": function($event) {
-          _vm.go2Key(item.title)
-        }
-      }
-    }, [_vm._v(_vm._s(item.title))])
-  })) : _vm._e(), (_vm.popKeyShow) ? _c('div', {
-    staticClass: ["index-list-pop"],
-    style: _vm.popStyle
-  }, [_c('text', {
-    staticClass: ["list-pop-text"],
-    style: _vm.popTextStyle
-  }, [_vm._v(_vm._s(_vm.popKey))])]) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 7:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1011,8 +390,8 @@ module.exports.render._withStripped = true
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var required = __webpack_require__(8),
-    qs = __webpack_require__(9),
+var required = __webpack_require__(3),
+    qs = __webpack_require__(4),
     protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i,
     slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
 
@@ -1416,11 +795,11 @@ URL.location = lolcation;
 URL.qs = qs;
 
 module.exports = URL;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 
-/***/ 8:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1466,7 +845,54 @@ module.exports = function required(port, protocol) {
 
 /***/ }),
 
-/***/ 9:
+/***/ 336:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(55)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(56)
+
+/* template */
+var __vue_template__ = __webpack_require__(58)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-indexlist/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-1c57ecf2"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1539,6 +965,580 @@ function querystringify(obj, prefix) {
 //
 exports.stringify = querystringify;
 exports.parse = querystring;
+
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "index-list": {
+    "width": "750",
+    "height": "1334"
+  },
+  "index-list-title": {
+    "borderBottomWidth": "1",
+    "borderBottomColor": "rgba(32,35,37,0.15)",
+    "backgroundColor": "#FBFBFB",
+    "fontSize": "24",
+    "color": "#666666",
+    "height": "48",
+    "lineHeight": "48",
+    "paddingLeft": "24",
+    "width": "750"
+  },
+  "group-title": {
+    "borderBottomWidth": 0,
+    "paddingBottom": 0,
+    "height": "60",
+    "paddingTop": "24"
+  },
+  "index-list-item": {
+    "width": "750",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "borderBottomWidth": "1",
+    "borderBottomColor": "#e0e0e0",
+    "height": "92",
+    "paddingLeft": "24",
+    "paddingRight": "24",
+    "backgroundColor": "#FFFFFF"
+  },
+  "iphone-x": {
+    "height": "68"
+  },
+  "title": {
+    "fontSize": "32",
+    "color": "#3D3D3D"
+  },
+  "desc": {
+    "fontSize": "24",
+    "color": "#A5A5A5",
+    "marginLeft": "30"
+  },
+  "index-list-nav": {
+    "position": "absolute",
+    "top": 0,
+    "right": 0,
+    "marginBottom": "60",
+    "marginTop": "60",
+    "paddingBottom": "20",
+    "paddingTop": "20",
+    "width": "70"
+  },
+  "list-nav-key": {
+    "textAlign": "center",
+    "fontSize": "24",
+    "height": "40",
+    "color": "#666666"
+  },
+  "index-list-pop": {
+    "position": "fixed",
+    "top": "550",
+    "left": "316",
+    "width": "120",
+    "height": "120",
+    "textAlign": "center",
+    "justifyContent": "center",
+    "backgroundColor": "rgba(32,35,37,0.6)",
+    "borderBottomLeftRadius": "60",
+    "borderBottomRightRadius": "60",
+    "borderTopLeftRadius": "60",
+    "borderTopRightRadius": "60",
+    "paddingLeft": 0,
+    "paddingRight": 0,
+    "paddingTop": "35",
+    "paddingBottom": "35",
+    "color": "#ffffff"
+  },
+  "list-pop-text": {
+    "fontSize": "40",
+    "textAlign": "center",
+    "color": "#ffffff"
+  },
+  "group": {
+    "paddingBottom": "18",
+    "paddingRight": "70",
+    "backgroundColor": "#FBFBFB"
+  },
+  "group-list": {
+    "flexDirection": "row",
+    "marginLeft": "18",
+    "marginTop": "18"
+  },
+  "group-item": {
+    "width": "146",
+    "height": "64",
+    "borderWidth": "1",
+    "borderColor": "#e0e0e0",
+    "marginRight": "18",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor": "#ffffff"
+  },
+  "item-name": {
+    "fontSize": "24",
+    "lineHeight": "26",
+    "color": "#333333"
+  },
+  "item-desc": {
+    "marginTop": "2",
+    "color": "#999999",
+    "fontSize": "20",
+    "textAlign": "center"
+  },
+  "location-icon": {
+    "width": "32",
+    "height": "32",
+    "marginRight": "8"
+  }
+}
+
+/***/ }),
+
+/***/ 56:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _format = __webpack_require__(57);
+
+var Format = _interopRequireWildcard(_format);
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var dom = weex.requireModule('dom');
+exports.default = {
+  props: {
+    height: {
+      type: [Number, String],
+      default: _utils2.default.env.getPageHeight()
+    },
+    normalList: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    onlyShowList: {
+      type: Boolean,
+      default: false
+    },
+    showIndex: {
+      type: Boolean,
+      default: true
+    },
+    hotListConfig: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    // 城市选择子组件 特殊情况支持
+    cityLocationConfig: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    headerStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    navStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    navTextStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    popStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    popTextStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    itemStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    itemTextStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    itemDescStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    groupWrapStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    groupItemStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    groupItemTextStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    groupItemDescStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  created: function created() {
+    this.isIPhoneX = _utils2.default.env.isIPhoneX();
+  },
+
+  computed: {
+    formatList: function formatList() {
+      var normalList = this.normalList,
+          hotListConfig = this.hotListConfig,
+          cityLocationConfig = this.cityLocationConfig;
+
+      return Format.totalList(normalList, hotListConfig, cityLocationConfig);
+    }
+  },
+  data: function data() {
+    return {
+      popKeyShow: false,
+      popKey: '',
+      navOffsetY: 0,
+      timer: null
+    };
+  },
+  methods: {
+    itemClicked: function itemClicked(item) {
+      this.$emit('wxcIndexlistItemClicked', {
+        item: item
+      });
+    },
+    go2Key: function go2Key(key) {
+      var _this = this;
+
+      var keyEl = this.$refs['index-item-title-' + key][0];
+      keyEl && dom.scrollToElement(keyEl, {
+        offset: 0
+      });
+      this.popKey = key;
+      this.popKeyShow = true;
+      this.timer && clearTimeout(this.timer);
+      this.timer = setTimeout(function () {
+        _this.popKeyShow = false;
+      }, 600);
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.totalList = totalList;
+exports.getSpecialData = getSpecialData;
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * 根据26个字母取每一项首字母对数据进行排序,处理数据变换
+ * @return {[array]}
+ */
+function totalList(source, hotListConfig, cityLocationConfig) {
+  var LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var res = [];
+  LETTERS.split('').forEach(function (letter) {
+    var _data = source.filter(function (item) {
+      if (item.pinYin) {
+        return item.pinYin.slice(0, 1).toLowerCase() === letter.toLowerCase();
+      } else if (item.py) {
+        return item.py.slice(0, 1).toLowerCase() === letter.toLowerCase();
+      } else {
+        return false;
+      }
+    });
+    if (_data.length) {
+      res.push({
+        title: letter,
+        data: _data,
+        type: 'list'
+      });
+    }
+  });
+
+  // 处理热门数据
+  var hotList = getSpecialData(hotListConfig);
+  hotList && res.unshift(hotList);
+
+  // 处理特殊定位数据
+  var cityLocation = getSpecialData(cityLocationConfig);
+  cityLocation && res.unshift(cityLocation);
+
+  return res;
+} /**
+   * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
+   * Created by Tw93 on 17/11/01
+   */
+
+function getSpecialData(data) {
+  if (data && data.type && data.list && data.list.length > 0) {
+    var type = data.type,
+        title = data.title,
+        list = data.list;
+
+    return {
+      title: title,
+      type: type,
+      data: type === 'group' ? _utils2.default.arrayChunk(list) : list
+    };
+  } else {
+    return null;
+  }
+}
+
+/***/ }),
+
+/***/ 58:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('list', {
+    staticClass: ["index-list"],
+    style: {
+      height: _vm.height + 'px'
+    }
+  }, [_c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_vm._t("head")], 2), _vm._l((_vm.formatList), function(v, i) {
+    return _c('cell', {
+      key: i,
+      ref: 'index-item-title-' + v.title,
+      refInFor: true,
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [(!_vm.onlyShowList) ? _c('text', {
+      class: ['index-list-title', v.type && v.type == 'group' && 'group-title'],
+      style: _vm.headerStyle
+    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), (v.type && v.type === 'group' && !_vm.onlyShowList) ? _c('div', {
+      staticClass: ["group"],
+      style: _vm.groupWrapStyle
+    }, _vm._l((v.data), function(group, index) {
+      return _c('div', {
+        key: index,
+        staticClass: ["group-list"]
+      }, _vm._l((group), function(item, i) {
+        return _c('div', {
+          key: i,
+          staticClass: ["group-item"],
+          style: _vm.groupItemStyle,
+          attrs: {
+            "accessible": true,
+            "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
+          },
+          on: {
+            "click": function($event) {
+              _vm.itemClicked(item)
+            }
+          }
+        }, [(item.isLocation) ? _c('image', {
+          staticClass: ["location-icon"],
+          attrs: {
+            "src": "https://gw.alicdn.com/tfs/TB1JUiUPFXXXXXUXXXXXXXXXXXX-32-32.png"
+          }
+        }) : _vm._e(), _c('div', [_c('text', {
+          staticClass: ["item-name"],
+          style: _vm.groupItemTextStyle
+        }, [_vm._v(_vm._s(item.name))]), (item.desc) ? _c('text', {
+          staticClass: ["item-desc"],
+          style: _vm.groupItemDescStyle
+        }, [_vm._v(_vm._s(item.desc))]) : _vm._e()])])
+      }))
+    })) : _vm._e(), (v.type === 'list') ? _c('div', _vm._l((v.data), function(item, index) {
+      return _c('div', {
+        key: index,
+        staticClass: ["index-list-item"],
+        style: _vm.itemStyle,
+        attrs: {
+          "accessible": true,
+          "ariaLabel": ((item.name) + "," + (item.desc?item.desc:''))
+        },
+        on: {
+          "click": function($event) {
+            _vm.itemClicked(item)
+          }
+        }
+      }, [_c('text', {
+        staticClass: ["title"],
+        style: _vm.itemTextStyle
+      }, [_vm._v(_vm._s(item.name))]), _c('text', {
+        staticClass: ["desc"],
+        style: _vm.itemDescStyle
+      }, [_vm._v(_vm._s(item.desc))])])
+    })) : _vm._e()])
+  }), (_vm.isIPhoneX) ? _c('cell', {
+    staticClass: ["iphone-x"],
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }) : _vm._e()], 2), (_vm.showIndex && !_vm.onlyShowList) ? _c('div', {
+    staticClass: ["index-list-nav"],
+    style: _vm.navStyle
+  }, _vm._l((_vm.formatList), function(item, index) {
+    return _c('text', {
+      key: index,
+      staticClass: ["list-nav-key"],
+      style: _vm.navTextStyle,
+      attrs: {
+        "title": item.title
+      },
+      on: {
+        "click": function($event) {
+          _vm.go2Key(item.title)
+        }
+      }
+    }, [_vm._v(_vm._s(item.title))])
+  })) : _vm._e(), (_vm.popKeyShow) ? _c('div', {
+    staticClass: ["index-list-pop"],
+    style: _vm.popStyle
+  }, [_c('text', {
+    staticClass: ["list-pop-text"],
+    style: _vm.popTextStyle
+  }, [_vm._v(_vm._s(_vm.popKey))])]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ })
 

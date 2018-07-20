@@ -15,6 +15,7 @@
 WX_EXPORT_METHOD(@selector(doCheck:))
 WX_EXPORT_METHOD(@selector(download:))
 WX_EXPORT_METHOD(@selector(doCheckJs:))
+WX_EXPORT_METHOD(@selector(checkDownloadApk))
 WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
 
 -(void)doCheck:(NSDictionary*)param fail:(WXModuleCallback)fail
@@ -42,6 +43,10 @@ WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
     
 }
 
+-(void)checkDownloadApk
+{
+    
+}
 
 -(void)doCheckJs:(NSDictionary*)param
 {

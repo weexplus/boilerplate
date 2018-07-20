@@ -62,12 +62,245 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 420);
+/******/ 	return __webpack_require__(__webpack_require__.s = 494);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
+/***/ 494:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(495)
+)
+__vue_styles__.push(__webpack_require__(496)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(497)
+
+/* template */
+var __vue_template__ = __webpack_require__(498)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/slidpop.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-e9d544fe"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 495:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "cl": {
+    "alignItems": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 496:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 200,
+    "marginTop": 50,
+    "borderRadius": 10,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 497:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var head = __webpack_require__(9);
+var globalEvent = weex.requireModule('globalEvent');
+globalEvent.addEventListener("onPageInit", function (e) {});
+
+exports.default = {
+    components: { head: head },
+    data: function data() {
+        return {
+            back: "",
+            header: {}
+        };
+    },
+
+    methods: {
+        ok: function ok() {
+            var pop = weex.requireModule("slidpop");
+            pop.show('center.js', {}, 600, {}, 'bottom');
+        },
+        close: function close() {
+            var pop = weex.requireModule("slidpop");
+            pop.dismiss();
+        }
+    },
+    created: function created() {}
+};
+
+/***/ }),
+
+/***/ 498:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#ffffff"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100",
+      backgroundColor: "red",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    on: {
+      "click": _vm.ok
+    }
+  }, [_c('text', [_vm._v("open")])]), _c('div', {
+    staticStyle: {
+      width: "100",
+      height: "100",
+      backgroundColor: "red",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "20"
+    },
+    on: {
+      "click": _vm.close
+    }
+  }, [_c('text', [_vm._v("close")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -134,7 +367,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2:
+/***/ 6:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -150,7 +383,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -279,7 +512,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 8:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -375,256 +608,23 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 420:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(421)
+__vue_styles__.push(__webpack_require__(5)
 )
-__vue_styles__.push(__webpack_require__(422)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(423)
-
-/* template */
-var __vue_template__ = __webpack_require__(424)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/slidpop.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-e9d544fe"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 421:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "cl": {
-    "alignItems": "center"
-  }
-}
-
-/***/ }),
-
-/***/ 422:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 200,
-    "marginTop": 50,
-    "borderRadius": 10,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 423:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-var head = __webpack_require__(5);
-var globalEvent = weex.requireModule('globalEvent');
-globalEvent.addEventListener("onPageInit", function (e) {});
-
-exports.default = {
-    components: { head: head },
-    data: function data() {
-        return {
-            back: "",
-            header: {}
-        };
-    },
-
-    methods: {
-        ok: function ok() {
-            var pop = weex.requireModule("slidpop");
-            pop.show('center.js', {}, 600, {}, 'bottom');
-        },
-        close: function close() {
-            var pop = weex.requireModule("slidpop");
-            pop.dismiss();
-        }
-    },
-    created: function created() {}
-};
-
-/***/ }),
-
-/***/ 424:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#ffffff"
-    }
-  }, [_c('div', {
-    staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "red",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    on: {
-      "click": _vm.ok
-    }
-  }, [_c('text', [_vm._v("open")])]), _c('div', {
-    staticStyle: {
-      width: "100",
-      height: "100",
-      backgroundColor: "red",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: "20"
-    },
-    on: {
-      "click": _vm.close
-    }
-  }, [_c('text', [_vm._v("close")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(1)
-)
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(6)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(3)
+__vue_exports__ = __webpack_require__(7)
 
 /* template */
-var __vue_template__ = __webpack_require__(4)
+var __vue_template__ = __webpack_require__(8)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||

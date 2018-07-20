@@ -62,391 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 235);
+/******/ 	return __webpack_require__(__webpack_require__.s = 291);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 235:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(96)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(97)
-
-/* template */
-var __vue_template__ = __webpack_require__(99)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/flist.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3deade54"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 28:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var host = 'http://59.110.169.246/movie/';
-// var host='http://192.168.1.101:8080/'
-
-
-var net = {
-
-    postShort: function postShort(weg, param, header, start, success, compelete) {
-        var modal = weex.requireModule("modal");
-        this.postFull(weg, param, header, start, success, function (res) {
-            //fail
-            modal.toast({ message: res.msg });
-        }, function () {
-            //exception
-            modal.toast({ message: '网络异常！' });
-        }, function () {
-            //compelete
-
-            compelete();
-        });
-    },
-
-    postFull: function postFull(weg, param, header, start, success, fail, exception, compelete) {
-        var net = weex.requireModule("net");
-        var modal = weex.requireModule("modal");
-        var self = this;
-        var url = host + weg;
-        var st = weex.requireModule('static');
-        var token = st.getString('token');
-        if (token != undefined && token != '') {
-            header.token = token;
-        }
-        // param.token='95d594d7b18fd1c7db37e81dd5bae9c9'
-        net.post(url, param, header, function () {
-            //start
-            start();
-        }, function (e) {
-            //success
-            // modal.toast({message:e.res.err})
-            if (e.res.err == 0) {
-
-                success(e.res);
-            } else {
-                // modal.toast({message:e.res.msg})
-                if (token != undefined && token != '') {
-                    st.remove('token');
-                    return;
-                }
-                if (e.res.err == 1000) {
-                    // var nav=weex.requireModule("navigator")
-                    // nav.presentFull('root:busi/account/login.js',{},'transparent',true,function(){
-                    //     self.postFull(weg,param,header,start,success,fail,exception,compelete);
-
-                    // },true);
-                } else fail(e.res);
-            }
-        }, function (e) {
-            //compelete
-
-
-            compelete();
-        }, function (e) {
-            // exception
-            exception();
-        });
-    },
-
-    post: function post(weg, param, success) {
-        var progress = weex.requireModule("progress");
-        this.postShort(weg, param, {}, function () {
-            progress.show();
-        }, success, function () {
-            progress.dismiss();
-        });
-    },
-
-    postSilent: function postSilent(weg, param, success) {
-
-        this.postFull(weg, param, {}, function () {}, success, function (res) {
-            //fail
-
-        }, function () {
-            //exception
-
-        }, function () {
-            //compelete
-
-
-        });
-    }
-
-};
-exports.default = net;
-
-/***/ }),
-
-/***/ 42:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "limg": {
-    "width": 32,
-    "height": 46
-  },
-  "refresh": {
-    "height": 128,
-    "width": 750,
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "refreshText": {
-    "color": "#888888",
-    "fontSize": 30
-  },
-  "indicator": {
-    "color": "#888888",
-    "height": 40,
-    "width": 40,
-    "marginRight": 10
-  },
-  "panel": {
-    "width": "600",
-    "height": "250",
-    "marginLeft": "75",
-    "marginTop": "35",
-    "marginBottom": "35",
-    "flexDirection": "column",
-    "justifyContent": "center",
-    "borderWidth": "2",
-    "borderStyle": "solid",
-    "borderColor": "#DDDDDD",
-    "backgroundColor": "#F5F5F5"
-  },
-  "text": {
-    "fontSize": "50",
-    "textAlign": "center",
-    "color": "#41B883"
-  }
-}
-
-/***/ }),
-
-/***/ 43:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-exports.default = {
-    data: function data() {
-        return {
-            rtext: '下拉以加载',
-            updatetime: '没有更新',
-            offset: 0,
-            deg: 20,
-            refreshing: false,
-            pulldistance: 135,
-            hasrotate: false,
-            key: "ky" + Math.random()
-        };
-    },
-
-    methods: {
-        animateArrow: function animateArrow(deg) {
-            var animation = weex.requireModule('animation');
-            var arrow = this.$refs.arrow;
-            //                var deg=this.hasrotate?180:0
-
-            animation.transition(arrow, {
-                styles: {
-                    transform: "rotate(" + deg + "deg" + ")"
-                },
-
-                duration: 150, //ms
-                timingFunction: 'ease',
-                delay: 0 //ms
-            }, function () {});
-        },
-        onrefresh: function onrefresh(event) {
-            if (this.offset >= this.pulldistance) {
-
-                this.refreshing = true;
-                this.rtext = "加载中";
-                this.$emit('onRefresh');
-                //                    setTimeout(() => {
-                //                        this.refreshing = false
-                //                    }, 2000)
-            }
-        },
-        end: function end() {
-            this.refreshing = false;
-            //                this.deg=0;
-            this.updatetime = this.getNowFormatDate();
-            //                this.rtext='下拉以加载'
-        },
-        onpullingdown: function onpullingdown(event) {
-
-            var dis = event.pullingDistance;
-            if (dis < 0) dis *= -1;
-            this.offset = dis;
-
-            if (this.refreshing == false) {
-
-                //                     var t=dis>this.pulldistance
-                //                    if(t!=this.hasrotate)
-                //                    {
-                //                        this.hasrotate=t;
-                //                        this.animateArrow();
-                //                    }
-                if (dis > this.pulldistance) {
-                    this.rtext = "松开刷新";
-                    this.deg = 180;
-                    this.hasrotate = false;
-                    this.animateArrow(180);
-                } else {
-                    var p = dis / this.pulldistance;
-                    if (p > 1) p == 1;
-                    this.deg = p * 180;
-                    this.animateArrow(0);
-                    this.rtext = '下拉以加载';
-                }
-            }
-        },
-        getNowFormatDate: function getNowFormatDate() {
-            var date = new Date();
-            var seperator1 = "-";
-            var seperator2 = ":";
-            var month = date.getMonth() + 1;
-            var strDate = date.getDate();
-            var min = date.getMinutes();
-            var secon = date.getSeconds();
-            if (month >= 1 && month <= 9) {
-                month = "0" + month;
-            }
-            if (strDate >= 0 && strDate <= 9) {
-                strDate = "0" + strDate;
-            }
-            if (min >= 0 && min <= 9) {
-                min = "0" + min;
-            }
-            if (secon >= 0 && secon <= 9) {
-                secon = "0" + secon;
-            }
-
-            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + " " + date.getHours() + seperator2 + min + seperator2 + secon;
-            return currentdate;
-        }
-    },
-
-    created: function created() {}
-};
-
-/***/ }),
-
-/***/ 44:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('refresh', {
-    key: _vm.key,
-    staticClass: ["refresh"],
-    attrs: {
-      "id": "rex",
-      "display": _vm.refreshing ? 'show' : 'hide'
-    },
-    on: {
-      "refresh": _vm.onrefresh,
-      "pullingdown": _vm.onpullingdown
-    }
-  }, [_c('div', {
-    staticStyle: {
-      flexDirection: "row"
-    }
-  }, [(_vm.refreshing) ? _c('floading', {
-    staticClass: ["indicator"],
-    attrs: {
-      "color": "#555555"
-    }
-  }) : _vm._e(), (!_vm.refreshing) ? _c('image', {
-    ref: "arrow",
-    staticClass: ["limg"],
-    attrs: {
-      "src": "root:img/pull_arrow.png"
-    }
-  }) : _vm._e(), _c('div', {
-    staticStyle: {
-      alignItems: "center"
-    }
-  }, [_c('text', {
-    staticClass: ["refreshText"]
-  }, [_vm._v(_vm._s(_vm.rtext))]), _c('text', {
-    staticStyle: {
-      fontSize: "25",
-      color: "#888888"
-    }
-  }, [_vm._v("上次更新:" + _vm._s(_vm.updatetime))])])], 1)])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 96:
+/***/ 192:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -508,7 +129,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 97:
+/***/ 193:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -645,8 +266,8 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-var pull = __webpack_require__(98);
-var net = __webpack_require__(28);
+var pull = __webpack_require__(194);
+var net = __webpack_require__(38);
 
 exports.default = {
     components: { pull: pull },
@@ -841,21 +462,21 @@ exports.default = {
 
 /***/ }),
 
-/***/ 98:
+/***/ 194:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(42)
+__vue_styles__.push(__webpack_require__(86)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(43)
+__vue_exports__ = __webpack_require__(87)
 
 /* template */
-var __vue_template__ = __webpack_require__(44)
+var __vue_template__ = __webpack_require__(88)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -886,7 +507,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 99:
+/***/ 195:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1018,6 +639,384 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       fontWeight: "bold"
     }
   }, [_vm._v("加载中...")])], 1) : _vm._e()], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 291:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(192)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(193)
+
+/* template */
+var __vue_template__ = __webpack_require__(195)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/flist.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3deade54"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 38:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var host = 'http://59.110.169.246/movie/';
+// var host='http://192.168.1.101:8080/'
+
+
+var net = {
+
+    postShort: function postShort(weg, param, header, start, success, compelete) {
+        var modal = weex.requireModule("modal");
+        this.postFull(weg, param, header, start, success, function (res) {
+            //fail
+            modal.toast({ message: res.msg });
+        }, function () {
+            //exception
+            modal.toast({ message: '网络异常！' });
+        }, function () {
+            //compelete
+            compelete();
+        });
+    },
+
+    postFull: function postFull(weg, param, header, start, success, fail, exception, compelete) {
+        var net = weex.requireModule("net");
+        var modal = weex.requireModule("modal");
+        var self = this;
+        var url = host + weg;
+        var st = weex.requireModule('static');
+        var token = st.getString('token');
+        if (token != undefined && token != '') {
+            header.token = token;
+        }
+        // param.token='95d594d7b18fd1c7db37e81dd5bae9c9'
+        net.post(url, param, header, function () {
+            //start
+            start();
+        }, function (e) {
+            //success
+            // modal.toast({message:e.res.err})
+            if (e.res.err == 0) {
+
+                success(e.res);
+            } else {
+                // modal.toast({message:e.res.msg})
+                if (token != undefined && token != '') {
+                    st.remove('token');
+                    return;
+                }
+                if (e.res.err == 1000) {
+                    // var nav=weex.requireModule("navigator")
+                    // nav.presentFull('root:busi/account/login.js',{},'transparent',true,function(){
+                    //     self.postFull(weg,param,header,start,success,fail,exception,compelete);
+
+                    // },true);
+                } else fail(e.res);
+            }
+        }, function (e) {
+            //compelete
+
+
+            compelete();
+        }, function (e) {
+            // exception
+            exception();
+        });
+    },
+
+    post: function post(weg, param, success) {
+        var progress = weex.requireModule("progress");
+        this.postShort(weg, param, {}, function () {
+            progress.show();
+        }, success, function () {
+            progress.dismiss();
+        });
+    },
+
+    postSilent: function postSilent(weg, param, success) {
+
+        this.postFull(weg, param, {}, function () {}, success, function (res) {
+            //fail
+
+        }, function () {
+            //exception
+
+        }, function () {
+            //compelete
+
+
+        });
+    }
+
+};
+exports.default = net;
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "limg": {
+    "width": 32,
+    "height": 46
+  },
+  "refresh": {
+    "height": 128,
+    "width": 750,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "refreshText": {
+    "color": "#888888",
+    "fontSize": 30
+  },
+  "indicator": {
+    "color": "#888888",
+    "height": 40,
+    "width": 40,
+    "marginRight": 10
+  },
+  "panel": {
+    "width": "600",
+    "height": "250",
+    "marginLeft": "75",
+    "marginTop": "35",
+    "marginBottom": "35",
+    "flexDirection": "column",
+    "justifyContent": "center",
+    "borderWidth": "2",
+    "borderStyle": "solid",
+    "borderColor": "#DDDDDD",
+    "backgroundColor": "#F5F5F5"
+  },
+  "text": {
+    "fontSize": "50",
+    "textAlign": "center",
+    "color": "#41B883"
+  }
+}
+
+/***/ }),
+
+/***/ 87:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    data: function data() {
+        return {
+            rtext: '下拉以加载',
+            updatetime: '没有更新',
+            offset: 0,
+            deg: 20,
+            refreshing: false,
+            pulldistance: 135,
+            hasrotate: false,
+            key: "ky" + Math.random()
+        };
+    },
+
+    methods: {
+        animateArrow: function animateArrow(deg) {
+            var animation = weex.requireModule('animation');
+            var arrow = this.$refs.arrow;
+            //                var deg=this.hasrotate?180:0
+
+            animation.transition(arrow, {
+                styles: {
+                    transform: "rotate(" + deg + "deg" + ")"
+                },
+
+                duration: 150, //ms
+                timingFunction: 'ease',
+                delay: 0 //ms
+            }, function () {});
+        },
+        onrefresh: function onrefresh(event) {
+            if (this.offset >= this.pulldistance) {
+
+                this.refreshing = true;
+                this.rtext = "加载中";
+                this.$emit('onRefresh');
+                //                    setTimeout(() => {
+                //                        this.refreshing = false
+                //                    }, 2000)
+            }
+        },
+        end: function end() {
+            this.refreshing = false;
+            //                this.deg=0;
+            this.updatetime = this.getNowFormatDate();
+            //                this.rtext='下拉以加载'
+        },
+        onpullingdown: function onpullingdown(event) {
+
+            var dis = event.pullingDistance;
+            if (dis < 0) dis *= -1;
+            this.offset = dis;
+
+            if (this.refreshing == false) {
+
+                //                     var t=dis>this.pulldistance
+                //                    if(t!=this.hasrotate)
+                //                    {
+                //                        this.hasrotate=t;
+                //                        this.animateArrow();
+                //                    }
+                if (dis > this.pulldistance) {
+                    this.rtext = "松开刷新";
+                    this.deg = 180;
+                    this.hasrotate = false;
+                    this.animateArrow(180);
+                } else {
+                    var p = dis / this.pulldistance;
+                    if (p > 1) p == 1;
+                    this.deg = p * 180;
+                    this.animateArrow(0);
+                    this.rtext = '下拉以加载';
+                }
+            }
+        },
+        getNowFormatDate: function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            var min = date.getMinutes();
+            var secon = date.getSeconds();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            if (min >= 0 && min <= 9) {
+                min = "0" + min;
+            }
+            if (secon >= 0 && secon <= 9) {
+                secon = "0" + secon;
+            }
+
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + " " + date.getHours() + seperator2 + min + seperator2 + secon;
+            return currentdate;
+        }
+    },
+
+    created: function created() {}
+};
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('refresh', {
+    key: _vm.key,
+    staticClass: ["refresh"],
+    attrs: {
+      "id": "rex",
+      "display": _vm.refreshing ? 'show' : 'hide'
+    },
+    on: {
+      "refresh": _vm.onrefresh,
+      "pullingdown": _vm.onpullingdown
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row"
+    }
+  }, [(_vm.refreshing) ? _c('floading', {
+    staticClass: ["indicator"],
+    attrs: {
+      "color": "#555555"
+    }
+  }) : _vm._e(), (!_vm.refreshing) ? _c('image', {
+    ref: "arrow",
+    staticClass: ["limg"],
+    attrs: {
+      "src": "root:img/pull_arrow.png"
+    }
+  }) : _vm._e(), _c('div', {
+    staticStyle: {
+      alignItems: "center"
+    }
+  }, [_c('text', {
+    staticClass: ["refreshText"]
+  }, [_vm._v(_vm._s(_vm.rtext))]), _c('text', {
+    staticStyle: {
+      fontSize: "25",
+      color: "#888888"
+    }
+  }, [_vm._v("上次更新:" + _vm._s(_vm.updatetime))])])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

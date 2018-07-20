@@ -62,93 +62,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 345);
+/******/ 	return __webpack_require__(__webpack_require__.s = 419);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "header": {
-    "backgroundColor": "#FF0000",
-    "flex": 1,
-    "flexDirection": "row"
-  },
-  "tz": {
-    "color": "#FF0000"
-  },
-  "logo": {
-    "width": 300,
-    "height": 300,
-    "marginTop": 80
-  },
-  "k1": {
-    "alignItems": "center"
-  },
-  "titleback": {
-    "flex": 1,
-    "alignItems": "center"
-  },
-  "title": {
-    "color": "#FFFFFF",
-    "flex": 1,
-    "marginTop": 73,
-    "fontWeight": "bold"
-  },
-  "leftimage": {
-    "width": 30,
-    "height": 45,
-    "bottom": 25,
-    "left": 30,
-    "position": "absolute"
-  },
-  "rightimage": {
-    "width": 45,
-    "height": 45,
-    "bottom": 23,
-    "right": 32,
-    "position": "absolute"
-  },
-  "bottomline": {
-    "height": 1,
-    "backgroundColor": "#000000",
-    "position": "absolute",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
-    "flex": 1
-  },
-  "btn": {
-    "backgroundColor": "#0085ee",
-    "height": 100,
-    "width": 500,
-    "marginTop": 50,
-    "borderRadius": 20,
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor:active": "#006ce7"
-  }
-}
-
-/***/ }),
-
-/***/ 100:
+/***/ 196:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(49)
+__vue_styles__.push(__webpack_require__(93)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(50)
+__vue_exports__ = __webpack_require__(94)
 
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(95)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -179,168 +112,23 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "layout": {
-    "backgroundColor": "#333333",
-    "height": 128,
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "width": "750"
-  }
-}
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-exports.default = {
-    props: {
-        title: {
-            default: ''
-
-        },
-        back: {
-            default: true
-        },
-        bgcolor: {
-            default: '#222222'
-
-        },
-        isloading: {
-            default: false
-        },
-        disabled: {
-
-            default: false
-        },
-
-        type: {
-            type: String,
-            default: 'text'
-        },
-        font_size: {
-            default: 20
-        },
-        height: {
-            default: 128
-        },
-        top: {
-            default: 40
-        },
-        titletop: {
-            default: 10
-        }
-
-    },
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        titleClick: function titleClick() {
-            this.$emit('titleClick');
-        },
-        rightclick: function rightclick() {
-            this.$emit('rightClick');
-        },
-        backTo: function backTo() {
-            var nav = weex.requireModule("navigator");
-            nav.back();
-            this.$emit('backClick');
-        },
-        onclick: function onclick() {
-            if (!this.disabled) this.$emit('onclick');
-        },
-        adjust: function adjust() {
-            if (weex.config.env.platform == 'android') {
-                //                    if(weex.config.env.osVersion=)
-                var p = weex.config.env.osVersion;
-                p = p.replace(/\./g, '');
-                if (p.length < 3) p = p + "0";
-                if (p <= '440') {
-                    this.height = 108;
-                    this.top = 16;
-                    this.titletop = 4;
-                }
-            }
-        }
-    },
-
-    created: function created() {
-
-        this.adjust();
-    },
-    ready: function ready() {}
-    //        watch: {
-    //
-    //
-    //            disabled:{
-    //                immediate: true,
-    //                handler (val) {
-    //
-    //                }
-    //            }
-    //        }
-};
-
-/***/ }),
-
-/***/ 345:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(346)
+__vue_styles__.push(__webpack_require__(420)
 )
-__vue_styles__.push(__webpack_require__(347)
+__vue_styles__.push(__webpack_require__(421)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(348)
+__vue_exports__ = __webpack_require__(422)
 
 /* template */
-var __vue_template__ = __webpack_require__(349)
+var __vue_template__ = __webpack_require__(423)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -373,7 +161,7 @@ new Vue(module.exports)
 
 /***/ }),
 
-/***/ 346:
+/***/ 420:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -389,7 +177,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 347:
+/***/ 421:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -456,7 +244,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 348:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -521,8 +309,8 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 
-var head = __webpack_require__(5);
-var cinput = __webpack_require__(100);
+var head = __webpack_require__(9);
+var cinput = __webpack_require__(196);
 
 exports.default = {
     components: { head: head, cinput: cinput },
@@ -555,7 +343,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 349:
+/***/ 423:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -707,7 +495,219 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "header": {
+    "backgroundColor": "#FF0000",
+    "flex": 1,
+    "flexDirection": "row"
+  },
+  "tz": {
+    "color": "#FF0000"
+  },
+  "logo": {
+    "width": 300,
+    "height": 300,
+    "marginTop": 80
+  },
+  "k1": {
+    "alignItems": "center"
+  },
+  "titleback": {
+    "flex": 1,
+    "alignItems": "center"
+  },
+  "title": {
+    "color": "#FFFFFF",
+    "flex": 1,
+    "marginTop": 73,
+    "fontWeight": "bold"
+  },
+  "leftimage": {
+    "width": 30,
+    "height": 45,
+    "bottom": 25,
+    "left": 30,
+    "position": "absolute"
+  },
+  "rightimage": {
+    "width": 45,
+    "height": 45,
+    "bottom": 23,
+    "right": 32,
+    "position": "absolute"
+  },
+  "bottomline": {
+    "height": 1,
+    "backgroundColor": "#000000",
+    "position": "absolute",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flex": 1
+  },
+  "btn": {
+    "backgroundColor": "#0085ee",
+    "height": 100,
+    "width": 500,
+    "marginTop": 50,
+    "borderRadius": 20,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor:active": "#006ce7"
+  }
+}
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "layout": {
+    "backgroundColor": "#333333",
+    "height": 128,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "width": "750"
+  }
+}
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+    props: {
+        title: {
+            default: ''
+
+        },
+        back: {
+            default: true
+        },
+        bgcolor: {
+            default: '#222222'
+
+        },
+        isloading: {
+            default: false
+        },
+        disabled: {
+
+            default: false
+        },
+
+        type: {
+            type: String,
+            default: 'text'
+        },
+        font_size: {
+            default: 20
+        },
+        height: {
+            default: 128
+        },
+        top: {
+            default: 40
+        },
+        titletop: {
+            default: 10
+        }
+
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        titleClick: function titleClick() {
+            this.$emit('titleClick');
+        },
+        rightclick: function rightclick() {
+            this.$emit('rightClick');
+        },
+        backTo: function backTo() {
+            var nav = weex.requireModule("navigator");
+            nav.back();
+            this.$emit('backClick');
+        },
+        onclick: function onclick() {
+            if (!this.disabled) this.$emit('onclick');
+        },
+        adjust: function adjust() {
+            if (weex.config.env.platform == 'android') {
+                //                    if(weex.config.env.osVersion=)
+                var p = weex.config.env.osVersion;
+                p = p.replace(/\./g, '');
+                if (p.length < 3) p = p + "0";
+                if (p <= '440') {
+                    this.height = 108;
+                    this.top = 16;
+                    this.titletop = 4;
+                }
+            }
+        }
+    },
+
+    created: function created() {
+
+        this.adjust();
+    },
+    ready: function ready() {}
+    //        watch: {
+    //
+    //
+    //            disabled:{
+    //                immediate: true,
+    //                handler (val) {
+    //
+    //                }
+    //            }
+    //        }
+};
+
+/***/ }),
+
+/***/ 8:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -803,36 +803,23 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 49:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "text": {
-    "fontSize": "50",
-    "textAlign": "center",
-    "color": "#41B883"
-  }
-}
-
-/***/ }),
-
-/***/ 5:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(1)
+__vue_styles__.push(__webpack_require__(5)
 )
-__vue_styles__.push(__webpack_require__(2)
+__vue_styles__.push(__webpack_require__(6)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(3)
+__vue_exports__ = __webpack_require__(7)
 
 /* template */
-var __vue_template__ = __webpack_require__(4)
+var __vue_template__ = __webpack_require__(8)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -863,7 +850,20 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 50:
+/***/ 93:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "text": {
+    "fontSize": "50",
+    "textAlign": "center",
+    "color": "#41B883"
+  }
+}
+
+/***/ }),
+
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -969,7 +969,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 51:
+/***/ 95:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

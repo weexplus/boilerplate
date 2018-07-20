@@ -107,6 +107,15 @@
                 this.header=e;
 
             });
+            globalEvent.addEventListener("onDestory",  (e)=> {
+//
+                var modal=weex.requireModule('modal')
+                modal.toast({message:'xiaohui'})
+
+//                var notify = weex.requireModule('notify');
+//                notify.send('destory',{})
+
+            });
         }
     }
 </script>

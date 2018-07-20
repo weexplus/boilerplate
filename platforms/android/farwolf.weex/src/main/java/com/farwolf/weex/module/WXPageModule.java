@@ -103,4 +103,11 @@ public class WXPageModule extends WXModuleBase {
     }
 
 
+    @JSMethod
+    public void kill()
+    {
+        AppTool.kill();
+    }
+
+
 }

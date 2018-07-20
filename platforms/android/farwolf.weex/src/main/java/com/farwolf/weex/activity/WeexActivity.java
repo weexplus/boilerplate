@@ -191,6 +191,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
 
 
+
+
     public void addRenderListener(RenderListener l)
     {
 
@@ -575,13 +577,18 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
         if (mWXSDKInstance != null) {
+            mWXSDKInstance.fireGlobalEventCallback("onDestory",null);
+            super.onDestroy();
             mWXSDKInstance.onActivityDestroy();
-            mWXSDKInstance.fireGlobalEventCallback("onDestroy",null);
+
+//            mWXSDKInstance.destroy();
+
         }
 
     }
+
 
     @Override
     protected void onResume() {
@@ -637,7 +644,10 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         super.onPause();
         if (mWXSDKInstance != null) {
+            mWXSDKInstance.fireGlobalEventCallback("onPause",null);
+
             mWXSDKInstance.onActivityPause();
+
         }
         if(mReceiver!=null)
             unregisterReceiver(mReceiver);
@@ -649,7 +659,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     protected void onStop() {
         super.onStop();
         if (mWXSDKInstance != null) {
+            mWXSDKInstance.fireGlobalEventCallback("onStop",null);
             mWXSDKInstance.onActivityStop();
+
         }
 
     }
@@ -720,7 +732,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         if(!backKeyEnable)
         {
-            if (event.getAction() == KeyEvent.ACTION_UP) {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
                     if(backkeyCallback!=null)
                         backkeyCallback.invokeAndKeepAlive(null);
@@ -758,6 +770,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     public void finish() {
         super.finish();
         WXNavgationModule.pop(this.rootid);
+        if (mWXSDKInstance != null) {
+            mWXSDKInstance.fireGlobalEventCallback("onDestory",null);}
     }
 
     public void showTool()

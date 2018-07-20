@@ -1401,6 +1401,11 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
     }
   }
 
+  public void unregisterReceiver()
+  {
+    getContext().unregisterReceiver(mGlobalEventReceiver);
+  }
+
   public synchronized void destroy() {
     if(!isDestroy()) {
       if(mRendered) {
@@ -1409,7 +1414,7 @@ public class WXSDKInstance implements IWXActivityStateListener,DomContext, View.
       WXComponentFactory.removeComponentTypesByInstanceId(getInstanceId());
 
       if (mGlobalEventReceiver != null) {
-        getContext().unregisterReceiver(mGlobalEventReceiver);
+        unregisterReceiver();
         mGlobalEventReceiver = null;
       }
       if (mRootComp != null) {

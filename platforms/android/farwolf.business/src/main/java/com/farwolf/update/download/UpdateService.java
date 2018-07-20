@@ -304,9 +304,9 @@ public class UpdateService extends Service {
 
 
 
-    public void checkExistApk()
+    public void checkExistApk(Context c)
     {
-        SharedPreferences sharedPreferences =getApplicationContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences sharedPreferences =c.getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
        String msg=sharedPreferences.getString(DOWNLOAD_APK_PATH,"");
         String path="";
         int versionCode =0;
@@ -314,7 +314,7 @@ public class UpdateService extends Service {
        {
            path=  msg.split(DOWNLOAD_APK_SPLIT)[0];
            versionCode=  Integer.parseInt( msg.split(DOWNLOAD_APK_SPLIT)[1]);
-           int  appVersion=AppMainfest_.getInstance_(getApplicationContext()).getVersionCode();
+           int  appVersion=AppMainfest_.getInstance_(c).getVersionCode();
            if(versionCode>appVersion)
            {
                 this.install(path);

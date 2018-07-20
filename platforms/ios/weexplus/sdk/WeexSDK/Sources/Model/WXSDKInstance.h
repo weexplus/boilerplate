@@ -24,6 +24,8 @@
 #import "WXResourceRequest.h"
 
 extern NSString *const bundleUrlOptionKey;
+//zjr add
+static NSString * appBoardContent;
 
 @interface WXSDKInstance : NSObject
 
@@ -45,6 +47,8 @@ extern NSString *const bundleUrlOptionKey;
 @property (nonatomic, strong) NSMutableArray *childInstance;
 //zjr add
 @property (nonatomic) BOOL isInit;
+//zjr add
+
 //zjr add
 @property (nonatomic) BOOL isFirePageInit;
 
@@ -270,6 +274,13 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
 //zjr add
 -(void)addChildInstance:(WXSDKInstance*)instance;
 
+//zjr
++(NSString*)getAppBoardContent;
+
+//zjr
++(void)setAppBoardContent:(NSString*)content;
+
+
 /**
  * Trigger full GC, for dev and debug only.
  **/
@@ -321,6 +332,8 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
 @property (nonatomic, strong) NSString *pageName;
 @property (nonatomic, weak) id pageObject;
 @property (nonatomic, strong) NSMutableDictionary *performanceDict;
+
+
 
 
 /** 

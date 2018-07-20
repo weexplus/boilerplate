@@ -9,6 +9,7 @@ import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.core.WeexFactory_;
 import com.farwolf.weex.core.local.Local;
+import com.farwolf.weex.util.Weex;
 
 import java.util.HashMap;
 
@@ -44,18 +45,13 @@ public class JPushAdapter  {
        {
            action="receive";
        }
-
-
-
          String entry= Config.notifyEntry(context);
-         entry=entry.replace("root:","app/");
+         entry= Weex.getLocalRootPath(entry);
          WeexFactory factory= WeexFactory_.getInstance_(context);
           final HashMap m=new HashMap();
-
           Bundle bundle = intent.getExtras();
           m.put("msg",bundle.get(EXTRA_ALERT));
           m.put("extra",bundle.get(EXTRA_EXTRA));
-
           m.put("action",action);
          factory.preRender(entry, new WeexFactory.OnRenderFinishListener() {
          @Override

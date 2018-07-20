@@ -20,6 +20,8 @@
 +(NSString*)jsVersion;
 +(NSString*)diskJsVersion;
 +(NSString*)bundleJsVersion;
++(NSString*)appBoard;
++(NSString*)appBoardContent;
 
 +(NSMutableArray*)preload;
 +(BOOL)isDebug;

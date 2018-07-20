@@ -62,12 +62,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 485);
+/******/ 	return __webpack_require__(__webpack_require__.s = 521);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 485:
+/***/ 521:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77,7 +77,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var data = __webpack_require__(486);
+var data = __webpack_require__(522);
 
 exports.default = {
     get: function get(res) {
@@ -140,7 +140,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 486:
+/***/ 522:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

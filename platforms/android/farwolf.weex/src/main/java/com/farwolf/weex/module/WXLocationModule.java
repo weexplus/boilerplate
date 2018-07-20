@@ -199,6 +199,8 @@ public class WXLocationModule extends WXModuleBase {
     public void query(HashMap param, JSCallback callback) {
         float lat = Float.valueOf(param.get("lat") + "");
         float lon = Float.valueOf(param.get("lon") + "");
+        if(getContext()==null)
+            return;
         Geocoder gc = new Geocoder(getContext(), Locale.getDefault());
         List<Address> locationList = null;
         try {

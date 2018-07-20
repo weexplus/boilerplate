@@ -43,6 +43,8 @@ static DebugScocket *debugScocket;
 +(RefreshManager*)getRefreshManager;
 +(DebugScocket*)getDebugScocket;
 +(NSString*)getBaseUrl:(WXSDKInstance*)instance;
++(NSString*)appBoardContent;
++(void)initAppBoardContent;
 
 +(NSString*)getEntry;
 +(NSString*)getDebugIp;

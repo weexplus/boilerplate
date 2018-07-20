@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 303);
+/******/ 	return __webpack_require__(__webpack_require__.s = 377);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -82,7 +82,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
                                                                                                                                                                                                                                                                                 * Created by Tw93 on 17/11/01
                                                                                                                                                                                                                                                                                 */
 
-var _urlParse = __webpack_require__(7);
+var _urlParse = __webpack_require__(2);
 
 var _urlParse2 = _interopRequireDefault(_urlParse);
 
@@ -351,486 +351,7 @@ exports.default = Utils;
 
 /***/ }),
 
-/***/ 303:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(304)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(305)
-
-/* template */
-var __vue_template__ = __webpack_require__(306)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-tab-page/full-page.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-5df09e16"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
-
-
-/***/ }),
-
-/***/ 304:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "wxc-tab-page": {
-    "width": "750",
-    "backgroundColor": "#f2f3f4"
-  },
-  "tab-title-list": {
-    "width": "750",
-    "position": "absolute",
-    "flexDirection": "row"
-  },
-  "title-item": {
-    "justifyContent": "center",
-    "alignItems": "center",
-    "borderBottomStyle": "solid"
-  },
-  "border-bottom": {
-    "position": "absolute",
-    "bottom": 0
-  },
-  "tab-page-wrap": {
-    "width": "750",
-    "overflow": "hidden"
-  },
-  "tab-container": {
-    "flex": 1,
-    "flexDirection": "row",
-    "position": "absolute"
-  },
-  "tab-text": {
-    "lines": 1,
-    "textOverflow": "ellipsis"
-  }
-}
-
-/***/ }),
-
-/***/ 305:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var dom = weex.requireModule('dom');
-var animation = weex.requireModule('animation');
-var swipeBack = weex.requireModule('swipeBack');
-var expressionBinding = weex.requireModule('expressionBinding');
-
-var supportsEBForIos = _utils2.default.env.supportsEBForIos();
-var isIos = _utils2.default.env.isIOS();
-
-exports.default = {
-  props: {
-    tabTitles: {
-      type: Array,
-      default: function _default() {
-        return [];
-      }
-    },
-    panDist: {
-      type: Number,
-      default: 200
-    },
-    spmC: {
-      type: [String, Number],
-      default: ''
-    },
-    tabStyles: {
-      type: Object,
-      default: function _default() {
-        return {
-          titleColor: '#666666',
-          activeTitleColor: '#3D3D3D',
-          isActiveTitleBold: true,
-          width: 160,
-          height: 40,
-          fontSize: 24,
-          textPaddingLeft: 10,
-          textPaddingRight: 10
-        };
-      }
-    },
-    titleType: {
-      type: String,
-      default: 'icon'
-    },
-    tabPageHeight: {
-      type: [String, Number],
-      default: 1334
-    },
-    needSlider: {
-      type: Boolean,
-      default: true
-    },
-    duration: {
-      type: [Number, String],
-      default: 300
-    },
-    timingFunction: {
-      type: String,
-      default: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-    }
-  },
-  data: function data() {
-    return {
-      currentPage: 0,
-      isMoving: false,
-      deltaX: 0
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    // ios 下面禁止左滑出去
-    if (swipeBack && swipeBack.forbidSwipeBack) {
-      swipeBack.forbidSwipeBack(true);
-    }
-    if (supportsEBForIos && this.needSlider) {
-      setTimeout(function () {
-        var tabPageEl = _this.$refs['tab-page-wrap'];
-        tabPageEl && tabPageEl.ref && _this.bindExp(tabPageEl);
-      }, 20);
-    }
-  },
-
-  methods: {
-    next: function next() {
-      var page = this.currentPage;
-      if (page < this.tabTitles.length - 1) {
-        page++;
-      }
-      this.setPage(page);
-    },
-    prev: function prev() {
-      var page = this.currentPage;
-      if (page > 0) {
-        page--;
-      }
-      this.setPage(page);
-    },
-    startHandler: function startHandler(e) {
-      var _this2 = this;
-
-      if (supportsEBForIos && e.state === 'start' && this.needSlider) {
-        // list下拉和到最下面问题修复
-        setTimeout(function () {
-          _this2.bindExp(_this2.$refs['tab-page-wrap']);
-        }, 0);
-      }
-    },
-    bindExp: function bindExp(element) {
-      var _this3 = this;
-
-      if (!this.isMoving && element && element.ref) {
-        var tabElement = this.$refs['tab-container'];
-        var currentPage = this.currentPage,
-            panDist = this.panDist,
-            tabTitles = this.tabTitles;
-
-        var dist = currentPage * 750;
-        // x-dist
-        var args = [{
-          element: tabElement.ref,
-          property: 'transform.translateX',
-          expression: '{"type":"CallExpression","children":[{"type":"Identifier","value":"min"},{"type":"Arguments","children":[{"type":"NumericLiteral","value":0},{"type":"CallExpression","children":[{"type":"Identifier","value":"max"},{"type":"Arguments","children":[{"type":"NumericLiteral","value":' + -(tabTitles.length - 1) * 750 + '},{"type":"-","children":[{"type":"Identifier","value":"x"},{"type":"NumericLiteral","value":' + dist + '}]}]}]}]}]}'
-        }];
-        expressionBinding.enableBinding(element.ref, 'pan');
-        expressionBinding.createBinding(element.ref, 'pan', '', args, function (e) {
-          var deltaX = e.deltaX,
-              state = e.state;
-
-          if (state === 'end') {
-            if (deltaX < -panDist) {
-              _this3.next();
-            } else if (deltaX > panDist) {
-              _this3.prev();
-            } else {
-              _this3.setPage(currentPage);
-            }
-          }
-        });
-      }
-    },
-    setPage: function setPage(page) {
-      var _this4 = this;
-
-      if (this.isMoving === true) {
-        return;
-      }
-      this.isMoving = true;
-      var previousPage = this.currentPage;
-      var currentTabEl = this.$refs['wxc-tab-title-' + page][0];
-      var width = this.tabStyles.width;
-
-      var appearNum = parseInt(750 / width);
-      var tabsNum = this.tabTitles.length;
-      var computedPage = tabsNum > appearNum ? 2 : page;
-      var offset = page > appearNum ? -(750 - width) / 2 : -width * computedPage;
-
-      (previousPage > appearNum || page > 1) && dom.scrollToElement(currentTabEl, {
-        offset: offset
-      });
-
-      page <= 1 && previousPage > page && dom.scrollToElement(currentTabEl, {
-        offset: -width * page
-      });
-
-      if (isIos) {
-        // 高版本ios 手淘上面会有不固定情况，hack一下
-        setTimeout(function () {
-          _this4._animateTransformX(page);
-        }, 10);
-      } else {
-        this._animateTransformX(page);
-      }
-      this.isMoving = false;
-      this.currentPage = page;
-      this.$emit('wxcTabPageCurrentTabSelected', { page: page });
-    },
-    _animateTransformX: function _animateTransformX(page) {
-      var duration = this.duration,
-          timingFunction = this.timingFunction;
-
-      var containerEl = this.$refs['tab-container'];
-      var dist = page * 750;
-      animation.transition(containerEl, {
-        styles: {
-          transform: 'translateX(' + -dist + 'px)'
-        },
-        duration: duration,
-        timingFunction: timingFunction,
-        delay: 0
-      }, function () {});
-    }
-  }
-};
-
-/***/ }),
-
-/***/ 306:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wxc-tab-page"],
-    style: {
-      height: (_vm.tabPageHeight) + 'px'
-    }
-  }, [_c('div', {
-    ref: "tab-page-wrap",
-    staticClass: ["tab-page-wrap"],
-    style: {
-      height: _vm.tabPageHeight + 'px'
-    },
-    attrs: {
-      "preventMoveEvent": true
-    },
-    on: {
-      "horizontalpan": _vm.startHandler
-    }
-  }, [_c('div', {
-    ref: "tab-container",
-    staticClass: ["tab-container"]
-  }, [_vm._t("default")], 2)]), _c('scroller', {
-    ref: "tab-title-list",
-    staticClass: ["tab-title-list"],
-    style: {
-      backgroundColor: _vm.tabStyles.bgColor,
-      height: (_vm.tabStyles.height) + 'px',
-      top: _vm.tabStyles.top + 'px'
-    },
-    attrs: {
-      "showScrollbar": false,
-      "scrollDirection": "horizontal",
-      "dataSpm": _vm.spmC
-    }
-  }, _vm._l((_vm.tabTitles), function(v, index) {
-    return _c('div', {
-      key: index,
-      ref: 'wxc-tab-title-' + index,
-      refInFor: true,
-      staticClass: ["title-item"],
-      style: {
-        width: _vm.tabStyles.width + 'px',
-        height: _vm.tabStyles.height + 'px',
-        backgroundColor: _vm.currentPage == index ? _vm.tabStyles.activeBgColor : _vm.tabStyles.bgColor
-      },
-      attrs: {
-        "dataSpmClick": ("gostr=/tbtrip;locaid=d" + (v.dataSpm!==undefined ? v.dataSpm : '996' + index)),
-        "accessible": true,
-        "ariaLabel": ("" + (v.title?v.title:'标签'+index))
-      },
-      on: {
-        "click": function($event) {
-          _vm.setPage(index, v.url)
-        }
-      }
-    }, [(_vm.titleType == 'icon') ? _c('image', {
-      style: {
-        width: _vm.tabStyles.iconWidth + 'px',
-        height: _vm.tabStyles.iconHeight + 'px'
-      },
-      attrs: {
-        "src": _vm.currentPage == index ? v.activeIcon : v.icon
-      }
-    }) : _vm._e(), _c('text', {
-      staticClass: ["tab-text"],
-      style: {
-        fontSize: _vm.tabStyles.fontSize + 'px',
-        fontWeight: (_vm.currentPage == index && _vm.tabStyles.isActiveTitleBold) ? 'bold' : 'normal',
-        color: _vm.currentPage == index ? _vm.tabStyles.activeTitleColor : _vm.tabStyles.titleColor,
-        paddingLeft: _vm.tabStyles.textPaddingLeft + 'px',
-        paddingRight: _vm.tabStyles.textPaddingRight + 'px'
-      }
-    }, [_vm._v(_vm._s(v.title))]), (_vm.tabStyles.hasActiveBottom) ? _c('div', {
-      staticClass: ["border-bottom"],
-      style: {
-        width: _vm.tabStyles.activeBottomWidth + 'px',
-        left: (_vm.tabStyles.width - _vm.tabStyles.activeBottomWidth) / 2 + 'px',
-        height: _vm.tabStyles.activeBottomHeight + 'px',
-        backgroundColor: _vm.currentPage == index ? _vm.tabStyles.activeBottomColor : 'transparent'
-      }
-    }) : _vm._e()])
-  }))])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 6:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -861,7 +382,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 7:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -869,8 +390,8 @@ module.exports = g;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var required = __webpack_require__(8),
-    qs = __webpack_require__(9),
+var required = __webpack_require__(3),
+    qs = __webpack_require__(4),
     protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i,
     slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
 
@@ -1274,11 +795,11 @@ URL.location = lolcation;
 URL.qs = qs;
 
 module.exports = URL;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 
-/***/ 8:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1324,7 +845,486 @@ module.exports = function required(port, protocol) {
 
 /***/ }),
 
-/***/ 9:
+/***/ 377:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(378)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(379)
+
+/* template */
+var __vue_template__ = __webpack_require__(380)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/zhengjiangrong/Documents/GitHub/weexplus/src/demo/component/weexui/packages/wxc-tab-page/full-page.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-5df09e16"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+module.exports.el = 'true'
+new Vue(module.exports)
+
+
+/***/ }),
+
+/***/ 378:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wxc-tab-page": {
+    "width": "750",
+    "backgroundColor": "#f2f3f4"
+  },
+  "tab-title-list": {
+    "width": "750",
+    "position": "absolute",
+    "flexDirection": "row"
+  },
+  "title-item": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "borderBottomStyle": "solid"
+  },
+  "border-bottom": {
+    "position": "absolute",
+    "bottom": 0
+  },
+  "tab-page-wrap": {
+    "width": "750",
+    "overflow": "hidden"
+  },
+  "tab-container": {
+    "flex": 1,
+    "flexDirection": "row",
+    "position": "absolute"
+  },
+  "tab-text": {
+    "lines": 1,
+    "textOverflow": "ellipsis"
+  }
+}
+
+/***/ }),
+
+/***/ 379:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var dom = weex.requireModule('dom');
+var animation = weex.requireModule('animation');
+var swipeBack = weex.requireModule('swipeBack');
+var expressionBinding = weex.requireModule('expressionBinding');
+
+var supportsEBForIos = _utils2.default.env.supportsEBForIos();
+var isIos = _utils2.default.env.isIOS();
+
+exports.default = {
+  props: {
+    tabTitles: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    panDist: {
+      type: Number,
+      default: 200
+    },
+    spmC: {
+      type: [String, Number],
+      default: ''
+    },
+    tabStyles: {
+      type: Object,
+      default: function _default() {
+        return {
+          titleColor: '#666666',
+          activeTitleColor: '#3D3D3D',
+          isActiveTitleBold: true,
+          width: 160,
+          height: 40,
+          fontSize: 24,
+          textPaddingLeft: 10,
+          textPaddingRight: 10
+        };
+      }
+    },
+    titleType: {
+      type: String,
+      default: 'icon'
+    },
+    tabPageHeight: {
+      type: [String, Number],
+      default: 1334
+    },
+    needSlider: {
+      type: Boolean,
+      default: true
+    },
+    duration: {
+      type: [Number, String],
+      default: 300
+    },
+    timingFunction: {
+      type: String,
+      default: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+    }
+  },
+  data: function data() {
+    return {
+      currentPage: 0,
+      isMoving: false,
+      deltaX: 0
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // ios 下面禁止左滑出去
+    if (swipeBack && swipeBack.forbidSwipeBack) {
+      swipeBack.forbidSwipeBack(true);
+    }
+    if (supportsEBForIos && this.needSlider) {
+      setTimeout(function () {
+        var tabPageEl = _this.$refs['tab-page-wrap'];
+        tabPageEl && tabPageEl.ref && _this.bindExp(tabPageEl);
+      }, 20);
+    }
+  },
+
+  methods: {
+    next: function next() {
+      var page = this.currentPage;
+      if (page < this.tabTitles.length - 1) {
+        page++;
+      }
+      this.setPage(page);
+    },
+    prev: function prev() {
+      var page = this.currentPage;
+      if (page > 0) {
+        page--;
+      }
+      this.setPage(page);
+    },
+    startHandler: function startHandler(e) {
+      var _this2 = this;
+
+      if (supportsEBForIos && e.state === 'start' && this.needSlider) {
+        // list下拉和到最下面问题修复
+        setTimeout(function () {
+          _this2.bindExp(_this2.$refs['tab-page-wrap']);
+        }, 0);
+      }
+    },
+    bindExp: function bindExp(element) {
+      var _this3 = this;
+
+      if (!this.isMoving && element && element.ref) {
+        var tabElement = this.$refs['tab-container'];
+        var currentPage = this.currentPage,
+            panDist = this.panDist,
+            tabTitles = this.tabTitles;
+
+        var dist = currentPage * 750;
+        // x-dist
+        var args = [{
+          element: tabElement.ref,
+          property: 'transform.translateX',
+          expression: '{"type":"CallExpression","children":[{"type":"Identifier","value":"min"},{"type":"Arguments","children":[{"type":"NumericLiteral","value":0},{"type":"CallExpression","children":[{"type":"Identifier","value":"max"},{"type":"Arguments","children":[{"type":"NumericLiteral","value":' + -(tabTitles.length - 1) * 750 + '},{"type":"-","children":[{"type":"Identifier","value":"x"},{"type":"NumericLiteral","value":' + dist + '}]}]}]}]}]}'
+        }];
+        expressionBinding.enableBinding(element.ref, 'pan');
+        expressionBinding.createBinding(element.ref, 'pan', '', args, function (e) {
+          var deltaX = e.deltaX,
+              state = e.state;
+
+          if (state === 'end') {
+            if (deltaX < -panDist) {
+              _this3.next();
+            } else if (deltaX > panDist) {
+              _this3.prev();
+            } else {
+              _this3.setPage(currentPage);
+            }
+          }
+        });
+      }
+    },
+    setPage: function setPage(page) {
+      var _this4 = this;
+
+      if (this.isMoving === true) {
+        return;
+      }
+      this.isMoving = true;
+      var previousPage = this.currentPage;
+      var currentTabEl = this.$refs['wxc-tab-title-' + page][0];
+      var width = this.tabStyles.width;
+
+      var appearNum = parseInt(750 / width);
+      var tabsNum = this.tabTitles.length;
+      var computedPage = tabsNum > appearNum ? 2 : page;
+      var offset = page > appearNum ? -(750 - width) / 2 : -width * computedPage;
+
+      (previousPage > appearNum || page > 1) && dom.scrollToElement(currentTabEl, {
+        offset: offset
+      });
+
+      page <= 1 && previousPage > page && dom.scrollToElement(currentTabEl, {
+        offset: -width * page
+      });
+
+      if (isIos) {
+        // 高版本ios 手淘上面会有不固定情况，hack一下
+        setTimeout(function () {
+          _this4._animateTransformX(page);
+        }, 10);
+      } else {
+        this._animateTransformX(page);
+      }
+      this.isMoving = false;
+      this.currentPage = page;
+      this.$emit('wxcTabPageCurrentTabSelected', { page: page });
+    },
+    _animateTransformX: function _animateTransformX(page) {
+      var duration = this.duration,
+          timingFunction = this.timingFunction;
+
+      var containerEl = this.$refs['tab-container'];
+      var dist = page * 750;
+      animation.transition(containerEl, {
+        styles: {
+          transform: 'translateX(' + -dist + 'px)'
+        },
+        duration: duration,
+        timingFunction: timingFunction,
+        delay: 0
+      }, function () {});
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 380:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wxc-tab-page"],
+    style: {
+      height: (_vm.tabPageHeight) + 'px'
+    }
+  }, [_c('div', {
+    ref: "tab-page-wrap",
+    staticClass: ["tab-page-wrap"],
+    style: {
+      height: _vm.tabPageHeight + 'px'
+    },
+    attrs: {
+      "preventMoveEvent": true
+    },
+    on: {
+      "horizontalpan": _vm.startHandler
+    }
+  }, [_c('div', {
+    ref: "tab-container",
+    staticClass: ["tab-container"]
+  }, [_vm._t("default")], 2)]), _c('scroller', {
+    ref: "tab-title-list",
+    staticClass: ["tab-title-list"],
+    style: {
+      backgroundColor: _vm.tabStyles.bgColor,
+      height: (_vm.tabStyles.height) + 'px',
+      top: _vm.tabStyles.top + 'px'
+    },
+    attrs: {
+      "showScrollbar": false,
+      "scrollDirection": "horizontal",
+      "dataSpm": _vm.spmC
+    }
+  }, _vm._l((_vm.tabTitles), function(v, index) {
+    return _c('div', {
+      key: index,
+      ref: 'wxc-tab-title-' + index,
+      refInFor: true,
+      staticClass: ["title-item"],
+      style: {
+        width: _vm.tabStyles.width + 'px',
+        height: _vm.tabStyles.height + 'px',
+        backgroundColor: _vm.currentPage == index ? _vm.tabStyles.activeBgColor : _vm.tabStyles.bgColor
+      },
+      attrs: {
+        "dataSpmClick": ("gostr=/tbtrip;locaid=d" + (v.dataSpm!==undefined ? v.dataSpm : '996' + index)),
+        "accessible": true,
+        "ariaLabel": ("" + (v.title?v.title:'标签'+index))
+      },
+      on: {
+        "click": function($event) {
+          _vm.setPage(index, v.url)
+        }
+      }
+    }, [(_vm.titleType == 'icon') ? _c('image', {
+      style: {
+        width: _vm.tabStyles.iconWidth + 'px',
+        height: _vm.tabStyles.iconHeight + 'px'
+      },
+      attrs: {
+        "src": _vm.currentPage == index ? v.activeIcon : v.icon
+      }
+    }) : _vm._e(), _c('text', {
+      staticClass: ["tab-text"],
+      style: {
+        fontSize: _vm.tabStyles.fontSize + 'px',
+        fontWeight: (_vm.currentPage == index && _vm.tabStyles.isActiveTitleBold) ? 'bold' : 'normal',
+        color: _vm.currentPage == index ? _vm.tabStyles.activeTitleColor : _vm.tabStyles.titleColor,
+        paddingLeft: _vm.tabStyles.textPaddingLeft + 'px',
+        paddingRight: _vm.tabStyles.textPaddingRight + 'px'
+      }
+    }, [_vm._v(_vm._s(v.title))]), (_vm.tabStyles.hasActiveBottom) ? _c('div', {
+      staticClass: ["border-bottom"],
+      style: {
+        width: _vm.tabStyles.activeBottomWidth + 'px',
+        left: (_vm.tabStyles.width - _vm.tabStyles.activeBottomWidth) / 2 + 'px',
+        height: _vm.tabStyles.activeBottomHeight + 'px',
+        backgroundColor: _vm.currentPage == index ? _vm.tabStyles.activeBottomColor : 'transparent'
+      }
+    }) : _vm._e()])
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
