@@ -41,7 +41,7 @@
 @property (nonatomic, strong) SRWebSocket *hotReloadSocket;
 @property (nonatomic) BOOL    freeFrame;
 @property (nonatomic, strong) UIView *fail_layout;
-@property (nonatomic, strong) NSMutableDictionary *param;
+@property (nonatomic, copy) NSMutableDictionary *param;
 @property (nonatomic, weak) Page *page;
 @property (nonatomic) NSString* navbarVisibility;
 @property (copy,nonatomic)  WXModuleKeepAliveCallback callback;

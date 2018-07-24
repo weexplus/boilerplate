@@ -6,7 +6,7 @@
     "scripts": {
         "build": "weex-builder src dist -m  --ext vue\\|js",
         "build_plugin": "webpack --config ./tools/webpack.config.plugin.js --color",
-        "dev": "weex-builder src dist -w --ext vue\\|js",
+        "dev": "weex-builder src dist -w --ext",
         "weexplus": "weexplus start  --serverport 9999  --socketport 9897",
         "serve": "webpack-dev-server --config webpack.dev.js -p --open"
     },

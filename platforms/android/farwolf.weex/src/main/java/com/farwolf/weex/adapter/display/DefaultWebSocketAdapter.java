@@ -173,6 +173,7 @@ public class DefaultWebSocketAdapter implements IWebSocketAdapter {
         if (ws != null) {
             try {
                 ws.close(WebSocketCloseCodes.CLOSE_GOING_AWAY.getCode(), WebSocketCloseCodes.CLOSE_GOING_AWAY.name());
+                ws=null;
             } catch (Exception e) {
                 e.printStackTrace();
             }

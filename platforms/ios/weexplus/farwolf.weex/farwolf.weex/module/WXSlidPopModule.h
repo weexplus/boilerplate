@@ -14,8 +14,8 @@
 @property(nonatomic,strong) UIView *popView;
 @property(nonatomic)CGFloat delt;
 @property(nonatomic,strong)NSString *side;
-@property(nonatomic,strong) WXNormalViewContrller *vc;
-@property(nonatomic,strong) UINavigationController *nav;
+@property(nonatomic,weak) WXNormalViewContrller *vc;
+@property(nonatomic,weak) UINavigationController *nav;
 @property (nonatomic, strong) UIView *backgroundView;
 @property(nonatomic,strong)NSString*url;
 

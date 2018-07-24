@@ -112,7 +112,7 @@ static NSMutableDictionary *pageCache;
     Page *p=[Page new];
     p.instance = [[WXSDKInstance alloc] init];
     p.instance.frame =frame;
-    p.instance.pageObject = self;
+//    p.instance.pageObject = self;
     
   
     WXNormalViewContrller *vc=[self getCache:sourceURL.absoluteString];
@@ -133,45 +133,51 @@ static NSMutableDictionary *pageCache;
     p.instance.scriptURL=[NSURL URLWithString:newURL];
     p.url=sourceURL;
     __strong __typeof(p) weakP = p;
+//    __weak __typeof(complete) weakComplete = complete;
     p.instance.onCreate = ^(UIView *view) {
         
  
         weakP.weexView=view;
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
         vc.isLanscape=!isPortrait;
+       
 //        if(isPortrait)
 //        vc=[[WXNormalViewContrller alloc]initWithSourceURL:sourceURL.absoluteString];
 //        else
 //           vc= [[LanscapeViewContoller alloc]initWithSourceURL:sourceURL.absoluteString];
 //        LanscapeViewContoller
         vc.hidesBottomBarWhenPushed = YES;
-        vc.page=p;
+        vc.page=weakP;
         vc.navbarVisibility=@"hidden";
         vc.sourceURL=sourceURL;
     
-        vc.instance=p.instance;
-        p.instance.frame=frame;
-        p.instance.viewController=vc;
+        vc.instance=weakP.instance;
+        weakP.instance.frame=frame;
+        weakP.instance.viewController=vc;
+         printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
 //          complete(vc);
-        
+         __weak __typeof(vc) weakVc = vc;
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         UIViewController *rootViewController = window.rootViewController;
-        [rootViewController.view addSubview:p.weexView];
+        [rootViewController.view addSubview:weakP.weexView];
         [rootViewController addChildViewController:vc];
-        p.instance.renderFinish = ^(UIView *view) {
-               
-            [vc removeFromParentViewController];
-            [p.weexView removeFromSuperview];
-        
-            complete(vc);
-        };
+       
         
         
         
     };
     
+    weakP.instance.renderFinish = ^(UIView *view) {
+        
+        UIViewController *vc=[view getCurrentVc].childViewControllers[1];
+        [vc removeFromParentViewController];
+        [weakP.weexView removeFromSuperview];
+        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+        complete(vc);
+         printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+    };
   
-    p.instance.onFailed = ^(NSError *error) {
+    weakP.instance.onFailed = ^(NSError *error) {
         
         NSString *msg=error.userInfo[@"NSLocalizedDescription"];
         NSLog(@"%@", msg);

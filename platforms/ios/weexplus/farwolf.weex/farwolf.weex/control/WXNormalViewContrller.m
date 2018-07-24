@@ -41,6 +41,7 @@ static BOOL isshowErr;
     
     [_instance destroyInstance];
     [self _removeObservers];
+    NSLog(@"dealloc");
 }
 
 - (instancetype)initWithSourceURL:(NSURL *)sourceURL
@@ -89,6 +90,7 @@ static BOOL isshowErr;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+     printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
       self.naviIndex=self.topViewController.navigationController.childViewControllers.count;
     if(self.isLanscape)
     {
@@ -141,12 +143,14 @@ static BOOL isshowErr;
 
 //    RefreshManager *r=[RefreshManager new];
 //    [r open:@"192.168.199.248" port:@"6969"];
+    
 }
 
 -(void)loadPage
 {
     self.instance=self.page.instance;
     self.weexView=self.page.weexView;
+    self.page.weexView=nil;
     self.sourceURL=self.page.url;
     self.instance.viewController=self;
     
@@ -157,14 +161,14 @@ static BOOL isshowErr;
     
     
      [UIView setAnimationsEnabled:true];
-    
+     __weak typeof(self) weakSelf = self;
     self.instance.renderFinish = ^(UIView *view) {
         
 //        [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
-        self.instance.param=_param;
-        self.instance.isInit=true;
-        [self.instance firePageInit];
-        [self loadCompelete];
+        weakSelf.instance.param=_param;
+        weakSelf.instance.isInit=true;
+        [weakSelf.instance firePageInit];
+        [weakSelf loadCompelete];
     };
     [self.view addSubview:self.weexView];
 //    [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
@@ -242,9 +246,10 @@ static BOOL isshowErr;
     
     ErrorControl *vc=[ErrorControl new];
     vc.errmsg=msg;
+    __weak typeof(self) weakSelf = self;
     vc.onClose=^(){
         isshowErr=false;
-        [self.fail_layout setHidden:false];
+        [weakSelf.fail_layout setHidden:false];
         [vc dismiss:true completion:^{
             
         }];
@@ -274,9 +279,10 @@ static BOOL isshowErr;
     lable.textColor=[@"dddddd" toColor];
     [self.fail_layout addSubview:failimg];
     [self.fail_layout addSubview:lable];
+     __weak typeof(self) weakSelf = self;
     [self.fail_layout mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.centerXWithinMargins.equalTo(self.view);
+        make.centerXWithinMargins.equalTo(weakSelf.view);
         make.size.mas_equalTo(CGSizeMake(250, 230));
         make.top.equalTo(self.view).offset(50);
         
@@ -289,8 +295,8 @@ static BOOL isshowErr;
     }];
     [lable mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.centerXWithinMargins.equalTo(self.fail_layout);
-        make.bottom.equalTo(self.fail_layout);
+        make.centerXWithinMargins.equalTo(weakSelf.fail_layout);
+        make.bottom.equalTo(weakSelf.fail_layout);
     }];
     
 //    [failimg addClick:^{
@@ -366,6 +372,8 @@ static BOOL isshowErr;
         [p setValue:self.sourceURL.absoluteString forKey:@"url"];
         [self notifyDict:@"removeUrl" value:p];
     }
+    
+    printf("retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
 }
 
 - (void)didReceiveMemoryWarning
@@ -470,17 +478,17 @@ static BOOL isshowErr;
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
 //        [_instance fireGlobalEvent:@"onPageInit" params:self.param];
-        self.instance.isInit=true;
-        self.instance.param=self.param;
-        [self.instance firePageInit];
+        weakSelf.instance.isInit=true;
+        weakSelf.instance.param=weakSelf.param;
+        [weakSelf.instance firePageInit];
         if(_debug)
         {
-            [self.view bringSubviewToFront:self.set];
-            [self.view bringSubviewToFront:self.refresh];
-             [self.view bringSubviewToFront:self.fail_layout];
+            [weakSelf.view bringSubviewToFront:weakSelf.set];
+            [weakSelf.view bringSubviewToFront:weakSelf.refresh];
+             [weakSelf.view bringSubviewToFront:weakSelf.fail_layout];
          
         }
-        [self loadCompelete];
+        [weakSelf loadCompelete];
     };
 }
 
@@ -740,7 +748,6 @@ static BOOL isshowErr;
     ((SetViewController*)((UINavigationController*)_setVc).childViewControllers[0]).vc=self;
 //   _setVc= [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
 }
-
 
 
 

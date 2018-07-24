@@ -14,7 +14,7 @@
 #import "farwolf.h"
 #import "WeexSDK/WXBaseViewController.h"
 @interface Page : NSObject
-@property (nonatomic, retain) WXSDKInstance *instance;
+@property (nonatomic, weak) WXSDKInstance *instance;
 @property (nonatomic, strong) UIView *weexView;
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic) BOOL hasload;

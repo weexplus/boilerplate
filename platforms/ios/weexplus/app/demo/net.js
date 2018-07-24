@@ -409,11 +409,11 @@ exports.default = {
         });
         globalEvent.addEventListener("onDestory", function (e) {
             //
-            //                var modal=weex.requireModule('modal')
-            //                modal.toast('xiaohui')
+            var modal = weex.requireModule('modal');
+            modal.toast({ message: 'xiaohui' });
 
-            var notify = weex.requireModule('notify');
-            notify.send('destory', {});
+            //                var notify = weex.requireModule('notify');
+            //                notify.send('destory',{})
         });
     }
 };
