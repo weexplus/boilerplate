@@ -1,1 +1,0 @@
-../../../../farwolf/farwolf/View/CCQrCode.h

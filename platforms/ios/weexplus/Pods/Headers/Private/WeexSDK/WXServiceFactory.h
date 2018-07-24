@@ -1,1 +1,0 @@
-../../../../sdk/WeexSDK/Sources/Manager/WXServiceFactory.h

@@ -1,1 +1,0 @@
-../../../AliyunOSSiOS/AliyunOSSSDK/OSSIPv6/OSSIPv6Adapter.h

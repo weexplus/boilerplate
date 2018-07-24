@@ -1,1 +1,0 @@
-../../../../farwolf.weex/farwolf.weex/IQKeyboardManager/Categories/IQUIView+Hierarchy.h

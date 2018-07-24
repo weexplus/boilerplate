@@ -1,1 +1,0 @@
-../../../../farwolf.weex/farwolf.weex/component/WXImgButtonComponent.h

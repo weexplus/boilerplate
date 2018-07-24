@@ -1,1 +1,0 @@
-../../../../sdk/WeexSDK/Sources/Protocol/WXEventModuleProtocol.h

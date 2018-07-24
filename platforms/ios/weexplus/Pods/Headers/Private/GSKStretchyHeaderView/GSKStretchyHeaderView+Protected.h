@@ -1,1 +1,0 @@
-../../../GSKStretchyHeaderView/GSKStretchyHeaderView/Classes/Private/GSKStretchyHeaderView+Protected.h

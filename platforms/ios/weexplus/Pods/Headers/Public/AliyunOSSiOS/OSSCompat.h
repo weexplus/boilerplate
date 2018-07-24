@@ -1,1 +1,0 @@
-../../../AliyunOSSiOS/AliyunOSSSDK/OSSCompat.h

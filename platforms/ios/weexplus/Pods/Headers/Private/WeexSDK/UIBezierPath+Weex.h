@@ -1,1 +1,0 @@
-../../../../sdk/WeexSDK/Sources/Display/UIBezierPath+Weex.h

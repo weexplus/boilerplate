@@ -1,1 +1,0 @@
-../../../LPPhotoViewer/LPPhotoViewer/LPPhotoView.h

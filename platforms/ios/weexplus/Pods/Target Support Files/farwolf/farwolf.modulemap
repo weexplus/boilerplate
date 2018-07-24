@@ -1,6 +1,0 @@
-framework module farwolf {
-  umbrella header "farwolf-umbrella.h"
-
-  export *
-  module * { export * }
-}

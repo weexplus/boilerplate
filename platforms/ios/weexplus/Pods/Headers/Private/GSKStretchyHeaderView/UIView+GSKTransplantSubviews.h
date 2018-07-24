@@ -1,1 +1,0 @@
-../../../GSKStretchyHeaderView/GSKStretchyHeaderView/Classes/UIView+GSKTransplantSubviews.h
