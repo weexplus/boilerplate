@@ -7,4 +7,7 @@ busi
 temp
 dist/*
 *.iml
-platforms/ios/weexplus/*.js
+platforms/ios/weexplus/app/*
+!platforms/ios/weexplus/app/config.json
+platforms/android/weexplus/app/src/main/assets/app/*
+!platforms/android/weexplus/app/src/main/assets/app/config.json
