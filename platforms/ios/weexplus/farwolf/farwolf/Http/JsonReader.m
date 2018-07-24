@@ -154,8 +154,9 @@
         self.p= [[LockScreenProgress alloc]initWith:vc.view];
     
     //    __weak typeof(LockScreenProgress) *weakp = self.p;
+     __weak typeof (self)weakSlef=self;
   return  [self excuteFull:^{
-        [self.p show];
+        [weakSlef.p show];
     } success:^(Json *jx) {
         success(jx);
     } fail:^(Json *jx, NSInteger code, NSString *msg) {
@@ -164,7 +165,7 @@
         [vc toast:@"网络异常！"];
         
     } compelete:^{
-        [self.p hide];
+        [weakSlef.p hide];
     } usePost:usePost];
 }
 
@@ -173,10 +174,10 @@
 {
     if(self.p==nil)
         self.p= [[LockScreenProgress alloc]initWith:vc.view];
-    
+     __weak typeof (self)weakSlef=self;
     //    __weak typeof(LockScreenProgress) *weakp = self.p;
     return  [self excuteFull:^{
-        [self.p show];
+        [weakSlef.p show];
     } success:^(Json *jx) {
         success(jx);
     } fail:^(Json *jx, NSInteger code, NSString *msg) {
@@ -185,7 +186,7 @@
         [vc toast:@"网络异常！"];
         
     } compelete:^{
-        [self.p hide];
+        [weakSlef.p hide];
     } usePost:usePost];
 }
 
@@ -224,12 +225,13 @@
         [manager.requestSerializer setValue:v forHTTPHeaderField:key];
     }
     
+    __weak typeof (self)weakSlef=self;
     if(usePost)
     {
        return [manager POST:url parameters:self.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             //        [self success:operation responseObject: start:start success:success fail:fail exception:exception compelete:compelete];
-            [self success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
+            [weakSlef success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
             
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -255,7 +257,7 @@
        return [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             //        [self success:operation responseObject: start:start success:success fail:fail exception:exception compelete:compelete];
-            [self success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
+            [weakSlef success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
             
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -311,6 +313,7 @@
         NSString *v=d[key];
         [manager.requestSerializer setValue:v forHTTPHeaderField:key];
     }
+     __weak typeof (self)weakSlef=self;
     
     if(usePost)
     {
@@ -324,10 +327,10 @@
             NSHTTPURLResponse* response = operation.response;
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
           
-            Json *res=[[self getDecoder] initWithString:result];
+            Json *res=[[weakSlef getDecoder] initWithString:result];
             res.resHeader=response.allHeaderFields;
             res.sessionId=sessionId;
-            res.tag=self.tag;
+            res.tag=weakSlef.tag;
             res.backString=result;
             success(res);
             compelete();
@@ -366,10 +369,10 @@
             NSLog(result);
             NSHTTPURLResponse* response = operation.response;
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
-            Json *res=[[self getDecoder] initWithString:result];
+            Json *res=[[weakSlef getDecoder] initWithString:result];
             res.sessionId=sessionId;
             res.resHeader=response.allHeaderFields;
-            res.tag=self.tag;
+            res.tag=weakSlef.tag;
             res.backString=result;
             success(res);
             compelete();

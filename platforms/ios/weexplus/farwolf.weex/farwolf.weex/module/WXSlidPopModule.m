@@ -94,11 +94,11 @@ WX_EXPORT_METHOD(@selector(reset))
         side=@"left";
     _side=side;
     _delt=[Weex length:delt instance:weexInstance];
-   
+    __weak typeof (self) weakSelf =self;
     [WeexFactory renderNew:[Weex getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
         vc.instance.param=param;
-        [self render:vc param:param delt:_delt side:side offset:offset compelete:^(UINavigationController *n) {
+        [weakSelf render:vc param:param delt:_delt side:side offset:offset compelete:^(UINavigationController *n) {
             _popView=n.view;
             _nav=n;
             compelete();
@@ -246,6 +246,7 @@ WX_EXPORT_METHOD(@selector(reset))
 }
 - (void)com:(UIView*)view time:(NSTimeInterval)time compelete: (void(^)())compelete {
     
+     __weak typeof (self) weakSelf =self;
     CGFloat w=[UIScreen mainScreen].bounds.size.width;
     CGFloat h=[UIScreen mainScreen].bounds.size.height;
     [weexInstance.viewController.view bringSubviewToFront:_popView];
@@ -271,7 +272,7 @@ WX_EXPORT_METHOD(@selector(reset))
             view.frame=CGRectMake(_left, h-_delt-_bottom, w-_left-_right, _delt);
         }
 
-        _hasshow=true;
+        weakSelf.hasshow=true;
     } completion:^(BOOL finished) {
         compelete();
     }];
@@ -283,6 +284,7 @@ WX_EXPORT_METHOD(@selector(reset))
     
     CGFloat w=[UIScreen mainScreen].bounds.size.width;
     CGFloat h=[UIScreen mainScreen].bounds.size.height;
+     __weak typeof (self) weakSelf =self;
      [UIView animateWithDuration:time animations:^{
         if([@"left" isEqualToString:_side])
         {
@@ -302,10 +304,10 @@ WX_EXPORT_METHOD(@selector(reset))
         {
             view.frame=CGRectMake(_left,h, w-_left-_right, _delt);
         }
-        _hasshow=false;
+        weakSelf.hasshow=false;
     } completion:^(BOOL finished) {
         
-        [_backgroundView removeFromSuperview];
+        [weakSelf.backgroundView removeFromSuperview];
         
     }];
     

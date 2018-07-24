@@ -84,16 +84,15 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         [self presentFull:parameters callback:callback];
         return;
     }
-    WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:[URL getFinalUrl:url weexInstance:weexInstance] ];
-     [[weexInstance.viewController navigationController] pushViewController:vc animated:true];
+    __weak typeof (self) weakself=self;
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
-        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+//        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
         vc.param=param;
         vc.callback = callback;
         vc.instance.param=param;
-        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
-        [[weexInstance.viewController navigationController] pushViewController:vc animated:animated];
-        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+//        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+        [[weakself.weexInstance.viewController navigationController] pushViewController:vc animated:animated];
+//        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
         
     } fail:^(NSString *msg) {
         
@@ -232,14 +231,14 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     }
    
     
-    
+     __weak typeof (self) weakself=self;
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
         UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
         vc.param=param;
         vc.callback=callback;
         vc.instance.param=param;
-        [weexInstance.viewController presentViewController:nav animated:animated completion:^{
+        [weakself.weexInstance.viewController presentViewController:nav animated:animated completion:^{
             
         }];
         

@@ -37,7 +37,7 @@ WX_EXPORT_METHOD(@selector(dismiss:))
         vc.instance.param=param;
         [weakself.backgroundView addSubview:nav.view];
         nav.view.frame = CGRectMake(0, 0, width*0.5, height*0.5);
-        nav.view.center = self.backgroundView.center;
+        nav.view.center = weakself.backgroundView.center;
         nav.view.backgroundColor=[UIColor clearColor];
         vc.view.backgroundColor=[UIColor clearColor];
         [weakself.weexInstance.viewController addChildViewController:nav];

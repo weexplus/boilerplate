@@ -57,8 +57,9 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
         [vc.view bringSubviewToFront:_layout];
         [_p setHidden:false];
         [_layout addClick:@selector(handletapPressGesture:) host:self];
+        __weak typeof (self)weakself =self;
         _p.onDismiss=^(){
-            [_layout removeFromSuperview];
+            [weakself.layout removeFromSuperview];
         };
         
     }
@@ -66,15 +67,15 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 
 -(void)handletapPressGesture:(UITapGestureRecognizer*)sender{
     CGPoint point = [sender locationInView:weexInstance.viewController.view];
-    
+    __weak typeof (self)weakself =self;
     if(point.y<=weexInstance.viewController.screenHeight-300)
     {
         
         [UIView animateWithDuration:0.15 animations:^{
-            _p.frame = CGRectMake(0, weexInstance.viewController.screenHeight, weexInstance.viewController.screenWidth, 300);
+            weakself.p.frame = CGRectMake(0, weakself.weexInstance.viewController.screenHeight, weakself.weexInstance.viewController.screenWidth, 300);
             
         } completion:^(BOOL finished) {
-            [_layout removeFromSuperview];
+            [weakself.layout removeFromSuperview];
         }];
     }
     
@@ -144,10 +145,10 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
     UIViewController *vc=weexInstance.viewController.topViewController;
     [vc.view addSubview:_layout];
     [vc.view bringSubviewToFront:_layout];
-    
+    __weak typeof (self)weakself =self;
     [UIView animateWithDuration:0.15 animations:^{
         // 设置view弹出来的位置
-        _p.frame = CGRectMake(0, vc.screenHeight-300,vc.screenWidth, 300);
+        weakself.p.frame = CGRectMake(0, vc.screenHeight-300,vc.screenWidth, 300);
     }];
     
 }
@@ -156,12 +157,12 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 - (void)gone {
     
     
-    
+    __weak typeof (self)weakself =self;
     [UIView animateWithDuration:1 animations:^{
-        _p.frame = CGRectMake(0, weexInstance.viewController.screenHeight, weexInstance.viewController.screenWidth, 300);
+        weakself.p.frame = CGRectMake(0, weexInstance.viewController.screenHeight, weexInstance.viewController.screenWidth, 300);
         
     } completion:^(BOOL finished) {
-        [_layout removeFromSuperview];
+        [weakself.layout removeFromSuperview];
     }];
     
     

@@ -5,7 +5,7 @@
   "isPortrait":true,
   "jsVersion":1,
   "debugIp":"127.0.0.1",
-  "entry":"app/index.js",
+  "entry":"app/demo/navigator.js",
   "wechatEntry":"app/demo/index.js",
   "appBoard":"root:common.js",
   "notifyEntry":"http://172.20.10.3:8890/js/notifyEntry.js",

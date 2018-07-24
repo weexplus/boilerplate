@@ -17,6 +17,10 @@
             <div class="btn" @click="present()">
                 <text style="color:white">present</text>
             </div>
+
+            <div class="btn" @click="dismiss()">
+                <text style="color:white">dismiss</text>
+            </div>
         </div>
     </div>
 </template>
@@ -44,6 +48,12 @@
                 var nav = weex.requireModule('navigator');
                 //相对路径写法，也可以root:绝对路径
                 nav.push('net.js')
+            },
+            dismiss()
+            {
+                var nav = weex.requireModule('navigator');
+                //相对路径写法，也可以root:绝对路径
+                nav.dismiss()
             },
             present(){
                 var self = this;
@@ -93,19 +103,19 @@
         }
         ,
         created: function () {
-            var globalEvent = weex.requireModule('globalEvent');
-            var notify = weex.requireModule('notify');
-            notify.regist('destory',(res)=>{
-                this.callbackdata='destory'
-            })
-            globalEvent.addEventListener("onPageInit", function (e) {
-
-
-                var navigator = weex.requireModule('navigator');
-                navigator.addBackGestureSelfControl();
-
-
-            });
+//            var globalEvent = weex.requireModule('globalEvent');
+//            var notify = weex.requireModule('notify');
+//            notify.regist('destory',(res)=>{
+//                this.callbackdata='destory'
+//            })
+//            globalEvent.addEventListener("onPageInit", function (e) {
+//
+//
+//                var navigator = weex.requireModule('navigator');
+//                navigator.addBackGestureSelfControl();
+//
+//
+//            });
 
         }
     }

@@ -93,6 +93,7 @@
             {
                 var nav=weex.requireModule("navigator");
                 nav.back();
+//                nav.dismiss();
                 this.$emit('backClick');
             },
 

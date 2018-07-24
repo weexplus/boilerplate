@@ -113,7 +113,7 @@ static BOOL isshowErr;
         return;
     }
     [self _renderWithURL:_sourceURL];
-    
+//
     if ([self.navigationController isKindOfClass:[WXNormalViewContrller class]]) {
         self.navigationController.navigationBarHidden = YES;
     }
@@ -152,6 +152,9 @@ static BOOL isshowErr;
     self.weexView=self.page.weexView;
     self.page.weexView=nil;
     self.sourceURL=self.page.url;
+    self.page.url=nil;
+    self.page.instance=nil;
+    self.page=nil;
     self.instance.viewController=self;
     
     [self resetFrame];
@@ -165,7 +168,7 @@ static BOOL isshowErr;
     self.instance.renderFinish = ^(UIView *view) {
         
 //        [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
-        weakSelf.instance.param=_param;
+        weakSelf.instance.param=weakSelf.param;
         weakSelf.instance.isInit=true;
         [weakSelf.instance firePageInit];
         [weakSelf loadCompelete];
@@ -284,14 +287,14 @@ static BOOL isshowErr;
         
         make.centerXWithinMargins.equalTo(weakSelf.view);
         make.size.mas_equalTo(CGSizeMake(250, 230));
-        make.top.equalTo(self.view).offset(50);
+        make.top.equalTo(weakSelf.view).offset(50);
         
         
     }];
     failimg.image=[UIImage imageNamed:@"fail.png"];
     [failimg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(200, 173));
-        make.center.equalTo(_fail_layout);
+        make.center.equalTo(weakSelf.fail_layout);
     }];
     [lable mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -397,8 +400,10 @@ static BOOL isshowErr;
 
 - (void)refreshWeex
 {
-    [self.fail_layout setHidden:true];
-    [self _renderWithURL:_sourceURL];
+//    [self.fail_layout setHidden:true];
+//    [self _renderWithURL:_sourceURL];
+    
+    [self back:true];
 }
  
 - (void)addEdgePop
@@ -446,47 +451,47 @@ static BOOL isshowErr;
                 newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
             }
         url=[NSURL URLWithString:newURL];
-        
+
     }
     else
     {
         url= sourceURL;
     }
-    
+
     [_instance renderWithURL:url options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
-    
+
     __weak typeof(self) weakSelf = self;
     _instance.onCreate = ^(UIView *view) {
         [weakSelf.weexView removeFromSuperview];
         weakSelf.weexView = view;
-        
+
         [weakSelf.view addSubview:weakSelf.weexView];
         UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,  weakSelf.weexView);
-        
-        [self onCreateWeexView];
-        
+
+        [weakSelf onCreateWeexView];
+
     };
-    
-    
+
+
     _instance.onFailed = ^(NSError *error) {
-        
+
         NSString *msg=error.userInfo[@"NSLocalizedDescription"];
-    
+
     };
-    
-    
+
+
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
-//        [_instance fireGlobalEvent:@"onPageInit" params:self.param];
+        [weakSelf.instance fireGlobalEvent:@"onPageInit" params:weakSelf.param];
         weakSelf.instance.isInit=true;
         weakSelf.instance.param=weakSelf.param;
         [weakSelf.instance firePageInit];
-        if(_debug)
+        if(weakSelf.debug)
         {
             [weakSelf.view bringSubviewToFront:weakSelf.set];
             [weakSelf.view bringSubviewToFront:weakSelf.refresh];
              [weakSelf.view bringSubviewToFront:weakSelf.fail_layout];
-         
+
         }
         [weakSelf loadCompelete];
     };
@@ -655,7 +660,7 @@ static BOOL isshowErr;
     [self.view addSubview:self.toolView];
     [self.view bringSubviewToFront:self.toolView];
     [self.view bringSubviewToFront:self.set];
-      [self.view bringSubviewToFront:self.refresh];
+    [self.view bringSubviewToFront:self.refresh];
     
     [self regist:@"loaddefault" method:@selector(loaddefault)];
     [self addFailLayout];
@@ -742,11 +747,18 @@ static BOOL isshowErr;
 
 -(void)gotoset
 {
-//    _setVc= [self fromStoryBoard:@"weex/SetViewController"];
-//        [self addVc:_setVc];
-    _setVc=  [self present:@"weex/SetViewController" anim:true];
-    ((SetViewController*)((UINavigationController*)_setVc).childViewControllers[0]).vc=self;
-//   _setVc= [self addVc:[self fromStoryBoard:@"weex/SetViewController"]];
+
+//    _setVc=  [self present:@"weex/SetViewController" anim:true];
+//    ((SetViewController*)((UINavigationController*)_setVc).childViewControllers[0]).vc=self;
+    
+    
+    NSURL *url=[NSURL URLWithString:@"http://169.254.129.97:8890/js/demo/navigator.js"];
+    WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
+    vc.debug=true;
+    [self.navigationController pushViewController:vc animated:true];
+//    [self presentViewController:vc animated:true completion:^{
+//
+//    }];
 }
 
 

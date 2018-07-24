@@ -3,9 +3,41 @@ Mixins.install = (Vue, options) => {
     Vue.mixin({
         data(){
             return {
-                name:'gfgfgf'
+                modal:{},
+                navigator:{},
             }
+        },
+        methods:{
+            toast(msg)
+            {
+
+                this.modal.toast({message:msg})
+            },
+            alert(msg)
+            {
+                this.modal.alert({message:msg})
+            },
+            push(url)
+            {
+                this.navigator.push(url)
+            }
+          
+
+        },
+        created()
+        {
+            var globalEvent = weex.requireModule('globalEvent') ;
+            globalEvent.addEventListener("onPageInit",  (param)=> {
+
+                this.navigator=weex.requireModule('navigator')
+                this.modal=weex.requireModule('modal')
+                 if(this.onload!=undefined)
+                     this.onload(param)
+
+            });
+
         }
+
     })
 }
 

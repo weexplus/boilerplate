@@ -33,13 +33,13 @@ WX_EXPORT_METHOD(@selector(openURL:))
 //        [[self.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
 //    }];
     
-    
+    __weak typeof (self) weakself =self;
     [WeexFactory render:[NSURL URLWithString:newURL] compelete:^(Page *p) {
        
         WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
          vc.hidesBottomBarWhenPushed = YES;
         vc.page=p;
-        [[self.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
+        [[weakself.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
         
     }];
 

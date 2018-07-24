@@ -18,18 +18,19 @@ WX_EXPORT_METHOD(@selector(read:))
     RHAddressBook *addressBook = [[RHAddressBook alloc] init];
       if(![self hasRights])
       {
+          __weak typeof (self) weakSelf=self;
           [addressBook requestAuthorizationWithCompletion:^(bool granted, NSError *error) {
               
               if(granted==true)
               {
-                  [self doread:addressBook callback:callback];
+                  [weakSelf doread:addressBook callback:callback];
                   return;
               }
               else
               {
                   if(![self hasRights])
                   {
-                      [self gotoSetting:weexInstance.viewController];
+                      [weakSelf gotoSetting:weexInstance.viewController];
                       return;
                   }
               }

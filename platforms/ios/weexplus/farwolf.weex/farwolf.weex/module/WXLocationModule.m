@@ -75,7 +75,7 @@ WX_EXPORT_METHOD(@selector(stop))
     [manager stopUpdatingLocation];
    
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
- 
+    __weak typeof (self) weakself=self;
     [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray<CLPlacemark *> *_Nullable placemarks, NSError * _Nullable error) {
         for (CLPlacemark *place in placemarks) {
 
@@ -98,7 +98,7 @@ WX_EXPORT_METHOD(@selector(stop))
            
             res[@"subLocality"]=place.addressDictionary[@"subLocality"];
             res[@"distreet"]=[place.thoroughfare add:place.subThoroughfare];
-            _callback(res,true);
+            weakself.callback(res,true);
             
             
         }
