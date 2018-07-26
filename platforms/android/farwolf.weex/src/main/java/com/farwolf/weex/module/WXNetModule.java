@@ -80,14 +80,21 @@ public class WXNetModule extends WXModule {
                 public void onSuccess(String s, Call call, Response response) {
 
 
-                    Log.i("back",s);
-                    HashMap res=new HashMap();
-                    res.put("res",JSONObject.parse(s));
-                    String cookie=response.headers().get("Set-Cookie");
-                    res.put("sessionid",cookie);
+                    try {
+                        Log.i("back",s);
+                        HashMap res=new HashMap();
+                        res.put("res",JSONObject.parse(s));
+                        String cookie=response.headers().get("Set-Cookie");
+                        res.put("sessionid",cookie);
+                        if(success!=null)
+                            success.invoke(res);
+                    }
+                    catch (Exception e)
+                    {
+                        if(exception!=null)
+                            exception.invoke(null);
+                    }
 
-                    if(success!=null)
-                        success.invoke(res);
                 }
 
                 @Override
