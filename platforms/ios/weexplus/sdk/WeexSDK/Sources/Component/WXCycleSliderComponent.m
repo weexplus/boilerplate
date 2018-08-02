@@ -23,6 +23,7 @@
 #import "NSTimer+Weex.h"
 #import "WXSDKManager.h"
 #import "WXUtility.h"
+#import "WXFScrollView.h"
 
 typedef NS_ENUM(NSInteger, Direction) {
     DirectionNone = 1 << 0,
@@ -47,7 +48,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 @property (nonatomic, strong) WXIndicatorView *indicator;
 @property (nonatomic, weak) id<WXRecycleSliderViewDelegate> delegate;
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) WXFScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *itemViews;
 @property (nonatomic, assign) Direction direction;
 @property (nonatomic, assign) NSInteger currentIndex;
@@ -69,7 +70,7 @@ typedef NS_ENUM(NSInteger, Direction) {
     if (self) {
         _currentIndex = 0;
         _itemViews = [[NSMutableArray alloc] init];
-        _scrollView = [[UIScrollView alloc] init];
+        _scrollView = [[WXFScrollView alloc] init];
         _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.delegate = self;
         _scrollView.showsHorizontalScrollIndicator = NO;

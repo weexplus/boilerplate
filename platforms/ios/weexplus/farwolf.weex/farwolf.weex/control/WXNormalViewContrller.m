@@ -482,7 +482,7 @@ static BOOL isshowErr;
 
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
-        [weakSelf.instance fireGlobalEvent:@"onPageInit" params:weakSelf.param];
+//        [weakSelf.instance fireGlobalEvent:@"onPageInit" params:weakSelf.param];
         weakSelf.instance.isInit=true;
         weakSelf.instance.param=weakSelf.param;
         [weakSelf.instance firePageInit];
@@ -748,15 +748,15 @@ static BOOL isshowErr;
 -(void)gotoset
 {
 
-//    _setVc=  [self present:@"weex/SetViewController" anim:true];
-//    ((SetViewController*)((UINavigationController*)_setVc).childViewControllers[0]).vc=self;
+    _setVc=  [self present:@"weex/SetViewController" anim:true];
+    ((SetViewController*)((UINavigationController*)_setVc).childViewControllers[0]).vc=self;
     
     
-    NSURL *url=[NSURL URLWithString:@"http://169.254.129.97:8890/js/demo/navigator.js"];
-    WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-    vc.debug=true;
-    [self.navigationController pushViewController:vc animated:true];
-//    [self presentViewController:vc animated:true completion:^{
+//    NSURL *url=[NSURL URLWithString:@"http://169.254.129.97:8890/js/demo/navigator.js"];
+//    WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
+//    vc.debug=true;
+//    [self.navigationController pushViewController:vc animated:true];
+//    [self presentViewController:_setVc animated:true completion:^{
 //
 //    }];
 }

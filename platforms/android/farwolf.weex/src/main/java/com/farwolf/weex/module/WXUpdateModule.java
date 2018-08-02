@@ -47,14 +47,16 @@ public class WXUpdateModule extends WXModule {
 
 
     @JSMethod
-    public void checkDownloadApk()
+    public void checkDownloadApk(JSCallback callback)
     {
         com.farwolf.update.download.UpdateService up=new com.farwolf.update.download.UpdateService();
 
-        up.checkExistApk(mWXSDKInstance.getContext());
+        if(!up.checkExistApk(mWXSDKInstance.getContext()))
+        {
+            callback.invoke(new HashMap());
+        }
 
     }
-
 
     @JSMethod
     public void doCheckJs(HashMap param)

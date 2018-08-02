@@ -327,10 +327,10 @@
             NSHTTPURLResponse* response = operation.response;
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
           
-            Json *res=[[weakSlef getDecoder] initWithString:result];
+            Json *res=[[self getDecoder] initWithString:result];
             res.resHeader=response.allHeaderFields;
             res.sessionId=sessionId;
-            res.tag=weakSlef.tag;
+            res.tag=self.tag;
             res.backString=result;
             success(res);
             compelete();
@@ -369,10 +369,10 @@
             NSLog(result);
             NSHTTPURLResponse* response = operation.response;
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
-            Json *res=[[weakSlef getDecoder] initWithString:result];
+            Json *res=[[self getDecoder] initWithString:result];
             res.sessionId=sessionId;
             res.resHeader=response.allHeaderFields;
-            res.tag=weakSlef.tag;
+            res.tag=self.tag;
             res.backString=result;
             success(res);
             compelete();

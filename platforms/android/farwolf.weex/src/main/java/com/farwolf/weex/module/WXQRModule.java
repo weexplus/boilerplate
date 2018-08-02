@@ -44,9 +44,9 @@ public class WXQRModule extends WXModule {
                     public void onGranted() {
                         WXQRModule.this.param=param;
                         WXQRModule.this.callback=callback;
-                        if(!EventBus.getDefault().isRegistered(this))
+                        if(!EventBus.getDefault().isRegistered(WXQRModule.this))
                         {
-                            EventBus.getDefault().register(this);
+                            EventBus.getDefault().register(WXQRModule.this);
                         }
 
                         dojob(param,callback);

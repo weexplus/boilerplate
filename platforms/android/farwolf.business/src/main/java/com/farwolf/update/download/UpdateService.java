@@ -304,7 +304,7 @@ public class UpdateService extends Service {
 
 
 
-    public void checkExistApk(Context c)
+    public boolean checkExistApk(Context c)
     {
         SharedPreferences sharedPreferences =c.getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
        String msg=sharedPreferences.getString(DOWNLOAD_APK_PATH,"");
@@ -318,13 +318,16 @@ public class UpdateService extends Service {
            if(versionCode>appVersion)
            {
                 this.install(path);
+               return true;
            }
            else
            {
                sharedPreferences.edit().remove(DOWNLOAD_APK_PATH).apply();
                DataCleanManager.deleteFilesByDirectory2(storeDir);
+               return false;
            }
        }
+        return false;
     }
 
 
