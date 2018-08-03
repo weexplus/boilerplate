@@ -400,10 +400,10 @@ static BOOL isshowErr;
 
 - (void)refreshWeex
 {
-//    [self.fail_layout setHidden:true];
-//    [self _renderWithURL:_sourceURL];
+    [self.fail_layout setHidden:true];
+    [self _renderWithURL:_sourceURL];
     
-    [self back:true];
+//    [self back:true];
 }
  
 - (void)addEdgePop
