@@ -66,6 +66,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by zhengjiangrong on 2017/5/8.
@@ -400,6 +401,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 //            Weex.setBaseUrl(mWXSDKInstance);
             if(url.startsWith("http"))
             {
+                if(!url.contains("?"))
+                    url+="?";
+                url+="p="+new Random(100000).nextInt();
                 mWXSDKInstance.renderByUrl("farwolf", url, null, null, WXRenderStrategy.APPEND_ASYNC);
             }
             else
