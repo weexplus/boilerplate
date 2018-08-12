@@ -33,4 +33,5 @@
 -(void)delete;
 -(BOOL)isExist;
 -(BOOL)mkdir;
+-(NSString *)toMd5;
 @end

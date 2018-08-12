@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static android.R.attr.path;
-
 public class SDCard {
 
 	
@@ -25,7 +23,8 @@ public class SDCard {
 //        	return Environment.getExternalStorageDirectory().getPath();
 //        else
 //        	return context.getCacheDir()+"";
-		 return context.getExternalFilesDir("Caches")+"/"+path;
+		String path=context.getExternalFilesDir("Caches")+"";
+		return path;
 	}
 
 	public static String readStreamToString(InputStream inputStream) {
@@ -84,7 +83,6 @@ public class SDCard {
 
 //		String p= context.getCacheDir()+"/"+path;
 		String p= context.getExternalFilesDir("Caches")+"/"+path;
-
 		try {
 			  FileInputStream is = new FileInputStream(new File(p));
              return is;

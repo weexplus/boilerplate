@@ -36,9 +36,9 @@ public class JsDownloader  {
         }
         Downloader downloader= new Downloader(new IFullHttp() {
             @Override
-            public void OnPostProcess(int newProgress) {
+            public void OnPostProcess(float newProgress,float current,float total) {
                 if(listener!=null)
-                listener.OnPostProcess(newProgress);
+                listener.OnPostProcess(newProgress,current,total);
             }
 
             @Override

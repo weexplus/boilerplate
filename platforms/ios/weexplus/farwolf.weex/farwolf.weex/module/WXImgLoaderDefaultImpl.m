@@ -48,9 +48,9 @@
     {
         url=[url replace:@"root:" withString:[Weex getBaseUrl:weexInstance]];
     }
-    if([url startWith:@"sdcard:"])
+    if([url startWith:PREFIX_SDCARD])
     {
-        url=[url replace:@"sdcard:" withString:@""];
+        url=[url replace:PREFIX_SDCARD withString:@""];
         completedBlock([self getDocumentImage:url], nil, nil);
         return nil;
     }

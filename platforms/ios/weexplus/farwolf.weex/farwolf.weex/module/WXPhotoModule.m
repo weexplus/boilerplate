@@ -14,6 +14,7 @@
 WX_EXPORT_METHOD(@selector(open:aspY:themeColor:titleColor:cancelColor:callback:))
 WX_EXPORT_METHOD(@selector(openCamera:aspY:themeColor:callback:))
 WX_EXPORT_METHOD(@selector(openPhoto:aspY:themeColor:titleColor:cancelColor:callback:))
+WX_EXPORT_METHOD(@selector(save:callback:))
 
 -(void)open:(int)aspX aspY:(int)aspY themeColor:(NSString*)themeColor titleColor:(NSString*)titleColor cancelColor:(NSString*)cancelColor callback: (WXModuleKeepAliveCallback)callback
 {
@@ -109,6 +110,68 @@ WX_EXPORT_METHOD(@selector(openPhoto:aspY:themeColor:titleColor:cancelColor:call
     //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
     [UIImagePNGRepresentation(imagesave) writeToFile:name atomically:YES];
     return name;
+}
+
+
+-(void)save:(NSString*)path callback:(WXModuleKeepAliveCallback)callback
+{
+    if([path startWith:PREFIX_SDCARD])
+    {
+        path=[path replace:PREFIX_SDCARD withString:@""];
+    }
+    UIImage *image=[[UIImage alloc]initWithContentsOfFile:path];
+    //     图片保存相册
+    NSDictionary *info = [NSBundle mainBundle].infoDictionary;
+    if(!info[@"NSPhotoLibraryUsageDescription"]) {
+        if (callback) {
+            callback(@{
+                             @"success" : @(false),
+                             @"errorDesc": @"This maybe crash above iOS 10 because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSPhotoLibraryUsageDescription key with a string value explaining to the user how the app uses this data."
+                             }, NO);
+        }
+        return ;
+    }
+    
+    // iOS 11 needs a NSPhotoLibraryUsageDescription key for permission
+    if (WX_SYS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0")) {
+        if (!info[@"NSPhotoLibraryUsageDescription"]) {
+            if (callback) {
+                callback(@{
+                                 @"success" : @(false),
+                                 @"errorDesc": @"This maybe crash above iOS 10 because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSPhotoLibraryUsageDescription key with a string value explaining to the user how the app uses this data."
+                                 }, NO);
+            }
+            return;
+        }
+    }
+    
+  
+    if (!callback) {
+        // there is no need to callback any result;
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, NULL);
+    }else {
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), (void*)CFBridgingRetain(callback));
+    }
+
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (!contextInfo) {
+        return;
+    }
+    NSMutableDictionary * callbackResult = [NSMutableDictionary new];
+    BOOL success = false;
+    if (!error) {
+        success = true;
+    } else {
+        [callbackResult setObject:[error description] forKey:@"errorDesc"];
+    }
+    if (contextInfo) {
+        [callbackResult setObject:@(success) forKey:@"success"];
+        ((__bridge WXKeepAliveCallback)contextInfo)(callbackResult, NO);
+        CFRelease(contextInfo);
+    }
 }
 
 

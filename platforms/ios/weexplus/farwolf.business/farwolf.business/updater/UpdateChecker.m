@@ -153,7 +153,7 @@
     path=[path add:@"/app.zip"];
     [path delete];
 //    NSString *url=@"http://59.110.169.246/img/app.zip";
-    ZipDownloader *zip= [[ZipDownloader alloc] initWidthUrl:url path:path progress:^(float p) {
+    ZipDownloader *zip= [[ZipDownloader alloc] initWidthUrl:url path:path progress:^(float p,NSInteger current,NSInteger total) {
         
         progress(p);
     } compelete:^(NSString *path) {
@@ -184,6 +184,8 @@
             }];
         }
        
+        
+    } exception:^(NSError *err) {
         
     }];
     

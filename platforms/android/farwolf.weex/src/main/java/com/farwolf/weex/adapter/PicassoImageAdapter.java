@@ -33,6 +33,7 @@ import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.core.local.Local;
+import com.farwolf.weex.util.Const;
 import com.farwolf.weex.util.Weex;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -207,9 +208,9 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
       }
 
 
-      if(url.startsWith("sdcard:"))
+      if(url.startsWith(Const.PREFIX_SDCARD))
       {
-          url=url.replace("sdcard:","");
+          url=url.replace(Const.PREFIX_SDCARD,"");
           Bitmap  bm= Picture.getBitmap(url);
           view.setImageBitmap(bm);
           return;

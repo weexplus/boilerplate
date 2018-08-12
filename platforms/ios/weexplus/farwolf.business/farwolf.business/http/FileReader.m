@@ -33,7 +33,8 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
 
 -(void)postFile
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     // 这行最好加上
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"multipart/form-data"];
     
@@ -65,14 +66,14 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
         // 上传文件设置
 //        [formData appendPartWithFileData:data name:@"image" fileName:@"image" mimeType:@"image/jpg"];
         
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } success:^(NSURLSessionDataTask *operation, id responseObject) {
         
         // 成功
         
         NSLog(@"Success: %@", responseObject);
         
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
         NSLog(@"Error: %@", error.userInfo[@"NSLocalizedDescription"]);
     }];
@@ -84,56 +85,120 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
 }
 
 
--(void)excuteFileFull:(void(^)())start
-          success:(void(^)(Json*j))success
-             fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
-        exception:(void(^)())exception
-        compelete:(void(^)())compelete
+//-(void)excuteFileFull:(void(^)())start
+//          success:(void(^)(Json*j))success
+//             fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
+//        exception:(void(^)())exception
+//        compelete:(void(^)())compelete
+//
+//{
+//    start();
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    NSString* url=[self getUrl];
+//    NSLog(@"url=%@",url);
+//    NSLog(@"param=%@",self.param);
+//    NSArray *n= self.param.allKeys;
+//    [manager POST:url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//
+//        NSArray *nx= self.stream.allKeys;
+//
+//        for(NSString *key in nx)
+//        {
+//            NSObject *o= self.stream[key];
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//            formatter.dateFormat = @"yyyyMMddHHmmss";
+//            NSString *str = [formatter stringFromDate:[NSDate date]];
+//            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+//            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
+//            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
+//
+//
+//        }
+//
+//    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//
+//        @try {
+//            //            NSLog(@"Success: %@", [responseObject class]);
+//            NSLog(@"Success: %@", responseObject );
+//
+//            FileJson *res=[[self getDecoder] initWithDict:responseObject];
+//
+//
+//            if([res isSuccess])
+//            {
+//                success(res);
+//            }
+//            else
+//            {
+//
+//                fail(res,[res getErrorCode],[res getErrorMsg]);
+//
+////                [j fail:[res getErrorCode] errmsg:[res getErrorMsg] json:res];
+//            }
+//
+//        }
+//        @catch (NSException *excep) {
+//
+//            exception();
+//        }
+//        @finally {
+//            compelete();
+//        }
+//
+//    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+//        NSLog(@"失败");
+//        NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
+//        exception();
+//        compelete();
+//    }];
+//
+//}
+
+-(void)excuteFileFull :(NSString*)url start:(void(^)())start
+               success:(void(^)(Json*j))success
+              progress:(void(^)(long send,long total))progress
+                  fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
+             exception:(void(^)())exception
+             compelete:(void(^)())compelete
 
 {
     start();
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString* url=[self getUrl];
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
     NSLog(@"url=%@",url);
     NSLog(@"param=%@",self.param);
     NSArray *n= self.param.allKeys;
     [manager POST:url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
         NSArray *nx= self.stream.allKeys;
-        
         for(NSString *key in nx)
         {
-            NSObject *o= self.stream[key];
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyyMMddHHmmss";
-            NSString *str = [formatter stringFromDate:[NSDate date]];
-            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
-            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
-            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
             
+            [formData appendPartWithFileData:self.stream[key] name:key fileName:key mimeType:@"application/octet-stream"];
             
         }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
         
-    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
+        //         NSLog(@"Success: %d,%d", uploadProgress.completedUnitCount ,uploadProgress.totalUnitCount);
+        progress( uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
             //            NSLog(@"Success: %@", [responseObject class]);
             NSLog(@"Success: %@", responseObject );
-            
-            FileJson *res=[[self getDecoder] initWithDict:responseObject];
-            
-            
-            if([res isSuccess])
-            {
-                success(res);
-            }
-            else
-            {
-                
-                fail(res,[res getErrorCode],[res getErrorMsg]);
-                
-//                [j fail:[res getErrorCode] errmsg:[res getErrorMsg] json:res];
-            }
+            FileJson *res=[[self getDecoder] initWithNSData:responseObject];
+            //            if([res isSuccess])
+            //            {
+            success(res);
+            //            }
+            //            else
+            //            {
+            //                fail(res,[res getErrorCode],[res getErrorMsg]);
+            //                //                [j fail:[res getErrorCode] errmsg:[res getErrorMsg] json:res];
+            //            }
             
         }
         @catch (NSException *excep) {
@@ -143,15 +208,16 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
         @finally {
             compelete();
         }
-        
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败");
         NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
         exception();
         compelete();
     }];
-
+    
+    
 }
+
 
 
 -(void)excuteFile:(NSString*)url   start:(void(^)())start
@@ -161,7 +227,8 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
 
 {
     start();
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"multipart/form-data"];
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"multipart/form-data",@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
     
@@ -196,7 +263,7 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
 //            [self postUpload:(UIImage*)o];
         }
         
-    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    } success:^(NSURLSessionDataTask * _Nonnull operation, id  _Nonnull responseObject) {
         
         @try {
           
@@ -226,7 +293,7 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
             compelete();
         }
         
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionDataTask * _Nullable operation, NSError * _Nonnull error) {
         NSLog(@"失败");
         NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
         exception();
@@ -240,7 +307,8 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
 - (void)postUpload:(UIImage*)img
 {
     // 本地上传给服务器时,没有确定的URL,不好用MD5的方式处理
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     [manager POST:@"http://127.0.0.1:8080/imgupload.do" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -260,9 +328,9 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
         [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"image/png"];
         
         
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } success:^(NSURLSessionDataTask *operation, id responseObject) {
         NSLog(@"OK");
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         NSLog(@"error");
     }];
 }
@@ -298,7 +366,8 @@ success:(void(^)(Json*j))success
     
     
     [j start];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     NSString* url=[self getUrl];
     NSLog(@"url=%@",url);
     NSLog(@"param=%@",self.param);
@@ -320,7 +389,7 @@ success:(void(^)(Json*j))success
  
         }
         
-    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    } success:^(NSURLSessionDataTask * _Nonnull operation, id  _Nonnull responseObject) {
         
         @try {
 //            NSLog(@"Success: %@", [responseObject class]);
@@ -348,7 +417,7 @@ success:(void(^)(Json*j))success
             [j compelete];
         }
         
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionDataTask * _Nullable operation, NSError * _Nonnull error) {
         NSLog(@"失败");
         NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
         [j exception];

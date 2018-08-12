@@ -143,7 +143,7 @@
 
 +(void)initAppBoardContent
 {
-    if([WXSDKInstance getAppBoardContent]==nil&&[Config isDebug])
+    if([WXSDKInstance getAppBoardContent]==nil)
     {
         NSString *appcontent=[Weex appBoardContent];
         [WXSDKInstance setAppBoardContent:appcontent];

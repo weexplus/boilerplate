@@ -1,8 +1,6 @@
 package com.farwolf.view;
 
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,6 +11,8 @@ import android.widget.ProgressBar;
 import com.farwolf.interfac.IFullHttp;
 import com.farwolf.libary.R;
 import com.farwolf.view.HijackWebView.IHijackPost;
+
+import java.util.HashMap;
 
 public class ProcessWebView extends LinearLayout {
 
@@ -74,12 +74,12 @@ public class ProcessWebView extends LinearLayout {
 			
 			
 			@Override
-			public void OnPostProcess(int newProgress) {
+			public void OnPostProcess(float newProgress,float current,float total) {
 				// TODO Auto-generated method stub
 //				Log.i("newProgress", newProgress+"");
-				progress.setProgress(newProgress);
+				progress.setProgress((int)newProgress);
 				if(httpListener!=null)
-					httpListener.OnPostProcess(newProgress);
+					httpListener.OnPostProcess(newProgress,0,0);
 			}
 
 			@Override

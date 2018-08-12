@@ -87,7 +87,7 @@ public class HijackWebView extends WebView {
 				// TODO Auto-generated method stub
 				
 				if(listener!=null)
-					 listener.OnPostProcess(newProgress);
+					 listener.OnPostProcess(newProgress,0,0);
 			}
 			
 		});

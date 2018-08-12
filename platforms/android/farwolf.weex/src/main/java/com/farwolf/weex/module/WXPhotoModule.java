@@ -2,32 +2,47 @@ package com.farwolf.weex.module;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Base64;
 
 import com.farwolf.perssion.Perssion;
 import com.farwolf.perssion.PerssionCallback;
 import com.farwolf.photochoose.ChoosePhotoActivity_;
+import com.farwolf.util.AppMainfest;
+import com.farwolf.util.AppMainfest_;
+import com.farwolf.util.Picture;
 import com.farwolf.util.UILImageLoader;
+import com.farwolf.weex.util.Const;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
+import com.taobao.weex.utils.WXViewToImageUtil;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.finalteam.galleryfinal.CoreConfig;
 import cn.finalteam.galleryfinal.FunctionConfig;
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.ThemeConfig;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
+
+import static com.taobao.weex.ui.component.WXImage.ERRORDESC;
+import static com.taobao.weex.ui.component.WXImage.SUCCEED;
 
 /**
  * Created by zhengjiangrong on 2017/5/22.
@@ -323,5 +338,104 @@ public class WXPhotoModule extends WXModule {
             }
         }
         return result;
+    }
+
+
+
+    @JSMethod
+    public void save(final String url,final JSCallback saveStatuCallback) {
+
+
+
+        Perssion.check((Activity) mWXSDKInstance.getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE , new PerssionCallback() {
+            @Override
+            public void onGranted() {
+
+
+                String path=url.replace(Const.PREFIX_SDCARD,"");
+                Bitmap  bm= Picture.getBitmap(path);
+
+
+                saveBitmapToGallery(mWXSDKInstance.getContext(),bm,new WXViewToImageUtil.OnImageSavedCallback(){
+                    @Override
+                    public void onSaveSucceed(String path) {
+                        if (saveStatuCallback != null) {
+                            Map<String, Object> result = new HashMap<>();
+                            result.put(SUCCEED, true);
+                            saveStatuCallback.invoke(result);
+                        }
+                    }
+
+                    @Override
+                    public void onSaveFailed(String errorDesc) {
+                        if (saveStatuCallback != null) {
+                            Map<String, Object> result = new HashMap<>();
+                            result.put(SUCCEED, false);
+                            result.put(ERRORDESC,errorDesc);
+                            saveStatuCallback.invoke(result);
+                        }
+                    }
+                });
+
+
+
+
+
+            }
+        });
+
+
+
+
+
+
+
+
+    }
+
+    public static String saveBitmapToGallery(Context context, Bitmap bitmap, final WXViewToImageUtil.OnImageSavedCallback mOnImageSavedCallback) {
+
+        AppMainfest a= AppMainfest_.getInstance_(context);
+
+        // Save image
+        String name=a.getAppName();
+        File appDir = new File(Environment.getExternalStorageDirectory(), name);
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            if (mOnImageSavedCallback != null)
+                mOnImageSavedCallback.onSaveFailed("Image creation failed due to system reason");
+            e.printStackTrace();
+        } catch (IOException e) {
+            if (mOnImageSavedCallback != null)
+                mOnImageSavedCallback.onSaveFailed("Android IOException");
+            e.printStackTrace();
+        }
+
+        // Insert the image file into the system gallery
+        try {
+            MediaStore.Images.Media.insertImage(context.getContentResolver(),
+                    file.getAbsolutePath(), fileName, null);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Notify the system gallery update
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + appDir.getAbsolutePath() + "/" + fileName)));
+
+        String path= file.getAbsolutePath();
+        mOnImageSavedCallback.onSaveSucceed(path);
+        return path;
+
     }
 }

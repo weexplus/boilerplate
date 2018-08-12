@@ -1,7 +1,14 @@
 <template>
-    <div style="align-items: center;">
-      <input class="in" v-model="name" />
-        <text>{{name}}</text>
+    <div style="background-color: red">
+
+        <drawerlayout style="flex: 1;background-color: chartreuse">
+            <slid style="background-color: red">
+
+            </slid>
+            <child style="background-color: blue">
+
+            </child>
+        </drawerlayout>
     </div>
 </template>
 <style>

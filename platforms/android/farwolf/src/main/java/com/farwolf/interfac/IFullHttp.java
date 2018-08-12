@@ -2,6 +2,6 @@ package com.farwolf.interfac;
 
 public interface IFullHttp extends IHttp {
 
-	public void OnPostProcess(int newProgress);
+	public void OnPostProcess(float newProgress,float current,float total);
 	
 }

@@ -33,6 +33,7 @@
 #define APP_handleOpenURL @"application_handleOpenURL"
 #define APP_openURL @"application_openURL"
 #define APP_didFinishLaunchingWithOptions @"application_didFinishLaunchingWithOptions"
+#define PREFIX_SDCARD @"sdcard:"
 
 @interface farwolf_weex : NSObject
 

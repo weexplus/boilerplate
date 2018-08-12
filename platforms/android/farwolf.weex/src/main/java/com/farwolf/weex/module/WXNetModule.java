@@ -6,6 +6,11 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.farwolf.interfac.IFullHttp;
+import com.farwolf.util.Downloader;
+import com.farwolf.util.Md5;
+import com.farwolf.util.SDCard;
+import com.farwolf.weex.util.Const;
 import com.farwolf.weex.util.FileReader;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
@@ -273,72 +278,50 @@ public class WXNetModule extends WXModule {
     }
 
 
+    @JSMethod
+   public void download(String url,final JSCallback progress,final JSCallback compelete,final JSCallback exception)
+   {
 
-    private void ChangeImage() {
+       final String path= SDCard.getBasePath(mWXSDKInstance.getContext())+"/download/"+Md5.toMd5(url);;
+       String zip=SDCard.getBasePath(mWXSDKInstance.getContext())+"/download";
+       File f= new File(zip);
+       if(f.exists())
+       {
+           f.delete();
+       }
+       f= new File(zip);
+       Downloader downloader= new Downloader(new IFullHttp() {
 
-//        OkHttpClient okHttpClient=new OkHttpClient();
-//
-//        RequestBody body = new FormBody.Builder().add("useName", "addd").add("pwd", "123").build();
-//        Request request = new Request.Builder()
-//                .url("http://192.168.12.143:9090/login/")
-//
-//                .build();
-//        Call call = okHttpClient.newCall(request);
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Request request, IOException e) {
-//
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Response response) throws IOException {
-//
-//                //获取session的操作，session放在cookie头，且取出后含有“；”，取出后为下面的 s （也就是jsesseionid）
-//                Headers headers = response.headers();
-//                Log.d("info_headers", "header " + headers);
-//            }
-//        });
+           @Override
+           public void OnPostProcess(float newProgress,float current,float total) {
 
+               HashMap m=new HashMap();
+               m.put("percent",newProgress);
+               m.put("current",current);
+               m.put("total",total);
+               progress.invokeAndKeepAlive(m);
+           }
 
+           @Override
+           public void OnPostStart(Object o) {
 
-//        String path = "http://192.168.12.143:9090/login/";
+           }
 
-        // 2 创建okhttpclient对象
-//        OkHttpClient client = new OkHttpClient();
-//
-//        FormBody body = new FormBody.Builder().add("usename", "CHUANGTAI").add("password", "111111").build();
-//        // 3 创建请求方式
-//        Request request = new Request.Builder().url(path).post(body).build();
-//
-//        Call call = client.newCall(request);
-//        call.enqueue(new Callback() {
-//
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                Headers headers = response.headers();
-//                Log.d("info_headers", "header " + headers);
-//            }
-//        });
-        // 4 执行请求操作
-//        try {
-//            Response response = client.newCall(request).execute();
-//            Headers dears=response.headers();
-//            if(response.isSuccessful()){
-//                String string = response.body().string();
-//                System.out.println(string);
-//            }
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
+           @Override
+           public void OnPostCompelete(Object o) {
+               HashMap m=new HashMap();
+               m.put("path", Const.PREFIX_SDCARD+path);
+               compelete.invoke(m);
+           }
 
-    }
+           @Override
+           public void OnException(Object o) {
+               exception.invoke(new HashMap());
+           }
+       });
+
+       downloader.execute(url,path);
+   }
 
 
 

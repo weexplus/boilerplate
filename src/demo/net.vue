@@ -11,7 +11,7 @@
                 <div  @click="get()" class="btn" style="width: 500"><text style="color:#ffffff" >get</text></div>
 
                     <text style="color:#000000">{{header}}</text>
-                    <text style="color:#ffffff">{{back}}</text>
+                    <text style="color:#000000">{{back}}</text>
 
 
             </div>

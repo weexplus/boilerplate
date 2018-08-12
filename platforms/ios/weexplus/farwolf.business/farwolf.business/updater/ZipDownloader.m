@@ -10,12 +10,12 @@
 @implementation ZipDownloader
 
 
--(instancetype)initWidthUrl:(NSString*)url path:(NSString*)path  progress:(void(^)(float))progress compelete:(void(^)(NSString*))compelete
+-(instancetype)initWidthUrl:(NSString*)url path:(NSString*)path  progress:(void(^)(float,NSInteger,NSInteger))progress compelete:(void(^)(NSString*))compelete exception:(void(^)(NSError*))exception
 {
     if([super init])
     {
         self.path=path;
-        [self prepareDownloadTask:url progress:progress compelete:compelete];
+        [self prepareDownloadTask:url progress:progress compelete:compelete exception:exception];
        
     }
     return self;
@@ -31,7 +31,7 @@
 }
 
 
-- (NSURLSessionDataTask *)prepareDownloadTask:(NSString*)url  progress:(void(^)(float))progress compelete:(void(^)(NSString*))compelete{
+- (NSURLSessionDataTask *)prepareDownloadTask:(NSString*)url  progress:(void(^)(float,NSInteger,NSInteger))progress compelete:(void(^)(NSString*))compelete exception:(void(^)(NSError*))exception{
     if (!_downloadTask) {
         // 1.创建下载URL
         NSURL *durl = [NSURL URLWithString:url];
@@ -49,6 +49,10 @@
             
             // 下载完成回调block
             NSLog(@"完成");
+            if(error!=nil)
+            {
+                exception(error);
+            }
             
             // 清空长度
             weakSelf.currentLength = 0;
@@ -113,7 +117,7 @@
                 NSLog(@"当前下载进度:%.2f%%",p);
                 if(progress!=nil)
                 {
-                    progress(p);
+                    progress(p,weakSelf.currentLength,weakSelf.totalLength);
                 }
             }];
         }];

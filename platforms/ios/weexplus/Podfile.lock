@@ -1,24 +1,18 @@
 PODS:
-  - AFNetworking (2.6.3):
-    - AFNetworking/NSURLConnection (= 2.6.3)
-    - AFNetworking/NSURLSession (= 2.6.3)
-    - AFNetworking/Reachability (= 2.6.3)
-    - AFNetworking/Security (= 2.6.3)
-    - AFNetworking/Serialization (= 2.6.3)
-    - AFNetworking/UIKit (= 2.6.3)
-  - AFNetworking/NSURLConnection (2.6.3):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.3)
-  - AFNetworking/Security (2.6.3)
-  - AFNetworking/Serialization (2.6.3)
-  - AFNetworking/UIKit (2.6.3):
-    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - alipay (0.0.1):
     - farwolf
@@ -33,7 +27,7 @@ PODS:
   - DACircularProgress (2.3.1)
   - DOPDropDownMenu-Enhanced (1.0.0)
   - farwolf (0.0.1):
-    - AFNetworking (~> 2.6.3)
+    - AFNetworking (~> 3.2.1)
     - GSKStretchyHeaderView (~> 0.12.2)
     - LPPhotoViewer (~> 0.0.7)
     - Masonry (~> 0.6.3)
@@ -111,7 +105,7 @@ PODS:
   - ZipArchive (1.4.0)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.6.3)
+  - AFNetworking (~> 3.2.1)
   - alipay (from `alipay`)
   - BindingX
   - CHXBannerView (~> 0.8.2)
@@ -195,7 +189,7 @@ EXTERNAL SOURCES:
     :path: WXDevtool
 
 SPEC CHECKSUMS:
-  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   alipay: 690c7c6abbe32618faa0c17aec995d09067ab64a
   AliyunOSSiOS: 0396d0483f7c83edc34e748b0ae17ffa0d7adc8d
   BindingX: 82936549871ff4c936abcab62f8fecc84acfaa52
@@ -203,7 +197,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
-  farwolf: e2513d56e40f0428e9d21f36e406b9e1dbf0b527
+  farwolf: 53b76f772dd0752146772a0aa0f3761fbb28b167
   farwolf.business: c389f61c1abe895c04b0c2f9df27df7783d0d4dd
   farwolf.weex: 75e93c0bed74537c79ef97a8c8035ac9975a979e
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
@@ -234,6 +228,6 @@ SPEC CHECKSUMS:
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 9043ddab23547defa64fbf906847852f1a966a55
+PODFILE CHECKSUM: c8f90f23ec25e17d7fa43d55890153020ccafc3b
 
 COCOAPODS: 1.5.0

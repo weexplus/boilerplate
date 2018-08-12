@@ -18,7 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
-    self.errText.text=self.errmsg;
+    __weak typeof (self) weakSelf=self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        weakSelf.errText.text=weakSelf.errmsg;
+        
+    });
     // Do any additional setup after loading the view.
 }
 

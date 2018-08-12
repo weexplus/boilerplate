@@ -16,7 +16,7 @@
 @property (nonatomic) BOOL isLoading;
 @property (nonatomic) BOOL hasMore;
 
-@property (nonatomic,strong) AFHTTPRequestOperation*request;
+@property (nonatomic,strong) NSURLSessionDataTask*request;
 
 -(Class)getClass;
 @property(strong,nonatomic)LockScreenProgress* progress;

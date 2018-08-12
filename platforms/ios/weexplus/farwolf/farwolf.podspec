@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'MBProgressHUD', '~> 0.9.2'
   s.dependency 'YYModel'
-  s.dependency  "AFNetworking", "~>2.6.3"
+  s.dependency  "AFNetworking", "~>3.2.1"
   s.dependency 'Masonry', '~> 0.6.3'
   s.dependency 'SDWebImage', '~> 3.8'
   #s.dependency 'KoaPullToRefresh', '~> 1.0.6'    

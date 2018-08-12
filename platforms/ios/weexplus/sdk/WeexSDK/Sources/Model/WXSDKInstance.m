@@ -364,7 +364,7 @@ typedef enum : NSUInteger {
         }
         
         NSString *jsBundleString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        if([WXSDKInstance getAppBoardContent]!=nil)
+        if([WXSDKInstance getAppBoardContent]!=nil&&![url.absoluteString  hasPrefix:@"http"])
         {
             jsBundleString=[[WXSDKInstance getAppBoardContent] stringByAppendingString:jsBundleString];
         }

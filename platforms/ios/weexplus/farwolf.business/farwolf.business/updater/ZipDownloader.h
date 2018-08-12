@@ -14,7 +14,7 @@
 @property (nonatomic , assign) NSInteger totalLength;
 @property (nonatomic , strong) NSString *path;
 @property (nonatomic , strong) NSFileHandle *fileHandle;
--(instancetype)initWidthUrl:(NSString*)url path:(NSString*)path  progress:(void(^)(float))progress compelete:(void(^)(NSString*))compelete;
+-(instancetype)initWidthUrl:(NSString*)url path:(NSString*)path  progress:(void(^)(float,NSInteger,NSInteger))progress compelete:(void(^)(NSString*))compelete exception:(void(^)(NSError*))exception;
 -(void)start;
 -(void)stop;
 @end

@@ -1,15 +1,14 @@
 package com.farwolf.util;
 
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EBean;
-import org.androidannotations.annotations.EBean.Scope;
-import org.androidannotations.annotations.RootContext;
-
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.EBean.Scope;
+import org.androidannotations.annotations.RootContext;
 
 @EBean(scope=Scope.Singleton)
 public class AppMainfest {
@@ -25,10 +24,7 @@ public class AppMainfest {
 		return getInfo().versionCode;
 	}
 	
-	public String getAppName() {
-		 
-		return getApplicationInfo().name;
-	}
+
 	public String getPakageName() {
 		
 		return getApplicationInfo().packageName;
@@ -39,9 +35,15 @@ public class AppMainfest {
 		return getInfo().applicationInfo;
 	}
 
- 
-	
-	
+
+	public   String getAppName() {
+
+		int labelRes = getApplicationInfo().labelRes;
+		return context.getResources().getString(labelRes);
+	}
+
+
+
 	@RootContext
 	Context context;
 	

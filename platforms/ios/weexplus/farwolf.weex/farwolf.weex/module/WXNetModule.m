@@ -8,6 +8,7 @@
 
 #import "WXNetModule.h"
 #import "FileReader.h"
+#import "ZipDownloader.h"
 
 @implementation WXNetModule
 @synthesize weexInstance;
@@ -16,6 +17,7 @@ WX_EXPORT_METHOD(@selector(postJson:param:header:start:success:compelete:excepti
 WX_EXPORT_METHOD(@selector(get:param:header:start:success:compelete:exception:))
 WX_EXPORT_METHOD(@selector(postFile:param:header:path:start:success:compelete:exception:))
 WX_EXPORT_METHOD(@selector(removeAllCookies))
+WX_EXPORT_METHOD(@selector(download:progress:compelete:error:))
 WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
 
 
@@ -76,6 +78,29 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
 {
     NSDate *d= [@"1970-01-01" toDate:@"yyyy-MM-dd"];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] removeCookiesSinceDate:d];
+}
+
+-(void)download:(NSString*)url progress:(WXModuleKeepAliveCallback)progress compelete:(WXModuleKeepAliveCallback)compelete error:(WXModuleKeepAliveCallback)error
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    path=[path add:@"/download"];
+    [path mkdir];
+
+    path=[[path add:@"/"] add:[url toMd5]];
+    [path delete];
+    //    NSString *url=@"http://59.110.169.246/img/app.zip";
+    ZipDownloader *zip= [[ZipDownloader alloc] initWidthUrl:url path:path progress:^(float percent,NSInteger current,NSInteger total) {
+    
+        progress(@{@"current":@(current),@"total":@(total),@"percent":@(percent)},true);
+    } compelete:^(NSString *path) {
+        compelete(@{@"path": [PREFIX_SDCARD add:path]},true);
+  
+    } exception:^(NSError *err) {
+        error(@{},false);
+    } ];
+    
+    [zip start];
 }
 
 -(NSString*)getSessionId:(NSString*)url

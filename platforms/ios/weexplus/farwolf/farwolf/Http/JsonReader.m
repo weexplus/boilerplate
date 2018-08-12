@@ -66,12 +66,12 @@
 }
 
 
--(AFHTTPRequestOperation*)excuteFile:( id<JsonProtocol>) j
+-(NSURLSessionDataTask*) excuteFile:( id<JsonProtocol>) j
 {
     [j start];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
-    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     NSString* url=[self getUrl];
     NSLog(@"url=%@",url);
     NSLog(@"param=%@",self.param);
@@ -93,23 +93,46 @@
     }
     
     
-   AFHTTPRequestOperation* req= [manager POST:url parameters:p constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
+//   AFHTTPRequestOperation* req= [manager POST:url parameters:p constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//
+//        NSArray *nx= f.allKeys;
+//
+//        for(NSString *key in nx)
+//        {
+//            NSObject *o= p[key];
+//            NSData *data = UIImagePNGRepresentation((UIImage*)o);
+//            [formData appendPartWithFileData:data name:key fileName:key mimeType:@"image/png"];
+//        }
+//
+//    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//
+//    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+//
+//    }];
+//    return req;
+    NSURLSessionDataTask *task= [manager POST:url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSArray *nx= f.allKeys;
-        
         for(NSString *key in nx)
         {
             NSObject *o= p[key];
-            NSData *data = UIImagePNGRepresentation((UIImage*)o);
-            [formData appendPartWithFileData:data name:key fileName:key mimeType:@"image/png"];
+            if([o isKindOfClass:[UIImage class]])
+            {
+                NSData *data = UIImagePNGRepresentation((UIImage*)o);
+                [formData appendPartWithFileData:data name:key fileName:key mimeType:@"image/png"];
+            }
+            else if([o isKindOfClass:[NSData class]])
+            {
+                [formData appendPartWithFileData:o name:key fileName:key mimeType:@"application/octet-stream"];
+            }
         }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
         
-    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
-    return req;
+    return task;
     
 }
 
@@ -117,12 +140,12 @@
 {
     [self addHeader:@"Cookie" value:sessionId];
 }
--(AFHTTPRequestOperation*)excute:( id<JsonProtocol> )j
+-(NSURLSessionDataTask*)excute:( id<JsonProtocol> )j
 {
    return [self excute:j usePost:true];
 }
 
--(AFHTTPRequestOperation*)excute:( id<JsonProtocol>) j usePost:(BOOL)usePost
+-(NSURLSessionDataTask*)excute:( id<JsonProtocol>) j usePost:(BOOL)usePost
 {
     
     
@@ -142,12 +165,12 @@
     }usePost:usePost];
     
 }
--(AFHTTPRequestOperation*)excute:(UIViewController*)vc
+-(NSURLSessionDataTask*)excute:(UIViewController*)vc
       success:(void(^)(Json*j))success
 {
   return  [self excute:vc success:success usePost:true];
 }
--(AFHTTPRequestOperation*)excute:(UIViewController*)vc
+-(NSURLSessionDataTask*)excute:(UIViewController*)vc
       success:(void(^)(Json*j))success usePost:(BOOL)usePost
 {
     if(self.p==nil)
@@ -169,7 +192,7 @@
     } usePost:usePost];
 }
 
--(AFHTTPRequestOperation*)excute:(UIViewController*)vc
+-(NSURLSessionDataTask*)excute:(UIViewController*)vc
                          success:(void(^)(Json*j))success fail:(void(^)(Json*j,NSInteger code,NSString*msg))fail usePost:(BOOL)usePost
 {
     if(self.p==nil)
@@ -190,7 +213,7 @@
     } usePost:usePost];
 }
 
--(AFHTTPRequestOperation*)excuteFull:(void(^)())start
+-(NSURLSessionDataTask*)excuteFull:(void(^)())start
           success:(void(^)(Json*j))success
              fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
         exception:(void(^)())exception
@@ -200,7 +223,7 @@
    return [self excuteFull:start success:success fail:fail exception:exception compelete:compelete usePost:true];
 }
 
--(AFHTTPRequestOperation*)excuteFull:(void(^)())start
+-(NSURLSessionDataTask*)excuteFull:(void(^)())start
           success:(void(^)(Json*j))success
              fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
         exception:(void(^)())exception
@@ -209,7 +232,8 @@
 {
     
     start();
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     
     NSString* url=[self getUrl];
@@ -228,18 +252,27 @@
     __weak typeof (self)weakSlef=self;
     if(usePost)
     {
-       return [manager POST:url parameters:self.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//       return [manager POST:url parameters:self.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//
+//            //        [self success:operation responseObject: start:start success:success fail:fail exception:exception compelete:compelete];
+//            [weakSlef success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
+//
+//
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            NSLog(@"失败");
+//            NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
+//
+//            exception();
+//            compelete();
+//
+//        }];
+        return [manager POST:url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             
-            //        [self success:operation responseObject: start:start success:success fail:fail exception:exception compelete:compelete];
-            [weakSlef success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
             
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"失败");
-            NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
-            
-            exception();
-            compelete();
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self success:task responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
         }];
     }
@@ -254,19 +287,29 @@
 //            value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             [temp setValue:value forKey:key];
         }
-       return [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//       return [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//
+//            //        [self success:operation responseObject: start:start success:success fail:fail exception:exception compelete:compelete];
+//            [weakSlef success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
+//
+//
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            NSLog(@"失败");
+//            NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
+//
+//            exception();
+//            compelete();
+//
+//        }];
+        return [manager GET:url parameters:self.param progress:^(NSProgress * _Nonnull downloadProgress) {
             
-            //        [self success:operation responseObject: start:start success:success fail:fail exception:exception compelete:compelete];
-            [weakSlef success:operation responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
-            
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self success:task responseObject:responseObject start:start success:success fail:fail exception:exception compelete:compelete];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"失败");
             NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
-            
             exception();
             compelete();
-            
         }];
     }
     
@@ -274,7 +317,7 @@
     
 }
 
--(AFHTTPRequestOperation*)excuteNoLimit:(UIViewController*)vc
+-(NSURLSessionDataTask*)excuteNoLimit:(UIViewController*)vc
              success:(void(^)(Json*j))success
              usePost:(BOOL)usePost
 {
@@ -289,7 +332,7 @@
     } usePost:usePost];
 }
 
--(AFHTTPRequestOperation*)excuteNoLimit:(void(^)())start
+-(NSURLSessionDataTask*)excuteNoLimit:(void(^)())start
              success:(void(^)(Json*j))success
 
            exception:(void(^)())exception
@@ -298,7 +341,8 @@
 {
     
     start();
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+   AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     
     NSString* url=[self getUrl];
@@ -317,16 +361,19 @@
     
     if(usePost)
     {
-      return  [manager POST:url parameters:self.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          NSDictionary *fields= [operation.response allHeaderFields];
-          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
-      
- 
+        return [manager POST:url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+            NSDictionary *fields= [response allHeaderFields];
+            
+            NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
             NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSLog(result);
-            NSHTTPURLResponse* response = operation.response;
+            
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
-          
             Json *res=[[self getDecoder] initWithString:result];
             res.resHeader=response.allHeaderFields;
             res.sessionId=sessionId;
@@ -334,40 +381,63 @@
             res.backString=result;
             success(res);
             compelete();
-          
-         
             
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"失败");
             NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
-            
             exception();
             compelete();
-            
         }];
+//      return  [manager POST:url parameters:self.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//          NSDictionary *fields= [operation.response allHeaderFields];
+//          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
+//
+//
+//            NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//            NSLog(result);
+//            NSHTTPURLResponse* response = operation.response;
+//            NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
+//
+//            Json *res=[[self getDecoder] initWithString:result];
+//            res.resHeader=response.allHeaderFields;
+//            res.sessionId=sessionId;
+//            res.tag=self.tag;
+//            res.backString=result;
+//            success(res);
+//            compelete();
+//
+//
+//
+//
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            NSLog(@"失败");
+//            NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
+//
+//            exception();
+//            compelete();
+//
+//        }];
     }
     else
     {
-        
         NSArray *n=   [self.param allKeys];
         NSMutableDictionary *temp=[NSMutableDictionary new];
         for(NSString *key in n)
         {
             NSObject *value=self.param[key];
             NSString *t=[@"" add:value];
-//            t = [t stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            //            t = [t stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             [temp setValue:t forKey:key];
         }
-        //        value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-      return  [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          
-          NSDictionary *fields= [operation.response allHeaderFields];
-          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
-          
+        return [manager GET:url parameters:self.param progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+            NSDictionary *fields= [response allHeaderFields];
+            NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
+            
             NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSLog(result);
-            NSHTTPURLResponse* response = operation.response;
             NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
             Json *res=[[self getDecoder] initWithString:result];
             res.sessionId=sessionId;
@@ -376,16 +446,49 @@
             res.backString=result;
             success(res);
             compelete();
-            
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"失败");
             NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
-            
             exception();
             compelete();
-            
         }];
+        
+//        NSArray *n=   [self.param allKeys];
+//        NSMutableDictionary *temp=[NSMutableDictionary new];
+//        for(NSString *key in n)
+//        {
+//            NSObject *value=self.param[key];
+//            NSString *t=[@"" add:value];
+////            t = [t stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//            [temp setValue:t forKey:key];
+//        }
+//        //        value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//      return  [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//
+//          NSDictionary *fields= [operation.response allHeaderFields];
+//          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
+//
+//            NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//            NSLog(result);
+//            NSHTTPURLResponse* response = operation.response;
+//            NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
+//            Json *res=[[self getDecoder] initWithString:result];
+//            res.sessionId=sessionId;
+//            res.resHeader=response.allHeaderFields;
+//            res.tag=self.tag;
+//            res.backString=result;
+//            success(res);
+//            compelete();
+//
+//
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            NSLog(@"失败");
+//            NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
+//
+//            exception();
+//            compelete();
+//
+//        }];
     }
     
     
@@ -395,7 +498,7 @@
 
 
 
--(void)success:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject start: (void(^)())start
+-(void)success:(NSURLSessionDataTask *)operation responseObject:(id)responseObject start: (void(^)())start
        success:(void(^)(Json*j))success
           fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
      exception:(void(^)())exception

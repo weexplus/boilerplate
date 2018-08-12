@@ -16,7 +16,7 @@ import java.net.URL;
  * Created by zhengjiangrong on 2018/5/1.
  */
 
-public class Downloader extends AsyncTask<String, Integer, String> {
+public class Downloader extends AsyncTask<String, Float, String> {
 
 
         IFullHttp listener;
@@ -55,7 +55,7 @@ public class Downloader extends AsyncTask<String, Integer, String> {
             HttpURLConnection httpConnection = null;
             InputStream is = null;
             FileOutputStream fos = null;
-            int updateTotalSize = 0;
+            long updateTotalSize = 0;
             URL url;
             try {
                 url = new URL(downloadUrl);
@@ -90,7 +90,7 @@ public class Downloader extends AsyncTask<String, Integer, String> {
                 while ((readSize = is.read(buffer)) > 0) {
                     fos.write(buffer, 0, readSize);
                     currentSize += readSize;
-                    publishProgress((currentSize * 100 / updateTotalSize));
+                    publishProgress((float)(currentSize * 100 / updateTotalSize),(float)currentSize,(float)updateTotalSize);
                 }
                 // download success
             } catch (Exception e) {
@@ -119,10 +119,10 @@ public class Downloader extends AsyncTask<String, Integer, String> {
         }
 
         @Override
-        protected void onProgressUpdate(Integer... values) {
+        protected void onProgressUpdate(Float... values) {
             super.onProgressUpdate(values);
             Log.e("", "current progress is " + values[0]);
-            listener.OnPostProcess(values[0]);
+            listener.OnPostProcess(values[0],values[1],values[2]);
 
         }
 

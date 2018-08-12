@@ -23,41 +23,76 @@
 -(void)addHeader:(NSString *)key value:(NSString *)value;
 -(NSMutableArray*)toList:(NSString *)key;
 -(NSString*)getUrl;
--(AFHTTPRequestOperation*)excute:( id<JsonProtocol> )j;
--(AFHTTPRequestOperation*)excute:( id<JsonProtocol>) j usePost:(BOOL)usePost;
--(AFHTTPRequestOperation*)excute:(UIViewController*)vc
-      success:(void(^)(Json*j))success;
--(AFHTTPRequestOperation*)excute:(UIViewController*)vc
-      success:(void(^)(Json*j))success usePost:(BOOL)usePost;
--(AFHTTPRequestOperation*)excuteFile:( id<JsonProtocol>) j;
--(AFHTTPRequestOperation*)excuteFull:(void(^)())start
-          success:(void(^)(Json*j))success
-             fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
-        exception:(void(^)())exception
-        compelete:(void(^)())compelete;
--(AFHTTPRequestOperation*)excuteFull:(void(^)())start
-          success:(void(^)(Json*j))success
-             fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
-        exception:(void(^)())exception
-        compelete:(void(^)())compelete
-          usePost:(BOOL)usePost;
+//-(AFHTTPRequestOperation*)excute:( id<JsonProtocol> )j;
+//-(AFHTTPRequestOperation*)excute:( id<JsonProtocol>) j usePost:(BOOL)usePost;
+//-(AFHTTPRequestOperation*)excute:(UIViewController*)vc
+//      success:(void(^)(Json*j))success;
+//-(AFHTTPRequestOperation*)excute:(UIViewController*)vc
+//      success:(void(^)(Json*j))success usePost:(BOOL)usePost;
+//-(AFHTTPRequestOperation*)excuteFile:( id<JsonProtocol>) j;
+//-(AFHTTPRequestOperation*)excuteFull:(void(^)())start
+//          success:(void(^)(Json*j))success
+//             fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
+//        exception:(void(^)())exception
+//        compelete:(void(^)())compelete;
+//-(AFHTTPRequestOperation*)excuteFull:(void(^)())start
+//          success:(void(^)(Json*j))success
+//             fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
+//        exception:(void(^)())exception
+//        compelete:(void(^)())compelete
+//          usePost:(BOOL)usePost;
+//-(Json*)getDecoder;
+//-(void)setSessionId:(NSString*)sessionId;
+//-(AFHTTPRequestOperation*)excuteNoLimit:(void(^)())start
+//             success:(void(^)(Json*j))success
+//           exception:(void(^)())exception
+//           compelete:(void(^)())compelete
+//             usePost:(BOOL)usePost;
+//-(AFHTTPRequestOperation*)excuteNoLimit:(UIViewController*)vc
+//             success:(void(^)(Json*j))success
+//             usePost:(BOOL)usePost;
+//-(void)success:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject start: (void(^)())start
+//       success:(void(^)(Json*j))success
+//          fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
+//     exception:(void(^)())exception
+//     compelete:(void(^)())compelete;
+//-(AFHTTPRequestOperation*)excute:(UIViewController*)vc
+//                         success:(void(^)(Json*j))success fail:(void(^)(Json*,NSInteger,NSString*))fail usePost:(BOOL)usePost;
+-(NSURLSessionDataTask*)excute:( id<JsonProtocol> )j;
+-(NSURLSessionDataTask*)excute:( id<JsonProtocol>) j usePost:(BOOL)usePost;
+-(NSURLSessionDataTask*)excute:(UIViewController*)vc
+                       success:(void(^)(Json*j))success;
+-(NSURLSessionDataTask*)excute:(UIViewController*)vc
+                       success:(void(^)(Json*j))success usePost:(BOOL)usePost;
+-(NSURLSessionDataTask*)excuteFile:( id<JsonProtocol>) j;
+-(NSURLSessionDataTask*)excuteFull:(void(^)())start
+                           success:(void(^)(Json*j))success
+                              fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
+                         exception:(void(^)())exception
+                         compelete:(void(^)())compelete;
+-(NSURLSessionDataTask*)excuteFull:(void(^)())start
+                           success:(void(^)(Json*j))success
+                              fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
+                         exception:(void(^)())exception
+                         compelete:(void(^)())compelete
+                           usePost:(BOOL)usePost;
 -(Json*)getDecoder;
 -(void)setSessionId:(NSString*)sessionId;
--(AFHTTPRequestOperation*)excuteNoLimit:(void(^)())start
-             success:(void(^)(Json*j))success
-           exception:(void(^)())exception
-           compelete:(void(^)())compelete
-             usePost:(BOOL)usePost;
--(AFHTTPRequestOperation*)excuteNoLimit:(UIViewController*)vc
-             success:(void(^)(Json*j))success
-             usePost:(BOOL)usePost;
--(void)success:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject start: (void(^)())start
+-(NSURLSessionDataTask*)excuteNoLimit:(void(^)())start
+                              success:(void(^)(Json*j))success
+                            exception:(void(^)())exception
+                            compelete:(void(^)())compelete
+                              usePost:(BOOL)usePost;
+-(NSURLSessionDataTask*)excuteNoLimit:(UIViewController*)vc
+                              success:(void(^)(Json*j))success
+                              usePost:(BOOL)usePost;
+-(void)success:(NSURLSessionDataTask *)operation responseObject:(id)responseObject start: (void(^)())start
        success:(void(^)(Json*j))success
           fail:(void(^)(Json*j,NSInteger code,NSString* msg))fail
      exception:(void(^)())exception
      compelete:(void(^)())compelete;
--(AFHTTPRequestOperation*)excute:(UIViewController*)vc
-                         success:(void(^)(Json*j))success fail:(void(^)(Json*,NSInteger,NSString*))fail usePost:(BOOL)usePost;
+-(NSURLSessionDataTask*)excute:(UIViewController*)vc
+                       success:(void(^)(Json*j))success fail:(void(^)(Json*,NSInteger,NSString*))fail usePost:(BOOL)usePost;
 @end
 
 

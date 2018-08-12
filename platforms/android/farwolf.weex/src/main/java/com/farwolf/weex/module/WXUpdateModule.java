@@ -83,7 +83,7 @@ public class WXUpdateModule extends WXModule {
 
         new JsDownloader().start(url,version,mode, mWXSDKInstance.getContext(), new IFullHttp() {
             @Override
-            public void OnPostProcess(int newProgress) {
+            public void OnPostProcess(float newProgress,float current,float total) {
                 if(progress!=null)
                     progress.invoke(newProgress);
             }

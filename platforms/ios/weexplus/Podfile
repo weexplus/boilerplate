@@ -10,7 +10,7 @@ def mypod
     platform :ios, '8.0'
     inhibit_all_warnings!
     
-    pod "AFNetworking", "~>2.6.3"
+    pod "AFNetworking", "~>3.2.1"
     
     pod 'SDWebImage', '~> 3.8'
     

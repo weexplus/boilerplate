@@ -60,8 +60,8 @@ public class UpdateJsDialog extends ViewBase {
 
         new JsDownloader().start(url, version,2,getContext(), new IFullHttp() {
             @Override
-            public void OnPostProcess(int newProgress) {
-                progress.setProgress(newProgress);
+            public void OnPostProcess(float newProgress,float current,float total) {
+                progress.setProgress((int)newProgress);
                 percent.setText(newProgress+"%");
             }
 
