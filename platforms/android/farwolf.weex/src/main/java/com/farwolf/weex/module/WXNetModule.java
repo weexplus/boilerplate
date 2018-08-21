@@ -42,7 +42,6 @@ public class WXNetModule extends WXModule {
 
     public void fetch(boolean usepost,boolean usejson, final  String url, HashMap param,  HashMap header, final JSCallback start, final JSCallback success, final JSCallback compelete, final JSCallback exception)
     {
-
         BaseRequest req= OkGo.get(url);
         OkGo.getInstance().setCookieStore(new PersistentCookieStore());
         if(usepost)

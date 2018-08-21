@@ -22,16 +22,13 @@
 
                 var net =weex.requireModule('net')
                 var file =weex.requireModule('file')
-                var url='http://59.110.169.246/img/app.zip'
+                var url='http://59.110.169.246/img/1.zip'
                 net.download(url,(percent)=>{
                     this.percent=percent;
                 },(e)=>{
-                    this.url=e.path
+                    this.percent=e.path
                     file.unzip(e.path,(res)=>{
-                      let px=res.path+'/app'
-                        file.ls(px,(fs)=>{
-                            this.percent=fs
-                        })
+                         this.url=res.path[0]
                     })
                 },()=>{
 
@@ -54,11 +51,11 @@
             {
                 var photo =weex.requireModule('photo')
                 photo.save(this.url,(res)=>{
-                      if(res.success)
-                      {
-                          this.toast('成功！')
-                      }
-                    })
+                    if(res.success)
+                    {
+                        this.toast('成功！')
+                    }
+                })
             }
         },
         created () {

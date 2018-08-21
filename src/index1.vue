@@ -1,32 +1,13 @@
 <template>
-    <div style="background-color: yellow">
-        <text>this is dex1</text>
+    <div style="background-color: yellow;align-items: center;justify-content: center">
+       <input  :type="type" style="width: 750px;height: 50px"  placeholder="xxxx"/>
+        <div @click="changexxx()" style="width: 100px;height: 100px;background-color: red"></div>
+        <text>{{type}}</text>
     </div>
 </template>
 <style>
 
-    .btn {
-        width: 500;
-        height: 100;
-        background-color: red;
-    }
 
-    .title {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        font-size: 48px;
-    }
-
-    .logo {
-        width: 360px;
-        height: 156px;
-    }
-
-    .desc {
-        padding-top: 20px;
-        color: #888;
-        font-size: 24px;
-    }
 </style>
 
 <script>
@@ -36,16 +17,24 @@
     var p = undefined;
     export default {
         components: {head, flist},
-        data: {
-            logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
-            target: weex.config.env.deviceWidth,
-            index: 0,
-            ty: ''
+        data(){
+             return  {
+                 type:'password'
+             }
+
 
         },
         methods: {
 
 
+            changexxx()
+            {
+
+                var modal=weex.requireModule('modal')
+                modal.toast({message:'sss'})
+              this.type = this.type=='password'?'text':'password'
+//                this.type='text'
+            },
             dopost(url, param)
             {
 //                weg,param,header,start,success,fail,exception,compelete
@@ -114,11 +103,7 @@
             },
 
 
-            change(i)
-            {
 
-                this.index = i;
-            },
             show()
             {
                 var modal = weex.requireModule("modal")
@@ -137,8 +122,8 @@
             var self = this;
             globalEvent.addEventListener("onPageInit", function (e) {
 
-                var navigator = weex.requireModule('navigator')
-                navigator.push('demo/drawlayout.js')
+//                var navigator = weex.requireModule('navigator')
+//                navigator.push('demo/drawlayout.js')
 //              page.closeSplash()
 
 

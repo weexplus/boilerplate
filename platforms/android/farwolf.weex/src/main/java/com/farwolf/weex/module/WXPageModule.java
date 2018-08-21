@@ -1,7 +1,9 @@
 package com.farwolf.weex.module;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.WindowManager;
 
 import com.farwolf.util.AppTool;
 import com.farwolf.weex.base.WXModuleBase;
@@ -49,6 +51,23 @@ public class WXPageModule extends WXModuleBase {
             }
         });
 
+    }
+
+    @JSMethod
+    public void setKeyboadMode(String mode)
+    {
+        if("adjust_resize".equals(mode))
+        {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        }
+        else if("adjust_pan".equals(mode))
+        {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        }
+        else if("adjust_nothing".equals(mode))
+        {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        }
     }
 
 
@@ -109,5 +128,16 @@ public class WXPageModule extends WXModuleBase {
         AppTool.kill();
     }
 
+
+
+    @JSMethod
+    public void pressHome()
+    {
+        Intent intent= new Intent(Intent.ACTION_MAIN);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //如果是服务里调用，必须加入new task标识
+        intent.addCategory(Intent.CATEGORY_HOME);
+        getActivity().startActivity(intent);
+
+    }
 
 }

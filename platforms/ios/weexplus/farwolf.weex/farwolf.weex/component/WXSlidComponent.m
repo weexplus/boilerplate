@@ -52,39 +52,58 @@ WX_EXPORT_METHOD(@selector(toggle))
     CGRect r=self.view.frame;
  
     
+    self.root=[UIView new];
+    self.left=[UIView new];
+
+    self.root.frame= CGRectMake(0, 0, r.size.width, r.size.height);
+   self.left.frame=CGRectMake(0, 0, _leftWidth,  r.size.height);
+      self.root.backgroundColor=[UIColor redColor];
+     self.left.backgroundColor=[UIColor blueColor];
+    LGSideMenuController *sideMenuController=[LGSideMenuController sideMenuControllerWithRootView:_root leftView:_left rightView:nil];
+    UIViewController *rootvc=[UIViewController new];
+    UIViewController *leftvc=[UIViewController new];
+    sideMenuController.rootView=self.root;
+     sideMenuController.leftView=self.left;
+     _slidcontrol=sideMenuController;
+    sideMenuController.leftViewWidth = _leftWidth;
+    sideMenuController.leftViewPresentationStyle = LGSideMenuPresentationStyleSlideAbove;
+
+    [self.weexInstance.viewController addChildViewController:sideMenuController];
+    [_host addSubviewFull:sideMenuController.view];
     
-    [WeexFactory renderNew:[Weex getFinalUrl:_src weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc)
-     {
-         vc.instance.parentInstance=self.weexInstance;
-         [self.weexInstance addChildInstance:vc.instance];
-         
-         [WeexFactory renderNew:[Weex getFinalUrl:_slidSrc weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc1)
-          {
-              vc1.freeFrame=true;
-              vc1.instance.frame=CGRectMake(0, 0, _leftWidth, [vc1 screenHeight]);
-              vc1.instance.parentInstance=self.weexInstance;
-              [self.weexInstance addChildInstance:vc1.instance];
-              LGSideMenuController *sideMenuController = [LGSideMenuController sideMenuControllerWithRootViewController:vc leftViewController:vc1
-                                                                       rightViewController:nil];
-            
-              sideMenuController.leftViewWidth = _leftWidth;
-              sideMenuController.leftViewPresentationStyle = LGSideMenuPresentationStyleSlideAbove;
-               [_host addSubviewFull:sideMenuController.view];
-                [self.weexInstance.viewController addChildViewController:sideMenuController];
-              _slidcontrol=sideMenuController;
-              if (self.isOpen) {
-                  [_slidcontrol  showLeftViewAnimated:true completionHandler:nil];
-              }
-              else {
-                  [_slidcontrol hideLeftViewAnimated:true completionHandler:nil];
-              }
-              
-          } fail:^(NSString *msg) {
-              
-          }  frame:CGRectMake(0, 0, _leftWidth, [self.weexInstance.viewController screenHeight]) isPortrait:true];
-     } fail:^(NSString *msg) {
-         
-     }  frame:r isPortrait:true];
+    
+//    [WeexFactory renderNew:[Weex getFinalUrl:_src weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc)
+//     {
+//         vc.instance.parentInstance=self.weexInstance;
+//         [self.weexInstance addChildInstance:vc.instance];
+//
+//         [WeexFactory renderNew:[Weex getFinalUrl:_slidSrc weexInstance:self.weexInstance] compelete:^(WXNormalViewContrller *vc1)
+//          {
+//              vc1.freeFrame=true;
+//              vc1.instance.frame=CGRectMake(0, 0, _leftWidth, [vc1 screenHeight]);
+//              vc1.instance.parentInstance=self.weexInstance;
+//              [self.weexInstance addChildInstance:vc1.instance];
+//              LGSideMenuController *sideMenuController = [LGSideMenuController sideMenuControllerWithRootViewController:vc leftViewController:vc1
+//                                                                       rightViewController:nil];
+//
+//              sideMenuController.leftViewWidth = _leftWidth;
+//              sideMenuController.leftViewPresentationStyle = LGSideMenuPresentationStyleSlideAbove;
+//               [_host addSubviewFull:sideMenuController.view];
+//                [self.weexInstance.viewController addChildViewController:sideMenuController];
+//              _slidcontrol=sideMenuController;
+//              if (self.isOpen) {
+//                  [_slidcontrol  showLeftViewAnimated:true completionHandler:nil];
+//              }
+//              else {
+//                  [_slidcontrol hideLeftViewAnimated:true completionHandler:nil];
+//              }
+//
+//          } fail:^(NSString *msg) {
+//
+//          }  frame:CGRectMake(0, 0, _leftWidth, [self.weexInstance.viewController screenHeight]) isPortrait:true];
+//     } fail:^(NSString *msg) {
+//
+//     }  frame:r isPortrait:true];
 //
 
    
@@ -97,12 +116,12 @@ WX_EXPORT_METHOD(@selector(toggle))
     {
         _isOpen=attributes[@"isOpen"] ? [WXConvert BOOL:attributes[@"isOpen"]] : NO;
     }
-    
+
     if (self.isOpen) {
         [_slidcontrol  showLeftViewAnimated:true completionHandler:nil];
     }
     else {
-        
+
         [_slidcontrol hideLeftViewPrepareWithGesture:NO];
         [_slidcontrol hideLeftViewAnimatedActions:true completionHandler:nil];
     }
@@ -115,10 +134,31 @@ WX_EXPORT_METHOD(@selector(toggle))
 }
 
 
+-(void)insertSubview:(WXComponent *)subcomponent atIndex:(NSInteger)index{
+    
+    UIView *v=subcomponent.view;
+    if(index==0)
+    {
+//        self.root.backgroundColor=[UIColor redColor];
+        [self.root addSubviewFull:v];
+//        [self.root layoutSubviews];
+    }
+    if(index==1)
+    {
+       [self.left addSubviewFull:v];
+//         self.left.backgroundColor=[UIColor blueColor];
+    }
+}
+
+
 -(UIView*)loadView
 {
  
     self.host=[UIView new];
+    self.host.backgroundColor=[UIColor blueColor];
     return self.host;
+//    UIView *v=[[UIView alloc]init];
+//    v.backgroundColor=[UIColor blueColor];
+//    return v;
 }
 @end

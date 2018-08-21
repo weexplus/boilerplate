@@ -8,22 +8,26 @@
 
 
     tools:openDrawer="start">
-    
-    <com.farwolf.weex.view.WXPageView_
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff"
         android:id="@+id/main_view"
 
-        ></com.farwolf.weex.view.WXPageView_>
+        ></LinearLayout>
 
 
-    <com.farwolf.weex.view.WXPageView_
+    <LinearLayout
         android:id="@+id/nav_view"
         android:layout_width="240dp"
+        android:background="#ffffff"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_gravity="start"
 
-        ></com.farwolf.weex.view.WXPageView_>
+        ></LinearLayout>
 
 
 </android.support.v4.widget.DrawerLayout>

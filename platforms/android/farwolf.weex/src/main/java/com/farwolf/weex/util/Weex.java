@@ -40,6 +40,7 @@ import com.farwolf.weex.module.WXEnvModule;
 import com.farwolf.weex.module.WXEventModule;
 import com.farwolf.weex.module.WXFPicker;
 import com.farwolf.weex.module.WXFarwolfModule;
+import com.farwolf.weex.module.WXFileModule;
 import com.farwolf.weex.module.WXFontModule;
 import com.farwolf.weex.module.WXLocationModule;
 import com.farwolf.weex.module.WXNavBarModule;
@@ -189,6 +190,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("timepicker", WXTimePicker.class);
             WXSDKEngine.registerModule("location", WXLocationModule.class);
             WXSDKEngine.registerModule("env", WXEnvModule.class);
+            WXSDKEngine.registerModule("file", WXFileModule.class);
 
             registerComponent("image",WXFImage.class);
             registerComponent("web",WXFWeb.class);
@@ -209,6 +211,7 @@ public class Weex extends ServiceBase{
             registerComponent("drawerlayout",WXDrawerLayout.class);
             registerComponent("input",WXFInput.class);
             registerComponent("arc",WXArc.class);
+            registerComponent("input",WXFInput.class);
 
 
 
@@ -446,6 +449,14 @@ public class Weex extends ServiceBase{
         return url;
 
 
+    }
+
+
+
+
+    public static String  getSdcardPath(String path)
+    {
+        return Const.PREFIX_SDCARD+path;
     }
 
 

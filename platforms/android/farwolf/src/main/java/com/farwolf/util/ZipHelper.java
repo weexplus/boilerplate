@@ -97,6 +97,10 @@ public class ZipHelper {
         }
     }
 
+    public static boolean unZipFile(InputStream zipPath,String unZipPath)
+    {
+       return  unZipFile(zipPath,unZipPath,null);
+    }
     /**
      * 解压文件
      *
@@ -104,7 +108,7 @@ public class ZipHelper {
      * @param zipPath   压缩文件目录
      * @return 成功返回 true，否则 false
      */
-    public static boolean unZipFile(InputStream zipPath,String unZipPath) {
+    public static boolean unZipFile(InputStream zipPath,String unZipPath,Callback callback) {
         unZipPath = createSeparator(unZipPath);
         BufferedOutputStream bos = null;
         ZipInputStream zis = null;
@@ -131,7 +135,8 @@ public class ZipHelper {
                 }
 
                     Log.d(TAG, "unzip file = " + unZipPath + filename);
-
+                if(callback!=null)
+                callback.onInvoke(unZipPath + filename);
                 bos = new BufferedOutputStream(new FileOutputStream(unZipPath + filename));
                 while ((count = zis.read(buffer)) != -1) {
                     bos.write(buffer, 0, count);

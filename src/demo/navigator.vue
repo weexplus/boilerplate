@@ -47,7 +47,8 @@
             {
                 var nav = weex.requireModule('navigator');
                 //相对路径写法，也可以root:绝对路径
-                nav.push('net.js')
+                nav.push('drawlayout.js')
+//                nav.push('../index.js')
             },
             dismiss()
             {

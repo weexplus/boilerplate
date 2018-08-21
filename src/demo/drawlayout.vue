@@ -6,12 +6,17 @@
         <div @click="setClose" style="width: 100;height: 100;background-color: red">
             <text>关闭</text>
         </div>
+
         <drawerlayout
-                 style="width: 750;height: 800"
+                style="width: 750;height: 800;background-color: chartreuse"
                 src="root:demo/font.js"
                 slidSrc="root:demo/center.js"
                 :isOpen="open"
         >
+            <netx>
+
+            </netx>
+            <netx></netx>
         </drawerlayout>
 
     </div>
@@ -30,6 +35,8 @@
 <script>
 
     var head = require('./header.vue')
+    var netx = require('./net.vue')
+    var font = require('./font.vue')
     var globalEvent = weex.requireModule('globalEvent');
     globalEvent.addEventListener("onPageInit", function (e) {
 
@@ -37,7 +44,7 @@
     });
 
     export default {
-        components: {head},
+        components: {head,netx,font},
         data () {
             return {
                 back: "",

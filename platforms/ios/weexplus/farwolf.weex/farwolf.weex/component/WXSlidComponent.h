@@ -16,6 +16,8 @@
 @property(nonatomic)  BOOL isOpen;
 @property(nonatomic)  CGFloat leftWidth;
 @property(nonatomic,strong) UIView *host;
+@property(nonatomic,strong) UIView *left;
+@property(nonatomic,strong) UIView *root;
 @property(nonatomic,strong) LGSideMenuController *slidcontrol;
 
 //@property(nonatomic,strong)  REFrostedViewController *frostedViewController;

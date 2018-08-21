@@ -1,11 +1,13 @@
 <template>
-    <div style="background-color: red">
+    <div style="">
 
-        <drawerlayout style="flex: 1;background-color: chartreuse">
-            <slid style="background-color: red">
+        <drawerlayout  style="flex: 1;">
+            <child role="slid" style="background-color: red">
+                <div style="background-color: #afddff;">
 
-            </slid>
-            <child style="background-color: blue">
+                </div>
+            </child>
+            <child role="main" style="background-color: #ff7231;width: 750">
 
             </child>
         </drawerlayout>

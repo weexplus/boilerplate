@@ -1,7 +1,7 @@
 
 
 <template>
- <div style="align-items: center;justify-content: center;">
+ <div style="align-items: center;justify-content: center;width: 400;background-color: red">
   <text style="font-family: erp;font-size: 50">&#xee4e;</text>
   <text style="font-family: erp;font-size: 50">&#xe678;</text>
   <text style="font-family: erp;font-size: 50">&#xe677;</text>

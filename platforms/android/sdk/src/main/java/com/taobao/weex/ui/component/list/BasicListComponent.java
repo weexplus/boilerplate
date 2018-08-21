@@ -1196,16 +1196,16 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
         offset = "0";
       }
       float offsetParsed = WXViewUtils.getRealPxByWidth(Integer.parseInt(offset),getInstance().getInstanceViewPortWidth());
+      //zjr add
+      if (offScreenY>0&&offScreenY <= offsetParsed) {
 
-//      if (offScreenY <= offsetParsed) {
-//
-//        if (mListCellCount != mChildren.size()
-//            || mForceLoadmoreNextTime) {
+        if (mListCellCount != mChildren.size()
+                || mForceLoadmoreNextTime) {
           fireEvent(Constants.Event.LOADMORE);
           mListCellCount = mChildren.size();
           mForceLoadmoreNextTime = false;
-//        }
-//      }
+        }
+      }
     } catch (Exception e) {
       WXLogUtils.d(TAG + "onLoadMore :", e);
     }

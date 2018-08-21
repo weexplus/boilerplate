@@ -4,19 +4,17 @@ import android.content.Context;
 import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.farwolf.base.ViewBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.weex.R;
-import com.farwolf.weex.activity.WeexActivity;
-import com.taobao.weex.WXSDKInstance;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
-
-import java.util.Map;
 
 /**
  * Created by even on 2017/10/18.
@@ -27,9 +25,9 @@ public class DrawerLayoutView extends ViewBase {
     public ScreenTool tool;
 
     @ViewById
-    public WXPageView_ main_view;
+    public LinearLayout main_view;
     @ViewById
-    public WXPageView nav_view;
+    public LinearLayout nav_view;
     @ViewById
     public DrawerLayout drawer_layout;
 
@@ -52,21 +50,34 @@ public class DrawerLayoutView extends ViewBase {
         Log.e("init state", "init");
     }
 
-    public void setSlidUrl(String url)
+//    public void setSlidUrl(String url)
+//    {
+//         WeexActivity a= (WeexActivity)getActivity();
+//        Map param=a.getIntent().getParcelableExtra("param");
+//        nav_view.setSrc(url,getContext(),param);
+//        Log.e("nav_view url", url);
+//    }
+//
+//    public void setMainUrl(String url)
+//    {
+//        WeexActivity a= (WeexActivity)getActivity();
+//        Map param=a.getIntent().getParcelableExtra("param");
+//        main_view.setSrc(url,getContext(),param);
+//        Log.e("main_view url", url);
+//    }
+
+    public void setMainView(ViewGroup v)
     {
-         WeexActivity a= (WeexActivity)getActivity();
-        Map param=a.getIntent().getParcelableExtra("param");
-        nav_view.setSrc(url,getContext(),param);
-        Log.e("nav_view url", url);
+//
+        main_view.addView(v);
     }
 
-    public void setMainUrl(String url)
+    public void setSlidView(ViewGroup v)
     {
-        WeexActivity a= (WeexActivity)getActivity();
-        Map param=a.getIntent().getParcelableExtra("param");
-        main_view.setSrc(url,getContext(),param);
-        Log.e("main_view url", url);
+
+        nav_view.addView(v);
     }
+
 
 
     public void setLeftWidth(int width)
@@ -82,21 +93,21 @@ public class DrawerLayoutView extends ViewBase {
 
     }
 
-    public void setChildContext(Context c)
-    {
-        this.main_view.instance.setContext(c);
-        this.nav_view.instance.setContext(c);
-
-    }
-
-    public void setParentInstance(WXSDKInstance instance)
-    {
-
-        this.main_view.setParentInstance(instance);
-        this.nav_view.setParentInstance(instance);
-
-
-    }
+//    public void setChildContext(Context c)
+//    {
+//        this.main_view.instance.setContext(c);
+//        this.nav_view.instance.setContext(c);
+//
+//    }
+//
+//    public void setParentInstance(WXSDKInstance instance)
+//    {
+//
+//        this.main_view.setParentInstance(instance);
+//        this.nav_view.setParentInstance(instance);
+//
+//
+//    }
 
 
 
