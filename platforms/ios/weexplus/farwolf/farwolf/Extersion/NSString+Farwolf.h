@@ -34,4 +34,5 @@
 -(BOOL)isExist;
 -(BOOL)mkdir;
 -(NSString *)toMd5;
+-(BOOL)isDirectory;
 @end

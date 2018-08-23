@@ -286,6 +286,12 @@
     return digest;
 }
 
+- (BOOL)isDirectory
+{
+    BOOL isDirectory = NO;
+    BOOL fg= [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:&isDirectory];
+    return isDirectory;
+}
 
 
 

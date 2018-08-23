@@ -27,8 +27,10 @@
                     this.percent=percent;
                 },(e)=>{
                     this.percent=e.path
+
                     file.unzip(e.path,(res)=>{
-                         this.url=res.path[0]
+                       this.url=res.path[0]
+                       this.percent=res
                     })
                 },()=>{
 

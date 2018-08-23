@@ -35,6 +35,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'HcdDateTimePicker', '~> 1.1.1'
   s.dependency 'LMTowDatePicker'
+  s.dependency 'zipzap', '~> 8.1.1'
+
 
 
 end

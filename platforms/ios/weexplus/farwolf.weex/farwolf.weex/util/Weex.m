@@ -39,6 +39,7 @@
 #import "WXTimePicker.h"
 #import "WXLocationModule.h"
 #import "WXEnvModule.h"
+#import "WXFileModule.h"
 
 @implementation Weex
 
@@ -70,6 +71,8 @@
     [WXSDKEngine registerModule:@"timepicker" withClass:[WXTimePicker class]];
     [WXSDKEngine registerModule:@"location" withClass:[WXLocationModule class]];
     [WXSDKEngine registerModule:@"env" withClass:[WXEnvModule class]];
+    [WXSDKEngine registerModule:@"file" withClass:[WXFileModule class]];
+    
     
     
     

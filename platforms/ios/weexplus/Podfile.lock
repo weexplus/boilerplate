@@ -54,6 +54,7 @@ PODS:
     - SocketRocket (~> 0.4.2)
     - WeexSDK
     - WXDevtool
+    - zipzap (~> 8.1.1)
   - FSCalendar (2.7.9)
   - GSKStretchyHeaderView (0.12.2)
   - HcdDateTimePicker (1.1.1)
@@ -103,6 +104,7 @@ PODS:
   - YYModel (1.0.4)
   - YZHeaderScaleImage (1.0.1)
   - ZipArchive (1.4.0)
+  - zipzap (8.1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
@@ -165,6 +167,7 @@ SPEC REPOS:
     - YYModel
     - YZHeaderScaleImage
     - ZipArchive
+    - zipzap
 
 EXTERNAL SOURCES:
   alipay:
@@ -199,7 +202,7 @@ SPEC CHECKSUMS:
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   farwolf: 53b76f772dd0752146772a0aa0f3761fbb28b167
   farwolf.business: c389f61c1abe895c04b0c2f9df27df7783d0d4dd
-  farwolf.weex: 75e93c0bed74537c79ef97a8c8035ac9975a979e
+  farwolf.weex: 82c7508b652769d8ab2c3bc23dcab326f79edab7
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   HcdDateTimePicker: 187736981f667f699d4d8d6ccc21621b55a6edb8
@@ -227,6 +230,7 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
+  zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
 
 PODFILE CHECKSUM: c8f90f23ec25e17d7fa43d55890153020ccafc3b
 
