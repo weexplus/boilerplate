@@ -26,6 +26,7 @@ public class WXDrawerLayout extends WXVContainer<DrawerLayoutView> {
 
     DrawerLayoutView_ drawerLayoutView_;
     ViewGroup main;
+    int childCount=0;
 
 
     public WXDrawerLayout(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
@@ -36,7 +37,7 @@ public class WXDrawerLayout extends WXVContainer<DrawerLayoutView> {
     @Override
     public void addChild(final WXComponent child, int index) {
 
-        if(index==0||index==1)
+        childCount++;
             super.addChild(child,index);
     }
 
@@ -77,11 +78,11 @@ public class WXDrawerLayout extends WXVContainer<DrawerLayoutView> {
 //         {
 //             return;
 //         }
-         if(index==0)
+         if(childCount==1)
          {
              drawerLayoutView_.setSlidView((ViewGroup) child);
          }
-         else if(index==1)
+         else if(childCount==2)
          {
              this.main=(ViewGroup) child;
              drawerLayoutView_.setMainView((ViewGroup) child);

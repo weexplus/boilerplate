@@ -11,6 +11,7 @@ Mixins.install = (Vue, options) => {
             toast(msg)
             {
 
+                if(this.modal&&this.modal.toast)
                 this.modal.toast({message:msg})
             },
             alert(msg)

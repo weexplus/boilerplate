@@ -9,14 +9,12 @@
 
         <drawerlayout
                 style="width: 750;height: 800;background-color: chartreuse"
-                src="root:demo/font.js"
-                slidSrc="root:demo/center.js"
                 :isOpen="open"
         >
-            <netx>
 
+            <font></font>
+            <netx>
             </netx>
-            <netx></netx>
         </drawerlayout>
 
     </div>

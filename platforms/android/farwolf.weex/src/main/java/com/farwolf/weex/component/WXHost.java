@@ -3,8 +3,10 @@ package com.farwolf.weex.component;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
-import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXTabView;
 import com.farwolf.weex.view.WXTabView_;
 import com.taobao.weex.WXSDKInstance;
@@ -13,29 +15,19 @@ import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
 
-import java.util.ArrayList;
-
-import static com.farwolf.weex.util.EventEnum.OnActivityBack;
-import static com.farwolf.weex.util.EventEnum.OnActivityPause;
-import static com.farwolf.weex.util.EventEnum.OnActivityResult;
-import static com.farwolf.weex.util.EventEnum.OnActivityResume;
-import static com.farwolf.weex.util.EventEnum.OnActivityStart;
-import static com.farwolf.weex.util.EventEnum.OnActivityStop;
+import java.util.HashMap;
 
 /**
  * Created by zhengjiangrong on 2017/8/17.
  */
 
-public class WXHost extends WXComponent<WXTabView> {
+public class WXHost extends WXVContainer<WXTabView> {
 
 
     public WXHost(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
         super(instance, dom, parent);
     }
 
-    public WXHost(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, int type) {
-        super(instance, dom, parent, type);
-    }
 
 
     @Override
@@ -49,24 +41,42 @@ public class WXHost extends WXComponent<WXTabView> {
     }
 
 
-    @WXComponentProp(name = "items")
-    public void setItems(ArrayList l)
-    {
-
-        ArrayList lx=new ArrayList();
-        for(Object q:l)
-        {
-            lx.add(Weex.getRelativeUrl(q+"", this.getInstance()));
-        }
-
-        this.getHostView().setItems(lx);
+    @Override
+    public ViewGroup.LayoutParams getChildLayoutParams(WXComponent child, View childView, int width, int height, int left, int right, int top, int bottom) {
+        LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        return lp;
     }
 
-    @WXComponentProp(name = "index")
-    public void setItems(int index)
-    {
+    @Override
+    public void addChild(WXComponent child) {
+        super.addChild(child);
+    }
 
+    @Override
+    public void addSubView(View child, int index) {
+        this.getHostView().addChild(child);
+    }
+
+//    @WXComponentProp(name = "items")
+//    public void setItems(ArrayList l)
+//    {
+//
+//        ArrayList lx=new ArrayList();
+//        for(Object q:l)
+//        {
+//            lx.add(Weex.getRelativeUrl(q+"", this.getInstance()));
+//        }
+//
+//        this.getHostView().setItems(lx);
+//    }
+
+    @WXComponentProp(name = "index")
+    public void setIndex(int index)
+    {
         this.getHostView().setIndex(index);
+        HashMap m=new HashMap();
+        m.put("index",index);
+        fireEvent("change",m);
     }
 
 
@@ -74,8 +84,8 @@ public class WXHost extends WXComponent<WXTabView> {
     public void onActivityResume() {
         super.onActivityResume();
         Context c=  mInstance.getContext();
-        getHostView().setChildContext(c);
-        getHostView().onEventInvoke(OnActivityResume,-1,-1,null);
+//        getHostView().setChildContext(c);
+//        getHostView().onEventInvoke(OnActivityResume,-1,-1,null);
     }
 
     @Override
@@ -88,12 +98,12 @@ public class WXHost extends WXComponent<WXTabView> {
     @Override
     public void onActivityStart() {
         super.onActivityStart();
-        getHostView().onEventInvoke(OnActivityStart,-1,-1,null);
+//        getHostView().onEventInvoke(OnActivityStart,-1,-1,null);
     }
 
     @Override
     public boolean onActivityBack() {
-        getHostView().onEventInvoke(OnActivityBack,-1,-1,null);
+//        getHostView().onEventInvoke(OnActivityBack,-1,-1,null);
         return super.onActivityBack();
     }
 
@@ -101,7 +111,7 @@ public class WXHost extends WXComponent<WXTabView> {
     @Override
     public void onActivityPause() {
         super.onActivityPause();
-        getHostView().onEventInvoke(OnActivityPause,-1,-1,null);
+//        getHostView().onEventInvoke(OnActivityPause,-1,-1,null);
     }
 
 //    @Override
@@ -113,12 +123,12 @@ public class WXHost extends WXComponent<WXTabView> {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        getHostView().onEventInvoke(OnActivityResult,requestCode,resultCode,data);
+//        getHostView().onEventInvoke(OnActivityResult,requestCode,resultCode,data);
     }
 
     @Override
     public void onActivityStop() {
         super.onActivityStop();
-        getHostView().onEventInvoke(OnActivityStop,-1,-1,null);
+//        getHostView().onEventInvoke(OnActivityStop,-1,-1,null);
     }
 }
