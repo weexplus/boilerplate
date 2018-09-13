@@ -198,7 +198,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
             
             NSData *data =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
             NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            NSLog(result);
+//            NSLog(result);
             //            NSHTTPURLResponse* response = operation.response;
             
             //            NSString  *cookie=response.allHeaderFields[@"Set-Cookie"];
