@@ -34,6 +34,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
@@ -191,6 +192,7 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
            recyclerView.getLayoutManager().setItemPrefetchEnabled(false);
         }
     }
+
 
     if (mChildren == null) {
       WXLogUtils.e(TAG, "children is null");
@@ -1197,14 +1199,15 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
       }
       float offsetParsed = WXViewUtils.getRealPxByWidth(Integer.parseInt(offset),getInstance().getInstanceViewPortWidth());
       //zjr add
+      Log.e("yuyuy","y="+offScreenY+",offsetParsed="+offsetParsed+".mListCellCount="+mListCellCount+",mChildren.size()="+mChildren.size()+",mForceLoadmoreNextTime="+mForceLoadmoreNextTime);
       if (offScreenY>0&&offScreenY <= offsetParsed) {
 
-        if (mListCellCount != mChildren.size()
-                || mForceLoadmoreNextTime) {
+//        if (mForceLoadmoreNextTime) {
+          Log.e("yuyuy==firee","y="+offScreenY+",offsetParsed="+offsetParsed);
           fireEvent(Constants.Event.LOADMORE);
           mListCellCount = mChildren.size();
           mForceLoadmoreNextTime = false;
-        }
+//        }
       }
     } catch (Exception e) {
       WXLogUtils.d(TAG + "onLoadMore :", e);

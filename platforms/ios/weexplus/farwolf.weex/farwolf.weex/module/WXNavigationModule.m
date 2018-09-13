@@ -26,7 +26,7 @@ WX_EXPORT_METHOD(@selector(setPageId:))
 WX_EXPORT_METHOD_SYNC(@selector(param))
 WX_EXPORT_METHOD(@selector(setRoot:))
 
-WX_EXPORT_METHOD(@selector(addBackGestureSelfControl))
+WX_EXPORT_METHOD(@selector(enableBackGesture))
 WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 
@@ -44,13 +44,13 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 -(void)push:(NSString *)url
 {
-     NSMutableDictionary *dic=[NSMutableDictionary new];
-     [dic setValue:url forKey:@"url"];
-     [dic setValue:nil forKey:@"param"];
-     [dic setValue:@(true) forKey:@"animated"];
-     [dic setValue:@(true) forKey:@"isPortrait"];
+    NSMutableDictionary *dic=[NSMutableDictionary new];
+    [dic setValue:url forKey:@"url"];
+    [dic setValue:nil forKey:@"param"];
+    [dic setValue:@(true) forKey:@"animated"];
+    [dic setValue:@(true) forKey:@"isPortrait"];
     [self pushFull:dic callback:nil];
-
+    
 }
 -(void)pushParam:(NSString *)url param:(NSDictionary*)param
 {
@@ -61,7 +61,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     [dic setValue:@(true) forKey:@"isPortrait"];
     [self pushFull:dic callback:nil];
     
-//     [self pushFull:url param:param callback:nil animated:true];
+    //     [self pushFull:url param:param callback:nil animated:true];
 }
 
 -(void)pushFull:(NSDictionary*)parameters   callback:(WXModuleKeepAliveCallback)callback
@@ -71,13 +71,13 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     BOOL animated=true;
     if([parameters objectForKey:@"animated"]!=nil)
     {
-       animated=[parameters[@"animated"] boolValue];
+        animated=[parameters[@"animated"] boolValue];
     }
     BOOL isPortrait=true;
     if([parameters objectForKey:@"isPortrait"]!=nil)
     {
         isPortrait=[parameters[@"isPortrait"] boolValue];
-       
+        
     }
     if(!isPortrait)
     {
@@ -86,13 +86,13 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     }
     __weak typeof (self) weakself=self;
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
-//        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+        //        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
         vc.param=param;
         vc.callback = callback;
         vc.instance.param=param;
-//        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+        //        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
         [[weakself.weexInstance.viewController navigationController] pushViewController:vc animated:animated];
-//        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
+        //        printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(vc)));
         
     } fail:^(NSString *msg) {
         
@@ -120,7 +120,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 
 -(id)param
 {
-//    WXNormalViewContrller *vc=weexInstance.viewController;
+    //    WXNormalViewContrller *vc=weexInstance.viewController;
     return weexInstance.param;
 }
 
@@ -134,7 +134,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 {
     WXNormalViewContrller *vc=  weexInstance.viewController;
     if(vc.callback!=nil)
-    vc.callback(param, false);
+        vc.callback(param, false);
     [vc back:animated];
 }
 -(void)backTo:(NSString*)pageid
@@ -143,7 +143,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     NSArray *n=vc.navigationController.viewControllers;
     UIViewController *tvc=nil;
     for (UIViewController* v in n) {
-       
+        
         if([v isKindOfClass:[WXNormalViewContrller class]])
         {
             WXNormalViewContrller *wx=v;
@@ -167,11 +167,11 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
                 }
             }
         }
-            
-      
+        
+        
     }
     if(tvc!=nil)
-    [vc.navigationController popToViewController:tvc animated:true];
+        [vc.navigationController popToViewController:tvc animated:true];
     
 }
 
@@ -215,7 +215,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 }
 -(void)presentFull:(NSDictionary*)parameters   callback:(WXModuleKeepAliveCallback)callback
 {
-   
+    
     NSString *url=[parameters objectForKey:@"url"];
     NSDictionary *param=[parameters objectForKey:@"param"];
     BOOL animated=true;
@@ -229,9 +229,9 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         isPortrait=[parameters[@"isPortrait"] boolValue];
         
     }
-   
     
-     __weak typeof (self) weakself=self;
+    
+    __weak typeof (self) weakself=self;
     [WeexFactory renderNew:[URL getFinalUrl:url weexInstance:weexInstance] compelete:^(WXNormalViewContrller *vc) {
         
         UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
@@ -243,25 +243,25 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         }];
         
     } fail:^(NSString *msg) {
-    
+        
     }   frame:[UIApplication sharedApplication].keyWindow.bounds isPortrait:isPortrait];
     
-   
- 
+    
+    
 }
 
 -(void)invokeNativeCallBack:(NSObject*)res
 {
     
     if(((WXNormalViewContrller*)weexInstance.viewController).nativeCallback!=nil)
-    ((WXNormalViewContrller*)weexInstance.viewController).nativeCallback(res);
+        ((WXNormalViewContrller*)weexInstance.viewController).nativeCallback(res);
 }
 
 
 -(void)dismiss
 {
     WXNormalViewContrller *vc= weexInstance.viewController;
-  
+    
     if(vc.navigationController!=nil)
     {
         [vc.navigationController dismiss:true];
@@ -275,24 +275,24 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 }
 
 
--(void)addBackGestureSelfControl
+-(void)enableBackGesture
 {
-//    if(  weexInstance.viewController.navigationController.interactivePopGestureRecognizer.delegate==nil)
+    //    if(  weexInstance.viewController.navigationController.interactivePopGestureRecognizer.delegate==nil)
     weexInstance.viewController.navigationController.interactivePopGestureRecognizer.delegate=nil;
-     weexInstance.viewController.navigationController.interactivePopGestureRecognizer.delegate = self;
+    weexInstance.viewController.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 -(void)dismissFull:(NSDictionary*)param animated:(BOOL)animated
 {
     
     WXNormalViewContrller *vc= weexInstance.viewController;
     if(vc.callback!=nil)
-    vc.callback(param, false);
+        vc.callback(param, false);
     if(vc.navigationController!=nil)
     {
         [vc.navigationController dismiss:animated];
     }
     else
-    [vc dismiss:animated];
+        [vc dismiss:animated];
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
@@ -307,3 +307,4 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     }
 }
 @end
+

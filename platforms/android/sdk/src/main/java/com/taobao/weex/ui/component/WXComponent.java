@@ -471,8 +471,15 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
 
   public void updateStyle(WXComponent component){
     ImmutableDomObject domObject = component.getDomObject();
+    Map m= domObject.getStyles();
+            m.put(Constants.Name.POSITION,"absolute");
+        m.put(Constants.Name.TOP,"0");
+       m.put(Constants.Name.LEFT,"0");
+        m.put(Constants.Name.BOTTOM,"0");
+       m.put(Constants.Name.RIGHT,"0");
+
     if(domObject !=null){
-      updateProperties(domObject.getStyles());
+      updateProperties(m);
     }
   }
 

@@ -95,7 +95,8 @@
                 {
                     self.onopeninfo = 'websocket open';
                 });
-                websocket.WebSocket('ws://10.23.6.64:8088/page/entry','echo-protocol');
+//                websocket.WebSocket('ws://10.23.6.64:8088/page/entry','echo-protocol');
+              websocket.WebSocket('ws://echo.websocket.org','');
                 var self = this;
                 self.onopeninfo = 'connecting...'
 

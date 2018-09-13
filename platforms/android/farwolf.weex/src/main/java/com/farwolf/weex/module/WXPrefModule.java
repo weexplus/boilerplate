@@ -21,6 +21,8 @@ public class WXPrefModule extends WXModule {
     @JSMethod
     public void setString(String key,String value)
     {
+        if(this.mWXSDKInstance==null||this.mWXSDKInstance.getContext()==null)
+            return;
         SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
         SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
         editor.putString(key, value).commit();
@@ -30,6 +32,8 @@ public class WXPrefModule extends WXModule {
     @JSMethod(uiThread = false)
     public String getString(String key)
     {
+        if(mWXSDKInstance==null)
+            return"";
         SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
         String  s=  sharedPreferences.getString(key,null);
         return s;
@@ -62,6 +66,8 @@ public class WXPrefModule extends WXModule {
     @JSMethod(uiThread = false)
     public Object get(String key)
     {
+        if(mWXSDKInstance==null)
+            return new HashMap<>();
         SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
         String s=  sharedPreferences.getString(key,null);
         if(s==null)

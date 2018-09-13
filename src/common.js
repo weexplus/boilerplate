@@ -1,6 +1,8 @@
 const Mixins={}
+let wraper=require('./demo/wraper.vue')
 Mixins.install = (Vue, options) => {
     Vue.mixin({
+      components:{wraper},
         data(){
             return {
                 modal:{},
@@ -21,7 +23,10 @@ Mixins.install = (Vue, options) => {
             push(url)
             {
                 this.navigator.push(url)
-            }
+            },
+          getScreenHeight() {
+            return 750/weex.config.env.deviceWidth*weex.config.env.deviceHeight
+          }
           
 
         },

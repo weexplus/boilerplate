@@ -21,7 +21,7 @@ WX_EXPORT_METHOD_SYNC(@selector(exit))
 WX_EXPORT_METHOD_SYNC(@selector(kill))
 WX_EXPORT_METHOD_SYNC(@selector(setMainPage:))
 WX_EXPORT_METHOD_SYNC(@selector(closeSplash))
-WX_EXPORT_METHOD_SYNC(@selector(setKeyboadMode))
+WX_EXPORT_METHOD_SYNC(@selector(setKeyboadMode:))
 WX_EXPORT_METHOD_SYNC(@selector(pressHome))
 
 
@@ -33,6 +33,9 @@ WX_EXPORT_METHOD_SYNC(@selector(pressHome))
 }
 -(void)doubleBack
 {
+    
+}
+-(void)setKeyboardMode:(NSString*)mode{
     
 }
 -(void)setKeyboadMode:(NSString*)mode{

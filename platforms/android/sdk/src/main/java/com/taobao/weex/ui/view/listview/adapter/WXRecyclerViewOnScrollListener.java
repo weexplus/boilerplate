@@ -27,8 +27,6 @@ import com.taobao.weex.utils.WXLogUtils;
 
 import java.lang.ref.WeakReference;
 
-import static android.R.attr.bottomOffset;
-
 
 /**
  * Listener for scroll event of recyclerView
@@ -83,7 +81,7 @@ public class WXRecyclerViewOnScrollListener extends RecyclerView.OnScrollListene
     //zjr add
     if (visibleItemCount != 0) {
       int bottomOffset = (totalItemCount - mLastVisibleItemPosition - 1) * (recyclerView.getHeight()) / visibleItemCount;
-      if (visibleItemCount > 0 && mCurrentScrollState == RecyclerView.SCROLL_STATE_IDLE) {
+      if (visibleItemCount > 0 ) {
         if (listener != null && listener.get() != null) {
           listener.get().onLoadMore(bottomOffset);
         }

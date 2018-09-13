@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
       <head title="demo" :back="false"  append="tree">
 
       </head>

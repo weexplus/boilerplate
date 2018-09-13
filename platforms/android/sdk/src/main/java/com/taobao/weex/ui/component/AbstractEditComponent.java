@@ -64,7 +64,7 @@ import java.util.regex.PatternSyntaxException;
  */
 public abstract class AbstractEditComponent extends WXComponent<WXEditText> {
 
-  private final InputMethodManager mInputMethodManager;
+  private   InputMethodManager mInputMethodManager;
   private String mBeforeText = "";
   private boolean mAutoFocus;
   private String mType = "text";
@@ -86,11 +86,13 @@ public abstract class AbstractEditComponent extends WXComponent<WXEditText> {
 
   public AbstractEditComponent(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, boolean isLazy) {
     super(instance, dom, parent, isLazy);
-    mInputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
   }
 
   @Override
   protected WXEditText initComponentHostView(@NonNull Context context) {
+    if(getContext()!=null)
+      mInputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
     final WXEditText inputView = new WXEditText(context);
     appleStyleAfterCreated(inputView);
     return inputView;

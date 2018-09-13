@@ -149,6 +149,7 @@ WX_EXPORT_METHOD(@selector(toggle))
         [self.root addSubviewFull:v];
         //         self.left.backgroundColor=[UIColor blueColor];
     }
+    [subcomponent fireEvent:@"load" params:self.weexInstance.param];
 }
 
 

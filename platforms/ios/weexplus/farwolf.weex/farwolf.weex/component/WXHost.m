@@ -95,14 +95,15 @@
     //        }
     //        [vc.view setHidden:t];
     //    }
-    for(UIView *v in _items){
+    for(WXComponent *v in _items){
         if([_items indexOfObject:v]==self.index){
-            [v setHidden:false];
-            [self.weexInstance fireGlobalEvent:@"onResume" params:nil];
+            [v.view setHidden:false];
+            [v fireEvent:@"show" params:@{@"index":@([_items indexOfObject:v])}];
         }
         else{
-            [v setHidden:true];
-            [self.weexInstance fireGlobalEvent:@"onLeave" params:nil];
+             [v.view setHidden:true];
+            [v fireEvent:@"hide" params:@{@"index":@([_items indexOfObject:v])}];
+            
         }
     }
 }
@@ -155,10 +156,12 @@
 
 
 -(void)insertSubview:(WXComponent *)subcomponent atIndex:(NSInteger)index{
-    [_items addObject:subcomponent.view];
+    [_items addObject:subcomponent];
     [self.view addSubviewFull:subcomponent.view];
     [self show];
+    [subcomponent fireEvent:@"load" params:self.weexInstance.param];
 }
+
 
 @end
 

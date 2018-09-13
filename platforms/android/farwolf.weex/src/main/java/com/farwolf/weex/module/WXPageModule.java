@@ -54,7 +54,7 @@ public class WXPageModule extends WXModuleBase {
     }
 
     @JSMethod
-    public void setKeyboadMode(String mode)
+    public void setKeyboardMode(String mode)
     {
         if("adjust_resize".equals(mode))
         {

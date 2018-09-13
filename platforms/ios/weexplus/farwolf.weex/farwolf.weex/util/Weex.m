@@ -40,11 +40,13 @@
 #import "WXLocationModule.h"
 #import "WXEnvModule.h"
 #import "WXFileModule.h"
+#import "WXWebSocketDefaultImpl.h"
 
 @implementation Weex
 
 +(void)initWeex:(NSString*)group appName:(NSString*)appName appVersion:(NSString*)appVersion
 {
+    [Weex initAppBoardContent];
     [WXAppConfiguration setAppGroup:group];
     [WXAppConfiguration setAppName:appName];
     [WXAppConfiguration setAppVersion:appVersion];
@@ -79,7 +81,8 @@
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
     [WXSDKEngine registerHandler:[JSExceptionProtocolImpl new] withProtocol:@protocol(WXJSExceptionProtocol)];
-    
+    [WXSDKEngine registerHandler:[WXWebSocketDefaultImpl new] withProtocol:@protocol(WXWebSocketHandler)];
+
     [WXSDKEngine registerComponent:@"a" withClass:[WXPushComponent class]];
     [WXSDKEngine registerComponent:@"floading" withClass:[WXLoadingView class]];
     [WXSDKEngine registerComponent:@"image" withClass:[WXFImageComponent class]];

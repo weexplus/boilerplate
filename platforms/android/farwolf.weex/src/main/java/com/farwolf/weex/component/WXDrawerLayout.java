@@ -38,7 +38,8 @@ public class WXDrawerLayout extends WXVContainer<DrawerLayoutView> {
     public void addChild(final WXComponent child, int index) {
 
         childCount++;
-            super.addChild(child,index);
+        super.addChild(child,index);
+        child.fireEvent("load",mInstance.param);
     }
 
 
@@ -78,15 +79,15 @@ public class WXDrawerLayout extends WXVContainer<DrawerLayoutView> {
 //         {
 //             return;
 //         }
-         if(childCount==1)
-         {
-             drawerLayoutView_.setSlidView((ViewGroup) child);
-         }
-         else if(childCount==2)
-         {
-             this.main=(ViewGroup) child;
-             drawerLayoutView_.setMainView((ViewGroup) child);
-         }
+        if(childCount==1)
+        {
+            drawerLayoutView_.setSlidView((ViewGroup) child);
+        }
+        else if(childCount==2)
+        {
+            this.main=(ViewGroup) child;
+            drawerLayoutView_.setMainView((ViewGroup) child);
+        }
 
     }
 
@@ -205,5 +206,13 @@ public class WXDrawerLayout extends WXVContainer<DrawerLayoutView> {
 //        if(drawerLayoutView_.nav_view!=null&&drawerLayoutView_.nav_view.instance!=null)
 //            drawerLayoutView_.nav_view.instance.onActivityStop();
 
+    }
+
+
+
+    @Override
+    protected void onFinishLayout() {
+        super.onFinishLayout();
+        Weex.fireChildEvent(this,"load",mInstance.param);
     }
 }

@@ -1,12 +1,43 @@
 <template>
-    <div style="flex: 1;">
+    <div style="flex: 1;background-color: #ffffff">
 
-        <host style="flex: 1" @change="onchange" :index="index">
-            <home></home>
-            <inputs></inputs>
-            <nav1></nav1>
-            <home></home>
+        <host style="flex: 1"   @change="onchange" :index="index">
+            <!--<child style="background-color: red;display: flex">-->
+            <div @load="loadx" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red;">
+                <div style="flex: 1;background-color: #0085ee;justify-content: center;align-items: center">
+                    <text style="font-size: 55">页面1</text>
+                    <text>目前必须用2层div包裹才能保证填充满</text>
+                    <text>第一层的样式必须是position: absolute;left: 0;top: 0;right: 0;bottom: 0;</text>
+                    <text>第二层的样式必须是flex:1</text>
+                    <text>{{target}}</text>
+                </div>
+            </div>
+            <div style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red;">
+                <div style="flex: 1;background-color: #0085ee;justify-content: center;align-items: center">
+                    <text style="font-size: 55">页面2</text>
+                    <text>目前必须用2层div包裹才能保证填充满</text>
+                    <text>第一层的样式必须是position: absolute;left: 0;top: 0;right: 0;bottom: 0;</text>
+                    <text>第二层的样式必须是flex:1</text>
+                </div>
+            </div>
+            <div style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red;">
+                <div style="flex: 1;background-color: #0085ee;justify-content: center;align-items: center">
+                    <text style="font-size: 55">页面3</text>
+                    <text>目前必须用2层div包裹才能保证填充满</text>
+                    <text>第一层的样式必须是position: absolute;left: 0;top: 0;right: 0;bottom: 0;</text>
+                    <text>第二层的样式必须是flex:1</text>
+                </div>
+            </div>
+            <div style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red;">
+                <div style="flex: 1;background-color: #0085ee;justify-content: center;align-items: center">
+                    <text style="font-size: 55">页面4</text>
+                    <text>目前必须用2层div包裹才能保证填充满</text>
+                    <text>第一层的样式必须是position: absolute;left: 0;top: 0;right: 0;bottom: 0;</text>
+                    <text>第二层的样式必须是flex:1</text>
+                </div>
+            </div>
         </host>
+
         <div style="height: 100;width: 750;position: absolute;bottom: 0;left: 0;right: 0;flex-direction: row;background-color: #0088fb">
             <div  @click="change(0)" style="flex: 1;align-items: center;justify-content: center">
                 <text>推荐</text>
@@ -26,6 +57,7 @@
         <!--<prerender src="app/busi/tab/serial.js"></prerender>-->
         <!--<a href="demo/pagedemo.js" style="width: 100;height: 100;background-color: red;justify-content: center;align-items: center"><text>跳转</text></a>-->
     </div>
+
 </template>
 
 <style>
@@ -49,6 +81,9 @@
            }
         },
         methods: {
+          loadx(){
+            this.target='sdsdsdxxxx'
+          },
            onchange(p){
              this.toast(p.index)
            },

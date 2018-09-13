@@ -56,11 +56,12 @@ public class WXChild extends WXDiv {
 //        FrameLayout.MarginLayoutParams lp=new FrameLayout.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //        return lp;
 
-        ViewGroup.LayoutParams lp= super.getChildLayoutParams(child,childView,width/2,height/2,left,right,top,bottom);
-//        lp.width=-1;
-//        lp.width=100;
-//        lp.height=100;
-        return lp;
+       float h=  child.getDomObject().getLayoutHeight();
+        float w= child.getDomObject().getLayoutWidth();
+        ViewGroup.LayoutParams lp= super.getChildLayoutParams(child,childView,width,height,left,right,top,bottom);
+        lp.width=750;
+        lp.height=1500;
+        return  lp;
     }
 
 

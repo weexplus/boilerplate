@@ -1,16 +1,17 @@
 <template>
     <div style="">
+      <list style="flex: 1">
+          <cell>
+              <div style="height:100;background-color: red;margin-top: 20" v-for="item in 15">
 
-        <drawerlayout  style="flex: 1;">
-            <child role="slid" style="background-color: red">
-                <div style="background-color: #afddff;">
+              </div>
+          </cell>
+         <cell>
+             <div style="height: 100;background-color: #fbb723" v-if="show">
 
-                </div>
-            </child>
-            <child role="main" style="background-color: #ff7231;width: 750">
-
-            </child>
-        </drawerlayout>
+             </div>
+         </cell>
+      </list>
     </div>
 </template>
 <style>
@@ -50,7 +51,7 @@
         {
             return {
                 items: [1, 1, 1, 1, 1, 1],
-                show:true,
+                show:false,
                 text:''
             }
         },

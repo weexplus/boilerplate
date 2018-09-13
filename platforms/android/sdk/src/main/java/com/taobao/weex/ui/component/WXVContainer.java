@@ -20,11 +20,10 @@ package com.taobao.weex.ui.component;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo.Scope;
 import android.support.v4.view.ViewCompat;
-import android.util.Pair;
-import android.support.annotation.Nullable;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.View;
@@ -364,9 +363,9 @@ public abstract class WXVContainer<T extends ViewGroup> extends WXComponent<T> {
     //appear should not notify child
     if(getDomObject().getAttrs().containsKey("appearNotifyChild")){
       for(WXComponent component:mChildren){
-        if(component.getHostView()!=null && !(component.getHostView().getVisibility()==View.VISIBLE)){
-          wxEventType= Constants.Event.DISAPPEAR;
-        }
+          if(component.getHostView()!=null && !(component.getHostView().getVisibility()==View.VISIBLE)){
+            wxEventType= Constants.Event.DISAPPEAR;
+          }
         component.notifyAppearStateChange(wxEventType,direction);
       }
     }

@@ -8,13 +8,28 @@
         </div>
 
         <drawerlayout
-                style="width: 750;height: 800;background-color: chartreuse"
+                style="width: 700;height: 800;background-color: chartreuse"
                 :isOpen="open"
+                :leftWidth="500"
         >
 
-            <font></font>
-            <netx>
-            </netx>
+            <div style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red;width: 500">
+              <div style="flex: 1;background-color: #0085ee;justify-content: center;align-items: center">
+                     <text>侧边栏</text>
+                  <text>目前必须用2层div包裹才能保证填充满</text>
+                  <text>第一层的样式必须是position: absolute;left: 0;top: 0;right: 0;bottom: 0;</text>
+                  <text>第二层的样式必须是flex:1</text>
+                  <text>第一层div的宽度必须和leftWidth一致</text>
+              </div>
+            </div>
+            <div style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: red">
+                <div @click="setClose" style="flex: 1;background-color: #0085ee;justify-content: center;align-items: center">
+                    <text>主界面</text>
+                    <text>目前必须用2层div包裹才能保证填充满</text>
+                    <text>第一层的样式必须是position: absolute;left: 0;top: 0;right: 0;bottom: 0;</text>
+                    <text>第二层的样式必须是flex:1</text>
+                </div>
+            </div>
         </drawerlayout>
 
     </div>
@@ -53,10 +68,12 @@
         methods: {
             setOpen()
             {
+              this.toast('ssdsds')
               this.open=true;
             },
             setClose()
             {
+              this.toast('xxsxss')
                 this.open=false;
             },
             post()

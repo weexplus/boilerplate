@@ -66,12 +66,16 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.bridge.WXBridgeManager;
 import com.taobao.weex.common.WXException;
 import com.taobao.weex.ui.component.WXBasicComponentType;
+import com.taobao.weex.ui.component.WXComponent;
+import com.taobao.weex.ui.component.WXVContainer;
 import com.taobao.weex.utils.WXFileUtils;
 import com.taobao.weex.utils.WXViewUtils;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.json.JSONObject;
+
+import java.util.Map;
 
 import static com.taobao.weex.WXSDKEngine.registerComponent;
 
@@ -462,6 +466,18 @@ public class Weex extends ServiceBase{
 
 
 
+
+    public static void fireChildEvent(WXComponent c, String name, Map param){
+        c.fireEvent(name,param);
+        if(c instanceof  WXVContainer) {
+            WXVContainer cv=(WXVContainer)c;
+            for(int i=0;i<cv.getChildCount();i++){
+                WXComponent cx= cv.getChild(i);
+                Weex.fireChildEvent(cx,name,param);
+            }
+        }
+
+    }
 
 
 }
