@@ -1,42 +1,18 @@
 <template>
-    <div style="">
-      <list style="flex: 1">
-          <cell>
-              <div style="height:100;background-color: red;margin-top: 20" v-for="item in 15">
-
-              </div>
-          </cell>
-         <cell>
-             <div style="height: 100;background-color: #fbb723" v-if="show">
-
-             </div>
-         </cell>
-      </list>
-    </div>
+   <scroller style="">
+       <swap v-for="(item,index) in items" style="margin-top: 10px;height: 200px" :height="200" @delete="actionClick(index)">
+           <div slot="content" style="background-color: #0088fb;flex: 1;">
+              <text>{{item}}</text>
+           </div>
+       </swap>
+   </scroller>
 </template>
 <style>
-    .in
-    {
-        width: 700px;
+    .btn {
+        width: 200px;
         height: 100px;
-        border-color: #006ce7;
-        border-width: 1px;
-        margin-top: 200px;
-    }
-    .add {
-        width: 250px;
-        height: 250px;
-        background-color: #0088fb;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .pic {
-        width: 250px;
-        height: 250px;
         background-color: red;
-        border-width: 1;
-        border-color: #ffffff;
+        margin-top: 20px;
     }
 
 
@@ -44,42 +20,47 @@
 
 <script>
 
-//    const common=require('./common.vue')
-    export default {
-
-        data()
-        {
-            return {
-                items: [1, 1, 1, 1, 1, 1],
-                show:false,
-                text:''
-            }
-        },
-        methods: {
-
-            add()
-            {
+  import swap from './swapCell.vue'
+  export default {
+    components: {swap},
+    data()
+    {
+      return {
+        items: [1, 2, 3, 4, 5, 6],
+        show: false,
+        text: ''
+      }
+    },
+    methods: {
+      actionClick(index){
+        this.items.splice(index, 1);
+      },
+      change(){
+        this.show = !this.show
+      },
+      add()
+      {
 //             this.show=!this.show;
-                var t=weex.requireModule('navbar')
-                t.setStatusBarStyle('black')
-            },
-            remove(item)
-            {
+        var t = weex.requireModule('navbar')
+        t.setStatusBarStyle('black')
+      },
+      remove(item)
+      {
 //                this.items.remove(0)
 
 
-            }
-        },
-        created: function () {
+      }
+    },
+    created: function () {
 
-            var globalEvent = weex.requireModule('globalEvent');
-            globalEvent.addEventListener("onPageInit", function (e) {
+      var globalEvent = weex.requireModule('globalEvent');
+      globalEvent.addEventListener("onPageInit", function (e) {
 
-                var t=weex.requireModule('modal')
+        var t = weex.requireModule('modal')
 //                t.toast({message:'111'})
 
-            });
+      });
 
-        },
-    }
+    },
+  }
 </script>

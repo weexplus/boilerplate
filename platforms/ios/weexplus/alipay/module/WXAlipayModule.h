@@ -10,5 +10,8 @@
 #import <WeexSDK/WXModuleProtocol.h>
 #import "farwolf.h"
 @interface WXAlipayModule : NSObject<WXModuleProtocol>
-
++(void)setPayCallBack:(WXModuleCallback)callback;
++(void)setAuthCallBack:(WXModuleCallback)callback;
++(WXModuleCallback)getPayCallback;
++(WXModuleCallback)getAuthCallback;
 @end

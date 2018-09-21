@@ -12,7 +12,7 @@
 
 @synthesize weexInstance;
 
-WX_EXPORT_METHOD(@selector(getJPushId))
+WX_EXPORT_METHOD_SYNC(@selector(getJPushId))
 
  
 -(NSString*)getJPushId
