@@ -64,22 +64,24 @@
 {
     
     NSMutableDictionary *d=[NSMutableDictionary new];
-    d[@"msg"]=data;
+    d[@"extra"]=data;
     d[@"action"]=type;
     NSString *url=[Config notifyEntry];
     
     [WeexFactory renderNew:[Weex toURL:url] compelete:^(WXNormalViewContrller *vc) {
-        
         [vc.view setHidden:true];
         vc.param=d;
         vc.view.frame=CGRectMake(0, 0, 0, 0);
-        UIViewController *parent= [[UIApplication sharedApplication].keyWindow.rootViewController topViewController];
-        [parent addVc:vc];
-        [vc.instance firePageInit];
-        //        [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
+        vc.instance.param=d;
+        UIViewController *parent=  [UIApplication sharedApplication].keyWindow.rootViewController;
+         vc.view.frame=parent.view.frame;
+        UINavigationController *nav=parent.presentedViewController.presentedViewController;
+        UIViewController *top=   nav.topViewController;
+        [nav.topViewController addVc:vc];
+        [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
         
     } fail:^(NSString *msg) {
-        
+        NSLog(msg);
        
     }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:true];
 }

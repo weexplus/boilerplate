@@ -18,8 +18,8 @@ WX_EXPORT_METHOD_SYNC(@selector(getJPushId))
 -(NSString*)getJPushId
 {
     
-    
-     return [JPUSHService registrationID];
+    NSString *jid=[JPUSHService registrationID];
+     return jid;
    
 }
 @end
