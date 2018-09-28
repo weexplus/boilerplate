@@ -4,6 +4,7 @@ import component from  './component'
 import imageAdpter from  './path/imageAdpter'
 import path from  './path'
 import mixin from  './mixin'
+import main from  '../../native/mixin/main'
 
 
 
@@ -17,6 +18,7 @@ export default {
     component.install(weex,vue)
     mixin.install(weex,vue)
     imageAdpter.install(weex,vue)
+    vue.use(main)
 
   }
 }
