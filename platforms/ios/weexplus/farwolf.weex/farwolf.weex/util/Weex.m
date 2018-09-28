@@ -139,7 +139,7 @@
 
 +(NSMutableDictionary*)diskConifg
 {
-    NSString *path = @"app/config";
+    NSString *path = @"app/weexplus";
     NSURL *url=[URL loadFromDisk:[path add:@".json"]];
     NSError *err;
     NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&err];
@@ -168,7 +168,7 @@
 
 +(NSMutableDictionary*)bundleConifg
 {
-    NSString *path = @"app/config";
+    NSString *path = @"app/weexplus";
     NSURL *url=[URL loadFromBundle:path ext:@"json"];
     NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     return [str toJson];

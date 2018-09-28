@@ -139,7 +139,7 @@ public class Local  {
     public static boolean isDiskExist(Context c)
     {
         String path= getBasePath(c);
-        path+="/app/config.json";
+        path+="/app/weexplus.json";
         File f=new File(path);
         return f.exists();
     }

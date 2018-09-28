@@ -148,7 +148,7 @@ public class Weex extends ServiceBase{
 
 
     public static JSONObject config(Context c) {
-        String s = WXFileUtils.loadAsset("app/config.json", c);
+        String s = WXFileUtils.loadAsset("app/weexplus.json", c);
 
         try {
             JSONObject j = new JSONObject(s);

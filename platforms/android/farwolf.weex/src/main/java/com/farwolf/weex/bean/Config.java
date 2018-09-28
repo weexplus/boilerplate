@@ -22,7 +22,7 @@ public class Config {
 
 
     public static JSONObject config(Context c) {
-        String s = Local.getString(c,"app/config.json");
+        String s = Local.getString(c,"app/weexplus.json");
 
 
         try {
@@ -35,7 +35,7 @@ public class Config {
 
 
     public static JSONObject assetConfig(Context c) {
-        String s =Local.getAssetManager(c).getString(c,"app/config.json");
+        String s =Local.getAssetManager(c).getString(c,"app/weexplus.json");
 
         try {
             JSONObject j = new JSONObject(s);
@@ -48,7 +48,7 @@ public class Config {
     public static JSONObject diskConfig(Context c) {
 
 
-        String s =Local.getDiskManager(c).getString(c,"app/config.json");
+        String s =Local.getDiskManager(c).getString(c,"app/weexplus.json");
 
         try {
             JSONObject j = new JSONObject(s);
