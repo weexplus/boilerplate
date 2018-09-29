@@ -8,9 +8,10 @@ export default {
     evt.param =window.route.params
     document.dispatchEvent(evt)
 
+
   },
   mounted(){
-
+    this.onLoad(window.route.params)
   }
 
 

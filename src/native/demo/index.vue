@@ -13,12 +13,12 @@
       return {}
     },
     methods: {
-      load(){
+      onLoad(){
         this.toast('sss')
       }
     },
     created () {
-      this.toast('dd')
+
     }
   }
 </script>

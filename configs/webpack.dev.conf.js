@@ -53,7 +53,7 @@ const generateHtmlWebpackPlugin = (entry) => {
     return new HtmlWebpackPlugin({
       multihtmlCache: true,
       filename: name + '.html',
-      template: helper.rootNode(`web/index.html`),
+      template: helper.rootNode(`src/web/index.html`),
       isDevServer: true,
       chunksSortMode: 'dependency',
       inject: true,

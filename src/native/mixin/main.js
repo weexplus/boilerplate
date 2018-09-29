@@ -38,9 +38,8 @@ Mixins.install = (Vue, options) => {
         let p=param
         if(p.param&&p.bubbles)
           p=p.param
-        debugger
-        if(this.load!=undefined)
-          this.load(p)
+        if(this.onLoad!=undefined)
+          this.onLoad(p)
 
 
       });
