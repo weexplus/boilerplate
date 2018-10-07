@@ -1,33 +1,47 @@
-import progress from './progress.vue'
-
+import load from './index.vue'
 let $vm
 
-const ProgressPlugin = {
+const HLoadPlugin = {
   install (vue) {
-    const Progressvm = vue.extend(ProgressPlugin)
+    const HLoading = vue.extend(load)
 
     if (!$vm) {
-      $vm = new Progressvm({
+      $vm = new HLoading({
         el: document.createElement('div')
       })
       document.body.appendChild($vm.$el)
     }
 
-    // all Vux's plugins are included in this.$vux
-    if (!vue.$wxp) {
-      vue.$wxp = {}
-    }
-    vue.$wxp.progress = $vm
-    window.$wxp.progress= $vm
-    vue.mixin({
-      created: function () {
-        this.$wxp = vue.$wxp
+    const loading = {
+      show (txt,cancel) {
+        if (!$vm) {
+          $vm = new HLoading({
+            el: document.createElement('div')
+          })
+          document.body.appendChild($vm.$el)
+        }
+        $vm.show(txt,cancel)
+      },
+
+      hide () {
+        setTimeout(() => {
+          $vm.hide()
+        }, 100)
       }
-    })
+    }
+
+    // all Vux's plugins are included in this.$vux
+    if (!window.$wxp) {
+      window.$wxp = {
+        loading
+      }
+    } else {
+      window.$wxp.loading = loading
+    }
+
   }
 }
-const install = ProgressPlugin.install
-export {
-  progress,
-  install
-}
+
+export default HLoadPlugin
+const install = HLoadPlugin.install
+export { load, install }

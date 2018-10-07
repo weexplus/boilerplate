@@ -25,10 +25,10 @@
 
 -(void)initHanler
 {
-      [self regist:APP_didFinishLaunchingWithOptions method:@selector(didFinishLaunchingWithOptions:)];
-      [self regist:APP_didRegisterForRemoteNotificationsWithDeviceToken method:@selector(didRegisterForRemoteNotificationsWithDeviceToken:)];
+    [self regist:APP_didFinishLaunchingWithOptions method:@selector(didFinishLaunchingWithOptions:)];
+    [self regist:APP_didRegisterForRemoteNotificationsWithDeviceToken method:@selector(didRegisterForRemoteNotificationsWithDeviceToken:)];
     
-       [self regist:APP_didReceiveRemoteNotification method:@selector(didReceiveRemoteNotification:)];
+    [self regist:APP_didReceiveRemoteNotification method:@selector(didReceiveRemoteNotification:)];
     
     [self regist:APP_didReceiveRemoteNotification_fetchCompletionHandler method:@selector(didReceiveRemoteNotification:)];
     
@@ -74,15 +74,22 @@
         vc.view.frame=CGRectMake(0, 0, 0, 0);
         vc.instance.param=d;
         UIViewController *parent=  [UIApplication sharedApplication].keyWindow.rootViewController;
-         vc.view.frame=parent.view.frame;
-        UINavigationController *nav=parent.presentedViewController.presentedViewController;
-        UIViewController *top=   nav.topViewController;
-        [nav.topViewController addVc:vc];
-        [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
+        vc.view.frame=parent.view.frame;
+        //        UINavigationController *nav=parent.presentedViewController.presentedViewController;
+        UIViewController *top=   [parent TopViewController];
+        [top addVc:vc];
+        
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(200 * NSEC_PER_MSEC));
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
+        });
+        
+        
+        
         
     } fail:^(NSString *msg) {
         NSLog(msg);
-       
+        
     }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:true];
 }
 
@@ -96,7 +103,7 @@
 {
     NSDictionary *d= notify.userInfo;
     NSDictionary *options=d[@"options"];
- 
+    
     NSString *appkey=options[@"jpushAppkey"];
     [JPUSHService setupWithOption:options appKey:appkey
                           channel:@"appstore"
@@ -109,23 +116,23 @@
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
         NSLog([@"registrationID="add: registrationID]);
     }];
-
+    
 }
 -(void)didRegisterForRemoteNotificationsWithDeviceToken:(NSNotification*)notify
 {
     NSDictionary *d= notify.userInfo;
     NSString *token=d[@"deviceToken"];
-     [JPUSHService registerDeviceToken:token];
+    [JPUSHService registerDeviceToken:token];
 }
 
 -(void)didReceiveRemoteNotification:(NSNotification*)notify
 {
-        NSDictionary *d= notify.userInfo;
-        NSDictionary *userInfo=d[@"userInfo"];
-       [JPUSHService handleRemoteNotification:userInfo];
+    NSDictionary *d= notify.userInfo;
+    NSDictionary *userInfo=d[@"userInfo"];
+    [JPUSHService handleRemoteNotification:userInfo];
 }
 
-  
+
 
 
 

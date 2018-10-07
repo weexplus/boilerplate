@@ -64,6 +64,14 @@ exports.styleLoaders = function (options) {
     })
   }
 
+  let file={
+    test: /\.(png|jpg|gif|svg)$/,
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]'
+    }
+  }
+   output.push(file)
   return output
 }
 

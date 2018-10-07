@@ -1,8 +1,11 @@
 const Mixins={}
 let wraper=require('../component/wraper.vue')
+let head=require('../component/head.vue')
+let button=require('../component/button.vue')
+let page=require('../component/page.vue')
 Mixins.install = (Vue, options) => {
   Vue.mixin({
-    components:{wraper},
+    components:{wraper,head,button,page},
     data(){
       return {
         modal:{},
@@ -36,7 +39,7 @@ Mixins.install = (Vue, options) => {
       var globalEvent = weex.requireModule('globalEvent') ;
       globalEvent.addEventListener("onPageInit",  (param)=> {
         let p=param
-        if(p.param&&p.bubbles)
+        if(param&&p.param&&p.bubbles)
           p=p.param
         if(this.onLoad!=undefined)
           this.onLoad(p)

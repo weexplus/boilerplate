@@ -45,7 +45,7 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
     {
         //        UIWindow *w= [UIApplication sharedApplication].keyWindow;
         NSArray *n=  [[NSBundle mainBundle]loadNibNamed:@"Picker" owner:self options:nil];
-        UIViewController *vc=weexInstance.viewController.topViewController;
+        UIViewController *vc=weexInstance.viewController.TopViewController;
         _p=  (UIView*)n[0];
         _p.frame=CGRectMake(0, vc.screenHeight, vc.screenWidth, 300.0);
         _p.vc=vc;
@@ -142,7 +142,7 @@ WX_EXPORT_METHOD(@selector(setTheme:btncolor:))
 - (void)com {
     
     [_layout removeFromSuperview];
-    UIViewController *vc=weexInstance.viewController.topViewController;
+    UIViewController *vc=weexInstance.viewController.TopViewController;
     [vc.view addSubview:_layout];
     [vc.view bringSubviewToFront:_layout];
     __weak typeof (self)weakself =self;

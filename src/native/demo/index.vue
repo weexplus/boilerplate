@@ -1,9 +1,14 @@
 <template>
-    <div style="align-items: center;justify-content: center">
-        <text style="font-size: 66px;font-weight: bold">welcom to weexplus!</text>
-        <div class="btn">
+    <div style="align-items: center;background-color: #ffffff">
+        <!--<progress></progress>-->
+        <div style="flex-direction: row;margin-top: 300px">
+            <image src="root:img/logo.png" style="width: 150px;height: 150px"></image>
+        </div>
+        <text style="font-size: 66px;font-weight: bold;margin-top: 30px">欢迎使用 weexplus!</text>
+        <div class="btn" @click="goto()">
             <text class="btn-text">开始教程</text>
         </div>
+
     </div>
 </template>
 <script>
@@ -13,8 +18,22 @@
       return {}
     },
     methods: {
+
+      goto(){
+//        this.push('nav.js')
+        this.$router.push('./demo/component/drawer.js',{})
+      },
+      showProgress(){
+//       this.push('nav.js')
+        let progress=weex.requireModule('progress')
+//         progress.showFull('上传中....')
+        progress.show()
+        setTimeout(()=>{
+          progress.dismiss()
+        },1000)
+      },
       onLoad(){
-        this.toast('sss')
+
       }
     },
     created () {
@@ -23,31 +42,27 @@
   }
 </script>
 <style scoped>
-    .btn{
+    .btn {
         width: 200px;
         height: 100px;
         background-color: #0088fb;
         align-items: center;
         justify-content: center;
         border-radius: 10px;
-        margin-top: 50px;
+        margin-top: 500px;
     }
-    .btn:active{
+
+    .btn:active {
         background-color: #5ac3ff;
     }
-    .btn-text{
+
+    .btn-text {
         color: #ffffff;
         text-align: center;
-        justify-content: center;
-        position: absolute;
-        left: 0;
-        top:0;
-        right: 0;
-        bottom: 0;
-        justify-content: center;
-        padding-top: 28px;
+
     }
-    .btn-text:active{
+
+    .btn-text:active {
         color: #ffffff;
     }
 </style>

@@ -96,8 +96,9 @@
         }
         [self notifyDict:@"qrrefreshpage" value:dic];
         
-        [self dismissViewControllerAnimated:true completion:nil];
+//        [self dismissViewControllerAnimated:true completion:nil];
         
+        [self.TopViewController dismiss:true completion:nil];
         [RefreshManager reload];
        
      

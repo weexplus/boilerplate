@@ -4,6 +4,7 @@ import st from  './static'
 import pref from  './pref'
 import notify from  './notify'
 import font from  './font'
+import progress from  './progress'
 export default {
 
   install(weex,vue)
@@ -14,6 +15,7 @@ export default {
     weex.registerModule('pref',pref)
     weex.registerModule('notify',notify)
     weex.registerModule('font',font)
+    weex.registerModule('progress',progress)
   }
 }
 

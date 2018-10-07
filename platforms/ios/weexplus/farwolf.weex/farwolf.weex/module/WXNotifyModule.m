@@ -14,6 +14,7 @@ WX_EXPORT_METHOD(@selector(regist:callback:))
 WX_EXPORT_METHOD(@selector(send:param:))
 WX_EXPORT_METHOD(@selector(sendUnRegist))
 WX_EXPORT_METHOD(@selector(sendNative:param:))
+WX_EXPORT_METHOD(@selector(setNumber:))
 
 
 
@@ -153,6 +154,10 @@ WX_EXPORT_METHOD(@selector(sendNative:param:))
     
 }
 
+
+-(void)setNumber:(int)number{
+    [UIApplication sharedApplication].applicationIconBadgeNumber=number;
+}
 
 
 

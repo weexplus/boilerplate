@@ -91,7 +91,7 @@ static BOOL isshowErr;
 {
     [super viewDidLoad];
      printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
-      self.naviIndex=self.topViewController.navigationController.childViewControllers.count;
+      self.naviIndex=self.TopViewController.navigationController.childViewControllers.count;
     if(self.isLanscape)
     {
          [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
@@ -261,7 +261,7 @@ static BOOL isshowErr;
     
     
     
-    [self.topViewController presentViewController:vc animated:true completion:^{
+    [self.TopViewController presentViewController:vc animated:true completion:^{
         
     }];
     
@@ -366,9 +366,9 @@ static BOOL isshowErr;
     
     NSLog([@"url== " add: self.sourceURL.absoluteString]);
     NSLog([@"self== " addInt: self.naviIndex]);
-    NSLog([@"count== " addInt: self.topViewController.navigationController.childViewControllers.count]);
+    NSLog([@"count== " addInt: self.TopViewController.navigationController.childViewControllers.count]);
     
-    if(self.naviIndex>self.topViewController.navigationController.childViewControllers.count)
+    if(self.naviIndex>self.TopViewController.navigationController.childViewControllers.count)
     {
         //        WXNormalViewContrller *vc= self.weexInstance.viewController;
         NSMutableDictionary *p=[NSMutableDictionary new];

@@ -5,12 +5,17 @@ export default {
     window.router=this.$router
     window.route=this.$route
     var evt = new Event('onPageInit')
-    evt.param =window.route.params
+    if(window.route)
+    {
+      evt.param =window.route.params
+    }
     document.dispatchEvent(evt)
+
 
 
   },
   mounted(){
+    if(this.onLoad)
     this.onLoad(window.route.params)
   }
 

@@ -34,7 +34,7 @@ WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
     u.appid=appid;
     u.url=url;
     
-    [u doCheck:appid vcode:vcode showprogress:showprogress failtoast:failtoast vc:[weexInstance.viewController topViewController] success:^(Version *v) {
+    [u doCheck:appid vcode:vcode showprogress:showprogress failtoast:failtoast vc:[weexInstance.viewController TopViewController] success:^(Version *v) {
         
         
     } theme:theme fail:^(){
@@ -64,7 +64,7 @@ WX_EXPORT_METHOD(@selector(hotUpdate:start:progress:compelete:exception:))
     UpdateChecker *u=[UpdateChecker new];
     u.appid=appid;
     u.url=url;
-    [u doCheckJs:appid jsversion:jsversion nativecode:nativecode showprogress:showprogress failtoast:failtoast vc:[weexInstance.viewController topViewController] success:^(Version *v) {
+    [u doCheckJs:appid jsversion:jsversion nativecode:nativecode showprogress:showprogress failtoast:failtoast vc:[weexInstance.viewController TopViewController] success:^(Version *v) {
         
     } theme:theme];
     

@@ -21,16 +21,21 @@
     CCQrCode *code = [[CCQrCode alloc] initWithFrame:self.view.bounds];
     
     [self.view addSubview:code];
- 
+    __weak typeof (self) weakself=self;
     [code startReading:^(AVCaptureOutput *captureOutput, NSArray *metadataObjects, AVCaptureConnection *connection, AVMetadataMachineReadableCodeObject *metadataObj, NSString *stringValue) {
         
         NSLog(@"%@",stringValue);
         [code stopReading];
-        [self dismiss:true];
-        if(self.scanSuccess!=nil)
-        {
-            self.scanSuccess(stringValue);
-        }
+//        [self dismiss:true];
+//        [self.TopViewController dismiss:true completion:nil];
+       
+        [weakself.TopViewController dismiss:true completion:^{
+            if(weakself.scanSuccess!=nil)
+            {
+                weakself.scanSuccess(stringValue);
+            }
+        }];
+      
         
      
     }];

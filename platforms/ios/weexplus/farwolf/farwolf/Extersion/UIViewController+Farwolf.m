@@ -279,7 +279,7 @@
     return [u instantiateViewControllerWithIdentifier:Id];
 }
 
-- (UIViewController *)topViewController {
+- (UIViewController *)TopViewController {
     UIViewController *resultVC;
     resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
     while (resultVC.presentedViewController) {

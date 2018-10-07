@@ -69,5 +69,10 @@ public class WXNotifyModule  extends WXModule {
 
     }
 
+    @JSMethod
+    public void setNumber(int number){
+
+    }
+
 
 }

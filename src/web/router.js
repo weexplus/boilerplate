@@ -2,6 +2,8 @@ import Vue from 'vue'
 /*global Vue*/
 import Router from 'vue-router'
 import index from '../native/demo/index.vue'
+import nav from '../native/demo/nav.vue'
+import drawer from '../native/demo/component/drawer.vue'
 
 
 Vue.use(Router)
@@ -12,6 +14,16 @@ module.exports = new Router({
       path: '/index.js',
       name: 'index',
       component: index
+    },
+    {
+      path: '/nav.js',
+      name: 'nav',
+      component: nav
+    },
+    {
+      path: '/demo/component/drawer.js',
+      name: 'drawer',
+      component: drawer
     }
   ]
 })

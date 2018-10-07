@@ -179,7 +179,7 @@
             [alert addAction:actionok];
             [alert addAction:actionCancel];
             UIViewController *rootVC = [[UIApplication sharedApplication].delegate window].rootViewController;
-            [ [rootVC topViewController] presentViewController:alert animated:YES completion:^{
+            [ [rootVC TopViewController] presentViewController:alert animated:YES completion:^{
                 
             }];
         }
