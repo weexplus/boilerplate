@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import index from '../native/demo/index.vue'
 import nav from '../native/demo/nav.vue'
 import drawer from '../native/demo/component/drawer.vue'
+import host from '../native/demo/component/host.vue'
 
 
 Vue.use(Router)
@@ -24,6 +25,11 @@ module.exports = new Router({
       path: '/demo/component/drawer.js',
       name: 'drawer',
       component: drawer
+    },
+    {
+      path: '/demo/component/host.js',
+      name: 'host',
+      component: host
     }
   ]
 })
