@@ -2,13 +2,17 @@
     <div class="root" @click="bgclick" :style="{'top':showLayout?0:99999+'px'}">
         <div class="bg">
             <image style="width: 80px;height: 80px" :src="url"></image>
-            <text class="txt">{{txt}}</text>
+            <text class="txt" :style="{'color':color}">{{txt}}</text>
         </div>
     </div>
 </template>
 <script>
   export default{
-    props: {},
+    props: {
+      color:{
+        default:'#ffffff'
+      }
+    },
     data () {
       return {
         url: require('../../assets/img/loading.gif'),

@@ -11,8 +11,8 @@ export default {
     }
   },
   mounted(){
-//    this.$router.push('./index.js',{})
-    this.$router.push('/demo/component/host.js',{})
+    this.$router.push('./index.js',{})
+//    this.$router.push('/demo/component/host.js',{})
   }
 }
 </script>

@@ -15,13 +15,19 @@
   export default{
     props: {},
     data () {
-      return {}
+      return {
+        xx:'xxx'
+      }
     },
     methods: {
 
       goto(){
-//        this.push('nav.js')
-        this.$router.push('./demo/component/drawer.js',{})
+        this.push('nav.js')
+//        this.$router.push('./demo/component/drawer.js',{})
+        let nav=weex.requireModule('navigator')
+        nav.pushFull('nav.js',()=>{
+          alert('sss')
+        })
       },
       showProgress(){
 //       this.push('nav.js')
@@ -38,6 +44,8 @@
     },
     created () {
 
+    },
+    activated(){
     }
   }
 </script>

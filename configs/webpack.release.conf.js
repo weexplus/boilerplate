@@ -1,5 +1,6 @@
 const commonConfig = require('./webpack.common.conf');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 // tools
 const ip = require('ip').address();
 const os = require('os');
@@ -8,6 +9,7 @@ const path = require('path');
 const webpack = require('webpack');
 const helper = require('./helper');
 const config = require('./config');
+const utils = require('./utils');
 
 console.log(`${chalk.green(`Package web project at ${chalk.bold(path.resolve('./release/web'))}!`)}`)
 /**
@@ -28,7 +30,7 @@ const generateMultipleEntrys = (entry) => {
   const htmlPlugin = entrys.map(name => {
     return new HtmlWebpackPlugin({
       filename: name + '.html',
-      template: helper.rootNode(`web/index.html`),
+      template: helper.rootNode(`src/web/index.html`),
       isDevServer: true,
       chunksSortMode: 'dependency',
       inject: true,
@@ -119,7 +121,7 @@ const productionConfig = webpackMerge(commonConfig[0], {
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
     new HtmlWebpackPlugin({
-      template: 'web/index.html',
+      template: 'src/web/index.html',
       chunksSortMode: 'dependency',
       inject: 'head'
     }),
@@ -148,7 +150,24 @@ const productionConfig = webpackMerge(commonConfig[0], {
         drop_console: true,
         drop_debugger: true
       }
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/img'),
+        to: path.resolve(__dirname, '../release/web/img'),
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../src/font'),
+        to: path.resolve(__dirname, '../release/web/font'),
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../src/file'),
+        to: path.resolve(__dirname, '../release/web/file'),
+        ignore: ['.*']
+      }
+    ])
   ]
 });
 
@@ -156,6 +175,9 @@ const productionConfig = webpackMerge(commonConfig[0], {
  * Webpack configuration for weex.
  */
 const weexConfig = webpackMerge(commonConfig[1], {
+  module: {
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+  },
   /**
    * Options affecting the output of the compilation.
    *

@@ -107,6 +107,13 @@ const webConfig = {
     // webpack 2.0 
     rules: [
       {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
         test: /\.js$/,
         use: [{
           loader: 'babel-loader'

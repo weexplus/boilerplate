@@ -71,7 +71,7 @@ exports.styleLoaders = function (options) {
       name: '[name].[ext]'
     }
   }
-   output.push(file)
+   // output.push(file)
   return output
 }
 

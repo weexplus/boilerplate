@@ -5,6 +5,7 @@ const webpack = require('webpack');
 
 const config = require('./config');
 const helper = require('./helper');
+const utils = require('./utils');
 
 /**
  * Webpack Plugins
@@ -15,6 +16,9 @@ const UglifyJsparallelPlugin = require('webpack-uglify-parallel');
  * Webpack configuration for weex.
  */
 const weexConfig = webpackMerge(commonConfig[1], {
+  module: {
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+  },
     /*
      * Add additional plugins to the compiler.
      *

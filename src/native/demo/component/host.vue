@@ -18,7 +18,7 @@
     },
     methods: {
       load(){
-        alert('true')
+//        alert('true')
       }
     },
     created () {

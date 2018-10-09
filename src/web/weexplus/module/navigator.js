@@ -3,6 +3,8 @@ let nav ={
 
 
   push(url){
+
+
     nav.pushFull({url:url,param:{}})
   },
   pushParam(url,param){
@@ -14,6 +16,8 @@ let nav ={
     let animate=p.animate
     if(!animate)
       animate=true
+    if(callback)
+    window.router.app._data.callback =callback
     window.eventBus.$emit('UPDATE_DIRECTION','forward')
     window.eventBus.$emit('ENABLE_ROUTER_ANIMATION',animate)
     window.router.push(path.getPath(url),param)
