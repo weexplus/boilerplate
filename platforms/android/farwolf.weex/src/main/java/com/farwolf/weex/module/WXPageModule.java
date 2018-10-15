@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.WindowManager;
 
+import com.farwolf.util.ActivityManager;
 import com.farwolf.util.AppTool;
+import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
@@ -128,6 +130,18 @@ public class WXPageModule extends WXModuleBase {
         AppTool.kill();
     }
 
+
+
+    @JSMethod(uiThread = false)
+    public String getTopPage(){
+        ActivityManager am=ActivityManager.getInstance();
+        if(am==null)
+            return "null";
+        WeexActivity ac= (WeexActivity)am.getCurrentActivity();
+        if(ac!=null)
+            return  ac.mWXSDKInstance.getBundleUrl();
+        return "";
+    }
 
 
     @JSMethod

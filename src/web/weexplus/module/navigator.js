@@ -16,11 +16,11 @@ let nav ={
     let animate=p.animate
     if(!animate)
       animate=true
-    if(callback)
-    window.router.app._data.callback =callback
+    // if(callback)
+    // window.router.app._data.callback =callback
     window.eventBus.$emit('UPDATE_DIRECTION','forward')
     window.eventBus.$emit('ENABLE_ROUTER_ANIMATION',animate)
-    window.router.push(path.getPath(url),param)
+   let res=  window.router.push(path.getPath(url),param)
   },
   back(){
     nav.backFull({param:{},animate:true})

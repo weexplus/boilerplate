@@ -3,7 +3,7 @@
         <!--<image style="width: 100px;height: 100px;background-color: black;position: fixed;top: 0;z-index: 999" :src="url"></image>-->
         <transition name="custom-classes-transition" :enter-active-class="enterAnimate"
                     :leave-active-class="leaveAnimate">
-            <keep-alive>
+            <keep-alive  >
                 <router-view    class="sub-page" ></router-view>
             </keep-alive>
         </transition>
@@ -21,7 +21,8 @@
         enterAnimate: "", //页面进入动效
         leaveAnimate: "", //页面离开动效
         direction:'forward',
-        url:require('../assets/img/loading.gif')
+        url:require('../assets/img/loading.gif'),
+        routerList:[]
       }
     },
     mounted()
@@ -41,6 +42,34 @@
           this.leaveAnimate = ""
         }
       })
+    },
+//    beforeRouteLeave(to, from, next){
+//      if (this.routerList.length && this.routerList.indexOf(to.name) === this.routerList.length - 1) {
+//        // 后退
+//        this.routerList.splice(this.routerList.length - 1, 1)
+////        to.meta.keepAlive = true
+//      } else {
+//        // 前进
+//        this.routerList.push(from.name || '/')
+////        to.meta.keepAlive = false
+//      }
+//      next()
+//    },
+    created(){
+//      this.$router.beforeEach((to, from, next) => {
+//        debugger
+//        if (this.routerList.length && this.routerList.indexOf(to.name) === this.routerList.length - 1) {
+//          // 后退
+//          this.routerList.splice(this.routerList.length - 1, 1)
+//          to.meta.keepAlive = true
+//        } else {
+//          // 前进
+//          this.routerList.push(from.name || '/')
+//          to.meta.keepAlive = false
+//        }
+//        next()
+//      })
+
     }
   }
 </script>

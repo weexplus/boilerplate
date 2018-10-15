@@ -12,17 +12,20 @@
 
 @implementation WXPageModule
 @synthesize weexInstance;
-WX_EXPORT_METHOD_SYNC(@selector(doubleBack))
-WX_EXPORT_METHOD_SYNC(@selector(reload))
-WX_EXPORT_METHOD_SYNC(@selector(preRender:success:))
-WX_EXPORT_METHOD_SYNC(@selector(enableBackKey))
-WX_EXPORT_METHOD_SYNC(@selector(setBackKeyCallback:))
-WX_EXPORT_METHOD_SYNC(@selector(exit))
-WX_EXPORT_METHOD_SYNC(@selector(kill))
-WX_EXPORT_METHOD_SYNC(@selector(setMainPage:))
-WX_EXPORT_METHOD_SYNC(@selector(closeSplash))
-WX_EXPORT_METHOD_SYNC(@selector(setKeyboadMode:))
-WX_EXPORT_METHOD_SYNC(@selector(pressHome))
+WX_EXPORT_METHOD(@selector(doubleBack))
+WX_EXPORT_METHOD(@selector(reload))
+WX_EXPORT_METHOD(@selector(preRender:success:))
+WX_EXPORT_METHOD(@selector(enableBackKey))
+WX_EXPORT_METHOD(@selector(setBackKeyCallback:))
+WX_EXPORT_METHOD(@selector(exit))
+WX_EXPORT_METHOD(@selector(kill))
+WX_EXPORT_METHOD(@selector(setMainPage:))
+WX_EXPORT_METHOD(@selector(closeSplash))
+WX_EXPORT_METHOD(@selector(pressHome))
+WX_EXPORT_METHOD(@selector(setKeyboardMode:))
+WX_EXPORT_METHOD_SYNC(@selector(getTopPage))
+
+
 
 
 -(void)preRender:(NSString*)src success:(WXModuleCallback)success
@@ -33,9 +36,6 @@ WX_EXPORT_METHOD_SYNC(@selector(pressHome))
 }
 -(void)doubleBack
 {
-    
-}
--(void)setKeyboardMode:(NSString*)mode{
     
 }
 -(void)setKeyboadMode:(NSString*)mode{
@@ -66,6 +66,10 @@ WX_EXPORT_METHOD_SYNC(@selector(pressHome))
     [s save:@"mainurl"];
 }
 
+-(void)setKeyboardMode:(NSString*)mode
+{
+    
+}
 -(void)closeSplash
 {
     
@@ -84,4 +88,18 @@ WX_EXPORT_METHOD_SYNC(@selector(pressHome))
     exit(0);
 }
 
+-(NSString*)getTopPage{
+    WXNormalViewContrller *vc= (WXNormalViewContrller*)self.weexInstance.viewController.TopViewController;
+    if(vc==nil)
+        return @"";
+    if(vc.instance==nil)
+        return @"";
+    NSString *url=vc.instance.scriptURL.absoluteString;
+    if([url contains:@"random"]){
+        url=[url split:@"?random"][0];
+    }
+    return url;
+}
+
 @end
+

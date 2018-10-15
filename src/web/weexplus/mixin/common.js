@@ -1,3 +1,5 @@
+import {Component} from 'vue'
+import Vue from 'vue'
 export default {
 
   data(){
@@ -18,17 +20,26 @@ export default {
 
 
   },
+  methods:{
+    isPage(){
+      // let p=p.$parent.$parent
+      // while(!(p.$parent.$parent instanceof Vue)){
+      //   p=p.$parent
+      // }
+      return  (this instanceof  Vue)
+    }
+  },
   mounted(){
     if(this.onLoad)
     this.onLoad(window.route.params)
   },
   activated(){
-    alert(this.callback)
-      if(this.callback) {
-        debugger
+
+    if(this.callback) {
         this.callback()
-      }
+    }
   }
+
 
 
 }

@@ -5,6 +5,7 @@
             <image src="root:img/logo.png" style="width: 150px;height: 150px"></image>
         </div>
         <text style="font-size: 66px;font-weight: bold;margin-top: 30px">欢迎使用 weexplus!</text>
+        <input style="width: 100px;height: 100px;border-color: #0088fb;border-width: 1px"/>
         <div class="btn" @click="goto()">
             <text class="btn-text">开始教程</text>
         </div>
@@ -24,10 +25,10 @@
       goto(){
         this.push('nav.js')
 //        this.$router.push('./demo/component/drawer.js',{})
-        let nav=weex.requireModule('navigator')
-        nav.pushFull('nav.js',()=>{
-          alert('sss')
-        })
+//        let nav=weex.requireModule('navigator')
+//        nav.pushFull('nav.js',()=>{
+//          alert('sss')
+//        })
       },
       showProgress(){
 //       this.push('nav.js')

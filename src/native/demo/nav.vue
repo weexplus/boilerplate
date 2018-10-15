@@ -21,9 +21,14 @@
       goto(item){
         this.toast(item.url)
 //         this.push(item.url)
-      }
+      },
+    },
+    mounted(){
+      window.router
+      debugger
     },
     created () {
+
     }
   }
 </script>
