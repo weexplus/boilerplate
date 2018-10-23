@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin:'android-apt'
 def AAVersion='4.0.0'
+def keystorePropertiesFile = rootProject.file("gradle.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
     compileSdkVersion 24
     buildToolsVersion "27.0.3"
@@ -13,10 +16,26 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+    signingConfigs {
+        releaseConfig {
+            if (properties.containsKey('storeFile') && properties.containsKey('storePassword') &&
+                    properties.containsKey('keyAlias') && properties.containsKey('keyPassword')) {
+                storePassword =keystoreProperties['storePassword']
+                keyAlias = keystoreProperties['keyAlias']
+                keyPassword = keystoreProperties['keyPassword']
+                storeFile = file(keystoreProperties['storeFile'])
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false //去掉不用资源
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
+        }
+        debug {
+
         }
     }
     lintOptions {

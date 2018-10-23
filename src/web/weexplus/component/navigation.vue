@@ -2,7 +2,7 @@
     <div id="app">
 
         <!--<image style="width: 100px;height: 100px;background-color: black;position: fixed;top: 0;z-index: 999" :src="url"></image>-->
-        <transition name="custom-classes-transition" :enter-active-class="enterAnimate"
+        <transition name="custom-classes-transition" v-if="$route.meta.keepAlive" :enter-active-class="enterAnimate"
                     :leave-active-class="leaveAnimate">
             <!--<keep-alive  >-->
                 <!--<router-view    class="sub-page" ></router-view>-->
@@ -11,7 +11,7 @@
                 <router-view class="sub-page" v-if="$route.meta.keepAlive"></router-view>
             </keep-alive>
         </transition>
-        <transition name="custom-classes-transition" :enter-active-class="enterAnimate"
+        <transition name="custom-classes-transition" v-if="!$route.meta.keepAlive" :enter-active-class="enterAnimate"
                     :leave-active-class="leaveAnimate">
             <router-view class="sub-page" v-if="!$route.meta.keepAlive"></router-view>
         </transition>
