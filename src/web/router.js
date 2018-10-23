@@ -15,16 +15,17 @@ module.exports = new Router({
       path: '/index.js',
       name: 'index',
       component: index,
-      meta: {
-        keepAlive: false // 不需要缓存
+      meta:{
+        keepAlive:false
       }
+
     },
     {
       path: '/nav.js',
       name: 'nav',
       component: nav,
-      meta: {
-        keepAlive: false // 不需要缓存
+      meta:{
+        keepAlive:true
       }
     },
     {

@@ -1,12 +1,21 @@
 <template>
     <div id="app">
+
         <!--<image style="width: 100px;height: 100px;background-color: black;position: fixed;top: 0;z-index: 999" :src="url"></image>-->
         <transition name="custom-classes-transition" :enter-active-class="enterAnimate"
                     :leave-active-class="leaveAnimate">
-            <keep-alive  >
-                <router-view    class="sub-page" ></router-view>
+            <!--<keep-alive  >-->
+                <!--<router-view    class="sub-page" ></router-view>-->
+            <!--</keep-alive>-->
+            <keep-alive>
+                <router-view class="sub-page" v-if="$route.meta.keepAlive"></router-view>
             </keep-alive>
         </transition>
+        <transition name="custom-classes-transition" :enter-active-class="enterAnimate"
+                    :leave-active-class="leaveAnimate">
+            <router-view class="sub-page" v-if="!$route.meta.keepAlive"></router-view>
+        </transition>
+     <div style="color: #0088fb;z-index: 999999">{{$route.name}}{{$route.meta.keepAlive}}</div>
     </div>
 </template>
 
@@ -22,7 +31,8 @@
         leaveAnimate: "", //页面离开动效
         direction:'forward',
         url:require('../assets/img/loading.gif'),
-        routerList:[]
+        routerList:[],
+        cache:true
       }
     },
     mounted()
@@ -56,19 +66,25 @@
 //      next()
 //    },
     created(){
-//      this.$router.beforeEach((to, from, next) => {
+      let _this=this
+      this.$router.beforeEach((to, from, next) => {
+//        to.meta.keepAlive = true
+//        if(!to.meta)
+//        {
+//          to.meta={}
+//        }
 //        debugger
-//        if (this.routerList.length && this.routerList.indexOf(to.name) === this.routerList.length - 1) {
+//        if (_this.routerList.length && _this.routerList.indexOf(to.name) === _this.routerList.length - 1) {
 //          // 后退
-//          this.routerList.splice(this.routerList.length - 1, 1)
+//          _this.routerList.splice(_this.routerList.length - 1, 1)
 //          to.meta.keepAlive = true
 //        } else {
 //          // 前进
-//          this.routerList.push(from.name || '/')
+//          _this.routerList.push(from.name || '/')
 //          to.meta.keepAlive = false
 //        }
-//        next()
-//      })
+        next()
+      })
 
     }
   }
