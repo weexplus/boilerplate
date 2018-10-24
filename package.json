@@ -52,6 +52,8 @@
     "webpack-merge": "^4.1.0",
     "webpack-uglify-parallel": "^0.1.4",
     "weex-loader": "^0.7.2",
-    "weex-vue-precompiler": "^0.1.17"
+    "weex-vue-precompiler": "^0.1.17",
+    "stylus": "^0.54.5",
+    "style-loader": "^0.23.1"
   }
 }
