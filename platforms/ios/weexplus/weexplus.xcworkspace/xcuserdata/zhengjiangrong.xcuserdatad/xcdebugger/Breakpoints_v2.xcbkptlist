@@ -1048,7 +1048,7 @@
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXNetModule.m"
-                  timestampString = "560614862.922722"
+                  timestampString = "561996523.582029"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -1063,7 +1063,7 @@
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXNetModule.m"
-                  timestampString = "560614862.924008"
+                  timestampString = "561996523.584985"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -1078,27 +1078,12 @@
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXNetModule.m"
-                  timestampString = "560614862.925252"
+                  timestampString = "561996523.587635"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "weexplus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXNetModule.m"
-                  timestampString = "560614862.926496"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "36">
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1108,12 +1093,27 @@
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXNetModule.m"
-                  timestampString = "560614862.928021"
+                  timestampString = "561996523.590299"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
                   endingLineNumber = "44"
                   offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.61"
+                  moduleName = "weexplus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXNetModule.m"
+                  timestampString = "561996523.592828"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1621,7 +1621,7 @@
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXFileModule.m"
-                  timestampString = "560614862.993618"
+                  timestampString = "561996523.694178"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
@@ -1636,7 +1636,7 @@
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/module/WXFileModule.m"
-                  timestampString = "560614862.995019"
+                  timestampString = "561996523.696434"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
@@ -1996,53 +1996,6 @@
             endingLineNumber = "38"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__24-[QRControl viewDidLoad]_block_invoke"
-                  moduleName = "weexplus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/QRControl.m"
-                  timestampString = "560614863.164235"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "452">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.20"
-                  moduleName = "weexplus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/QRControl.m"
-                  timestampString = "560614863.166031"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.21"
-                  moduleName = "weexplus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/QRControl.m"
-                  timestampString = "560614863.1677819"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
