@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXTabView;
 import com.farwolf.weex.view.WXTabView_;
 import com.taobao.weex.WXSDKInstance;
@@ -16,13 +17,12 @@ import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by zhengjiangrong on 2017/8/17.
  */
 
-public class WXHost extends WXVContainer<WXTabView> {
+public class WXHost extends  WXVContainer<WXTabView> {
 
 
     public WXHost(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
@@ -37,6 +37,7 @@ public class WXHost extends WXVContainer<WXTabView> {
         w.setInstance(getInstance());
 //        WXTabView w= new WXTabView(context);
 //        w.holdComponent(this);
+
         return w;
     }
 
@@ -49,52 +50,14 @@ public class WXHost extends WXVContainer<WXTabView> {
 
     @Override
     public void addChild(WXComponent child) {
-//        child.getDomObject().getStyles().put(Constants.Name.POSITION,"absolute");
-//        child.getDomObject().getStyles().put(Constants.Name.TOP,"0");
-//        child.getDomObject().getStyles().put(Constants.Name.LEFT,"0");
-//        child.getDomObject().getStyles().put(Constants.Name.BOTTOM,"0");
-//        child.getDomObject().getStyles().put(Constants.Name.RIGHT,"0");
-        Map m= child.getDomObject().getStyles();
         super.addChild(child);
-
     }
 
     @Override
     public void addChild(WXComponent child, int index) {
         super.addChild(child, index);
         child.fireEvent("load",mInstance.param);
-//        Weex.fireChildEvent(child,"load",mInstance.param);
     }
-
-    @Override
-    public void updateStyle(WXComponent component) {
-        super.updateStyle(component);
-}
-
-
-    //    @Override
-//    public void applyLayoutAndEvent(WXComponent component) {
-//
-//        long startNanos = System.nanoTime();
-////        if(!isLazy()) {
-//            if (component == null) {
-//                component = this;
-//            }
-//            super.applyLayoutAndEvent(component);
-//            int count = childCount();
-//            for (int i = 0; i < count; i++) {
-//                WXComponent child = getChild(i);
-//                child.getDomObject().getStyles().put(Constants.Name.POSITION,"absolute");
-//                child.getDomObject().getStyles().put(Constants.Name.TOP,"0");
-//                child.getDomObject().getStyles().put(Constants.Name.LEFT,"0");
-//                child.getDomObject().getStyles().put(Constants.Name.BOTTOM,"0");
-//                child.getDomObject().getStyles().put(Constants.Name.RIGHT,"0");
-//                child.applyLayoutAndEvent(((WXVContainer)component).getChild(i));
-//            }
-//
-////        }
-//        mTraceInfo.uiThreadNanos += (System.nanoTime() - startNanos);
-//    }
 
     @Override
     public void addSubView(View child, int index) {
@@ -136,7 +99,6 @@ public class WXHost extends WXVContainer<WXTabView> {
     @Override
     public void onActivityCreate() {
         super.onActivityCreate();
-        fireChildEvent(WXHost.this);
 //        getHostView().onEventInvoke(OnActivityCreate,-1,-1,null);
     }
 
@@ -178,38 +140,10 @@ public class WXHost extends WXVContainer<WXTabView> {
 //        getHostView().onEventInvoke(OnActivityStop,-1,-1,null);
     }
 
-    public void fireChildEvent(WXVContainer c){
-        c.fireEventWait("load",mInstance.param);
-        for(int i=0;i<getChildCount();i++){
-            WXComponent cx= c.getChild(i);
-            if(cx instanceof  WXVContainer) {
-                fireChildEvent((WXVContainer) cx);
-            }
-            else {
-                cx.fireEventWait("load",mInstance.param);
-            }
-        }
-    }
-
-    @Override
-    public void onActivityDestroy() {
-        super.onActivityDestroy();
-    }
 
     @Override
     protected void onFinishLayout() {
         super.onFinishLayout();
-//        for(int i=0;i<getChildCount();i++){
-//            WXComponent c= getChild(i);
-//            c.fireEvent("load",mInstance.param);
-//        }
-//        fireChildEvent(WXHost.this);
-
-//        getHostView().postDelayed(WXThread.secure(new Runnable() {
-//            @Override
-//            public void run() {
-//                fireChildEvent(WXHost.this);
-//            }
-//        }), 100);
+        Weex.fireChildEvent(this,"load",mInstance.param);
     }
 }

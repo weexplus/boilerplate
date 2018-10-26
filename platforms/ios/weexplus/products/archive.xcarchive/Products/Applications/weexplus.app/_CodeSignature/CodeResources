@@ -58,7 +58,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		+nu0pGvHDwhV4JrjQNWvu0MrWgg=
+		LH1GZMjdILeYwIX0m7kaJfu5F0I=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
@@ -146,7 +146,7 @@
 		</data>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		yJ9kM6l3AMK3qqTGAldMo9Jx1qs=
+		YsFRBLW1W0mZiia0zzBrnjxtehU=
 		</data>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -154,11 +154,11 @@
 		</data>
 		<key>LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		S7vFQICGEHd5X3kWppmm/Lm1ByE=
+		a9Yb2JyPLJDJjBxoFe81+ba+R/U=
 		</data>
 		<key>Picker.nib</key>
 		<data>
-		o7sS1Sz/CkyV67opuVvXhLxnk2I=
+		pEYrWrXODEkIq8sqbMZqMyKj420=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -341,43 +341,43 @@
 		</dict>
 		<key>app/common.js</key>
 		<data>
-		ThLDYiGhHj90oMOCKGf68tQTizE=
+		bJkkqbiAMWj9GrPIl9i6RoRcihk=
 		</data>
 		<key>app/component/button.js</key>
 		<data>
-		rt2IZ8ZUXA8Vuz4nkzzI+0iM7nU=
+		PMxaWp1VHyCzqVLNM4VNfDse+mk=
 		</data>
 		<key>app/component/head.js</key>
 		<data>
-		7KDm1wTFeO9doXId4fpzfF6Q9Qs=
+		xgRaqW4cBlUjgPdZbSzQsw9YdkA=
 		</data>
 		<key>app/component/page.js</key>
 		<data>
-		fR4WO16BPUmkKtj9FzotL2rJtxc=
+		TCJndTPzkj1nlf2YVqX/A8qaYoU=
 		</data>
 		<key>app/component/wraper.js</key>
 		<data>
-		hi3Qc2TZx4S+8H/oREx+NVff9eE=
+		FsQmh8pCf0zrxyNNtgP4VOgpSpA=
 		</data>
 		<key>app/demo/component/drawer.js</key>
 		<data>
-		i4tB/CYIV74L/Hbu7OXiKdU/tdQ=
+		k4xn/xzhJB08I7kda6hzfS2ILvY=
 		</data>
 		<key>app/demo/component/host.js</key>
 		<data>
-		+jkcFKeN+xNM9g3OF3JgFQ7qous=
+		urzrQmS501XCaPScq2NKJsJTNNU=
 		</data>
 		<key>app/demo/index.js</key>
 		<data>
-		FoWEn9a9zKmOiv4FPpshg44UgZc=
+		z5mVf+LuvjQoYOpvkBTzZpue1N0=
 		</data>
 		<key>app/demo/nav.js</key>
 		<data>
-		Hx6KPUc0qSVJDpjzMwpA3wLw9uM=
+		zEuMPmG8KY1QOUfoAvCme4iOh6E=
 		</data>
 		<key>app/demo/navData.js</key>
 		<data>
-		w42NjPcIgLxgLagh2V5h8M3IdPI=
+		2jIa3ON760gDCpa9y5CdhouBUjo=
 		</data>
 		<key>app/file/index.vue</key>
 		<data>
@@ -401,7 +401,7 @@
 		</data>
 		<key>app/mixin/main.js</key>
 		<data>
-		9Wwzyfqlaw/Q/EnWM8k5hBmRUbw=
+		5v37uXUaByW9RZhEzfCAe00sdg4=
 		</data>
 		<key>app/ty.js</key>
 		<data>
@@ -441,11 +441,11 @@
 		</data>
 		<key>updater.nib</key>
 		<data>
-		yh2qhRzqC5yCY1N0gCEvNYuU5tQ=
+		4THRAD5FkNmTdSVAT5X49Y+Pag8=
 		</data>
 		<key>weex.storyboardc/CFv-m7-FfU-view-bxZ-Gm-aYP.nib</key>
 		<data>
-		y812ZLHLNikqEQz2OMcB8wHHufo=
+		bxfjG5uVBmn95Tp+PZKg8II4oNY=
 		</data>
 		<key>weex.storyboardc/Info.plist</key>
 		<data>
@@ -453,15 +453,15 @@
 		</data>
 		<key>weex.storyboardc/QRControl.nib</key>
 		<data>
-		qTFLVjY9fD/8BiZC9e3tFvIgtA8=
+		YBzsCM4GMXfF0CFSY+M4QJgU7YI=
 		</data>
 		<key>weex.storyboardc/SetViewController.nib</key>
 		<data>
-		hWDq8NA+b4mvSB2UXBs0FrjIYww=
+		IUe8pt51uRs/kqe4MFx/MdJYB+o=
 		</data>
 		<key>weex.storyboardc/Tic-AP-yEs-view-VxB-XD-HNX.nib</key>
 		<data>
-		o/2M+IKC5/zIMrTqIj4oSbpTHL8=
+		JbcU0BlfAhwNHHEIrkqebVZZi1U=
 		</data>
 		<key>wx_load_error@3x.png</key>
 		<data>
@@ -469,7 +469,7 @@
 		</data>
 		<key>zipdownloader.nib</key>
 		<data>
-		j+Nc9m7YfzZ4zPOt7ZQoiwxJ/78=
+		OSRMFogXcZ/XSAcMVopVaczEK+A=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -621,11 +621,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+nu0pGvHDwhV4JrjQNWvu0MrWgg=
+			LH1GZMjdILeYwIX0m7kaJfu5F0I=
 			</data>
 			<key>hash2</key>
 			<data>
-			cC5vgC6RiWcLCVf51TsGeU9mq/0lpbYXzB0lnZkhAa4=
+			Ydzh+r9BbutjX1fzGt69M7kXeLlYv4SCHjaT2qC+pD4=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
@@ -805,11 +805,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yJ9kM6l3AMK3qqTGAldMo9Jx1qs=
+			YsFRBLW1W0mZiia0zzBrnjxtehU=
 			</data>
 			<key>hash2</key>
 			<data>
-			EJ9v9B2ROKNt7CVf3G4X45aVfHMGFbl5JEukkoQGppk=
+			dsGI1lH8VqeXvyZvxNM3UHOLan/9S4t+XqRxxRqY56M=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
@@ -827,22 +827,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			S7vFQICGEHd5X3kWppmm/Lm1ByE=
+			a9Yb2JyPLJDJjBxoFe81+ba+R/U=
 			</data>
 			<key>hash2</key>
 			<data>
-			LnyaWQ8y1h12C0TOedTxSC35jtsiZjq73sk0hs+GXnk=
+			LRi+J4bu9biS1Ti69/XX2vmjhBxEmlJMwDxfl0ga5Jc=
 			</data>
 		</dict>
 		<key>Picker.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			o7sS1Sz/CkyV67opuVvXhLxnk2I=
+			pEYrWrXODEkIq8sqbMZqMyKj420=
 			</data>
 			<key>hash2</key>
 			<data>
-			BVHzvd2MSwryXp/laKHBpoFpkwei0YVuo8mE4zJfMbk=
+			L+2u3nT7vV18XUTqJmSSLrN31ZRhf04akq7bLVqygoQ=
 			</data>
 		</dict>
 		<key>TOCropViewControllerBundle.bundle/Base.lproj/TOCropViewControllerLocalizable.strings</key>
@@ -1107,110 +1107,110 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ThLDYiGhHj90oMOCKGf68tQTizE=
+			bJkkqbiAMWj9GrPIl9i6RoRcihk=
 			</data>
 			<key>hash2</key>
 			<data>
-			mezHczWljiq3oVAev/N1ZRvyAxJgDDoN+bqw59hSijo=
+			sHtmdvzX9R7v0KFAXboZVI5rNbRVKXVomP2wRDqbDTI=
 			</data>
 		</dict>
 		<key>app/component/button.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rt2IZ8ZUXA8Vuz4nkzzI+0iM7nU=
+			PMxaWp1VHyCzqVLNM4VNfDse+mk=
 			</data>
 			<key>hash2</key>
 			<data>
-			TD2MVGCVcEkAvNQuNuKyTxzh1YjYt7xMJBD/vAF+70M=
+			pv5jJm8zYfBVtyNW3yc8mLqzXqkD2f9x5AwKDGbMCsI=
 			</data>
 		</dict>
 		<key>app/component/head.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7KDm1wTFeO9doXId4fpzfF6Q9Qs=
+			xgRaqW4cBlUjgPdZbSzQsw9YdkA=
 			</data>
 			<key>hash2</key>
 			<data>
-			W0Gy4Ctzd2yvX9JRnPGBLFwp761gy7TyJG2u/1P5whU=
+			O8fVDN1SCaeRZjNALroYR96DW6Fm950eOaZJOcmxqJM=
 			</data>
 		</dict>
 		<key>app/component/page.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fR4WO16BPUmkKtj9FzotL2rJtxc=
+			TCJndTPzkj1nlf2YVqX/A8qaYoU=
 			</data>
 			<key>hash2</key>
 			<data>
-			7CMdnS/2KuItKIRD8hEZpHeuYPYRL9i7G25c0pK4qhU=
+			TdGQFU15kBf2/gXwgptSukY9eW8pZJdzYdOv1OzhnE0=
 			</data>
 		</dict>
 		<key>app/component/wraper.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hi3Qc2TZx4S+8H/oREx+NVff9eE=
+			FsQmh8pCf0zrxyNNtgP4VOgpSpA=
 			</data>
 			<key>hash2</key>
 			<data>
-			HfMTq4NvK1xMGQ0tK0bMB4fFvfq360iuJxjzKsEXB20=
+			+59H5hzn2KdFWcJRzvQ7lJFZA3oGrwp6cVY6trYIKkI=
 			</data>
 		</dict>
 		<key>app/demo/component/drawer.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			i4tB/CYIV74L/Hbu7OXiKdU/tdQ=
+			k4xn/xzhJB08I7kda6hzfS2ILvY=
 			</data>
 			<key>hash2</key>
 			<data>
-			qrL+ibh93Zcki2RWDVr+y9EkstLwhbUgdUGdJJForZg=
+			gCxxcQBAkdPIU8AQKTqnZ+HsFhPQvXVoeEWGwPdRWZQ=
 			</data>
 		</dict>
 		<key>app/demo/component/host.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+jkcFKeN+xNM9g3OF3JgFQ7qous=
+			urzrQmS501XCaPScq2NKJsJTNNU=
 			</data>
 			<key>hash2</key>
 			<data>
-			yEuwvOl9JMWEk8qFenOLab6vZnEyQMhQHa3J9N6xjtM=
+			AY9XbR2N9JAyGmjLSqB+LMRbCgj3jtC1CfzZ8R2ssPw=
 			</data>
 		</dict>
 		<key>app/demo/index.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FoWEn9a9zKmOiv4FPpshg44UgZc=
+			z5mVf+LuvjQoYOpvkBTzZpue1N0=
 			</data>
 			<key>hash2</key>
 			<data>
-			z5mzacTEEK+fsbOLmdMFU69PKyTvdefuQ8YB1l3V7hk=
+			Y7BHZixG0sj5GsxWjxCbjjRfQJm1M1a1a2J6jahFZvs=
 			</data>
 		</dict>
 		<key>app/demo/nav.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Hx6KPUc0qSVJDpjzMwpA3wLw9uM=
+			zEuMPmG8KY1QOUfoAvCme4iOh6E=
 			</data>
 			<key>hash2</key>
 			<data>
-			OgZIKUlmvIPfqNNprbBbBA1RWZI/vmrWa/fML7h8G28=
+			ntGnA8rtxaX/lfH5C48RqQFYqIB+5ZdajZl7fG/xJuk=
 			</data>
 		</dict>
 		<key>app/demo/navData.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			w42NjPcIgLxgLagh2V5h8M3IdPI=
+			2jIa3ON760gDCpa9y5CdhouBUjo=
 			</data>
 			<key>hash2</key>
 			<data>
-			yW00qms5cJJ2bLrse3VkPc0yVnGjSMgwfjEzmKDWzk8=
+			L1M8BkPEHN6pp6kNdl/BGzSjQ7RevOLV/+2UDFmFXBA=
 			</data>
 		</dict>
 		<key>app/file/index.vue</key>
@@ -1272,11 +1272,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9Wwzyfqlaw/Q/EnWM8k5hBmRUbw=
+			5v37uXUaByW9RZhEzfCAe00sdg4=
 			</data>
 			<key>hash2</key>
 			<data>
-			g1YXsiBiOCtOcbP4idhx0jz4bEmqB33W5FuRTokfhxg=
+			d+hWSowZ1ADrqnx3/gjl/KQkZoIrQNKtMRGpWNVyRNA=
 			</data>
 		</dict>
 		<key>app/ty.js</key>
@@ -1382,22 +1382,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yh2qhRzqC5yCY1N0gCEvNYuU5tQ=
+			4THRAD5FkNmTdSVAT5X49Y+Pag8=
 			</data>
 			<key>hash2</key>
 			<data>
-			6qX3uHGj4RUIZ/op9fpVOAeK8hlYsmIfeSeO267xfgM=
+			v/i7hFYMMGXtZKmZfhPadGGgObe1nOwqlPIYpqrX+1M=
 			</data>
 		</dict>
 		<key>weex.storyboardc/CFv-m7-FfU-view-bxZ-Gm-aYP.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			y812ZLHLNikqEQz2OMcB8wHHufo=
+			bxfjG5uVBmn95Tp+PZKg8II4oNY=
 			</data>
 			<key>hash2</key>
 			<data>
-			6p1KMO2eoP2UfjZfG2Ct6X5ZDlREbotSLGipSO1on6Y=
+			9OeY3jhMlmaZN7sTPrbX2zyUlk0mDU00sTZFQQBdPgo=
 			</data>
 		</dict>
 		<key>weex.storyboardc/Info.plist</key>
@@ -1415,33 +1415,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qTFLVjY9fD/8BiZC9e3tFvIgtA8=
+			YBzsCM4GMXfF0CFSY+M4QJgU7YI=
 			</data>
 			<key>hash2</key>
 			<data>
-			RsY4JsfusEq3lNkUJ3Vn5LiM03ZF9aJghrtqx1rhRz4=
+			K+PwRNvZUERuzNG/Ocr8w30pqq4DnJHCHMmeoCZBZeI=
 			</data>
 		</dict>
 		<key>weex.storyboardc/SetViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hWDq8NA+b4mvSB2UXBs0FrjIYww=
+			IUe8pt51uRs/kqe4MFx/MdJYB+o=
 			</data>
 			<key>hash2</key>
 			<data>
-			JgsohKJKxARZfOjpmJ8avMMYmzLzcP4Qu10YmP8zfvw=
+			HI+dwo25oPt3tbtOkkLcWO67vQwN6Ny49iKpfK7psdc=
 			</data>
 		</dict>
 		<key>weex.storyboardc/Tic-AP-yEs-view-VxB-XD-HNX.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			o/2M+IKC5/zIMrTqIj4oSbpTHL8=
+			JbcU0BlfAhwNHHEIrkqebVZZi1U=
 			</data>
 			<key>hash2</key>
 			<data>
-			fNJHkHluW8SR9bgs1O7AAF2ARCh1rlN5hpuYdZGYygQ=
+			3IWQrUE01TfrqCKt4uTqeWNbAWWu9dLyClKlO85nwIg=
 			</data>
 		</dict>
 		<key>wx_load_error@3x.png</key>
@@ -1459,11 +1459,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			j+Nc9m7YfzZ4zPOt7ZQoiwxJ/78=
+			OSRMFogXcZ/XSAcMVopVaczEK+A=
 			</data>
 			<key>hash2</key>
 			<data>
-			czvX+RaCPrXf+Xm3bEz226hMt9DkeX4gAFPynTk5XUc=
+			b8wLerhxyjTQhPyDaPfywYNli7iqmh23SlxiZRN46TY=
 			</data>
 		</dict>
 	</dict>
