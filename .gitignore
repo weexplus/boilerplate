@@ -12,5 +12,6 @@ platforms/ios/weexplus/app/*
 platforms/android/weexplus/app/src/main/assets/app/*
 !platforms/android/weexplus/app/src/main/assets/app/config.json
 platforms/ios/weexplus/Pods
+platforms/ios/weexplus/products/
 release
 .gradle
