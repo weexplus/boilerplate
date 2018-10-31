@@ -11,7 +11,7 @@ import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.WXTabView;
 import com.farwolf.weex.view.WXTabView_;
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -23,11 +23,14 @@ import java.util.HashMap;
  */
 
 public class WXHost extends  WXVContainer<WXTabView> {
-
-
-    public WXHost(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
+    public WXHost(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+
+
+//    public WXHost(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+//        super(instance, dom, parent);
+//    }
 
 
 

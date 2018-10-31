@@ -8,7 +8,7 @@ import android.widget.Switch;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.Component;
 import com.taobao.weex.common.Constants;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -26,9 +26,13 @@ public class WXSwitch extends WXComponent<Switch> {
 
     private CompoundButton.OnCheckedChangeListener mListener;
 
-    public WXSwitch(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
+    public WXSwitch(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+
+//    public WXSwitch(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+//        super(instance, dom, parent);
+//    }
 
 
     @Override

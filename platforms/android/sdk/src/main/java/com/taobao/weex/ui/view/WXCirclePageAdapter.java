@@ -60,13 +60,6 @@ public class WXCirclePageAdapter extends PagerAdapter {
     ensureShadow();
   }
 
-
-//  @Override
-//  public void setPrimaryItem(ViewGroup container, int position, Object object) {
-//    super.setPrimaryItem(container, position, object);
-//
-//  }
-
   public void removePageView(View view) {
     if (WXEnvironment.isApkDebugable()) {
       WXLogUtils.d("onPageSelected >>>> removePageView");
@@ -115,13 +108,12 @@ public class WXCirclePageAdapter extends PagerAdapter {
     return pageView;
   }
 
-
   @Override
   public void destroyItem(ViewGroup container, int position, Object object) {
     if (WXEnvironment.isApkDebugable()) {
       WXLogUtils.d("onPageSelected >>>> destroyItem >>>>> position:" + position);
     }
-    container.removeView((View) object);
+    // container.removeView((View) object);
   }
 
   @Override

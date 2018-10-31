@@ -115,4 +115,7 @@ extern NSString *const kWXNetworkObserverEnabledStateChangedNotification;
 + (void)setEnabled:(BOOL)enabled;
 + (BOOL)isEnabled;
 
++ (void)setRenderFinishEnabled:(BOOL)renderFinishEnabled;
++ (BOOL)renderFinishEnabled;
+
 @end

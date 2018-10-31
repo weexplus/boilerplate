@@ -14,7 +14,7 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.common.WXPerformance;
 import com.taobao.weex.common.WXRenderStrategy;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.NestedContainer;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
@@ -47,18 +47,23 @@ public class WXPage extends WXDiv implements WXSDKInstance.OnInstanceVisibleList
 
 
 
-    @Deprecated
-    public WXPage(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, String instanceId, boolean isLazy) {
-        this(instance,dom,parent);
+//    @Deprecated
+//    public WXPage(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, String instanceId, boolean isLazy) {
+//        this(instance,dom,parent);
+//
+//    }
 
-    }
+//    public WXPage(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
+//        super(instance, node, parent);
+//        init();
+//
+//
+//
+//    }
 
-    public WXPage(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
-        super(instance, node, parent);
+    public WXPage(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
         init();
-
-
-
     }
 
     void init()

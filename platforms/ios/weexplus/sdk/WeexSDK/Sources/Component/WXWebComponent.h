@@ -31,9 +31,4 @@
 
 - (void)goForward;
 
-//zjr add
-- (void)setUrl:(NSString *)url;
-//zjr add
-- (void)loadURL:(NSString *)url;
-
 @end

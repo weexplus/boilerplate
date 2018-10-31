@@ -76,19 +76,24 @@ public class WXRecyclerViewOnScrollListener extends RecyclerView.OnScrollListene
     RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
     int visibleItemCount = layoutManager.getChildCount();
     int totalItemCount = layoutManager.getItemCount();
-    int c=recyclerView.getChildCount();
-//    recyclerView.
+
+//    if (visibleItemCount != 0) {
+//      int bottomOffset = (totalItemCount - mLastVisibleItemPosition - 1) * (recyclerView.getHeight()) / visibleItemCount;
+//      if (visibleItemCount > 0 && mCurrentScrollState == RecyclerView.SCROLL_STATE_IDLE) {
+//        if (listener != null && listener.get() != null) {
+//          listener.get().onLoadMore(bottomOffset);
+//        }
+//      }
+//    }
     //zjr add
     if (visibleItemCount != 0) {
       int bottomOffset = (totalItemCount - mLastVisibleItemPosition - 1) * (recyclerView.getHeight()) / visibleItemCount;
-      if (visibleItemCount > 0 ) {
+      if (visibleItemCount > 0 && mCurrentScrollState == RecyclerView.SCROLL_STATE_IDLE) {
         if (listener != null && listener.get() != null) {
           listener.get().onLoadMore(bottomOffset);
         }
       }
     }
-
-
   }
 
   @Override

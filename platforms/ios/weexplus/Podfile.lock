@@ -18,12 +18,11 @@ PODS:
     - farwolf
     - farwolf.business
     - WeexSDK
-  - AliyunOSSiOS (2.9.2)
   - BindingX (1.0.1):
     - WeexPluginLoader
     - WeexSDK
   - CHXBannerView (0.8.3)
-  - CocoaAsyncSocket (7.6.2)
+  - CocoaAsyncSocket (7.6.3)
   - DACircularProgress (2.3.1)
   - DOPDropDownMenu-Enhanced (1.0.0)
   - farwolf (0.0.1):
@@ -58,15 +57,15 @@ PODS:
   - FSCalendar (2.7.9)
   - GSKStretchyHeaderView (0.12.2)
   - HcdDateTimePicker (1.1.1)
-  - JCore (1.1.7)
+  - JCore (1.2.2)
   - jpush (0.0.1):
     - farwolf
     - farwolf.business
     - JPush
     - Masonry (~> 0.6.3)
     - WeexSDK
-  - JPush (3.0.8):
-    - JCore (~> 1.1.7)
+  - JPush (3.1.0):
+    - JCore (~> 1.2.0)
   - LMTowDatePicker (0.0.1):
     - FSCalendar (~> 2.7.9)
   - LPPhotoViewer (0.0.7):
@@ -74,11 +73,6 @@ PODS:
     - SDWebImage (~> 3.8)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
-  - oss (0.0.1):
-    - AliyunOSSiOS
-    - farwolf
-    - farwolf.weex
-    - WeexSDK
   - RHAddressBook (1.1.1)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
@@ -98,8 +92,10 @@ PODS:
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.18.0):
-    - SocketRocket
-  - WXDevtool (0.15.3):
+    - WeexSDK/WeexCore (= 0.18.0)
+  - WeexSDK/WeexCore (0.18.0)
+  - WXDevtool (0.16.3):
+    - SocketRocket (~> 0.4.2)
     - WeexSDK
   - YYModel (1.0.4)
   - YZHeaderScaleImage (1.0.1)
@@ -122,7 +118,6 @@ DEPENDENCIES:
   - LPPhotoViewer (~> 0.0.7)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
-  - oss (from `oss`)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.8)
   - SRMonthPicker
@@ -140,7 +135,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
-    - AliyunOSSiOS
     - BindingX
     - CHXBannerView
     - CocoaAsyncSocket
@@ -182,8 +176,6 @@ EXTERNAL SOURCES:
     :path: jpush
   LMTowDatePicker:
     :path: LMTowDatePicker
-  oss:
-    :path: oss
   wechat:
     :path: wechat
   WeexSDK:
@@ -194,10 +186,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   alipay: 690c7c6abbe32618faa0c17aec995d09067ab64a
-  AliyunOSSiOS: 0396d0483f7c83edc34e748b0ae17ffa0d7adc8d
   BindingX: 82936549871ff4c936abcab62f8fecc84acfaa52
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
-  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   farwolf: 53b76f772dd0752146772a0aa0f3761fbb28b167
@@ -206,14 +197,13 @@ SPEC CHECKSUMS:
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   HcdDateTimePicker: 187736981f667f699d4d8d6ccc21621b55a6edb8
-  JCore: f7459c81c135281a874a6beafdd321666adcc834
-  JPush: 9574d072cc37e93fa293ba69b43ce763c440943a
+  JCore: f14c0549968a63c22e246a4875aa9d428446f373
+  JPush: 5921e25ad13e0386351079217b009f2039084eac
   jpush: 61353c9f5793b67f0529fe922967a33e7c01402c
   LMTowDatePicker: eaee88a977b5841215c2fb06320c040e28d293b9
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  oss: 03b00c523f675a7a00b3f1b87b67f6654c73d620
   RHAddressBook: 870e9e0b34cb917b9c4c600fc3b7d5b530b23b13
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -225,13 +215,13 @@ SPEC CHECKSUMS:
   UIViewController_PopUp: 1f5133c841e811103d6b3f143618f3a00080a590
   wechat: 6b1f294df01479f84669283932d08e314ed9219f
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
-  WeexSDK: 81fdcb7c2d283b8eb6aa17ada85271f89326990f
-  WXDevtool: 2c12ba664a643a3b6c44a80ef092bc30d2778d44
+  WeexSDK: 76430eb93c632cd0e2b1a9d2d1baa58cedb84f4a
+  WXDevtool: bb041fe1cbc8c543465fa31051d6df394b9a0cc8
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
 
-PODFILE CHECKSUM: c8f90f23ec25e17d7fa43d55890153020ccafc3b
+PODFILE CHECKSUM: 49bf829dbaeff6f153a6537e5b3e4a6296aa5d65
 
 COCOAPODS: 1.5.0

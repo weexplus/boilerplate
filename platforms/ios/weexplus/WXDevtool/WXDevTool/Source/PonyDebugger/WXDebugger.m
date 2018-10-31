@@ -10,7 +10,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SRWebSocket.h"
+#import <SocketRocket/SRWebSocket.h>
 #import "WXDebugger.h"
 #import "WXDynamicDebuggerDomain.h"
 #import "WXNetworkDomain.h"
@@ -44,6 +44,7 @@ static BOOL WXIsVDom = NO;
 
 NSString *const kWXNetworkObserverEnabledStateChangedNotification = @"kWXNetworkObserverEnabledStateChangedNotification";
 static NSString *const kWXNetworkObserverEnabledDefaultsKey = @"com.taobao.WXNetworkObserver.enableOnLaunch";
+static NSString *const kWXPerfomanceRenderFinishEnabledDefaultsKey = @"com.taobao.WXPerfomance.renderFinish";
 
 void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
 {
@@ -75,6 +76,8 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     NSThread    *_bridgeThread;
     NSThread    *_inspectThread;
     NSString    *_registerData;
+    NSString * _instanceID;
+    NSURL *_syncHttpUrl;
 }
 
 + (WXDebugger *)defaultInstance;
@@ -105,6 +108,14 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     return self;
 }
 
+- (NSString *)instanceId {
+    return _instanceID;
+}
+
+- (void)setWeexInstanceId:(NSString *)instanceId {
+    _instanceID = instanceId;
+}
+
 - (void) coutLogWithLevel:(NSString *)level arguments:(NSArray *)arguments {
     
     [[WXConsoleDomainController defaultInstance] logWithArguments:arguments severity:level];
@@ -123,17 +134,14 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(NSString *)message;
 {
     NSDictionary *obj = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-
     NSString *fullMethodName = [obj objectForKey:@"method"];
     NSInteger dotPosition = [fullMethodName rangeOfString:@"."].location;
     NSString *domainName = [fullMethodName substringToIndex:dotPosition];
     NSString *methodName = [fullMethodName substringFromIndex:dotPosition + 1];
     NSString *objectID = [obj objectForKey:@"id"];
-
     WXResponseCallback responseCallback = ^(NSDictionary *result, id error) {
         NSMutableDictionary *response = [[NSMutableDictionary alloc] initWithCapacity:2];
         [response setValue:objectID forKey:@"id"];
-
         if (result) {
             NSMutableDictionary *newResult = [[NSMutableDictionary alloc] initWithCapacity:result.count];
             [result enumerateKeysAndObjectsUsingBlock:^(id key, id val, BOOL *stop) {
@@ -144,7 +152,6 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
             NSMutableDictionary *newResult = [[NSMutableDictionary alloc] init];
             [response setObject:newResult forKey:@"result"];
         }
-
         NSData *data = [NSJSONSerialization dataWithJSONObject:response options:0 error:nil];
         NSString *encodedData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [webSocket send:encodedData];
@@ -334,6 +341,11 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     _socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:url]];
     _socket.delegate = self;
     [_socket open];
+    
+    NSString *urlStr = url.absoluteString;
+    NSString *httpStr = [urlStr stringByReplacingOccurrencesOfString:@"ws" withString:@"http"];
+    NSString *finalUrlStr = [httpStr stringByReplacingOccurrencesOfString:@"debugProxy/native" withString:@"syncCallJS"];
+    _syncHttpUrl = [NSURL URLWithString:finalUrlStr];
 }
 
 - (BOOL)isConnected;
@@ -355,7 +367,7 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     [_currentService stop];
     _currentService.delegate = nil;
     _currentService = nil;
-    _bridgeThread = nil;
+    
     [_socket close];
     _socket.delegate = nil;
     _socket = nil;
@@ -510,6 +522,13 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     [self callJSMethod:@"WxDebug.importScript" params:args];
 }
 
+- (JSValue*)executeJavascript:(NSString *)script withSourceURL:(NSURL*)sourceURL
+{
+    NSLog(@"absolute string: %@", sourceURL.absoluteString);
+    NSLog(@"path: %@", sourceURL.path);
+    return [self callJSMethod:@"importScript" args: @[_instanceID, script, @{@"bundleUrl": sourceURL.absoluteString}]];
+}
+
 - (void)registerCallNative:(WXJSCallNative)callNative
 {
     WXDebugDomainController *debugDomainCrl = [WXDebugDomainController defaultInstance];
@@ -594,7 +613,7 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     
 - (JSValue *)callJSMethod:(NSString *)method args:(NSArray *)args {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    NSString *nonullMethod = method ? : @"";
+    NSString *nonullMethod = method? [method isEqualToString:@"callJS"] ? @"__WEEX_CALL_JAVASCRIPT__" : method : @"";
     NSArray *nonullArgs = args ? : [NSArray array];
     [params setObject:nonullMethod forKey:@"method"];
     [params setObject:nonullArgs forKey:@"args"];
@@ -603,8 +622,30 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     [dict setObject:@"WxDebug.callJS" forKey:@"method"];
     [dict setObject:params forKey:@"params"];
     
-    [_debugAry addObject:[WXUtility JSONString:dict]];
-    [self _executionDebugAry];
+    NSString *argsStr = [args componentsJoinedByString:@""];
+    if ([argsStr containsString:@"componentHook"]) {
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_syncHttpUrl];
+        NSData *data =  [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:data];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+        __block NSArray *receivedData = nil;
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        dispatch_semaphore_t signal = dispatch_semaphore_create(0);
+        [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nonnull response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+            NSError *error = nil;
+            receivedData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            dispatch_semaphore_signal(signal);
+        }];
+        dispatch_semaphore_wait(signal, DISPATCH_TIME_FOREVER);
+        return [JSValue valueWithObject:receivedData inContext:[JSContext new]];
+    }
+    else
+    {
+        [_debugAry addObject:[WXUtility JSONString:dict]];
+        [self _executionDebugAry];
+    }
     return nil;
 }
 
@@ -617,7 +658,7 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     [_debugAry addObject:[WXUtility JSONString:dict]];
     [self _executionDebugAry];
 }
-    
+
 #pragma mark - notification
 
 - (void)notificationIsDebug:(NSNotification *)notification {
@@ -759,15 +800,7 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
         WXDebugger *debugger = [WXDebugger defaultInstance];
         [debugger enableNetworkTrafficDebugging];
         [debugger forwardAllNetworkTraffic];
-        
-       
     }
-//    else
-//    {
-//         WXDebugger *debugger = [WXDebugger defaultInstance];
-//         [debugger disEnableNetworkTrafficDebugging];
-//    }
-    
     
     if (previouslyEnabled != enabled) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kWXNetworkObserverEnabledStateChangedNotification object:self];
@@ -777,6 +810,19 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
 + (BOOL)isEnabled
 {
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kWXNetworkObserverEnabledDefaultsKey] boolValue];
+}
+
+
++ (void)setRenderFinishEnabled:(BOOL)renderFinishEnabled
+{
+    NSUserDefaults *uDefault = [NSUserDefaults standardUserDefaults];
+    [uDefault setBool:renderFinishEnabled forKey:kWXPerfomanceRenderFinishEnabledDefaultsKey];
+    [uDefault synchronize];
+}
+
++ (BOOL)renderFinishEnabled
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kWXPerfomanceRenderFinishEnabledDefaultsKey] boolValue];
 }
 
 @end

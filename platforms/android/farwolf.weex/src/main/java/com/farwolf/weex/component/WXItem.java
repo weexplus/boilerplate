@@ -11,7 +11,7 @@ import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.common.WXRenderStrategy;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -26,15 +26,19 @@ public class WXItem extends WXComponent<LinearLayout> {
     public WXSDKInstance instance;
 
 
-    public WXItem(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, int type) {
-        super(instance, dom, parent, type);
-    }
-
-    public WXItem(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
-    }
+//    public WXItem(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, int type) {
+//        super(instance, dom, parent, type);
+//    }
+//
+//    public WXItem(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+//        super(instance, dom, parent);
+//    }
 
     String src="";
+
+    public WXItem(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
+    }
 
 
     @Override

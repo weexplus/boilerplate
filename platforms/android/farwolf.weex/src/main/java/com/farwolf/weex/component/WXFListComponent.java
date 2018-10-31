@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.Constants;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
 import com.taobao.weex.ui.component.list.WXListComponent;
@@ -14,11 +14,14 @@ import com.taobao.weex.ui.component.list.WXListComponent;
  */
 
 public class WXFListComponent extends WXListComponent {
-
-
-    public WXFListComponent(WXSDKInstance instance, WXDomObject node, WXVContainer parent, boolean lazy) {
-        super(instance, node, parent, lazy);
+    public WXFListComponent(WXSDKInstance instance, WXVContainer parent, boolean lazy, BasicComponentData basicComponentData) {
+        super(instance, parent, lazy, basicComponentData);
     }
+
+
+//    public WXFListComponent(WXSDKInstance instance, WXDomObject node, WXVContainer parent, boolean lazy) {
+//        super(instance, node, parent, lazy);
+//    }
 
 
 

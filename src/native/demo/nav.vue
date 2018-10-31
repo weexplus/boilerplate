@@ -1,5 +1,6 @@
 <template>
     <page title="主页">
+        <head style="sss"></head>
         <scroller style="flex: 1">
             <div style="flex-direction: row;flex-wrap: wrap">
                 <button @Click="goto(item)" :width="220" style="margin-left: 25px;margin-top: 20px" :text="item.name" v-for="item in dx"></button>
@@ -22,6 +23,10 @@
         this.toast(item.url)
 //         this.push(item.url)
       },
+      onLoad(){
+        let navbar=weex.requireModule('navbar')
+        navbar.setStatusBarStyle('black')
+      }
     },
     mounted(){
       window.router

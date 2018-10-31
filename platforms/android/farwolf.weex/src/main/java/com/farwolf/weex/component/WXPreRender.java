@@ -9,7 +9,7 @@ import com.farwolf.weex.core.WeexFactory_;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.Constants;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXDiv;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -22,9 +22,13 @@ import com.taobao.weex.ui.view.WXFrameLayout;
 public class WXPreRender extends WXDiv {
 
     WeexFactory w;
-    public WXPreRender(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
+
+    public WXPreRender(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+//    public WXPreRender(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+//        super(instance, dom, parent);
+//    }
 
     @Override
     protected WXFrameLayout initComponentHostView(@NonNull Context context) {

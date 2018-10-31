@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import <WeexSDK/WXTracingManager.h>
 
 #define FLEXFloor(x) (floor([[UIScreen mainScreen] scale] * (x)) / [[UIScreen mainScreen] scale])
 #define TracingResetLogDataNoti @"TracingResetLogDataNoti"
@@ -19,6 +20,7 @@
 #define COLOR_TRACING_WARN CREATE_RGBA_COLOR(232, 197, 4, 1)
 #define COLOR_TRACING_EXCEPTION CREATE_RGBA_COLOR(248, 8, 13, 1)
 #define COLOR_TRACING_SEARCBG CREATE_RGBA_COLOR(126, 209, 252, 1)
+#define COLOR_TRACING_JSLOG CREATE_RGBA_COLOR(46, 5, 163, 1)
 
 @interface WXTracingUtility : NSObject
 
@@ -49,7 +51,10 @@
 + (NSData *)inflatedDataFromCompressedData:(NSData *)compressedData;
 
 + (NSArray *)allWindows;
-+(NSString *)tracingTime;
++ (NSString *)tracingTime;
++ (NSArray *)formatTask:(WXTracingTask *)task;
++ (BOOL)isRemoteTracing;
++ (void)setRemoteTracing:(BOOL)isRemoteTracing;
 
 // Swizzling utilities
 

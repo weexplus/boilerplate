@@ -12,7 +12,8 @@ import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.common.WXRenderStrategy;
-import com.taobao.weex.dom.WXDomObject;
+//import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -33,9 +34,13 @@ public class WXViewPager extends WXComponent<ViewPager> {
 
     List<String> urls=new ArrayList<>();
 
-    public WXViewPager(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
-        super(instance, node, parent);
+    public WXViewPager(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+
+//    public WXViewPager(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
+//        super(instance, node, parent);
+//    }
 
 
     @Override

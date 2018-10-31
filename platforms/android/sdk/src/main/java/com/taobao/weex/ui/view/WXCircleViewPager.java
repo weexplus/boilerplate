@@ -82,8 +82,6 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
 
       }
 
-
-
       @Override
       public void onPageScrollStateChanged(int state) {
         mState = state;
@@ -97,8 +95,6 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
           }
         }
       }
-
-
     });
 
     postInitViewPager();
@@ -116,11 +112,11 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
       Field scroller = ViewPager.class.getDeclaredField("mScroller");
       scroller.setAccessible(true);
       Field interpolator = ViewPager.class
-          .getDeclaredField("sInterpolator");
+              .getDeclaredField("sInterpolator");
       interpolator.setAccessible(true);
 
       mScroller = new WXSmoothScroller(getContext(),
-          (Interpolator) interpolator.get(null));
+              (Interpolator) interpolator.get(null));
       scroller.set(this, mScroller);
     } catch (Exception e) {
       WXLogUtils.e("[CircleViewPager] postInitViewPager: ", e);
@@ -140,6 +136,18 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
 
   public int superGetCurrentItem() {
     return super.getCurrentItem();
+  }
+
+  @Override
+  public boolean onInterceptTouchEvent(MotionEvent ev) {
+    try {
+      return scrollable && super.onInterceptTouchEvent(ev);
+    } catch (IllegalArgumentException e) {
+      e.printStackTrace();
+    } catch (ArrayIndexOutOfBoundsException e) {
+      e.printStackTrace();
+    }
+    return false;
   }
 
   @Override
@@ -237,11 +245,15 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
         }
         break;
     }
-    boolean result = super.dispatchTouchEvent(ev);
-    if (wxGesture != null) {
-      result |= wxGesture.onTouch(this, ev);
+    try{
+      boolean result = super.dispatchTouchEvent(ev);
+      if (wxGesture != null) {
+        result |= wxGesture.onTouch(this, ev);
+      }
+      return result;
+    }catch (Exception e){
+      return  false;
     }
-    return result;
   }
 
   public void destory() {
@@ -251,6 +263,11 @@ public class WXCircleViewPager extends ViewPager implements WXGestureObservable 
   @Override
   public void registerGestureListener(WXGesture wxGesture) {
     this.wxGesture = wxGesture;
+  }
+
+  @Override
+  public WXGesture getGestureListener() {
+    return wxGesture;
   }
 
   public int getRealCurrentItem() {

@@ -28,6 +28,7 @@
 #import "WXResourceRequestHandlerDefaultImpl.h"
 #import "WXNavigationDefaultImpl.h"
 #import "WXURLRewriteDefaultImpl.h"
+#import "WXJSFrameworkLoadDefaultImpl.h"
 
 #import "WXSDKManager.h"
 #import "WXSDKError.h"
@@ -38,6 +39,8 @@
 #import "WXUtility.h"
 #import "WXExtendCallNativeManager.h"
 #import "WXExceptionUtils.h"
+#import "WXConfigCenterProtocol.h"
+#import "WXComponent+Layout.h"
 
 @implementation WXSDKEngine
 
@@ -173,7 +176,7 @@
     [self registerHandler:[WXResourceRequestHandlerDefaultImpl new] withProtocol:@protocol(WXResourceRequestHandler)];
     [self registerHandler:[WXNavigationDefaultImpl new] withProtocol:@protocol(WXNavigationProtocol)];
     [self registerHandler:[WXURLRewriteDefaultImpl new] withProtocol:@protocol(WXURLRewriteProtocol)];
-    
+    [self registerHandler:[WXJSFrameworkLoadDefaultImpl new] withProtocol:@protocol(WXJSFrameworkLoadProtocol)];
 }
 
 + (void)registerHandler:(id)handler withProtocol:(Protocol *)protocol
@@ -194,8 +197,20 @@
 
 + (void)initSDKEnvironment
 {
+    NSString *fileName = @"weex-main-jsfm";
+    [WXSDKManager sharedInstance].multiContext = YES;
     
-    NSString *filePath = [[NSBundle bundleForClass:self] pathForResource:@"native-bundle-main" ofType:@"js"];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"createInstanceUsingMutliContext"]) {
+        BOOL createInstanceUsingMutliContext = [[[NSUserDefaults standardUserDefaults] objectForKey:@"createInstanceUsingMutliContext"] boolValue];
+        if (!createInstanceUsingMutliContext) {
+            fileName = @"native-bundle-main";
+            [WXSDKManager sharedInstance].multiContext = NO;
+        }
+    }
+    NSString *filePath = [[NSBundle bundleForClass:self] pathForResource:fileName ofType:@"js"];
+	if (filePath == nil) {
+		filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"js"];
+	}
     NSString *script = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     [WXSDKEngine initSDKEnvironment:script];
     
@@ -227,7 +242,6 @@
 
 + (void)initSDKEnvironment:(NSString *)script
 {
-    
     WX_MONITOR_PERF_START(WXPTInitalize)
     WX_MONITOR_PERF_START(WXPTInitalizeSync)
     
@@ -289,7 +303,19 @@ static NSDictionary *_customEnvironment;
 
 + (void)restart
 {
-    NSString *filePath = [[NSBundle bundleForClass:self] pathForResource:@"native-bundle-main" ofType:@"js"];
+    NSString *fileName = @"weex-main-jsfm";
+    [WXSDKManager sharedInstance].multiContext = YES;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"createInstanceUsingMutliContext"]) {
+        BOOL createInstanceUsingMutliContext = [[[NSUserDefaults standardUserDefaults] objectForKey:@"createInstanceUsingMutliContext"] boolValue];
+        if (!createInstanceUsingMutliContext) {
+            fileName = @"native-bundle-main";
+            [WXSDKManager sharedInstance].multiContext = NO;
+        }
+    }
+    NSString *filePath = [[NSBundle bundleForClass:self] pathForResource:fileName ofType:@"js"];
+	if (filePath == nil) {
+		filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"js"];
+	}
     NSString *script = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     [self restartWithScript:script];
 }
@@ -331,17 +357,15 @@ static NSDictionary *_customEnvironment;
 + (void)_originalRegisterComponents:(NSDictionary *)components {
     NSMutableDictionary * mutableComponents = [components mutableCopy];
     void (^componentBlock)(id, id, BOOL *) = ^(id mKey, id mObj, BOOL * mStop) {
-        
         NSString *name = mObj[@"name"];
         NSString *componentClass = mObj[@"clazz"];
         NSDictionary *pros = nil;
         if (mObj[@"pros"]) {
-            pros = mObj[@""];
+            pros = mObj[@"pros"];
         }
         [self registerComponent:name withClass:NSClassFromString(componentClass) withProperties:pros];
     };
     [mutableComponents enumerateKeysAndObjectsUsingBlock:componentBlock];
-    
 }
 
 + (void)_originalRegisterModules:(NSDictionary *)modules {

@@ -11,6 +11,7 @@
 #import <ImageIO/ImageIO.h>
 #import <zlib.h>
 #import <objc/runtime.h>
+#import <WeexSDK/WXDebugTool.h>
 
 @implementation WXTracingUtility
 
@@ -369,9 +370,27 @@
     NSString *str = [outputFormatter stringFromDate:[NSDate date]];
     return str;
 }
++ (NSArray *)formatTask:(WXTracingTask *)task
+{
+    NSMutableArray *array = [NSMutableArray new];
+    for (WXTracing *t in task.tracings) {
+        [array addObject:[t dictionary]];
+    }
+    return array;
+}
+
++ (BOOL)isRemoteTracing
+{
+    return [WXDebugTool isRemoteTracing];
+}
++ (void)setRemoteTracing:(BOOL)isRemoteTracing
+{
+    [WXDebugTool setRemoteTracing:isRemoteTracing];
+}
 
 
 
+// Swizzling utilities
 + (SEL)swizzledSelectorForSelector:(SEL)selector
 {
     return NSSelectorFromString([NSString stringWithFormat:@"_flex_swizzle_%x_%@", arc4random(), NSStringFromSelector(selector)]);
@@ -436,7 +455,5 @@
         class_addMethod(cls, selector, implementation, methodDescription.types);
     }
 }
-
-
 
 @end

@@ -22,11 +22,12 @@
 #import "WXJSExceptionInfo.h"
 #import "WXResourceResponse.h"
 #import "WXResourceRequest.h"
+#import "WXBridgeProtocol.h"
+#import "WXApmForInstance.h"
 
 extern NSString *const bundleUrlOptionKey;
 //zjr add
 static NSString * appBoardContent;
-
 @interface WXSDKInstance : NSObject
 
 /**
@@ -40,7 +41,7 @@ static NSString * appBoardContent;
  **/
 @property (nonatomic, strong) UIView *rootView;
 
-
+//zjr add
 @property (nonatomic, weak) NSDictionary *param;
 
 //zjr add
@@ -87,6 +88,16 @@ static NSString * appBoardContent;
  * Which indicates current instance needs to be prerender or not,default value is false.
  **/
 @property (nonatomic, assign) BOOL needPrerender;
+
+/**
+ * Custom info.
+ **/
+@property (nonatomic, strong) NSDictionary* containerInfo;
+
+/**
+ * Whether this instance is rendered or not. Please MUST not render an instance twice.
+ **/
+@property (nonatomic, assign, readonly) BOOL isRendered;
 
 /**
  * The state of current instance.
@@ -147,11 +158,28 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
 @property (nonatomic, copy) void (^refreshFinish)(UIView *);
 
 /**
+ * bundleType is the DSL type
+ */
+@property (nonatomic, strong) NSString * bundleType;
+
+/**
+ *  Which decide whether to use data render,default value is false
+ */
+@property (nonatomic, assign, readonly) BOOL dataRender;
+
+/**
  *  The callback triggered when the instance fails to render.
  *
  *  @return A block that takes a NSError argument, which is the error occured
  **/
 @property (nonatomic, copy) void (^onFailed)(NSError *error);
+
+/**
+ *
+ *  @return instance runtime JavaScript.
+ *  you must call it in brige thread. Learn more at WXPerformBlockOnBridgeThread
+ **/
+- (id<WXBridgeProtocol>)instanceJavaScriptContext;
 
 /**
  *  The callback triggered when js occurs runtime error while executing.
@@ -186,6 +214,7 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
  */
 @property (nonatomic, copy) BOOL (^onRenderTerminateWhenJSDownloadedFinish)(WXResourceResponse *response,WXResourceRequest *request,NSData *data, NSError* error);
 
+@property(nonatomic,strong) NSDictionary* continerInfo;
 
 /**
  *  the frame of current instance.
@@ -242,31 +271,7 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
  *
  * @param data The data the bundle needs when rendered. Defalut is nil.
  **/
-- (void)renderView:(NSString *)source options:(NSDictionary *)options data:(id)data;
-
-/**
- * Reload the js bundle from the current URL and rerender.
- *
- * @param forcedReload when this parameter is true, the js bundle will always be reloaded from the server. If it is false, the instance may reload the js bundle from its cache. Default is false.
- *
- **/
-- (void)reload:(BOOL)forcedReload;
-
-
-
-
-/**
- * Refreshes current instance with data.
- *
- * @param data The data the bundle needs when rendered.
- **/
-- (void)refreshInstance:(id)data;
-
-/**
- * Destroys current instance.
- **/
-- (void)destroyInstance;
-
+- (void)renderView:(id)source options:(NSDictionary *)options data:(id)data;
 
 //zjr add
 -(void)firePageInit;
@@ -280,6 +285,25 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
 //zjr
 +(void)setAppBoardContent:(NSString*)content;
 
+/**
+ * Reload the js bundle from the current URL and rerender.
+ *
+ * @param forcedReload when this parameter is true, the js bundle will always be reloaded from the server. If it is false, the instance may reload the js bundle from its cache. Default is false.
+ *
+ **/
+- (void)reload:(BOOL)forcedReload;
+
+/**
+ * Refreshes current instance with data.
+ *
+ * @param data The data the bundle needs when rendered.
+ **/
+- (void)refreshInstance:(id)data;
+
+/**
+ * Destroys current instance.
+ **/
+- (void)destroyInstance;
 
 /**
  * Trigger full GC, for dev and debug only.
@@ -301,6 +325,11 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
  */
 - (NSUInteger)numberOfComponents;
 
+/**
+ * Enumerate components using breadth-first search algorithm,
+ must be called on component thread by calling WXPerformBlockOnComponentThread
+ */
+- (void)enumerateComponentsUsingBlock:(void (^)(WXComponent *component, BOOL *stop))block;
 
 /**
  * check whether the module eventName is registered
@@ -326,19 +355,28 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
 - (NSURL *)completeURL:(NSString *)url;
 
 /**
+ * jsbundle str ,may be nil (weak)
+ */
+- (NSString*) bundleTemplate;
+
+/**
  * application performance statistics
  */
 @property (nonatomic, strong) NSString *bizType;
 @property (nonatomic, strong) NSString *pageName;
 @property (nonatomic, weak) id pageObject;
+//Deprecated, use @WXApmForInstance
 @property (nonatomic, strong) NSMutableDictionary *performanceDict;
 
+@property (nonatomic ,strong) WXApmForInstance* apmInstance;
 
 
 
 /** 
  * Deprecated 
  */
+
+
 @property (nonatomic, strong) NSDictionary *properties DEPRECATED_MSG_ATTRIBUTE();
 @property (nonatomic, assign) NSTimeInterval networkTime DEPRECATED_MSG_ATTRIBUTE();
 @property (nonatomic, copy) void (^updateFinish)(UIView *);

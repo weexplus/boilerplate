@@ -15,6 +15,10 @@ public class DeviceTool {
 	@RootContext
 	Context context;
 
+
+	public String getMac(){
+		return MacAddress.getMac(context);
+	}
 	
 	public TelephonyManager getTelephonyManager()
 	{

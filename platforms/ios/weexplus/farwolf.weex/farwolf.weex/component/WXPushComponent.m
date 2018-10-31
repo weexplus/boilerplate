@@ -8,7 +8,8 @@
 
 #import "WXPushComponent.h"
 #import "WeexFactory.h"
- 
+#import "URL.h"
+
 @implementation WXPushComponent
 
 - (instancetype)initWithRef:(NSString *)ref type:(NSString *)type styles:(NSDictionary *)styles attributes:(NSDictionary *)attributes events:(NSArray *)events weexInstance:(WXSDKInstance *)weexInstance

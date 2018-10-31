@@ -1,9 +1,7 @@
 package com.farwolf.weex.component;
 
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.common.Constants;
-import com.taobao.weex.dom.WXDomObject;
-import com.taobao.weex.ui.component.WXComponentProp;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXImage;
 import com.taobao.weex.ui.component.WXVContainer;
 
@@ -12,11 +10,14 @@ import com.taobao.weex.ui.component.WXVContainer;
  */
 
 public class WXFImage extends WXImage {
-
-
-    public WXFImage(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
-        super(instance, node, parent);
+    public WXFImage(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+
+
+//    public WXFImage(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
+//        super(instance, node, parent);
+//    }
 
 //    @WXComponentProp(name = Constants.Name.SRC)
 //    public void setSrc(String src) {

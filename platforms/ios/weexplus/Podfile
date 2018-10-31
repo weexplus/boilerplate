@@ -63,22 +63,22 @@ def mypod
 
     pod  'WeexSDK',:path => 'sdk' 
 
-    pod ‘farwolf’, :path => 'farwolf'   
-    
-    pod ‘farwolf.business’, :path => 'farwolf.business’ 
-    
-    pod ‘farwolf.weex’, :path => 'farwolf.weex’ 
+    pod ‘farwolf’, :path => 'farwolf'
 
-    pod  ‘oss’,:path => ‘oss’
-    
+    pod ‘farwolf.business’, :path => 'farwolf.business’
+
+    pod ‘farwolf.weex’, :path => 'farwolf.weex’
+
+#    pod  ‘oss’,:path => ‘oss’
+
     pod ‘WXDevtool’, :path => 'WXDevtool’
 
     pod 'ZipArchive', '~> 1.4.0'
     
     pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
-     
+
     pod ‘jpush’,  :path => ‘jpush’
-    
+
     pod ‘alipay’,  :path => ‘alipay’
 
     pod ‘wechat’,  :path => ‘wechat’

@@ -8,6 +8,7 @@
 
 #import "WeexFactory.h"
 #import "Weex.h"
+#import "URL.h"
 static NSMutableDictionary *pageCache;
 @implementation WeexFactory
 

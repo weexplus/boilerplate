@@ -11,10 +11,10 @@
 #import "WeexSDK/WXSDKEngine.h"
 #import "WeexSDK/WXAppConfiguration.h"
 #import "WeexSDK/WXLog.h"
-#import "WeexSDK/WXImgLoaderProtocol.h"
+//#import "WeexSDK/WXImgLoaderProtocol.h"
 #import "farwolf.h"
 #import "WeexSDK/WXBaseViewController.h"
-#import <SRWebSocket.h>
+#import "SRWebSocket.h"
 #import "ErrorControl.h"
 #import "Page.h"
 #import "IQKeyboardReturnKeyHandler.h"

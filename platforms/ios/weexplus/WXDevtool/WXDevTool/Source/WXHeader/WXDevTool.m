@@ -10,17 +10,11 @@
 #import "WXDebugger.h"
 #import "WXDevToolType.h"
 #import <WeexSDK/WeexSDK.h>
-#import "VCModel.h"
 
-static VCModel *vcmodel;
-#define WXDevtool_VERSION @"0.15.3"
+#define WXDevtool_VERSION @"0.16.3"
 
 @implementation WXDevTool
 
-//+(VCModel)getVCModel
-//{
-//    return vcmodel;
-//}
 + (void)setDebug:(BOOL)isDebug {
     [WXDevToolType setDebug:isDebug];
 }
@@ -31,7 +25,7 @@ static VCModel *vcmodel;
 
 #pragma mark weex devtool
 + (void)launchDevToolDebugWithUrl:(NSString *)url {
-    WXDebugger *debugger = [WXDebugger defaultInstance];
+    WXDebugger *debugger = [[WXDebugger alloc] init];
     //    [debugger serverStartWithHost:@"localhost" port:9009];
     // Enable Network debugging, and automatically track network traffic that comes through any classes that implement either NSURLConnectionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate or NSURLSessionDataDelegate methods.
 //    [debugger enableNetworkTrafficDebugging];

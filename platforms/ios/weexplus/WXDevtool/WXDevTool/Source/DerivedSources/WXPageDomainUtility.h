@@ -26,5 +26,5 @@
  * @abstract execute asynchronous action block on the main thread.
  *
  */
-extern void WXPerformBlockOnScreencastThread(void (^block)());
+extern void WXPerformBlockOnScreencastThread(void (^block)(void));
 @end

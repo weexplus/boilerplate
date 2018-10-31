@@ -9,7 +9,7 @@
 #import "WXDynamicDebuggerDomain.h"
 #import "WXObject.h"
 #import "WXDebugger.h"
-#import "WXDevtool.h"
+#import "WXDevTool.h"
 
 @protocol WXDebugCommandDelegate;
 

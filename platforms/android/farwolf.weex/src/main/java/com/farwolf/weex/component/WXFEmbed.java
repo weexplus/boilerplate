@@ -8,7 +8,7 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.Component;
 import com.taobao.weex.common.WXPerformance;
 import com.taobao.weex.common.WXRenderStrategy;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXEmbed;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -25,12 +25,16 @@ public class WXFEmbed extends WXEmbed {
 
     HashMap param;
 
-
-    public WXFEmbed(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
-        super(instance, node, parent);
-
-
+    public WXFEmbed(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+
+
+//    public WXFEmbed(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
+//        super(instance, node, parent);
+//
+//
+//    }
 
     public void loadUrl(String url,WXSDKInstance instance,ViewGroup.LayoutParams layoutParams)
     {

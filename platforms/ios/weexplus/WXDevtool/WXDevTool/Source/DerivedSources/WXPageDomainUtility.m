@@ -9,7 +9,6 @@
 #import "WXPageDomainUtility.h"
 #import <objc/runtime.h>
 #import <WebKit/WebKit.h>
-#import "WXWindow.h"
 
 #define IsIOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0
 
@@ -60,8 +59,6 @@
 {
     UIViewController *result;
     UIWindow *topWindow = [[[UIApplication sharedApplication] delegate] window];
-    
-//    UIWindow *topWindow =[UIApplication sharedApplication].keyWindow;
     if (topWindow.windowLevel != UIWindowLevelNormal)
     {
         NSArray *windows = [[UIApplication sharedApplication] windows];
@@ -73,19 +70,7 @@
     }
     id lenderClass = objc_getClass("UILayoutContainerView"); // 通过字符串名字，获取类
     id nextResponder;
-    
-     NSArray *n= [topWindow subviews] ;
-    UIView *rootView = n[n.count -2];
-   
-    for(UIView *v in n)
-    {
-          if([v subviews].count>0 &&![v isKindOfClass:[WXWindow class]])
-          {
-              rootView=v;
-              break;
-          }
-        
-    }
+    UIView *rootView = [[topWindow subviews] objectAtIndex:0];
         
     if(IsIOS8 && ![rootView isMemberOfClass:[lenderClass class]])
     {
@@ -95,7 +80,7 @@
             UIView *v = [arr objectAtIndex:0];
             nextResponder = [v nextResponder];
         }
-        else
+        else if([[rootView subviews] count] > 0)
         {
             nextResponder = [[[rootView subviews] objectAtIndex:0] nextResponder];
         }
@@ -163,12 +148,12 @@ static NSThread *WXScreencastThread;
     }
 }
 
-void WXPerformBlockOnScreencastThread(void (^block)())
+void WXPerformBlockOnScreencastThread(void (^block)(void))
 {
     [WXPageDomainUtility _performBlockOnScreencastThread:block];
 }
 
-+ (void)_performBlockOnScreencastThread:(void (^)())block
++ (void)_performBlockOnScreencastThread:(void (^)(void))block
 {
     if ([NSThread currentThread] == [self screencastThread]) {
         block();

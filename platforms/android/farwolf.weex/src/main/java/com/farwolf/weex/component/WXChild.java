@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXDiv;
@@ -20,9 +20,13 @@ import com.taobao.weex.ui.view.WXFrameLayout;
 public class WXChild extends WXDiv {
 
     private String role;
-    public WXChild(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
-        super(instance, node, parent);
+
+    public WXChild(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+//    public WXChild(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
+//        super(instance, node, parent);
+//    }
 
     @WXComponentProp(name = "role")
     public void setRole(String role)
@@ -56,8 +60,9 @@ public class WXChild extends WXDiv {
 //        FrameLayout.MarginLayoutParams lp=new FrameLayout.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //        return lp;
 
-       float h=  child.getDomObject().getLayoutHeight();
-        float w= child.getDomObject().getLayoutWidth();
+       float h=  child.getLayoutHeight();
+        float w= child.getLayoutWidth();
+
         ViewGroup.LayoutParams lp= super.getChildLayoutParams(child,childView,width,height,left,right,top,bottom);
         lp.width=750;
         lp.height=1500;

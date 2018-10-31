@@ -10,7 +10,7 @@ import com.farwolf.view.LooperTextView;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -19,8 +19,6 @@ import com.taobao.weex.utils.WXViewUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.taobao.weex.WXSDKInstance.getViewPortWidth;
 
 /**
  * Created by zhengjiangrong on 2017/8/16.
@@ -31,13 +29,17 @@ public class WXLooperText extends WXComponent<LooperTextView> {
 
     LooperTextView text;
 
-    public WXLooperText(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
+    public WXLooperText(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
 
-    public WXLooperText(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, int type) {
-        super(instance, dom, parent, type);
-    }
+//    public WXLooperText(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+//        super(instance, dom, parent);
+//    }
+//
+//    public WXLooperText(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, int type) {
+//        super(instance, dom, parent, type);
+//    }
 
 
 

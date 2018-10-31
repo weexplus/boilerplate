@@ -41,14 +41,16 @@ dependencies {
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile 'com.umeng.analytics:analytics:latest.integration'
+    debugCompile 'com.taobao.android:weex_analyzer:0.1.0.5'
 
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.squareup.okhttp:okhttp-ws:2.3.0'
+    compile 'com.squareup.okio:okio:1.0.1'
     compile 'com.jakewharton.scalpel:scalpel:1.1.2'
     compile 'com.taobao.android.weex_inspection:urlconnection_interceptor:1.0.0'
     compile 'com.taobao.android.weex_inspection:protocol:1.1.4.1'
     compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
-    compile 'com.taobao.android:weex_inspector:0.13.4'
+    compile 'com.taobao.android:weex_inspector:0.16.7'
 
     compile 'com.alibaba.android:bindingx-core:1.0.1'
     compile 'com.alibaba.android:bindingx_weex_plugin:1.0.1'

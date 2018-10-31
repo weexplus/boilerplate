@@ -183,6 +183,9 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/native-bundle-main.js",
+				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-main-jsfm.js",
+				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-polyfill.js",
+				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-rax-api.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/wx_load_error@3x.png",
 				"${PODS_ROOT}/../alipay/AlipaySDK.bundle",
 				"${PODS_ROOT}/../farwolf.business/farwolf.business/resources/xib/updater.xib",
@@ -200,6 +203,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-main-jsfm.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-polyfill.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-rax-api.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/wx_load_error@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/updater.nib",
@@ -371,6 +377,7 @@
 			baseConfigurationReference = B76DCF182E04FBDA1655EAEA /* Pods-weexplus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -398,6 +405,7 @@
 			baseConfigurationReference = C51BE6763BC7E197A7AE63F3 /* Pods-weexplus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

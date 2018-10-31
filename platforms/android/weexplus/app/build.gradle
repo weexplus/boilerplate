@@ -15,6 +15,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        ndk{
+            abiFilters "armeabi-v7a","armeabi","x86"
+        }
     }
     signingConfigs {
         releaseConfig {
@@ -45,7 +48,20 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
         jumboMode = true
+        preDexLibraries false
     }
+    aaptOptions {
+        noCompress 'wasm'
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir(['libs'])
+            java {
+                srcDirs = ["src/main/java", "src/main/java_zxing"];
+            }
+        }
+    }
+
 
 }
 

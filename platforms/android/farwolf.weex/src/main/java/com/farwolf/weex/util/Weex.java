@@ -24,7 +24,6 @@ import com.farwolf.weex.component.WXFImage;
 import com.farwolf.weex.component.WXFInput;
 import com.farwolf.weex.component.WXFListComponent;
 import com.farwolf.weex.component.WXFScrollView;
-import com.farwolf.weex.component.WXFWeb;
 import com.farwolf.weex.component.WXHost;
 import com.farwolf.weex.component.WXItem;
 import com.farwolf.weex.component.WXLoading;
@@ -36,6 +35,7 @@ import com.farwolf.weex.component.WXWheelView;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.module.WXAddressBookModule;
 import com.farwolf.weex.module.WXCenterPopModule;
+import com.farwolf.weex.module.WXDeviceModule;
 import com.farwolf.weex.module.WXEnvModule;
 import com.farwolf.weex.module.WXEventModule;
 import com.farwolf.weex.module.WXFPicker;
@@ -52,6 +52,7 @@ import com.farwolf.weex.module.WXPhotoModule;
 import com.farwolf.weex.module.WXPrefModule;
 import com.farwolf.weex.module.WXProgressModule;
 import com.farwolf.weex.module.WXQRModule;
+import com.farwolf.weex.module.WXRsaModule;
 import com.farwolf.weex.module.WXSlidpopModule;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.module.WXTimePicker;
@@ -195,9 +196,11 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("location", WXLocationModule.class);
             WXSDKEngine.registerModule("env", WXEnvModule.class);
             WXSDKEngine.registerModule("file", WXFileModule.class);
+            WXSDKEngine.registerModule("device", WXDeviceModule.class);
+            WXSDKEngine.registerModule("rsa", WXRsaModule.class);
 
             registerComponent("image",WXFImage.class);
-            registerComponent("web",WXFWeb.class);
+//            registerComponent("web",WXFWeb.class);
             registerComponent(WXFListComponent.class, false, WXBasicComponentType.LIST,WXBasicComponentType.VLIST,WXBasicComponentType.RECYCLER,WXBasicComponentType.WATERFALL);
 //            registerComponent("viewpager",WXViewPager.class);
             registerComponent("prerender",WXPreRender.class);
@@ -215,7 +218,6 @@ public class Weex extends ServiceBase{
             registerComponent("drawerlayout",WXDrawerLayout.class);
             registerComponent("input",WXFInput.class);
             registerComponent("arc",WXArc.class);
-            registerComponent("input",WXFInput.class);
 
 
 

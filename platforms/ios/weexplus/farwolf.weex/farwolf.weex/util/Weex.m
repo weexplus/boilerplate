@@ -41,6 +41,9 @@
 #import "WXEnvModule.h"
 #import "WXFileModule.h"
 #import "WXWebSocketDefaultImpl.h"
+#import "WXNavigationModule.h"
+#import "WXPushComponent.h"
+//#import "WXDeviceInfo.h"
 
 @implementation Weex
 
@@ -74,6 +77,8 @@
     [WXSDKEngine registerModule:@"location" withClass:[WXLocationModule class]];
     [WXSDKEngine registerModule:@"env" withClass:[WXEnvModule class]];
     [WXSDKEngine registerModule:@"file" withClass:[WXFileModule class]];
+//    [WXSDKEngine registerModule:@"device" withClass:[WXDeviceInfo class]];
+    
     
     
     

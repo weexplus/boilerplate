@@ -374,6 +374,11 @@ static NSArray *prettyStringPrinters = nil;
                 continue;
             }
             
+            //Temporarily filter classes beginning ANManager
+            if([NSStringFromClass(class) rangeOfString:@"ANManager"].location != NSNotFound) {
+                continue;
+            }
+            
             if (![class isSubclassOfClass:[NSObject class]]) {
                 continue;
             }

@@ -731,9 +731,9 @@ static NSString *const kWXDOMAttributeParsingRegex = @"[\"'](.*)[\"']";
         [self.objectsForNodeIds setObject:view forKey:nodeId];
         
         // Use KVO to keep the displayed properties fresh
-        for (NSString *keyPath in self.viewKeyPathsToDisplay) {
-            [view addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
-        }
+//        for (NSString *keyPath in self.viewKeyPathsToDisplay) {
+//            [view addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
+//        }
         
         NSNumber *record = [self.kvoObserverRecode objectForKey:[NSValue valueWithNonretainedObject:view]];
         if (record) {
@@ -785,9 +785,9 @@ static NSString *const kWXDOMAttributeParsingRegex = @"[\"'](.*)[\"']";
     }else {
         for (NSInteger i = 0; i < kvoCount; i++) {
             // Unregister from KVO
-            for (NSString *keyPath in self.viewKeyPathsToDisplay) {
-                [view removeObserver:self forKeyPath:keyPath];
-            }
+//            for (NSString *keyPath in self.viewKeyPathsToDisplay) {
+//                [view removeObserver:self forKeyPath:keyPath];
+//            }
         }
         [self.kvoObserverRecode removeObjectForKey:[NSValue valueWithNonretainedObject:view]];
     }
@@ -1246,6 +1246,28 @@ static NSString *const kWXDOMAttributeParsingRegex = @"[\"'](.*)[\"']";
     }
 }
 
+- (void)removeVDomTreeWithRef:(NSString *)ref
+{
+    if (ref) {
+        NSNumber *nodeId = [self _getRealNodeIdWithComponentRef:ref];
+        NSMutableDictionary *viewRefs =  self.objectsForComponentRefs;
+        ref = [NSString stringWithFormat:@"%ld",(long)[nodeId integerValue]];
+        if ([viewRefs objectForKey:ref]) {
+            [viewRefs removeObjectForKey:ref];
+            NSArray *attributes = @[@"class", @"frame", @"hidden", @"alpha", @"opaque"];
+            for (NSString *key in attributes) {
+                [self.domain attributeRemovedWithNodeId:nodeId name:key];
+            }
+            [self.objectsForComponentRefs removeObjectForKey:ref];
+        }
+        //        if (self.componentForRefs.count > 0) {
+        //            if ([self.componentForRefs objectForKey:ref]) {
+        //                [self removeWXComponentRef:ref withInstanceId:nil];
+        //            }
+        //        }
+    }
+}
+
 - (BOOL)diffWithRootComponent
 {
     WXComponent *newRootComponent = [self _getRootComponentWithInstance:nil];
@@ -1613,9 +1635,10 @@ static NSString *const kWXDOMAttributeParsingRegex = @"[\"'](.*)[\"']";
         [[WXDOMDomainController defaultInstance] removeView:self];
         [self devtool_swizzled_removeFromSuperview];
     } else {
+        NSString *refString = [self.wx_ref copy];
         [self devtool_swizzled_removeFromSuperview];
         WXPerformBlockOnComponentThread(^{
-           [[WXDOMDomainController defaultInstance] removeVDomTreeWithView:self];
+           [[WXDOMDomainController defaultInstance] removeVDomTreeWithRef:refString];
         });
     }
 }

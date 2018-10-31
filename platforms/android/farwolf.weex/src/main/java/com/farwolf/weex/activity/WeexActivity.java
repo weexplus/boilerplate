@@ -44,7 +44,7 @@ import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.bridge.JSCallback;
-import com.taobao.weex.common.IWXDebugProxy;
+//import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.event.ErrorEvent;
 import com.taobao.weex.utils.WXUtils;
@@ -552,7 +552,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     private void registerBroadcastReceiver() {
         mReceiver = new RefreshBroadcastReceiver();
         IntentFilter filter = new IntentFilter();
-        filter.addAction(IWXDebugProxy.ACTION_DEBUG_INSTANCE_REFRESH);
+        filter.addAction(WXSDKInstance.ACTION_DEBUG_INSTANCE_REFRESH);
         registerReceiver(mReceiver, filter);
     }
 
@@ -573,7 +573,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     public class RefreshBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (IWXDebugProxy.ACTION_DEBUG_INSTANCE_REFRESH.equals(intent.getAction())) {
+            if (WXSDKInstance.ACTION_DEBUG_INSTANCE_REFRESH.equals(intent.getAction())) {
                 render(url);
             }
         }

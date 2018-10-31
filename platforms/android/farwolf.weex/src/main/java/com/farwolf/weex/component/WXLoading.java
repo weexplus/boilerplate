@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import com.farwolf.weex.view.LoadingView;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.Constants;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -16,13 +16,16 @@ import com.taobao.weex.ui.component.WXVContainer;
  */
 
 public class WXLoading extends WXComponent<LoadingView> {
-    public WXLoading(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
+    public WXLoading(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
-
-    public WXLoading(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, int type) {
-        super(instance, dom, parent, type);
-    }
+//    public WXLoading(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+//        super(instance, dom, parent);
+//    }
+//
+//    public WXLoading(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, int type) {
+//        super(instance, dom, parent, type);
+//    }
 
 
     @Override

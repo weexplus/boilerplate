@@ -6,7 +6,7 @@
  * For the full copyright and license information,please view the LICENSE file in the root directory of this source tree.
  */
 
-#import "WXDevtool.h"
+#import "WXDevTool.h"
 #import "WXPonyDebugger.h"
 #import "WXDebugDomain.h"
 #import "WXDynamicDebuggerDomain.h"

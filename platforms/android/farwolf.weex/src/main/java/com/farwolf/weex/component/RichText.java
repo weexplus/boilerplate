@@ -7,7 +7,8 @@ import android.text.style.URLSpan;
 import android.widget.TextView;
 
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.dom.WXDomObject;
+//import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -17,9 +18,12 @@ import com.taobao.weex.ui.component.WXVContainer;
  */
 
 public class RichText extends WXComponent<TextView> {
-    public RichText(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, boolean isLazy) {
-        super(instance, dom, parent, isLazy);
+    public RichText(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+//    public RichText(WXSDKInstance instance, WXDomObject dom, WXVContainer parent, boolean isLazy) {
+//        super(instance, dom, parent, isLazy);
+//    }
 
     @Override
     protected void initView() {

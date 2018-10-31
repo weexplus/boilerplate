@@ -25,6 +25,7 @@
 #import "WXSDKManager.h"
 #import "WXConvert.h"
 #import "WXUtility.h"
+#import "WXApmForInstance.h"
 
 @interface WXEmbedComponent ()
 
@@ -38,7 +39,7 @@
 
 @end
 
-@implementation WXEmbedComponent
+@implementation WXEmbedComponent 
 
 #pragma mark Life Cycle
 
@@ -145,7 +146,10 @@
     
     //zjr add
     [self loadUrl:newURL instance:_embedInstance sourceurl:sourceURL];
-    //    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+//    [_embedInstance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+    [_embedInstance.apmInstance setProperty:KEY_PAGE_PROPERTIES_INSTANCE_TYPE withValue:@"embed"];
+    [_embedInstance.apmInstance setProperty:KEY_PAGE_PROPERTIES_PARENT_PAGE withValue:_embedInstance.parentInstance.pageName];
+    [self.weexInstance.apmInstance updateDiffStats:KEY_PAGE_STATS_EMBED_COUNT withDiffValue:1];
     __weak typeof(self) weakSelf = self;
     _embedInstance.onCreate = ^(UIView *view) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -153,7 +157,7 @@
                 [weakSelf.errorView removeFromSuperview];
                 weakSelf.errorView = nil;
             }
-            
+        
             [weakSelf.embedView removeFromSuperview];
             weakSelf.embedView = view;
             [weakSelf.view addSubview:weakSelf.embedView];
@@ -163,6 +167,7 @@
     };
     
     _embedInstance.onFailed = ^(NSError *error) {
+        weakSelf.weexInstance.apmInstance.isDegrade = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakSelf.errorView) {
                 return ;
@@ -178,13 +183,12 @@
     };
     
     _embedInstance.renderFinish = ^(UIView *view) {
-        weakSelf.renderFinished = YES;
+         weakSelf.renderFinished = YES;
         [weakSelf _updateState:WeexInstanceAppear];
         //zjr add
         [weakSelf onRenderFinish];
     };
 }
-
 //zjr add
 -(WXSDKInstance*)getInstance
 {

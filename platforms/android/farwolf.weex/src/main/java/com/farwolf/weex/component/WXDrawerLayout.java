@@ -13,7 +13,7 @@ import com.farwolf.weex.view.DrawerLayoutView_;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -28,10 +28,14 @@ public class WXDrawerLayout extends WXVContainer<DrawerLayoutView> {
     ViewGroup main;
     int childCount=0;
 
-
-    public WXDrawerLayout(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
+    public WXDrawerLayout(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+
+
+//    public WXDrawerLayout(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+//        super(instance, dom, parent);
+//    }
 
 
     @Override

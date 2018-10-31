@@ -10,9 +10,13 @@
 
 #import "Weex.h"
 #import "WXNormalViewContrller.h"
+#import "WXComponent+PseudoClassManagement.h"
+#import "WXComponent+ViewManagement.h"
 
 @implementation WXSlidComponent
 WX_EXPORT_METHOD(@selector(toggle))
+WX_EXPORT_METHOD(@selector(restyle:))
+
 
 -(instancetype)initWithRef:(NSString *)ref type:(NSString *)type styles:(NSDictionary *)styles attributes:(NSDictionary *)attributes events:(NSArray *)events weexInstance:(WXSDKInstance *)weexInstance
 {
@@ -43,6 +47,7 @@ WX_EXPORT_METHOD(@selector(toggle))
         
     }
     
+
     return self;
 }
 
@@ -108,6 +113,8 @@ WX_EXPORT_METHOD(@selector(toggle))
     
     
 }
+
+ 
 
 -(void)updateAttributes:(NSDictionary *)attributes
 {

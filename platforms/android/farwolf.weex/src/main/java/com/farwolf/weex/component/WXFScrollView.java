@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import com.farwolf.view.BounceScrollView;
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.dom.WXDomObject;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXVContainer;
 
@@ -20,9 +20,14 @@ public class WXFScrollView extends WXComponent<BounceScrollView> {
 
     LinearLayout layout;
 
-    public WXFScrollView(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
-        super(instance, node, parent);
+    public WXFScrollView(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+
+
+//    public WXFScrollView(WXSDKInstance instance, WXDomObject node, WXVContainer parent) {
+//        super(instance, node, parent);
+//    }
 
 
     @Override

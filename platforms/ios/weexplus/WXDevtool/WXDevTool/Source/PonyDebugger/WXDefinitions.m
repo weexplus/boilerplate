@@ -136,6 +136,7 @@ NSDictionary *WXRemoteObjectPropertyTypeDetailsForAttributeDescription(NSAttribu
         case NSUndefinedAttributeType:
         case NSBinaryDataAttributeType:
         case NSObjectIDAttributeType:
+            default:
             // Undefined.
             break;
     }

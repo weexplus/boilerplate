@@ -99,6 +99,8 @@ parts = [parts subarrayWithRange:(NSRange){0, parts.count - 1}];\
 #define WX_MODULE_EVENT_FIRE_NOTIFICATION  @"WX_MODULE_EVENT_FIRE_NOTIFICATION"
 #define WX_ICONFONT_DOWNLOAD_NOTIFICATION  @"WX_ICONFONT_DOWNLOAD_FINISH_NOTIFICATION"
 
+#define WX_INSTANCE_JSCONTEXT_CREATE_NOTIFICATION @"WX_INSTANCE_JSCONTEXT_CREATE_NOTIFICATION"
+
 /**
  *  @abstract export public method
  */
@@ -181,3 +183,11 @@ return;\
 #endif
 
 #endif
+
+WX_EXTERN_C_BEGIN
+
+NSString* GetWeexSDKVersion(void);
+NSString* GetWeexSDKBuildTime(void);
+unsigned long GetWeexSDKBuildTimestamp(void);
+
+WX_EXTERN_C_END
