@@ -23,14 +23,14 @@ import android.util.SparseArray;
 /**
  * Manage async callbacks which waiting for the result of executing javascript
  */
-/* default */ class ResultCallbackManager {
+public class ResultCallbackManager {
     // Unique id for callback after executing js
     private static long sCallbackId = 0;
     // Map for save callbacks, key is id
     private static SparseArray<ResultCallback> mResultCallbacks = new SparseArray<>();
 
     // Generate unique id
-    static long generateCallbackId(ResultCallback callback) {
+   public static long generateCallbackId(ResultCallback callback) {
         if (sCallbackId >= Integer.MAX_VALUE) {
             sCallbackId = 0;
         }

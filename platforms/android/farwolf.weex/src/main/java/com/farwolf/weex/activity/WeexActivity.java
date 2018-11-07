@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.farwolf.base.TitleActivityBase;
 import com.farwolf.util.ActivityManager;
 import com.farwolf.util.AppTool;
+import com.farwolf.util.KeyBoardTool;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
 import com.farwolf.view.FreeDialog;
@@ -31,6 +34,7 @@ import com.farwolf.weex.R;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.Page;
 import com.farwolf.weex.core.WeexFactory;
+import com.farwolf.weex.event.KeyboardEvent;
 import com.farwolf.weex.event.PermissionEvent;
 import com.farwolf.weex.event.RefreshEvent;
 import com.farwolf.weex.listener.RenderListener;
@@ -44,10 +48,10 @@ import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.bridge.JSCallback;
-//import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.event.ErrorEvent;
 import com.taobao.weex.utils.WXUtils;
+import com.taobao.weex.utils.WXViewUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -61,6 +65,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -162,6 +167,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     boolean hasInit=false;
 
+
     @Override
     protected void onCreate(Bundle arg0) {
         if(arg0!=null)
@@ -187,6 +193,34 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 //            }
 //        };
 //        LocalBroadcastManager.getInstance(this).registerReceiver(mReloadReceiver, new IntentFilter(WXSDKEngine.JS_FRAMEWORK_RELOAD));
+
+    }
+
+
+
+
+    public void setKeyboardListener(){
+
+
+
+        getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
+
+            //当键盘弹出隐藏的时候会 调用此方法。
+            @Override
+            public void onGlobalLayout() {
+                Rect r = new Rect();
+                //获取当前界面可视部分
+                WeexActivity.this.getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
+                //获取屏幕的高度
+                int screenHeight =  WeexActivity.this.getWindow().getDecorView().getRootView().getHeight();
+                //此处就是用来获取键盘的高度的， 在键盘没有弹出的时候 此高度为0 键盘弹出的时候为一个正数
+                int heightDifference = KeyBoardTool.getKeyboardHeight(WeexActivity.this);
+                heightDifference=(int) WXViewUtils.getWeexPxByReal(heightDifference);
+                EventBus.getDefault().post(new KeyboardEvent(heightDifference));
+                Log.d("Keyboard Size", "Size: " + heightDifference);
+            }
+
+        });
 
     }
 
@@ -226,6 +260,8 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     {
         if(hasInit)
             return;
+
+        this.setKeyboardListener();
         if(lodingimg==null)
             return;
         Glide

@@ -188,6 +188,7 @@ dependencies {
     provided "com.android.support:appcompat-v7:${project.supportLibVersion}"
     provided "com.alibaba:fastjson:${project.fastjsonLibVersion}"
     compile 'org.greenrobot:eventbus:3.1.1'
+//    compile 'com.taobao.android:weex_inspector:0.16.7'
 //    testCompile "com.alibaba:fastjson:${project.fastjsonLibVersion}"
 //    testCompile 'junit:junit:4.12'
 //    testCompile 'org.hamcrest:hamcrest-core:1.3'

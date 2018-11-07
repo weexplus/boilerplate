@@ -22,8 +22,11 @@ android {
     }
     useLibrary 'org.apache.http.legacy'
 
-}
 
+}
+repositories {
+    mavenCentral()
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':farwolf')
@@ -51,11 +54,15 @@ dependencies {
     compile 'com.taobao.android.weex_inspection:protocol:1.1.4.1'
     compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
     compile 'com.taobao.android:weex_inspector:0.16.7'
-
+//    compile(':inspector ')
+//    compile project(':inspector')
     compile 'com.alibaba.android:bindingx-core:1.0.1'
     compile 'com.alibaba.android:bindingx_weex_plugin:1.0.1'
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
     compile "io.reactivex.rxjava2:rxjava:2.0.0"
+
+//    compile 'com.alibaba.android:bindingx_weex_plugin:1.0.2'
+    compile 'org.weex.plugin:plugin-loader:1.0.0'
 
     compile project(':sdk')
 //    compile project(':weex_debug')

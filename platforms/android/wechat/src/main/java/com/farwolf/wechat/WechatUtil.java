@@ -1,8 +1,5 @@
 package com.farwolf.wechat;
 
-import com.taobao.weex.WXSDKEngine;
-import com.taobao.weex.common.WXException;
-
 /**
  * Created by zhengjiangrong on 2018/6/1.
  */
@@ -10,13 +7,13 @@ import com.taobao.weex.common.WXException;
 public class WechatUtil {
 
 
-    public static void init()
-    {
-
-        try {
-            WXSDKEngine.registerModule("wechat",WechatModule.class);
-        } catch (WXException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void init()
+//    {
+//
+//        try {
+//            WXSDKEngine.registerModule("wechat",WechatModule.class);
+//        } catch (WXException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

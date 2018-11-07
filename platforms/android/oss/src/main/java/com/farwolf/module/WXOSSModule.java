@@ -16,6 +16,7 @@ import com.alibaba.sdk.android.oss.common.auth.OSSStsTokenCredentialProvider;
 import com.alibaba.sdk.android.oss.internal.OSSAsyncTask;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
+import com.farwolf.weex.annotation.WeexModule;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
@@ -25,7 +26,7 @@ import java.util.HashMap;
 /**
  * Created by zhengjiangrong on 2017/12/14.
  */
-
+@WeexModule(name="oss")
 public class WXOSSModule extends WXModule {
 
 

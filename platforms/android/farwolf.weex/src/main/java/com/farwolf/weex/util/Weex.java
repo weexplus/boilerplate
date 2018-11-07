@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
+import com.alibaba.weex.plugin.loader.WeexPluginContainer;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
@@ -32,6 +33,7 @@ import com.farwolf.weex.component.WXPage;
 import com.farwolf.weex.component.WXPreRender;
 import com.farwolf.weex.component.WXSlidComponent;
 import com.farwolf.weex.component.WXWheelView;
+import com.farwolf.weex.core.PluginManager;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.module.WXAddressBookModule;
 import com.farwolf.weex.module.WXCenterPopModule;
@@ -42,6 +44,7 @@ import com.farwolf.weex.module.WXFPicker;
 import com.farwolf.weex.module.WXFarwolfModule;
 import com.farwolf.weex.module.WXFileModule;
 import com.farwolf.weex.module.WXFontModule;
+import com.farwolf.weex.module.WXKeyboardModule;
 import com.farwolf.weex.module.WXLocationModule;
 import com.farwolf.weex.module.WXNavBarModule;
 import com.farwolf.weex.module.WXNavgationModule;
@@ -198,6 +201,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("file", WXFileModule.class);
             WXSDKEngine.registerModule("device", WXDeviceModule.class);
             WXSDKEngine.registerModule("rsa", WXRsaModule.class);
+            WXSDKEngine.registerModule("keyboard", WXKeyboardModule.class);
 
             registerComponent("image",WXFImage.class);
 //            registerComponent("web",WXFWeb.class);
@@ -219,7 +223,8 @@ public class Weex extends ServiceBase{
             registerComponent("input",WXFInput.class);
             registerComponent("arc",WXArc.class);
 
-
+            PluginManager.init(application);
+            WeexPluginContainer.loadAll(application);
 
         } catch (WXException e) {
             e.printStackTrace();

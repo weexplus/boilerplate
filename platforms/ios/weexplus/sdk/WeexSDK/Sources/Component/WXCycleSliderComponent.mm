@@ -165,7 +165,7 @@ typedef NS_ENUM(NSInteger, Direction) {
         }
         [self resetAllViewsFrame];
     } else {
-        [_scrollView setContentOffset:CGPointMake(_currentIndex * self.width, 0) animated:YES];
+        [_scrollView setContentOffset:CGPointMake(_currentIndex * self.width, 0) animated:NO];
     }
     [self resetIndicatorPoint];
     if (self.delegate && [self.delegate respondsToSelector:@selector(recycleSliderView:didScrollToItemAtIndex:)]) {
@@ -245,12 +245,12 @@ typedef NS_ENUM(NSInteger, Direction) {
 - (void)nextPage {
     if (_itemViews.count > 1) {
         if (_infinite) {
-            [self.scrollView setContentOffset:CGPointMake(self.width * 2, 0) animated:YES];
+            [self.scrollView setContentOffset:CGPointMake(self.width * 2, 0) animated:NO];
         } else {
             // the currentindex will be set at the end of animation
             NSInteger nextIndex = self.currentIndex + 1;
             if(nextIndex < _itemViews.count) {
-                [self.scrollView setContentOffset:CGPointMake(nextIndex * self.width, 0) animated:YES];
+                [self.scrollView setContentOffset:CGPointMake(nextIndex * self.width, 0) animated:NO];
             }
         }
     }

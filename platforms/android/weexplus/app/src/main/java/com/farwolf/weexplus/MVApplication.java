@@ -1,7 +1,6 @@
 package com.farwolf.weexplus;
 
-import com.farwolf.alipay.AlipayUtil;
-import com.farwolf.jpush.JPushUtil;
+
 import com.farwolf.weex.app.WeexApplication;
 
 import org.androidannotations.annotations.EApplication;
@@ -16,7 +15,5 @@ public class MVApplication extends WeexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        JPushUtil.init(this);
-        AlipayUtil.init();
     }
 }

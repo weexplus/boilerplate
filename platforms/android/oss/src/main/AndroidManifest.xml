@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.farwolf.oss">
-        <application></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.farwolf.oss">
+        <application>
+                <scan tools:node="merge">
+                        <package>com.farwolf.oss</package>
+                </scan>
+        </application>
 
 
 </manifest>

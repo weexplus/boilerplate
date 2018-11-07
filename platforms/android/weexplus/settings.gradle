@@ -30,3 +30,6 @@ project(':wechat').projectDir = new File('../wechat')
 
 include ':oss'
 project(':oss').projectDir = new File('../oss')
+
+//include ':inspector'
+//project(':inspector').projectDir = new File('../inspector')

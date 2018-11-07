@@ -1,0 +1,48 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/cmake/3.6.4111459/bin/cmake --build /Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/.externalNativeBuild/cmake/debug/mips64 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"native-lib-Debug-mips64" : 
+		{
+			"abi" : "mips64",
+			"artifactName" : "native-lib",
+			"buildCommand" : "/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/cmake/3.6.4111459/bin/cmake --build /Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/.externalNativeBuild/cmake/debug/mips64 --target native-lib",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=mips64el-none-linux-android --gcc-toolchain=/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/sysroot -Dnative_lib_EXPORTS  -isystem /Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/sysroot/usr/include/mips64el-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fintegrated-as -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/src/main/cpp/ndk_load.c",
+					"workingDirectory" : "/Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/.externalNativeBuild/cmake/debug/mips64"
+				},
+				
+				{
+					"flags" : "  --target=mips64el-none-linux-android --gcc-toolchain=/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem /Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/mips64/include -isystem /Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/sysroot/usr/include/mips64el-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fintegrated-as -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/src/main/cpp/native_bridge.cpp",
+					"workingDirectory" : "/Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/.externalNativeBuild/cmake/debug/mips64"
+				}
+			],
+			"output" : "/Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/android/inspector/.externalNativeBuild/cmake/debug/obj/mips64/libnative-lib.so",
+			"toolchain" : "2415329861976873823"
+		}
+	},
+	"toolchains" : 
+	{
+		"2415329861976873823" : 
+		{
+			"cCompilerExecutable" : "/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/zhengjiangrong/work/android/adt-bundle-mac-x86_64-20140702/sdk_studio/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}
