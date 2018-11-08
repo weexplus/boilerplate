@@ -1,7 +1,7 @@
 <template>
     <div style="align-items: center;background-color: #ffffff">
         <!--<progress></progress>-->
-        <text style="margin-top: 100px">{{show}}</text>
+        <!--<text style="margin-top: 100px">{{show}}</text>-->
         <div style="flex-direction: row;margin-top: 300px">
             <image src="root:img/logo.png" style="width: 150px;height: 150px"></image>
         </div>
@@ -36,8 +36,8 @@
         modal.toast({message:binding.expression})
       },
       goto(){
-        this.show=!this.show
-//        this.push('nav.js')
+//        this.show=!this.show
+        this.push('nav.js')
 //        this.$router.push('./demo/component/drawer.js',{})
 //        let nav=weex.requireModule('navigator')
 //        nav.pushFull('nav.js',()=>{

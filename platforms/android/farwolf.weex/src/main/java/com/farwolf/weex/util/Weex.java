@@ -224,7 +224,7 @@ public class Weex extends ServiceBase{
             registerComponent("arc",WXArc.class);
 
             PluginManager.init(application);
-            WeexPluginContainer.loadAll(application);
+
 
         } catch (WXException e) {
             e.printStackTrace();

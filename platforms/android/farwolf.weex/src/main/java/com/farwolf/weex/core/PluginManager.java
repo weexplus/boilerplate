@@ -47,7 +47,6 @@ public class PluginManager {
                         Class entryClass = Class.forName(entryName, true, classLoader);//疑问：<span style="font-size: 1em; line-height: 1.5;">Class.forName(entryName);这种方式不知道为什么返回null，哪位大神知道原因，请指点一下小弟吧  感激不尽</span>
                         WeexModule wxmodlue = (WeexModule) entryClass.getAnnotation(WeexModule.class);
 
-
                         if (wxmodlue != null) {
                             WXSDKEngine.registerModule(wxmodlue.name(), entryClass);
                             Log.i("farwolf", "注册module:" + wxmodlue.name() + "=" + entryClass);
