@@ -28,8 +28,8 @@
     },
     methods: {
       goto(){
-         let wechat=weex.requireModule('wechat')
-          this.toast(wechat===undefined)
+         let wechat=weex.requireModule('jpush')
+          this.toast(wechat.getJPushId+'')
       },
       onLoad(){
         let navbar=weex.requireModule('navbar')

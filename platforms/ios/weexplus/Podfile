@@ -73,6 +73,8 @@ def mypod
 
     pod ‘WXDevtool’, :path => 'WXDevtool’
 
+#     pod 'WXDevtool','0.16.3'
+
     pod 'ZipArchive', '~> 1.4.0'
     
     pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
@@ -82,6 +84,8 @@ def mypod
     pod ‘alipay’,  :path => ‘alipay’
 
     pod ‘wechat’,  :path => ‘wechat’
+    
+    pod ‘NetEaseIM’,  :path => ‘NetEaseIM’
 
 end
 

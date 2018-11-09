@@ -21,9 +21,10 @@ Pod::Spec.new do |s|
   s.ios.vendored_frameworks = '*.framework'
 
   s.exclude_files = "Source/Exclude"
-  s.dependency 'farwolf'
-  s.dependency 'farwolf.business'
-  s.dependency 'WeexSDK'  
+  #s.dependency 'farwolf'
+  #s.dependency 'farwolf.business'
+  #s.dependency 'WeexSDK'  
+  s.dependency 'farwolf.weex' 
   s.platform  = :ios, "8.0"
   
   s.frameworks = 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics', 'UIKit', 'Foundation', 'CFNetwork', 'CoreMotion','AlipaySDK'

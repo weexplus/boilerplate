@@ -22,10 +22,11 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   
 
-  s.dependency 'farwolf'
-  s.dependency 'farwolf.business'
-  s.dependency 'WeexSDK'  
-  s.dependency 'Masonry', '~> 0.6.3'
+  #s.dependency 'farwolf'
+  #s.dependency 'farwolf.business'
+  #s.dependency 'WeexSDK'  
+  #s.dependency 'Masonry', '~> 0.6.3'
+  s.dependency 'farwolf.weex'
   s.dependency 'JPush'
 
 

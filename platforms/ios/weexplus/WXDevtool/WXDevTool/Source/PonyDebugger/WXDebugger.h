@@ -78,6 +78,7 @@ extern NSString *const kWXNetworkObserverEnabledStateChangedNotification;
 - (void)forwardNetworkTrafficFromDelegateClass:(Class)cls;
 + (void)registerPrettyStringPrinter:(id<WXPrettyStringPrinting>)prettyStringPrinter;
 + (void)unregisterPrettyStringPrinter:(id<WXPrettyStringPrinting>)prettyStringPrinter;
++ (BOOL)isNetwork;
 
 #pragma mark Core Data Debugging
 - (void)enableCoreDataDebugging;

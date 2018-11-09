@@ -53,6 +53,8 @@ static NSString * appBoardContent;
 //zjr add
 @property (nonatomic) BOOL isFirePageInit;
 
+//zjr add
+-(void)fireSelfPageInit;
 /**
  * Component can freeze the rootview frame through the variable isRootViewFrozen
  * If Component want to freeze the rootview frame, set isRootViewFrozen YES, weex will not change the rootview frame when layout,or set NO.

@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "WXDevtool"
 
-  s.version      = "0.16.3"
+  s.version      = "0.17.1"
 
   s.summary      = "WXDevtool Source."
 

@@ -87,11 +87,16 @@
         [self.delegate domain:self callRemoveEvent:params callBack:^(id error) {
             responseCallback(nil, error);
         }];
-    }else if ([methodName isEqualToString:@"enableTracing"]) {
-        [WXTracingUtility setRemoteTracing:[params[@"status"] boolValue]];
-    }
+    }else if ([methodName isEqualToString:@"enablePerformanceMonitor"]) {
+        [self.delegate domain:self enablePerformanceMonitor:[[params objectForKey:@"value"] boolValue] monitorCallback:^(id error) {
+            responseCallback(nil,error);
+        }];
+    }else if ([methodName isEqualToString:@"refreshPerformanceData"]) {
+        [self.delegate domain:self sendPerformanceData:[[params objectForKey:@"value"] boolValue] sendCallback:^(id error) {
+            responseCallback(nil,error);
+        }];
+    } 
 }
-
 
 
 @end

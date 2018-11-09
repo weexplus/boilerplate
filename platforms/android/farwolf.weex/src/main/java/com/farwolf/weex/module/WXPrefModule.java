@@ -23,9 +23,10 @@ public class WXPrefModule extends WXModule {
     {
         if(this.mWXSDKInstance==null||this.mWXSDKInstance.getContext()==null)
             return ;
-        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_MULTI_PROCESS); //私有数据
         SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
         editor.putString(key, value).commit();
+
 
     }
 
@@ -34,7 +35,7 @@ public class WXPrefModule extends WXModule {
     {
         if(this.mWXSDKInstance==null||this.mWXSDKInstance.getContext()==null)
             return "";
-        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_MULTI_PROCESS); //私有数据
         String  s=  sharedPreferences.getString(key,null);
         return s;
 
@@ -46,7 +47,7 @@ public class WXPrefModule extends WXModule {
     {
         if(this.mWXSDKInstance==null||this.mWXSDKInstance.getContext()==null)
             return;
-        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_MULTI_PROCESS); //私有数据
         SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
 
         editor.remove(key).commit();
@@ -60,7 +61,7 @@ public class WXPrefModule extends WXModule {
         if(this.mWXSDKInstance==null||this.mWXSDKInstance.getContext()==null)
             return;
         JSONObject j=new JSONObject(value);
-        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_MULTI_PROCESS); //私有数据
         SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
         editor.putString(key, j.toJSONString()).commit();
 
@@ -72,7 +73,7 @@ public class WXPrefModule extends WXModule {
     {
         if(this.mWXSDKInstance==null||this.mWXSDKInstance.getContext()==null)
             return new HashMap();
-        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_MULTI_PROCESS); //私有数据
         String s=  sharedPreferences.getString(key,null);
         if(s==null)
             return null;

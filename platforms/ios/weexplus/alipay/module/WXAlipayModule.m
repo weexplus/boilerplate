@@ -7,6 +7,8 @@
 
 #import "WXAlipayModule.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import <WeexPluginLoader/WeexPluginLoader.h>
+WX_PlUGIN_EXPORT_MODULE(alipay, WXAlipayModule)
 static WXModuleCallback payCallback;
 static WXModuleCallback authCallback;
 @implementation WXAlipayModule

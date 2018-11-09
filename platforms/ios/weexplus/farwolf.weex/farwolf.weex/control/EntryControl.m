@@ -80,11 +80,23 @@
     
     [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
         
-        [vc.view setHidden:true];
-        [self addVc:vc];
-        [vc.instance firePageInit];
+//        [vc.view setHidden:true];
+//        [self addVc:vc];
+////        [vc.instance fireSelfPageInit];
 //        [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
         
+        
+        [vc.view setHidden:true];
+//        vc.param=d;
+        vc.view.frame=CGRectMake(0, 0, 0, 0);
+//        vc.instance.param=d;
+        UIViewController *parent=  [UIApplication sharedApplication].keyWindow.rootViewController;
+        vc.view.frame=parent.view.frame;
+        //        UINavigationController *nav=parent.presentedViewController.presentedViewController;
+        UIViewController *top=   [parent TopViewController];
+        [top addVc:vc];
+        
+//         [vc.instance fireGlobalEvent:@"onPageInit" params:vc.param];
     } fail:^(NSString *msg) {
         
         [self failGo];

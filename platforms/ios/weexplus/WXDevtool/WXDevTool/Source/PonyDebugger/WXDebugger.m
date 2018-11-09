@@ -40,12 +40,13 @@
 
 static NSString *const WXBonjourServiceType = @"_ponyd._tcp";
 static BOOL WXIsVDom = NO;
-
+static BOOL WXIsNetwork = NO;
 
 NSString *const kWXNetworkObserverEnabledStateChangedNotification = @"kWXNetworkObserverEnabledStateChangedNotification";
 static NSString *const kWXNetworkObserverEnabledDefaultsKey = @"com.taobao.WXNetworkObserver.enableOnLaunch";
 static NSString *const kWXPerfomanceRenderFinishEnabledDefaultsKey = @"com.taobao.WXPerfomance.renderFinish";
 
+static JSContext *_jsContext;
 void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
 {
     [[WXConsoleDomainController defaultInstance] logWithArguments:arguments severity:severity];
@@ -102,6 +103,7 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
         return nil;
     }
     _isConnect = NO;
+    _jsContext = [[JSContext alloc] init];
     _domains = [[NSMutableDictionary alloc] init];
     _controllers = [[NSMutableDictionary alloc] init];
     
@@ -156,6 +158,10 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
         NSString *encodedData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [webSocket send:encodedData];
     };
+    
+    if ([domainName isEqualToString:@"Overlay"]) {
+        domainName = @"DOM";
+    }
 
     WXDynamicDebuggerDomain *domain = [self domainForName:domainName];
 
@@ -389,11 +395,13 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
 - (void)enableNetworkTrafficDebugging;
 {
     [self _addController:[WXNetworkDomainController defaultInstance]];
+    WXIsNetwork = YES;
 }
 
 - (void)disEnableNetworkTrafficDebugging
 {
     [self _removeController:[WXNetworkDomainController defaultInstance]];
+    WXIsNetwork = NO;
 }
 
 - (void)forwardAllNetworkTraffic;
@@ -427,6 +435,10 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
 + (void)unregisterPrettyStringPrinter:(id<WXPrettyStringPrinting>)prettyStringPrinter;
 {
     [WXNetworkDomainController unregisterPrettyStringPrinter:prettyStringPrinter];
+}
+
++ (BOOL)isNetwork {
+    return WXIsNetwork;
 }
 
 #pragma mark Core Data Debugging
@@ -527,6 +539,16 @@ void _WXLogObjectsImpl(NSString *severity, NSArray *arguments)
     NSLog(@"absolute string: %@", sourceURL.absoluteString);
     NSLog(@"path: %@", sourceURL.path);
     return [self callJSMethod:@"importScript" args: @[_instanceID, script, @{@"bundleUrl": sourceURL.absoluteString}]];
+}
+
+- (void)setJSContext:(JSContext *)context
+{
+    _jsContext = context;
+}
+
+- (JSContext *)javaScriptContext
+{
+    return _jsContext;
 }
 
 - (void)registerCallNative:(WXJSCallNative)callNative

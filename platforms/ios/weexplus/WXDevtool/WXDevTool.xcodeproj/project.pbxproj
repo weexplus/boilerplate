@@ -166,6 +166,9 @@
 		C425460A1F27461000B93B0D /* WXTracingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C42545C81F27461000B93B0D /* WXTracingUtility.m */; };
 		C49207731F28927D002EF9D7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49207721F28927D002EF9D7 /* ImageIO.framework */; };
 		C866F7E1211DBC67007E3B47 /* WXDevTool.pch in Headers */ = {isa = PBXBuildFile; fileRef = C866F7E0211DBC66007E3B47 /* WXDevTool.pch */; };
+		C8DFD4FE21888415006172B7 /* WXMonitorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DFD4FC21888415006172B7 /* WXMonitorHandler.m */; };
+		C8DFD4FF21888415006172B7 /* WXMonitorHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = C8DFD4FD21888415006172B7 /* WXMonitorHandler.h */; };
+		FBE96675AA0C067CBCAF0BF9 /* Pods_WXDevTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EB9AE41ACB871D7515F88E /* Pods_WXDevTool.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -322,7 +325,7 @@
 		0AFE81D41D8102B800C99208 /* WXPageDomainUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXPageDomainUtility.h; sourceTree = "<group>"; };
 		0AFE81D51D8102B800C99208 /* WXPageDomainUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPageDomainUtility.m; sourceTree = "<group>"; };
 		165DA532BBD5D3B8738062C5 /* Pods-WXDevTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDevTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDevTool/Pods-WXDevTool.release.xcconfig"; sourceTree = "<group>"; };
-		74BF27120E6548831B0E4FB7 /* libPods-WXDevTool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXDevTool.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24EB9AE41ACB871D7515F88E /* Pods_WXDevTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WXDevTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7B2575D248E618B57F22E13 /* Pods-WXDevTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDevTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXDevTool/Pods-WXDevTool.debug.xcconfig"; sourceTree = "<group>"; };
 		C42545BB1F27461000B93B0D /* WXNetworkRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXNetworkRecorder.h; sourceTree = "<group>"; };
 		C42545BC1F27461000B93B0D /* WXNetworkRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXNetworkRecorder.m; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 		C42545C81F27461000B93B0D /* WXTracingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTracingUtility.m; sourceTree = "<group>"; };
 		C49207721F28927D002EF9D7 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C866F7E0211DBC66007E3B47 /* WXDevTool.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXDevTool.pch; sourceTree = "<group>"; };
+		C8DFD4FC21888415006172B7 /* WXMonitorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXMonitorHandler.m; path = WXMonitor/WXMonitorHandler.m; sourceTree = "<group>"; };
+		C8DFD4FD21888415006172B7 /* WXMonitorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXMonitorHandler.h; path = WXMonitor/WXMonitorHandler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +353,7 @@
 				0AFA100E1D2CEC34006E30BB /* Foundation.framework in Frameworks */,
 				0AFA100C1D2CEC2A006E30BB /* CFNetwork.framework in Frameworks */,
 				0AFA0FE61D2CEB39006E30BB /* Security.framework in Frameworks */,
+				FBE96675AA0C067CBCAF0BF9 /* Pods_WXDevTool.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +586,7 @@
 				0AFA100D1D2CEC34006E30BB /* Foundation.framework */,
 				0AFA100B1D2CEC2A006E30BB /* CFNetwork.framework */,
 				0AFA0FE51D2CEB39006E30BB /* Security.framework */,
-				74BF27120E6548831B0E4FB7 /* libPods-WXDevTool.a */,
+				24EB9AE41ACB871D7515F88E /* Pods_WXDevTool.framework */,
 			);
 			name = Frameworks;
 			path = WXDevTool;
@@ -598,6 +604,7 @@
 		C42545A01F27461000B93B0D /* WXTracing */ = {
 			isa = PBXGroup;
 			children = (
+				C8DFD4FB218883FC006172B7 /* WXMonitor */,
 				C42545B21F27461000B93B0D /* WXNetwork */,
 			);
 			name = WXTracing;
@@ -617,6 +624,15 @@
 				C42545C81F27461000B93B0D /* WXTracingUtility.m */,
 			);
 			path = WXNetwork;
+			sourceTree = "<group>";
+		};
+		C8DFD4FB218883FC006172B7 /* WXMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				C8DFD4FD21888415006172B7 /* WXMonitorHandler.h */,
+				C8DFD4FC21888415006172B7 /* WXMonitorHandler.m */,
+			);
+			name = WXMonitor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -651,6 +667,7 @@
 				0ADE97891D767B62005781C1 /* WXConsoleDomainController.h in Headers */,
 				0ADE97851D767B62005781C1 /* NSOrderedSet+WXRuntimePropertyDescriptor.h in Headers */,
 				0ADE97AA1D767B6F005781C1 /* WXDynamicDebuggerDomain.h in Headers */,
+				C8DFD4FF21888415006172B7 /* WXMonitorHandler.h in Headers */,
 				0ADE97811D767B62005781C1 /* NSManagedObject+WXRuntimePropertyDescriptor.h in Headers */,
 				0A01031E1D35E25300F0D592 /* WXDeviceInfo.h in Headers */,
 				C42546011F27461000B93B0D /* WXNetworkTransaction.h in Headers */,
@@ -718,7 +735,6 @@
 				0AFA0EC71D2CE79E006E30BB /* Frameworks */,
 				0AFA0EC81D2CE79E006E30BB /* Headers */,
 				0AFECA031D76C75E0035719C /* ShellScript */,
-				DCC44042CB705B7C25D4BB99 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -793,26 +809,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DCC44042CB705B7C25D4BB99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WXDevTool/Pods-WXDevTool-resources.sh",
-				"${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js",
-				"${PODS_ROOT}/WeexSDK/ios/sdk/WeexSDK/Resources/wx_load_error@3x.png",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/wx_load_error@3x.png",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXDevTool/Pods-WXDevTool-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -858,6 +854,7 @@
 				0ADE97781D767B62005781C1 /* NSData+WXDebugger.m in Sources */,
 				0ADE97CE1D767B93005781C1 /* WXApplicationCacheTypes.m in Sources */,
 				0ADE97B31D767B6F005781C1 /* WXObject.m in Sources */,
+				C8DFD4FE21888415006172B7 /* WXMonitorHandler.m in Sources */,
 				0A37BCA31E1A521F00C5542E /* WXDebuggerUtility.m in Sources */,
 				0ADE97AD1D767B6F005781C1 /* WXIndexedDBDomainController.m in Sources */,
 				0ADE978A1D767B62005781C1 /* WXConsoleDomainController.m in Sources */,

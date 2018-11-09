@@ -8,6 +8,8 @@
 #import "WXJPushModule.h"
 #import "WXJPushModule.h"
 #import "JPushManager.h"
+#import <WeexPluginLoader/WeexPluginLoader.h>
+WX_PlUGIN_EXPORT_MODULE(jpush, WXJPushModule)
 @implementation WXJPushModule
 
 @synthesize weexInstance;

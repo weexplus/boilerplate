@@ -379,17 +379,6 @@
     return array;
 }
 
-+ (BOOL)isRemoteTracing
-{
-    return [WXDebugTool isRemoteTracing];
-}
-+ (void)setRemoteTracing:(BOOL)isRemoteTracing
-{
-    [WXDebugTool setRemoteTracing:isRemoteTracing];
-}
-
-
-
 // Swizzling utilities
 + (SEL)swizzledSelectorForSelector:(SEL)selector
 {

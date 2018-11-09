@@ -16,8 +16,10 @@
 #import "wechat.h"
 #import "alipay.h"
 #import "Appdefine.h"
-
-
+#import "App.h"
+#import <WeexPluginLoader/WeexPluginLoader.h>
+#import <WeexPluginLoader/WPLMacro.h>
+#import "WeexPlus.h"
 @interface AppDelegate ()
 
 @end
@@ -28,26 +30,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
     
-    
-    [URL copyBundleToDisk];
-    [Weex initAppBoardContent];
-    [WXTracingManager setTracingEnable:NO];
-    [Weex setBaseDir:[Config schema]];
-    [Weex initWeex:@"farwolf" appName:@"weexplus" appVersion:@"1.0.0"];
- 
-    self.window = [[UIWindow alloc] init];
-    self.window.frame = [UIScreen mainScreen].bounds;
-    UIViewController *vc= [Weex start:[Config splash] url:[Weex getEntry]];
-    _window.rootViewController=vc;
-    [_window makeKeyAndVisible];
-    if([Config isDebug])
-      [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
-    [wechat initWechat];
-    [alipay initPay];
+    self.window= [WeexPlus init];
     [[jpush  sharedManager]initPush];
-//    NSString *appkey=@"";
-//    [self.pushProtocol afterLanching:launchOptions appkey:appkey];
-    
     NSMutableDictionary *p=[NSMutableDictionary new];
     if(launchOptions==nil)
         launchOptions=[NSMutableDictionary new];

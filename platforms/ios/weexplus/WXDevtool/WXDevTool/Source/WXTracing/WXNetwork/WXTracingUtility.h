@@ -53,8 +53,6 @@
 + (NSArray *)allWindows;
 + (NSString *)tracingTime;
 + (NSArray *)formatTask:(WXTracingTask *)task;
-+ (BOOL)isRemoteTracing;
-+ (void)setRemoteTracing:(BOOL)isRemoteTracing;
 
 // Swizzling utilities
 

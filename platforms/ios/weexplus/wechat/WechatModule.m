@@ -8,12 +8,16 @@
 #import "WechatModule.h"
 #import "WXApi.h"
 #import "WXApiManager.h"
-
+#import <WeexPluginLoader/WeexPluginLoader.h>
+WX_PlUGIN_EXPORT_MODULE(wechat, WechatModule)
 @implementation WechatModule
 @synthesize weexInstance;
+
+
 WX_EXPORT_METHOD(@selector(regist:))
 WX_EXPORT_METHOD(@selector(pay:callback:))
 WX_EXPORT_METHOD(@selector(login:callback:))
+
 
 
 -(void)regist:(NSString*)appId

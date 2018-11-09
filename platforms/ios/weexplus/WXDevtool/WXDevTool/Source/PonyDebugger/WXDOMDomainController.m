@@ -666,6 +666,9 @@ static NSString *const kWXDOMAttributeParsingRegex = @"[\"'](.*)[\"']";
         } else if ([view isKindOfClass:[UIWindow class]]) {
             // Windows are always children of the root element node
             parentNodeId = @(1);
+        } else {
+            // Windows are always children of the root element node
+            parentNodeId = @(1);
         }
         [self.domain childNodeRemovedWithParentNodeId:parentNodeId nodeId:nodeId];
         [self stopTrackingView:view];
@@ -1456,12 +1459,12 @@ static NSString *const kWXDOMAttributeParsingRegex = @"[\"'](.*)[\"']";
     CGFloat scale = [WXPageDomainController defaultInstance].domain.screenScaleFactor;
     UIView *view = [WXPageDomainUtility getCurrentKeyController].view;
     CGRect changeRect = [objectForNodeId.superview convertRect:objectForNodeId.frame toView:view];
-    NSNumber *width = [NSNumber numberWithInteger:objectForNodeId.frame.size.width / [WXUtility defaultPixelScaleFactor]];
-    NSNumber *height = [NSNumber numberWithInteger:objectForNodeId.frame.size.height / [WXUtility defaultPixelScaleFactor]];
-    CGFloat left = changeRect.origin.x * scale;
-    CGFloat top = changeRect.origin.y * scale;
-    CGFloat right = left + objectForNodeId.frame.size.width * scale;
-    CGFloat bottom = top + objectForNodeId.frame.size.height * scale;
+    NSNumber *width = [NSNumber numberWithInteger:objectForNodeId.frame.size.width / scale];
+    NSNumber *height = [NSNumber numberWithInteger:objectForNodeId.frame.size.height / scale];
+    CGFloat left = changeRect.origin.x;
+    CGFloat top = changeRect.origin.y;
+    CGFloat right = left + objectForNodeId.frame.size.width;
+    CGFloat bottom = top + objectForNodeId.frame.size.height;
     
     CGFloat paddingLeft = 0;
     CGFloat paddingRight = 0;
