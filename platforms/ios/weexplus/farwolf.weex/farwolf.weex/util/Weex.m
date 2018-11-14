@@ -44,7 +44,7 @@
 #import "WXNavigationModule.h"
 #import "WXPushComponent.h"
 #import "WXKeyboardModule.h"
-//#import "WXDeviceInfo.h"
+#import "WXDeviceInfoModule.h"
 
 @implementation Weex
 
@@ -78,7 +78,7 @@
     [WXSDKEngine registerModule:@"location" withClass:[WXLocationModule class]];
     [WXSDKEngine registerModule:@"env" withClass:[WXEnvModule class]];
     [WXSDKEngine registerModule:@"file" withClass:[WXFileModule class]];
-//    [WXSDKEngine registerModule:@"device" withClass:[WXDeviceInfo class]];
+     [WXSDKEngine registerModule:@"device" withClass:[WXDeviceInfoModule class]];
       [WXSDKEngine registerModule:@"keyboard" withClass:[WXKeyboardModule class]];
     
     

@@ -7,8 +7,7 @@
         </div>
         <text style="font-size: 66px;font-weight: bold;margin-top: 30px">欢迎使用 weexplus!</text>
         <!--<input style="width: 100px;height: 100px;border-color: #0088fb;border-width: 1px"/>-->
-        <div @yu="yu" style="width: 100;height: 100;background-color: red" >
-        </div>
+
         <div class="btn" @click="goto()">
             <text class="btn-text">开始教程</text>
         </div>
@@ -30,11 +29,7 @@
     },
     methods: {
 
-      yu(binding){
-        let modal=weex.requireModule('modal')
-        // modal.alert({message:el.style})
-        modal.toast({message:binding.expression})
-      },
+
       goto(){
 //        this.show=!this.show
         this.push('nav.js')
@@ -44,25 +39,17 @@
 //          alert('sss')
 //        })
       },
-      showProgress(){
-//       this.push('nav.js')
-        let progress=weex.requireModule('progress')
-//         progress.showFull('上传中....')
-        progress.show()
-        setTimeout(()=>{
-          progress.dismiss()
-        },1000)
-      },
+
       onLoad(){
            let navbar=weex.requireModule('navbar')
-        navbar.setStatusBarStyle('black')
+           navbar.setStatusBarStyle('balck')
       }
     },
     created () {
 
     },
     mounted(){
-      debugger
+//      debugger
     },
     activated(){
     }

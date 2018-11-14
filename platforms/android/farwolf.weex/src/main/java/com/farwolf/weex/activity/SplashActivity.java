@@ -96,26 +96,12 @@ public class SplashActivity extends WeexActivity {
         {
 
             this.mWXSDKInstance.setBundleUrl(entry);
-            List temp=new ArrayList();
-            for(Object q:l)
-            {
-                temp.add((q+"").replace("root:","app/"));
-            }
-            weexFactory.preRender(temp,new WeexFactory.OnMultiRenderFinishListener(){
-
-                @Override
-                public void onRenderFinish() {
-
-                    gotoMain();
-
-
-                }
-
-                @Override
-                public void onRenderFailed() {
-
-                }
-            });
+//            List temp=new ArrayList();
+//            for(Object q:l)
+//            {
+//                temp.add((q+"").replace("root:","app/"));
+//            }
+            gotoMain();
 
         }
         else

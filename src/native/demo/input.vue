@@ -37,8 +37,6 @@
       }
     },
     mounted(){
-      window.router
-      debugger
     },
     created () {
 

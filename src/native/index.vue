@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: red;width: 750px;height: 1000px">
+    <div style="">
     </div>
 </template>
 <script>
@@ -11,8 +11,6 @@
     methods: {
       onLoad(){
         let modal=weex.requireModule('modal')
-        modal.toast({message:'sss'})
-        modal.toast({message:this.push+''})
         this.push('root:demo/index.js')
       }
     },

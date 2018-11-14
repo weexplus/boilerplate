@@ -71,9 +71,9 @@ def mypod
 
 #    pod  ‘oss’,:path => ‘oss’
 
-    pod ‘WXDevtool’, :path => 'WXDevtool’
+#    pod ‘WXDevtool’, :path => 'WXDevtool’
 
-#     pod 'WXDevtool','0.16.3'
+     pod 'WXDevtool','0.16.3'
 
     pod 'ZipArchive', '~> 1.4.0'
     

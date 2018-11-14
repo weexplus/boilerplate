@@ -25,12 +25,12 @@
       },
       onLoad(){
         let navbar=weex.requireModule('navbar')
-        navbar.setStatusBarStyle('black')
+        navbar.setStatusBarStyle('white')
       }
     },
     mounted(){
-      window.router
-      debugger
+//      window.router
+//      debugger
     },
     created () {
 

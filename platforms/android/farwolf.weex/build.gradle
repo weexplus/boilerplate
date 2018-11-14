@@ -31,7 +31,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':farwolf')
     compile project(':farwolf.business')
-    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.github.bumptech.glide:glide:4.2.0'
     compile 'com.android.support:recyclerview-v7:24.1.1'
     compile 'com.android.support:support-v4:24.1.1'
     compile 'com.android.support:appcompat-v7:24.1.1'
@@ -53,7 +53,8 @@ dependencies {
     compile 'com.taobao.android.weex_inspection:urlconnection_interceptor:1.0.0'
     compile 'com.taobao.android.weex_inspection:protocol:1.1.4.1'
     compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
-    compile 'com.taobao.android:weex_inspector:0.16.7'
+    compile 'com.taobao.android:weex_inspector:0.18.10'
+
 //    compile(':inspector ')
 //    compile project(':inspector')
     compile 'com.alibaba.android:bindingx-core:1.0.1'

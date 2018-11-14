@@ -74,4 +74,5 @@ dependencies {
     compile project(':alipay')
     compile project(':wechat')
     compile project(':jpush')
+    compile project(':netIm')
 }

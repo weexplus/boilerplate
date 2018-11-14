@@ -15,7 +15,7 @@
                     :leave-active-class="leaveAnimate">
             <router-view class="sub-page" v-if="!$route.meta.keepAlive"></router-view>
         </transition>
-     <div style="color: #0088fb;z-index: 999999">{{$route.name}}{{$route.meta.keepAlive}}</div>
+     <!--<div style="color: #0088fb;z-index: 999999">{{$route.name}}{{$route.meta.keepAlive}}</div>-->
     </div>
 </template>
 

@@ -214,42 +214,53 @@
   }
 </script>
 
-<style lang="stylus" scoped>
-    .drawer-layout
-       flex: 1
-       background-color #0088fb
-       position: relative
+<style   scoped>
+    .drawer-layout{
+        flex: 1;
+        background-color: #0088fb;
+        position: relative;
+    }
 
-    .drawer-wrap
-        position: absolute
-        top: 0
-        bottom: 0
-        background-color #666666
-        transform translateZ(0)
-        display:flex
-        flex:1
 
-    .content-wrap
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0
-        left: 0
+    .drawer-wrap{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: #666666;
+        transform: translateZ(0);
+        display:flex;
+        flex:1;
+    }
+
+    .content-wrap{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         overflow: hidden;
-        transform translateZ(0)
+        transform: translateZ(0);
+    }
 
-    .drawer-mask
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0
-        left: 0
-        background-color: #000
+
+    .drawer-mask{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
         z-index: 818
+    }
 
-    .moving
-        transition transform .3s ease
 
-    .will-change
-        will-change transform
+    .moving{
+        transition: transform .3s ease
+    }
+
+
+    .will-change {
+        will-change: transform
+    }
+
 </style>
