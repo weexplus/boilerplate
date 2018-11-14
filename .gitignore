@@ -13,6 +13,7 @@ platforms/android/weexplus/app/src/main/assets/app/*
 !platforms/android/weexplus/app/src/main/assets/app/weexplus.json
 platforms/ios/weexplus/Pods
 platforms/ios/weexplus/products/
-platforms/android/weexplus/UIKit
+platforms/android/UIKit
+platforms/android/netIm
 release
 .gradle
