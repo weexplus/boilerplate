@@ -152,9 +152,6 @@
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
 
-        <scan tools:node="merge">
-            <package>com.farwolf.jpush</package>
-        </scan>
     </application>
 
 </manifest>

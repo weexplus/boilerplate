@@ -1,7 +1,5 @@
 package com.farwolf.base;
 
-import org.androidannotations.annotations.EFragment;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +12,10 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.EFragment;
+
 @EFragment
-public abstract  class FragmentBase extends Fragment{
+public abstract  class FragmentBase extends Fragment {
 
  
 
@@ -34,8 +34,7 @@ public abstract  class FragmentBase extends Fragment{
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 	
-           
-		
+
 		if(view!=null)
 		{
 			if(isCache)

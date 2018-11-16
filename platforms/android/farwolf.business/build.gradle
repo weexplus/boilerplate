@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
-apply plugin:'android-apt'
-def AAVersion='4.0.0'
+//apply plugin:'android-apt'
+def AAVersion='4.5.2'
 android {
-    compileSdkVersion 24
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "28.0.2"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
     }
 
     buildTypes {
@@ -19,21 +19,21 @@ android {
 }
 
 dependencies {
-    compile project(':farwolf')
-    apt "org.androidannotations:androidannotations:$AAVersion"
+    api project(':farwolf')
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 }
 
-apt {
-    arguments {
-        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
-        // if you have multiple outputs (when using splits), you may want to have other index than 0
-
-        // you should set your package name here if you are using different application IDs
-        // resourcePackageName "your.package.name"
-
-        // You can set optional annotation processing options here, like these commented options:
-        // logLevel 'INFO'
-        // logFile '/var/log/aa.log'
-    }
-}
+//apt {
+//    arguments {
+//        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+//        // if you have multiple outputs (when using splits), you may want to have other index than 0
+//
+//        // you should set your package name here if you are using different application IDs
+//        // resourcePackageName "your.package.name"
+//
+//        // You can set optional annotation processing options here, like these commented options:
+//        // logLevel 'INFO'
+//        // logFile '/var/log/aa.log'
+//    }
+//}

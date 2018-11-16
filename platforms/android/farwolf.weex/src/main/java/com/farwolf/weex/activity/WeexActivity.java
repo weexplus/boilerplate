@@ -266,9 +266,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
             return;
         Glide
                 .with(this)
-                .load(R.drawable.load)
                 .asGif()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .load(R.drawable.load)
+//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(lodingimg);
 
         hasInit=true;

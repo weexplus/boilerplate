@@ -31,11 +31,11 @@ project(':wechat').projectDir = new File('../wechat')
 include ':oss'
 project(':oss').projectDir = new File('../oss')
 
-include ':UIKit'
-project(':UIKit').projectDir = new File('../UIKit')
-
-include ':netIm'
-project(':netIm').projectDir = new File('../netIm')
+//include ':uikit'
+//project(':uikit').projectDir = new File('../uikit')
+//
+//include ':netIm'
+//project(':netIm').projectDir = new File('../netIm')
 
 //include ':inspector'
 //project(':inspector').projectDir = new File('../inspector')

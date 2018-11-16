@@ -15,7 +15,9 @@ import com.farwolf.util.AppTool;
 import org.androidannotations.annotations.EActivity;
 
 @EActivity
-public abstract class ActivityBase extends FragmentActivity{
+public abstract class ActivityBase extends FragmentActivity {
+
+
 
 	
 	@Override

@@ -28,7 +28,6 @@ import android.util.Base64;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
 import com.farwolf.weex.activity.WeexActivity;
@@ -128,10 +127,13 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
       {
           Glide
                   .with((Activity)view.getContext())
-                  .load(url)
+
                   .asGif()
-                  .placeholder(pladrawable)
-                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+//                  .placeholder(pladrawable)
+                  .load(url)
+//                  .asGif()
+//                  .placeholder(pladrawable)
+//                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                   .into(view);
 
           return;
@@ -196,12 +198,13 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
           Bitmap bm= Local.getBitmap(((Activity)view.getContext()).getApplicationContext(),url);
           Glide
                   .with((Activity)view.getContext())
+                  .asGif()
 //                  .load("file:///android_asset/"+url)
                   .load( Picture.bitmapToByte(bm))
-                  .asGif()
 
-                  .placeholder(pladrawable)
-                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+
+//                  .placeholder(pladrawable)
+//                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                   .into(view);
 
           return;

@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
-apply plugin:'android-apt'
-def AAVersion='4.0.0'
+//apply plugin:'android-apt'
+def AAVersion='4.5.2'
 def keystorePropertiesFile = rootProject.file("gradle.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
-    compileSdkVersion 24
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 26
+    buildToolsVersion '28.0.2'
     defaultConfig {
         applicationId keystoreProperties['appId']
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -64,15 +64,28 @@ android {
 
 
 }
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven{url 'https://jitpack.io'}
+        mavenCentral()
+        maven {url 'http://developer.huawei.com/repo'}
+        maven { url 'https://fabric-artifacts.s3.amazonaws.com/public' }
+
+    }
+}
+
+
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    apt "org.androidannotations:androidannotations:$AAVersion"
-    compile "org.androidannotations:androidannotations-api:$AAVersion"
-    compile project(':farwolf.weex')
-    compile project(':umeng')
-    compile project(':alipay')
-    compile project(':wechat')
-    compile project(':jpush')
-//    compile project(':netIm')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    api "org.androidannotations:androidannotations-api:$AAVersion"
+    api project(':farwolf.weex')
+    api project(':umeng')
+    api project(':alipay')
+    api project(':wechat')
+    api project(':jpush')
+//    api project(':netIm')
 }

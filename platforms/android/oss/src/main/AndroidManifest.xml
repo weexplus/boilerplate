@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.farwolf.oss">
         <application>
-                <scan tools:node="merge">
-                        <package>com.farwolf.oss</package>
-                </scan>
+
         </application>
 
 
