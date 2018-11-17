@@ -15,5 +15,6 @@ platforms/ios/weexplus/Pods
 platforms/ios/weexplus/products/
 platforms/android/UIKit
 platforms/android/netIm
+platforms/android/oss
 release
 .gradle

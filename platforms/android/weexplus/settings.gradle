@@ -28,8 +28,8 @@ project(':alipay').projectDir = new File('../alipay')
 include ':wechat'
 project(':wechat').projectDir = new File('../wechat')
 
-include ':oss'
-project(':oss').projectDir = new File('../oss')
+//include ':oss'
+//project(':oss').projectDir = new File('../oss')
 
 //include ':uikit'
 //project(':uikit').projectDir = new File('../uikit')
