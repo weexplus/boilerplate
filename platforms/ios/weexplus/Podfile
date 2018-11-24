@@ -18,8 +18,6 @@ def mypod
     
     pod 'YYModel'
     
-#    pod 'PNChart', '~> 0.8.8'
-
     pod 'CHXBannerView', '~> 0.8.2'
     
     pod 'FSCalendar', '~> 2.7.9’
@@ -33,18 +31,9 @@ def mypod
     pod 'UCZProgressView'
     
     pod 'MBProgressHUD', '~> 0.9.2'
-    
-     
 
- #   pod 'KoaPullToRefresh', '~> 1.0.6'
-
- 
-    
-    #   pod 'IQKeyboardManager', '~> 4.0.11'
-    
     pod 'SRMonthPicker'
     
-#   pod 'BaiduMapKit'
     
     pod 'LPPhotoViewer', '~> 0.0.7'
     
@@ -69,24 +58,12 @@ def mypod
 
     pod ‘farwolf.weex’, :path => 'farwolf.weex’
 
-#    pod  ‘oss’,:path => ‘oss’
-#    pod 'oss', :git => 'https://github.com/farwolf2010/oss-ios.git'
-
-#    pod ‘WXDevtool’, :path => 'WXDevtool’
-
      pod 'WXDevtool','0.16.3'
 
     pod 'ZipArchive', '~> 1.4.0'
     
     pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
-
-#    pod ‘jpush’,  :path => ‘jpush’
-
-#    pod ‘alipay’,  :path => ‘alipay’
-
-#    pod ‘wechat’,  :path => ‘wechat’
-
-#    pod ‘NetEaseIM’,  :path => ‘NetEaseIM’
+ 
 
 end
 
