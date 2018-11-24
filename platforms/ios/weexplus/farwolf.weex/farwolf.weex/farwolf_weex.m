@@ -9,5 +9,4 @@
 #import "farwolf_weex.h"
 
 @implementation farwolf_weex
-
 @end

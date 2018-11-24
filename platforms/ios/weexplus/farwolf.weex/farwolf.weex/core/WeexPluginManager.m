@@ -31,5 +31,23 @@
 //        }
 //    }];
 }
++(void)addEntry:(Class)cls  
+{
+   
+    if(_wxp_entry==nil)
+        _wxp_entry=[NSMutableArray new];
+    [_wxp_entry addObject:cls];
+}
+
++(void)initAllEntry:(NSDictionary*)lanchOption{
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for(Class cls in _wxp_entry) {
+            id car  = [[cls alloc] init];
+            [car performSelector:(@selector(initEntry:)) withObject:lanchOption];
+        }
+    });
+   
+}
 
 @end

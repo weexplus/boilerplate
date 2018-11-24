@@ -7,6 +7,7 @@
 //
 
 #import "ProgressModule.h"
+ 
 
 @implementation ProgressModule
 @synthesize weexInstance;
@@ -19,6 +20,7 @@ WX_EXPORT_METHOD(@selector(dismiss))
 
 -(void)show
 {
+    
     [self showFull:@"加载中..." cancel:true];
 }
 -(void)showFull:(NSString*)txt cancel:(BOOL)cancel

@@ -83,9 +83,9 @@ dependencies {
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     api "org.androidannotations:androidannotations-api:$AAVersion"
     api project(':farwolf.weex')
-    api project(':umeng')
-    api project(':alipay')
-    api project(':wechat')
-    api project(':jpush')
+//    api project(':umeng')
+//    api project(':alipay')
+//    api project(':wechat')
+//    api project(':jpush')
 //    api project(':netIm')
 }

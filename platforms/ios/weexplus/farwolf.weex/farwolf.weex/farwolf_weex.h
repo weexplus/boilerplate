@@ -25,6 +25,28 @@
 #import "URL.h"
 #import "Page.h"
 #import "Config.h"
+#import "WeexPluginManager.h"
+
+
+#ifndef __FARWOLF_WEEX_PLUGIN_MACRO_H__
+#define __FARWOLF_WEEX_PLUGIN_MACRO_H__
+
+
+//#define WX_PLUGIN_Entry(name) _WX_PLUGIN_Entry(name)
+//#define _WX_PLUGIN_Entry(name) \
+//void __attribute__ ((constructor)) WX_PLUGIN_Entry(){ \
+//}
+
+///类注解
+#define  WX_PLUGIN_Entry(ClassA) __WX_PLUGIN_Entry(ClassA)
+
+#define __WX_PLUGIN_Entry(ClassA) \
+void __attribute__ ((constructor)) WX_PLUGIN_Entry##ClassA##func(){  \
+NSDictionary *params=nil;\
+[WeexPluginManager addEntry: ClassA.class]; \
+}
+
+
 #define APP_didRegisterForRemoteNotificationsWithDeviceToken @"application_didRegisterForRemoteNotificationsWithDeviceToken"
 #define APP_didReceiveRemoteNotification_fetchCompletionHandler @"app_didReceiveRemoteNotification_fetchCompletionHandler"
 #define APP_didReceiveRemoteNotification @"application_didReceiveRemoteNotification"
@@ -32,6 +54,14 @@
 #define APP_openURL @"application_openURL"
 #define APP_didFinishLaunchingWithOptions @"application_didFinishLaunchingWithOptions"
 #define PREFIX_SDCARD @"sdcard:"
+
+#endif
+// [WeexPluginManager addEntry:ClassA]; \
+
+
+
+
+
 
 @interface farwolf_weex : NSObject
 

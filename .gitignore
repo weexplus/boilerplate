@@ -13,8 +13,15 @@ platforms/android/weexplus/app/src/main/assets/app/*
 !platforms/android/weexplus/app/src/main/assets/app/weexplus.json
 platforms/ios/weexplus/Pods
 platforms/ios/weexplus/products/
+platforms/ios/weexplus/jpush/
+platforms/ios/weexplus/oss/
+platforms/ios/weexplus/wechat/
+platforms/ios/weexplus/alipay/
+platforms/ios/weexplus/NetEaseIM/
 platforms/android/UIKit
 platforms/android/netIm
 platforms/android/oss
+platforms/android/wechat
+platforms/android/jpush
 release
 .gradle

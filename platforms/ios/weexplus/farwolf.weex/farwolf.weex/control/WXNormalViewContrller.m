@@ -19,6 +19,8 @@
 #import "IQKeyboardManager.h"
 #import "RefreshManager.h"
 #import "SetViewController.h"
+#import "farwolf_weex.h"
+ 
 
 static BOOL isshowErr;
 @interface WXNormalViewContrller ()
@@ -34,6 +36,7 @@ static BOOL isshowErr;
 
 +(void)setShowError:(BOOL)show
 {
+  
     isshowErr=show;
 }
 - (void)dealloc
@@ -41,6 +44,9 @@ static BOOL isshowErr;
     
     [_instance destroyInstance];
     [self _removeObservers];
+    NSMutableDictionary *p=[NSMutableDictionary new];
+    [p setValue:self.sourceURL.absoluteString forKey:@"url"];
+    [self notifyDict:@"removeUrl" value:p];
     NSLog(@"dealloc");
 }
 
@@ -252,7 +258,7 @@ static BOOL isshowErr;
     __weak typeof(self) weakSelf = self;
     vc.onClose=^(){
         isshowErr=false;
-        [weakSelf.fail_layout setHidden:false];
+//        [weakSelf.fail_layout setHidden:false];
         [vc dismiss:true completion:^{
             
         }];
@@ -364,18 +370,18 @@ static BOOL isshowErr;
     [self _updateInstanceState:WeexInstanceDisappear];
     
     
-    NSLog([@"url== " add: self.sourceURL.absoluteString]);
-    NSLog([@"self== " addInt: self.naviIndex]);
-    NSLog([@"count== " addInt: self.TopViewController.navigationController.childViewControllers.count]);
-    
-    if(self.naviIndex>self.TopViewController.navigationController.childViewControllers.count)
-    {
-        //        WXNormalViewContrller *vc= self.weexInstance.viewController;
-        NSMutableDictionary *p=[NSMutableDictionary new];
-        [p setValue:self.sourceURL.absoluteString forKey:@"url"];
-        [self notifyDict:@"removeUrl" value:p];
-    }
-    
+//    NSLog([@"url== " add: self.sourceURL.absoluteString]);
+//    NSLog([@"self== " addInt: self.naviIndex]);
+//    NSLog([@"count== " addInt: self.TopViewController.navigationController.childViewControllers.count]);
+//
+//    if(self.naviIndex>self.TopViewController.navigationController.childViewControllers.count)
+//    {
+//        //        WXNormalViewContrller *vc= self.weexInstance.viewController;
+//        NSMutableDictionary *p=[NSMutableDictionary new];
+//        [p setValue:self.sourceURL.absoluteString forKey:@"url"];
+//        [self notifyDict:@"removeUrl" value:p];
+//    }
+//
     printf("retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
 }
 

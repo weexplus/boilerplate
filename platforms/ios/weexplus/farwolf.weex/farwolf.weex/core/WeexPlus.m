@@ -8,7 +8,7 @@
 #import "WeexPlus.h"
 
 @implementation WeexPlus
-+(UIWindow*)init{
++(UIWindow*)init:(NSDictionary*)lanch{
     [URL copyBundleToDisk];
     [Weex initAppBoardContent];
     [WXTracingManager setTracingEnable:NO];
@@ -22,6 +22,7 @@
     [window makeKeyAndVisible];
     if([Config isDebug])
         [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
+    [WeexPluginManager initAllEntry:lanch];
     return window;
 }
 @end

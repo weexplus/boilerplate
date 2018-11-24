@@ -1144,6 +1144,10 @@ _Pragma("clang diagnostic pop") \
                     }
                 }
                 WX_LOG(logLevel, @"%@", string);
+                if(logLevel==WXLogFlagError){
+                    NSNotification *n=[[NSNotification alloc]initWithName:@"weexError" object:nil userInfo:@{@"msg":string}];
+                    [[NSNotificationCenter defaultCenter]postNotification:n];
+                }
             } else {
                 [string appendFormat:@"%@ ", jsVal]                                  ;
                 WXLogInfo(@"%@", string);

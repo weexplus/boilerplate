@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - alipay (0.0.1):
     - farwolf.weex
+  - AliyunOSSiOS (2.10.7)
   - BindingX (1.0.1):
     - WeexPluginLoader
     - WeexSDK
@@ -73,6 +74,11 @@ PODS:
     - farwolf.weex
     - NIMSDK
   - NIMSDK (5.6.0)
+  - oss (0.0.1):
+    - AliyunOSSiOS
+    - farwolf
+    - farwolf.weex
+    - WeexSDK
   - RHAddressBook (1.1.1)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
@@ -117,6 +123,7 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD (~> 0.9.2)
   - NetEaseIM (from `NetEaseIM`)
+  - oss (from `https://github.com/farwolf2010/oss-ios.git`)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.8)
   - SRMonthPicker
@@ -134,6 +141,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - AliyunOSSiOS
     - BindingX
     - CHXBannerView
     - CocoaAsyncSocket
@@ -179,14 +187,22 @@ EXTERNAL SOURCES:
     :path: LMTowDatePicker
   NetEaseIM:
     :path: NetEaseIM
+  oss:
+    :git: https://github.com/farwolf2010/oss-ios.git
   wechat:
     :path: wechat
   WeexSDK:
     :path: sdk
 
+CHECKOUT OPTIONS:
+  oss:
+    :commit: b033c52dd700ba89313202238425c6ac21229ccb
+    :git: https://github.com/farwolf2010/oss-ios.git
+
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   alipay: 27eb586405b5eb84f700dbfec929fc794bd31f51
+  AliyunOSSiOS: 602b6a4e70e62a5f0a6431c20496343141d7e66f
   BindingX: 82936549871ff4c936abcab62f8fecc84acfaa52
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -207,6 +223,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   NetEaseIM: 269b515628f06ee1520bbbc4d8c12e5129744c6a
   NIMSDK: 7bc6a1e5f034a5f82747892bacc61ac305342620
+  oss: 65e8e94cca54d017935b04c0f609817e465a59e1
   RHAddressBook: 870e9e0b34cb917b9c4c600fc3b7d5b530b23b13
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -225,6 +242,6 @@ SPEC CHECKSUMS:
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
 
-PODFILE CHECKSUM: cdaf2c8331ab8611749d969f49e70eb1e69f93ac
+PODFILE CHECKSUM: 91e21ea656cad58a420dd01c28badc9db3df4981
 
 COCOAPODS: 1.5.0

@@ -19,7 +19,9 @@
     "vue": "^2.5.11",
     "vue-router": "^3.0.1",
     "vux": "^2.9.2",
-    "weex-vue-render": "^1.0.31"
+    "weex-vue-render": "^1.0.31",
+    "replace": "^1.0.0",
+    "delete": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.0.0",
@@ -54,6 +56,7 @@
     "weex-loader": "^0.7.2",
     "weex-vue-precompiler": "^0.1.17",
     "stylus": "^0.54.5",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "weex-builder":"^0.4.1"
   }
 }

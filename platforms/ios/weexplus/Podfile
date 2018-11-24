@@ -70,6 +70,7 @@ def mypod
     pod ‘farwolf.weex’, :path => 'farwolf.weex’
 
 #    pod  ‘oss’,:path => ‘oss’
+#    pod 'oss', :git => 'https://github.com/farwolf2010/oss-ios.git'
 
 #    pod ‘WXDevtool’, :path => 'WXDevtool’
 
@@ -79,13 +80,13 @@ def mypod
     
     pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
 
-    pod ‘jpush’,  :path => ‘jpush’
+#    pod ‘jpush’,  :path => ‘jpush’
 
-    pod ‘alipay’,  :path => ‘alipay’
+#    pod ‘alipay’,  :path => ‘alipay’
 
-    pod ‘wechat’,  :path => ‘wechat’
-    
-    pod ‘NetEaseIM’,  :path => ‘NetEaseIM’
+#    pod ‘wechat’,  :path => ‘wechat’
+
+#    pod ‘NetEaseIM’,  :path => ‘NetEaseIM’
 
 end
 

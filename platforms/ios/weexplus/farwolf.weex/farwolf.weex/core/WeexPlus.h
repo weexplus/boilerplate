@@ -13,7 +13,7 @@
 
 
 @interface WeexPlus : NSObject
-+(UIWindow*)init;
++(UIWindow*)init:(NSDictionary*)lanch;
 @end
 
 

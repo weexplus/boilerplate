@@ -74,6 +74,10 @@
     if (!clazz || !name) {
         return;
     }
+    
+    if([name isEqualToString:@"im"]){
+        NSLog(@"xxx");
+    }
     NSString *moduleName = [WXModuleFactory registerModule:name withClass:clazz];
     NSDictionary *dict = [WXModuleFactory moduleMethodMapsWithName:moduleName];
     
