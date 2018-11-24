@@ -1,12 +1,4 @@
 node_modules/*
-.svn
-.DS_Store
-.idea
-build
-busi
-temp
-dist/*
-*.iml
 platforms/ios/weexplus/app/*
 !platforms/ios/weexplus/app/weexplus.json
 platforms/android/weexplus/app/src/main/assets/app/*
@@ -23,6 +15,14 @@ platforms/android/netIm/
 platforms/android/oss/
 platforms/android/wechat/
 platforms/android/jpush/
+.svn
+*.DS_Store
+.idea
+build
+busi
+temp
+dist/*
+*.iml
 release
 .gradle
 /build
