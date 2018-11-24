@@ -18,11 +18,11 @@ platforms/ios/weexplus/oss/
 platforms/ios/weexplus/wechat/
 platforms/ios/weexplus/alipay/
 platforms/ios/weexplus/NetEaseIM/
-platforms/android/UIKit
-platforms/android/netIm
-platforms/android/oss
-platforms/android/wechat
-platforms/android/jpush
+platforms/android/UIKit/
+platforms/android/netIm/
+platforms/android/oss/
+platforms/android/wechat/
+platforms/android/jpush/
 release
 .gradle
 /build
