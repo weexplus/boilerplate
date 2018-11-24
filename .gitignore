@@ -25,3 +25,4 @@ platforms/android/wechat
 platforms/android/jpush
 release
 .gradle
+/build
