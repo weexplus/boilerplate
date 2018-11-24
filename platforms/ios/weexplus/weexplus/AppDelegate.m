@@ -12,9 +12,9 @@
 #import "Config.h"
 #import "UpdateDialogControl.h"
 #import "ZipDownloader.h"
-#import "jpush.h"
-#import "wechat.h"
-#import "alipay.h"
+//#import "jpush.h"
+//#import "wechat.h"
+//#import "alipay.h"
 #import "Appdefine.h"
 #import "App.h"
 #import <WeexPluginLoader/WeexPluginLoader.h>
