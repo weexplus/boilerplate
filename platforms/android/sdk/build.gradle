@@ -182,12 +182,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    provided "com.android.support:recyclerview-v7:${project.supportLibVersion}"
-    provided "com.android.support:support-v4:${project.supportLibVersion}"
-    provided "com.android.support:appcompat-v7:${project.supportLibVersion}"
-    provided "com.alibaba:fastjson:${project.fastjsonLibVersion}"
-    compile 'org.greenrobot:eventbus:3.1.1'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly "com.android.support:recyclerview-v7:${project.supportLibVersion}"
+    compileOnly "com.android.support:support-v4:${project.supportLibVersion}"
+    compileOnly "com.android.support:appcompat-v7:${project.supportLibVersion}"
+    compileOnly "com.alibaba:fastjson:${project.fastjsonLibVersion}"
+    api 'org.greenrobot:eventbus:3.1.1'
 //    compile 'com.taobao.android:weex_inspector:0.16.7'
 //    testCompile "com.alibaba:fastjson:${project.fastjsonLibVersion}"
 //    testCompile 'junit:junit:4.12'

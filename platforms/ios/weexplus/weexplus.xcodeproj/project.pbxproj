@@ -115,7 +115,6 @@
 				4D2665341ECD84CD00664B38 /* Frameworks */,
 				4D2665351ECD84CD00664B38 /* Resources */,
 				13111F5912490E2ECE0B2D1A /* [CP] Copy Pods Resources */,
-				D55B905D6DEFA1E28E6E7F36 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,14 +181,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh",
-				"${PODS_ROOT}/NIMSDK/NIMAVChat/Resources/NMCVideoFilter.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/native-bundle-main.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-main-jsfm.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-polyfill.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-rax-api.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/wx_load_error@3x.png",
-				"${PODS_ROOT}/../alipay/AlipaySDK.bundle",
 				"${PODS_ROOT}/../farwolf.business/farwolf.business/resources/xib/updater.xib",
 				"${PODS_ROOT}/../farwolf.business/farwolf.business/resources/xib/zipdownloader.xib",
 				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/storyboard/weex.storyboard",
@@ -203,14 +200,12 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NMCVideoFilter.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-main-jsfm.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-polyfill.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-rax-api.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/wx_load_error@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/updater.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zipdownloader.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex.storyboardc",
@@ -225,28 +220,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D55B905D6DEFA1E28E6E7F36 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-frameworks.sh",
-				"${PODS_ROOT}/NIMSDK/NIMSDK/NIMSDK.framework",
-				"${PODS_ROOT}/NIMSDK/NIMAVChat/NIMAVChat.framework",
-				"${PODS_ROOT}/NIMSDK/NIMAVChat/NVS.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIMSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIMAVChat.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVS.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E1EBE96AEBABBDE8A9BEC3C2 /* [CP] Check Pods Manifest.lock */ = {

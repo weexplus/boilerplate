@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.dependency 'farwolf.business'
   s.dependency 'WeexSDK'
   s.dependency 'SDWebImage', '~> 3.8'
-  s.dependency 'WXDevtool'
+ # s.dependency 'WXDevtool'
   s.dependency 'Masonry', '~> 0.6.3'
   s.dependency 'SocketRocket','~> 0.4.2' 
   s.dependency 'RHAddressBook'

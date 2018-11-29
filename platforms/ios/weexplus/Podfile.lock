@@ -14,9 +14,6 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - alipay (0.0.1):
-    - farwolf.weex
-  - AliyunOSSiOS (2.10.7)
   - BindingX (1.0.1):
     - WeexPluginLoader
     - WeexSDK
@@ -52,17 +49,10 @@ PODS:
     - SocketRocket (~> 0.4.2)
     - WeexPluginLoader (~> 0.0.1.9.1)
     - WeexSDK
-    - WXDevtool
     - zipzap (~> 8.1.1)
   - FSCalendar (2.7.9)
   - GSKStretchyHeaderView (0.12.2)
   - HcdDateTimePicker (1.1.1)
-  - JCore (1.2.2)
-  - jpush (0.0.1):
-    - farwolf.weex
-    - JPush
-  - JPush (3.1.0):
-    - JCore (~> 1.2.0)
   - LMTowDatePicker (0.0.1):
     - FSCalendar (~> 2.7.9)
   - LPPhotoViewer (0.0.7):
@@ -70,15 +60,6 @@ PODS:
     - SDWebImage (~> 3.8)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
-  - NetEaseIM (0.0.1):
-    - farwolf.weex
-    - NIMSDK
-  - NIMSDK (5.6.0)
-  - oss (0.0.1):
-    - AliyunOSSiOS
-    - farwolf
-    - farwolf.weex
-    - WeexSDK
   - RHAddressBook (1.1.1)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
@@ -91,8 +72,6 @@ PODS:
   - TOCropViewController (2.0.12)
   - UCZProgressView (1.0.2)
   - UIViewController_PopUp (0.0.2)
-  - wechat (0.0.1):
-    - farwolf.weex
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.18.0):
@@ -108,7 +87,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
-  - alipay (from `alipay`)
   - BindingX
   - CHXBannerView (~> 0.8.2)
   - DOPDropDownMenu-Enhanced (~> 1.0.0)
@@ -117,13 +95,10 @@ DEPENDENCIES:
   - farwolf.weex (from `farwolf.weex`)
   - FSCalendar (~> 2.7.9)
   - GSKStretchyHeaderView (~> 0.12.2)
-  - jpush (from `jpush`)
   - LMTowDatePicker (from `LMTowDatePicker`)
   - LPPhotoViewer (~> 0.0.7)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
-  - NetEaseIM (from `NetEaseIM`)
-  - oss (from `https://github.com/farwolf2010/oss-ios.git`)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.8)
   - SRMonthPicker
@@ -131,7 +106,6 @@ DEPENDENCIES:
   - TOCropViewController (~> 2.0.12)
   - UCZProgressView
   - UIViewController_PopUp (~> 0.0.2)
-  - wechat (from `wechat`)
   - WeexSDK (from `sdk`)
   - WXDevtool (= 0.16.3)
   - YYModel
@@ -141,7 +115,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
-    - AliyunOSSiOS
     - BindingX
     - CHXBannerView
     - CocoaAsyncSocket
@@ -150,12 +123,9 @@ SPEC REPOS:
     - FSCalendar
     - GSKStretchyHeaderView
     - HcdDateTimePicker
-    - JCore
-    - JPush
     - LPPhotoViewer
     - Masonry
     - MBProgressHUD
-    - NIMSDK
     - RHAddressBook
     - SDCycleScrollView
     - SDWebImage
@@ -173,36 +143,19 @@ SPEC REPOS:
     - zipzap
 
 EXTERNAL SOURCES:
-  alipay:
-    :path: alipay
   farwolf:
     :path: farwolf
   farwolf.business:
     :path: farwolf.business
   farwolf.weex:
     :path: farwolf.weex
-  jpush:
-    :path: jpush
   LMTowDatePicker:
     :path: LMTowDatePicker
-  NetEaseIM:
-    :path: NetEaseIM
-  oss:
-    :git: https://github.com/farwolf2010/oss-ios.git
-  wechat:
-    :path: wechat
   WeexSDK:
     :path: sdk
 
-CHECKOUT OPTIONS:
-  oss:
-    :commit: b033c52dd700ba89313202238425c6ac21229ccb
-    :git: https://github.com/farwolf2010/oss-ios.git
-
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  alipay: 27eb586405b5eb84f700dbfec929fc794bd31f51
-  AliyunOSSiOS: 602b6a4e70e62a5f0a6431c20496343141d7e66f
   BindingX: 82936549871ff4c936abcab62f8fecc84acfaa52
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -210,20 +163,14 @@ SPEC CHECKSUMS:
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   farwolf: 53b76f772dd0752146772a0aa0f3761fbb28b167
   farwolf.business: c389f61c1abe895c04b0c2f9df27df7783d0d4dd
-  farwolf.weex: ca12c17294a9cec618dabc18cebc8fc424a5dbb3
+  farwolf.weex: 37299001026992b45a0e9bb302c8b2392732a9c1
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   HcdDateTimePicker: 187736981f667f699d4d8d6ccc21621b55a6edb8
-  JCore: f14c0549968a63c22e246a4875aa9d428446f373
-  JPush: 5921e25ad13e0386351079217b009f2039084eac
-  jpush: 074021e94bdeb024db2d6e6e0a6a48db7c99c65c
   LMTowDatePicker: eaee88a977b5841215c2fb06320c040e28d293b9
   LPPhotoViewer: 2da9329480ad2f23c6adbcbc0baee6620ed2bb7f
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  NetEaseIM: 269b515628f06ee1520bbbc4d8c12e5129744c6a
-  NIMSDK: 7bc6a1e5f034a5f82747892bacc61ac305342620
-  oss: 65e8e94cca54d017935b04c0f609817e465a59e1
   RHAddressBook: 870e9e0b34cb917b9c4c600fc3b7d5b530b23b13
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -233,7 +180,6 @@ SPEC CHECKSUMS:
   TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
   UCZProgressView: 55836987c15ee6efb7cd6dfe297556602ee46c94
   UIViewController_PopUp: 1f5133c841e811103d6b3f143618f3a00080a590
-  wechat: 0144b5e18ff3846226dca5c6337f403b4c7e9035
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 76430eb93c632cd0e2b1a9d2d1baa58cedb84f4a
   WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd
@@ -242,6 +188,6 @@ SPEC CHECKSUMS:
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
 
-PODFILE CHECKSUM: 91e21ea656cad58a420dd01c28badc9db3df4981
+PODFILE CHECKSUM: d5068c796cbd9ca4020999100e7f2dac057a3255
 
 COCOAPODS: 1.5.0

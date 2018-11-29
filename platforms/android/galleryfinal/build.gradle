@@ -19,9 +19,9 @@ android {
 
 dependencies {
 
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'cn.finalteam:toolsfinal:1.1.4'
-    compile 'com.android.support:support-v4:24.0.0'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'cn.finalteam:toolsfinal:1.1.4'
+    api 'com.android.support:support-v4:24.0.0'
 
 }
 

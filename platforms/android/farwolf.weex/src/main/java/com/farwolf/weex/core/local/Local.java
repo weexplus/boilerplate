@@ -22,7 +22,9 @@ public class Local  {
 
 
 
-
+    public static String getDiskBasePath(Context context){
+        return  context.getExternalFilesDir("Caches")+"/";
+    }
 
 
     public static String getString(Context c,String path)

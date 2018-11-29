@@ -55,5 +55,5 @@ Mixins.install = (Vue, options) => {
   })
 }
 const install = Mixins.install
-export { install }
+export {install}
 export  default Mixins

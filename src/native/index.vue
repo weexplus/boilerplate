@@ -11,7 +11,7 @@
     methods: {
       onLoad(){
         let modal=weex.requireModule('modal')
-        this.push('root:demo/index.js')
+        this.push('root:test.js')
       }
     },
     created () {

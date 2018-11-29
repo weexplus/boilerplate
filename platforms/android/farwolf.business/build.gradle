@@ -21,7 +21,7 @@ android {
 dependencies {
     api project(':farwolf')
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
-    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    api "org.androidannotations:androidannotations-api:$AAVersion"
 }
 
 //apt {

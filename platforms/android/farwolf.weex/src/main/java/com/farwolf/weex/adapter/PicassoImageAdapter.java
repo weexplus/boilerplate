@@ -28,9 +28,12 @@ import android.util.Base64;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
 import com.farwolf.weex.activity.WeexActivity;
+import com.farwolf.weex.app.WeexApplication;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.util.Const;
 import com.farwolf.weex.util.Weex;
@@ -196,20 +199,27 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
       {
 //          Glide.with((Activity)view.getContext()).load()
           Bitmap bm= Local.getBitmap(((Activity)view.getContext()).getApplicationContext(),url);
+
+
+          boolean exist= Local.isDiskExist(view.getContext());
+          if(exist)
+          {
+              url= "file:///"+Local.getDiskBasePath(view.getContext())+url;
+          }
+          else{
+
+              url= "file:///android_asset/"+url;
+          }
+          RequestOptions options = new RequestOptions()
+                  .diskCacheStrategy(DiskCacheStrategy.NONE);
           Glide
-                  .with((Activity)view.getContext())
+                  .with(WeexApplication.getInstance())
                   .asGif()
-//                  .load("file:///android_asset/"+url)
-                  .load( Picture.bitmapToByte(bm))
-
-
-//                  .placeholder(pladrawable)
-//                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                  .load( url)
                   .into(view);
 
           return;
       }
-
 
       if(url.startsWith(Const.PREFIX_SDCARD))
       {
@@ -218,6 +228,7 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
           view.setImageBitmap(bm);
           return;
       }
+
 
       url=Weex.getSingleRealUrl(url);
       Bitmap bm=null;
