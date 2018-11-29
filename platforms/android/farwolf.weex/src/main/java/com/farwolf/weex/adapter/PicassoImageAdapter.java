@@ -210,8 +210,6 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
 
               url= "file:///android_asset/"+url;
           }
-          RequestOptions options = new RequestOptions()
-                  .diskCacheStrategy(DiskCacheStrategy.NONE);
           Glide
                   .with(WeexApplication.getInstance())
                   .asGif()
