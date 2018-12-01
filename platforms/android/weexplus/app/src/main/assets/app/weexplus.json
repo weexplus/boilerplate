@@ -1,69 +1,13 @@
 {
   "schema":"js",
-  "debug":false,
+  "debug":true,
   "showerror":true,
   "isPortrait":true,
   "jsVersion":1,
   "debugIp":"127.0.0.1",
-  "entry":"",
+  "entry":"app/index.js",
   "wechatEntry":"app/demo/index.js",
   "appBoard":"root:common.js",
-  "notifyEntry":"http://172.20.10.3:8890/js/notifyEntry.js",
-  "static":
-  {
-    "umeng":
-    {
-      "ios":
-      {
-        "appkey":"5989828d717c191ffe0005c1"
-      },
-      "android":
-      {
-        "appkey":"598a841b2ae85b7e280008c5"
-      }
-
-    }
-
-
-  },
-  "platform":
-  {
-     "wx":
-     {
-       "appkey":"wxb9760e8d21f7979b",
-       "appsecret":"a777fcab3485989805e52b2bd095badf"
-     },
-     "qq":
-     {
-       "appkey":"1105821097",
-       "appsecret":""
-     },
-     "weibo":
-     {
-       "appkey":"1105821097",
-       "appsecret":"",
-       "url":""
-     }
-  },
-  "proxys":
-  [
-
-    {
-      "port":9090,
-      "locations":
-      [
-        {
-          "from":"api",
-          "to":"http://59.110.169.246/movie/"
-        },
-        {
-          "from":"api1",
-          "to":"http://www1.1chemic.com/"
-        }
-      ]
-    }
-
-  ]
-
+  "notifyEntry":"http://172.20.10.3:8890/js/notifyEntry.js"
 }
 

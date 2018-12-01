@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "KeyChainStore.h"
 @interface AppSysInfo : NSObject
 +(NSString*)appName;
 +(NSString*)versionName;
-
++(NSString*)bundleId;
 +(NSString*)version;
++(NSString*)uuid;
 @end

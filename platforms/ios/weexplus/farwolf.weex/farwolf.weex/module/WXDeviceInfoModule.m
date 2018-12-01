@@ -6,15 +6,19 @@
 //
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "WXDeviceInfoModule.h"
+#import "AppSysInfo.h"
 
 @implementation WXDeviceInfoModule
 WX_EXPORT_METHOD_SYNC(@selector(mac))
+WX_EXPORT_METHOD_SYNC(@selector(deviceId))
 -(NSString*)mac{
     NSDictionary *dict = [self SSIDInfo];
     NSString *mac = dict[@"BSSID"];　　 //无线网的MAC地址
     return mac;
 }
-
+-(NSString*)deviceId{
+    return [AppSysInfo uuid];
+}
 - (NSDictionary *)SSIDInfo
 
 {

@@ -27,9 +27,19 @@
     NSString *app_build = [[self info]  objectForKey:@"CFBundleVersion"];
     return app_build;
 }
++(NSString*)bundleId
+{
+    // app bundleid
+    NSString *app_bundleid = [[self info]  objectForKey:@"CFBundleIdentifier"];
+    return app_bundleid;
+}
 +(NSDictionary*)info
 {
      NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     return infoDictionary;
+}
++(NSString*)uuid
+{
+   return  [KeyChainStore getUUID:[AppSysInfo bundleId]];
 }
 @end
