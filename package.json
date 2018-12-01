@@ -16,8 +16,8 @@
   "dependencies": {
     "file-loader": "^2.0.0",
     "phantom-limb": "0.0.1",
-    "vue": "2.5.17",
-    "vue-template-compiler": "2.5.17",
+    "vue": "2.5.13",
+    "vue-template-compiler": "2.5.13",
     "vue-router": "^3.0.1",
     "vux": "^2.9.2",
     "weex-vue-render": "^1.0.31",
