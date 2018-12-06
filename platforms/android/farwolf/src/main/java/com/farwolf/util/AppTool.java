@@ -7,6 +7,10 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
+import android.os.Build;
+import android.view.Display;
+import android.view.WindowManager;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -84,4 +88,32 @@ public class AppTool {
 
 
 
+    public static boolean isAllScreenDevice(Context context) {
+
+        // 低于 API 21的，都不会是全面屏。。。
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return false;
+        }
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (windowManager != null) {
+            Display display = windowManager.getDefaultDisplay();
+            Point point = new Point();
+            display.getRealSize(point);
+            float width, height;
+            if (point.x < point.y) {
+                width = point.x;
+                height = point.y;
+            } else {
+                width = point.y;
+                height = point.x;
+            }
+            if (height / width >= 1.97f) {
+                return true;
+            }
+        }
+        return false;
     }
+
+
+
+}

@@ -218,7 +218,8 @@ public class WXImage extends WXComponent<ImageView> {
       }
     }
 
-    if (src == null) {
+    //zjr add
+    if (src == null&&!getAttrs().containsKey(Constants.Name.PLACEHOLDER)) {
       return;
     }
 

@@ -2,6 +2,8 @@ package com.farwolf.weex.module;
 
 import com.farwolf.util.AppMainfest;
 import com.farwolf.util.AppMainfest_;
+import com.farwolf.util.AppTool;
+import com.farwolf.weex.app.WeexApplication;
 import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.bean.Config;
 import com.taobao.weex.annotation.JSMethod;
@@ -37,4 +39,14 @@ public class WXEnvModule extends WXModuleBase {
     {
         return  Config.jsVersion(getContext())+"";
     }
+
+
+    //**判断刘海平
+    @JSMethod(uiThread = false)
+    public boolean isFringeScreen(){
+
+        boolean t=AppTool.isAllScreenDevice(WeexApplication.getInstance());
+        return t;
+    }
+
 }

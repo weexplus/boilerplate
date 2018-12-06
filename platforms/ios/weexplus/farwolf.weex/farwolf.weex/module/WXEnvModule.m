@@ -12,28 +12,44 @@
 WX_EXPORT_METHOD_SYNC(@selector(versionCode))
 WX_EXPORT_METHOD_SYNC(@selector(versionName))
 WX_EXPORT_METHOD_SYNC(@selector(jsVersionCode))
+WX_EXPORT_METHOD_SYNC(@selector(isFringeScreen))
 
-NSString* versionCode()
+-(NSString* ) versionCode
 {
-     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-      NSString *vcode = [infoDictionary objectForKey:@"CFBundleVersion"];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *vcode = [infoDictionary objectForKey:@"CFBundleVersion"];
     return vcode;
 }
 
 
-NSString* versionName()
+-(NSString* ) versionName
 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *vname = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     return vname;
 }
 
-
-
-
- NSString* jsVersionCode()
+-(bool) isFringeScreen
 {
-     NSString *jsversion=[Config jsVersion];
+    if (!@available(iOS 11.0, *)) {
+        return false;
+    }
+    UIWindow *window= [UIApplication sharedApplication].keyWindow;
+    UIEdgeInsets eg=window.safeAreaInsets;
+    return  eg.top>0&&eg.top!=20;
+    //   return  window.safeAreaInsets!= UIEdgeInsetsZero;
+    //    return  [UIApplication sharedApplication].keyWindow.safeAreaInsets != UIEdgeInsetsZero;
+    //    return UIApplication.shared.windows[0].safeAreaInsets != UIEdgeInsets.zero
+}
+
+
+
+
+-(NSString* )jsVersionCode
+{
+    NSString *jsversion=[Config jsVersion];
     return jsversion;
 }
+
+
 @end

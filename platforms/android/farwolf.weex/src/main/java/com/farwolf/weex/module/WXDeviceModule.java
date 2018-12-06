@@ -10,4 +10,9 @@ public class WXDeviceModule extends WXModuleBase {
     public String mac(){
         return DeviceTool_.getInstance_(getContext()).getMac();
     }
+
+    @JSMethod(uiThread = false)
+    public String uuid(){
+        return DeviceTool_.getInstance_(getContext()).getDeviceId();
+    }
 }
