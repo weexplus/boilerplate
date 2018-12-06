@@ -64,9 +64,9 @@ def mypod
     
     pod ‘LMTowDatePicker’, :path => 'LMTowDatePicker’
  
-    pod 'NIMKit', :path => '../../../../weexplus-plugins/ios/NIMKit'
+    #pod 'NIMKit', :path => '../../../../weexplus-plugins/ios/NIMKit'
   
-    pod 'nim', :path => '../../../../weexplus-plugins/ios/nim'
+    #pod 'nim', :path => '../../../../weexplus-plugins/ios/nim'
 
  
 end
