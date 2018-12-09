@@ -20,7 +20,10 @@ let nav ={
     // window.router.app._data.callback =callback
     window.eventBus.$emit('UPDATE_DIRECTION','forward')
     window.eventBus.$emit('ENABLE_ROUTER_ANIMATION',animate)
-   let res=  window.router.push(path.getPath(url),param)
+    url=path.getPath(url)
+
+    debugger
+   let res=  window.router.push(url,param)
   },
   back(){
     nav.backFull({param:{},animate:true})

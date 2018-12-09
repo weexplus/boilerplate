@@ -23,7 +23,8 @@
     "weex-vue-render": "^1.0.31",
     "replace": "^1.0.0",
     "delete": "^1.1.0",
-    "weex-builder":"^0.4.1"
+    "weex-builder": "^0.4.1",
+    "vue-navigation": "^1.1.4"
   },
   "devDependencies": {
     "autoprefixer": "^8.0.0",

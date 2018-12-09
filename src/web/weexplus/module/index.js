@@ -5,6 +5,7 @@ import pref from  './pref'
 import notify from  './notify'
 import font from  './font'
 import progress from  './progress'
+import navbar from  './navbar'
 export default {
 
   install(weex,vue)
@@ -16,6 +17,7 @@ export default {
     weex.registerModule('notify',notify)
     weex.registerModule('font',font)
     weex.registerModule('progress',progress)
+    weex.registerModule('navbar',navbar)
   }
 }
 

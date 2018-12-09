@@ -32,8 +32,8 @@
           this.toast(wechat.getJPushId+'')
       },
       onLoad(){
-        let navbar=weex.requireModule('navbar')
-        navbar.setStatusBarStyle('black')
+//        let navbar=weex.requireModule('navbar')
+//        navbar.setStatusBarStyle('black')
       }
     },
     mounted(){

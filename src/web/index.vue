@@ -1,6 +1,6 @@
 <template>
-  <navigation>
-  </navigation>
+  <navigator>
+  </navigator>
 </template>
 <script>
 export default {
@@ -11,7 +11,7 @@ export default {
     }
   },
   mounted(){
-    this.$router.push('./index.js',{})
+    this.$router.push('./demo/index.js')
 //    this.$router.push('/demo/component/host.js',{})
   }
 }

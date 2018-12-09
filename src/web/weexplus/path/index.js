@@ -34,7 +34,11 @@ export default {
     if(url.startsWith('root:')){
       return url.replace('root:','/')
     }
-    return this.getRelativeVuePath(url)
+    url= this.getRelativeVuePath(url)
+    if(url.indexOf('#')!=-1){
+      url=url.split('#')[1]
+    }
+    return url
   },
   getImagePath(url){
     if(url.startsWith('http')){

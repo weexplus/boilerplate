@@ -1,22 +1,10 @@
 <template>
-    <div id="app">
-
-        <!--<image style="width: 100px;height: 100px;background-color: black;position: fixed;top: 0;z-index: 999" :src="url"></image>-->
-        <transition name="custom-classes-transition" v-if="$route.meta.keepAlive" :enter-active-class="enterAnimate"
-                    :leave-active-class="leaveAnimate">
-            <!--<keep-alive  >-->
-                <!--<router-view    class="sub-page" ></router-view>-->
-            <!--</keep-alive>-->
-            <keep-alive>
-                <router-view class="sub-page" v-if="$route.meta.keepAlive"></router-view>
-            </keep-alive>
-        </transition>
-        <transition name="custom-classes-transition" v-if="!$route.meta.keepAlive" :enter-active-class="enterAnimate"
-                    :leave-active-class="leaveAnimate">
-            <router-view class="sub-page" v-if="!$route.meta.keepAlive"></router-view>
-        </transition>
-     <!--<div style="color: #0088fb;z-index: 999999">{{$route.name}}{{$route.meta.keepAlive}}</div>-->
-    </div>
+    <transition name="custom-classes-transition" key="1" :enter-active-class="enterAnimate"
+                :leave-active-class="leaveAnimate">
+        <navigation>
+            <router-view class="sub-page"></router-view>
+        </navigation>
+    </transition>
 </template>
 
 <script>
@@ -52,6 +40,18 @@
           this.leaveAnimate = ""
         }
       })
+
+//      this.$navigation.on('forward', (to, from) => {
+//        this.enterAnimate = "animated fadeInRight"
+//        this.leaveAnimate = "animated fadeOutLeft"
+//      })
+//      this.$navigation.once('back', (to, from) => {
+//        this.enterAnimate =  "animated fadeInLeft"
+//        this.leaveAnimate =   "animated fadeOutRight"
+//      })
+//      this.$navigation.on('replace', (to, from) => {})
+//      this.$navigation.off('refresh', (to, from) => {})
+//      this.$navigation.on('reset', () => {})
     },
 //    beforeRouteLeave(to, from, next){
 //      if (this.routerList.length && this.routerList.indexOf(to.name) === this.routerList.length - 1) {
@@ -68,24 +68,21 @@
     created(){
       let _this=this
       this.$router.beforeEach((to, from, next) => {
-//        to.meta.keepAlive = true
-//        if(!to.meta)
-//        {
-//          to.meta={}
-//        }
+//         return
 //        debugger
-//        if (_this.routerList.length && _this.routerList.indexOf(to.name) === _this.routerList.length - 1) {
-//          // 后退
-//          _this.routerList.splice(_this.routerList.length - 1, 1)
-//          to.meta.keepAlive = true
-//        } else {
-//          // 前进
-//          _this.routerList.push(from.name || '/')
-//          to.meta.keepAlive = false
-//        }
+        if (_this.routerList.length && _this.routerList.indexOf(to.fullPath) === _this.routerList.length - 1) {
+          // 后退
+          _this.routerList.splice(_this.routerList.length - 1, 1)
+          _this.cache=true
+
+        } else {
+          // 前进
+          _this.routerList.push(from.fullPath || '/')
+          _this.cache=false
+        }
         next()
       })
-
+//
     }
   }
 </script>
