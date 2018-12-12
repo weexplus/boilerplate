@@ -23,8 +23,8 @@ android {
 
 
 dependencies {
-    api 'com.android.support:support-v4:26.0.2'
-    api project(path: ':galleryfinal', configuration: 'default')
+    api "com.android.support:support-v4:${project.supportLibVersion}"
+    api project(':galleryfinal')
     api 'com.google.code.gson:gson:2.2.2'
     api 'org.greenrobot:eventbus:3.1.1'
 //    api files('libs/android-support-v4.jar')

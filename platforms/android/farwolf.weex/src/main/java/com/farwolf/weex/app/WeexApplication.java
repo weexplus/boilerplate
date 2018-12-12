@@ -33,6 +33,9 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Date;
 
+//import android.support.multidex.MultiDex;
+//import android.support.multidex.MultiDexApplication;
+
 /**
  * Created by zhengjiangrong on 2018/3/10.
  */

@@ -23,7 +23,7 @@
     },
     methods: {
       click(){
-        this.$emit('Click')
+        this.$emit('click')
       }
     },
     created () {

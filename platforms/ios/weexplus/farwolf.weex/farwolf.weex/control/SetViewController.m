@@ -193,7 +193,8 @@
     [self dismiss:true];
 }
 - (IBAction)clearCache:(id)sender {
-    [[SDImageCache sharedImageCache] clearDisk];
+//    [[SDImageCache sharedImageCache] clearDisk];
+    [[SDImageCache sharedImageCache] clearMemory];
     [self updateCache];
     
 

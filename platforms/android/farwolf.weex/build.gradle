@@ -32,18 +32,18 @@ dependencies {
     api project(':farwolf')
     api project(':farwolf.business')
     api 'com.github.bumptech.glide:glide:4.2.0'
-    api 'com.android.support:recyclerview-v7:26.0.2'
-    api 'com.android.support:support-v4:26.0.2'
-    api 'com.android.support:appcompat-v7:26.0.2'
+    api "com.android.support:recyclerview-v7:${project.supportLibVersion}"
+    api "com.android.support:support-v4:${project.supportLibVersion}"
+    api "com.android.support:appcompat-v7:${project.supportLibVersion}"
     api 'com.alibaba:fastjson:1.1.46.android'
     api 'com.squareup.picasso:picasso:2.5.2'
-    api 'com.android.support:design:26.0.2'
+    api "com.android.support:design:${project.supportLibVersion}"
     api 'com.wang.avi:library:1.0.0'
     api 'com.nineoldandroids:library:2.4.0'
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     api "org.androidannotations:androidannotations-api:$AAVersion"
     api 'com.umeng.analytics:analytics:latest.integration'
-    debugCompile 'com.taobao.android:weex_analyzer:0.1.0.5'
+    debugApi 'com.taobao.android:weex_analyzer:0.1.0.5'
     api 'com.squareup.okhttp:okhttp:2.3.0'
     api 'com.squareup.okhttp:okhttp-ws:2.3.0'
     api 'com.squareup.okio:okio:1.0.1'
@@ -54,15 +54,15 @@ dependencies {
     api 'com.taobao.android:weex_inspector:0.18.12'
     //    api(':inspector ')
     //    api project(':inspector')
-    api 'com.alibaba.android:bindingx-core:1.0.1'
-    api 'com.alibaba.android:bindingx_weex_plugin:1.0.1'
+    api 'com.alibaba.android:bindingx-core:1.0.2'
+    api 'com.alibaba.android:bindingx_weex_plugin:1.0.2'
     api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
     api 'io.reactivex.rxjava2:rxjava:2.0.0'
     //    api 'com.alibaba.android:bindingx_weex_plugin:1.0.2'
     api 'org.weex.plugin:plugin-loader:1.0.0'
     api project(':sdk')
     //    api project(':weex_debug')
-    api 'com.android.support:multidex:1.0.1'
+    api 'com.android.support:multidex:1.0.3'
 //    implementation 'com.android.support:support-v4:25.3.1'
 }
 

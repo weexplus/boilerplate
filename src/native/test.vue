@@ -20,9 +20,8 @@
     methods: {
 
       tenv(){
-        let env=weex.requireModule('env')
-       let res= env.isFringeScreen()
-        this.alert(res+'')
+        let device=weex.requireModule('device')
+       this.toast( device.mac())
       },
       ok(){
          let im=weex.requireModule('nim')

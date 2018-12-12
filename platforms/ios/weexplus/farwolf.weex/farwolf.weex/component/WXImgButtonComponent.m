@@ -102,15 +102,23 @@
        src = [NSURL URLWithString:src relativeToURL:self.weexInstance.scriptURL].absoluteString;
       if([src startWith:@"http"])
       {
-          [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:src] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//          [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:src] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//
+//          } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//
+//              dispatch_async(dispatch_get_main_queue(), ^{
+//                  [((UIButton*)self.view) setImage:image forState:state];
+//              });
+//
+//          }];
+          [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:src]  options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
               
-          } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-              
+          } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
               dispatch_async(dispatch_get_main_queue(), ^{
-                  [((UIButton*)self.view) setImage:image forState:state];
-              });
-              
+                    [((UIButton*)self.view) setImage:image forState:state];
+                });
           }];
+          
       }
       else{
           dispatch_async(dispatch_get_main_queue(), ^{

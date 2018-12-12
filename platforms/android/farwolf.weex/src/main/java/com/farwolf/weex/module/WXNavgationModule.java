@@ -258,7 +258,7 @@ public class WXNavgationModule extends WXModuleBase {
     }
 
     @JSMethod
-    public void addBackGestureSelfControl()
+    public void enableBackGesture()
     {
 
     }

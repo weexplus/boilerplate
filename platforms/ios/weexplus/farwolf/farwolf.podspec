@@ -23,11 +23,11 @@ Pod::Spec.new do |s|
   s.dependency 'YYModel'
   s.dependency  "AFNetworking", "~>3.2.1"
   s.dependency 'Masonry', '~> 0.6.3'
-  s.dependency 'SDWebImage', '~> 3.8'
+  s.dependency 'SDWebImage', '~> 4.0'
   #s.dependency 'KoaPullToRefresh', '~> 1.0.6'    
      
   #s.dependency 'IQKeyboardManager', '~> 4.0.6'
-  s.dependency 'LPPhotoViewer', '~> 0.0.7'
+  #s.dependency 'LPPhotoViewer', '~> 0.0.7'
   s.dependency 'TOCropViewController', '~> 2.0.8'
   s.dependency 'SDCycleScrollView','~> 1.65' 
   s.dependency 'GSKStretchyHeaderView', '~> 0.12.2'   
