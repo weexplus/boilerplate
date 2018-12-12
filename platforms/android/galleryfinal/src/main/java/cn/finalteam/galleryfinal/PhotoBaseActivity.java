@@ -93,7 +93,7 @@ public abstract class PhotoBaseActivity extends Activity implements EasyPermissi
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-//        ActivityManager.getActivityManager().addActivity(this);
+        ActivityManager.getActivityManager().addActivity(this);
         mMediaScanner = new MediaScanner(this);
         DisplayMetrics dm = DeviceUtils.getScreenPix(this);
         mScreenWidth = dm.widthPixels;
