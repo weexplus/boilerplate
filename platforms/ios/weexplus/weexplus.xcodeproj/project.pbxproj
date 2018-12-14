@@ -18,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		21C6950340ADFAC3C7AC6093 /* libPods-weexplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weexplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D25C32921B2576800B49C05 /* weexplus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = weexplus.entitlements; sourceTree = "<group>"; };
 		4D2665371ECD84CD00664B38 /* weexplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weexplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D26653B1ECD84CD00664B38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D26653D1ECD84CD00664B38 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,7 +66,6 @@
 		4D2665391ECD84CD00664B38 /* weexplus */ = {
 			isa = PBXGroup;
 			children = (
-				4D25C32921B2576800B49C05 /* weexplus.entitlements */,
 				4DA5883C20F343AB007D4B5E /* Appdefine.h */,
 				4D26653D1ECD84CD00664B38 /* AppDelegate.h */,
 				4D26653E1ECD84CD00664B38 /* AppDelegate.m */,
