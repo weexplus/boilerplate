@@ -1,10 +1,5 @@
 package com.farwolf.view.pickerview;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -19,6 +14,11 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.farwolf.libary.R;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 3d滚轮控件
@@ -213,7 +213,7 @@ public class WheelView extends View {
                 maxTextHeight = textHeight;
             }
         }
-        itemHeight = lineSpacingMultiplier * maxTextHeight;
+        itemHeight = lineSpacingMultiplier *( maxTextHeight);
     }
 
     void smoothScroll(ACTION action) {

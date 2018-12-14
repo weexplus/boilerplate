@@ -1,17 +1,18 @@
 package com.farwolf.weex.component;
 
+import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.ui.action.BasicComponentData;
-import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXVContainer;
+import com.taobao.weex.ui.component.WXWeb;
 
 /**
  * Created by zhengjiangrong on 2017/8/15.
  */
 
-public class WXFWeb extends WXComponent {
-    public WXFWeb(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
-        super(instance, parent, basicComponentData);
+public class WXFWeb extends WXWeb {
+    public WXFWeb(WXSDKInstance instance, WXVContainer parent, boolean isLazy, BasicComponentData basicComponentData) {
+        super(instance, parent, isLazy, basicComponentData);
     }
 
 
@@ -20,5 +21,9 @@ public class WXFWeb extends WXComponent {
 //    }
 
 
-
+    @Override
+    public void setUrl(String url) {
+        url= Weex.getRelativeUrl(url,this.mInstance);
+        super.setUrl(url);
+    }
 }

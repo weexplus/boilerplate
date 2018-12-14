@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
-import com.alibaba.weex.plugin.loader.WeexPluginContainer;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
@@ -25,6 +24,7 @@ import com.farwolf.weex.component.WXFImage;
 import com.farwolf.weex.component.WXFInput;
 import com.farwolf.weex.component.WXFListComponent;
 import com.farwolf.weex.component.WXFScrollView;
+import com.farwolf.weex.component.WXFWeb;
 import com.farwolf.weex.component.WXHost;
 import com.farwolf.weex.component.WXItem;
 import com.farwolf.weex.component.WXLoading;
@@ -204,7 +204,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("keyboard", WXKeyboardModule.class);
 
             registerComponent("image",WXFImage.class);
-//            registerComponent("web",WXFWeb.class);
+            registerComponent("web",WXFWeb.class);
             registerComponent(WXFListComponent.class, false, WXBasicComponentType.LIST,WXBasicComponentType.VLIST,WXBasicComponentType.RECYCLER,WXBasicComponentType.WATERFALL);
 //            registerComponent("viewpager",WXViewPager.class);
             registerComponent("prerender",WXPreRender.class);

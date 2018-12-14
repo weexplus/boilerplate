@@ -146,9 +146,12 @@
 
 - (NSArray*)responderSiblings
 {
+    if(![self.viewController isKindOfClass:[WXNormalViewContrller class]])
+        return [NSMutableArray new];
     //	Getting all siblings
 //    NSMutableArray *siblings = self.superview.subviews;
     WXNormalViewContrller *vc=  (WXNormalViewContrller*)self.viewController;
+    
     if(vc.textfields.count==0)
     [vc loadtextfields];
     //Array of (UITextField/UITextView's).

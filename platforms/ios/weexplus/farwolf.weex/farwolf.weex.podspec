@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.dependency 'RHAddressBook'
  # s.dependency 'IQKeyboardManager', '~> 4.0.6'
   s.dependency 'CocoaAsyncSocket', '~> 7.6.2'
-  s.dependency 'LPPhotoViewer', '~> 0.1.1'
+  s.dependency 'LPPhotoViewer', '~> 0.2.2'
 
   s.dependency 'HcdDateTimePicker', '~> 1.1.1'
   s.dependency 'LMTowDatePicker'

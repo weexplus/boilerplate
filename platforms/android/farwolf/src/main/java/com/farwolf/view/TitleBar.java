@@ -78,6 +78,12 @@ public class TitleBar extends ViewBase {
 
 
 	}
+
+	public void setBackImageTheme(String theme){
+         if("black".equals(theme)){
+			 leftimage.setBackgroundDrawable(getResources().getDrawable(R.drawable.api_black_back_selector));
+		 }
+	}
 	
 	@Override
 	public void init() {
@@ -103,6 +109,12 @@ public class TitleBar extends ViewBase {
 	public void setTitle(String title)
 	{
 		this.title.setText(title);
+	}
+
+	public void setTitleColor(String color)
+	{
+		this.title.setTextColor(createColorStateList(Color.parseColor(color),Color.parseColor(color),Color.parseColor(color),Color.parseColor(color)));
+
 	}
 	
 	public void setBack()

@@ -32,7 +32,6 @@
 }
 -(void)initView
 {
-    
     UIImageView *img=[UIImageView new];
     UIImage *mg=[UIImage imageNamed:self.img];
     img.contentMode=UIViewContentModeScaleAspectFill;

@@ -1,10 +1,8 @@
 <template>
     <div style="align-items: center;justify-content: center">
-        <text>{{items}}</text>
         <!--<head title="测试"></head>-->
-        <!--<button @click="chathello" style="margin-top: 20px"  text="helloworld1"  ></button>-->
-        <button @click="okk" style="margin-top: 20px"  text="chat"  ></button>
-        <button @click="chat11" style="margin-top: 20px"  text="11"  ></button>
+        <button @click="chathello" style="margin-top: 20px"  text="helloworld1"  ></button>
+        <!--<button @click="chat11" style="margin-top: 20px"  text="11"  ></button>-->
         <!--<image @click="chat" style="width: 200px;height: 200px" src="root:img/load.gif"></image>-->
         <!--<slider class="slider" interval="3000" ref="slider" auto-play="true"  >-->
         <!--<div @click="gotoBannerDetail(item)"  class="frame" v-for="item in banners" >-->
@@ -20,18 +18,12 @@
   export default{
     props: {},
     data () {
-      return {
-        items:[]
-      }
+      return {}
     },
     methods: {
-
       okk(){
-        let im = weex.requireModule('nim')
-        let p={account: '11'}
-        p.navBarBgColor='#ff553e'
-        p.theme='white'
-        im.openP2P(p)
+        let pref=  weex.requireModule('pref')
+        pref.setString('ss','sss')
       },
       chathello(){
         let im = weex.requireModule('nim')
@@ -43,13 +35,10 @@
       },
       chat11(){
         let im = weex.requireModule('nim')
-//        let p={account: '11'}
-//        p.navBarBgColor='#ff553e'
-//        p.theme='white'
-//        im.openP2P(p)
-        im.recent((res)=>{
-           this.items=res
-        })
+        let p={account: '11'}
+        p.navBarBgColor='#ff553e'
+        p.theme='white'
+        im.openP2P(p)
       },
       tenv(){
 
@@ -71,8 +60,8 @@
       onLoad(){
         let im = weex.requireModule('nim')
         im.regist({appKey:'86984f84905337af232230f9e140b113'})
-        im.login({account: 'helloworld1', token: '7c2ad9cedfa2971efbbf58fbd1e67378'}, (res) => {
-          this.alert('helloworld1登陆成功')
+        im.login({account: '11', token: 'd42846b9d9ff0a4092bb3625203f3ed1'}, (res) => {
+//          this.alert('ss')
 
         })
       }

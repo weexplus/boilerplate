@@ -169,7 +169,7 @@ public class Picker  extends ViewBase {
         if(this.getParent()==null)
         {
             ScreenTool tool= ScreenTool_.getInstance_(getContext());
-            RelativeLayout.LayoutParams lp=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,tool.toDip(300));
+            RelativeLayout.LayoutParams lp=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,tool.toDip(270));
             lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             this.setLayoutParams(lp);
             layout.addView(this);

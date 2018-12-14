@@ -264,11 +264,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         this.setKeyboardListener();
         if(lodingimg==null)
             return;
-        Glide
-                .with(this)
+        Glide.with(this)
                 .asGif()
                 .load(R.drawable.load)
-//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(lodingimg);
 
         hasInit=true;
