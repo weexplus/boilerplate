@@ -223,16 +223,25 @@ public class WeexApplication extends MultiDexApplication {
     {
         String url= pref.url().get();
         String ipx= RegexBase.regexOne(url,"http://",":");
+
         if(!StringUtil.isNullOrEmpty(ipx))
         {
             return ipx;
         }
         else
         {
+            String entry= Config.entry(this);
+            if(!StringUtil.isNullOrEmpty(entry)){
+                ipx=RegexBase.regexOne(entry,"http://",":");
+            }
+            if(!StringUtil.isNullOrEmpty(ipx))
+            {
+                return ipx;
+            }
             return  Config.debugIp(this);
+
         }
     }
-
 
 
 
