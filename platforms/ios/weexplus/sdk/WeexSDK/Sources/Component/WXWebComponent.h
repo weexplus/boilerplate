@@ -31,4 +31,9 @@
 
 - (void)goForward;
 
+
+- (void)loadURL:(NSString *)url;
+
+- (void) setSource:(NSString *)source;
+
 @end

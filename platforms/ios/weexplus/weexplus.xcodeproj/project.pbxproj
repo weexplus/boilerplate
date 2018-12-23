@@ -13,11 +13,10 @@
 		4D2665471ECD84CD00664B38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2665461ECD84CD00664B38 /* Assets.xcassets */; };
 		4D3CC5521FD4E6FB002D3ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */; };
 		4D92AA151F4D5BD900493BCF /* app in Resources */ = {isa = PBXBuildFile; fileRef = 4D92AA141F4D5BD900493BCF /* app */; };
-		78159CCE310AF4A59E8B7181 /* libPods-weexplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21C6950340ADFAC3C7AC6093 /* libPods-weexplus.a */; };
+		9BB8FC32AEECD1BE9C5CDAE0 /* libPods-weexplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5EE70660FBB62F99EA627E /* libPods-weexplus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		21C6950340ADFAC3C7AC6093 /* libPods-weexplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weexplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2665371ECD84CD00664B38 /* weexplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weexplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D26653B1ECD84CD00664B38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D26653D1ECD84CD00664B38 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D92AA141F4D5BD900493BCF /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
 		4DA5883C20F343AB007D4B5E /* Appdefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Appdefine.h; sourceTree = "<group>"; };
+		8A5EE70660FBB62F99EA627E /* libPods-weexplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weexplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76DCF182E04FBDA1655EAEA /* Pods-weexplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.debug.xcconfig"; sourceTree = "<group>"; };
 		C51BE6763BC7E197A7AE63F3 /* Pods-weexplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78159CCE310AF4A59E8B7181 /* libPods-weexplus.a in Frameworks */,
+				9BB8FC32AEECD1BE9C5CDAE0 /* libPods-weexplus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 		B002B8620A99EC0B79AA68DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				21C6950340ADFAC3C7AC6093 /* libPods-weexplus.a */,
+				8A5EE70660FBB62F99EA627E /* libPods-weexplus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,8 +114,7 @@
 				4D2665331ECD84CD00664B38 /* Sources */,
 				4D2665341ECD84CD00664B38 /* Frameworks */,
 				4D2665351ECD84CD00664B38 /* Resources */,
-				13111F5912490E2ECE0B2D1A /* [CP] Copy Pods Resources */,
-				E73DB7C9D15C0C346930B8EF /* [CP] Embed Pods Frameworks */,
+				545CCAF6E08AB0983AC01618 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,17 +182,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13111F5912490E2ECE0B2D1A /* [CP] Copy Pods Resources */ = {
+		545CCAF6E08AB0983AC01618 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh",
-				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitEmoticon.bundle",
-				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitResource.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
-				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/native-bundle-main.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-main-jsfm.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-polyfill.js",
@@ -212,10 +208,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitEmoticon.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitResource.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-main-jsfm.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-polyfill.js",
@@ -253,24 +246,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E73DB7C9D15C0C346930B8EF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-frameworks.sh",
-				"${PODS_ROOT}/NIMSDK_LITE/NIMSDK/NIMSDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIMSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

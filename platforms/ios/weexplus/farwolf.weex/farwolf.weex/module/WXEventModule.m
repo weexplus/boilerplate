@@ -42,6 +42,8 @@ WX_EXPORT_METHOD(@selector(openURL:))
         [[weakself.weexInstance.viewController navigationController] pushViewController:vc animated:YES];
         
     }];
+    
+    
 
    
    

@@ -45,6 +45,7 @@
 #import "WXPushComponent.h"
 #import "WXKeyboardModule.h"
 #import "WXDeviceInfoModule.h"
+#import "WXZoomImage.h"
 
 @implementation Weex
 
@@ -99,6 +100,7 @@
     [WXSDKEngine registerComponent:@"host" withClass:[WXHost class]];
     [WXSDKEngine registerComponent:@"looper" withClass:[WXLooperText class]];
     [WXSDKEngine registerComponent:@"drawerlayout" withClass:[WXSlidComponent class]];
+    [WXSDKEngine registerComponent:@"zoomimage" withClass:[WXZoomImage class]];
     
 //    [WXLog setLogLevel: WXLogLevelOff];
        [WXLog setLogLevel: WXLogLevelError];

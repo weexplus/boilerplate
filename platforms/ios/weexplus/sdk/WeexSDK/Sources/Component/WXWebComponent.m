@@ -165,7 +165,8 @@ WX_EXPORT_METHOD(@selector(goForward))
 - (void)setUrl:(NSString *)url
 {
     NSString* newURL = [url copy];
-    WX_REWRITE_URL(url, WXResourceTypeLink, self.weexInstance)
+    //zjr add
+//    WX_REWRITE_URL(url, WXResourceTypeLink, self.weexInstance)
     if (!newURL) {
         return;
     }

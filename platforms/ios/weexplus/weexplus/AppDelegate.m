@@ -17,8 +17,8 @@
 //#import "alipay.h"
 #import "Appdefine.h"
 #import "App.h"
-#import <WeexPluginLoader/WeexPluginLoader.h>
-#import <WeexPluginLoader/WPLMacro.h>
+//#import <WeexPluginLoader/WeexPluginLoader.h>
+//#import <WeexPluginLoader/WPLMacro.h>
 #import "WeexPlus.h"
 #import "WeexPluginManager.h"
 
