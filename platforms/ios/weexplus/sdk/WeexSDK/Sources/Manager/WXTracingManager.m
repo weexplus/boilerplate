@@ -63,7 +63,6 @@
     
     return instance;
 }
-
 //zjr add
 +(BOOL)isTracingEnable
 {
@@ -74,7 +73,6 @@
 {
     [WXTracingManager sharedInstance].traceEnable=enable;
 }
-
 - (instancetype) initPrivate{
     self = [super init];
     if(self){

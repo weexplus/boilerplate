@@ -155,7 +155,7 @@ void WXPerformBlockSyncOnComponentThread(void (^block)(void));
 /**
  * @abstract layout a component with frame output by weex core layout engine
  **/
-- (void)layoutComponent:(WXComponent*)component frame:(CGRect)frame innerMainSize:(CGFloat)innerMainSize;
+- (void)layoutComponent:(WXComponent*)component frame:(CGRect)frame isRTL:(BOOL)isRTL innerMainSize:(CGFloat)innerMainSize;
 
 /**
  * @abstract layout a component on platform side
@@ -261,5 +261,19 @@ void WXPerformBlockSyncOnComponentThread(void (^block)(void));
  must be called on component thread by calling WXPerformBlockOnComponentThread
  */
 - (void)enumerateComponentsUsingBlock:(void (^)(WXComponent *, BOOL *stop))block;
+
+#pragma mark batch mark
+
+/**
+ a start native batch tag for a group of UI operations, company with performBatchEnd
+ @see performBatchEnd
+ */
+- (void)performBatchBegin;
+
+/**
+ an end native batch tag for a group of UI operations, company with performBatchBegin
+ @see performBatchBegin
+ */
+- (void)performBatchEnd;
 
 @end

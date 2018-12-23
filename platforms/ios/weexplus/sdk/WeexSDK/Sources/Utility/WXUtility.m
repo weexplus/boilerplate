@@ -42,10 +42,9 @@
 #define KEY_PASSWORD  @"com.taobao.Weex.123456"
 #define KEY_USERNAME_PASSWORD  @"com.taobao.Weex.weex123456"
 
-static BOOL threadSafeCollectionUsingLock = YES;
 static BOOL unregisterFontWhenCollision = NO;
-static BOOL listSectionRowThreadSafe = YES;
 static BOOL useJSCApiForCreateInstance = YES;
+static BOOL enableRTLLayoutDirection = YES;
 
 void WXPerformBlockOnMainThread(void (^ _Nonnull block)(void))
 {
@@ -141,29 +140,9 @@ CGFloat WXFloorPixelValue(CGFloat value)
 
 @implementation WXUtility
 
-+ (void)setThreadSafeCollectionUsingLock:(BOOL)usingLock
-{
-    threadSafeCollectionUsingLock = usingLock;
-}
-
-+ (BOOL)threadSafeCollectionUsingLock
-{
-    return threadSafeCollectionUsingLock;
-}
-
 + (void)setUnregisterFontWhenCollision:(BOOL)value
 {
     unregisterFontWhenCollision = value;
-}
-
-+ (void)setListSectionRowThreadSafe:(BOOL)value
-{
-	listSectionRowThreadSafe = value;
-}
-
-+ (BOOL)listSectionRowThreadSafe
-{
-	return listSectionRowThreadSafe;
 }
 
 + (void)setUseJSCApiForCreateInstance:(BOOL)value
@@ -195,6 +174,18 @@ CGFloat WXFloorPixelValue(CGFloat value)
     block();
 }
 
++ (WXLayoutDirection)getEnvLayoutDirection {
+    // We not use the below technique, because your app maybe not support the first preferredLanguages
+    // _sysLayoutDirection = [NSLocale characterDirectionForLanguage:[[NSLocale preferredLanguages] objectAtIndex:0]] == NSLocaleLanguageDirectionRightToLeft ? WXLayoutDirectionRTL : WXLayoutDirectionLTR;
+    if (@available(iOS 9.0, *)) {
+        // The view is shown in right-to-left mode right now.
+        return [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:UISemanticContentAttributeUnspecified] == UIUserInterfaceLayoutDirectionRightToLeft ? WXLayoutDirectionRTL : WXLayoutDirectionLTR;
+    } else {
+        // Use the previous technique
+        return [[UIApplication sharedApplication] userInterfaceLayoutDirection] == UIUserInterfaceLayoutDirectionRightToLeft ? WXLayoutDirectionRTL : WXLayoutDirectionLTR;
+    }
+}
+
 + (NSDictionary *)getEnvironment
 {
     NSString *platform = @"iOS";
@@ -219,7 +210,8 @@ CGFloat WXFloorPixelValue(CGFloat value)
                                     @"deviceWidth":@(deviceWidth * scale),
                                     @"deviceHeight":@(deviceHeight * scale),
                                     @"scale":@(scale),
-                                    @"logLevel":[WXLog logLevelString] ?: @"error"
+                                    @"logLevel":[WXLog logLevelString] ?: @"error",
+                                    @"layoutDirection": [self getEnvLayoutDirection] == WXLayoutDirectionRTL ? @"rtl" : @"ltr"
                                 }];
     
     if ([[[UIDevice currentDevice] systemVersion] integerValue] >= 11) {
@@ -235,8 +227,9 @@ CGFloat WXFloorPixelValue(CGFloat value)
         }
     }
     
-    if ([WXSDKEngine customEnvironment]) {
-        [data addEntriesFromDictionary:[WXSDKEngine customEnvironment]];
+    NSDictionary* customEnvironment = [WXSDKEngine customEnvironment];
+    if (customEnvironment) {
+        [data addEntriesFromDictionary:customEnvironment];
     }
     
     return data;
@@ -758,6 +751,17 @@ CGFloat WXFloorPixelValue(CGFloat value)
     return defaultScaleFactor;
 }
 
+#pragma mark - RTL
+
++ (void)setEnableRTLLayoutDirection:(BOOL)value
+{
+    enableRTLLayoutDirection = value;
+}
+
++ (BOOL)enableRTLLayoutDirection
+{
+    return enableRTLLayoutDirection;
+}
 
 #pragma mark - get deviceID
 + (NSString *)getDeviceID {
@@ -843,6 +847,10 @@ CGFloat WXFloorPixelValue(CGFloat value)
 + (NSString *)md5:(NSString *)string
 {
     const char *str = string.UTF8String;
+    if (str == NULL) {
+        return nil;
+    }
+    
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(str, (CC_LONG)strlen(str), result);
     

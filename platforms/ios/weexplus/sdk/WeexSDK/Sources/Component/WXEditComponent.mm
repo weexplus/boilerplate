@@ -30,6 +30,9 @@
 #import "WXComponent+Layout.h"
 
 @interface WXEditComponent()
+{
+    CGFloat _upriseOffset; // additional space when edit is lifted by keyboard
+}
 
 //@property (nonatomic, strong) WXTextInputView *inputView;
 @property (nonatomic, strong) WXDatePickerManager *datePickerManager;
@@ -38,7 +41,7 @@
 @property (nonatomic) NSNumber *maxLength;
 @property (nonatomic) NSString * value;
 @property (nonatomic) BOOL autofocus;
-@property(nonatomic) UIReturnKeyType returnKeyType;
+@property (nonatomic) UIReturnKeyType returnKeyType;
 @property (nonatomic) BOOL disabled;
 @property (nonatomic, copy) NSString *inputType;
 @property (nonatomic) NSUInteger rows;
@@ -102,11 +105,18 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         _clickEvent = NO;
         _keyboardEvent = NO;
         _keyboardHidden = YES;
+        _textAlignForStyle = NSTextAlignmentNatural;
         // handle attributes
         _autofocus = [attributes[@"autofocus"] boolValue];
         _disabled = [attributes[@"disabled"] boolValue];
         _value = [WXConvert NSString:attributes[@"value"]]?:@"";
         _placeholderString = [WXConvert NSString:attributes[@"placeholder"]]?:@"";
+        _upriseOffset = 20; // 20 for better appearance
+        
+        if (attributes[@"upriseOffset"]) {
+            _upriseOffset = [WXConvert CGFloat:attributes[@"upriseOffset"]];
+        }
+        
         if(attributes[@"type"]) {
             _inputType = [WXConvert NSString:attributes[@"type"]];
             _attr = attributes;
@@ -176,7 +186,7 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
     [self setAutofocus:_autofocus];
     [self setTextFont];
     [self setPlaceholderAttributedString];
-    [self setTextAlignment:_textAlignForStyle];
+    [self setTextAlignment];
     [self setTextColor:_colorForStyle];
     [self setText:_value];
     [self setEnabled:!_disabled];
@@ -190,8 +200,7 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
         toolbar.items = [NSArray arrayWithObjects:space, barButton, nil];
         
-        //zjr add
-//        self.inputAccessoryView = toolbar;
+        self.inputAccessoryView = toolbar;
     }
 
     [self handlePseudoClass];
@@ -213,6 +222,10 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)layoutDirectionDidChanged:(BOOL)isRTL {
+    [self setTextAlignment];
 }
 
 -(void)focus
@@ -288,6 +301,14 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
 
 -(void)setTextColor:(UIColor *)color
 {
+}
+
+- (void)setTextAlignment {
+    if ([self isDirectionRTL] && _textAlignForStyle == NSTextAlignmentNatural) {
+        [self setTextAlignment:NSTextAlignmentRight];
+    } else {
+        [self setTextAlignment:_textAlignForStyle];
+    }
 }
 
 -(void)setTextAlignment:(NSTextAlignment)textAlignForStyle
@@ -448,6 +469,9 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         _rows = 2;
         [self setRows:_rows];
     }
+    if (attributes[@"upriseOffset"]) {
+        _upriseOffset = [WXConvert CGFloat:attributes[@"upriseOffset"]];
+    }
 }
 
 #pragma mark - upate styles
@@ -601,21 +625,6 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
             return NO;
         }
     }
-
-    if (_maxLength) {
-        NSUInteger oldLength = [textField.text length];
-        NSUInteger replacementLength = [string length];
-        NSUInteger rangeLength = range.length;
-        
-        NSUInteger newLength = oldLength - rangeLength + replacementLength;
-        if (newLength <= oldLength) {
-            // deleting, we should allow delete
-            return YES;
-        }
-        
-        return newLength <= [_maxLength integerValue] ;
-    }
-    
     return YES;
 }
 
@@ -670,7 +679,6 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         } else {
             textField.text = [newString copy];
             UITextPosition * newPosition = [textField positionFromPosition:textField.beginningOfDocument offset:cursorPosition+adjust];
-            
             textField.selectedTextRange = [textField textRangeFromPosition:newPosition toPosition:newPosition];
         }
 
@@ -678,6 +686,24 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
     if (_inputEvent) {
         // bind each other , the key must be attrs
         [self fireEvent:@"input" params:@{@"value":[textField text]} domChanges:@{@"attrs":@{@"value":[textField text]}}];
+    }
+    
+    if (_maxLength) {
+        NSString *toBeString = textField.text;
+        NSString *language = [[UIApplication sharedApplication] textInputMode].primaryLanguage;
+        if ([language isEqualToString:@"zh-Hans"]) {
+            UITextRange *selectedRange = [textField markedTextRange];
+            UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+            if (!position) {
+                if (toBeString.length > _maxLength.integerValue) {
+                    textField.text = [toBeString substringToIndex:_maxLength.integerValue];
+                }
+            }
+        } else {
+            if (toBeString.length > _maxLength.integerValue) {
+                textField.text = [toBeString substringToIndex:_maxLength.integerValue];
+            }
+        }
     }
 }
 
@@ -688,7 +714,7 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
     CGRect rootViewFrame = rootView.frame;
     CGRect inputFrame = [self.view.superview convertRect:self.view.frame toView:rootView];
     if (movedUp) {
-        CGFloat offset = inputFrame.origin.y-(rootViewFrame.size.height-_keyboardSize.height-inputFrame.size.height) + 20;
+        CGFloat offset = inputFrame.origin.y-(rootViewFrame.size.height-_keyboardSize.height-inputFrame.size.height) + _upriseOffset;
         if (offset > 0) {
             rect = (CGRect){
                 .origin.x = 0.f,
@@ -918,8 +944,7 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         };
         CGRect inputFrame = [self.view.superview convertRect:self.view.frame toView:rootView];
         if (keyboardRect.origin.y - inputFrame.size.height <= inputFrame.origin.y) {
-            //zjr 修改
-            //[self setViewMovedUp:YES];
+            [self setViewMovedUp:YES];
             self.weexInstance.isRootViewFrozen = YES;
         }
     }

@@ -81,6 +81,13 @@ do {\
     }\
 }while(0)
 
+#define WXPointEqualToPoint __WXPointEqualToPoint
+CG_INLINE bool
+__WXPointEqualToPoint(CGPoint point1, CGPoint point2)
+{
+    return fabs (point1.x - point2.x) < 0.00001 && fabs (point1.y - point2.y) < 0.00001;
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -130,6 +137,8 @@ _Nonnull SEL WXSwizzledSelectorForSelector(_Nonnull SEL selector);
 + (NSDictionary *_Nonnull)getEnvironment;
 
 + (NSDictionary *_Nonnull)getDebugEnvironment;
+
++ (WXLayoutDirection)getEnvLayoutDirection;
 
 /**
  * @abstract UserAgent Generation
@@ -483,19 +492,15 @@ BOOL WXFloatGreaterThanWithPrecision(CGFloat a,CGFloat b,double precision);
  */
 + (NSData *_Nonnull)base64DictToData:(NSDictionary *_Nullable)base64Dict;
 
-+ (void)setThreadSafeCollectionUsingLock:(BOOL)usingLock;
-
-+ (BOOL)threadSafeCollectionUsingLock;
-
 + (void)setUnregisterFontWhenCollision:(BOOL)value;
-
-+ (void)setListSectionRowThreadSafe:(BOOL)value;
 
 + (void)setUseJSCApiForCreateInstance:(BOOL)value;
 
 + (BOOL)useJSCApiForCreateInstance;
 
-+ (BOOL)listSectionRowThreadSafe;
++ (void)setEnableRTLLayoutDirection:(BOOL)value;
+
++ (BOOL)enableRTLLayoutDirection;
 
 + (long) getUnixFixTimeMillis;
 

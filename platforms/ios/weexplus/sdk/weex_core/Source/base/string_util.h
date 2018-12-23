@@ -21,11 +21,11 @@
 #define CORE_BASE_STRING_UTIL_H
 
 #include <sstream>
-#include <string>
+#include <string.h>
 #ifdef OS_ANDROID
 #include <malloc.h>
 #else
-#include <malloc/malloc.h>
+#include <stdlib.h>
 #endif
 #include "base/third_party/icu/icu_utf.h"
 
@@ -86,6 +86,35 @@ inline static std::string to_utf8(uint16_t* utf16, size_t length) {
   free(dest);
   return output;
 }
+
+#ifdef OS_ANDROID
+static std::u16string to_utf16(char* utf8, size_t length) {
+  std::u16string dest_str;
+  dest_str.resize(length);
+  auto* dest = &dest_str[0];
+  int32_t dest_len = 0;
+
+  bool success = true;
+
+  for (int32_t i = 0; i < length;) {
+    int32_t code_point;
+    CBU8_NEXT(utf8, i, static_cast<int32_t>(length), code_point);
+
+    if (!IsValidCodepoint(code_point)) {
+      success = false;
+      code_point = kErrorCodePoint;
+    }
+
+    CBU16_APPEND_UNSAFE(dest, dest_len, code_point);
+  }
+  if (!success) {
+    return std::u16string();
+  }
+  dest_str.resize(dest_len);
+  dest_str.shrink_to_fit();
+  return dest_str;
+}
+#endif
 
 }  // namespace base
 }  // namespace weex

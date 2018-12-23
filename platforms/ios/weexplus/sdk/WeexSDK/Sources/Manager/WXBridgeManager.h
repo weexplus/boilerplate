@@ -23,7 +23,14 @@
 @class WXBridgeMethod;
 @class WXSDKInstance;
 
-extern void WXPerformBlockOnBridgeThread(void (^block)(void));
+#ifdef __cplusplus
+extern "C" {
+#endif
+    void WXPerformBlockOnBridgeThread(void (^block)(void));
+    void WXPerformBlockSyncOnBridgeThread(void (^block) (void));
+#ifdef __cplusplus
+}
+#endif
 
 @interface WXBridgeManager : NSObject
 
@@ -31,6 +38,18 @@ extern void WXPerformBlockOnBridgeThread(void (^block)(void));
  *  return instance at the top of the stack.
  **/
 @property (nonatomic, weak, readonly) WXSDKInstance *topInstance;
+
+/**
+ *  Create Instance Method
+ *  @param instance  :   instance id
+ *  @param temp  :   template data
+ *  @param options   :   parameters
+ *  @param data      :   external data
+ **/
+- (void)createInstanceForJS:(NSString *)instance
+              template:(NSString *)temp
+               options:(NSDictionary *)options
+                  data:(id)data;
 
 /**
  *  Create Instance Method
@@ -98,12 +117,19 @@ extern void WXPerformBlockOnBridgeThread(void (^block)(void));
 - (void)executeJsFramework:(NSString *)script;
 
 /**
+ + *  download JS Script
+ + *  @param scriptUrl    :   script url
+ + **/
+- (void)DownloadJS:(NSURL *)scriptUrl completion:(void (^)(NSString *script))complection;
+
+/**
  *  Register JS service Script
  *  @param name      :   service name
  *  @param serviceScript    :   script code
  *  @param options   :   service options
+ *  @param completion : completion callback
  **/
-- (void)registerService:(NSString *)name withService:(NSString *)serviceScript withOptions:(NSDictionary *)options;
+- (void)registerService:(NSString *)name withService:(NSString *)serviceScript withOptions:(NSDictionary *)options completion:(void(^)(BOOL result))completion;
 
 
 /**
@@ -111,9 +137,9 @@ extern void WXPerformBlockOnBridgeThread(void (^block)(void));
  *  @param name         :   service name
  *  @param serviceScriptUrl    :   script url
  *  @param options      :   service options
+ *  @param completion : completion callback
  **/
-
--(void)registerService:(NSString *)name withServiceUrl:(NSURL *)serviceScriptUrl withOptions:(NSDictionary *)options;
+-(void)registerService:(NSString *)name withServiceUrl:(NSURL *)serviceScriptUrl withOptions:(NSDictionary *)options completion:(void(^)(BOOL result))completion;
 
 /**
  *  Unregister JS service Script
@@ -208,5 +234,7 @@ extern void WXPerformBlockOnBridgeThread(void (^block)(void));
 
 - (void)fireEvent:(NSString *)instanceId ref:(NSString *)ref type:(NSString *)type params:(NSDictionary *)params DEPRECATED_MSG_ATTRIBUTE("Use fireEvent:ref:type:params:domChanges: method instead.");
 - (void)executeJsMethod:(WXBridgeMethod *)method DEPRECATED_MSG_ATTRIBUTE();
+
+- (void)callJSMethod:(NSString *)method args:(NSArray *)args;
 
 @end

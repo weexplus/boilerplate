@@ -23,6 +23,7 @@
 
 
 #include "flex_enum.h"
+#include <math.h>
 #include <cmath>
 
 namespace WeexCore {
@@ -200,6 +201,7 @@ namespace WeexCore {
     WXCoreAlignSelf mAlignSelf;
 
     WXCorePositionType mPositionType;
+      
 
     float mFlexGrow;
 
@@ -226,8 +228,12 @@ namespace WeexCore {
     WXCoreBorderWidth mBorderWidth;
 
     WXCorePosition mStylePosition;
+    
+    WXCoreDirection mDirection;
 
     constexpr static float kFlexGrowDefault  = 0;
+      
+    constexpr static WXCoreDirection kDirectionDefault = kDirectionLTR;
 
     constexpr static WXCoreFlexDirection kFlexDirectionDefault= kFlexDirectionColumn;
 
@@ -241,7 +247,8 @@ namespace WeexCore {
 
     constexpr static WXCorePositionType kWXCorePositionTypeDefault = kRelative;
 
-    WXCoreCSSStyle() : mFlexDirection(kFlexDirectionDefault),
+    WXCoreCSSStyle() :
+                       mFlexDirection(kFlexDirectionDefault),
                        mFlexWrap(kFlexWrapDefault),
                        mJustifyContent(kFlexJustifyContentDefault),
                        mAlignItems(kFlexAlignItemsDefault),
@@ -251,7 +258,8 @@ namespace WeexCore {
                        mStyleWidth(NAN), mStyleHeight(NAN),
                        mStyleHeightLevel(FALLBACK_STYLE), mStyleWidthLevel(FALLBACK_STYLE),
                        mMaxWidth(NAN), mMaxHeight(NAN),
-                       mMinWidth(NAN), mMinHeight(NAN) {
+                       mMinWidth(NAN), mMinHeight(NAN),
+                       mDirection(kDirectionInherit) {
 
     }
 
@@ -270,6 +278,7 @@ namespace WeexCore {
       mMaxHeight = NAN;
       mMinWidth = NAN;
       mMinHeight = NAN;
+      mDirection = kDirectionInherit;
     }
 
     inline float sumPaddingBorderOfEdge(const WXCoreEdge edge){

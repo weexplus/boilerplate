@@ -49,6 +49,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+
 import static com.taobao.weex.utils.WXFileUtils.loadAsset;
 
 @Component(lazyload = false)
@@ -66,7 +67,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
   public static final String ITEM_ID = "itemId";
 
   private String src;
-  private WXSDKInstance mNestedInstance;
+  protected WXSDKInstance mNestedInstance;
   private static int ERROR_IMG_WIDTH = (int) WXViewUtils.getRealPxByWidth(270,750);
   private static int ERROR_IMG_HEIGHT = (int) WXViewUtils.getRealPxByWidth(260,750);
 
@@ -161,14 +162,15 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
     }
   }
-  public void onRenderFinish(){
-
-  }
 
   //zjr add
   public WXSDKInstance getChildInstance()
   {
     return mNestedInstance;
+  }
+  //zjr add
+  public void onRenderFinish(){
+
   }
   static class EmbedRenderListener implements IWXRenderListener {
     WXEmbed mComponent;
@@ -188,6 +190,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
       mComponent.onRenderFinish();
     }
 
+
     @Override
     public void onRenderSuccess(WXSDKInstance instance, int width, int height) {
 
@@ -200,10 +203,6 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
     @Override
     public void onException(WXSDKInstance instance, String errCode, String msg) {
-        if (null != instance){
-            //degrade or reload,should not report
-            instance.getExceptionRecorder().hasDegrade.set(true);
-        }
       if (mEventListener != null) {
         mEventListener.onException(mComponent, errCode, msg);
       }
@@ -326,6 +325,9 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
    * Load embed content, default behavior is create a nested instance.
    */
   protected void loadContent(){
+    if(mNestedInstance != null){
+      mNestedInstance.destroy();
+    }
     mNestedInstance = createInstance();
     if(mListener != null && mListener.mEventListener != null){
       if(!mListener.mEventListener.onPreCreate(this,src)){
@@ -351,7 +353,11 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
   private WXSDKInstance createInstance() {
     WXSDKInstance sdkInstance = getInstance().createNestedInstance(this);
-    getInstance().addOnInstanceVisibleListener(this);
+
+    boolean needsAdd = !getAttrs().containsKey("disableInstanceVisibleListener");
+    if(needsAdd){ //prevent switch off fire viewappear event twice
+        getInstance().addOnInstanceVisibleListener(this);
+    }
     sdkInstance.registerRenderListener(mListener);
     mInstanceOnScrollFireEventInterceptor.resetFirstLaterScroller();;
     sdkInstance.addInstanceOnFireEventInterceptor(mInstanceOnScrollFireEventInterceptor);
@@ -381,9 +387,10 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 //            null, null,
 //            WXRenderStrategy.APPEND_ASYNC);
     this.loadUrl(url,sdkInstance,layoutParams);
-    return sdkInstance;
 
+    return sdkInstance;
   }
+
 
   //zjr add
   public void loadUrl(String url,WXSDKInstance instance,ViewGroup.LayoutParams layoutParams)

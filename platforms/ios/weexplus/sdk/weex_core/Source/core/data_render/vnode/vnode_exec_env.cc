@@ -17,8 +17,8 @@
  * under the License.
  */
 
-#include "core/data_render/vnode/vnode_exec_env.h"
 #include <sstream>
+#include "core/data_render/vnode/vnode_exec_env.h"
 #include "core/data_render/object.h"
 #include "core/data_render/table.h"
 #include "core/data_render/class_factory.h"
@@ -29,48 +29,15 @@
 #include "core/data_render/js_common_function.h"
 #include "core/data_render/vnode/vcomponent.h"
 #include "core/data_render/vnode/vnode_render_manager.h"
-#include <base/LogDefines.h>
+#include "core/data_render/vnode/vcomponent_lifecycle_listener.h"
+#include "core/data_render/vnode/vnode_on_event_listener.h"
+#include "base/LogDefines.h"
 
 namespace weex {
 namespace core {
 namespace data_render {
 
 json11::Json ValueToJSON(const Value& value);
-
-static Value Log(ExecState *exec_state) {
-  size_t length = exec_state->GetArgumentCount();
-  std::stringstream ss;
-  for (int i = 0; i < length; ++i) {
-    Value *a = exec_state->GetArgument(i);
-    switch (a->type) {
-      case Value::Type::NUMBER:
-        ss << "[log]:=>" << a->n << "\n";
-        break;
-      case Value::Type::INT:
-        ss << "[log]:=>" << a->i << "\n";
-        break;
-      case Value::Type::STRING:
-        ss << "[log]:=>" << a->str->c_str() << "\n";
-        break;
-      case Value::Type::TABLE:
-        ss << "[log]:=>" << TableToString(ValueTo<Table>(a)) << "\n";
-        break;
-      case Value::Type::ARRAY:
-        ss << "[log]:=>" << ArrayToString(ValueTo<Array>(a)) << "\n";
-        break;
-      case Value::Type::CPTR:
-      {
-          VNode *node = (VNode *)a->cptr;
-          ss << "[log]:=> cptr" << node->tag_name() <<"\n";
-          break;
-      }
-      default:
-        break;
-    }
-  }
-  LOGD("%s",ss.str().c_str());
-  return Value();
-}
 
 static Value SizeOf(ExecState *exec_state) {
     size_t length = exec_state->GetArgumentCount();
@@ -93,7 +60,11 @@ static Value Merge(ExecState *exec_state) {
     }
     Value *lhs = exec_state->GetArgument(0);
     Value *rhs = exec_state->GetArgument(1);
-    if (!IsTable(lhs) && !IsTable(rhs)) {
+    if (IsTable(lhs) && IsNil(rhs)) {
+        return *lhs;
+    } else if (IsNil(lhs) && IsTable(rhs)) {
+        return *rhs;
+    } else if (!IsTable(lhs) && !IsTable(rhs)) {
         return Value();
     }
     Value new_value = exec_state->class_factory()->CreateTable();
@@ -179,6 +150,27 @@ static Value CallNativeModule(ExecState *exec_state) {
     return Value();
 }
     
+static Value RequireModule(ExecState *exec_state) {
+    do {
+        if (!exec_state->GetArgumentCount()) {
+            break;
+        }
+        Value *arg = exec_state->GetArgument(0);
+        if (!IsString(arg)) {
+            break;
+        }
+        std::string module_name = CStringValue(arg);
+        std::string module_info;
+        if (!weex::core::data_render::VNodeRenderManager::GetInstance()->RequireModule(exec_state, module_name, module_info)) {
+            break;
+        }
+        return StringToValue(exec_state, module_info);
+        
+    } while (0);
+    
+    return Value();
+}
+    
 static Value RegisterModules(ExecState *exec_state) {
     do {
         if (!exec_state->GetArgumentCount()) {
@@ -241,71 +233,50 @@ static Value AppendUrlParam(ExecState *exec_state) {
 }
 
 // saveComponentDataAndProps(component, data, props);
-static Value SaveComponentDataAndProps(ExecState* exec_state) {
+static Value saveComponentPropsAndData(ExecState *exec_state) {
   VComponent *component = exec_state->GetArgument(0)->type == Value::Type::NIL ?
                     nullptr : reinterpret_cast<VComponent *>(exec_state->GetArgument(0)->cptr);
-  Value *data = exec_state->GetArgument(1);
-  Value *props = exec_state->GetArgument(2);
+  Value *props = exec_state->GetArgument(1);
+  Value *data = exec_state->GetArgument(2);
   if (component) {
-      component->set_data(ValueTo<Table>(data));
-      component->set_props(ValueTo<Table>(props));
+      component->SetData(data);
+      component->SetProps(props);
   }
   return Value();
 }
 
-// appendChildComponent(parent, child);
-static Value AppendChildComponent(ExecState* exec_state) {
-  VNode *parent = exec_state->GetArgument(0)->type == Value::Type::NIL ?
-                    nullptr : reinterpret_cast<VNode *>(exec_state->GetArgument(0)->cptr);
-  VNode *child = reinterpret_cast<VNode *>(exec_state->GetArgument(1)->cptr);
-  if (parent && child) {
-      static_cast<VComponent *>(parent)->AppendChildComponent(static_cast<VComponent *>(child));
+// setComponentRoot(component, node);
+static Value SetComponentRoot(ExecState* exec_state) {
+  VComponent *component = exec_state->GetArgument(0)->type == Value::Type::NIL ?
+                    nullptr : reinterpret_cast<VComponent *>(exec_state->GetArgument(0)->cptr);
+  VNode* node = exec_state->GetArgument(1)->type == Value::Type::NIL ?
+                nullptr : reinterpret_cast<VNode *>(exec_state->GetArgument(1)->cptr);
+  if (component && node) {
+      component->SetRootNode(node);
   }
   return Value();
 }
 
-// createComponent(template_id, "template_name", "tag_name", "id", ref);
+// createComponent(template_id, "template_name", func_name);
 static Value CreateComponent(ExecState* exec_state) {
   int template_id = 0;
-  if (exec_state->GetArgument(0)->type == Value::Type::NUMBER) {
+  if (exec_state->GetArgument(0)->type == Value::Type::INT) {
     template_id = static_cast<int>(exec_state->GetArgument(0)->i);
   }
   auto template_name = exec_state->GetArgument(1)->str;
-  Value* arg_node_id = exec_state->GetArgument(3);
-  std::string node_id;
-  if (IsString(arg_node_id)) {
-    node_id = CStringValue(arg_node_id);
-  } else if (IsInt(arg_node_id)) {
-    std::ostringstream os;
-    os << IntValue(arg_node_id);
-    node_id = "vn_" + os.str();
-  } else {
-    throw VMExecError("CreateElement only support int for string");
-  }
-  std::string tag_name = exec_state->GetArgument(2)->str->c_str();
-  std::string ref = "";
-  if (exec_state->GetArgumentCount() > 4 &&
-      exec_state->GetArgument(4)->type == Value::Type::STRING) {
-    ref = exec_state->GetArgument(4)->str->c_str();
-  }
-  LOGD("[VM][VNode][CreateDocument]: %s  %s\n", node_id.c_str(), tag_name.c_str());
-  VComponent* component = NULL;
-  if (tag_name == "root") {
-    component = new VComponent(exec_state, template_id, template_name->c_str(),
-                               "div", node_id, ref);
-    if (exec_state->context()->root() == nullptr) {
-      exec_state->context()->set_root(component);
-    }
-  } else {
-    component = new VComponent(exec_state, template_id, template_name->c_str(),
-                               tag_name, node_id, ref);
-  }
-  if (exec_state->context()->root() == nullptr) {
-    exec_state->context()->set_root(component);
-  }
+  auto func_name = exec_state->GetArgument(2)->str;
+  VComponent* component = new VComponent(
+      exec_state, template_id, template_name->c_str(), func_name->c_str());
   Value result;
   result.type = Value::Type::CPTR;
   result.cptr = component;
+  if (exec_state->context()->root() == nullptr) {
+    exec_state->context()->set_root(component);
+  }
+  component->set_life_cycle_listener(
+      std::unique_ptr<VComponent::LifecycleListener>(
+          new VComponentLifecycleListener));
+  exec_state->context()->AddComponent(component->id(), component);
   return result;
 }
     
@@ -327,8 +298,6 @@ static Value UpdateElement(ExecState *exec_state) {
     
     return Value();
 }
-    
-static size_t g_node_id = 0;
 
 // createElement("tag_name", "id", ref);
 static Value CreateElement(ExecState *exec_state) {
@@ -347,10 +316,7 @@ static Value CreateElement(ExecState *exec_state) {
         throw VMExecError("CreateElement only support int for string");
     }
     std::string node_id,ref;
-    std::ostringstream os;
-    os << g_node_id++;
-    node_id = "vn_" + os.str();
-    ref = arg_id_str;
+    node_id = arg_id_str;
     if (exec_state->GetArgumentCount() > 2 && exec_state->GetArgument(2)->type == Value::Type::STRING) {
         ref = exec_state->GetArgument(2)->str->c_str();
     }
@@ -467,12 +433,12 @@ static Value SetProps(ExecState *exec_state) {
                             }
                             case Value::INT:
                             {
-                                node->SetStyle(iter_style->first, to_string(iter_style->second.i));
+                                node->SetStyle(iter_style->first, base::to_string(iter_style->second.i));
                                 break;
                             }
                             case Value::NUMBER:
                             {
-                                node->SetStyle(iter_style->first, to_string(iter_style->second.n));
+                                node->SetStyle(iter_style->first, base::to_string(iter_style->second.n));
                                 break;
                             }
                             default:
@@ -491,7 +457,7 @@ static Value SetProps(ExecState *exec_state) {
                     }
                     case Value::INT:
                     {
-                        node->SetAttribute(iter->first, to_string(iter->second.i));
+                        node->SetAttribute(iter->first, base::to_string(iter->second.i));
                         break;
                     }
                     case Value::FUNC:
@@ -506,16 +472,28 @@ static Value SetProps(ExecState *exec_state) {
                         node->AddEvent(event, func_state, func_state->class_inst());
                         break;
                     }
+                    case Value::FUNC_INST:
+                    {
+                        std::string::size_type pos = iter->first.find("on");
+                        if (pos != 0) {
+                            throw VMExecError("AddEvent isn't a function");
+                        }
+                        std::string event = iter->first.substr(pos + 2);
+                        transform(event.begin(), event.end(), event.begin(), ::tolower);
+                        FuncInstance *func_inst = ValueTo<FuncInstance>(&iter->second);
+                        FuncState *func_state = func_inst->func_;
+                        node->AddEvent(event, func_inst, func_state->class_inst());
+                        break;
+                    }
                     case Value::NUMBER:
                     {
-                        node->SetStyle(iter->first, to_string(iter->second.n));
+                        node->SetStyle(iter->first, base::to_string(iter->second.n));
                         break;
                     }
                     default:
                         LOGE("can't support type:%i\n", iter->second.type);
                         break;
                 }
-
             }
         }
     }
@@ -547,10 +525,7 @@ static Value SetClassList(ExecState* exec_state) {
 }
 
 // setStyle(node, key, value);
-static Value SetStyle(ExecState* exec_state) {
-  VNode* node = reinterpret_cast<VNode*>(exec_state->GetArgument(0)->cptr);
-  Value* key = exec_state->GetArgument(1);
-  Value* value = exec_state->GetArgument(2);
+inline static Value SetStyle(VNode *node, Value *key, Value *value) {
   if (node == nullptr || key->type != Value::Type::STRING ||
       value->type == Value::Type::NIL) {
     return Value();
@@ -559,8 +534,55 @@ static Value SetStyle(ExecState* exec_state) {
   return Value();
 }
 
-void VNodeExecEnv::InitCFuncEnv(ExecState *state) {
-    state->Register("log", Log);
+// setStyle(node, style);
+inline static Value SetStyle(VNode *node, Value *style) {
+  if (node == nullptr || style->type != Value::Type::TABLE) {
+    return Value();
+  }
+  auto style_map = ValueTo<Table>(style)->map;
+  for (auto it = style_map.begin(); it != style_map.end(); it++) {
+    node->SetStyle(it->first, ToString(&it->second));
+  }
+  return Value();
+}
+
+// setStyle(node, key, value);
+// or
+// setStyle(node, style);
+static Value SetStyle(ExecState *exec_state) {
+  VNode *node = reinterpret_cast<VNode *>(exec_state->GetArgument(0)->cptr);
+  auto length = exec_state->GetArgumentCount();
+  if (length == 3) {
+    Value *key = exec_state->GetArgument(1);
+    Value *value = exec_state->GetArgument(2);
+    SetStyle(node, key, value);
+  } else if (length == 2) {
+    Value *style = exec_state->GetArgument(1);
+    SetStyle(node, style);
+  }
+  return Value();
+}
+
+// addEvent(node, event, value);
+static Value AddEvent(ExecState* exec_state) {
+  VNode* node = reinterpret_cast<VNode*>(exec_state->GetArgument(0)->cptr);
+  Value *event = exec_state->GetArgument(1);
+  size_t argc = exec_state->GetArgumentCount() - 2;
+  std::vector<Value> args;
+  for (uint i = 0; i < argc; i++) {
+    Value *params = exec_state->GetArgument(2 + i);
+    args.push_back(*params);
+  }
+  if (node == nullptr || event->type != Value::Type::STRING) {
+    return Value();
+  }
+  node->AddEvent(event->str->c_str(), args);
+  node->set_on_event_listener(
+      std::unique_ptr<VNodeOnEventListener>(new VNodeOnEventListener));
+  return Value();
+}
+
+void VNodeExecEnv::ImportExecEnv(ExecState *state) {
     state->Register("sizeof", SizeOf);
     state->Register("slice", Slice);
     state->Register("appendUrlParam", AppendUrlParam);
@@ -569,20 +591,29 @@ void VNodeExecEnv::InitCFuncEnv(ExecState *state) {
     state->Register("createElement", CreateElement);
     state->Register("updateElement", UpdateElement);
     state->Register("createComponent", CreateComponent);
-    state->Register("saveComponentDataAndProps", SaveComponentDataAndProps);
-    state->Register("appendChildComponent", AppendChildComponent);
+    state->Register("saveComponentPropsAndData", saveComponentPropsAndData);
+    state->Register("setComponentRoot", SetComponentRoot);
     state->Register("appendChild", AppendChild);
     state->Register("encodeURIComponent", encodeURIComponent);
+    state->Register("encodeURI", encodeURIComponent);
     state->Register("setAttr", SetAttr);
     state->Register("setProps", SetProps);
     state->Register("setClassList", SetClassList);
     state->Register("setStyle", SetStyle);
+    state->Register("addEvent", AddEvent);
     state->Register("__callNativeModule", CallNativeModule);
+    // __registerModules deprecated in sversion 5.8 +
     state->Register("__registerModules", RegisterModules);
+    // __requireModule supporting in sversion 5.8 +
+    state->Register("__requireModule", RequireModule);
     state->Register("Array", state->class_factory()->ClassArray());
     state->Register("String", state->class_factory()->ClassString());
     state->Register("JSON", state->class_factory()->ClassJSON());
     state->Register("Object", state->class_factory()->ClassObject());
+    state->Register("RegExp", state->class_factory()->ClassRegExp());
+    state->Register("window", state->class_factory()->ClassWindow());
+    state->Register("Math", state->class_factory()->ClassMath());
+    state->Register("console", state->class_factory()->ClassConsole());
     RegisterJSCommonFunction(state);
 }
 
@@ -656,20 +687,34 @@ json11::Json ValueToJSON(const Value& value) {
     return json11::Json(object);
 }
 
-void VNodeExecEnv::InitGlobalValue(ExecState* state) {
+void VNodeExecEnv::ParseData(ExecState* state) {
   const json11::Json& json = state->context()->raw_json();
   Variables* global = state->global();
-  const json11::Json& data = json["data"];
-  Value value = JSONToValue(state, data);
-  if (value.type != Value::Type::TABLE) {
-    value = state->class_factory()->CreateTable();
-  }
-  global->Add("_data_main", value);
 
   // Set component data and props
   Value components_data = state->class_factory()->CreateTable();
   Value components_props = state->class_factory()->CreateTable();
-  const json11::Json& components_obj = json["components"];
+  Value components_computed = state->class_factory()->CreateTable();
+
+  // main means body
+  Value key(state->string_table()->StringFromUTF8("main"));
+  auto main_data = JSONToValue(state, json["data"]);
+  if (main_data.type != Value::Type::TABLE) {
+      main_data = state->class_factory()->CreateTable();
+  }
+  SetTableValue(ValueTo<Table>(&components_data), &key, main_data);
+  auto main_props = JSONToValue(state, json["props"]);
+  if (main_props.type != Value::Type::TABLE) {
+      main_props = state->class_factory()->CreateTable();
+  }
+  SetTableValue(ValueTo<Table>(&components_props), &key, main_props);
+  auto main_computed = JSONToValue(state, json["computed"]);
+  if (main_computed.type != Value::Type::TABLE) {
+      main_computed = state->class_factory()->CreateTable();
+  }
+  SetTableValue(ValueTo<Table>(&components_computed), &key, main_computed);
+
+  const json11::Json &components_obj = json["components"];
   if (components_obj.is_array()) {
     for (auto it = components_obj.array_items().begin();
          it != components_obj.array_items().end(); it++) {
@@ -678,17 +723,26 @@ void VNodeExecEnv::InitGlobalValue(ExecState* state) {
         continue;
       }
       auto temp_data = JSONToValue(state, (*it)["data"]);
+      if (temp_data.type != Value::Type::TABLE) {
+          temp_data = state->class_factory()->CreateTable();
+      }
       Value key(state->string_table()->StringFromUTF8(name.string_value()));
       SetTableValue(ValueTo<Table>(&components_data), &key, temp_data);
       auto temp_props = JSONToValue(state, (*it)["props"]);
+        if (temp_props.type != Value::Type::TABLE) {
+            temp_props = state->class_factory()->CreateTable();
+        }
       SetTableValue(ValueTo<Table>(&components_props), &key, temp_props);
+      auto temp_computed = JSONToValue(state, (*it)["computed"]);
+      SetTableValue(ValueTo<Table>(&components_computed), &key, temp_computed);
     }
   }
   global->Add("_components_data", components_data);
   global->Add("_components_props", components_props);
+  global->Add("_components_computed", components_computed);
 }
 
-void VNodeExecEnv::InitInitDataValue(ExecState *state, const std::string& init_data_str) {
+void VNodeExecEnv::ImportExecData(ExecState *state, const std::string& init_data_str) {
   std::string err;
   const json11::Json& json = json11::Json::parse(init_data_str, err);
   if (!err.empty()) {
@@ -715,7 +769,7 @@ void AddStyles(ExecState* state, const std::string& prefix, const json11::Json& 
   }
 }
 
-void VNodeExecEnv::InitStyleList(ExecState* state) {
+void VNodeExecEnv::ParseStyle(ExecState *state) {
   json11::Json& json = state->context()->raw_json();
   //body styles
 
@@ -735,14 +789,19 @@ void VNodeExecEnv::InitStyleList(ExecState* state) {
   }
 
 }
-    
+
+void VNodeExecEnv::ParseScript(ExecState *state) {
+    json11::Json& json = state->context()->raw_json();
+    const json11::Json& script_array = json["script"];
+    state->context()->set_script_json(script_array);
+}
+
 Value StringToValue(ExecState *exec_state,const std::string &str) {
     Value ret;
     do {
         std::string err;
         json11::Json json = json11::Json::parse(str, err);
         if (!err.empty() || json.is_null()) {
-            ret = exec_state->string_table()->StringFromUTF8(str);
             break;
         }
         ret = JSONToValue(exec_state, json);

@@ -19,8 +19,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#ifndef _TEST_H_
-#define _TEST_H_
+
+typedef NS_ENUM(NSUInteger, WXLayoutDirection) {
+    WXLayoutDirectionLTR,
+    WXLayoutDirectionRTL,
+    WXLayoutDirectionAuto,
+};
+
 typedef NS_ENUM(NSUInteger, WXComponentType) {
     WXComponentTypeCommon = 0,
     WXComponentTypeVirtual
@@ -83,4 +88,3 @@ typedef NS_ENUM(NSInteger, WXGradientType) {
     WXGradientTypeToTopleft,
     WXGradientTypeToBottomright,
 };
-#endif

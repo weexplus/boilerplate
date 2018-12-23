@@ -53,6 +53,8 @@ class WeexJSResult{
 public:
     std::unique_ptr<char[]> data;
     int length = 0;
+    WeexJSResult() : data(nullptr), length(0) {}
+    WeexJSResult(std::unique_ptr<char[]> d, int l) : data(std::move(d)), length(l) {}
 };
 
 typedef struct InitFrameworkParams {
@@ -146,8 +148,13 @@ typedef void (*FuncCallHandlePostMessage)(const char *vimId, const char *data, i
 typedef void
 (*FuncCallDIspatchMessage)(const char *clientId, const char *data, int dataLength, const char *callback, const char *vmId);
 
+typedef std::unique_ptr<WeexJSResult> (*FuncCallDispatchMessageSync)(
+    const char *clientId, const char *data, int dataLength, const char *vmId);
+
 typedef void
 (*FuncOnReceivedResult)(long callback_id, std::unique_ptr<WeexJSResult>& result);
+typedef void
+(*FuncUpdateComponentData)(const char* page_id, const char* cid, const char* json_data);
 
 
 typedef struct FunctionsExposedByCore {
@@ -175,7 +182,9 @@ typedef struct FunctionsExposedByCore {
     FuncT3dLinkNative funcT3dLinkNative;
     FuncCallHandlePostMessage funcCallHandlePostMessage;
     FuncCallDIspatchMessage funcCallDIspatchMessage;
+    FuncCallDispatchMessageSync funcCallDispatchMessageSync;
     FuncOnReceivedResult  funcOnReceivedResult;
+    FuncUpdateComponentData funcUpdateComponentData;
 } FunctionsExposedByCore;
 
 typedef void (*FuncCallSetJSVersion)(const char* version);
@@ -278,7 +287,7 @@ typedef void(*FuncExeJSWithResultId)(const char *instanceId, const char *nameSpa
                                            std::vector<VALUE_WITH_TYPE *> &params, long callback_id);
 
 typedef int (*FuncCreateInstance)(const char *instanceId, const char *func, const char *script, const char *opts,
-                                  const char *initData, const char *extendsApi);
+                                  const char *initData, const char *extendsApi, std::vector<INIT_FRAMEWORK_PARAMS*>& params);
 
 typedef std::unique_ptr<WeexJSResult> (*FuncExeJSOnInstance)(const char *instanceId, const char *script);
 

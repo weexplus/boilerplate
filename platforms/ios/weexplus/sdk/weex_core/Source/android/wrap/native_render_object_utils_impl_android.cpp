@@ -79,7 +79,7 @@ static jlong CopyRenderObject(JNIEnv* env, jclass jcaller, jlong ptr){
 
 static  void showRenderObjectLayout(RenderObject *renderObject, int level){
     LOGE("RenderObject layout %s %d %p %f %f %f %f ", renderObject->type().c_str(),
-         renderObject->getStypePositionType(),
+         renderObject->getStylePositionType(),
          renderObject, renderObject->getLayoutHeight(), renderObject->getLayoutWidth(),
          renderObject->getLayoutPositionLeft(), renderObject->getLayoutPositionRight());
 
@@ -128,8 +128,11 @@ static jint LayoutRenderObject(JNIEnv* env, jclass jcaller,
     return (jint)render->getLayoutHeight();
 }
 
-
-
+static jint RenderObjectGetLayoutDirectionFromPathNode(JNIEnv* env, jclass jcaller,
+                                   jlong ptr){
+    RenderObject* renderObject = convert_long_to_render_object(ptr);
+    return renderObject->getLayoutDirectionFromPathNode();
+}
 
 static jboolean RenderObjectHasNewLayout(JNIEnv* env, jclass jcaller,
                                      jlong ptr){
@@ -171,11 +174,11 @@ static void RenderObjectChildWaste(JNIEnv* env, jclass jcaller,
                                    jboolean waster){
     RenderObject* renderObject = convert_long_to_render_object(ptr);
     if(waster){
-        if(renderObject->getStypePositionType() != WXCorePositionType::kFixed){
+        if(renderObject->getStylePositionType() != WXCorePositionType::kFixed){
             renderObject->setStylePositionType(WXCorePositionType::kFixed);
         }
     }else{
-        if(renderObject->getStypePositionType() != WXCorePositionType::kRelative){
+        if(renderObject->getStylePositionType() != WXCorePositionType::kRelative){
             renderObject->setStylePositionType(WXCorePositionType::kRelative);
         }
     }

@@ -40,11 +40,13 @@
 #import "WXRootView.h"
 #import "WXComponent+Layout.h"
 #import "WXCoreBridge.h"
+#import "WXComponent_performance.h"
+#import "WXAnalyzerCenter.h"
 
 static NSThread *WXComponentThread;
 
 #define WXAssertComponentExist(component)  WXAssert(component, @"component not exists")
-
+#define MAX_DROP_FRAME_FOR_BATCH   200
 
 @implementation WXComponentManager
 {
@@ -64,6 +66,7 @@ static NSThread *WXComponentThread;
 
     pthread_mutex_t _propertyMutex;
     pthread_mutexattr_t _propertMutexAttr;
+    NSUInteger _syncUITaskCount;
 }
 
 + (instancetype)sharedManager
@@ -80,7 +83,7 @@ static NSThread *WXComponentThread;
 {
     if (self = [self init]) {
         _weexInstance = weexInstance;
-        
+        _syncUITaskCount = 0;
         _indexDict = [NSMapTable strongToWeakObjectsMapTable];
         _fixedComponents = [NSMutableArray wx_mutableArrayUsingWeakReferences];
         _uiTaskQueue = [NSMutableArray array];
@@ -88,7 +91,11 @@ static NSThread *WXComponentThread;
         pthread_mutexattr_init(&_propertMutexAttr);
         pthread_mutexattr_settype(&_propertMutexAttr, PTHREAD_MUTEX_RECURSIVE);
         pthread_mutex_init(&_propertyMutex, &_propertMutexAttr);
-        [self _startDisplayLink];
+        
+        WXPerformBlockOnComponentThread(^{
+            // We should ensure that [WXDisplayLinkManager sharedInstance] is only invoked in component thread.
+            [self _startDisplayLink];
+        });
     }
     
     return self;
@@ -266,6 +273,10 @@ static NSThread *WXComponentThread;
         WXLogWarning(@"addComponent,superRef from js never exit ! check JS action, supRef:%@", parentRef);
         return;
     }
+    if([WXAnalyzerCenter isInteractionLogOpen]){
+         WXLogDebug(@"wxInteractionAnalyzer: [client][addElementStart]%@,%@,%@",supercomponent.weexInstance.instanceId,type,ref);
+    }
+    
     supercomponent.weexInstance.apmInstance.hasAddView = YES;
     
     WXComponent *component = [self _buildComponent:ref type:type supercomponent:supercomponent styles:styles attributes:attributes events:events renderObject:renderObject];
@@ -274,6 +285,10 @@ static NSThread *WXComponentThread;
     } else {
         index = (index == -1 ? supercomponent->_subcomponents.count : index);
     }
+    if (supercomponent.ignoreInteraction) {
+        component.ignoreInteraction = YES;
+    }
+    component.ignoreInteraction = [[component.attributes objectForKey:@"ignoreInteraction"] boolValue];
     
 #ifdef DEBUG
     WXLogDebug(@"flexLayout -> _recursivelyAddComponent : super:(%@,%@):[%f,%f] ,child:(%@,%@):[%f,%f],childClass:%@",
@@ -302,6 +317,7 @@ static NSThread *WXComponentThread;
     }
     
     [self recordMaximumVirtualDom:component];
+    [component.weexInstance.apmInstance updateMaxStats:KEY_PAGE_STATS_MAX_COMPONENT_NUM curMaxValue:[_indexDict count]];
     
     if (!component->_isTemplate) {
         __weak typeof(self) weakSelf = self;
@@ -315,6 +331,9 @@ static NSThread *WXComponentThread;
             [supercomponent insertSubview:component atIndex:index];
             [WXTracingManager startTracingWithInstanceId:strongSelf.weexInstance.instanceId ref:ref className:nil name:type phase:WXTracingEnd functionName:@"addElement" options:@{@"threadName":WXTUIThread}];
         }];
+    }
+    if([WXAnalyzerCenter isInteractionLogOpen]){
+        WXLogDebug(@"wxInteractionAnalyzer: [client][addElementEnd]%@,%@,%@",supercomponent.weexInstance.instanceId,type,ref);
     }
 }
 
@@ -698,25 +717,25 @@ static NSThread *WXComponentThread;
     return [component _hasTransitionPropertyInStyles:styles];
 }
 
-- (void)layoutComponent:(WXComponent*)component frame:(CGRect)frame innerMainSize:(CGFloat)innerMainSize
+- (void)layoutComponent:(WXComponent*)component frame:(CGRect)frame isRTL:(BOOL)isRTL innerMainSize:(CGFloat)innerMainSize
 {
     WXAssertComponentThread();
     WXAssertParam(component);
     
+    [component _setIsLayoutRTL:isRTL];
     if (component == _rootComponent) {
-        if (!CGSizeEqualToSize(frame.size, self.weexInstance.frame.size)) {
-            // Synchronize view frame with root component, especially for content wrap mode.
-            WXPerformBlockOnMainThread(^{
-                if (!self.weexInstance.isRootViewFrozen) {
-                    CGRect rect = self.weexInstance.rootView.frame; // no change of origin
-                    rect.size = frame.size;
-                    self.weexInstance.rootView.frame = rect;
-                }
-            });
-        }
+        // Synchronize view frame with root component, especially for content wrap mode.
+        WXPerformBlockOnMainThread(^{
+            if (!self.weexInstance.isRootViewFrozen &&
+                (!CGSizeEqualToSize(frame.size, self.weexInstance.frame.size) || !CGSizeEqualToSize(frame.size, self.weexInstance.rootView.frame.size))) {
+                CGRect rect = self.weexInstance.rootView.frame; // no change of origin
+                rect.size = frame.size;
+                self.weexInstance.rootView.frame = rect;
+            }
+        });
     }
     
-    if ([component _isCaculatedFrameChanged:frame]) {
+    if ([component _isCalculatedFrameChanged:frame]) {
         [component _assignCalculatedFrame:frame];
         [component _assignInnerContentMainSize:innerMainSize];
         [component _frameDidCalculated:YES];
@@ -991,13 +1010,42 @@ static NSThread *WXComponentThread;
 
 - (void)_syncUITasks
 {
-    NSArray<dispatch_block_t> *blocks = _uiTaskQueue;
-    _uiTaskQueue = [NSMutableArray array];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        for(dispatch_block_t block in blocks) {
-            block();
+    NSInteger mismatchBeginIndex = _uiTaskQueue.count;
+    for (NSInteger i = _uiTaskQueue.count - 1;i >= 0;i --) {
+        if (_uiTaskQueue[i] == WXPerformUITaskBatchEndBlock) {
+            _syncUITaskCount = 0;
+            // clear when find the matches for end and begin tag
+            break;
         }
-    });
+        if (_uiTaskQueue[i] == WXPerformUITaskBatchBeginBlock) {
+            mismatchBeginIndex = i;
+            break;
+        }
+    }
+    
+    if (mismatchBeginIndex == _uiTaskQueue.count) {
+        // here we get end tag or there are not begin and end directives
+    } else {
+        _syncUITaskCount ++;
+        // we only find begin tag but missing end tag,
+        if (_syncUITaskCount > (MAX_DROP_FRAME_FOR_BATCH)) {
+            // when the wait times come to MAX_DROP_FRAME_FOR_BATCH, we will pop all the stashed operations for user experience.
+            mismatchBeginIndex = _uiTaskQueue.count;
+            _syncUITaskCount = 0;
+        }
+    }
+    
+    if (mismatchBeginIndex > 0) {
+        NSArray<dispatch_block_t> *blocks = [_uiTaskQueue subarrayWithRange:NSMakeRange(0, mismatchBeginIndex)];
+        [_uiTaskQueue removeObjectsInRange:NSMakeRange(0, mismatchBeginIndex)];
+        if (blocks.count) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                for(dispatch_block_t block in blocks) {
+                    block();
+                }
+            });
+        }
+    }
 }
 
 #pragma mark Fixed 
@@ -1049,6 +1097,27 @@ static NSThread *WXComponentThread;
             break;
         }
     }
+}
+
+static void (^WXPerformUITaskBatchBeginBlock)(void) = ^ () {
+#if DEBUG
+    WXLogDebug(@"directive BatchBeginBlock");
+#endif
+};
+static void (^WXPerformUITaskBatchEndBlock)(void) = ^ () {
+#if DEBUG
+    WXLogDebug(@"directive BatchEndBlock");
+#endif
+};
+
+- (void)performBatchBegin
+{
+    [self _addUITask:WXPerformUITaskBatchBeginBlock];
+}
+
+- (void)performBatchEnd
+{
+    [self _addUITask:WXPerformUITaskBatchEndBlock];
 }
 
 - (void)handleDisplayLink {

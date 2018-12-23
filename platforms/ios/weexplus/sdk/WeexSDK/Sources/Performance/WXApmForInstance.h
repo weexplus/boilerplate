@@ -37,12 +37,15 @@ extern NSString* const KEY_PAGE_PROPERTIES_BUNDLE_TYPE;
 extern NSString* const KEY_PAGE_PROPERTIES_CONTAINER_NAME;
 extern NSString* const KEY_PAGE_PROPERTIES_INSTANCE_TYPE;
 extern NSString* const KEY_PAGE_PROPERTIES_PARENT_PAGE;
+extern NSString* const KEY_PAGE_PROPERTIES_RENDER_TYPE;
 
 
 ///************** stages *****************/
 extern NSString* const KEY_PAGE_STAGES_START;
 extern NSString* const KEY_PAGE_STAGES_DOWN_BUNDLE_START;
 extern NSString* const KEY_PAGE_STAGES_DOWN_BUNDLE_END;
+extern NSString* const KEY_PAGE_STAGES_CUSTOM_PREPROCESS_START;
+extern NSString* const KEY_PAGE_STAGES_CUSTOM_PREPROCESS_END;
 extern NSString* const KEY_PAGE_STAGES_RENDER_ORGIGIN;
 extern NSString* const KEY_PAGE_STAGES_LOAD_BUNDLE_START;
 extern NSString* const KEY_PAGE_STAGES_LOAD_BUNDLE_END;
@@ -107,7 +110,7 @@ extern NSString* const VALUE_ERROR_CODE_DEFAULT;
 @property (nonatomic, assign) BOOL isStartRender;
 @property (nonatomic,assign)  BOOL  hasRecordFirstInterationView;
 @property (nonatomic, assign) BOOL isDownLoadFailed;
-@property (nonatomic,assign) double wxPageRatio;
+@property (nonatomic,assign) double pageRatio;
 
 #pragma mark - basic method
 
@@ -125,6 +128,7 @@ extern NSString* const VALUE_ERROR_CODE_DEFAULT;
 - (void) updateDiffStats:(NSString *)name withDiffValue:(double)diff;
 - (void) updateMaxStats:(NSString *)name curMaxValue:(double)maxValue;
 - (void) updateExtInfoFromResponseHeader:(NSDictionary*) extInfo;
+- (void) forceSetInteractionTime:(long) unixTime;
 
 
 #pragma mark - called by IWXHttpAdapter implementer

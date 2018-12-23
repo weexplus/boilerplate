@@ -76,11 +76,17 @@ class ScriptBridge {
     virtual void PostMessage(const char *vim_id, const char *data, int dataLength) = 0;
     virtual void DispatchMessage(const char *client_id, const char *data, int dataLength,
                                  const char *callback, const char *vm_id) = 0;
+    virtual std::unique_ptr<WeexJSResult> DispatchMessageSync(
+        const char *client_id, const char *data, int dataLength,
+        const char *vm_id) = 0;
     virtual void ReportException(const char *page_id, const char *func,
                                  const char *exception_string) = 0;
     virtual void SetJSVersion(const char *js_version) = 0;
     virtual void OnReceivedResult(long callback_id,
                                   std::unique_ptr<WeexJSResult> &result) = 0;
+    virtual void UpdateComponentData(const char* page_id,
+                                     const char* cid,
+                                     const char* json_data) = 0;
 
     inline ScriptBridge *bridge() { return bridge_; }
 
@@ -134,7 +140,7 @@ class ScriptBridge {
     virtual int CreateInstance(const char *instanceId, const char *func,
                                const char *script, const char *opts,
                                const char *initData,
-                               const char *extendsApi) = 0;
+                               const char *extendsApi, std::vector<INIT_FRAMEWORK_PARAMS*>& params) = 0;
 
     virtual std::unique_ptr<WeexJSResult>  ExecJSOnInstance(const char *instanceId,
                                    const char *script) = 0;

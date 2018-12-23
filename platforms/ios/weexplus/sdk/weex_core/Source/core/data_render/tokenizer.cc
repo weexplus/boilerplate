@@ -1,3 +1,22 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 #include "core/data_render/tokenizer.h"
 #include "core/data_render/token.h"
 #include "core/data_render/scanner.h"
@@ -16,12 +35,12 @@ namespace data_render {
 
 // TokenizerState implementation
 // -------------------------------
-    
+
 #ifdef __ANDROID__
 #undef EOF
     static const char EOF = -1;
 #endif
-    
+
 class TokenizerState {
  public:
   static std::unordered_map<std::string, Token::Type> keywords;
@@ -267,6 +286,9 @@ Token::Type IsTwoCharacterSymbol(char ch1, char ch2) {
     case '>':
       if (ch1 == '>')
         return Token::SAR;
+    case '/':
+      if (ch1 == '<')
+        return Token::JSX_TAG_CLOSE;
     default:
       return Token::INVALID;
   }
@@ -366,6 +388,8 @@ Token Tokenizer::AdvanceInternal(bool not_regex) {
           return Token(std::string("ERROR"), Token::ERROR,
                        _ position(), _ seek());
         }
+      } else if(next == '>'){
+        return Token("/>",Token::JSX_TAG_END,_ position(), _ seek());
       } else {
         bool ok = true;
         _ PutBack(next);
@@ -514,9 +538,6 @@ Token Tokenizer::ParseRegex(bool* ok) {
         buffer.push_back(ch);
         ch = _ ReadChar();
       }
-
-      if (ch == ']')
-        buffer.push_back(ch);
     }
 
     if (ch == '\\') {
@@ -578,7 +599,7 @@ Token Tokenizer::ParseString(char delim) {
   }
 
   Token::Type type = delim == '`' ? Token::TEMPLATE : Token::STRING;
-  
+
   if (utf8) {
       buffer = utf8_decode(buffer);
   }
@@ -680,5 +701,5 @@ Token Tokenizer::ParseNumber(char start) {
 
 }
 }
-} 
+}
 

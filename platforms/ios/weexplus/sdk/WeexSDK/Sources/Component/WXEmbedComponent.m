@@ -189,6 +189,7 @@
         [weakSelf onRenderFinish];
     };
 }
+
 //zjr add
 -(WXSDKInstance*)getInstance
 {

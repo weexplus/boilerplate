@@ -55,6 +55,18 @@ static NSString * appBoardContent;
 
 //zjr add
 -(void)fireSelfPageInit;
+
+//zjr add
+-(void)firePageInit;
+
+//zjr add
+-(void)addChildInstance:(WXSDKInstance*)instance;
+
+//zjr
++(NSString*)getAppBoardContent;
+
+//zjr
++(void)setAppBoardContent:(NSString*)content;
 /**
  * Component can freeze the rootview frame through the variable isRootViewFrozen
  * If Component want to freeze the rootview frame, set isRootViewFrozen YES, weex will not change the rootview frame when layout,or set NO.
@@ -97,7 +109,7 @@ static NSString * appBoardContent;
 @property (nonatomic, strong) NSDictionary* containerInfo;
 
 /**
- * Whether this instance is rendered or not. Please MUST not render an instance twice.
+ * Whether this instance is rendered or not. Please MUST not render an instance twice even if you have called destroyInstance.
  **/
 @property (nonatomic, assign, readonly) BOOL isRendered;
 
@@ -275,18 +287,6 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
  **/
 - (void)renderView:(id)source options:(NSDictionary *)options data:(id)data;
 
-//zjr add
--(void)firePageInit;
-
-//zjr add
--(void)addChildInstance:(WXSDKInstance*)instance;
-
-//zjr
-+(NSString*)getAppBoardContent;
-
-//zjr
-+(void)setAppBoardContent:(NSString*)content;
-
 /**
  * Reload the js bundle from the current URL and rerender.
  *
@@ -303,7 +303,7 @@ typedef NS_ENUM(NSInteger, WXErrorCode) {//error.code
 - (void)refreshInstance:(id)data;
 
 /**
- * Destroys current instance.
+ * Destroys current instance. An instance destroyed should not be used for rendering again, please create another instance.
  **/
 - (void)destroyInstance;
 

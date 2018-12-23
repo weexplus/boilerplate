@@ -1,3 +1,21 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
 cmake_minimum_required(VERSION 3.4.1)
 set(WEEXCORE_LIBRARY_NAME weexcore)
 
@@ -73,7 +91,12 @@ set(COMMON_SRCS
    ./core/data_render/class_array.cc
    ./core/data_render/class_json.cc
    ./core/data_render/class_string.cc
+   ./core/data_render/class_regex.cc
+   ./core/data_render/class_console.cc
+   ./core/data_render/class_window.cc
+   ./core/data_render/class_math.cc
    ./core/data_render/class_factory.cc
+   ./core/data_render/class_function.cc
    ./core/data_render/class_object.cc
    ./core/data_render/code_generator.cc
    ./core/data_render/exec_state.cc
@@ -92,13 +115,17 @@ set(COMMON_SRCS
    ./core/data_render/table.cc
    ./core/data_render/token.cc
    ./core/data_render/tokenizer.cc
+   ./core/data_render/op_code.cc
    ./core/data_render/vm.cc
-   ./core/data_render/binary_file.cc
+   ./core/data_render/exec_state_binary.cc
+   ./core/data_render/exec_state_section.cc
    ./core/data_render/vnode/vnode.cc
    ./core/data_render/vnode/vcomponent.cc
    ./core/data_render/vnode/vnode_exec_env.cc
    ./core/data_render/vnode/vnode_render_manager.cc
    ./core/data_render/vnode/vnode_render_context.cc
+
+   ./core/network/http_module.cc
         )
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/wson)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wson)
@@ -150,6 +177,11 @@ if (ANDROID)
     ./android/wrap/wx_params.cpp
     ./android/base/jni_type.cpp
 
+    ./core/data_render/vnode/android/vcomponent_lifecycle_listener.cc
+    ./core/data_render/vnode/android/vnode_on_event_listener.cc
+    ./core/data_render/vnode/android/conversion.cc
+    ./core/network/android/default_request_handler.cc
+    
     ./android/jsengine/multiprocess/WeexJSConnection.cpp
     ./android/jsengine/multiprocess/ExtendJSApi.cpp
 

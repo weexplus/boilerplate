@@ -50,7 +50,9 @@
 
 + (id)handlerForProtocol:(Protocol *)protocol
 {
-    WXAssert(protocol, @"Can not find handler for a nil protocol");
+    if(protocol==nil)
+    return nil;
+//    WXAssert(protocol, @"Can not find handler for a nil protocol");
     
     id handler = [[WXHandlerFactory sharedInstance].handlers objectForKey:NSStringFromProtocol(protocol)];
     return handler;
