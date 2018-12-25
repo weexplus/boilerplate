@@ -32,8 +32,6 @@
 
 @implementation WXImgLoaderDefaultImpl
 
-#pragma mark -
-#pragma mark WXImgLoaderProtocol
 @synthesize weexInstance;
 - (id<WXImageOperationProtocol>)downloadImageWithURL:(NSString *)url imageFrame:(CGRect)imageFrame userInfo:(NSDictionary *)userInfo completed:(void(^)(UIImage *image,  NSError *error, BOOL finished))completedBlock
 {
@@ -46,7 +44,7 @@
     }
     if([url startWith:@"root:"])
     {
-        url=[url replace:@"root:" withString:[Weex getBaseUrl:weexInstance]];
+        url=[url replace:@"root:" withString:[Weex getBaseUrl:[self getInstance:userInfo]]];
     }
     if([url startWith:PREFIX_SDCARD])
     {
@@ -107,6 +105,15 @@
 }
 
 
+-(WXSDKInstance*)getInstance:(NSDictionary*)options{
+    NSString* instanceId = [options objectForKey:@"instanceId"];
+    if (nil == instanceId) {
+//        WXLogWarning(@"please set instanceId in userInfo,for url %@:",imgUrl.absoluteString);
+        return nil;
+    }
+    WXSDKInstance* instance =[WXSDKManager instanceForID:instanceId];
+    return instance;
+}
 
 
 

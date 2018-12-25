@@ -1,9 +1,13 @@
 <template>
     <div style="align-items: center;justify-content: center">
-        <text>{{txt}}</text>
+        <!--<text>{{txt}}</text>-->
        <!--<zoomimage style="width: 500px;height: 500px;background-color: red"></zoomimage>-->
-
-
+        <!--<image style="width: 100px;height: 100px" src="root:img/logo.png"></image>-->
+      <richtext>
+          <span style="color: red">1111</span>
+          <span style="color: blue;font-size: 50px">2222</span>
+          <image style="width: 100px;height: 100px" src="root:img/logo.png"></image>
+      </richtext>
     </div>
 </template>
 <script>
