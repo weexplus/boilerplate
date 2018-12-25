@@ -1,5 +1,8 @@
 package com.farwolf.weex.module;
 
+import android.content.Intent;
+import android.net.Uri;
+
 import com.farwolf.util.DeviceTool_;
 import com.farwolf.weex.base.WXModuleBase;
 import com.taobao.weex.annotation.JSMethod;
@@ -15,4 +18,15 @@ public class WXDeviceModule extends WXModuleBase {
     public String uuid(){
         return DeviceTool_.getInstance_(getContext()).getDeviceId();
     }
+
+
+    @JSMethod
+    public void tel(String phoneNum) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri data = Uri.parse("tel:" + phoneNum);
+        intent.setData(data);
+        getActivity().startActivity(intent);
+    }
+
+
 }

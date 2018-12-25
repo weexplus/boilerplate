@@ -10,6 +10,7 @@
 
 @implementation WXDeviceInfoModule
 WX_EXPORT_METHOD_SYNC(@selector(mac))
+WX_EXPORT_METHOD_SYNC(@selector(tel:))
 WX_EXPORT_METHOD_SYNC(@selector(deviceId))
 -(NSString*)mac{
     NSDictionary *dict = [self SSIDInfo];
@@ -41,5 +42,12 @@ WX_EXPORT_METHOD_SYNC(@selector(deviceId))
     
     return info;
     
+}
+
+-(void)tel:(NSString*)tel{
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",tel];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:nil completionHandler:^(BOOL success) {
+        
+    }];
 }
 @end
