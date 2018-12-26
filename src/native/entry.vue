@@ -10,8 +10,8 @@
     },
     methods: {
       onLoad(){
-        let modal=weex.requireModule('modal')
-        this.push('root:test.js')
+        let navigator=weex.requireModule('navigator')
+        navigator.presentFull({url:'root:test.js',animated:false})
       }
     },
     created () {

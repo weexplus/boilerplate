@@ -61,7 +61,7 @@ def mypod
 
     pod 'ZipArchive', '~> 1.4.0'
     
-    #pod 'Charts', '~> 3.1.1'
+#    pod 'Charts', '~> 3.1.1'
 
 #    pod 'LPPhotoViewer', '~> 0.2.2'
 # pod 'ARTiledImageView', '~> 1.1.1'
@@ -83,7 +83,9 @@ end
 
  
  
-
+#pre_install do |installer|
+#    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+#end
 
  
  

@@ -13,7 +13,7 @@
 		4D2665471ECD84CD00664B38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2665461ECD84CD00664B38 /* Assets.xcassets */; };
 		4D3CC5521FD4E6FB002D3ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */; };
 		4D92AA151F4D5BD900493BCF /* app in Resources */ = {isa = PBXBuildFile; fileRef = 4D92AA141F4D5BD900493BCF /* app */; };
-		9BB8FC32AEECD1BE9C5CDAE0 /* libPods-weexplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5EE70660FBB62F99EA627E /* libPods-weexplus.a */; };
+		8A0C3FC61BEF7F2C15A414A3 /* libPods-weexplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B12A941A57DC16A2816BC5 /* libPods-weexplus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		4D3CC5511FD4E6FB002D3ED8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D92AA141F4D5BD900493BCF /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
 		4DA5883C20F343AB007D4B5E /* Appdefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Appdefine.h; sourceTree = "<group>"; };
-		8A5EE70660FBB62F99EA627E /* libPods-weexplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weexplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B12A941A57DC16A2816BC5 /* libPods-weexplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weexplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76DCF182E04FBDA1655EAEA /* Pods-weexplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.debug.xcconfig"; sourceTree = "<group>"; };
 		C51BE6763BC7E197A7AE63F3 /* Pods-weexplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weexplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-weexplus/Pods-weexplus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB8FC32AEECD1BE9C5CDAE0 /* libPods-weexplus.a in Frameworks */,
+				8A0C3FC61BEF7F2C15A414A3 /* libPods-weexplus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 		B002B8620A99EC0B79AA68DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A5EE70660FBB62F99EA627E /* libPods-weexplus.a */,
+				B0B12A941A57DC16A2816BC5 /* libPods-weexplus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,7 +114,7 @@
 				4D2665331ECD84CD00664B38 /* Sources */,
 				4D2665341ECD84CD00664B38 /* Frameworks */,
 				4D2665351ECD84CD00664B38 /* Resources */,
-				545CCAF6E08AB0983AC01618 /* [CP] Copy Pods Resources */,
+				D565392F29111AE94959D515 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,7 +182,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		545CCAF6E08AB0983AC01618 /* [CP] Copy Pods Resources */ = {
+		D565392F29111AE94959D515 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

@@ -28,8 +28,6 @@ import android.util.Base64;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.farwolf.util.FileTool;
 import com.farwolf.util.Picture;
 import com.farwolf.weex.activity.WeexActivity;
@@ -218,31 +216,34 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
 
           return;
       }
+      Bitmap bm=getLocalBitmap(url);
+      if(bm!=null)
+      view.setImageBitmap(bm);
 
+
+  }
+
+
+  public static Bitmap getLocalBitmap(String url){
       if(url.startsWith(Const.PREFIX_SDCARD))
       {
           url=url.replace(Const.PREFIX_SDCARD,"");
           Bitmap  bm= Picture.getBitmap(url);
-          view.setImageBitmap(bm);
-          return;
+
+          return bm;
       }
-
-
       url=Weex.getSingleRealUrl(url);
       Bitmap bm=null;
       if(url.startsWith("base64==="))
       {
           url=url.replace("base64===","");
-          bm= base64ToBitmap(url);
+          bm= PicassoImageAdapter.base64ToBitmap(url);
       }
       else
       {
-          bm= FileTool.loadAssetImage(url,view.getContext().getApplicationContext());
+          bm= FileTool.loadAssetImage(url,WXEnvironment.getApplication().getApplicationContext());
       }
-
-      if(bm!=null)
-          view.setImageBitmap(bm);
-
+      return bm;
   }
 
 

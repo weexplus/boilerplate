@@ -18,13 +18,12 @@
  */
 package com.taobao.weex.ui.component.richtext.node;
 
-import static com.taobao.weex.utils.WXViewUtils.getRealPxByWidth;
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.SpannableStringBuilder;
+
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.WXSDKManager;
@@ -35,8 +34,11 @@ import com.taobao.weex.ui.component.richtext.span.ImgSpan;
 import com.taobao.weex.ui.component.richtext.span.ItemClickSpan;
 import com.taobao.weex.utils.ImgURIUtil;
 import com.taobao.weex.utils.WXUtils;
+
 import java.util.LinkedList;
 import java.util.List;
+
+import static com.taobao.weex.utils.WXViewUtils.getRealPxByWidth;
 
 class ImgNode extends RichTextNode {
 
@@ -104,6 +106,9 @@ class ImgNode extends RichTextNode {
       DrawableStrategy drawableStrategy = new DrawableStrategy();
       drawableStrategy.width = width;
       drawableStrategy.height = height;
+      //zjr
+      drawableStrategy.context = this.mContext;
+
       WXSDKEngine.getDrawableLoader().setDrawable(rewrited.toString(), imageSpan, drawableStrategy);
     }
     return imageSpan;

@@ -20,8 +20,13 @@
 package com.taobao.weex.adapter;
 
 
+import android.content.Context;
+
 public class DrawableStrategy {
 
   public int width;
   public int height;
+  //zjr
+  public Context context;
+
 }
