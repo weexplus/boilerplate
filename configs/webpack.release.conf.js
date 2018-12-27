@@ -153,17 +153,17 @@ const productionConfig = webpackMerge(commonConfig[0], {
     }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../src/img'),
+        from: path.resolve(__dirname, '../src/native/img'),
         to: path.resolve(__dirname, '../release/web/img'),
         ignore: ['.*']
       },
       {
-        from: path.resolve(__dirname, '../src/font'),
+        from: path.resolve(__dirname, '../src/native/font'),
         to: path.resolve(__dirname, '../release/web/font'),
         ignore: ['.*']
       },
       {
-        from: path.resolve(__dirname, '../src/file'),
+        from: path.resolve(__dirname, '../src/native/file'),
         to: path.resolve(__dirname, '../release/web/file'),
         ignore: ['.*']
       }
