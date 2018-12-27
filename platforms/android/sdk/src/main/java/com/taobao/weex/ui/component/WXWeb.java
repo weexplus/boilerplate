@@ -159,6 +159,8 @@ public class WXWeb extends WXComponent {
             return;
         }
         if (!TextUtils.isEmpty(url)) {
+            //zjr add
+//            loadUrl(url);
             loadUrl(getInstance().rewriteUri(Uri.parse(url), URIAdapter.WEB).toString());
         }
     }
@@ -193,11 +195,11 @@ public class WXWeb extends WXComponent {
         }
     }
 
-    private void loadUrl(String url) {
+    public void loadUrl(String url) {
         getWebView().loadUrl(url);
     }
-
-    private void loadDataWithBaseURL(String source) {
+    //zjr add
+    public void loadDataWithBaseURL(String source) {
         getWebView().loadDataWithBaseURL(source);
     }
 
@@ -220,6 +222,7 @@ public class WXWeb extends WXComponent {
     public void postMessage(Object msg) {
         getWebView().postMessage(msg);
     }
+
 
     private IWebView getWebView() {
         return mWebView;

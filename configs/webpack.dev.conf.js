@@ -1,5 +1,6 @@
 const commonConfig = require('./webpack.common.conf');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 // tools
 const chalk = require('chalk');
 const path = require('path');
@@ -53,7 +54,7 @@ const generateHtmlWebpackPlugin = (entry) => {
     return new HtmlWebpackPlugin({
       multihtmlCache: true,
       filename: name + '.html',
-      template: helper.rootNode(`src/web/index.html`),
+      template: helper.rootNode(`dist/web/index.html`),
       isDevServer: true,
       chunksSortMode: 'dependency',
       inject: true,
@@ -119,6 +120,7 @@ const devWebpackConfig = webpackMerge(commonConfig[0], {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     })
+
   ],
   /**
    * Webpack Development Server configuration

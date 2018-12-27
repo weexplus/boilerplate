@@ -95,7 +95,7 @@ const webConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json','.png'],
     alias: {
-      'root:': helper.resolve('src')
+      'root:': helper.resolve('dist')
     }
   },
   /*
@@ -179,7 +179,7 @@ const weexConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      '@': helper.resolve('src')
+      '@': helper.resolve('dist')
     }
   },
   /*

@@ -1,5 +1,5 @@
 const path = require('path');
-const ROOT = path.resolve(__dirname, '..')+"/src";
+const ROOT = path.resolve(__dirname, '..')+"/dist";
 const ip = require('ip').address();
 const config = {
   root: ROOT,

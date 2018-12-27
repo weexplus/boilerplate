@@ -15,6 +15,7 @@ import com.farwolf.util.FileTool;
 import com.farwolf.weex.adapter.DrawableLoader;
 import com.farwolf.weex.adapter.ExceptionAdapter;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
+import com.farwolf.weex.adapter.UriAdapter;
 import com.farwolf.weex.adapter.display.DefaultWebSocketAdapterFactory;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.component.WXArc;
@@ -176,6 +177,7 @@ public class Weex extends ServiceBase{
                         .setImgAdapter(new PicassoImageAdapter())
                         .setDrawableLoader(new DrawableLoader())
                         .setJSExceptionAdapter(new ExceptionAdapter())
+                        .setURIAdapter(new UriAdapter())
                         .setWebSocketAdapterFactory(new DefaultWebSocketAdapterFactory())
                         .build());
         try {

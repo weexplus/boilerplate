@@ -13,6 +13,10 @@ Vue.use(Router)
 module.exports = new Router({
   routes: [
     {
+      path: '/',
+     redirect:'/demo/index.js'
+    },
+    {
       path: '/demo/index.js',
       name: 'index',
       component: index,
