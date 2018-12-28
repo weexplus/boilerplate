@@ -12,6 +12,8 @@
 WX_EXPORT_METHOD_SYNC(@selector(mac))
 WX_EXPORT_METHOD_SYNC(@selector(tel:))
 WX_EXPORT_METHOD_SYNC(@selector(deviceId))
+WX_EXPORT_METHOD_SYNC(@selector(openUrl:))
+
 -(NSString*)mac{
     NSDictionary *dict = [self SSIDInfo];
     NSString *mac = dict[@"BSSID"];　　 //无线网的MAC地址
@@ -50,4 +52,12 @@ WX_EXPORT_METHOD_SYNC(@selector(deviceId))
         
     }];
 }
+
+-(void)openUrl:(NSString*)url{
+//    NSString *openURL = @"http://www.baidu.com/";
+    NSURL *URL = [NSURL URLWithString:url];
+}
+
+
+
 @end

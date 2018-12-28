@@ -45,8 +45,8 @@ const getRouterFileContent = (source) => {
 const getEntryFile = () => {
   const entryFile = path.join(vueWebTemp, config.entryFilePath)
   const routerFile = path.join(vueWebTemp, config.routerFilePath)
-  fs.outputFileSync(entryFile, getEntryFileContent(helper.root(config.entryFilePath), routerFile));
-  fs.outputFileSync(routerFile, getRouterFileContent(helper.root(config.routerFilePath)));
+  // fs.outputFileSync(entryFile, getEntryFileContent(helper.root(config.entryFilePath), routerFile));
+  // fs.outputFileSync(routerFile, getRouterFileContent(helper.root(config.routerFilePath)));
   return {
     index: entryFile
   }

@@ -224,6 +224,7 @@ public class WXWebView implements IWebView {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
+
                 WXLogUtils.v("tag", "onPageOverride " + url);
                 return true;
             }

@@ -28,5 +28,12 @@ public class WXDeviceModule extends WXModuleBase {
         getActivity().startActivity(intent);
     }
 
+    @JSMethod
+    public void openUrl(String url){
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        getActivity().startActivity(intent);
+    }
+
 
 }
