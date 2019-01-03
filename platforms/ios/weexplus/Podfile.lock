@@ -88,6 +88,9 @@ PODS:
   - YZHeaderScaleImage (1.0.1)
   - ZipArchive (1.4.0)
   - zipzap (8.1.1)
+  - zoomImage (0.0.1):
+    - farwolf.weex
+    - LPPhotoViewer (~> 0.2.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
@@ -112,6 +115,7 @@ DEPENDENCIES:
   - YYModel
   - YZHeaderScaleImage (~> 1.0.1)
   - ZipArchive (~> 1.4.0)
+  - zoomImage (from `../../../../weexplus-plugins/ios/zoomImage`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -156,6 +160,8 @@ EXTERNAL SOURCES:
     :path: LMTowDatePicker
   WeexSDK:
     :path: sdk
+  zoomImage:
+    :path: "../../../../weexplus-plugins/ios/zoomImage"
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -192,7 +198,8 @@ SPEC CHECKSUMS:
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
+  zoomImage: 854065d5b12b508b16aabb6fef6be21aa0233d39
 
-PODFILE CHECKSUM: 25577623555e99fdec4076a979b3bf7cd7ba052e
+PODFILE CHECKSUM: 81491d2aebcdad44655dbfa5b2769539a8e903de
 
 COCOAPODS: 1.5.0

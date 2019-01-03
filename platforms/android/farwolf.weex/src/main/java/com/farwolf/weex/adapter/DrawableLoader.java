@@ -8,8 +8,8 @@ import android.support.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.Request;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.SizeReadyCallback;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.app.WeexApplication;
@@ -40,68 +40,29 @@ public class DrawableLoader implements IDrawableLoader {
 
     void load(String url,final DrawableTarget drawableTarget,final DrawableStrategy drawableStrategy){
         if(url.startsWith("http")){
+            SimpleTarget target= new SimpleTarget<Bitmap>(){
+
+                @Override
+                public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                    BitmapDrawable bd = new BitmapDrawable(resource);
+                    drawableTarget.setDrawable(bd,true);
+                }
+            };
+            if(url.contains("gif"))
+            target= new SimpleTarget<GifDrawable>(){
+
+
+                @Override
+                public void onResourceReady(GifDrawable resource, Transition<? super GifDrawable> transition) {
+//                    BitmapDrawable bd = new BitmapDrawable(resource);
+                    drawableTarget.setDrawable(resource,true);
+                }
+            };
                 Glide
                         .with(WXEnvironment.getApplication())
-                        .asBitmap()
+                        .asGif()
                         .load(url)
-                        .into(new Target<Bitmap>() {
-                            @Override
-                            public void onLoadStarted(@Nullable Drawable placeholder) {
-
-                            }
-
-                            @Override
-                            public void onLoadFailed(@Nullable Drawable errorDrawable) {
-
-                            }
-
-                            @Override
-                            public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
-                                BitmapDrawable bd = new BitmapDrawable(resource);
-                                drawableTarget.setDrawable(bd,true);
-                            }
-
-                            @Override
-                            public void onLoadCleared(@Nullable Drawable placeholder) {
-
-                            }
-
-                            @Override
-                            public void getSize(SizeReadyCallback cb) {
-
-                            }
-
-                            @Override
-                            public void removeCallback(SizeReadyCallback cb) {
-
-                            }
-
-                            @Override
-                            public void setRequest(@Nullable Request request) {
-
-                            }
-
-                            @Nullable
-                            @Override
-                            public Request getRequest() {
-                                return null;
-                            }
-
-                            @Override
-                            public void onStart() {
-
-                            }
-
-                            @Override
-                            public void onStop() {
-
-                            }
-
-                            @Override
-                            public void onDestroy() {
-
-                            }
-                        });
+                        .into(target);
 
 
         }else{
