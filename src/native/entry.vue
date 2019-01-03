@@ -11,7 +11,7 @@
     methods: {
       onLoad(){
         let navigator=weex.requireModule('navigator')
-        navigator.presentFull({url:'root:test.js',animated:false})
+//        navigator.presentFull({url:'root:test.js',animated:false})
       }
     },
     created () {
