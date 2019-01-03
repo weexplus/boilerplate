@@ -21,8 +21,6 @@ let nav ={
     window.eventBus.$emit('UPDATE_DIRECTION','forward')
     window.eventBus.$emit('ENABLE_ROUTER_ANIMATION',animate)
     url=path.getPath(url)
-
-    debugger
    let res=  window.router.push(url,param)
   },
   back(){

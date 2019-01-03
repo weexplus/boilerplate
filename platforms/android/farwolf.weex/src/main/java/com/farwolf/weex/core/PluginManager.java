@@ -33,16 +33,18 @@ public class PluginManager {
         try {
             PathClassLoader classLoader = (PathClassLoader) Thread
                     .currentThread().getContextClassLoader();
-
             DexFile dex = new DexFile(ctx.getPackageResourcePath());
             Enumeration<String> entries = dex.entries();
             List m=new ArrayList();
             int c=0;
             while (entries.hasMoreElements()) {
                 String entryName = entries.nextElement();
+                 if(entryName.contains("module")){
+                     Log.e("xxxx",entryName+"");
+                 }
                 if (canLoad(entryName)) {
                     c++;
-//                    Log.e("packageCount",entryName+"");
+                    Log.e("packageCount",entryName+"");
                     try {
                         Class entryClass = Class.forName(entryName, true, classLoader);//疑问：<span style="font-size: 1em; line-height: 1.5;">Class.forName(entryName);这种方式不知道为什么返回null，哪位大神知道原因，请指点一下小弟吧  感激不尽</span>
                         WeexModule wxmodlue = (WeexModule) entryClass.getAnnotation(WeexModule.class);

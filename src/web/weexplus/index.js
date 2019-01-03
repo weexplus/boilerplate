@@ -13,6 +13,7 @@ export default {
 
   init(weex,vue){
     window.vue=vue
+    window.static={}
     window.eventBus=new Vue()
     vue.prototype.path = path
     module.install(weex,vue)

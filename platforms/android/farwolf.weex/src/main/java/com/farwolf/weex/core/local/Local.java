@@ -60,6 +60,8 @@ public class Local  {
         {
             if(!FileTool.IsFileExist(newpath))
             {
+
+                
                 FileTool.makeDir(newpath);
             }
             FileTool.copyAssets(c,"app",newpath);
@@ -70,7 +72,7 @@ public class Local  {
             SharedPreferences sharedPreferences = c.getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
             int version= sharedPreferences.getInt("downloadJsVersion",-1);
 
-            if(version>Config.diskJsVersion(c))
+            if(version>Config.diskJsVersion(c)&&version>Config.assetJsVersion(c))
             {
                  if(isZipExist(c))
                  {

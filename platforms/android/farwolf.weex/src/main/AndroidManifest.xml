@@ -58,11 +58,12 @@
 
         <activity android:name="com.farwolf.weex.activity.SplashActivity_"
             android:screenOrientation="portrait"
-
             android:windowSoftInputMode="adjustNothing"
             >
 
         </activity>
+
+
 
     </application>
 

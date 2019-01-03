@@ -38,6 +38,7 @@ Pod::Spec.new do |s|
   s.dependency 'LMTowDatePicker'
   s.dependency 'zipzap', '~> 8.1.1'
   s.dependency 'WeexPluginLoader', '~> 0.0.1.9.1'
+  s.dependency 'LPPhotoViewer', '~> 0.2.2'
 
 
 

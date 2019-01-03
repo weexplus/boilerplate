@@ -37,5 +37,11 @@ project (':sdk').projectDir = new File('../sdk')
 //include ':netIm'
 //project(':netIm').projectDir = new File('../../../../weexplus-plugins/android/netIm')
 
+//include ':zoomImage'
+//project(':zoomImage').projectDir = new File('../../../../weexplus-plugins/android/zoomImage')
+
+//include ':oss'
+//project(':oss').projectDir = new File('../../../../weexplus-plugins/android/oss')
+
 //include ':inspector'
 //project(':inspector').projectDir = new File('../inspector')

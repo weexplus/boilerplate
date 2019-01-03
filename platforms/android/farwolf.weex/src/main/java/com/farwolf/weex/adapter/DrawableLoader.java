@@ -9,13 +9,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.farwolf.weex.activity.WeexActivity;
 import com.farwolf.weex.app.WeexApplication;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.util.Weex;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.adapter.DrawableStrategy;
 import com.taobao.weex.adapter.IDrawableLoader;
@@ -41,18 +40,11 @@ public class DrawableLoader implements IDrawableLoader {
 
     void load(String url,final DrawableTarget drawableTarget,final DrawableStrategy drawableStrategy){
         if(url.startsWith("http")){
-            if(url.toLowerCase().contains(".gif"))
-            {
                 Glide
                         .with(WXEnvironment.getApplication())
-
-                        .asGif()
-//                  .placeholder(pladrawable)
+                        .asBitmap()
                         .load(url)
-//                  .asGif()
-//                  .placeholder(pladrawable)
-//                  .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .into(new com.bumptech.glide.request.target.Target<GifDrawable>() {
+                        .into(new Target<Bitmap>() {
                             @Override
                             public void onLoadStarted(@Nullable Drawable placeholder) {
 
@@ -64,8 +56,9 @@ public class DrawableLoader implements IDrawableLoader {
                             }
 
                             @Override
-                            public void onResourceReady(GifDrawable resource, Transition<? super GifDrawable> transition) {
-                                drawableTarget.setDrawable(resource,true);
+                            public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                                BitmapDrawable bd = new BitmapDrawable(resource);
+                                drawableTarget.setDrawable(bd,true);
                             }
 
                             @Override
@@ -110,30 +103,6 @@ public class DrawableLoader implements IDrawableLoader {
                             }
                         });
 
-                return;
-            }else{
-                final  String temp=url;
-                Picasso.with(WXEnvironment.getApplication())
-                        .load(temp)
-                        .into(new Target() {
-                            @Override
-                            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                                BitmapDrawable bd = new BitmapDrawable(bitmap);
-                                drawableTarget.setDrawable(bd,true);
-                            }
-
-                            @Override
-                            public void onBitmapFailed(Drawable errorDrawable) {
-
-                            }
-
-                            @Override
-                            public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                            }
-                        });
-
-            }
 
         }else{
             this.loadLocal(url,drawableTarget,drawableStrategy);

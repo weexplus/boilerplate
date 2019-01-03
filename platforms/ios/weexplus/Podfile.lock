@@ -88,6 +88,9 @@ PODS:
   - YZHeaderScaleImage (1.0.1)
   - ZipArchive (1.4.0)
   - zipzap (8.1.1)
+  - zoomImage (0.0.1):
+    - farwolf.weex
+    - LPPhotoViewer (~> 0.2.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
@@ -112,6 +115,7 @@ DEPENDENCIES:
   - YYModel
   - YZHeaderScaleImage (~> 1.0.1)
   - ZipArchive (~> 1.4.0)
+  - zoomImage (from `../../../../weexplus-plugins/ios/zoomImage`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -156,6 +160,8 @@ EXTERNAL SOURCES:
     :path: LMTowDatePicker
   WeexSDK:
     :path: sdk
+  zoomImage:
+    :path: "../../../../weexplus-plugins/ios/zoomImage"
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -165,7 +171,7 @@ SPEC CHECKSUMS:
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   farwolf: 2a23d2e644d477a1822e32f13a80870761f0f3be
   farwolf.business: c389f61c1abe895c04b0c2f9df27df7783d0d4dd
-  farwolf.weex: 4bb9999d391636056e4b656eea4be5c93a714c03
+  farwolf.weex: 4c3174ebe485b5efb55c90c9ac19510625c84e26
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   HcdDateTimePicker: 187736981f667f699d4d8d6ccc21621b55a6edb8
@@ -192,7 +198,8 @@ SPEC CHECKSUMS:
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
+  zoomImage: 854065d5b12b508b16aabb6fef6be21aa0233d39
 
-PODFILE CHECKSUM: 5d8e1f99e9f2afcef8bf6bc25ed69a037e6d6b68
+PODFILE CHECKSUM: a455e7def2007b45baa8c15cda78defcb6a65327
 
 COCOAPODS: 1.5.0
