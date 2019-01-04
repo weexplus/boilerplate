@@ -56,6 +56,7 @@ WX_EXPORT_METHOD_SYNC(@selector(openUrl:))
 -(void)openUrl:(NSString*)url{
 //    NSString *openURL = @"http://www.baidu.com/";
     NSURL *URL = [NSURL URLWithString:url];
+    [[UIApplication sharedApplication] openURL:URL];
 }
 
 
