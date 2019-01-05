@@ -77,29 +77,19 @@
     }
     
     
+    __weak typeof (self)weakSlef=self;
     [WeexFactory renderNew:url compelete:^(WXNormalViewContrller *vc) {
         [vc.view setHidden:true];
-        [self addVc:vc];
+        [weakSlef addVc:vc];
     } fail:^(NSString *msg) {
-        
-        [self failGo];
+        [weakSlef toast:@"启动异常"];
     }  frame:[UIApplication sharedApplication].keyWindow.frame isPortrait:isPortrait];
     
     
 
 }
 
--(void)failGo
-{
-    WXNormalViewContrller *vc=[WXNormalViewContrller new];
-    vc.debug=[Config isDebug];
-    vc.sourceURL=[NSURL URLWithString:[Config entry]];
-    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
-//    [self.navigationController pushViewController:vc animated:true];
-    [self presentViewController:nav animated:false completion:^{
 
-    }];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

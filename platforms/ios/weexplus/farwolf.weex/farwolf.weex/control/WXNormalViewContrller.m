@@ -676,7 +676,7 @@ static BOOL isshowErr;
 
 -(void)loaddefault
 {
-    self.sourceURL= [NSURL URLWithString:[Config entry]];
+    self.sourceURL= [NSURL URLWithString:[Config debugEntry]];
     [self refreshWeex];
     
 }

@@ -287,12 +287,12 @@
 {
     if(![Config isDebug])
     {
-        return [Config entry];;
+        return [Config releaseEntry];;
     }
     NSString *s= [self getSaveValue:@"url"];
     if(s==nil||[s isEqualToString:@""])
     {
-        s=[Config entry];
+        s=[Config debugEntry];
     }
     return s;
 }

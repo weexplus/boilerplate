@@ -108,9 +108,19 @@ public class Config {
         return config(c).optString("debugIp");
     }
 
-    public static String entry(Context c)
+//    public static String entry(Context c)
+//    {
+//        return config(c).optString("entry");
+//    }
+
+    public static String debugEntry(Context c)
     {
-        return config(c).optString("entry");
+        return config(c).optString("debugEntry");
+    }
+
+    public static String releaseEntry(Context c)
+    {
+        return config(c).optString("releaseEntry");
     }
 
     public static String notifyEntry(Context c)

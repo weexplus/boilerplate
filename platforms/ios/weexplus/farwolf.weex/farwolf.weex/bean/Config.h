@@ -11,7 +11,8 @@
 
 @interface Config : NSObject
 +(NSString*)schema;
-+(NSString*)entry;
++(NSString*)debugEntry;
++(NSString*)releaseEntry;
 +(NSString*)notifyEntry;
 +(NSString*)splash;
 +(NSString*)debugIp;

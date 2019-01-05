@@ -35,23 +35,7 @@
 
     
     self.window= [WeexPlus init:launchOptions];
-   
-//    [[jpush  sharedManager]initPush];
-//    NSMutableDictionary *p=[NSMutableDictionary new];
-//    if(launchOptions==nil)
-//        launchOptions=[NSMutableDictionary new];
-//    [launchOptions setValue:JPUSHAppkey forKey:@"jpushAppkey"];
-//    p[@"options"]=launchOptions;
-//    [self notifyDict:APP_didFinishLaunchingWithOptions value:p];
-    
-//    Class clazz = NSClassFromString(@"JQCar");
-//    //动态创建car
-//    id car  = [[clazz alloc] init];
-//    //使用performSelector方法来动态调用
-//    [car performSelector:@selector(addSpeed:) withObject:[NSNumber numberWithLong:2]];
-//    //使用Objec_send来动态调用
-//    objc_send(car,@selector(addSpeed:),3.4);
-//    [self regist:@"" method:@selector(addObject:)];
+ 
      return YES;
 }
 

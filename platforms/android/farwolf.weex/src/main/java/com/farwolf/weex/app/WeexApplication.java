@@ -230,7 +230,7 @@ public class WeexApplication extends MultiDexApplication {
         }
         else
         {
-            String entry= Config.entry(this);
+            String entry= Config.debugEntry(this);
             if(!StringUtil.isNullOrEmpty(entry)){
                 ipx=RegexBase.regexOne(entry,"http://",":");
             }

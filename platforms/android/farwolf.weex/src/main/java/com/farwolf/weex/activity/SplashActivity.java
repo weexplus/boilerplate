@@ -1,8 +1,6 @@
 package com.farwolf.weex.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -92,24 +90,13 @@ public class SplashActivity extends WeexActivity {
         List l= new ArrayList();
         String entry=getEntryUrl();
         l.add(entry);
-        if(!Config.debug(this))
+        if(Config.debug(this))
         {
 
-            this.mWXSDKInstance.setBundleUrl(entry);
-//            List temp=new ArrayList();
-//            for(Object q:l)
-//            {
-//                temp.add((q+"").replace("root:","app/"));
-//            }
-            gotoMain();
-
-        }
-        else
-        {
             String url=pref.url().get();
             if(StringUtil.isNullOrEmpty(url))
             {
-                url=Config.entry(this);
+                url=Config.debugEntry(this);
             }
             boolean isPotrait=  Config.isPortrait(this);
             Intent in=   new Intent(SplashActivity.this, EntryActivity_.class);
@@ -119,6 +106,14 @@ public class SplashActivity extends WeexActivity {
             startActivity(in);
             finish();
             releaseImageViewResouce(img);
+
+        }
+        else
+        {
+
+
+            this.mWXSDKInstance.setBundleUrl(entry);
+            gotoMain();
         }
 
     }
@@ -126,14 +121,15 @@ public class SplashActivity extends WeexActivity {
 
     public String getEntryUrl()
     {
-        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
-        SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
-        String url=sharedPreferences.getString("mainurl","");
-        if(StringUtil.isNullOrEmpty(url))
-        {
-            url=Config.entry(this);
-        }
-        return url;
+//        SharedPreferences sharedPreferences = this.mWXSDKInstance.getContext().getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
+//        SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+//        String url=sharedPreferences.getString("mainurl","");
+//        if(StringUtil.isNullOrEmpty(url))
+//        {
+//            url=Config.releaseEntry(this);
+//        }
+//        return url;
+        return Config.releaseEntry(this);
     }
 
     public void gotoMain()

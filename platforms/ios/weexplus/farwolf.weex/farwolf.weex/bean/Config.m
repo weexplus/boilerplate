@@ -16,10 +16,16 @@
     return  [[Weex conifg] objectForKey:@"schema"];
 }
 
-+(NSString*)entry
++(NSString*)debugEntry
 {
-    return  [[Weex conifg] objectForKey:@"entry"];
+    return  [[Weex conifg] objectForKey:@"debugEntry"];
 }
+
++(NSString*)releaseEntry
+{
+    return  [[Weex conifg] objectForKey:@"releaseEntry"];
+}
+
 +(NSString*)notifyEntry
 {
     return  [[Weex conifg] objectForKey:@"notifyEntry"];
