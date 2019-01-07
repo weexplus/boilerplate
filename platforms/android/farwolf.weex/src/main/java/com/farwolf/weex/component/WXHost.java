@@ -16,8 +16,6 @@ import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
 
-import java.util.HashMap;
-
 /**
  * Created by zhengjiangrong on 2017/8/17.
  */
@@ -28,19 +26,10 @@ public class WXHost extends  WXVContainer<WXTabView> {
     }
 
 
-//    public WXHost(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-//        super(instance, dom, parent);
-//    }
-
-
-
     @Override
     protected WXTabView initComponentHostView(@NonNull Context context) {
         WXTabView w= WXTabView_.build(context);
         w.setInstance(getInstance());
-//        WXTabView w= new WXTabView(context);
-//        w.holdComponent(this);
-
         return w;
     }
 
@@ -67,27 +56,11 @@ public class WXHost extends  WXVContainer<WXTabView> {
         this.getHostView().addChild(child);
     }
 
-//    @WXComponentProp(name = "items")
-//    public void setItems(ArrayList l)
-//    {
-//
-//        ArrayList lx=new ArrayList();
-//        for(Object q:l)
-//        {
-//            lx.add(Weex.getRelativeUrl(q+"", this.getInstance()));
-//        }
-//
-//        this.getHostView().setItems(lx);
-//    }
 
-    @WXComponentProp(name = "index")
-    public void setIndex(int index)
+    @WXComponentProp(name = "page")
+    public void setPage(int index)
     {
-        this.getHostView().setIndex(index);
-        HashMap m=new HashMap();
-        m.put("index",index);
-        fireEvent("change",m);
-        getChild(index).fireEvent("show",mInstance.param);
+        this.getHostView().setIndex(index,this,mInstance.param);
     }
 
 

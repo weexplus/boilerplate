@@ -108,7 +108,6 @@ class ImgNode extends RichTextNode {
       drawableStrategy.height = height;
       //zjr
       drawableStrategy.context = this.mContext;
-
       WXSDKEngine.getDrawableLoader().setDrawable(rewrited.toString(), imageSpan, drawableStrategy);
     }
     return imageSpan;

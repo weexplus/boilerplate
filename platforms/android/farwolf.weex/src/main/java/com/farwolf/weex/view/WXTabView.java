@@ -6,12 +6,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.farwolf.weex.R;
+import com.taobao.weex.ui.component.WXVContainer;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhengjiangrong on 2017/8/17.
@@ -22,6 +25,10 @@ public class WXTabView extends WeexView {
     public List<String> urls=new ArrayList<>();
 
 
+    int defaultIndex=-1;
+    WXVContainer parent;
+
+    Map param;
     @ViewById
     LinearLayout root;
     List<View>pages=new ArrayList<>();
@@ -48,70 +55,66 @@ public class WXTabView extends WeexView {
 
     }
 
+    public int size(){
+        return pages.size();
+    }
 
-    public void addChild(View v)
+    public void addChild(final View v)
     {
-      this.root.addView(v);
-        this.pages.add(v);
+        if(this.pages.size()-1==this.defaultIndex){
+            v.setVisibility(View.VISIBLE);
+        }else{
+            v.setVisibility(View.GONE);
+        }
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                root.addView(v);
+                pages.add(v);
+                if(defaultIndex!=-1){
+                    if(defaultIndex<=pages.size()-1){
+                        setIndex(defaultIndex,parent,param);
+                        defaultIndex=-1;
+                    }
+                }
+            }
+        });
+
+
     }
 
 
-//    public void setChildContext(Context c)
-//    {
-//        for(WXPageView p:pages)
-//        {
-//            p.instance.setContext(c);
-//        }
-//    }
 
 
 
 
 
-//    public void setItems(List<String> l)
-//    {
-//        if(this.urls.size()>0)
-//            return;
-//        this.urls=l;
-//        root.removeAllViews();
-//        pages.clear();
-//        WeexActivity a= (WeexActivity)getActivity();
-//        final Map param=a.getIntent().getParcelableExtra("param");
-//        for(String q:urls)
-//        {
-//            WXPageView p=WXPageView_.build(getContext());
-////            p.setBackgroundColor(Color.GREEN);
-//            p.setParentInstance(instance);
-//            p.setVisibility(View.VISIBLE);
-//            p.setSrc(q,getContext(),param);
-//            ViewGroup.LayoutParams lp=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//            p.setLayoutParams(lp);
-//            pages.add(p);
-//            this.root.addView(p);
-//
-//
-//        }
-////        a.addRenderListener(new RenderListener() {
-////            @Override
-////            public void onRenderSuccess(HashMap param) {
-////                for(WXPageView px:pages)
-////                {
-////                    px.firePageInit();
-////                }
-////            }
-////        });
-//
-//        setIndex(0);
-//    }
 
 
-    public void setIndex(int index)
+
+
+    public void setIndex(final int index,final WXVContainer parent,final Map param)
     {
+        if(index>pages.size()-1){
+            this.defaultIndex=index;
+            this.parent=parent;
+            return;
+        }
         for(View p:pages)
         {
             if(pages.indexOf(p)==index)
             {
                 p.setVisibility(View.VISIBLE);
+                final HashMap m=new HashMap();
+                m.put("index",index);
+                this.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        parent.fireEvent("change",m);
+                        parent.getChild(index).fireEvent("show",param);
+                    }
+                });
+
 //                p.fireResume();
             }
             else
@@ -122,41 +125,6 @@ public class WXTabView extends WeexView {
         }
     }
 
-
-//    public void onEventInvoke(EventEnum event, int requestcode, int resultcode, Intent data)
-//    {
-//        for(WXPageView p:pages)
-//        {
-//            switch (event)
-//            {
-//                case OnActivityCreate:
-//                    p.instance.onActivityCreate();
-//                    break;
-//                case OnActivityStart:
-//                    p.instance.onActivityStart();
-//                    break;
-//                case OnActivityResume:
-//                    p.instance.onActivityResume();
-//                    break;
-//                case OnActivityPause:
-//                    p.instance.onActivityPause();
-//                    break;
-//                case OnActivityStop:
-//                    p.instance.onActivityStop();
-//                    break;
-//                case OnActivityDestroy:
-//                    p.instance.onActivityDestroy();
-//                    break;
-//                case OnActivityBack:
-//                    p.instance.onActivityBack();
-//                    break;
-//                case OnActivityResult:
-//                    p.instance.onActivityResult(requestcode,resultcode,data);
-//
-//            }
-//
-//        }
-//    }
 
 
 

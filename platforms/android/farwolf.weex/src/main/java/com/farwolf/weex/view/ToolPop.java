@@ -265,7 +265,7 @@ public class ToolPop extends ViewBase{
     public void loaddefaultClicked() {
 
 //        pref.url().put("").;
-        ((WeexActivity)getActivity()).url=Config.entry(getActivity());
+        ((WeexActivity)getActivity()).url=Config.debugEntry(getActivity());
         pref.edit().url().put("").apply();
         EventBus.getDefault().post(new RefreshEvent("refresh"));
         f.dismiss();

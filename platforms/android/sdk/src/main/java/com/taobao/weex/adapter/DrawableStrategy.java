@@ -28,5 +28,4 @@ public class DrawableStrategy {
   public int height;
   //zjr
   public Context context;
-
 }

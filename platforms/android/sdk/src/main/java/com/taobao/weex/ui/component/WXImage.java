@@ -339,8 +339,7 @@ public class WXImage extends WXComponent<ImageView> {
     imageStrategy.instanceId = getInstanceId();
     IWXImgLoaderAdapter imgLoaderAdapter = getInstance().getImgLoaderAdapter();
     if (imgLoaderAdapter != null) {
-      //zjr
-      imgLoaderAdapter.setImage(mSrc, getHostView(),
+      imgLoaderAdapter.setImage(rewritedStr, getHostView(),
           getImageQuality(), imageStrategy);
     }
   }

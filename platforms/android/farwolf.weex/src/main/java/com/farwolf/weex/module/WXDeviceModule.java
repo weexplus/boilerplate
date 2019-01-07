@@ -15,7 +15,7 @@ public class WXDeviceModule extends WXModuleBase {
     }
 
     @JSMethod(uiThread = false)
-    public String getDeviceId(){
+    public String deviceId(){
         return DeviceTool_.getInstance_(getContext()).getDeviceId();
     }
 

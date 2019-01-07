@@ -24,10 +24,10 @@
             self.items=attributes[@"items"];
         }
         
-        if (attributes[@"index"])
+        if (attributes[@"page"])
         {
             
-            self.index=[attributes[@"index"] integerValue];
+            self.index=[attributes[@"page"] integerValue];
         }
         else
         {
@@ -45,9 +45,9 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        if (attributes[@"index"])
+        if (attributes[@"page"])
         {
-            self.index=[attributes[@"index"] integerValue];
+            self.index=[attributes[@"page"] integerValue];
             if(self.index>=self.items.count)
             {
                 self.index=self.items.count-1;

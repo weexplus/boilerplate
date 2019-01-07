@@ -162,15 +162,10 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
     }
   }
-
   //zjr add
   public WXSDKInstance getChildInstance()
   {
     return mNestedInstance;
-  }
-  //zjr add
-  public void onRenderFinish(){
-
   }
   static class EmbedRenderListener implements IWXRenderListener {
     WXEmbed mComponent;
@@ -187,9 +182,8 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
       hostView.removeAllViews();
       hostView.addView(view);
       //zjr add
-      mComponent.onRenderFinish();
+      mComponent.onRenderFinish(0);
     }
-
 
     @Override
     public void onRenderSuccess(WXSDKInstance instance, int width, int height) {
@@ -351,6 +345,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     return  level;
   }
 
+
   private WXSDKInstance createInstance() {
     WXSDKInstance sdkInstance = getInstance().createNestedInstance(this);
 
@@ -381,17 +376,21 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     }
     sdkInstance.setContainerInfo(WXInstanceApm.KEY_PAGE_PROPERTIES_INSTANCE_TYPE,"embed");
     sdkInstance.setContainerInfo(WXInstanceApm.KEY_PAGE_PROPERTIES_PARENT_PAGE,getInstance().getWXPerformance().pageName);
-    ViewGroup.LayoutParams layoutParams = getHostView().getLayoutParams();
-    //    sdkInstance.renderByUrl(url,
+//    sdkInstance.renderByUrl(url,
 //            url,
 //            null, null,
 //            WXRenderStrategy.APPEND_ASYNC);
-    this.loadUrl(url,sdkInstance,layoutParams);
 
+    //zjr
+    ViewGroup.LayoutParams layoutParams = getHostView().getLayoutParams();
+    //    sdkInstance.renderByUrl(WXPerformance.DEFAULT,
+//                            url,
+//                            null, null, layoutParams.width,
+//                            layoutParams.height,
+//                            WXRenderStrategy.APPEND_ASYNC);
+    this.loadUrl(url,sdkInstance,layoutParams);
     return sdkInstance;
   }
-
-
   //zjr add
   public void loadUrl(String url,WXSDKInstance instance,ViewGroup.LayoutParams layoutParams)
   {
@@ -406,7 +405,6 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 
     }
   }
-
   @Override
   public void setVisibility(String visibility) {
     super.setVisibility(visibility);

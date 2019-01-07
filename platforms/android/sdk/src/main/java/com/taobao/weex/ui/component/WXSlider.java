@@ -129,12 +129,6 @@ public class WXSlider extends WXVContainer<FrameLayout> {
 
     return view;
   }
-  //zjr add
-  @JSMethod
-  public void rework()
-  {
-    setAutoPlay("true");
-  }
 
   /**
    * Slider is not a regular container,top/left/right/bottom not apply to view,expect indicator.
@@ -194,6 +188,9 @@ public class WXSlider extends WXVContainer<FrameLayout> {
     }
     mAdapter.addPageView(view);
     hackTwoItemsInfiniteScroll();
+    //zjr add
+    mViewPager.setOffscreenPageLimit(mAdapter.getCount()-1);
+    mViewPager.setCurrentItem(0);
     if (initIndex != -1 && mAdapter.getRealCount() > initIndex) {
       if(initRunnable == null){
         initRunnable = new Runnable() {
@@ -225,6 +222,12 @@ public class WXSlider extends WXVContainer<FrameLayout> {
       mAdapter.setLayoutDirectionRTL(this.isLayoutRTL());
     }
     super.setLayout(component);
+  }
+  //zjr add
+  @JSMethod
+  public void rework()
+  {
+    setAutoPlay("true");
   }
 
   @Override

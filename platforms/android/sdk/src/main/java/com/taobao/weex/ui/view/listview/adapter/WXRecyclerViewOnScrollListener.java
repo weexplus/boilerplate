@@ -76,8 +76,7 @@ public class WXRecyclerViewOnScrollListener extends RecyclerView.OnScrollListene
     RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
     int visibleItemCount = layoutManager.getChildCount();
     int totalItemCount = layoutManager.getItemCount();
-    int c=recyclerView.getChildCount();
-//    recyclerView.
+
     //zjr add
     if (visibleItemCount != 0) {
       int bottomOffset = (totalItemCount - mLastVisibleItemPosition - 1) * (recyclerView.getHeight()) / visibleItemCount;

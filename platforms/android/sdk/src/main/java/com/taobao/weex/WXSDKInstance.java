@@ -108,18 +108,18 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   public static String ACTION_DEBUG_INSTANCE_REFRESH = "DEBUG_INSTANCE_REFRESH";
   public static String ACTION_INSTANCE_RELOAD = "INSTANCE_RELOAD";
 
-  //zjr add
-  public Map param;
-  private List<WXSDKInstance> childInstances=new ArrayList<>();
-  public boolean firePageInit =false;
-  public boolean hasInit =false;
-
   //Performance
   public boolean mEnd = false;
   public boolean mHasCreateFinish = false;
   public static final String BUNDLE_URL = "bundleUrl";
   private IWXUserTrackAdapter mUserTrackAdapter;
   private IWXRenderListener mRenderListener;
+  //zjr add
+  public Map param;
+  private List<WXSDKInstance> childInstances=new ArrayList<>();
+  public boolean firePageInit =false;
+  public boolean hasInit =false;
+  //zjr
   private IWXStatisticsListener mStatisticsListener;
   /** package **/ Context mContext;
   private final String mInstanceId;
@@ -217,7 +217,6 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   private Map<Long, ContentBoxMeasurement> mContentBoxMeasurements = new ArrayMap<>();
 
   private List<InstanceOnFireEventInterceptor> mInstanceOnFireEventInterceptorList;
-
   //zjr add
   public void addChildInstance(WXSDKInstance instance)
   {
@@ -245,6 +244,7 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   public boolean isFirePageInit() {
     return firePageInit;
   }
+
   /**
    * network handler
    */

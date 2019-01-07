@@ -1220,9 +1220,8 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
 
       //zjr add
       if (offScreenY>0&&offScreenY <= offsetParsed) {
-
         if (mListCellCount != mChildren.size()
-                || mForceLoadmoreNextTime) {
+            || mForceLoadmoreNextTime) {
           fireEvent(Constants.Event.LOADMORE);
           mListCellCount = mChildren.size();
           mForceLoadmoreNextTime = false;

@@ -30,6 +30,7 @@
     "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
+    "babel-plugin-component": "^1.1.1",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",
     "copy-webpack-plugin": "^4.5.2",

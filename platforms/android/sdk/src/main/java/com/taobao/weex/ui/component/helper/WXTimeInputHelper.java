@@ -31,6 +31,7 @@ import com.taobao.weex.ui.component.AbstractEditComponent;
 public class WXTimeInputHelper {
   public static void pickDate(String max, String min, final AbstractEditComponent component) {
     final TextView target = component.getHostView();
+
       //zjr add
       DatePickerImpl.pickDate(
               component.mInstance.getContext(),
