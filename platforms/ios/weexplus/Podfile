@@ -73,7 +73,7 @@ def mypod
 #    pod 'nim', :path => '../../../../weexplus-plugins/ios/nim'
 
 #     pod 'zoomImage', :path => '../../../../weexplus-plugins/ios/zoomImage'
-
+    pod 'record', :path => '../../../../weexplus-plugins/ios/record'
 end
 
 

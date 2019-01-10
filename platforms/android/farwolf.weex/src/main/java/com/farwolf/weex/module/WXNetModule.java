@@ -4,7 +4,7 @@ package com.farwolf.weex.module;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.farwolf.interfac.IFullHttp;
 import com.farwolf.util.Downloader;
@@ -86,12 +86,26 @@ public class WXNetModule extends WXModule {
 
                     try {
                         Log.i("back",s);
-                        HashMap res=new HashMap();
-                        res.put("res",JSONObject.parse(s));
+//                        HashMap res=new HashMap();
+//                        res.put("res",JSONObject.parse(s));
                         String cookie=response.headers().get("Set-Cookie");
-                        res.put("sessionid",cookie);
-                        if(success!=null)
-                            success.invoke(res);
+//                        res.put("sessionid",cookie);
+//                        if(success!=null)
+//                            success.invoke(res);
+                        s+="";
+                        s=s.trim();
+                        HashMap m=new HashMap();
+                        if(s.startsWith("{")){
+                            Map maps = (Map)  JSONObject.parse(s);
+                            m.put("res",maps);
+                        } if(s.startsWith("[")){
+                            JSONArray ja= JSONObject.parseArray(s);
+                            m.put("res",ja);
+                        }else{
+                            m.put("res",s);
+                        }
+                        m.put("sessionid",cookie);
+                        success.invoke(m);
                     }
                     catch (Exception e)
                     {
@@ -262,9 +276,18 @@ public class WXNetModule extends WXModule {
             @Override
             public void success(String s) {
 
+                s+="";
+                s=s.trim();
                 HashMap m=new HashMap();
-                Map maps = (Map) JSON.parse(s);
-                m.put("res",maps);
+                if(s.startsWith("{")){
+                    Map maps = (Map)  JSONObject.parse(s);
+                    m.put("res",maps);
+                } if(s.startsWith("[")){
+                    JSONArray ja= JSONObject.parseArray(s);
+                    m.put("res",ja);
+                }else{
+                    m.put("res",s);
+                }
                 success.invoke(m);
             }
 
@@ -278,49 +301,49 @@ public class WXNetModule extends WXModule {
 
 
     @JSMethod
-   public void download(String url,final JSCallback progress,final JSCallback compelete,final JSCallback exception)
-   {
+    public void download(String url,final JSCallback progress,final JSCallback compelete,final JSCallback exception)
+    {
 
-       final String path= SDCard.getBasePath(mWXSDKInstance.getContext())+"/download/"+Md5.toMd5(url);;
-       String zip=SDCard.getBasePath(mWXSDKInstance.getContext())+"/download";
-       File f= new File(zip);
-       if(f.exists())
-       {
-           f.delete();
-       }
-       f= new File(zip);
-       Downloader downloader= new Downloader(new IFullHttp() {
+        final String path= SDCard.getBasePath(mWXSDKInstance.getContext())+"/download/"+Md5.toMd5(url);;
+        String zip=SDCard.getBasePath(mWXSDKInstance.getContext())+"/download";
+        File f= new File(zip);
+        if(f.exists())
+        {
+            f.delete();
+        }
+        f= new File(zip);
+        Downloader downloader= new Downloader(new IFullHttp() {
 
-           @Override
-           public void OnPostProcess(float newProgress,float current,float total) {
+            @Override
+            public void OnPostProcess(float newProgress,float current,float total) {
 
-               HashMap m=new HashMap();
-               m.put("percent",newProgress);
-               m.put("current",current);
-               m.put("total",total);
-               progress.invokeAndKeepAlive(m);
-           }
+                HashMap m=new HashMap();
+                m.put("percent",newProgress);
+                m.put("current",current);
+                m.put("total",total);
+                progress.invokeAndKeepAlive(m);
+            }
 
-           @Override
-           public void OnPostStart(Object o) {
+            @Override
+            public void OnPostStart(Object o) {
 
-           }
+            }
 
-           @Override
-           public void OnPostCompelete(Object o) {
-               HashMap m=new HashMap();
-               m.put("path", Const.PREFIX_SDCARD+path);
-               compelete.invoke(m);
-           }
+            @Override
+            public void OnPostCompelete(Object o) {
+                HashMap m=new HashMap();
+                m.put("path", Const.PREFIX_SDCARD+path);
+                compelete.invoke(m);
+            }
 
-           @Override
-           public void OnException(Object o) {
-               exception.invoke(new HashMap());
-           }
-       });
+            @Override
+            public void OnException(Object o) {
+                exception.invoke(new HashMap());
+            }
+        });
 
-       downloader.execute(url,path);
-   }
+        downloader.execute(url,path);
+    }
 
 
 

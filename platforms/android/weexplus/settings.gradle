@@ -45,3 +45,6 @@ project (':sdk').projectDir = new File('../sdk')
 
 //include ':inspector'
 //project(':inspector').projectDir = new File('../inspector')
+
+//include ':gcanvas'
+//project(':gcanvas').projectDir = new File('../../../../weexplus-plugins/android/gcanvas')
