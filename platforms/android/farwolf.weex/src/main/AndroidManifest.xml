@@ -15,6 +15,7 @@
             android:theme="@style/pop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing"
+            android:configChanges="orientation|screenSize"
             >
 
         </activity>
@@ -31,6 +32,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"
             >
 
         </activity>
@@ -41,6 +43,7 @@
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"
 
             >
 
@@ -50,7 +53,7 @@
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="landscape"
-
+            android:configChanges="orientation|screenSize"
             >
 
         </activity>
