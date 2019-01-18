@@ -115,6 +115,7 @@
 				4D2665341ECD84CD00664B38 /* Frameworks */,
 				4D2665351ECD84CD00664B38 /* Resources */,
 				1DE6AFADC2454A29F3AF5464 /* [CP] Copy Pods Resources */,
+				B4BC80FF280D28C3D029EB5C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,7 +190,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh",
+				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitEmoticon.bundle",
+				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitResource.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/native-bundle-main.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-main-jsfm.js",
 				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-polyfill.js",
@@ -208,7 +212,10 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitEmoticon.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitResource.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-main-jsfm.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/weex-polyfill.js",
@@ -228,6 +235,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4BC80FF280D28C3D029EB5C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-frameworks.sh",
+				"${PODS_ROOT}/NIMSDK_LITE/NIMSDK/NIMSDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIMSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E1EBE96AEBABBDE8A9BEC3C2 /* [CP] Check Pods Manifest.lock */ = {
