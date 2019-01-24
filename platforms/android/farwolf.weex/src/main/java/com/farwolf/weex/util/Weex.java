@@ -60,7 +60,6 @@ import com.farwolf.weex.module.WXQRModule;
 import com.farwolf.weex.module.WXRsaModule;
 import com.farwolf.weex.module.WXSlidpopModule;
 import com.farwolf.weex.module.WXStaticModule;
-import com.farwolf.weex.module.WXTimePicker;
 import com.farwolf.weex.module.WXUpdateModule;
 import com.farwolf.weex.pref.WeexPref_;
 import com.farwolf.weex.view.CustomInsetsLinearLayout;
@@ -199,7 +198,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("page", WXPageModule.class);
             WXSDKEngine.registerModule("font", WXFontModule.class);
             WXSDKEngine.registerModule("updater", WXUpdateModule.class);
-            WXSDKEngine.registerModule("timepicker", WXTimePicker.class);
+//            WXSDKEngine.registerModule("timepicker", WXTimePicker.class);
             WXSDKEngine.registerModule("location", WXLocationModule.class);
             WXSDKEngine.registerModule("env", WXEnvModule.class);
             WXSDKEngine.registerModule("file", WXFileModule.class);
