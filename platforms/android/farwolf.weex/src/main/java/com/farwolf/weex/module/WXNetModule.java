@@ -98,7 +98,7 @@ public class WXNetModule extends WXModule {
                         if(s.startsWith("{")){
                             Map maps = (Map)  JSONObject.parse(s);
                             m.put("res",maps);
-                        } if(s.startsWith("[")){
+                        }else if(s.startsWith("[")){
                             JSONArray ja= JSONObject.parseArray(s);
                             m.put("res",ja);
                         }else{
