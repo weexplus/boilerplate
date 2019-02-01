@@ -715,16 +715,16 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         if(!StringUtil.isNullOrEmpty(url))
         {
             String temp=url;
-            if(temp.contains("_wx_tpl=")){
-                temp=temp.split("_wx_tpl=")[1];
+            if(url.contains("_wx_tpl=")){
+                url=url.split("_wx_tpl=")[1];
             }
             try {
-                temp= URLDecoder.decode(url,"UTF-8");
+                url= URLDecoder.decode(url,"UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            render(temp);
-            this.url=temp;
+            render(url);
+            this.url=url;
             pref.edit().url().put(url).apply();
             String sp=getSocketPortByUrl(url);
             pref.edit().socketPort().put(sp).apply();
