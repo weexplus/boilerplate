@@ -86,6 +86,12 @@
 //        }
 //        else
 //            [Weex setBaseUrl:s];
+        if([s contains:@"_wx_tpl="]){
+            s=[s split:@"_wx_tpl="][1];
+//            NSString *result = [(NSString *)s stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+             s= [s stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+        }
         [s save:@"url"];
         NSMutableDictionary *dic=[NSMutableDictionary new];
         [dic setValue:s forKey:@"url"];

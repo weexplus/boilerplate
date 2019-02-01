@@ -168,6 +168,9 @@ public class DefaultWebSocketAdapter implements IWebSocketAdapter {
         }
     }
 
+
+
+
     @Override
     public void destroy() {
         if (ws != null) {

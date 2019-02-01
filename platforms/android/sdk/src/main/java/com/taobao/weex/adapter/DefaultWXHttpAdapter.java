@@ -72,6 +72,7 @@ public class DefaultWXHttpAdapter implements IWXHttpAdapter {
         WXResponse response = new WXResponse();
         IEventReporterDelegate reporter = getEventReporterDelegate();
         try {
+
           HttpURLConnection connection = openConnection(request, listener);
           reporter.preConnect(connection, request.body);
           Map<String,List<String>> headers = connection.getHeaderFields();
@@ -93,7 +94,7 @@ public class DefaultWXHttpAdapter implements IWXHttpAdapter {
           if (listener != null) {
             listener.onHttpFinish(response);
           }
-        } catch (IOException|IllegalArgumentException e) {
+        } catch (Exception e) {
           isNetRequestSucceed = false;
           e.printStackTrace();
           response.statusCode = "-1";
