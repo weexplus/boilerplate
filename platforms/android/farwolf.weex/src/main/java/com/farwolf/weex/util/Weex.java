@@ -27,6 +27,7 @@ import com.farwolf.weex.component.WXFImage;
 import com.farwolf.weex.component.WXFInput;
 import com.farwolf.weex.component.WXFListComponent;
 import com.farwolf.weex.component.WXFScrollView;
+import com.farwolf.weex.component.WXFVideo;
 import com.farwolf.weex.component.WXFWeb;
 import com.farwolf.weex.component.WXHost;
 import com.farwolf.weex.component.WXItem;
@@ -227,6 +228,7 @@ public class Weex extends ServiceBase{
             registerComponent("drawerlayout",WXDrawerLayout.class);
             registerComponent("input",WXFInput.class);
             registerComponent("arc",WXArc.class);
+            registerComponent("video",WXFVideo.class);
 
             PluginManager.init(application);
 
