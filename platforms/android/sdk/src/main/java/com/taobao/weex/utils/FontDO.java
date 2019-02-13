@@ -30,7 +30,7 @@ import java.io.File;
 
 public class FontDO {
   private final String mFontFamilyName;
-  //zjr
+  //zjr add
   public String mUrl = "";
   public int mType = TYPE_NETWORK;
   private Typeface mTypeface;
@@ -98,7 +98,12 @@ public class FontDO {
           mType = TYPE_NETWORK;
         } else if (Constants.Scheme.FILE.equals(scheme)) {
           mType = TYPE_FILE;
-          mUrl = uri.getPath();
+            /**
+             * eg: file://name/A/B.ttf
+             * getPath() = "A/B.ttf",but the real absolute path is "/name/A/B.ttf"
+             * so use getEncodedSchemeSpecificPart() to replaced = "//name/A/B.ttf"
+             */
+            mUrl = uri.getEncodedSchemeSpecificPart();
         } else if (Constants.Scheme.LOCAL.equals(scheme)){
           mType = TYPE_LOCAL;
         } else if (Constants.Scheme.DATA.equals(scheme)) {

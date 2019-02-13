@@ -115,15 +115,15 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   private IWXUserTrackAdapter mUserTrackAdapter;
   private IWXRenderListener mRenderListener;
   //zjr add
-  public Map param;
-  private List<WXSDKInstance> childInstances=new ArrayList<>();
-  public boolean firePageInit =false;
-  public boolean hasInit =false;
-  //zjr
   private IWXStatisticsListener mStatisticsListener;
   /** package **/ Context mContext;
   private final String mInstanceId;
   private RenderContainer mRenderContainer;
+  //zjr add
+  public Map param;
+  private List<WXSDKInstance> childInstances=new ArrayList<>();
+  public boolean firePageInit =false;
+  public boolean hasInit =false;
   private WXComponent mRootComp;
   private boolean mRendered;
   private WXRefreshData mLastRefreshData;
@@ -190,6 +190,8 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
 
   private List<String> mLayerOverFlowListeners;
 
+  private WXSDKInstance mParentInstance;
+
   public List<String> getLayerOverFlowListeners() {
     return mLayerOverFlowListeners;
   }
@@ -217,6 +219,7 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   private Map<Long, ContentBoxMeasurement> mContentBoxMeasurements = new ArrayMap<>();
 
   private List<InstanceOnFireEventInterceptor> mInstanceOnFireEventInterceptorList;
+
   //zjr add
   public void addChildInstance(WXSDKInstance instance)
   {
@@ -244,7 +247,6 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   public boolean isFirePageInit() {
     return firePageInit;
   }
-
   /**
    * network handler
    */
@@ -1536,6 +1538,14 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
       mWXPerformance.screenRenderTime = System.currentTimeMillis() - mRenderStartTime;
   }
 
+  public WXSDKInstance getParentInstance() {
+    return mParentInstance;
+  }
+
+  public void setParentInstance(WXSDKInstance mParentInstance) {
+    this.mParentInstance = mParentInstance;
+  }
+
   private void destroyView(View rootView) {
     try {
       if (rootView instanceof ViewGroup) {
@@ -1559,6 +1569,9 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
 
   public synchronized void destroy() {
     if(!isDestroy()) {
+      if(mParentInstance != null){
+         mParentInstance = null;
+      }
       mApmForInstance.onEnd();
       if(mRendered) {
         WXSDKManager.getInstance().destroyInstance(mInstanceId);

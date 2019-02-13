@@ -49,7 +49,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
-
 import static com.taobao.weex.utils.WXFileUtils.loadAsset;
 
 @Component(lazyload = false)
@@ -345,10 +344,9 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     return  level;
   }
 
-
   private WXSDKInstance createInstance() {
     WXSDKInstance sdkInstance = getInstance().createNestedInstance(this);
-
+    sdkInstance.setParentInstance(getInstance());
     boolean needsAdd = !getAttrs().containsKey("disableInstanceVisibleListener");
     if(needsAdd){ //prevent switch off fire viewappear event twice
         getInstance().addOnInstanceVisibleListener(this);
@@ -380,15 +378,10 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
 //            url,
 //            null, null,
 //            WXRenderStrategy.APPEND_ASYNC);
-
-    //zjr
+    //zjr add
     ViewGroup.LayoutParams layoutParams = getHostView().getLayoutParams();
-    //    sdkInstance.renderByUrl(WXPerformance.DEFAULT,
-//                            url,
-//                            null, null, layoutParams.width,
-//                            layoutParams.height,
-//                            WXRenderStrategy.APPEND_ASYNC);
     this.loadUrl(url,sdkInstance,layoutParams);
+
     return sdkInstance;
   }
   //zjr add

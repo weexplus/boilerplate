@@ -553,6 +553,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         mWXSDKInstance.onActivityCreate();
         this.invokeRenderListener();
         this.isPageInit=true;
+        hideLoading();
     }
 
     @Override

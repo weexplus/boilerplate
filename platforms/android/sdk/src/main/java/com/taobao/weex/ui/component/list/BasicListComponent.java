@@ -1216,12 +1216,14 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
       if (TextUtils.isEmpty(offset)) {
         offset = "0";
       }
-      float offsetParsed = WXViewUtils.getRealPxByWidth(Integer.parseInt(offset),getInstance().getInstanceViewPortWidth());
 
-      //zjr add
+
+      float offsetParsed = WXViewUtils.getRealPxByWidth(WXUtils.getInt(offset),getInstance().getInstanceViewPortWidth());
+    //zjr add
       if (offScreenY>0&&offScreenY <= offsetParsed) {
+
         if (mListCellCount != mChildren.size()
-            || mForceLoadmoreNextTime) {
+                || mForceLoadmoreNextTime) {
           fireEvent(Constants.Event.LOADMORE);
           mListCellCount = mChildren.size();
           mForceLoadmoreNextTime = false;

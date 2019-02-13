@@ -34,7 +34,6 @@ import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.WXSDKManager;
 import com.taobao.weex.annotation.Component;
-import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.dom.WXEvent;
 import com.taobao.weex.ui.ComponentCreator;
@@ -188,9 +187,6 @@ public class WXSlider extends WXVContainer<FrameLayout> {
     }
     mAdapter.addPageView(view);
     hackTwoItemsInfiniteScroll();
-    //zjr add
-    mViewPager.setOffscreenPageLimit(mAdapter.getCount()-1);
-    mViewPager.setCurrentItem(0);
     if (initIndex != -1 && mAdapter.getRealCount() > initIndex) {
       if(initRunnable == null){
         initRunnable = new Runnable() {
@@ -222,12 +218,6 @@ public class WXSlider extends WXVContainer<FrameLayout> {
       mAdapter.setLayoutDirectionRTL(this.isLayoutRTL());
     }
     super.setLayout(component);
-  }
-  //zjr add
-  @JSMethod
-  public void rework()
-  {
-    setAutoPlay("true");
   }
 
   @Override

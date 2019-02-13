@@ -175,7 +175,6 @@ public class WXLogUtils {
       EventBus.getDefault().post(new ErrorEvent(msg.replace("__ERROR", "")));
     }
   }
-
   private static LogLevel getLogLevel(String level) {
     switch (level.trim()){
       case "__ERROR":

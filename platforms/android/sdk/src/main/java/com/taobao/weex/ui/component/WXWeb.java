@@ -202,7 +202,6 @@ public class WXWeb extends WXComponent {
     public void loadDataWithBaseURL(String source) {
         getWebView().loadDataWithBaseURL(source);
     }
-
     @JSMethod
     public void reload() {
         getWebView().reload();
