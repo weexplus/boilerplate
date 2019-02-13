@@ -40,7 +40,6 @@ static NSString * appBoardContent;
  * The root view is controlled by WXSDKInstance, so you can only get it, but not change it.
  **/
 @property (nonatomic, strong) UIView *rootView;
-
 //zjr add
 @property (nonatomic, weak) NSDictionary *param;
 

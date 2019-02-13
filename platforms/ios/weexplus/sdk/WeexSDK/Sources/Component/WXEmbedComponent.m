@@ -150,6 +150,7 @@
     [_embedInstance.apmInstance setProperty:KEY_PAGE_PROPERTIES_INSTANCE_TYPE withValue:@"embed"];
     [_embedInstance.apmInstance setProperty:KEY_PAGE_PROPERTIES_PARENT_PAGE withValue:_embedInstance.parentInstance.pageName];
     [self.weexInstance.apmInstance updateDiffStats:KEY_PAGE_STATS_EMBED_COUNT withDiffValue:1];
+   
     __weak typeof(self) weakSelf = self;
     _embedInstance.onCreate = ^(UIView *view) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -189,7 +190,6 @@
         [weakSelf onRenderFinish];
     };
 }
-
 //zjr add
 -(WXSDKInstance*)getInstance
 {

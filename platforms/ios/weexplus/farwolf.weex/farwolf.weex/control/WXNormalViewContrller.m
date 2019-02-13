@@ -403,11 +403,12 @@ static BOOL isshowErr;
  
     [self refreshWeex];
 }
-
+ 
 - (void)refreshWeex
 {
     [self.fail_layout setHidden:true];
     [self _renderWithURL:_sourceURL];
+//    [self render];
     
 //    [self back:true];
 }
@@ -470,10 +471,8 @@ static BOOL isshowErr;
     _instance.onCreate = ^(UIView *view) {
         [weakSelf.weexView removeFromSuperview];
         weakSelf.weexView = view;
-
         [weakSelf.view addSubview:weakSelf.weexView];
         UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,  weakSelf.weexView);
-
         [weakSelf onCreateWeexView];
 
     };

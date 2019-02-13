@@ -21,7 +21,7 @@
 //#import <WeexPluginLoader/WPLMacro.h>
 #import "WeexPlus.h"
 #import "WeexPluginManager.h"
-
+#import "WXDevTool.h"
 @interface AppDelegate ()
 
 @end
@@ -31,11 +31,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
-
-
+ 
     
     self.window= [WeexPlus init:launchOptions];
- 
+  
      return YES;
 }
 

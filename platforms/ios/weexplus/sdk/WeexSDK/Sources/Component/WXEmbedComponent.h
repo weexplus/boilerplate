@@ -23,8 +23,7 @@
 @interface WXEmbedComponent : WXComponent <WXErrorViewDelegate>
 
 - (void)refreshWeex;
-
-//zjr 
+//zjr
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL;
 -(void)onRenderFinish;
 -(WXSDKInstance*)getInstance;

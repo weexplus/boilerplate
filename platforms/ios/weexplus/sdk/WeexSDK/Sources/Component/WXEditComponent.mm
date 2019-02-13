@@ -200,7 +200,8 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
         toolbar.items = [NSArray arrayWithObjects:space, barButton, nil];
         
-        self.inputAccessoryView = toolbar;
+        //zjr add
+        //    self.inputAccessoryView = toolbar;
     }
 
     [self handlePseudoClass];
@@ -944,13 +945,14 @@ WX_EXPORT_METHOD(@selector(setTextFormatter:))
         };
         CGRect inputFrame = [self.view.superview convertRect:self.view.frame toView:rootView];
         if (keyboardRect.origin.y - inputFrame.size.height <= inputFrame.origin.y) {
-            [self setViewMovedUp:YES];
+            //zjr 修改
+            //[self setViewMovedUp:YES];
             self.weexInstance.isRootViewFrozen = YES;
         }
     }
     
     if (_keyboardEvent) {
-        [self fireEvent:@"keyboard" params:@{ @"isShow": @YES, @"keyboardSize": @{@"width": @(end.size.width), @"height": @(end.size.height)} }];
+        [self fireEvent:@"keyboard" params:@{ @"isShow": @YES, @"keyboardSize": @(end.size.height / self.weexInstance.pixelScaleFactor) }];
     }
     
     _keyboardHidden = NO;

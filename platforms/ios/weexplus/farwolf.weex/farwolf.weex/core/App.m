@@ -8,12 +8,12 @@
 #import "App.h"
 #import "URL.h"
 #import "Weex.h"
-#import "WXTracingManager.h"
+//#import "WXTracingManager.h"
 @implementation App
 +(void)initWeexPlus:(UIWindow*)window{
     [URL copyBundleToDisk];
     [Weex initAppBoardContent];
-    [WXTracingManager setTracingEnable:NO];
+//    [WXTracingManager setTracingEnable:NO];
     [Weex setBaseDir:[Config schema]];
     [Weex initWeex:@"farwolf" appName:@"weexplus" appVersion:@"1.0.0"];
     

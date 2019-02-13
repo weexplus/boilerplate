@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "URL.h"
 #import "Weex.h"
-#import "WXTracingManager.h"
+//#import "WXTracingManager.h"
 #import <UIKit/UIKit.h>
 
 

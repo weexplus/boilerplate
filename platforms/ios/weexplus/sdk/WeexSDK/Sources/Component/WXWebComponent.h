@@ -31,8 +31,9 @@
 
 - (void)goForward;
 
-//zjr
+
 - (void)loadURL:(NSString *)url;
-//zjr
+
 - (void) setSource:(NSString *)source;
+
 @end

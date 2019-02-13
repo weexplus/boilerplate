@@ -414,9 +414,7 @@ do {\
             [nodeRange setObject:node forKey:NSStringFromRange(range)];
             
             if (node.src) {
-                //zjr add
-                NSDictionary *info=@{@"instanceId":self.weexInstance.instanceId};
-                [[self imageLoader] downloadImageWithURL:node.src.absoluteString imageFrame:imgAttachment.bounds userInfo:info completed:^(UIImage *image, NSError *error, BOOL finished) {
+                [[self imageLoader] downloadImageWithURL:node.src.absoluteString imageFrame:imgAttachment.bounds userInfo:nil completed:^(UIImage *image, NSError *error, BOOL finished) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         imgAttachment.image = image;
                         [[weakSelf textView].layoutManager invalidateDisplayForCharacterRange:range];

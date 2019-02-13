@@ -102,6 +102,8 @@
     BOOL _scrollStartEvent;
     BOOL _scrollEndEvent;
     BOOL _isScrolling;
+    //zjr add
+    BOOL _bounce;
     CGFloat _pageSize;
     CGFloat _loadMoreOffset;
     CGFloat _previousLoadMoreContentHeight;
@@ -112,8 +114,7 @@
     NSString * _alwaysScrollableVertical;
     NSString * _alwaysScrollableHorizontal;
     BOOL _bounces;
-    //zjr add
-    BOOL _bounce;
+    
     // refreshForAppear: load more when refresh component begin appear(if scroll is dragging or decelerating, should delay)
     // refreshForWholeVisible: load more until the whole refresh component visible
     NSString *_refreshType;
@@ -184,6 +185,7 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
         _showScrollBar = attributes[@"showScrollbar"] ? [WXConvert BOOL:attributes[@"showScrollbar"]] : YES;
         //zjr add
         _bounce = attributes[@"bounce"] ? [WXConvert BOOL:attributes[@"bounce"]] : YES;
+        
         if (attributes[@"alwaysScrollableVertical"]) {
             _alwaysScrollableVertical = [WXConvert NSString:attributes[@"alwaysScrollableVertical"]];
         }
@@ -449,8 +451,7 @@ WX_EXPORT_METHOD(@selector(resetLoadmore))
     
     // this is scroll rtl solution.
     // scroll layout not use direction, use self tranform
-    if (self.view && _flexCssNode && _flexCssNode->getLayoutDirectionFromPathNode() == WeexCore::kDirectionRTL
-        ) {
+    if (self.view && [self isDirectionRTL]) {
         if (_transform) {
             self.view.layer.transform = CATransform3DConcat(self.view.layer.transform, CATransform3DScale(CATransform3DIdentity, -1, 1, 1));
         } else {
