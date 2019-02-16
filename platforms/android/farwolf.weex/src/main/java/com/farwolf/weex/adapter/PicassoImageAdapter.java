@@ -234,9 +234,9 @@ public class PicassoImageAdapter implements IWXImgLoaderAdapter {
       }
       url=Weex.getSingleRealUrl(url);
       Bitmap bm=null;
-      if(url.startsWith("base64==="))
+      if(url.startsWith(Const.PREFIX_BASE64))
       {
-          url=url.replace("base64===","");
+          url=url.replace(Const.PREFIX_BASE64,"");
           bm= PicassoImageAdapter.base64ToBitmap(url);
       }
       else

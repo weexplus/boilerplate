@@ -1,9 +1,12 @@
 package com.farwolf.weex.component;
 
+import android.webkit.WebView;
+
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.ui.action.BasicComponentData;
+import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
 import com.taobao.weex.ui.component.WXWeb;
 
@@ -26,6 +29,14 @@ public class WXFWeb extends WXWeb {
     public void setUrl(String url) {
         url= Weex.getRelativeUrl(url,this.mInstance);
         super.setUrl(url);
+    }
+
+
+    @WXComponentProp(name = "showScrollbar")
+    public void setShowScrollbar(boolean show){
+        WebView web=(WebView)mWebView.getView();
+        if(web!=null)
+            web.setHorizontalScrollBarEnabled(show);
     }
 
 

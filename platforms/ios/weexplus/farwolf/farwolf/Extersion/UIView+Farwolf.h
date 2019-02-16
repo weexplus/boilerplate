@@ -19,7 +19,7 @@ typedef void(^clickcallback)();
 -(void)addDoubleClick:(SEL )method host:(NSObject *)host;
 -(void)addClick:(void(^)())click;
 -(void)addDoubleClick:(void(^)())click;
-
+- (UIImage *)toImage;
 -(void)add3Click:(void(^)())click;
 -(UIView*)findViewByType:(Class)c;
 -(UIView*)findAllViewByType:(Class)c;

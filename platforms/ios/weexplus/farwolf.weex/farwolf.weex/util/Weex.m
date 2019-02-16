@@ -359,5 +359,24 @@
 }
 
 
++(void)findComponent:(NSString *)elemRef instance:(WXSDKInstance*)instance block:(void (^)(WXComponent *))block {
+    if (!elemRef) {
+        return;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    
+    WXPerformBlockOnComponentThread(^{
+        WXComponent *component = (WXComponent *)[instance componentForRef:elemRef];
+        if (!component) {
+            return;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           block(component);
+                       });
+        
+    });
+}
 
 @end

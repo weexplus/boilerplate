@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <image class="img" src="root:img/logo.png"></image>
+        <image class="img" src="root:img/logo.png" @click="gonext"></image>
         <text class="text">欢迎使用weexplus!</text>
     </div>
 </template>
@@ -13,6 +13,10 @@
         methods: {
             onLoad(p){
 
+            },
+            gonext(){
+                debugger
+                this.push('test.js',{name:"ssss"})
             }
         },
         created(){
