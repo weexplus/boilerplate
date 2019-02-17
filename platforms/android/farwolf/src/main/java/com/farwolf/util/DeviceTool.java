@@ -3,6 +3,8 @@ package com.farwolf.util;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
 import org.androidannotations.annotations.EBean;
@@ -26,9 +28,11 @@ public class DeviceTool {
 
 	public String getDeviceId()
 	{
-		return DeviceId.getDeviceId(context);
-//		return getTelephonyManager().getDeviceId();
+		String androidID = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+		String id = androidID + Build.SERIAL;
+		return Md5.toMd5(id);
 	}
+
 
 
 	public String getMacId()
