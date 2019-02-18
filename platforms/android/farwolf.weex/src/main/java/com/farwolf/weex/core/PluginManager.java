@@ -33,6 +33,7 @@ public class PluginManager {
         try {
             PathClassLoader classLoader = (PathClassLoader) Thread
                     .currentThread().getContextClassLoader();
+            String path=ctx.getPackageResourcePath();
             DexFile dex = new DexFile(ctx.getPackageResourcePath());
             Enumeration<String> entries = dex.entries();
             List m=new ArrayList();
