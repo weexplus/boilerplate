@@ -158,6 +158,8 @@ public class PluginManager {
     }
 
     public static void regist(DexFile dex,Context ctx){
+        if(dex==null)
+            return;
         Enumeration<String> entries = dex.entries();
         List m=new ArrayList();
         int c=0;
