@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -88,7 +88,7 @@ import java.util.regex.Pattern;
  */
 
 public abstract class BasicListComponent<T extends ViewGroup & ListComponentView> extends WXVContainer<T> implements
-    IRecyclerAdapterListener<ListBaseViewHolder>, IOnLoadMoreListener, Scrollable {
+        IRecyclerAdapterListener<ListBaseViewHolder>, IOnLoadMoreListener, Scrollable {
   public static final String TRANSFORM = "transform";
   public static final String LOADMOREOFFSET = "loadmoreoffset";
   private String TAG = "BasicListComponent";
@@ -989,7 +989,7 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
       for (int i = 0; i < mTypes.size(); i++) {
         WXComponent component = mTypes.get(i);
         if (component == null
-            || component.isUsing()) {
+                || component.isUsing()) {
           continue;
         }
         if (component.isFixed()) {
@@ -1219,9 +1219,8 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
 
 
       float offsetParsed = WXViewUtils.getRealPxByWidth(WXUtils.getInt(offset),getInstance().getInstanceViewPortWidth());
-    //zjr add
-      if (offScreenY>0&&offScreenY <= offsetParsed) {
 
+      if (offScreenY <= offsetParsed && getEvents().contains(Constants.Event.LOADMORE)) {
         if (mListCellCount != mChildren.size()
                 || mForceLoadmoreNextTime) {
           fireEvent(Constants.Event.LOADMORE);
