@@ -2,7 +2,7 @@ package com.farwolf.weex.core;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
+import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -20,6 +20,7 @@ import com.taobao.weex.common.WXRenderStrategy;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -341,34 +342,35 @@ public class WeexFactory  extends ServiceBase{
 
     public int getDisplayScreenHeight()
     {
-        int screenHeight = 0;
-        DisplayMetrics metrics = new DisplayMetrics();
+//        int realWidth = 0;//宽
+        int realHeight = 0;//高
         Display display = ((Activity)context).getWindowManager().getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
-        int ver = Build.VERSION.SDK_INT;
-        if (ver < 13)
-        {
-            screenHeight = metrics.heightPixels;
-        }
-        else if (ver == 13)
-        {
+        if (android.os.Build.VERSION.SDK_INT >= 17) {
+            Point size = new Point();
+            display.getRealSize(size);
+//            realWidth = size.x;
+            realHeight = size.y;
+        } else if (android.os.Build.VERSION.SDK_INT < 17
+                && android.os.Build.VERSION.SDK_INT >= 14) {
             try {
-                Method method = display.getClass().getMethod("getRealHeight");
-                screenHeight = (Integer) method.invoke(display);
-            } catch (Exception e) {
+                Method mGetRawH =Display.class.getMethod("getRawHeight");
+//                Method mGetRawW = Display.class.getMethod("getRawWidth");
+//                realWidth = (Integer) mGetRawW.invoke(display);
+                realHeight = (Integer) mGetRawH.invoke(display);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
+        } else {
+//            realWidth = metrics.widthPixels;
+            realHeight = metrics.heightPixels;
         }
-        else if (ver > 13)
-        {
-            try {
-                Method method = display.getClass().getMethod("getRawHeight");
-                screenHeight = (Integer) method.invoke(display);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return screenHeight;
+        return realHeight;
     }
 
 
