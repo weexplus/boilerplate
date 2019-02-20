@@ -1,7 +1,11 @@
 package com.farwolf.weex.core;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 
 import com.alibaba.fastjson.JSONObject;
@@ -16,6 +20,7 @@ import com.taobao.weex.common.WXRenderStrategy;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -278,7 +283,8 @@ public class WeexFactory  extends ServiceBase{
                 p.v=view;
                 p.instance.hasInit=true;
                 if(ispotrait)
-                    p.instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
+                    p.instance.setSize(tool.getScreenWidth(),getDisplayScreenHeight());
+//                    p.instance.setSize(tool.getScreenWidth(),tool.getScreenHeight());
                 else
                     p.instance.setSize(tool.getScreenHeight(),tool.getScreenWidth());
                 if(!forResult)
@@ -332,6 +338,38 @@ public class WeexFactory  extends ServiceBase{
 
     }
 
+
+    public int getDisplayScreenHeight()
+    {
+        int screenHeight = 0;
+        DisplayMetrics metrics = new DisplayMetrics();
+        Display display = ((Activity)context).getWindowManager().getDefaultDisplay();
+        display.getMetrics(metrics);
+        int ver = Build.VERSION.SDK_INT;
+        if (ver < 13)
+        {
+            screenHeight = metrics.heightPixels;
+        }
+        else if (ver == 13)
+        {
+            try {
+                Method method = display.getClass().getMethod("getRealHeight");
+                screenHeight = (Integer) method.invoke(display);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (ver > 13)
+        {
+            try {
+                Method method = display.getClass().getMethod("getRawHeight");
+                screenHeight = (Integer) method.invoke(display);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return screenHeight;
+    }
 
 
 
