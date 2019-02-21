@@ -70,12 +70,12 @@ public class WeexFactory  extends ServiceBase{
 
     }
 
-    public void jump(String url,  Class cls,String rootid)
+    public void jump(String url,  Class cls,String rootid,boolean preload)
     {
         Intent in=new Intent(getActivity(),cls);
         in.putExtra("url",url);
         in.putExtra("rootid",rootid);
-        this.jump(url,in,false);
+        this.jump(url,in,false,preload);
     }
 
 
@@ -239,7 +239,7 @@ public class WeexFactory  extends ServiceBase{
 
     }
 
-    public void jump(String url, final Intent in,final boolean forResult)
+    public void jump(String url, final Intent in,final boolean forResult,boolean preload)
     {
 
 //        if(url.startsWith("http"))
@@ -254,10 +254,11 @@ public class WeexFactory  extends ServiceBase{
 //        }
 
 
-        if(hasCache(url))
+        if(hasCache(url)||!preload)
         {
             Page p=m.get(url);
             in.putExtra("url",url);
+            in.putExtra("preload",preload);
             if(!forResult)
                 context.startActivity(in);
             else

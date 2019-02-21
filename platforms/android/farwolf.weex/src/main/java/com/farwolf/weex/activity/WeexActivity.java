@@ -414,9 +414,10 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         try
         {
+            boolean preload=getIntent().getBooleanExtra("preload",true);
             if(StringUtil.isNullOrEmpty(url))
                 return;
-            if(showProgress)
+            if(showProgress&&preload!=false)
                 showLoading();
             fail_layout.setVisibility(View.GONE);
             if(mWXSDKInstance!=null)

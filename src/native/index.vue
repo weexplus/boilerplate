@@ -15,7 +15,6 @@
 
             },
             gonext(){
-                debugger
                 this.push('test.js',{name:"ssss"})
             }
         },

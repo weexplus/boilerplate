@@ -90,7 +90,7 @@ public class WXA extends WXDiv {
     String realurl=Weex.getRelativeUrl(url,this.getInstance());
     WeexFactory w= WeexFactory_.getInstance_(this.getInstance().getContext());
     WeexActivity a=  (WeexActivity)this.getInstance().getContext();
-    w.jump(realurl, WeexActivity_.class,a.rootid);
+    w.jump(realurl, WeexActivity_.class,a.rootid,true);
 
   }
 

@@ -87,7 +87,10 @@ public class WXNavgationModule extends WXModuleBase {
         boolean isPortrait= true;
         if(parameters.containsKey("isPortrait"))
             isPortrait=(boolean)parameters.get("isPortrait");
-        this.goNext(url,param,callback,WeexActivity_.class,false,isPortrait);
+        boolean preload= true;
+        if(parameters.containsKey("preload"))
+            preload=(boolean)parameters.get("preload");
+        this.goNext(url,param,callback,WeexActivity_.class,false,isPortrait,preload);
 
 
 
@@ -204,6 +207,7 @@ public class WXNavgationModule extends WXModuleBase {
         pa.put("url",url);
         pa.put("param",param);
         pa.put("isPortrait",true);
+
         this.presentFull(pa,null);
     }
 
@@ -215,12 +219,15 @@ public class WXNavgationModule extends WXModuleBase {
         boolean isPortrait= true;
         if(parameters.containsKey("isPortrait"))
             isPortrait=(boolean)parameters.get("isPortrait");
-        this.goNext(url,param,callback,PresentActivity_.class,true,isPortrait);
+        boolean preload= true;
+        if(parameters.containsKey("preload"))
+            preload=(boolean)parameters.get("preload");
+        this.goNext(url,param,callback,PresentActivity_.class,true,isPortrait,preload);
 
     }
 
 
-    public void goNext(String url,JSONObject param,JSCallback callback,Class c,boolean isroot,boolean isPortrait )
+    public void goNext(String url,JSONObject param,JSCallback callback,Class c,boolean isroot,boolean isPortrait,boolean preload )
     {
 
 
@@ -249,10 +256,10 @@ public class WXNavgationModule extends WXModuleBase {
             String id= ac.getViewId()+"";
             callbacks.put(id,callback);
             in.putExtra("callbackid",id);
-            w.jump(url,in,true);
+            w.jump(url,in,true,preload);
             return;
         }
-        w.jump(url,in,callback!=null);
+        w.jump(url,in,callback!=null,preload);
 
 
     }

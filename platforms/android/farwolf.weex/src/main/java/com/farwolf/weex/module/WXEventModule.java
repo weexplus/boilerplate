@@ -38,7 +38,7 @@ public class WXEventModule extends WXModule {
     }
     WeexFactory w= WeexFactory_.getInstance_(mWXSDKInstance.getContext());
     WeexActivity a=  (WeexActivity)this.mWXSDKInstance.getContext();
-    w.jump(realurl, WeexActivity_.class,a.rootid);
+    w.jump(realurl, WeexActivity_.class,a.rootid,true);
 
   }
 
