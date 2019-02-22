@@ -96,6 +96,18 @@
         make.width.equalTo(scroll);
     }];
     
+    UIView *mask=[UIView new];
+    [self.view addSubview:mask];
+    mask.backgroundColor=[UIColor clearColor];
+    [mask mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(scroll);
+        make.left.equalTo(scroll);
+        make.right.equalTo(scroll);
+        make.bottom.equalTo(scroll);
+        make.height.equalTo(scroll);
+        make.width.equalTo(scroll);
+    }];
     
     
     

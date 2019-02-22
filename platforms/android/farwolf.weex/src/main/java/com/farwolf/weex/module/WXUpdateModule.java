@@ -1,8 +1,13 @@
 package com.farwolf.weex.module;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Notification;
+import android.os.Build;
 
 import com.farwolf.interfac.IFullHttp;
+import com.farwolf.perssion.Perssion;
+import com.farwolf.perssion.PerssionCallback;
 import com.farwolf.update.JsDownloader;
 import com.farwolf.update.UpdateService;
 import com.farwolf.update.UpdateService_;
@@ -112,15 +117,40 @@ public class WXUpdateModule extends WXModule {
 
 
     @JSMethod
-    public void download(String url)
+    public void download(final String url)
     {
+
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.REQUEST_INSTALL_PACKAGES,new PerssionCallback(){
+
+
+                @Override
+                public void onGranted() {
+
+                    _download(url);
+
+
+
+                }
+            });
+            return;
+        }
+        _download(url);
+
+
+    }
+
+
+    private void _download(String url){
         com.farwolf.update.download.UpdateService.Builder.create(url)
                 .setStoreDir(null)
                 .setDownloadSuccessNotificationFlag(Notification.DEFAULT_ALL)
                 .setDownloadErrorNotificationFlag(Notification.DEFAULT_ALL)
                 .build(mWXSDKInstance.getContext());
-
     }
+
+
 
 
 }

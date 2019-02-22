@@ -1,6 +1,7 @@
 package com.farwolf.update.download;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -14,9 +15,11 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
@@ -278,9 +281,28 @@ public class UpdateService extends Service {
         localBroadcastManager.sendBroadcast(localIntent);
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void CreateNotificationChannel(NotificationManager notificationManager) {
+        NotificationChannel channel = new NotificationChannel("farwolf","farwolf_channel",NotificationManager.IMPORTANCE_HIGH);
+        notificationManager.createNotificationChannel(channel);
+    }
+
     private void buildNotification(){
+
+
+
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        builder = new NotificationCompat.Builder(this);
+        builder = new NotificationCompat.Builder(this,"farwolf");
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            CreateNotificationChannel(manager);
+            builder = new NotificationCompat.Builder(getApplicationContext(),"farwolf");
+//            notification = new Notification.Builder(getApplicationContext(), YOUR_CHANNEL_ID).build();
+
+        } else {
+            builder = new NotificationCompat.Builder(getApplicationContext());
+        }
         builder.setContentTitle("准备下载")
                 .setWhen(System.currentTimeMillis())
                 .setProgress(100, 1, false)
