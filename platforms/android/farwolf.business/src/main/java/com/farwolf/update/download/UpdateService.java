@@ -285,6 +285,8 @@ public class UpdateService extends Service {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void CreateNotificationChannel(NotificationManager notificationManager) {
         NotificationChannel channel = new NotificationChannel("farwolf","farwolf_channel",NotificationManager.IMPORTANCE_HIGH);
+        channel.enableVibration(false);
+        channel.setVibrationPattern(new long[]{0});
         notificationManager.createNotificationChannel(channel);
     }
 
@@ -302,6 +304,7 @@ public class UpdateService extends Service {
 
         } else {
             builder = new NotificationCompat.Builder(getApplicationContext());
+            builder.setVibrate(new long[]{0});
         }
         builder.setContentTitle("准备下载")
                 .setWhen(System.currentTimeMillis())
