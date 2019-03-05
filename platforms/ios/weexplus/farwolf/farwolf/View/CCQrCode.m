@@ -70,7 +70,13 @@
     [_videoPreviewLayer addSublayer:self.colorLayer.layer];
     
     [self boxRect];
-    
+    self.funcation = callback;
+    if(_empty){
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.2f target:self selector:@selector(moveScanLayer) userInfo:nil repeats:YES];
+        [timer fire];
+        [_captureSession startRunning];
+        return true;
+    }
     
     _boxView = [[UIView alloc] initWithFrame:_boxFrame];
     _boxView.layer.borderColor = self.boxColor.CGColor;
@@ -83,17 +89,7 @@
     _scanLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _boxView.bounds.size.width, 1)];
     _scanLayer.backgroundColor = self.scanColor;
     [_boxView addSubview:_scanLayer];
-    //扫描线尾巴
-    //    CAGradientLayer *layer = [CAGradientLayer layer];
-    //    layer.frame = _scanLayer.bounds;
-    //    layer.startPoint = CGPointMake(0, 0);
-    //    layer.endPoint   = CGPointMake(0, 0);
-    //    layer.locations  = @[@(0), @(1), @(0)];
-    //    layer.colors = @[(__bridge id)[UIColor colorWithWhite:0 alpha:0.0].CGColor,
-    //                     (__bridge id)[UIColor colorWithWhite:0 alpha:1.0].CGColor,
-    //                     (__bridge id)[UIColor colorWithWhite:0 alpha:0.0].CGColor];
-    //
-    //    _scanLayer.layer.mask = layer;
+    
     UIImageView *canvas = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"canvas"]];
     canvas.frame = _scanLayer.bounds;
     [_scanLayer addSubview:canvas];
@@ -183,7 +179,7 @@ static SystemSoundID shake_sound_male_id = 0;
                 //注册声音到系统
                 AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path],&shake_sound_male_id);
                 AudioServicesPlaySystemSound(shake_sound_male_id); //播放注册的声音，（此句代码，可以在本类中的任意位置调用，不限于本方法中）
-//                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); //让手机震动
+                //                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); //让手机震动
             }
             _isForward = YES;
             

@@ -332,7 +332,7 @@ public class UpdateService extends Service {
     public boolean checkExistApk(Context c)
     {
         SharedPreferences sharedPreferences =c.getSharedPreferences("farwolf_weex", Context.MODE_PRIVATE); //私有数据
-       String msg=sharedPreferences.getString(DOWNLOAD_APK_PATH,"");
+       String msg=sharedPrewferences.getString(DOWNLOAD_APK_PATH,"");
         String path="";
         int versionCode =0;
        if(msg.contains(DOWNLOAD_APK_SPLIT))

@@ -493,5 +493,16 @@ public class Weex extends ServiceBase{
 
     }
 
+    public static String getRootPath(String path,WXSDKInstance instance){
+        path=getRootUrl(path,instance);
+        if(path.startsWith("http")){
+            return path;
+        }
+        else{
+            String p= instance.getContext().getExternalFilesDir("Caches")+"/"+path;
+            return p;
+        }
+    }
+
 
 }

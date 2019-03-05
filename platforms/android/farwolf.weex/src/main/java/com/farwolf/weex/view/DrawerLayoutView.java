@@ -82,10 +82,10 @@ public class DrawerLayoutView extends ViewBase {
 
     public void setLeftWidth(int width)
     {
-        DrawerLayout.LayoutParams o= ( DrawerLayout.LayoutParams) nav_view.getLayoutParams();
-        o.width=width;
         if(nav_view==null)
             return;
+        DrawerLayout.LayoutParams o= ( DrawerLayout.LayoutParams) nav_view.getLayoutParams();
+        o.width=width;
         nav_view.setLayoutParams(null);
         nav_view.setLayoutParams(o);
 

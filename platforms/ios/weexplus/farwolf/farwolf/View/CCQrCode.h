@@ -25,6 +25,8 @@ typedef void(^CCQrCodeCallbackFunction)(AVCaptureOutput *captureOutput,NSArray *
 
 @property (nonatomic, strong) UIView *colorLayer;
 
+@property (nonatomic) BOOL empty;
+
 @property (nonatomic, strong) UILabel *describeLabel;
 
 - (BOOL)startReading:(CCQrCodeCallbackFunction)callback;
