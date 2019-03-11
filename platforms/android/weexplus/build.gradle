@@ -23,7 +23,7 @@ ext {
     minSdkVersion=16
     appMinSdkVersion=15
     targetSdkVersion=25
-    supportLibVersion="26.0.2"
+    supportLibVersion="26.1.0"
     fastjsonLibVersion="1.1.46.android"
 }
 allprojects {
