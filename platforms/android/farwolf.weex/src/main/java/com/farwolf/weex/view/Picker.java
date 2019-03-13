@@ -72,6 +72,8 @@ public class Picker  extends ViewBase {
     {
         this.titlebg.setBackgroundColor(Color.parseColor(bgcolor));
         this.btnCancel.setTextColor(createColorStateList(Color.parseColor(btncolor),Color.parseColor("#eeeeee"),Color.parseColor("#eeeeee"),Color.parseColor("#eeeeee")));
+        this.btnSubmit.setTextColor(createColorStateList(Color.parseColor(btncolor),Color.parseColor("#eeeeee"),Color.parseColor("#eeeeee"),Color.parseColor("#eeeeee")));
+
     }
 
     private ColorStateList createColorStateList(int normal, int pressed, int focused, int unable) {
