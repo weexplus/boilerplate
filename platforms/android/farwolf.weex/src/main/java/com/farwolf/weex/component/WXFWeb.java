@@ -9,6 +9,7 @@ import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
 import com.taobao.weex.ui.component.WXWeb;
+import com.taobao.weex.ui.view.WXWebView;
 
 /**
  * Created by zhengjiangrong on 2017/8/15.
@@ -29,6 +30,10 @@ public class WXFWeb extends WXWeb {
     public void setUrl(String url) {
         url= Weex.getRelativeUrl(url,this.mInstance);
         super.setUrl(url);
+    }
+
+    protected void createWebView(){
+        mWebView = new WXWebView(getContext(), "androidwebdata://");
     }
 
 
