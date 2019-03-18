@@ -10,7 +10,7 @@
 #import "farwolf_weex.h"
 static NSMutableDictionary *notifymap;
 @interface WXNotifyModule: NSObject<WXModuleProtocol>
-@property(nonatomic,strong)NSMutableDictionary<NSString*,WXModuleKeepAliveCallback>*callbacks;
+@property(nonatomic,strong)NSMutableDictionary<NSString*,NSMutableArray*>*callbacks;
 @property(nonatomic,weak) WXSDKInstance *weexInstance;
 
 @end

@@ -10,6 +10,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -21,7 +22,7 @@ public class WXNotifyModule  extends WXModule {
 
 
 
-    public HashMap<String,JSCallback>callbacks=new HashMap<>();
+    public HashMap<String,ArrayList<JSCallback>>callbacks=new HashMap<>();
 
 
     @JSMethod
@@ -29,7 +30,14 @@ public class WXNotifyModule  extends WXModule {
     {
         if(!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);
-        callbacks.put(key,callback);
+        ArrayList<JSCallback> ary=null;
+        if(callbacks.containsKey(key)){
+            ary=callbacks.get(key);
+        }else{
+            ary=new ArrayList<>();
+        }
+        ary.add(callback);
+        callbacks.put(key,ary);
     }
 
 
@@ -61,10 +69,15 @@ public class WXNotifyModule  extends WXModule {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(Event event) {
+        if(callbacks.containsKey(event.key)){
+            ArrayList<JSCallback> ary=callbacks.get(event.key);
+            for(JSCallback callback:ary){
+                if(callback!=null)
+                    callback.invokeAndKeepAlive(event.param);
+            }
+        }
 
-        JSCallback callback=  callbacks.get(event.key);
-        if(callback!=null)
-        callback.invokeAndKeepAlive(event.param);
+
 
 
     }

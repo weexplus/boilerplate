@@ -10,8 +10,15 @@
 #import "IQKeyboardManager.h"
 @implementation WXKeyboardModule
 WX_EXPORT_METHOD(@selector(enableAutoContorl:))
+WX_EXPORT_METHOD(@selector(setKeyboardMode:))
 WX_EXPORT_METHOD(@selector(setKeyboardContorl:dismiss:))
 @synthesize weexInstance;
+
+
+
+-(void)setKeyboardMode:(NSString*)mode{
+    
+}
 -(void)enableAutoContorl:(BOOL)enable
 {
      [ IQKeyboardManager   sharedManager ] .enable   =   enable;

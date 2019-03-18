@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NSString+Farwolf.h"
 #import "NSDate+Farwolf.h"
+#import "UIImage+Farwolf.h"
 #import "NSObject+Farwolf.h"
 #import "UIViewController+Farwolf.h"
 #import "UIView+Farwolf.h"

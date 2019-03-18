@@ -34,8 +34,13 @@ WX_EXPORT_METHOD(@selector(setNumber:))
         self.callbacks=[NSMutableDictionary new];
     }
     //    [self.callbacks setObject:c forKey:key];
-    [self.callbacks setValue:c forKey:key];
-  
+    NSMutableArray *ary=self.callbacks[key];
+    if(ary==nil){
+        ary=[NSMutableArray new];
+    }
+    [ary addObject:c];
+    [self.callbacks setValue:ary forKey:key];
+    
     
     
 }
@@ -56,26 +61,36 @@ WX_EXPORT_METHOD(@selector(setNumber:))
     
     NSString *key=  n.userInfo[@"key"];
     NSDictionary *param=  n.userInfo[@"param"];
-    WXModuleKeepAliveCallback c=[self.callbacks objectForKey:key];
-  
+    NSMutableArray *ary= [self.callbacks objectForKey:key];
+    //    WXModuleKeepAliveCallback c=[self.callbacks objectForKey:key];
+    
     
     if ([NSThread isMainThread])
     {
-        if(c!=nil)
-        c(param,true);
+        if(ary!=nil){
+            for(WXModuleKeepAliveCallback c in ary){
+                if(c!=nil)
+                    c(param,true);
+            }
+        }
+        
     }
     else
     {
         dispatch_sync(dispatch_get_main_queue(), ^{
             //Update UI in UI thread here
-            if(c!=nil)
-            c(param,true);
+            if(ary!=nil){
+                for(WXModuleKeepAliveCallback c in ary){
+                    if(c!=nil)
+                        c(param,true);
+                }
+            }
             
             
         });
     }
-     
-  
+    
+    
 }
 
 -(void)removeUrl:(NSNotification*)n
