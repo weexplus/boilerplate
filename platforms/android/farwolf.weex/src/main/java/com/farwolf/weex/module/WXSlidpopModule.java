@@ -177,8 +177,9 @@ public class WXSlidpopModule  extends WXModuleBase {
         if (slidView == null) {
             slidView = WXPageView_.build(getActivity());
         }
-        slidView.setSrc(url,mWXSDKInstance.getContext(),this.param);
         slidView.setParentInstance(mWXSDKInstance);
+        slidView.setSrc(url,mWXSDKInstance.getContext(),this.param);
+
         int left = offset.get("left") != null?(Integer) offset.get("left"):0;
         int right = offset.get("right") != null?(Integer) offset.get("right"):0;
         int top = offset.get("top") != null?(Integer) offset.get("top"):0;

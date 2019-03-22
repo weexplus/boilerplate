@@ -23,7 +23,7 @@
 -(void)open:(NSString*)ip port:(NSString*)port
 {
     
-    if(self.hotReloadSocket==nil)
+    if(self.hotReloadSocket!=nil)
     {
         self.hotReloadSocket.delegate=nil;
         [self.hotReloadSocket close];

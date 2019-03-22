@@ -205,7 +205,7 @@ public class WXWebView implements IWebView {
         mWebView.setVisibility(shown ? View.VISIBLE : View.INVISIBLE);
     }
 
-    private @Nullable WebView getWebView() {
+    public @Nullable WebView getWebView() {
         //TODO: remove this, duplicate with getView semantically.
         return mWebView;
     }

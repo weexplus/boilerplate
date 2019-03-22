@@ -45,15 +45,21 @@ public class WXFWeb extends WXWeb {
     }
 
 
+
     @Override
     public void loadUrl(String url) {
         if(url.startsWith("http")){
             super.loadUrl(url);
         }else{
-            String s=Local.getString(mInstance.getContext(),url);
-            this.loadDataWithBaseURL(s);
+            String param="";
+            String tempurl=url;
+            if(url.contains("?")){
+                param=  url.split("\\?")[1];
+                tempurl=url.split("\\?")[0];
+            }
+            String s=Local.getString(mInstance.getContext(),tempurl);
+            WXWebView web=(WXWebView)mWebView;
+            web.getWebView().loadDataWithBaseURL("androidwebdata://?"+param,s,"text/html","utf-8","");
         }
-
-
     }
 }
