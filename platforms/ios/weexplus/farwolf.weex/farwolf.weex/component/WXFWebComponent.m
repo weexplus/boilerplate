@@ -51,17 +51,56 @@
 - (void)loadURL:(NSString *)url
 {
     if([url startWith:@"root:"]){
-        NSURL *ul=   url=[Weex getFinalUrl:url weexInstance:self.weexInstance];
-        [super loadURL:ul.absoluteString];
-    }else{
+        NSString *path=@"";
+        NSString *param=@"";
+        if([url contains:@"?"]){
+            path=[url split:@"?"][0];
+            param=[url split:@"?"][1];
+        }
+        NSURL *ul=[Weex getFinalUrl:path weexInstance:self.weexInstance];
+        url=[[ul.absoluteString add:@"?"]add:param];
+    }
+    if([url startWith:@"http"]){
         [super loadURL:url];
+    }else{
+        NSString *path=@"";
+        NSString *param=@"";
+        if([url contains:@"?"]){
+            path=[url split:@"?"][0];
+            param=[url split:@"?"][1];
+        }
+        
+        
+        NSURL *fileUrl = [NSURL fileURLWithPath:path isDirectory:NO];//此部分没有?所以没有问题，isDirectory=YES会导致多一层目录。
+        NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:fileUrl resolvingAgainstBaseURL:NO];
+        NSMutableArray *ary=[param split:@"&"];
+        NSMutableArray *qrys=[NSMutableArray new ];
+        for(NSString *p in ary){
+            NSString *key=@"";
+            NSString *v=@"";
+            NSArray *kv= [p split:@"="];
+            if(kv>0){
+                key=kv[0];
+            }
+            if(kv>1){
+                v=kv[1];
+            }
+            [qrys addObject:[NSURLQueryItem queryItemWithName:key value:v]];
+        }
+        [urlComponents setQueryItems:qrys];
+        [super loadURL:urlComponents.URL.absoluteString];
+        
+        
+        
     }
     
+    
 }
+
 
 - (void) setSource:(NSString *)source{
     
     if(source!=nil)
-    [((UIWebView*)self.view) loadHTMLString:source baseURL:nil];
+        [((UIWebView*)self.view) loadHTMLString:source baseURL:nil];
 }
 @end

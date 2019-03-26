@@ -199,6 +199,7 @@ WX_EXPORT_METHOD(@selector(goForward))
     if (self.webview) {
         NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [self.webview loadRequest:request];
+    
     }
 }
 

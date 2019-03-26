@@ -87,6 +87,9 @@
     return (id<WXImageOperationProtocol>)[[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:url]  options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
         
     } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        if([url contains:@".gif"]){
+            image=  [self getGitImageWithData:data];
+        }
         if (completedBlock) {
             completedBlock(image, error, finished);
         }
@@ -115,6 +118,40 @@
     return instance;
 }
 
-
+- (UIImage *)getGitImageWithData:(NSData* )data
+{
+    CGImageSourceRef imageSource = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    if (!imageSource) return nil;
+    size_t count = CGImageSourceGetCount(imageSource);
+    NSMutableArray *images = [NSMutableArray array];
+    NSTimeInterval duration = 0;
+    for (size_t i = 0; i < count; i++) {
+        CGImageRef image = CGImageSourceCreateImageAtIndex(imageSource, i, NULL);
+        if (!image) continue;
+        duration += durationWithSourceAtIndex(imageSource, i);
+        [images addObject:[UIImage imageWithCGImage:image]];
+        CGImageRelease(image);
+    }
+    if (!duration) duration = 0.1 * count;
+    if(imageSource)CFRelease(imageSource);
+    return [UIImage animatedImageWithImages:images duration:duration];
+}
+#pragma mark 获取每一帧图片的时长
+float durationWithSourceAtIndex(CGImageSourceRef source, NSUInteger index) {
+    float duration = 0.1f;
+    CFDictionaryRef propertiesRef = CGImageSourceCopyPropertiesAtIndex(source, index, nil);
+    NSDictionary *properties = (__bridge NSDictionary *)propertiesRef;
+    NSDictionary *gifProperties = properties[(NSString *)kCGImagePropertyGIFDictionary];
+    
+    NSNumber *delayTime = gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
+    if (delayTime) duration = delayTime.floatValue;
+    else {
+        delayTime = gifProperties[(NSString *)kCGImagePropertyGIFDelayTime];
+        if (delayTime) duration = delayTime.floatValue;
+    }
+    if (duration < 0.011f) {duration = 0.100f;}
+    if(propertiesRef)CFRelease(propertiesRef);
+    return duration;
+}
 
 @end
