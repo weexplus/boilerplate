@@ -75,7 +75,7 @@
     [WXSDKEngine registerModule:@"page" withClass:[WXPageModule class]];
     [WXSDKEngine registerModule:@"font" withClass:[WXFontModule class]];
     [WXSDKEngine registerModule:@"updater" withClass:[WXUpdateModule class]];
-    [WXSDKEngine registerModule:@"timepicker" withClass:[WXTimePicker class]];
+//    [WXSDKEngine registerModule:@"timepicker" withClass:[WXTimePicker class]];
     [WXSDKEngine registerModule:@"location" withClass:[WXLocationModule class]];
     [WXSDKEngine registerModule:@"env" withClass:[WXEnvModule class]];
     [WXSDKEngine registerModule:@"file" withClass:[WXFileModule class]];
