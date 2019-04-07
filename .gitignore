@@ -19,7 +19,6 @@ platforms/android/jpush/
 *.DS_Store
 .idea
 build
-busi
 temp
 dist/*
 *.iml

@@ -24,16 +24,17 @@ WX_EXPORT_METHOD(@selector(reset))
 //    dispatch_sync(dispatch_get_main_queue(), ^(){
     
     [self initBackgroundView];
-    if(_url==nil||![_url isEqualToString:url])
-       {
-           [_nav removeFromParentViewController];
-           [_popView removeFromSuperview];
-           _url=url;
-           _popView=nil;
-         
-           _vc=nil;
-        
-        }
+//    if(_url==nil||![_url isEqualToString:url])
+//       {
+//
+//
+//        }
+    
+    [_nav removeFromParentViewController];
+    [_popView removeFromSuperview];
+    _url=url;
+    _popView=nil;
+    _vc=nil;
         if(_popView==nil)
         {
 
@@ -102,7 +103,7 @@ WX_EXPORT_METHOD(@selector(reset))
             _popView=n.view;
             _nav=n;
             compelete();
-
+            [vc.instance firePageInit];
         }];
         
     } fail:^(NSString *msg) {

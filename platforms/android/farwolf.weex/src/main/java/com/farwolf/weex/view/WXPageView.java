@@ -86,14 +86,14 @@ public class WXPageView extends WeexView   {
     public void fireResume()
     {
         if(instance!=null)
-        instance.fireGlobalEventCallback("onResume",null);
+            instance.fireGlobalEventCallback("onResume",null);
     }
 
     public void fireLeave()
     {
 
         if(instance!=null)
-        instance.fireGlobalEventCallback("onLeave",null);
+            instance.fireGlobalEventCallback("onLeave",null);
     }
 
     public WXSDKInstance getParentInstance() {
@@ -115,14 +115,19 @@ public class WXPageView extends WeexView   {
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
-        firePageInit();
+        firePageInit(false);
     }
 
-    public void firePageInit()
+    public void firePageInit(boolean force)
     {
 
         if(this.page!=null)
         {
+            if(force){
+                if(instance!=null)
+                    instance.firePageInit();
+                return;
+            }
             String url= instance.getBundleUrl();
             String parent=null;
             if(getParentInstance()!=null)
@@ -165,7 +170,7 @@ public class WXPageView extends WeexView   {
             root.addView(page.v);
             instance.setSize(layoutParams.width,layoutParams.height);
             getParentInstance().addChildInstance(instance);
-            firePageInit();
+            firePageInit(false);
 //            instance.fireGlobalEventCallback("onPageInit",param);
             if(renderListener!=null)
             {
