@@ -33,8 +33,8 @@ dependencies {
     api "org.androidannotations:androidannotations-api:$AAVersion"
     api 'com.android.support:support-annotations:23.1.1'
     api 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    api 'com.lzy.net:okgo:2.0.0'
-    api 'com.squareup.okhttp3:okhttp:3.4.1'
+    api 'com.lzy.net:okgo:3.0.4'
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
     api 'com.google.zxing:core:3.2.1'
     api 'pub.devrel:easypermissions:0.4.2'
     api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'

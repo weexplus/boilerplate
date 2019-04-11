@@ -1,7 +1,6 @@
 package com.farwolf.weex.module;
 
 
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSONArray;
@@ -10,14 +9,14 @@ import com.farwolf.interfac.IFullHttp;
 import com.farwolf.util.Downloader;
 import com.farwolf.util.Md5;
 import com.farwolf.util.SDCard;
+import com.farwolf.weex.app.WeexApplication;
 import com.farwolf.weex.util.Const;
 import com.farwolf.weex.util.FileReader;
 import com.lzy.okgo.OkGo;
-import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
-import com.lzy.okgo.cookie.store.PersistentCookieStore;
-import com.lzy.okgo.request.BaseRequest;
+import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.request.PostRequest;
+import com.lzy.okgo.request.base.Request;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
@@ -27,10 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.Call;
 import okhttp3.Cookie;
-import okhttp3.HttpUrl;
-import okhttp3.Response;
 
 /**
  * Created by zhengjiangrong on 2017/5/22.
@@ -42,96 +38,88 @@ public class WXNetModule extends WXModule {
 
     public void fetch(boolean usepost,boolean usejson, final  String url, HashMap param,  HashMap header, final JSCallback start, final JSCallback success, final JSCallback compelete, final JSCallback exception)
     {
-        BaseRequest req= OkGo.get(url);
-        OkGo.getInstance().setCookieStore(new PersistentCookieStore());
-        if(usepost)
-        {
-            req=OkGo.post(url);
-
-        }
-        req=req.tag(this);
-        if(!usejson)
-        {
-            Object []keys= param.keySet().toArray();
-            for(Object key:keys)
-            {
-                req=req.params(key+"",param.get(key)+"");
-            }
-        }
-        else
-        {
-            PostRequest preq=(PostRequest)req;
-            JSONObject j=new JSONObject(param);
-            preq.upJson(j.toJSONString());
-            preq.headers("content-Type","application/json");
-        }
-
-        Object []hkeys= header.keySet().toArray();
-        for(Object key:hkeys)
-        {
-            req=req.headers(key+"",header.get(key)+"");
-        }
 
         try {
-            req.cacheKey("cacheKey").cacheMode(CacheMode.NO_CACHE).execute(new StringCallback() {
+            Request req = null;
+            if (usepost) {
+                req = OkGo.<String>post(url);
+            } else {
+                req = OkGo.<String>get(url);
+            }
+//          req.params(param);
+            Object[] hkeys = header.keySet().toArray();
+            for (Object key : hkeys) {
+                req = req.headers(key + "", header.get(key) + "");
+            }
+            if (!usejson) {
+                Object[] keys = param.keySet().toArray();
+                for (Object key : keys) {
+                    req = req.params(key + "", param.get(key) + "");
+                }
+            } else {
+                PostRequest preq = (PostRequest) req;
+                JSONObject j = new JSONObject(param);
+                preq.upJson(j.toJSONString());
+                preq.headers("content-Type", "application/json");
+            }
+            req.execute(new StringCallback() {
 
                 @Override
-                public void onBefore(BaseRequest request) {
-                    start.invokeAndKeepAlive(null);
+                public void onStart(Request<String, ? extends Request> request) {
+                    super.onStart(request);
+                    if (start != null)
+                        start.invokeAndKeepAlive(null);
                 }
 
                 @Override
-                public void onSuccess(String s, Call call, Response response) {
-
-
+                public void onSuccess(com.lzy.okgo.model.Response<String> response) {
                     try {
-                        Log.i("back",s);
+                        String s = response.body();
+                        Log.i("back", s);
 //                        HashMap res=new HashMap();
 //                        res.put("res",JSONObject.parse(s));
-                        String cookie=response.headers().get("Set-Cookie");
+                        String cookie = response.headers().get("Set-Cookie");
 //                        res.put("sessionid",cookie);
 //                        if(success!=null)
 //                            success.invoke(res);
-                        s+="";
-                        s=s.trim();
-                        HashMap m=new HashMap();
-                        if(s.startsWith("{")){
-                            Map maps = (Map)  JSONObject.parse(s);
-                            m.put("res",maps);
-                        }else if(s.startsWith("[")){
-                            JSONArray ja= JSONObject.parseArray(s);
-                            m.put("res",ja);
-                        }else{
-                            m.put("res",s);
+                        s += "";
+                        s = s.trim();
+                        HashMap m = new HashMap();
+                        if (s.startsWith("{")) {
+                            Map maps = (Map) JSONObject.parse(s);
+                            m.put("res", maps);
+                        } else if (s.startsWith("[")) {
+                            JSONArray ja = JSONObject.parseArray(s);
+                            m.put("res", ja);
+                        } else {
+                            m.put("res", s);
                         }
-                        m.put("sessionid",cookie);
+                        m.put("sessionid", cookie+"");
                         success.invoke(m);
-                    }
-                    catch (Exception e)
-                    {
-                        if(exception!=null)
+                    } catch (Exception e) {
+                        if (exception != null)
                             exception.invoke(null);
                     }
-
                 }
 
                 @Override
-                public void onError(Call call, Response response, Exception e) {
-                    super.onError(call, response, e);
-                    if(exception!=null)
+                public void onError(com.lzy.okgo.model.Response<String> response) {
+                    super.onError(response);
+                    if (exception != null)
                         exception.invoke(null);
                 }
 
                 @Override
-                public void onAfter(@Nullable String s, @Nullable Exception e) {
-                    if(compelete!=null)
-                        compelete.invoke(s);
+                public void onFinish() {
+                    super.onFinish();
+                    if (compelete != null)
+                        compelete.invoke(null);
                 }
             });
-        }
-        catch (Exception e)
-        {
-            if(exception!=null)
+
+
+        } catch (Exception e) {
+            if (exception != null)
                 exception.invoke(null);
         }
 
@@ -148,9 +136,9 @@ public class WXNetModule extends WXModule {
     @JSMethod(uiThread = false)
     public String getSessionId(String url)
     {
-        PersistentCookieStore p= new PersistentCookieStore();
-        HttpUrl h=  HttpUrl.parse(url);
-        List<Cookie> l=  p.loadCookies(h);
+        SPCookieStore p= new SPCookieStore(WeexApplication.getInstance());
+
+        List<Cookie> l=  p.getAllCookie();
         for(Cookie c:l)
         {
             if("SESSION".equals(c.name()))
@@ -164,9 +152,9 @@ public class WXNetModule extends WXModule {
     @JSMethod(uiThread = false)
     public boolean hasSessionId(String url)
     {
-        PersistentCookieStore p= new PersistentCookieStore();
-        HttpUrl h=  HttpUrl.parse(url);
-        List<Cookie> l=  p.loadCookies(h);
+        SPCookieStore p= new SPCookieStore(WeexApplication.getInstance());
+
+        List<Cookie> l=  p.getAllCookie();
         for(Cookie c:l)
         {
             if("SESSION".equals(c.name()))
@@ -180,7 +168,8 @@ public class WXNetModule extends WXModule {
     @JSMethod
     public void removeAllCookies()
     {
-        PersistentCookieStore p= new PersistentCookieStore();
+
+        SPCookieStore p= new SPCookieStore(WeexApplication.getInstance());
         p.removeAllCookie();
     }
 
@@ -282,7 +271,7 @@ public class WXNetModule extends WXModule {
                 if(s.startsWith("{")){
                     Map maps = (Map)  JSONObject.parse(s);
                     m.put("res",maps);
-                }else if(s.startsWith("[")){
+                } if(s.startsWith("[")){
                     JSONArray ja= JSONObject.parseArray(s);
                     m.put("res",ja);
                 }else{
