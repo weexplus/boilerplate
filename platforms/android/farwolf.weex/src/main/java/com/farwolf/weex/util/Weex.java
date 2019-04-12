@@ -44,6 +44,7 @@ import com.farwolf.weex.module.WXCenterPopModule;
 import com.farwolf.weex.module.WXDeviceModule;
 import com.farwolf.weex.module.WXEnvModule;
 import com.farwolf.weex.module.WXEventModule;
+import com.farwolf.weex.module.WXFLogModule;
 import com.farwolf.weex.module.WXFPicker;
 import com.farwolf.weex.module.WXFarwolfModule;
 import com.farwolf.weex.module.WXFileModule;
@@ -219,6 +220,7 @@ public class Weex extends ServiceBase{
             WXSDKEngine.registerModule("device", WXDeviceModule.class);
             WXSDKEngine.registerModule("rsa", WXRsaModule.class);
             WXSDKEngine.registerModule("keyboard", WXKeyboardModule.class);
+            WXSDKEngine.registerModule("log", WXFLogModule.class);
 
 
             registerComponent("image",WXFImage.class);

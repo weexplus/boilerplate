@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "Weex"
+            landmarkName = "@implementation Weex"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -191,7 +191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "285"
             endingLineNumber = "285"
-            landmarkName = "Weex"
+            landmarkName = "@implementation Weex"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2283,7 +2283,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "WXNormalViewContrller"
+            landmarkName = "@implementation WXNormalViewContrller"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>

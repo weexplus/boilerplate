@@ -45,7 +45,7 @@
 #import "WXPushComponent.h"
 #import "WXKeyboardModule.h"
 #import "WXDeviceInfoModule.h"
-
+#import "WXFLogModule.h"
 
 @implementation Weex
 
@@ -81,8 +81,8 @@
     [WXSDKEngine registerModule:@"file" withClass:[WXFileModule class]];
     [WXSDKEngine registerModule:@"device" withClass:[WXDeviceInfoModule class]];
     [WXSDKEngine registerModule:@"keyboard" withClass:[WXKeyboardModule class]];
-//    [WXSDKEngine registerModule:@"zoomImage" withClass:[WXZoomImage class]];
-    
+
+      [WXSDKEngine registerModule:@"log" withClass:[WXFLogModule class]];
     
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
