@@ -31,7 +31,12 @@ Mixins.install = (Vue, options) => {
       },
       getScreenHeight() {
         return 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight
+      },
+      log(msg){
+          let log = weex.requireModule('log')
+          log.log(msg)
       }
+
 
 
     },

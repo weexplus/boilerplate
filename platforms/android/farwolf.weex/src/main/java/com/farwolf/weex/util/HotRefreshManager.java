@@ -69,16 +69,21 @@ public class HotRefreshManager {
     return true;
   }
 
-  public  void send(String msg)
+  public  void send(final String msg)
   {
-    Buffer b=new Buffer();
-    b.writeUtf8(msg);
-    try {
-      if(mWebSocket!=null)
-        mWebSocket.sendMessage(WebSocket.PayloadType.TEXT,b);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        Buffer b=new Buffer();
+        b.writeUtf8(msg);
+        try {
+          if(mWebSocket!=null)
+            mWebSocket.sendMessage(WebSocket.PayloadType.TEXT,b);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }
+    }).start();
   }
   public boolean connect(String url) {
     OkHttpClient httpClient = new OkHttpClient();
