@@ -15,7 +15,7 @@
 WX_EXPORT_METHOD(@selector(doubleBack))
 WX_EXPORT_METHOD(@selector(reload))
 WX_EXPORT_METHOD(@selector(preRender:success:))
-WX_EXPORT_METHOD(@selector(enableBackKey))
+WX_EXPORT_METHOD(@selector(enableBackKey:))
 WX_EXPORT_METHOD(@selector(setBackKeyCallback:))
 WX_EXPORT_METHOD(@selector(exit))
 WX_EXPORT_METHOD(@selector(kill))

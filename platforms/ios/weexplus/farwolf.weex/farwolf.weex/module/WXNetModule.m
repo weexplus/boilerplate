@@ -186,6 +186,12 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     //     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:nil error:nil];
+    NSMutableDictionary *d=   header;
+    for(NSString *key in d.allKeys)
+    {
+        NSString *v=d[key];
+        [request setValue:v forHTTPHeaderField:key];
+    }
     request.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];

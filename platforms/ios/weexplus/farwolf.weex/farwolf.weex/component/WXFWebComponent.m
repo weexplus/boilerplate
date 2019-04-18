@@ -68,6 +68,8 @@
         if([url contains:@"?"]){
             path=[url split:@"?"][0];
             param=[url split:@"?"][1];
+        }else{
+            path=url;
         }
         
         
