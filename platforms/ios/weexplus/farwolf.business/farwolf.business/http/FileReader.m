@@ -54,13 +54,13 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
         for(NSString *key in nx)
         {
             NSObject *o= self.stream[key];
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyyMMddHHmmss";
-            NSString *str = [formatter stringFromDate:[NSDate date]];
-            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
-            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
-            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
-            
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//            formatter.dateFormat = @"yyyyMMddHHmmss";
+//            NSString *str = [formatter stringFromDate:[NSDate date]];
+//            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+//            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
+//            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
+            [formData appendPartWithFileData:o name:key fileName:key mimeType:@"application/octet-stream"];
             
         }
         // 上传文件设置
@@ -253,13 +253,13 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
         for(NSString *key in nx)
         {
             NSObject *o= self.stream[key];
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyyMMddHHmmss";
-            NSString *str = [formatter stringFromDate:[NSDate date]];
-            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
-            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
-            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
-            
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//            formatter.dateFormat = @"yyyyMMddHHmmss";
+//            NSString *str = [formatter stringFromDate:[NSDate date]];
+//            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+//            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
+//            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
+            [formData appendPartWithFileData:o name:key fileName:key mimeType:@"application/octet-stream"];
 //            [self postUpload:(UIImage*)o];
         }
         
@@ -379,13 +379,13 @@ success:(void(^)(Json*j))success
         for(NSString *key in nx)
         {
             NSObject *o= self.stream[key];
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyyMMddHHmmss";
-            NSString *str = [formatter stringFromDate:[NSDate date]];
-            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
-            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
-            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
- 
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//            formatter.dateFormat = @"yyyyMMddHHmmss";
+//            NSString *str = [formatter stringFromDate:[NSDate date]];
+//            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+//            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
+//            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
+            [formData appendPartWithFileData:o name:key fileName:key mimeType:@"application/octet-stream"];
  
         }
         

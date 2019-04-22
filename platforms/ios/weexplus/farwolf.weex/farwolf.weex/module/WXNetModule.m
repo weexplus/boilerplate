@@ -141,8 +141,9 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     {
         NSString *v=d[key];
         v=[v replace:@"sdcard:" withString:@""];
-        UIImage *img=[self getDocumentImage:v];
-        [f addParam:key file:img];
+        v=[v replace:@"file://" withString:@""];
+        NSData *data= [NSData dataWithContentsOfFile:v];
+        [f addParam:key file:data];
         
     }
     [f excuteFile:url start:^{
