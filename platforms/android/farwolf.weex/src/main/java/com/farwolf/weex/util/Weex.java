@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
+import com.farwolf.util.Md5;
 import com.farwolf.weex.adapter.DrawableLoader;
 import com.farwolf.weex.adapter.ExceptionAdapter;
 import com.farwolf.weex.adapter.PicassoImageAdapter;
@@ -550,5 +551,19 @@ public class Weex extends ServiceBase{
         }
     }
 
+
+    public  static String appBoardContent="";
+    public static String webAppboardMd5()
+    {
+//        String px= SDCard.getBasePath(c);
+//        String s= WXFileUtils.loadAsset(path, c);
+        String appboard=appBoardContent+"";
+        return Md5.toMd5(appboard);
+    }
+
+    public static void setWebAppboard(String s)
+    {
+        appBoardContent=s;
+    }
 
 }

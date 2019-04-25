@@ -123,15 +123,18 @@ static NSMutableDictionary *pageCache;
         return;
     }
     
-    NSString *newURL = nil;
+//    NSString *newURL = nil;
     
-    if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
-        newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
-    } else {
-        newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
-    }
-    [p.instance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
-    p.instance.scriptURL=[NSURL URLWithString:newURL];
+//    if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
+//        newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
+//    } else {
+//        newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
+//    }
+//    [p.instance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
+//    p.instance.scriptURL=[NSURL URLWithString:newURL];
+    [WeexFactory downloadJs:sourceURL.absoluteString instance: p.instance];
+    //    [p.instance renderWithURL:[NSURL URLWithString:newURL] options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
+    p.instance.scriptURL=sourceURL;
     p.url=sourceURL;
     __strong __typeof(p) weakP = p;
 //    __weak __typeof(complete) weakComplete = complete;
@@ -191,6 +194,36 @@ static NSMutableDictionary *pageCache;
     
     
     
+}
+
+
++(void)downloadJs:(NSString*)url instance:(WXSDKInstance*)instance{
+    instance.scriptURL=[NSURL URLWithString:url];
+    url=[NSString stringWithFormat:@"%@?random=%d", url, arc4random()];
+    NSString *board=  [WXSDKInstance getAppBoardContent];
+    NSString *boardmd5=[board toMd5];
+    url=[[url add:@"&md5="]add:boardmd5];
+    JsonReader *j=[JsonReader new];
+    j.url=url;
+    [j excuteNoLimit:^{
+        
+    } success:^(Json *j) {
+        NSString *bs=  j.backString;
+        NSString *bo=@"";
+        NSString *sp=@"weexplus_split_weexplus";
+        if([bs contains:sp]){
+            bo=[bs split:sp][0];
+            [WXSDKInstance setAppBoardContent:bo];
+            bs=[bs replace:sp withString:@""];
+        }else{
+            bs=[board add:bs];
+        }
+        [instance renderView:bs options:@{@"bundleUrl":url} data:   nil];
+    } exception:^{
+        
+    } compelete:^{
+        
+    } usePost:false];
 }
 
 +(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete fail:(void(^)(NSString *))fail

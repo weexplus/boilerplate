@@ -15,6 +15,7 @@
 @implementation WXFLogModule
 WX_EXPORT_METHOD(@selector(log:))
 -(void)log:(NSString*)msg{
+    NSLog([@"weexplus:" add:msg]);
     NSString *m=[@"log:" add:msg];
     [[Weex getRefreshManager] send:m];
 }

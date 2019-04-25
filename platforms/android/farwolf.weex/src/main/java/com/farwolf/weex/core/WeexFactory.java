@@ -13,6 +13,10 @@ import com.farwolf.base.ServiceBase;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
 import com.farwolf.weex.util.Weex;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
+import com.lzy.okgo.request.base.Request;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.WXRenderStrategy;
@@ -329,7 +333,8 @@ public class WeexFactory  extends ServiceBase{
 
         if(url.startsWith("http"))
         {
-            instance.renderByUrl("farwolf", url, null, null, WXRenderStrategy.APPEND_ASYNC);
+            downloadJs(url,instance);
+//            instance.renderByUrl("farwolf", url, null, null, WXRenderStrategy.APPEND_ASYNC);
         }
         else
         {
@@ -338,6 +343,34 @@ public class WeexFactory  extends ServiceBase{
         }
 
 
+    }
+
+    public static void downloadJs(String url,final WXSDKInstance instance){
+
+        String md5=   Weex.webAppboardMd5();
+        url=url+"?md5="+md5;
+        url+="&p="+new Random(100000).nextInt();
+        Request req = OkGo.<String>get(url);
+        req.execute(new StringCallback() {
+            @Override
+            public void onSuccess(Response<String> response) {
+
+                String bs=response.body();
+                String sp="weexplus_split_weexplus";
+//                String sp="\\**";
+
+                if(bs.contains(sp)){
+                    String appaboard=bs.split(sp)[0];
+                    Weex.setWebAppboard(appaboard);
+                    bs=bs.replace(sp,"");
+                }else{
+                    bs=Weex.appBoardContent+bs;
+                }
+                instance.render("farwolf",bs, null, null, WXRenderStrategy.APPEND_ASYNC);
+
+//                callback.onInvoke(response.body());
+            }
+        });
     }
 
 

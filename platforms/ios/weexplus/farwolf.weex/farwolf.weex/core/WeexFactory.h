@@ -16,4 +16,5 @@
 +(WXNormalViewContrller*)getCache:(NSString*)url;
 +(void)preRender:(NSURL *)sourceURL success:(void(^)(NSString*url))success;
 +(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete fail:(void(^)(NSString *))fail;
++(void)downloadJs:(NSString*)url instance:(WXSDKInstance*)instance;
 @end

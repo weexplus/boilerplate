@@ -449,23 +449,23 @@ static BOOL isshowErr;
     
 
     
-    NSURL *url=nil;
-    if([sourceURL.absoluteString startWith:@"http"])
-    {
-            if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
-                newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
-            } else {
-                newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
-            }
-        url=[NSURL URLWithString:newURL];
-
-    }
-    else
-    {
-        url= sourceURL;
-    }
-
-    [_instance renderWithURL:url options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
+//    NSURL *url=nil;
+//    if([sourceURL.absoluteString startWith:@"http"])
+//    {
+//            if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
+//                newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
+//            } else {
+//                newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
+//            }
+//        url=[NSURL URLWithString:newURL];
+//
+//    }
+//    else
+//    {
+//        url= sourceURL;
+//    }
+      [WeexFactory downloadJs:sourceURL.absoluteString instance:_instance];
+//    [_instance renderWithURL:url options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
 
     __weak typeof(self) weakSelf = self;
     _instance.onCreate = ^(UIView *view) {
