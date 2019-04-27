@@ -264,7 +264,7 @@ public class HttpTool {
         Object keys[]= param.keySet().toArray();
         for(Object key:keys)
         {
-            post.params(new com.lzy.okgo.model.HttpParams(key+"'",param.get(key)+""));
+            post.params(new com.lzy.okgo.model.HttpParams(key+"",param.get(key)+""));
 //			post=post.params(key+"",param.get(key)+"",false);
         }
         Object headerkeys[]= header.keySet().toArray();

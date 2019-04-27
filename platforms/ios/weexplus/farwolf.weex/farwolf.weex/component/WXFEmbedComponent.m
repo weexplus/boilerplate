@@ -23,13 +23,15 @@
 
 -(void)loadUrl:(NSString*)url instance:(WXSDKInstance*)instance sourceurl:(NSURL*)sourceURL{
     
-     instance.param=self.param;
-    [instance renderWithURL:[Weex getFinalUrl:url weexInstance:self.weexInstance] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
-
+    instance.param=self.param;
+    //    [instance renderWithURL:[Weex getFinalUrl:url weexInstance:self.weexInstance] options:@{@"bundleUrl":[sourceURL absoluteString]} data:nil];
+    
+    [WeexFactory downloadJs:[Weex getFinalUrl:url weexInstance:self.weexInstance].absoluteString instance:instance];
+    
 }
 
 -(void)onRenderFinish{
-  
+    
     [[self getInstance] fireGlobalEvent:@"onPageInit" params:self.param];
 }
 
