@@ -25,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.farwolf.base.TitleActivityBase;
 import com.farwolf.util.ActivityManager;
 import com.farwolf.util.AppTool;
+import com.farwolf.util.DateTool;
 import com.farwolf.util.KeyBoardTool;
 import com.farwolf.util.ScreenTool;
 import com.farwolf.util.StringUtil;
@@ -40,6 +41,7 @@ import com.farwolf.weex.listener.RenderListener;
 import com.farwolf.weex.module.WXNavgationModule;
 import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.pref.WeexPref_;
+import com.farwolf.weex.util.HotRefreshManager;
 import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.view.ToolPop;
 import com.farwolf.weex.view.ToolPop_;
@@ -336,6 +338,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         if( ActivityManager.getInstance().getCurrentActivity()==this)
         {
 
+            if("".equals(event.type))
             this.showError(event.msg);
         }
 
@@ -531,6 +534,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 //            fail_layout.setVisibility(View.VISIBLE);
             this.err.setText(err+"");
             this.err_layout.setVisibility(View.VISIBLE);
+            String level="info";
+            err= DateTool.Now()+" "+err;
+            HotRefreshManager.getInstance().send("log:"+level+"level:"+err);
         }
         hideLoading();
 

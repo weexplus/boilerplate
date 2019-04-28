@@ -18,7 +18,22 @@
 }
 -(void)send:(NSString*)msg
 {
-    [self.hotReloadSocket  send:msg];
+    
+    if(self.hotReloadSocket.readyState==SR_OPEN){
+        [self.hotReloadSocket  send:msg];
+    }
+}
+-(void)registLog{
+    [self regist:@"weexLog" method:@selector(onLogRecieve:)];
+}
+-(void)onLogRecieve:(NSNotification *)no{
+    NSString *msg= no.userInfo[@"msg"];
+    NSString *level= no.userInfo[@"level"];
+    NSDate *now=[NSDate new];;
+    NSString *time= [now format:@"yyyy-MM-dd HH:mm:ss"];
+    msg=[[time add:@"    "]add:msg];
+    NSString *m=[[[@"log:" add:level]add:@"level:"]add:msg];
+    [[Weex getRefreshManager] send:m];
 }
 -(void)open:(NSString*)ip port:(NSString*)port
 {

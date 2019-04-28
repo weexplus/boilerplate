@@ -195,6 +195,7 @@
    {
        refreshManager=[RefreshManager new];
        refreshManager.lastrefresh=0;
+       [refreshManager registLog];
    }
     return refreshManager;
 }

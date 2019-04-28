@@ -18,4 +18,5 @@
 -(void)open:(NSString*)ip port:(NSString*)port;
 +(void)reload;
 -(void)send:(NSString*)msg;
+-(void)registLog;
 @end

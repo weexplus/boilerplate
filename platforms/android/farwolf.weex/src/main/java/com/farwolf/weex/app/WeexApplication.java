@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.alibaba.android.bindingx.plugin.weex.BindingX;
 import com.farwolf.util.ActivityManager;
+import com.farwolf.util.DateTool;
 import com.farwolf.util.RegexBase;
 import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
@@ -26,6 +27,7 @@ import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.util.Weex_;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.taobao.weex.event.ErrorEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -130,6 +132,17 @@ public class WeexApplication extends MultiDexApplication {
         if("reconnect".equals(event.type))
         {
             connect();
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(ErrorEvent event) {
+
+        if("log".equals(event.type))
+        {
+            String msg=DateTool.Now()+"     "+event.msg;
+            String level=event.level;
+            HotRefreshManager.getInstance().send("log:"+level+"level:"+msg);
         }
 
 

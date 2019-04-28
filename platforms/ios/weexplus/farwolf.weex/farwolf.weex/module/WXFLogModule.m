@@ -14,9 +14,15 @@
 
 @implementation WXFLogModule
 WX_EXPORT_METHOD(@selector(log:))
--(void)log:(NSString*)msg{
+-(void)log:(NSMutableDictionary*)param{
+    NSString *msg=param[@"param"];
+    NSString *level=level;
+    if(param[@"level"]){
+        level=param[@"level"];
+    }
     NSLog([@"weexplus:" add:msg]);
-    NSString *m=[@"log:" add:msg];
+    NSString *m=[[[@"log:" add:level]add:@"level:"]add:msg];
+//    NSString *m=[@"log:" add:msg];
     [[Weex getRefreshManager] send:m];
 }
 @end

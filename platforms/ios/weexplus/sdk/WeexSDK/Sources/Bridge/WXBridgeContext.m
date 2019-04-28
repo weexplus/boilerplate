@@ -1160,6 +1160,8 @@ _Pragma("clang diagnostic pop") \
                 //zjr add
                 NSNotification *n=[[NSNotification alloc]initWithName:@"weexError" object:nil userInfo:@{@"msg":string}];
                 [[NSNotificationCenter defaultCenter]postNotification:n];
+                n=[[NSNotification alloc]initWithName:@"weexLog" object:nil userInfo:@{@"msg":string,@"level":[self translate:logLevel]}];
+                [[NSNotificationCenter defaultCenter]postNotification:n];
                 ///////////
                 WX_LOG(logLevel, @"%@", string);
             } else {
@@ -1169,6 +1171,19 @@ _Pragma("clang diagnostic pop") \
         }
     }];
 }
+
++(NSString*)translate:(WXLogFlag)level{
+    if(level==WXLogFlagError){
+        return @"error";
+    }else if(level==WXLogFlagWarning){
+        return @"warn";
+    }else if(level==WXLogFlagInfo){
+        return @"info";
+    }else {
+        return @"info";
+    }
+}
+
 
 +(id)extendCallNative:(NSDictionary *)dict
 {

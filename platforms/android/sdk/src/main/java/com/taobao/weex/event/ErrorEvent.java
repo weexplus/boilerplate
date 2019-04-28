@@ -7,6 +7,8 @@ package com.taobao.weex.event;
 public class ErrorEvent {
 
     public String msg;
+    public String type;
+    public String level;
 
     public ErrorEvent(String msg) {
         this.msg = msg;
