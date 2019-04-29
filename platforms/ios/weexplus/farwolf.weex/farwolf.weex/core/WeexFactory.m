@@ -198,6 +198,11 @@ static NSMutableDictionary *pageCache;
 
 
 +(void)downloadJs:(NSString*)url instance:(WXSDKInstance*)instance{
+    
+    if(![url startWith:@"http"]){
+        [instance renderWithURL:[NSURL URLWithString:url] options:@{@"bundleUrl":url}  data:nil];
+        return;
+    }
     instance.scriptURL=[NSURL URLWithString:url];
     url=[NSString stringWithFormat:@"%@?random=%d", url, arc4random()];
     NSString *board=  [WXSDKInstance getAppBoardContent];

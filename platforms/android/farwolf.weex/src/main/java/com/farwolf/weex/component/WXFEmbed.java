@@ -4,10 +4,10 @@ package com.farwolf.weex.component;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.farwolf.weex.core.WeexFactory;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.annotation.Component;
-import com.taobao.weex.common.WXPerformance;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponentProp;
@@ -68,8 +68,11 @@ public class WXFEmbed extends WXEmbed {
                 width=lp.width;
                 height=lp.height;
             }
-            instance.renderByUrl(WXPerformance.DEFAULT, url, null, null, width,
-                    height, WXRenderStrategy.APPEND_ASYNC);
+            instance.setSize(width,height);
+            WeexFactory.downloadJs(url,instance);
+
+//            instance.renderByUrl(WXPerformance.DEFAULT, url, null, null, width,
+//                    height, WXRenderStrategy.APPEND_ASYNC);
 
 
         }

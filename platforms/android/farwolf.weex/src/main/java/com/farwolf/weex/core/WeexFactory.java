@@ -346,7 +346,7 @@ public class WeexFactory  extends ServiceBase{
     }
 
     public static void downloadJs(String url,final WXSDKInstance instance){
-
+        instance.setBundleUrl(url);
         String md5=   Weex.webAppboardMd5();
         url=url+"?md5="+md5;
         url+="&p="+new Random(100000).nextInt();

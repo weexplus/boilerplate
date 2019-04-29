@@ -1,7 +1,7 @@
 {
   "schema":"js",
-  "debug":true,
-  "showerror":true,
+  "debug":false,
+  "showerror":false,
   "isPortrait":true,
   "jsVersion":2,
   "debugIp":"127.0.0.1",
