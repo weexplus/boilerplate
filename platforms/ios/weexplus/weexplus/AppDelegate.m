@@ -31,8 +31,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
- 
-    
+  
     self.window= [WeexPlus init:launchOptions];
   
      return YES;
