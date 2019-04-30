@@ -1,6 +1,7 @@
 {
   "schema":"js",
   "debug":true,
+  "loglevel":"warn",
   "showerror":true,
   "isPortrait":true,
   "jsVersion":2,
