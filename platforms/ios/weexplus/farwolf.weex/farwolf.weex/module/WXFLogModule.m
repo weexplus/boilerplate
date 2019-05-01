@@ -15,7 +15,7 @@
 @implementation WXFLogModule
 WX_EXPORT_METHOD(@selector(log:))
 -(void)log:(NSMutableDictionary*)param{
-    NSString *msg=param[@"param"];
+    NSString *msg=param[@"msg"];
     NSString *level=level;
     if(param[@"level"]){
         level=param[@"level"];

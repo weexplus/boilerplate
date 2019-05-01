@@ -2,6 +2,7 @@
   "schema":"js",
   "debug":true,
   "loglevel":"warn",
+  "logfiler":"",
   "showerror":true,
   "isPortrait":true,
   "jsVersion":2,
