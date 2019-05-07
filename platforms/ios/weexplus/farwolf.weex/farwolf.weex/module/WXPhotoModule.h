@@ -12,6 +12,6 @@
 @interface WXPhotoModule : NSObject<WXModuleProtocol,ImageSelectDelegate>
 @property(nonatomic,strong)WXModuleKeepAliveCallback callback;
 @property(nonatomic,strong)UploadImage *uploadImage;
-
++(NSString*)saveImageDocuments:(UIImage *)image;
 
 @end

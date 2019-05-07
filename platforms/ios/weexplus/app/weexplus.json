@@ -1,7 +1,7 @@
 {
   "schema":"js",
   "debug":true,
-  "loglevel":"warn",
+  "loglevel":"info",
   "logfiler":"",
   "showerror":true,
   "isPortrait":true,

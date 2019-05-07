@@ -83,10 +83,14 @@ WX_EXPORT_METHOD(@selector(goForward))
     }
     return self;
 }
-
+//zjr
+-(void)excuteJs:(NSString*)js{
+    [_jsContext evaluateScript:js];
+}
 - (UIView *)loadView
 {
     return [[WXWebView alloc] init];
+    
 }
 
 - (void)viewDidLoad

@@ -3,11 +3,20 @@ package com.farwolf.weex.module;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 
 import com.farwolf.perssion.Perssion;
 import com.farwolf.perssion.PerssionCallback;
 import com.farwolf.qrcode.zxing.android.CaptureActivity;
+import com.farwolf.util.Picture;
 import com.farwolf.weex.event.PermissionEvent;
+import com.farwolf.weex.util.Const;
+import com.farwolf.weex.util.Weex;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
@@ -17,6 +26,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 
 /**
  * Created by zhengjiangrong on 2017/7/16.
@@ -27,6 +37,74 @@ public class WXQRModule extends WXModule {
 
     JSCallback callback;
     HashMap param;
+
+
+    @JSMethod
+    public void makeQr(final HashMap param,final JSCallback callback){
+        final  String path=mWXSDKInstance.getContext().getCacheDir()+"/1.png";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String url="";
+                int size=100;
+                if(param.containsKey("size")){
+                    size=Integer.parseInt(param.get("size")+"");
+                }
+                url=param.get("str")+"";
+                size=(int)Weex.length((float) size);
+
+                int w=size;
+                int h=size;
+                try
+                {
+                    //判断URL合法性
+                    if (url == null || "".equals(url) || url.length() < 1)
+                    {
+                        return;
+                    }
+                    Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
+                    hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+                    //图像数据转换，使用了矩阵转换
+                    BitMatrix bitMatrix = new QRCodeWriter().encode(url, BarcodeFormat.QR_CODE, w, h, hints);
+                    int[] pixels = new int[w * h];
+                    //下面这里按照二维码的算法，逐个生成二维码的图片，
+                    //两个for循环是图片横列扫描的结果
+                    for (int y = 0; y < h; y++)
+                    {
+                        for (int x = 0; x < w; x++)
+                        {
+                            if (bitMatrix.get(x, y))
+                            {
+                                pixels[y * w + x] = 0xff000000;
+                            }
+                            else
+                            {
+                                pixels[y * w + x] = 0xffffffff;
+                            }
+                        }
+                    }
+                    //生成二维码图片的格式，使用ARGB_8888
+                    Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+                    bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
+
+                    Picture.saveImageToSDCard(path,bitmap);
+                    HashMap res=new HashMap();
+                    res.put("path",Const.PREFIX_SDCARD+path);
+                    callback.invoke(res);
+                    //显示到我们的ImageView上面
+
+                }
+                catch (WriterException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+
+
+
 
     @JSMethod
     public void open(final HashMap param, final JSCallback callback){
@@ -67,7 +145,7 @@ public class WXQRModule extends WXModule {
 
         if(event.type==PermissionEvent.CAMREA)
         {
-           dojob(param,callback);
+            dojob(param,callback);
         }
 
     }

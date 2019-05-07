@@ -30,7 +30,8 @@
 - (void)goBack;
 
 - (void)goForward;
-
+//zjr
+-(void)excuteJs:(NSString*)js;
 
 - (void)loadURL:(NSString *)url;
 

@@ -72,7 +72,7 @@ WX_EXPORT_METHOD(@selector(save:callback:))
 }
 
 //保存图片
--(NSString*)saveImageDocuments:(UIImage *)image{
++(NSString*)saveImageDocuments:(UIImage *)image{
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
  
