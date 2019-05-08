@@ -19,6 +19,8 @@ import com.taobao.weex.bridge.JSCallback;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by zhengjiangrong on 2017/6/15.
  */
@@ -97,6 +99,21 @@ public class WXPageModule extends WXModuleBase {
 
     }
 
+    @JSMethod(uiThread = false)
+    public int statusBarHeight(){
+        Class c = null;
+        try {
+            c = Class.forName("com.android.internal.R$dimen");
+            Object obj = c.newInstance();
+            Field field = c.getField("status_bar_height");
+            int x = Integer.parseInt(field.get(obj).toString());
+            int statusBarHeight = this.getContext().getResources().getDimensionPixelSize(x);
+            return statusBarHeight;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 
     @JSMethod
     public void doubleBack()

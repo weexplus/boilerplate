@@ -39,6 +39,7 @@ static DebugScocket *debugScocket;
 
 +(NSString*)socketPort;
 +(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance;
++(CGFloat)deLength:(CGFloat)length instance:(WXSDKInstance*)instance;
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance;
 +(RefreshManager*)getRefreshManager;
 +(DebugScocket*)getDebugScocket;

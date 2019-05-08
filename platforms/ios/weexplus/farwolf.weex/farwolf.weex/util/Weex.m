@@ -189,6 +189,13 @@
    
 }
 
++(CGFloat)deLength:(CGFloat)length instance:(WXSDKInstance*)instance
+{
+    
+    return length /instance.pixelScaleFactor;
+    
+}
+
 +(RefreshManager*)getRefreshManager
 {
    if(refreshManager==nil)

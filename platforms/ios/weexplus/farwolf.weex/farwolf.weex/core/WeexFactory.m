@@ -198,37 +198,42 @@ static NSMutableDictionary *pageCache;
 
 
 +(void)downloadJs:(NSString*)url instance:(WXSDKInstance*)instance{
-    
+   
     if(![url startWith:@"http"]){
         [instance renderWithURL:[NSURL URLWithString:url] options:@{@"bundleUrl":url}  data:nil];
         return;
     }
-    instance.scriptURL=[NSURL URLWithString:url];
     url=[NSString stringWithFormat:@"%@?random=%d", url, arc4random()];
     NSString *board=  [WXSDKInstance getAppBoardContent];
     NSString *boardmd5=[board toMd5];
     url=[[url add:@"&md5="]add:boardmd5];
-    JsonReader *j=[JsonReader new];
-    j.url=url;
-    [j excuteNoLimit:^{
-        
-    } success:^(Json *j) {
-        NSString *bs=  j.backString;
-        NSString *bo=@"";
-        NSString *sp=@"weexplus_split_weexplus";
-        if([bs contains:sp]){
-            bo=[bs split:sp][0];
-            [WXSDKInstance setAppBoardContent:bo];
-            bs=[bs replace:sp withString:@""];
-        }else{
-            bs=[board add:bs];
-        }
-        [instance renderView:bs options:@{@"bundleUrl":url} data:   nil];
-    } exception:^{
-        
-    } compelete:^{
-        
-    } usePost:false];
+    [instance renderWithURL:[NSURL URLWithString:url] options:@{@"bundleUrl":url}  data:nil];
+//    instance.scriptURL=[NSURL URLWithString:url];
+//    url=[NSString stringWithFormat:@"%@?random=%d", url, arc4random()];
+//    NSString *board=  [WXSDKInstance getAppBoardContent];
+//    NSString *boardmd5=[board toMd5];
+//    url=[[url add:@"&md5="]add:boardmd5];
+//    JsonReader *j=[JsonReader new];
+//    j.url=url;
+//    [j excuteNoLimit:^{
+//
+//    } success:^(Json *j) {
+//        NSString *bs=  j.backString;
+//        NSString *bo=@"";
+//        NSString *sp=@"weexplus_split_weexplus";
+//        if([bs contains:sp]){
+//            bo=[bs split:sp][0];
+//            [WXSDKInstance setAppBoardContent:bo];
+//            bs=[bs replace:sp withString:@""];
+//        }else{
+//            bs=[board add:bs];
+//        }
+//        [instance renderView:bs options:@{@"bundleUrl":url} data:   nil];
+//    } exception:^{
+//
+//    } compelete:^{
+//
+//    } usePost:false];
 }
 
 +(void)preRenderAll:(NSMutableArray*)urls  compelete:(void(^)())complete fail:(void(^)(NSString *))fail

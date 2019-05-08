@@ -579,7 +579,20 @@ typedef enum : NSUInteger {
             return;
         }
 
+        //zjr add
         NSString *jsBundleString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *bs=  jsBundleString;
+        NSString *bo=@"";
+        NSString *sp=@"weexplus_split_weexplus";
+        if([bs rangeOfString:sp].length>0){
+            bo=[bs componentsSeparatedByString:sp][0];
+            [WXSDKInstance setAppBoardContent:bo];
+            jsBundleString= [bs stringByReplacingOccurrencesOfString:sp withString:@""];
+        }else{
+            //            bs=[board add:bs];
+            jsBundleString= [[WXSDKInstance getAppBoardContent] stringByAppendingString:jsBundleString];
+        }
+        //zjr add
         if (!jsBundleString) {
             WX_MONITOR_FAIL_ON_PAGE(WXMTJSDownload, WX_ERR_JSBUNDLE_STRING_CONVERT, @"data converting to string failed.", strongSelf.pageName)
             [strongSelf.apmInstance setProperty:KEY_PROPERTIES_ERROR_CODE withValue:[@(WX_ERR_JSBUNDLE_STRING_CONVERT) stringValue]];

@@ -62,7 +62,7 @@ WX_EXPORT_METHOD(@selector(save:callback:))
 }
 -(void)imageSelect:(UIImage*)img
 {
-    NSString *path= [self saveImageDocuments:img];
+    NSString *path= [WXPhotoModule saveImageDocuments:img];
     path=[@"sdcard:" add:path];
 //    NSString *encodedString = [self image2DataURL:img];
 //    encodedString=[@"base64===" add:encodedString];
