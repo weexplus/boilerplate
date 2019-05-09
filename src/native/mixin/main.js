@@ -70,6 +70,21 @@ Mixins.install = (Vue, options) => {
 
 
       });
+        globalEvent.addEventListener("viewWillDisappear", (param) => {
+
+            if (this.viewWillDisappear != undefined)
+                this.viewWillDisappear()
+        });
+        globalEvent.addEventListener("viewWillAppear", (param) => {
+
+            if (this.viewWillAppear != undefined)
+                this.viewWillAppear()
+        });
+        globalEvent.addEventListener("onResume", (param) => {
+
+            if (this.onResume != undefined)
+                this.onResume()
+        });
 
     }
 
