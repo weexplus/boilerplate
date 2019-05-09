@@ -360,6 +360,10 @@ public class Weex extends ServiceBase{
         return  WXViewUtils.getRealPxByWidth(length);
     }
 
+    public static float deLength(float length)
+    {
+        return  WXViewUtils.getWeexPxByReal(length);
+    }
 
 
 //    public static String getUrl(String url)

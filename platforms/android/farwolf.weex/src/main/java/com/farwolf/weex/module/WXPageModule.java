@@ -108,7 +108,7 @@ public class WXPageModule extends WXModuleBase {
             Field field = c.getField("status_bar_height");
             int x = Integer.parseInt(field.get(obj).toString());
             int statusBarHeight = this.getContext().getResources().getDimensionPixelSize(x);
-            return statusBarHeight;
+            return  (int)Weex.deLength(statusBarHeight);
         } catch (Exception e) {
             e.printStackTrace();
         }
