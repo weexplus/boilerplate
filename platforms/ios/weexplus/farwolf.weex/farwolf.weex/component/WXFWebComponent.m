@@ -50,6 +50,9 @@ WX_EXPORT_METHOD(@selector(excuteJs:))
 //
 - (void)loadURL:(NSString *)url
 {
+    if([url isEqualToString:@""]){
+        return;
+    }
     if([url startWith:@"root:"]){
         NSString *path=@"";
         NSString *param=@"";
@@ -73,8 +76,6 @@ WX_EXPORT_METHOD(@selector(excuteJs:))
         }else{
             path=url;
         }
-        
-        
         NSURL *fileUrl = [NSURL fileURLWithPath:path isDirectory:NO];//此部分没有?所以没有问题，isDirectory=YES会导致多一层目录。
         NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:fileUrl resolvingAgainstBaseURL:NO];
         NSMutableArray *ary=[param split:@"&"];
