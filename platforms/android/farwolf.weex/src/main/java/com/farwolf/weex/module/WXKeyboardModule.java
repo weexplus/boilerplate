@@ -1,6 +1,8 @@
 package com.farwolf.weex.module;
 
+import android.app.Activity;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.farwolf.weex.base.WXModuleBase;
 import com.farwolf.weex.event.KeyboardEvent;
@@ -49,6 +51,16 @@ public class WXKeyboardModule extends WXModuleBase {
         {
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         }
+    }
+
+
+    @JSMethod
+    public void hide(JSCallback callback){
+        InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        boolean t= inputMethodManager.hideSoftInputFromWindow(getActivity().getWindow().getDecorView().getWindowToken(), 0);
+        HashMap m=new HashMap();
+        m.put("res",t);
+        callback.invoke(m);
     }
 
 

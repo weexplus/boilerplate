@@ -10,7 +10,6 @@ import com.farwolf.util.SDCard;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.util.Weex;
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -31,11 +30,11 @@ public class WXFWeb extends WXWeb {
 //        super(instance, dom, parent, isLazy);
 //    }
 
-    @JSMethod
-    public void excuteJs(String js){
-        WebView web=(WebView)mWebView.getView();
-        web.loadUrl("javascript:"+js);
-    }
+//    @JSMethod
+//    public void excuteJs(String js){
+//        WebView web=(WebView)mWebView.getView();
+//        web.loadUrl("javascript:"+js);
+//    }
 
     @Override
     public void setUrl(String url) {

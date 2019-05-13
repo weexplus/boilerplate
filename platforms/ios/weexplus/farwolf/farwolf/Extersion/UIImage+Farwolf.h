@@ -9,5 +9,6 @@
 
 @interface UIImage (Farwolf)
 - (NSString*)saveToDisk:(NSString*)path;
+- (UIImage *)toColor:(NSString *)color;
 @end
 
