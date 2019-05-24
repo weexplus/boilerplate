@@ -14,6 +14,7 @@ import com.farwolf.weex.util.Const;
 import com.farwolf.weex.util.Weex;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
@@ -102,6 +103,67 @@ public class WXQRModule extends WXModule {
         }).start();
     }
 
+    @JSMethod
+    public void makeBarCode(final HashMap param,final JSCallback callback){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final  String path=mWXSDKInstance.getContext().getCacheDir()+"/1.png";
+                String str="";
+                if(param.containsKey("str")){
+                    str=param.get("str")+"";
+                }
+                int width=0;
+                if(param.containsKey("width")){
+                    width=Integer.parseInt(param.get("width")+"");
+                }
+
+                int height=0;
+                if(param.containsKey("height")){
+                    height=Integer.parseInt(param.get("height")+"");
+                }
+                width=(int)Weex.length(width);
+                height=(int)Weex.length(height);
+                Bitmap bitmap= creatBarcode(str,width,height);
+                Picture.saveImageToSDCard(path,bitmap);
+                HashMap res=new HashMap();
+                res.put("path",Const.PREFIX_SDCARD+path);
+                callback.invoke(res);
+            }
+        }).start();
+
+    }
+
+
+
+    private static final int BLACK = 0xff000000;
+    private static final int WHITE = 0xFFFFFFFF;
+    private static BarcodeFormat barcodeFormat= BarcodeFormat.CODE_128;
+    public  static Bitmap creatBarcode(String contents, int desiredWidth,int desiredHeight) {
+        MultiFormatWriter writer = new MultiFormatWriter();
+        BitMatrix result=null;
+        try {
+            result = writer.encode(contents, barcodeFormat, desiredWidth,
+                    desiredHeight);
+        } catch (WriterException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        int width = result.getWidth();
+        int height = result.getHeight();
+        int[] pixels = new int[width * height];
+        // All are 0, or black, by default
+        for (int y = 0; y < height; y++) {
+            int offset = y * width;
+            for (int x = 0; x < width; x++) {
+                pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(width, height,
+                Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+        return bitmap;
+    }
 
 
 

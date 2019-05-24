@@ -15,6 +15,8 @@
 @implementation WXQRModule
 WX_EXPORT_METHOD(@selector(open:callback:))
 WX_EXPORT_METHOD(@selector(makeQr:callback:))
+WX_EXPORT_METHOD(@selector(makeBarCode:callback:))
+
 @synthesize weexInstance;
 
 
@@ -23,7 +25,7 @@ WX_EXPORT_METHOD(@selector(makeQr:callback:))
 {
     NSString *color=param[@"color"];
     NSString *bgcolor=param[@"bgcolor"];
-     NSString *statusbarcolor=param[@"statusbarcolor"];
+    NSString *statusbarcolor=param[@"statusbarcolor"];
     UINavigationController  *nav=[weexInstance.viewController present:_QRControl anim:true];
     QRControl *vc=nav.childViewControllers[0];
     vc.color=color;
@@ -32,15 +34,50 @@ WX_EXPORT_METHOD(@selector(makeQr:callback:))
     [nav.navigationBar setHidden:false];
     vc.scanSuccess=^(NSString* s){
         
-       
-//        NSMutableDictionary *dic=[NSMutableDictionary new];
-//        [dic setValue:s forKey:@"res"];
+        
+        //        NSMutableDictionary *dic=[NSMutableDictionary new];
+        //        [dic setValue:s forKey:@"res"];
         callback(s,true);
         
     };
-
+    
     
 }
+
+
+
+-(void) makeBarCode:(NSMutableDictionary*)param  callback:(WXModuleCallback)callback
+{
+    NSString *source=param[@"str"];
+    CGFloat size=[@"" add: param[@"size"]].floatValue;
+    CGFloat height=-1;
+    if(param[@"height"])
+        height=[@"" add: param[@"height"]].floatValue;
+    CGFloat space=0;
+    if(param[@"space"])
+        space=[@"" add: param[@"space"]].floatValue;
+    
+    space=[Weex length:space instance:weexInstance];
+    height=[Weex length:height instance:weexInstance];
+    size=[Weex length:size instance:weexInstance];
+    　　// iOS 8.0以上的系统才支持条形码的生成，iOS8.0以下使用第三方控件生成
+    　　if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        　　　　// 注意生成条形码的编码方式
+        　　　　NSData *data = [source dataUsingEncoding: NSASCIIStringEncoding];
+        　　　　CIFilter *filter = [CIFilter filterWithName:@"CICode128BarcodeGenerator"];
+        　　　　[filter setValue:data forKey:@"inputMessage"];
+        if(height>0)
+            [filter setValue:@(height) forKey:@"inputBarcodeHeight"];
+        　　　　// 设置生成的条形码的上，下，左，右的margins的值
+        　　　　[filter setValue:[NSNumber numberWithInteger:space] forKey:@"inputQuietSpace"];
+        CIImage *ciimage=filter.outputImage;
+        　　　 UIImage *img= [self createNonInterpolatedUIImageFormCIImage:ciimage withSize:size] ;
+        NSString *path=[WXPhotoModule saveImageDocuments:img];
+        path=[@"sdcard:" add:path];
+        callback(@{@"path":path});
+        　　}
+}
+
 
 -(void)makeQr:(NSMutableDictionary*)param  callback:(WXModuleCallback)callback{
     NSString *url=param[@"str"];

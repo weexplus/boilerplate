@@ -56,7 +56,7 @@
             {
                 self.index=0;
             }
-            [self show];
+            [self show:true];
             
         }
         
@@ -75,11 +75,11 @@
     //    [self updateItems:self.items];
     //    [self.weexInstance.viewController addChildViewController:self.host];
     _items=[NSMutableArray new];
-    [self show];
+    //    [self show];
     
 }
 
--(void )show
+-(void )show:(BOOL)fire
 {
     //    NSMutableArray *n=self.host.childViewControllers;
     //    for(UIViewController *vc in  n)
@@ -98,11 +98,13 @@
     for(WXComponent *v in _items){
         if([_items indexOfObject:v]==self.index){
             [v.view setHidden:false];
-            [v fireEvent:@"show" params:@{@"index":@([_items indexOfObject:v])}];
+            if(fire)
+                [v fireEvent:@"show" params:@{@"index":@([_items indexOfObject:v])}];
         }
         else{
-             [v.view setHidden:true];
-            [v fireEvent:@"hide" params:@{@"index":@([_items indexOfObject:v])}];
+            [v.view setHidden:true];
+            if(fire)
+                [v fireEvent:@"hide" params:@{@"index":@([_items indexOfObject:v])}];
             
         }
     }
@@ -158,9 +160,14 @@
 -(void)insertSubview:(WXComponent *)subcomponent atIndex:(NSInteger)index{
     [_items addObject:subcomponent];
     [self.view addSubviewFull:subcomponent.view];
-    [self show];
+    if([_items indexOfObject:subcomponent]==self.index){
+        [self show:true];
+    }else{
+        [self show:false];
+    }
     [subcomponent fireEvent:@"load" params:self.weexInstance.param];
 }
+
 
 
 @end

@@ -636,6 +636,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     }
 
 
+
+
+
     @Override
     protected void onResume() {
 
@@ -648,6 +651,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         Log.e("stack",WXNavgationModule.stacks.get(rootid)+"");
     }
+
 
 
     @Override

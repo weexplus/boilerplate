@@ -80,19 +80,21 @@ WX_EXPORT_METHOD(@selector(excuteJs:))
         NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:fileUrl resolvingAgainstBaseURL:NO];
         NSMutableArray *ary=[param split:@"&"];
         NSMutableArray *qrys=[NSMutableArray new ];
-        for(NSString *p in ary){
-            NSString *key=@"";
-            NSString *v=@"";
-            NSArray *kv= [p split:@"="];
-            if(kv>0){
-                key=kv[0];
+        if([param contains:@"&"]){
+            for(NSString *p in ary){
+                NSString *key=@"";
+                NSString *v=@"";
+                NSArray *kv= [p split:@"="];
+                if(kv>0){
+                    key=kv[0];
+                }
+                if(kv>1){
+                    v=kv[1];
+                }
+                [qrys addObject:[NSURLQueryItem queryItemWithName:key value:v]];
             }
-            if(kv>1){
-                v=kv[1];
-            }
-            [qrys addObject:[NSURLQueryItem queryItemWithName:key value:v]];
+            [urlComponents setQueryItems:qrys];
         }
-        [urlComponents setQueryItems:qrys];
         [super loadURL:urlComponents.URL.absoluteString];
         
         
