@@ -29,7 +29,12 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
     return self;
 }
 
- 
+-(void) addWeg:(NSString *)key weg:(NSString *)value{
+    if(self.wegs==nil){
+        self.wegs=[NSMutableDictionary new];
+    }
+    [self.wegs setValue:value forKey:key ];
+}
 
 -(void)postFile
 {
@@ -259,7 +264,11 @@ NSString * const _URL = @"http://doc2.renturbo.com/upload/";
 //            NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
 //            NSData *data = UIImageJPEGRepresentation((UIImage*)o, 1.0);
 //            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/png"];
-            [formData appendPartWithFileData:o name:key fileName:key mimeType:@"application/octet-stream"];
+            NSString *weg=self.wegs[key];
+            if(weg==nil){
+                weg=key;
+            }
+            [formData appendPartWithFileData:o name:key fileName:weg mimeType:@"application/octet-stream"];
 //            [self postUpload:(UIImage*)o];
         }
         

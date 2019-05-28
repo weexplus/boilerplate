@@ -28,6 +28,7 @@ import com.farwolf.util.AppTool;
 import com.farwolf.util.DateTool;
 import com.farwolf.util.KeyBoardTool;
 import com.farwolf.util.ScreenTool;
+import com.farwolf.util.StatusBar;
 import com.farwolf.util.StringUtil;
 import com.farwolf.view.FreeDialog;
 import com.farwolf.weex.R;
@@ -106,6 +107,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
 
     public String url;
+    public static String statuBarColor;
 
 
     @ViewById
@@ -186,7 +188,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         }
 
         super.onCreate(arg0);
-
+        if(statuBarColor!=null){
+          StatusBar.setStatusBarStyle(statuBarColor,this);
+        }
 //        mReloadReceiver = new BroadcastReceiver() {
 //            @Override
 //            public void onReceive(Context context, Intent intent) {

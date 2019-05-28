@@ -14,12 +14,14 @@
 
 @property (nonatomic) NSDictionary *param;
 @property (nonatomic) NSDictionary *stream;
+@property (nonatomic) NSMutableDictionary *wegs;
 @property (nonatomic) NSDictionary *header;
 @property (nonatomic,strong)  LockScreenProgress *p;
 @property (nonatomic,strong)  NSString *url;
 @property (nonatomic) NSObject *tag;
 -(void)addParam:(NSString *)key value:(NSString *)value;
 -(void) addParam:(NSString *)key file:(NSObject *)value;
+-(void) addWeg:(NSString *)key weg:(NSString *)value;
 -(void)addHeader:(NSString *)key value:(NSString *)value;
 -(NSMutableArray*)toList:(NSString *)key;
 -(NSString*)getUrl;
