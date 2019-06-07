@@ -189,13 +189,13 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
-				"${PODS_ROOT}/../sdk/WeexSDK/Resources/native-bundle-main.js",
-				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-main-jsfm.js",
-				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-polyfill.js",
-				"${PODS_ROOT}/../sdk/WeexSDK/Resources/weex-rax-api.js",
-				"${PODS_ROOT}/../sdk/WeexSDK/Resources/wx_load_error@3x.png",
+				"${PODS_ROOT}/../sdk/ios/sdk/WeexSDK/Resources/native-bundle-main.js",
+				"${PODS_ROOT}/../sdk/ios/sdk/WeexSDK/Resources/weex-main-jsfm.js",
+				"${PODS_ROOT}/../sdk/ios/sdk/WeexSDK/Resources/weex-polyfill.js",
+				"${PODS_ROOT}/../sdk/ios/sdk/WeexSDK/Resources/weex-rax-api.js",
+				"${PODS_ROOT}/../sdk/ios/sdk/WeexSDK/Resources/wx_load_error@3x.png",
 				"${PODS_ROOT}/../farwolf.business/farwolf.business/resources/xib/updater.xib",
 				"${PODS_ROOT}/../farwolf.business/farwolf.business/resources/xib/zipdownloader.xib",
 				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/storyboard/weex.storyboard",
@@ -205,6 +205,7 @@
 				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/fail.png",
 				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/qrcodecase@2x.png",
 				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/image/MNFloatBtn.bundle",
 				"${PODS_ROOT}/../farwolf.weex/farwolf.weex/resources/xib/Picker.xib",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -224,11 +225,12 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fail.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/qrcodecase@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MNFloatBtn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Picker.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E1EBE96AEBABBDE8A9BEC3C2 /* [CP] Check Pods Manifest.lock */ = {

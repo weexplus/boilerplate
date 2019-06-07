@@ -16,7 +16,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
 
@@ -37,6 +37,8 @@ under the License.
         <item name="android:windowBackground">@null</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-
+    <style name="permission_PermissionActivity" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+    </style>
 
 </resources>

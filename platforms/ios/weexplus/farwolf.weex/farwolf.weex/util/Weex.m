@@ -75,21 +75,21 @@
     [WXSDKEngine registerModule:@"page" withClass:[WXPageModule class]];
     [WXSDKEngine registerModule:@"font" withClass:[WXFontModule class]];
     [WXSDKEngine registerModule:@"updater" withClass:[WXUpdateModule class]];
-//    [WXSDKEngine registerModule:@"timepicker" withClass:[WXTimePicker class]];
+    //    [WXSDKEngine registerModule:@"timepicker" withClass:[WXTimePicker class]];
     [WXSDKEngine registerModule:@"location" withClass:[WXLocationModule class]];
     [WXSDKEngine registerModule:@"env" withClass:[WXEnvModule class]];
     [WXSDKEngine registerModule:@"file" withClass:[WXFileModule class]];
     [WXSDKEngine registerModule:@"device" withClass:[WXDeviceInfoModule class]];
     [WXSDKEngine registerModule:@"keyboard" withClass:[WXKeyboardModule class]];
-
-      [WXSDKEngine registerModule:@"log" withClass:[WXFLogModule class]];
+    
+    [WXSDKEngine registerModule:@"log" withClass:[WXFLogModule class]];
     
     
     [WXSDKEngine registerHandler:[WXEventModule new] withProtocol:@protocol(WXEventModuleProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
     [WXSDKEngine registerHandler:[JSExceptionProtocolImpl new] withProtocol:@protocol(WXJSExceptionProtocol)];
     [WXSDKEngine registerHandler:[WXWebSocketDefaultImpl new] withProtocol:@protocol(WXWebSocketHandler)];
-
+    
     [WXSDKEngine registerComponent:@"a" withClass:[WXPushComponent class]];
     [WXSDKEngine registerComponent:@"floading" withClass:[WXLoadingView class]];
     [WXSDKEngine registerComponent:@"image" withClass:[WXFImageComponent class]];
@@ -100,17 +100,17 @@
     [WXSDKEngine registerComponent:@"host" withClass:[WXHost class]];
     [WXSDKEngine registerComponent:@"looper" withClass:[WXLooperText class]];
     [WXSDKEngine registerComponent:@"drawerlayout" withClass:[WXSlidComponent class]];
-//    [WXSDKEngine registerComponent:@"zoomimage" withClass:[WXZoomImage class]];
+    //    [WXSDKEngine registerComponent:@"zoomimage" withClass:[WXZoomImage class]];
     
-//    [WXLog setLogLevel: WXLogLevelOff];
-       [WXLog setLogLevel: WXLogLevelError];
+    //    [WXLog setLogLevel: WXLogLevelOff];
+    [WXLog setLogLevel: WXLogLevelError];
 }
 
 
 +(UIViewController*)start:(NSString*)image url:(NSString*)url
 {
-//    EntryControl *vc=[[EntryControl alloc]initWithImage:url img:image];
-    RenderControl *vc=[[RenderControl alloc]initWithImage:url img:image];
+    EntryControl *vc=[[EntryControl alloc]initWithImage:url img:image];
+    //    RenderControl *vc=[[RenderControl alloc]initWithImage:url img:image];
     
     UINavigationController *nvc=[[UINavigationController alloc]initWithRootViewController:vc];
     return nvc;
@@ -118,7 +118,7 @@
 
 +(NSMutableDictionary*)conifg
 {
-
+    
     if([URL isDiskExist])
     {
         return [self diskConifg];
@@ -127,7 +127,7 @@
     {
         return [self bundleConifg];
     }
-   
+    
 }
 
 +(NSURL*)toURL:(NSString*)url
@@ -185,8 +185,8 @@
 +(CGFloat)length:(CGFloat)length instance:(WXSDKInstance*)instance
 {
     
-     return length *instance.pixelScaleFactor;
-   
+    return length *instance.pixelScaleFactor;
+    
 }
 
 +(CGFloat)deLength:(CGFloat)length instance:(WXSDKInstance*)instance
@@ -198,20 +198,20 @@
 
 +(RefreshManager*)getRefreshManager
 {
-   if(refreshManager==nil)
-   {
-       refreshManager=[RefreshManager new];
-       refreshManager.lastrefresh=0;
-       [refreshManager registLog];
-   }
+    if(refreshManager==nil)
+    {
+        refreshManager=[RefreshManager new];
+        refreshManager.lastrefresh=0;
+        [refreshManager registLog];
+    }
     return refreshManager;
 }
 
- 
+
 
 +(CGFloat)fontSize:(CGFloat)fontsize instance:(WXSDKInstance*)instance
 {
-     return  [WXConvert WXPixelType:[@"" addFloat: fontsize] scaleFactor:instance.pixelScaleFactor];
+    return  [WXConvert WXPixelType:[@"" addFloat: fontsize] scaleFactor:instance.pixelScaleFactor];
 }
 
 +(NSString*)getBaseDir
@@ -265,30 +265,43 @@
 +(void)startDebug:(NSString*)ip port:(NSString*)port
 {
     
-//    NSString *url=[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"];
-//    [WXDevTool launchDevToolDebugWithUrl:url];
+    //    NSString *url=[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"];
+    //    [WXDevTool launchDevToolDebugWithUrl:url];
     
     DebugScocket  *debug=[Weex getDebugScocket];
-    debug.success=^(NSString*channelId){
-
-
-//        [WXDevTool setDebug:YES];
+    NSString *channelId=@"123456";
+    //    debug.success=^(NSString*channelId){
+    
+    
+    
+    //    if(![WXDevTool isDebug]){
+    //
+    //    }else{
+    //
+    //    }
+    [[Weex getRefreshManager] send:[@"opendebug" add:@""] ];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        
+        [WXLog setLogLevel:WXLogLevelLog];
+        [WXDevTool setDebug:YES];
         NSString *url=[[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"] add:channelId];
         [WXDevTool launchDevToolDebugWithUrl:url];
-        [[Weex getRefreshManager] send:[@"open=" add:channelId]];
-    };
-    debug.fail=^(){
-
-    };
-    [debug open:ip port:port];
+        //        [[Weex getRefreshManager] send:[@"open=" add:channelId] ];
+    });
     
     
- 
-     
-//   [WXLog setLogLevel:WXLogLevelLog];
-//     [WXDevTool setDebug:YES];
+    //    debug.fail=^(){
+    //
+    //    };
+    //    [debug open:ip port:port];
     
-//     [WXDebugTool setDebug:YES];
+    
+    
+    
+    //   [WXLog setLogLevel:WXLogLevelLog];
+    //     [WXDevTool setDebug:YES];
+    
+    //     [WXDebugTool setDebug:YES];
 }
 
 +(NSString*)getEntry
@@ -311,7 +324,7 @@
     
     if(s!=nil&&![s isEqualToString:@""])
     {
-      
+        
         ip= [s findone:@"http://" end:@":"];
     }
     if(ip==nil||[ip isEqualToString:@""])
@@ -332,19 +345,19 @@
     if([url startWith:@"http"])
     {
         [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:url]  options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-        
+            
         } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-             compelete(image);
+            compelete(image);
         }];
-//        [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//
-//
-//        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-//
-//
-//            compelete(image);
-//
-//        }];
+        //        [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        //
+        //
+        //        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        //
+        //
+        //            compelete(image);
+        //
+        //        }];
     }
     else
     {

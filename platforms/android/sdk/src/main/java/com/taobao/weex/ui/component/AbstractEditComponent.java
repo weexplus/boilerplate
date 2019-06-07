@@ -575,11 +575,8 @@ public abstract class AbstractEditComponent extends WXComponent<WXEditText> {
     if (type == null || getHostView() == null) {
       return;
     }
-    //zjr add
     mType = type;
-    EditText edt=((EditText) getHostView());
-    edt.setInputType(getInputType(mType));
-//    ((EditText) getHostView()).setRawInputType(getInputType(mType));
+    ((EditText) getHostView()).setInputType(getInputType(mType));
     switch (mType) {
       case Constants.Value.DATE:
       case Constants.Value.TIME:

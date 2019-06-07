@@ -1,13 +1,16 @@
 package com.farwolf.weex.util;
 
+import android.app.AppOpsManager;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Binder;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
@@ -40,6 +43,8 @@ import com.farwolf.weex.component.WXSlidComponent;
 import com.farwolf.weex.component.WXWheelView;
 import com.farwolf.weex.core.PluginManager;
 import com.farwolf.weex.core.local.Local;
+import com.farwolf.weex.floatwindow.FloatWindow;
+import com.farwolf.weex.floatwindow.Screen;
 import com.farwolf.weex.module.WXAddressBookModule;
 import com.farwolf.weex.module.WXCenterPopModule;
 import com.farwolf.weex.module.WXDeviceModule;
@@ -67,6 +72,8 @@ import com.farwolf.weex.module.WXStaticModule;
 import com.farwolf.weex.module.WXUpdateModule;
 import com.farwolf.weex.pref.WeexPref_;
 import com.farwolf.weex.view.CustomInsetsLinearLayout;
+import com.farwolf.weex.view.ToolView;
+import com.farwolf.weex.view.ToolView_;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -90,6 +97,7 @@ import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.json.JSONObject;
 
+import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -115,44 +123,27 @@ public class Weex extends ServiceBase{
 
     public   void startDebug(final String ip) {
 
-        final Handler handler=new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message message) {
 
-                startDebug(ip);
-                return false;
+
+        HotRefreshManager.getInstance().send("opendebug");
+
+        final Handler achandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+
+
             }
-        });
-        final DebugManager debugManager= DebugManager.getInstance();
-
-        debugManager.setDebugListener(new DebugManager.DebugListener() {
+        };
+        achandler.postDelayed(new Runnable() {
             @Override
-            public void onSuccess(String channelId) {
-
+            public void run() {
                 WXEnvironment.sDebugServerConnectable = true;
-//                WXEnvironment.sRemoteDebugMode = true;
-                WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8088/debugProxy/native/"+channelId;
+                WXEnvironment.sRemoteDebugMode = true;
+                WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8089/debugProxy/native/123456";
                 WXSDKEngine.reload();
-                HotRefreshManager.getInstance().send("open="+channelId);
-//                DebugManager.getInstance().destory();
             }
-
-            @Override
-            public void onFail() {
-
-//                debugManager.disConnect();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        handler.sendEmptyMessage(0);
-                    }
-                },2000);
-
-
-            }
-        });
-        debugManager.connect(ip);
-
+        }, 5000);
 
 
     }
@@ -246,13 +237,62 @@ public class Weex extends ServiceBase{
             registerComponent("video",WXFVideo.class);
 
             PluginManager.init(application);
-
+            initDebugger(application);
 
         } catch (WXException e) {
             e.printStackTrace();
         }
     }
+    public void initDebugger(final Application application){
 
+        if(!Config.debug(application)){
+            return;
+        }
+        if(!isPermissionGranted(application,"24")){
+            Toast.makeText(application,"请同意 显示悬浮窗 权限",Toast.LENGTH_LONG).show();
+        }
+        ToolView a= ToolView_.build(application);
+        FloatWindow
+                .with(application)
+                .setView(a)
+                .setX(0)                                   //设置控件初始位置
+                .setY(Screen.height/2)
+                .setDesktopShow(false)                        //桌面显示
+                .build();
+        FloatWindow.get().show();
+
+    }
+
+
+
+    private   boolean isPermissionGranted(Application app,String permissionCode) {
+        try {
+
+            Object object = app.getSystemService(Context.APP_OPS_SERVICE);
+            if (object == null) {
+                return false;
+            }
+            Class localClass = object.getClass();
+            Class[] arrayOfClass = new Class[3];
+            arrayOfClass[0] = Integer.TYPE;
+            arrayOfClass[1] = Integer.TYPE;
+            arrayOfClass[2] = String.class;
+            Method method = localClass.getMethod("checkOp", arrayOfClass);
+
+            if (method == null) {
+                return false;
+            }
+            Object[] arrayOfObject = new Object[3];
+            arrayOfObject[0] = Integer.valueOf(permissionCode);
+            arrayOfObject[1] = Integer.valueOf(Binder.getCallingUid());
+            arrayOfObject[2] = app.getPackageName();
+            int m = ((Integer) method.invoke(object, arrayOfObject)).intValue();
+            return m == AppOpsManager.MODE_ALLOWED;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 
     public static void downloadImg(String url, ImageView img, Context context)
@@ -301,6 +341,7 @@ public class Weex extends ServiceBase{
         path=path.replace("root:","app/");
         return path;
     }
+
 
 
     public static boolean hasLoad(View v)

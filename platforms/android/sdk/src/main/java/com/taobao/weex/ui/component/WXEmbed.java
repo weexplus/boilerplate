@@ -49,6 +49,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+
 import static com.taobao.weex.utils.WXFileUtils.loadAsset;
 
 @Component(lazyload = false)
@@ -166,6 +167,7 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
   {
     return mNestedInstance;
   }
+
   static class EmbedRenderListener implements IWXRenderListener {
     WXEmbed mComponent;
     OnNestedInstanceEventListener mEventListener;
@@ -374,14 +376,12 @@ public class WXEmbed extends WXDiv implements WXSDKInstance.OnInstanceVisibleLis
     }
     sdkInstance.setContainerInfo(WXInstanceApm.KEY_PAGE_PROPERTIES_INSTANCE_TYPE,"embed");
     sdkInstance.setContainerInfo(WXInstanceApm.KEY_PAGE_PROPERTIES_PARENT_PAGE,getInstance().getWXPerformance().pageName);
-//    sdkInstance.renderByUrl(url,
+    ViewGroup.LayoutParams layoutParams = getHostView().getLayoutParams();
+    //    sdkInstance.renderByUrl(url,
 //            url,
 //            null, null,
 //            WXRenderStrategy.APPEND_ASYNC);
-    //zjr add
-    ViewGroup.LayoutParams layoutParams = getHostView().getLayoutParams();
     this.loadUrl(url,sdkInstance,layoutParams);
-
     return sdkInstance;
   }
   //zjr add

@@ -14,6 +14,7 @@
 
 @interface WeexPlus : NSObject
 +(UIWindow*)init:(NSDictionary*)lanch;
++(void)addDebugBtn;
 @end
 
 

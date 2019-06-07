@@ -152,7 +152,7 @@
      if(![WXDevTool isDebug])
      {
          NSString *ip=[Weex getDebugIp];
-         [Weex startDebug:ip port:@"8088"];
+         [Weex startDebug:ip port:@"8089"];
           [self dismissViewControllerAnimated:true completion:nil];
  
          

@@ -192,7 +192,6 @@ public class WXWeb extends WXComponent {
             fireEvent(Constants.Event.ERROR, params);
         }
     }
-
     //zjr add
     @JSMethod
     public void excuteJs(String js){

@@ -80,6 +80,7 @@ import com.taobao.weex.utils.WXLogUtils;
 import com.taobao.weex.utils.WXReflectionUtils;
 import com.taobao.weex.utils.WXUtils;
 import com.taobao.weex.utils.WXViewUtils;
+import com.taobao.weex.utils.cache.RegisterCache;
 
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
@@ -115,15 +116,15 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   private IWXUserTrackAdapter mUserTrackAdapter;
   private IWXRenderListener mRenderListener;
   //zjr add
-  private IWXStatisticsListener mStatisticsListener;
-  /** package **/ Context mContext;
-  private final String mInstanceId;
-  private RenderContainer mRenderContainer;
-  //zjr add
   public Map param;
   private List<WXSDKInstance> childInstances=new ArrayList<>();
   public boolean firePageInit =false;
   public boolean hasInit =false;
+  //zjr add
+  private IWXStatisticsListener mStatisticsListener;
+  /** package **/ Context mContext;
+  private final String mInstanceId;
+  private RenderContainer mRenderContainer;
   private WXComponent mRootComp;
   private boolean mRendered;
   private WXRefreshData mLastRefreshData;
@@ -496,6 +497,7 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
   }
 
   public void init(Context context) {
+    RegisterCache.getInstance().idle(true);
     mContext = context;
     mContainerInfo = new HashMap<>(4);
     mNativeInvokeHelper = new NativeInvokeHelper(mInstanceId);
@@ -514,6 +516,9 @@ public class WXSDKInstance implements IWXActivityStateListener,View.OnLayoutChan
             :"unKnowContainer"
     );
     mContainerInfo.put(WXInstanceApm.KEY_PAGE_PROPERTIES_INSTANCE_TYPE,"page");
+
+    WXBridgeManager.getInstance().checkJsEngineMultiThread();
+
   }
 
   /**

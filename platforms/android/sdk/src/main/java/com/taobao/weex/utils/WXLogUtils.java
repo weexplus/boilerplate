@@ -75,21 +75,10 @@ public class WXLogUtils {
   }
 
   private static void log(String tag, String msg, LogLevel level){
-
     if(TextUtils.isEmpty(msg) || TextUtils.isEmpty(tag) || level == null || TextUtils.isEmpty(level.getName())){
       return;
     }
-    ErrorEvent ev=new ErrorEvent(msg);
-    if(LogLevel.ERROR==level){
-      ev.level="error";
-    }else if(LogLevel.WARN==level){
-      ev.level="warn";
-    }else{
-      ev.level="info";
-    }
-    ev.type="log";
-    ev.msg=msg;
-    EventBus.getDefault().post(ev);
+
     if(sLogWatcher !=null){
       sLogWatcher.onLog(level.getName(), tag, msg);
     }
@@ -176,7 +165,6 @@ public class WXLogUtils {
       }
     }
   }
-  //zjr add
   public static void sendError(String tag,String msg)
   {
 
@@ -191,6 +179,7 @@ public class WXLogUtils {
       EventBus.getDefault().post(ev);
     }
   }
+
   private static LogLevel getLogLevel(String level) {
     switch (level.trim()){
       case "__ERROR":

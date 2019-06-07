@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
   s.name         = "WeexSDK"
 
-  s.version      = "0.20.0"
+  s.version      = "0.24.0"
 
   s.summary      = "WeexSDK Source."
 
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   # use for playground
   s.source =  { :path => '.' }
 
-  s.source_files = 'WeexSDK/Sources/**/*.{h,m,mm,c,cpp,cc}',
+  s.source_files = 'ios/sdk/WeexSDK/Sources/**/*.{h,m,mm,c,cpp,cc}',
                     'weex_core/Source/base/**/*.{h,hpp,m,mm,c,cpp,cc}',
                     'weex_core/Source/core/**/*.{h,hpp,m,mm,c,cpp,cc}',
                     'weex_core/Source/wson/**/*.{h,hpp,m,mm,c,cpp,cc}',
@@ -62,64 +62,73 @@ Pod::Spec.new do |s|
                     'weex_core/Source/include/JavaScriptCore/',
                     'weex_core/Source/include/wtf'
 
-  s.private_header_files = 'WeexSDK/Sources/Component/RecycleList/WXJSASTParser.h'
-  s.public_header_files = 'WeexSDK/Sources/WeexSDK.h',
-                          'WeexSDK/Sources/Layout/WXComponent+Layout.h',
-                          'WeexSDK/Sources/Debug/WXDebugTool.h',
-                          'WeexSDK/Sources/Loader/WXResourceLoader.h',
-                          'WeexSDK/Sources/WebSocket/WXWebSocketHandler.h',
-                          'WeexSDK/Sources/Module/WXVoiceOverModule.h',
-                          'WeexSDK/Sources/Module/WXPrerenderManager.h',
-                          'WeexSDK/Sources/Module/WXModalUIModule.h',
-                          'WeexSDK/Sources/Component/WXListComponent.h',
-                          'WeexSDK/Sources/Component/WXScrollerComponent.h',
-                          'WeexSDK/Sources/Component/WXRichText.h',
-                          'WeexSDK/Sources/Component/WXIndicatorComponent.h',
-                          'WeexSDK/Sources/Component/WXAComponent.h',
-                          'WeexSDK/Sources/Component/Recycler/WXRecyclerComponent.h',
-                          'WeexSDK/Sources/Controller/WXBaseViewController.h',
-                          'WeexSDK/Sources/Controller/WXRootViewController.h',
-                          'WeexSDK/Sources/View/WXView.h',
-                          'WeexSDK/Sources/View/WXErrorView.h',
-                          'WeexSDK/Sources/Protocol/*.h',
-                          'WeexSDK/Sources/Network/WXResourceRequestHandler.h',
-                          'WeexSDK/Sources/Network/WXResourceRequest.h',
-                          'WeexSDK/Sources/Network/WXResourceResponse.h',
-                          'WeexSDK/Sources/Model/WXSDKInstance.h',
-                          'WeexSDK/Sources/Model/WXJSExceptionInfo.h',
-                          'WeexSDK/Sources/Model/WXComponent.h',
-                          'WeexSDK/Sources/Monitor/WXMonitor.h',
-                          'WeexSDK/Sources/Monitor/WXExceptionUtils.h',
-                          'WeexSDK/Sources/Monitor/WXAnalyzerCenter.h',
-                          'WeexSDK/Sources/Manager/WXSDKManager.h',
-                          'WeexSDK/Sources/Manager/WXBridgeManager.h',
-                          'WeexSDK/Sources/Manager/WXComponentManager.h',
-                          'WeexSDK/Sources/Engine/WXSDKEngine.h',
-                          'WeexSDK/Sources/Engine/WXSDKError.h',
-                          'WeexSDK/Sources/Utility/WXConvert.h',
-                          'WeexSDK/Sources/Utility/WXUtility.h',
-                          'WeexSDK/Sources/Utility/WXLog.h',
-                          'WeexSDK/Sources/Utility/WXDefine.h',
-                          'WeexSDK/Sources/Utility/WXType.h',
-                          'WeexSDK/Sources/Utility/NSObject+WXSwizzle.h',
-                          'WeexSDK/Sources/Utility/WXAppConfiguration.h',
-                          'WeexSDK/Sources/Performance/WXApmForInstance.h',
-                          'WeexSDK/Sources/Bridge/JSContext+Weex.h',
+  s.private_header_files = 'ios/sdk/WeexSDK/Sources/Component/RecycleList/WXJSASTParser.h'
+  s.public_header_files = 'ios/sdk/WeexSDK/Sources/WeexSDK.h',
+                          'ios/sdk/WeexSDK/Sources/Layout/WXComponent+Layout.h',
+                          'ios/sdk/WeexSDK/Sources/Debug/WXDebugTool.h',
+                          'ios/sdk/WeexSDK/Sources/Loader/WXResourceLoader.h',
+                          'ios/sdk/WeexSDK/Sources/WebSocket/WXWebSocketHandler.h',
+                          'ios/sdk/WeexSDK/Sources/Module/WXVoiceOverModule.h',
+                          'ios/sdk/WeexSDK/Sources/Module/WXPrerenderManager.h',
+                          'ios/sdk/WeexSDK/Sources/Module/WXModalUIModule.h',
+                          'ios/sdk/WeexSDK/Sources/Module/WXStreamModule.h',
+                          'ios/sdk/WeexSDK/Sources/Component/WXListComponent.h',
+                          'ios/sdk/WeexSDK/Sources/Component/WXScrollerComponent.h',
+                          'ios/sdk/WeexSDK/Sources/Component/WXRichText.h',
+                          'ios/sdk/WeexSDK/Sources/Component/WXIndicatorComponent.h',
+                          'ios/sdk/WeexSDK/Sources/Component/WXAComponent.h',
+                          'ios/sdk/WeexSDK/Sources/Component/WXRefreshComponent.h',
+                          'ios/sdk/WeexSDK/Sources/Component/Recycler/WXRecyclerComponent.h',
+                          'ios/sdk/WeexSDK/Sources/Controller/WXBaseViewController.h',
+                          'ios/sdk/WeexSDK/Sources/Controller/WXRootViewController.h',
+			  'ios/sdk/WeexSDK/Sources/Handler/WXNavigationDefaultImpl.h',
+                          'ios/sdk/WeexSDK/Sources/View/WXView.h',
+                          'ios/sdk/WeexSDK/Sources/View/WXErrorView.h',
+                          'ios/sdk/WeexSDK/Sources/Protocol/*.h',
+                          'ios/sdk/WeexSDK/Sources/Network/WXResourceRequestHandler.h',
+                          'ios/sdk/WeexSDK/Sources/Network/WXResourceRequest.h',
+                          'ios/sdk/WeexSDK/Sources/Network/WXResourceResponse.h',
+                          'ios/sdk/WeexSDK/Sources/Model/WXSDKInstance.h',
+                          'ios/sdk/WeexSDK/Sources/Model/WXJSExceptionInfo.h',
+                          'ios/sdk/WeexSDK/Sources/Model/WXComponent.h',
+                          'ios/sdk/WeexSDK/Sources/Monitor/WXMonitor.h',
+                          'ios/sdk/WeexSDK/Sources/Monitor/WXExceptionUtils.h',
+                          'ios/sdk/WeexSDK/Sources/Monitor/WXAnalyzerCenter.h',
+                          'ios/sdk/WeexSDK/Sources/Manager/WXSDKManager.h',
+                          'ios/sdk/WeexSDK/Sources/Manager/WXBridgeManager.h',
+                          'ios/sdk/WeexSDK/Sources/Manager/WXComponentManager.h',
+                          'ios/sdk/WeexSDK/Sources/Manager/WXComponentFactory.h',
+                          'ios/sdk/WeexSDK/Sources/Manager/WXInvocationConfig.h',
+                          'ios/sdk/WeexSDK/Sources/Engine/WXSDKEngine.h',
+                          'ios/sdk/WeexSDK/Sources/Engine/WXSDKError.h',
+                          'ios/sdk/WeexSDK/Sources/Eagle/WXDataRenderHandler.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/WXConvert.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/WXUtility.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/WXConvertUtility.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/WXLog.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/WXDefine.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/WXType.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/NSObject+WXSwizzle.h',
+                          'ios/sdk/WeexSDK/Sources/Utility/WXAppConfiguration.h',
+                          'ios/sdk/WeexSDK/Sources/Performance/WXApmForInstance.h',
+                          'ios/sdk/WeexSDK/Sources/Bridge/JSContext+Weex.h',
+                          'ios/sdk/WeexSDK/Sources/Bridge/WXBridgeMethod.h',
                           'weex_core/Source/core/layout/flex_enum.h',
                           'weex_core/Source/core/layout/layout.h',
-                          'weex_core/Source/core/layout/style.h'
+                          'weex_core/Source/core/layout/style.h',
+                          'weex_core/Source/core/bridge/eagle_bridge.h'
 
   s.module_map = 'WeexSDK.modulemap'
 
   # 0.21.0 版本开始不再需要 native-bundle-main.js
-  s.resources = 'WeexSDK/Resources/*.js','WeexSDK/Resources/wx_load_error@3x.png'
+  s.resources = 'ios/sdk/WeexSDK/Resources/*.js','ios/sdk/WeexSDK/Resources/wx_load_error@3x.png'
 
   s.user_target_xcconfig  = { 'FRAMEWORK_SEARCH_PATHS' => "'$(PODS_ROOT)/WeexSDK'" }
   s.requires_arc = true
-  s.prefix_header_file = 'WeexSDK/Sources/Supporting Files/WeexSDK-Prefix.pch'
+  s.prefix_header_file = 'ios/sdk/WeexSDK/Sources/Supporting Files/WeexSDK-Prefix.pch'
 
   s.xcconfig = { "OTHER_LINK_FLAG" => '$(inherited) -ObjC' }
-  s.pod_target_xcconfig = { 'USER_HEADER_SEARCH_PATHS' => '${PROJECT_DIR}/../sdk/weex_core/Source/  ${PODS_ROOT}/WeexSDK/weex_core/Source/',
+  s.pod_target_xcconfig = { 'USER_HEADER_SEARCH_PATHS' => '${PODS_TARGET_SRCROOT}/weex_core/Source/ ${PROJECT_DIR}/../../../weex_core/Source',
     'GCC_PREPROCESSOR_DEFINITIONS' => 'OS_IOS=1' }
 
   s.frameworks = 'CoreMedia','MediaPlayer','AVFoundation','AVKit','JavaScriptCore','GLKit','OpenGLES','CoreText','QuartzCore','CoreGraphics'

@@ -57,7 +57,7 @@ def mypod
 
     pod ‘farwolf.weex’, :path => 'farwolf.weex'
     
-    pod 'WXDevtool', :path => 'wxdevtool'
+    pod 'WXDevtool','0.24.0'
 
     pod 'ZipArchive', '~> 1.4.0'
     

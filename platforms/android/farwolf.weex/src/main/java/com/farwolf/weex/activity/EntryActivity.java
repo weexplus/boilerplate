@@ -38,7 +38,7 @@ public class EntryActivity extends WeexActivity {
     @Override
     public void init() {
 
-        initDebug();
+
 
     }
 
@@ -49,6 +49,8 @@ public class EntryActivity extends WeexActivity {
             this.set.setVisibility(View.GONE);
             this.weextool.setVisibility(View.GONE);
             this.refresh.setVisibility(View.GONE);
+        }else{
+
         }
 //        this.set.setVisibility(View.VISIBLE);
 //        this.weextool.setVisibility(View.VISIBLE);
@@ -142,6 +144,8 @@ public class EntryActivity extends WeexActivity {
         showTool();
 
     }
+
+
 
 
     @Override

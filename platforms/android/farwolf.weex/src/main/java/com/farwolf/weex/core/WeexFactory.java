@@ -347,6 +347,8 @@ public class WeexFactory  extends ServiceBase{
 
     public static void downloadJs(String url,final WXSDKInstance instance){
         instance.setBundleUrl(url);
+//        instance.renderByUrl("farwolf", url, null, null, WXRenderStrategy.APPEND_ASYNC);
+        final String temp=url;
         String md5=   Weex.webAppboardMd5();
         url=url+"?md5="+md5;
         url+="&p="+new Random(100000).nextInt();
@@ -356,21 +358,26 @@ public class WeexFactory  extends ServiceBase{
             public void onSuccess(Response<String> response) {
 
                 String bs=response.body();
-                String sp="weexplus_split_weexplus";
+                String sp="/";
+                sp+="*******weexplus_split_weexplus******";
+                sp+="/";
 //                String sp="\\**";
 
                 if(bs.contains(sp)){
-                    String appaboard=bs.split(sp)[0];
+                    String appaboard=bs.split("\\/\\*\\*\\*\\*\\*\\*\\*weexplus_split_weexplus\\*\\*\\*\\*\\*\\*\\/")[0];
                     Weex.setWebAppboard(appaboard);
                     bs=bs.replace(sp,"");
                 }else{
                     bs=Weex.appBoardContent+bs;
                 }
-                instance.render("farwolf",bs, null, null, WXRenderStrategy.APPEND_ASYNC);
-
+                HashMap op=new HashMap();
+                op.put("bundleUrl",temp);
+                instance.render("farwolf",bs, op, null, WXRenderStrategy.APPEND_ASYNC);
+//                instance.renderByUrl("farwolf", url, null, null, WXRenderStrategy.APPEND_ASYNC);
 //                callback.onInvoke(response.body());
             }
         });
+
     }
 
 

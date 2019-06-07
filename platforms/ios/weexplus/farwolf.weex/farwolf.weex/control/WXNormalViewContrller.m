@@ -20,7 +20,7 @@
 #import "RefreshManager.h"
 #import "SetViewController.h"
 #import "farwolf_weex.h"
- 
+
 
 static BOOL isshowErr;
 @interface WXNormalViewContrller ()
@@ -36,7 +36,7 @@ static BOOL isshowErr;
 
 +(void)setShowError:(BOOL)show
 {
-  
+    
     isshowErr=show;
 }
 - (void)dealloc
@@ -96,13 +96,13 @@ static BOOL isshowErr;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
-      self.naviIndex=self.TopViewController.navigationController.childViewControllers.count;
+    printf("viewDidLoad retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
+    self.naviIndex=self.TopViewController.navigationController.childViewControllers.count;
     if(self.isLanscape)
     {
-         [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
+        [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
     }
-     [self regist:@"refreshpage" method:@selector(scoketrefresh)];
+    [self regist:@"refreshpage" method:@selector(scoketrefresh)];
     [self regist:@"qrrefreshpage" method:@selector(onqr:)];
     [self regist:@"weexError" method:@selector(onWeexError:)];
     self.navigationController.navigationBar.translucent=false;
@@ -119,17 +119,17 @@ static BOOL isshowErr;
         return;
     }
     [self _renderWithURL:_sourceURL];
-//
+    //
     if ([self.navigationController isKindOfClass:[WXNormalViewContrller class]]) {
         self.navigationController.navigationBarHidden = YES;
     }
     
     
 #ifdef DEBUG
-//    [self.view addDoubleClick:^{
-//
-////        [self refreshWeex];
-//    }];
+    //    [self.view addDoubleClick:^{
+    //
+    ////        [self refreshWeex];
+    //    }];
     
 #endif
     
@@ -145,10 +145,10 @@ static BOOL isshowErr;
     _textfields=[NSMutableArray new];
     [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextField class]]];
     [_textfields addObjectsFromArray:[self.view findAllViewByType:[UITextView class]]];
-//    [self openWatch:@"192.168.199.248"];
-
-//    RefreshManager *r=[RefreshManager new];
-//    [r open:@"192.168.199.248" port:@"6969"];
+    //    [self openWatch:@"192.168.199.248"];
+    
+    //    RefreshManager *r=[RefreshManager new];
+    //    [r open:@"192.168.199.248" port:@"6969"];
     
 }
 
@@ -169,18 +169,18 @@ static BOOL isshowErr;
     self.instance.pageName=[@"" addInt:arc4random()];
     
     
-     [UIView setAnimationsEnabled:true];
-     __weak typeof(self) weakSelf = self;
+    [UIView setAnimationsEnabled:true];
+    __weak typeof(self) weakSelf = self;
     self.instance.renderFinish = ^(UIView *view) {
         
-//        [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
+        //        [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
         weakSelf.instance.param=weakSelf.param;
         weakSelf.instance.isInit=true;
         [weakSelf.instance firePageInit];
         [weakSelf loadCompelete];
     };
     [self.view addSubview:self.weexView];
-//    [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
+    //    [self.instance fireGlobalEvent:@"onPageInit" params:self.param];
     self.instance.param=_param;
     self.instance.isInit=true;
     [self.instance firePageInit];
@@ -228,7 +228,7 @@ static BOOL isshowErr;
     d[@"key"];
     
 }
- 
+
 -(void)onWeexError:(NSNotification*)n
 {
     if([Config showError])
@@ -250,7 +250,7 @@ static BOOL isshowErr;
     {
         return;
     }
-//    [self.fail_layout setHidden:false];
+    //    [self.fail_layout setHidden:false];
     isshowErr=true;
     
     ErrorControl *vc=[ErrorControl new];
@@ -258,7 +258,7 @@ static BOOL isshowErr;
     __weak typeof(self) weakSelf = self;
     vc.onClose=^(){
         isshowErr=false;
-//        [weakSelf.fail_layout setHidden:false];
+        //        [weakSelf.fail_layout setHidden:false];
         [vc dismiss:true completion:^{
             
         }];
@@ -288,7 +288,7 @@ static BOOL isshowErr;
     lable.textColor=[@"dddddd" toColor];
     [self.fail_layout addSubview:failimg];
     [self.fail_layout addSubview:lable];
-     __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     [self.fail_layout mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerXWithinMargins.equalTo(weakSelf.view);
@@ -308,9 +308,9 @@ static BOOL isshowErr;
         make.bottom.equalTo(weakSelf.fail_layout);
     }];
     
-//    [failimg addClick:^{
-//        [self refreshWeex];
-//    }];
+    //    [failimg addClick:^{
+    //        [self refreshWeex];
+    //    }];
     [self.fail_layout addClick:@selector(refreshWeex) host:self];
     [self.fail_layout setHidden:true];
     //    [self.fail_layout addSubview:lable];
@@ -327,7 +327,7 @@ static BOOL isshowErr;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-   
+    
     [self setBackBar:nil color:nil];
     [_instance fireGlobalEvent:@"viewWillDisappear" params:nil];
     [_instance fireGlobalEvent:WX_APPLICATION_WILL_RESIGN_ACTIVE params:nil];
@@ -342,7 +342,7 @@ static BOOL isshowErr;
     }
     else
     {
-         [self interfaceOrientation:UIInterfaceOrientationPortrait];
+        [self interfaceOrientation:UIInterfaceOrientationPortrait];
     }
     [_instance fireGlobalEvent:@"viewWillAppear" params:nil];
     [self.navigationController setNavigationBarHidden:true animated:animated];
@@ -358,30 +358,30 @@ static BOOL isshowErr;
     [_instance fireGlobalEvent:WX_APPLICATION_DID_BECOME_ACTIVE params:nil];
     [self _updateInstanceState:WeexInstanceAppear];
     
-//    if(self.page.hasload)
-//        [_instance fireGlobalEvent:@"onPageInit" params:nil];
+    //    if(self.page.hasload)
+    //        [_instance fireGlobalEvent:@"onPageInit" params:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-   
+    
     [_instance fireGlobalEvent:@"viewDidDisappear" params:nil];
     [self _updateInstanceState:WeexInstanceDisappear];
     
     
-//    NSLog([@"url== " add: self.sourceURL.absoluteString]);
-//    NSLog([@"self== " addInt: self.naviIndex]);
-//    NSLog([@"count== " addInt: self.TopViewController.navigationController.childViewControllers.count]);
-//
-//    if(self.naviIndex>self.TopViewController.navigationController.childViewControllers.count)
-//    {
-//        //        WXNormalViewContrller *vc= self.weexInstance.viewController;
-//        NSMutableDictionary *p=[NSMutableDictionary new];
-//        [p setValue:self.sourceURL.absoluteString forKey:@"url"];
-//        [self notifyDict:@"removeUrl" value:p];
-//    }
-//
+    //    NSLog([@"url== " add: self.sourceURL.absoluteString]);
+    //    NSLog([@"self== " addInt: self.naviIndex]);
+    //    NSLog([@"count== " addInt: self.TopViewController.navigationController.childViewControllers.count]);
+    //
+    //    if(self.naviIndex>self.TopViewController.navigationController.childViewControllers.count)
+    //    {
+    //        //        WXNormalViewContrller *vc= self.weexInstance.viewController;
+    //        NSMutableDictionary *p=[NSMutableDictionary new];
+    //        [p setValue:self.sourceURL.absoluteString forKey:@"url"];
+    //        [self notifyDict:@"removeUrl" value:p];
+    //    }
+    //
     printf("retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
 }
 
@@ -394,25 +394,25 @@ static BOOL isshowErr;
 
 -(void)RefreshInstanc
 {
-//    NSDate *date      = NSDate.date;
-//
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//    NSString *dateString       = [formatter stringFromDate: date];
-//    NSLog(@"服务器返回的时间戳对应的时间是:%@",dateString);
- 
+    //    NSDate *date      = NSDate.date;
+    //
+    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //    NSString *dateString       = [formatter stringFromDate: date];
+    //    NSLog(@"服务器返回的时间戳对应的时间是:%@",dateString);
+    
     [self refreshWeex];
 }
- 
+
 - (void)refreshWeex
 {
     [self.fail_layout setHidden:true];
     [self _renderWithURL:_sourceURL];
-//    [self render];
+    //    [self render];
     
-//    [self back:true];
+    //    [self back:true];
 }
- 
+
 - (void)addEdgePop
 {
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
@@ -433,7 +433,7 @@ static BOOL isshowErr;
     if (!sourceURL) {
         return;
     }
-
+    
     
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];
@@ -447,26 +447,26 @@ static BOOL isshowErr;
     NSString *newURL = nil;
     
     
-
     
-//    NSURL *url=nil;
-//    if([sourceURL.absoluteString startWith:@"http"])
-//    {
-//            if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
-//                newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
-//            } else {
-//                newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
-//            }
-//        url=[NSURL URLWithString:newURL];
-//
-//    }
-//    else
-//    {
-//        url= sourceURL;
-//    }
-      [WeexFactory downloadJs:sourceURL.absoluteString instance:_instance];
-//    [_instance renderWithURL:url options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
-
+    
+    //    NSURL *url=nil;
+    //    if([sourceURL.absoluteString startWith:@"http"])
+    //    {
+    //            if ([sourceURL.absoluteString rangeOfString:@"?"].location != NSNotFound) {
+    //                newURL = [NSString stringWithFormat:@"%@&random=%d", sourceURL.absoluteString, arc4random()];
+    //            } else {
+    //                newURL = [NSString stringWithFormat:@"%@?random=%d", sourceURL.absoluteString, arc4random()];
+    //            }
+    //        url=[NSURL URLWithString:newURL];
+    //
+    //    }
+    //    else
+    //    {
+    //        url= sourceURL;
+    //    }
+    [WeexFactory downloadJs:sourceURL.absoluteString instance:_instance];
+    //    [_instance renderWithURL:url options:@{@"bundleUrl":sourceURL.absoluteString} data:nil];
+    
     __weak typeof(self) weakSelf = self;
     _instance.onCreate = ^(UIView *view) {
         [weakSelf.weexView removeFromSuperview];
@@ -474,20 +474,20 @@ static BOOL isshowErr;
         [weakSelf.view addSubview:weakSelf.weexView];
         UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,  weakSelf.weexView);
         [weakSelf onCreateWeexView];
-
+        
     };
-
-
+    
+    
     _instance.onFailed = ^(NSError *error) {
-
+        
         NSString *msg=error.userInfo[@"NSLocalizedDescription"];
-
+        
     };
-
-
+    
+    
     _instance.renderFinish = ^(UIView *view) {
         [weakSelf _updateInstanceState:WeexInstanceAppear];
-//        [weakSelf.instance fireGlobalEvent:@"onPageInit" params:weakSelf.param];
+        //        [weakSelf.instance fireGlobalEvent:@"onPageInit" params:weakSelf.param];
         weakSelf.instance.isInit=true;
         weakSelf.instance.param=weakSelf.param;
         [weakSelf.instance firePageInit];
@@ -495,8 +495,8 @@ static BOOL isshowErr;
         {
             [weakSelf.view bringSubviewToFront:weakSelf.set];
             [weakSelf.view bringSubviewToFront:weakSelf.refresh];
-             [weakSelf.view bringSubviewToFront:weakSelf.fail_layout];
-
+            [weakSelf.view bringSubviewToFront:weakSelf.fail_layout];
+            
         }
         [weakSelf loadCompelete];
     };
@@ -544,7 +544,7 @@ static BOOL isshowErr;
 
 -(void)debugInit
 {
-   
+    
     NSString *url=  [self getSaveValue:@"url"];
     if(url==nil||[@"" isEqualToString:url])
     {
@@ -568,19 +568,19 @@ static BOOL isshowErr;
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     
     
-  
+    
     [self add];
 }
 -(void)scoketrefresh
 {
     
     if (self.isViewLoaded && self.view.window!=nil) {
-//        NSLog(@"屏幕上");
+        //        NSLog(@"屏幕上");
         
         [self refreshWeex];
         
     }
-
+    
 }
 
 - (UIViewController *)getCurrentVC
@@ -633,44 +633,44 @@ static BOOL isshowErr;
 }
 -(void)add
 {
-    self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) / 2, 50, 80)];
-    float width = CGRectGetWidth(self.toolView.bounds);
-    float height = CGRectGetHeight(self.toolView.bounds);
-    float y = CGRectGetHeight(self.view.bounds) / 2;
-    self.toolView.backgroundColor=[@"#000000" toColor:0.3];
-    self.set=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.set.frame = CGRectMake(0, y, width, (height - 20) / 2);
-    [self.set setTitle:@"设置" forState:UIControlStateNormal];
-    [self.set setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
-    [self.set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [self.view addSubview:self.set];
-    
-    [self.set addTarget:self
-                 action:@selector(gotoset)
-       forControlEvents:UIControlEventTouchUpInside
-     ];
-    
-    
-    self.refresh=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.refresh.frame = CGRectMake(0, y + (height - 20) / 2 + 20, width, (height - 20) / 2);
-    [self.refresh setTitle:@"刷新" forState:UIControlStateNormal];
-    [self.refresh setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
-    [self.refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [self.view addSubview:self.refresh];
-    
-    [self.refresh addTarget:self
-                     action:@selector(refreshWeex)
-           forControlEvents:UIControlEventTouchUpInside
-     ];
-    [self.view addSubview:self.toolView];
-    [self.view bringSubviewToFront:self.toolView];
-    [self.view bringSubviewToFront:self.set];
-    [self.view bringSubviewToFront:self.refresh];
+    //    self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) / 2, 50, 80)];
+    //    float width = CGRectGetWidth(self.toolView.bounds);
+    //    float height = CGRectGetHeight(self.toolView.bounds);
+    //    float y = CGRectGetHeight(self.view.bounds) / 2;
+    //    self.toolView.backgroundColor=[@"#000000" toColor:0.3];
+    //    self.set=[UIButton buttonWithType:UIButtonTypeCustom];
+    //    self.set.frame = CGRectMake(0, y, width, (height - 20) / 2);
+    //    [self.set setTitle:@"设置" forState:UIControlStateNormal];
+    //    [self.set setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
+    //    [self.set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    //    [self.view addSubview:self.set];
+    //
+    //    [self.set addTarget:self
+    //                 action:@selector(gotoset)
+    //       forControlEvents:UIControlEventTouchUpInside
+    //     ];
+    //
+    //
+    //    self.refresh=[UIButton buttonWithType:UIButtonTypeCustom];
+    //    self.refresh.frame = CGRectMake(0, y + (height - 20) / 2 + 20, width, (height - 20) / 2);
+    //    [self.refresh setTitle:@"刷新" forState:UIControlStateNormal];
+    //    [self.refresh setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
+    //    [self.refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    //    [self.view addSubview:self.refresh];
+    //
+    //    [self.refresh addTarget:self
+    //                     action:@selector(refreshWeex)
+    //           forControlEvents:UIControlEventTouchUpInside
+    //     ];
+    //    [self.view addSubview:self.toolView];
+    //    [self.view bringSubviewToFront:self.toolView];
+    //    [self.view bringSubviewToFront:self.set];
+    //    [self.view bringSubviewToFront:self.refresh];
     
     [self regist:@"loaddefault" method:@selector(loaddefault)];
     [self addFailLayout];
     
-     
+    
 }
 
 -(void)loaddefault
@@ -752,18 +752,18 @@ static BOOL isshowErr;
 
 -(void)gotoset
 {
-
+    
     _setVc=  [self present:@"weex/SetViewController" anim:true];
     ((SetViewController*)((UINavigationController*)_setVc).childViewControllers[0]).vc=self;
     
     
-//    NSURL *url=[NSURL URLWithString:@"http://169.254.129.97:8890/js/demo/navigator.js"];
-//    WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
-//    vc.debug=true;
-//    [self.navigationController pushViewController:vc animated:true];
-//    [self presentViewController:_setVc animated:true completion:^{
-//
-//    }];
+    //    NSURL *url=[NSURL URLWithString:@"http://169.254.129.97:8890/js/demo/navigator.js"];
+    //    WXNormalViewContrller *vc=[[WXNormalViewContrller alloc]initWithSourceURL:url];
+    //    vc.debug=true;
+    //    [self.navigationController pushViewController:vc animated:true];
+    //    [self presentViewController:_setVc animated:true completion:^{
+    //
+    //    }];
 }
- 
+
 @end

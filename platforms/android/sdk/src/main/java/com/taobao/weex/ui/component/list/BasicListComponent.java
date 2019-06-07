@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- *
+ * 
  *   http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -88,7 +88,7 @@ import java.util.regex.Pattern;
  */
 
 public abstract class BasicListComponent<T extends ViewGroup & ListComponentView> extends WXVContainer<T> implements
-        IRecyclerAdapterListener<ListBaseViewHolder>, IOnLoadMoreListener, Scrollable {
+    IRecyclerAdapterListener<ListBaseViewHolder>, IOnLoadMoreListener, Scrollable {
   public static final String TRANSFORM = "transform";
   public static final String LOADMOREOFFSET = "loadmoreoffset";
   private String TAG = "BasicListComponent";
@@ -734,9 +734,6 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
       }
       if (isKeepScrollPosition) {
         if(view.getInnerView().getLayoutManager() instanceof  LinearLayoutManager){
-          if(!view.getInnerView().isLayoutFrozen()){ //frozen, prevent layout when scroll
-            view.getInnerView().setLayoutFrozen(true);
-          }
           if(keepPositionCell == null){
             int last=((LinearLayoutManager)view.getInnerView().getLayoutManager()).findLastCompletelyVisibleItemPosition();
             ListBaseViewHolder holder = (ListBaseViewHolder) view.getInnerView().findViewHolderForAdapterPosition(last);
@@ -744,6 +741,9 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
               keepPositionCell = holder.getComponent();
             }
             if(keepPositionCell != null) {
+              if(!view.getInnerView().isLayoutFrozen()){ //frozen, prevent layout when scroll
+                view.getInnerView().setLayoutFrozen(true);
+              }
               if(keepPositionCellRunnable != null){
                 view.removeCallbacks(keepPositionCellRunnable);
               }
@@ -989,7 +989,7 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
       for (int i = 0; i < mTypes.size(); i++) {
         WXComponent component = mTypes.get(i);
         if (component == null
-                || component.isUsing()) {
+            || component.isUsing()) {
           continue;
         }
         if (component.isFixed()) {
@@ -1222,7 +1222,7 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
 
       if (offScreenY <= offsetParsed && getEvents().contains(Constants.Event.LOADMORE)) {
         if (mListCellCount != mChildren.size()
-                || mForceLoadmoreNextTime) {
+            || mForceLoadmoreNextTime) {
           fireEvent(Constants.Event.LOADMORE);
           mListCellCount = mChildren.size();
           mForceLoadmoreNextTime = false;
@@ -1369,9 +1369,9 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
       }
     }
 
-    Map<String, Object> event = new HashMap<>(2);
-    Map<String, Object> contentSize = new HashMap<>(2);
-    Map<String, Object> contentOffset = new HashMap<>(2);
+    Map<String, Object> event = new HashMap<>(3);
+    Map<String, Object> contentSize = new HashMap<>(3);
+    Map<String, Object> contentOffset = new HashMap<>(3);
 
     contentSize.put(Constants.Name.WIDTH, WXViewUtils.getWebPxByWidth(contentWidth, getInstance().getInstanceViewPortWidth()));
     contentSize.put(Constants.Name.HEIGHT, WXViewUtils.getWebPxByWidth(contentHeight, getInstance().getInstanceViewPortWidth()));
@@ -1380,6 +1380,7 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
     contentOffset.put(Constants.Name.Y, - WXViewUtils.getWebPxByWidth(offsetY, getInstance().getInstanceViewPortWidth()));
     event.put(Constants.Name.CONTENT_SIZE, contentSize);
     event.put(Constants.Name.CONTENT_OFFSET, contentOffset);
+    event.put(Constants.Name.ISDRAGGING, recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING);
     return event;
   }
 

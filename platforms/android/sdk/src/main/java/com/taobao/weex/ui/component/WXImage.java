@@ -241,9 +241,6 @@ public class WXImage extends WXComponent<ImageView> {
 
     this.mSrc = src;
     WXSDKInstance instance = getInstance();
-    if(instance==null||src==null){
-      return;
-    }
     Uri rewrited = instance.rewriteUri(Uri.parse(src), URIAdapter.IMAGE);
 
     if (Constants.Scheme.LOCAL.equals(rewrited.getScheme())) {
@@ -338,6 +335,7 @@ public class WXImage extends WXComponent<ImageView> {
       imageStrategy.placeHolder=placeholder;
 //      imageStrategy.placeHolder = getInstance().rewriteUri(Uri.parse(placeholder),URIAdapter.IMAGE).toString();
     }
+
     imageStrategy.instanceId = getInstanceId();
     IWXImgLoaderAdapter imgLoaderAdapter = getInstance().getImgLoaderAdapter();
     if (imgLoaderAdapter != null) {

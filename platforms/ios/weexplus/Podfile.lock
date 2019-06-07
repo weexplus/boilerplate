@@ -71,8 +71,8 @@ PODS:
   - UIViewController_PopUp (0.0.3)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
-  - WeexSDK (0.20.0)
-  - WXDevtool (0.20.1):
+  - WeexSDK (0.24.0)
+  - WXDevtool (0.24.0):
     - SocketRocket
     - WeexSDK
   - YYCache (1.0.4)
@@ -106,13 +106,13 @@ DEPENDENCIES:
   - UCZProgressView
   - UIViewController_PopUp (~> 0.0.2)
   - WeexSDK (from `sdk`)
-  - WXDevtool (from `wxdevtool`)
+  - WXDevtool (= 0.24.0)
   - YYModel
   - YZHeaderScaleImage (~> 1.0.1)
   - ZipArchive (~> 1.4.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BindingX
     - CHXBannerView
@@ -134,6 +134,7 @@ SPEC REPOS:
     - UCZProgressView
     - UIViewController_PopUp
     - WeexPluginLoader
+    - WXDevtool
     - YYCache
     - YYImage
     - YYModel
@@ -153,8 +154,6 @@ EXTERNAL SOURCES:
     :path: LMTowDatePicker
   WeexSDK:
     :path: sdk
-  WXDevtool:
-    :path: wxdevtool
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -162,13 +161,13 @@ SPEC CHECKSUMS:
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
-  farwolf: 2a23d2e644d477a1822e32f13a80870761f0f3be
-  farwolf.business: c389f61c1abe895c04b0c2f9df27df7783d0d4dd
-  farwolf.weex: 4c3174ebe485b5efb55c90c9ac19510625c84e26
+  farwolf: 6850f033a75b32196ae05571799c165e8647584f
+  farwolf.business: 6bb8ac0b1d72340d7c2be924ea7410ce6b628daa
+  farwolf.weex: 89ac961b9fc6b5229d70d77a3d771aa412c73b83
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   HcdDateTimePicker: 187736981f667f699d4d8d6ccc21621b55a6edb8
-  LMTowDatePicker: eaee88a977b5841215c2fb06320c040e28d293b9
+  LMTowDatePicker: 32e3d2699ca3dd39ccc4d0089116423f9b3cc420
   LPPhotoViewer: d608bd60c17732a5198d65b87d33ccf6f2f73273
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -182,8 +181,8 @@ SPEC CHECKSUMS:
   UCZProgressView: 55836987c15ee6efb7cd6dfe297556602ee46c94
   UIViewController_PopUp: cc2747a3b80507a5551796a302f51ee9ebb65c06
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
-  WeexSDK: 61c9d2495c6a496a09effe4e606350b346c81283
-  WXDevtool: f8ff53fd92af1680ae82f538537b18e06de39c97
+  WeexSDK: cbfce0b2cf31f8846949aff51fda5074c292bbcf
+  WXDevtool: 95b70c73c06fc3299d65bd53ba4b3e0b0087f3cb
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
@@ -192,6 +191,6 @@ SPEC CHECKSUMS:
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
 
-PODFILE CHECKSUM: f7b44639e0289f4c399b3f23059c87825912d85b
+PODFILE CHECKSUM: 07c7e15770d97b81bcf0c745a0a66686e436eaa9
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.7.0.beta.3

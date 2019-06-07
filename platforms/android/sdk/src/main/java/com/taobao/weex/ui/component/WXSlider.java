@@ -34,6 +34,7 @@ import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.WXSDKManager;
 import com.taobao.weex.annotation.Component;
+import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.common.Constants;
 import com.taobao.weex.dom.WXEvent;
 import com.taobao.weex.ui.ComponentCreator;
@@ -72,7 +73,12 @@ public class WXSlider extends WXVContainer<FrameLayout> {
       return new WXSlider(instance, parent, basicComponentData);
     }
   }
-
+  //zjr add
+  @JSMethod
+  public void rework()
+  {
+    setAutoPlay("true");
+  }
   /**
    * Scrollable sliderview
    */
