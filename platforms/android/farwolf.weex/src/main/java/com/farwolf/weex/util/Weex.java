@@ -143,7 +143,7 @@ public class Weex extends ServiceBase{
                 WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8089/debugProxy/native/123456";
                 WXSDKEngine.reload();
             }
-        }, 5000);
+        }, 8000);
 
 
     }
