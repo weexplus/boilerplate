@@ -281,7 +281,7 @@
 
 - (UIViewController *)TopViewController {
     UIViewController *resultVC;
-    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    resultVC = [self _topViewController:[[[UIApplication sharedApplication].delegate window] rootViewController]];
     while (resultVC.presentedViewController) {
         resultVC = [self _topViewController:resultVC.presentedViewController];
     }
