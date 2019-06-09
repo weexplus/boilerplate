@@ -174,8 +174,9 @@ static CGFloat floatBtnH = 80;
         make.height.equalTo(@(30));
     }];
     [set addClick:^{
-        SetViewController *setvc=  [vc present:@"weex/SetViewController" anim:true];
-        ((SetViewController*)((UINavigationController*)setvc).childViewControllers[0]).vc=vc;
+         WXNormalViewContrller *cvc=  [[UIApplication sharedApplication].keyWindow.rootViewController TopViewController];
+        SetViewController *setvc=  [cvc present:@"weex/SetViewController" anim:true];
+        ((SetViewController*)((UINavigationController*)setvc).childViewControllers[0]).vc=cvc;
         
     }];
     
@@ -191,7 +192,8 @@ static CGFloat floatBtnH = 80;
         make.height.equalTo(@(30));
     }];
     [refresh addClick:^{
-        [vc refreshWeex];
+        WXNormalViewContrller *cvc=  [[UIApplication sharedApplication].keyWindow.rootViewController TopViewController];
+        [cvc refreshWeex];
     }];
 //    [_floatWindow.rootViewController.view addClick:^{
 //        NSLog(@"xxxx");
