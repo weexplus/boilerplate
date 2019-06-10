@@ -48,6 +48,7 @@ import com.farwolf.weex.view.ToolPop;
 import com.farwolf.weex.view.ToolPop_;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXEnvironment;
+import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXRenderStrategy;
@@ -730,6 +731,17 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         String url=in.getStringExtra("url");
         if(!StringUtil.isNullOrEmpty(url))
         {
+            if(url.contains("_wx_devtool"))
+            {
+                String debugurl=url.split("_wx_devtool=")[1];
+                WXEnvironment.sDebugServerConnectable = true;
+                WXEnvironment.sRemoteDebugMode = true;
+                WXEnvironment.sRemoteDebugProxyUrl = debugurl;
+                WXSDKEngine.reload();
+                return;
+            }
+
+
             String temp=url;
             if(url.contains("_wx_tpl=")){
                 url=url.split("_wx_tpl=")[1];
