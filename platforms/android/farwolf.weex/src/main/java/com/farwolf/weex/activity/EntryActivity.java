@@ -38,7 +38,7 @@ public class EntryActivity extends WeexActivity {
     @Override
     public void init() {
 
-
+        initDebug();
 
     }
 

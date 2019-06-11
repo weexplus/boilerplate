@@ -133,7 +133,6 @@
         android:background="@android:color/holo_red_light"
         android:orientation="vertical"
         android:layout_marginTop="200dp"
-        android:visibility="gone"
         android:id="@+id/weextool">
         <Button
             android:layout_width="50dp"

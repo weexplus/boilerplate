@@ -237,7 +237,7 @@ public class Weex extends ServiceBase{
             registerComponent("video",WXFVideo.class);
 
             PluginManager.init(application);
-            initDebugger(application);
+//            initDebugger(application);
 
         } catch (WXException e) {
             e.printStackTrace();
