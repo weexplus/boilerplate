@@ -238,7 +238,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         vc.param=param;
         vc.callback=callback;
         vc.instance.param=param;
-        [weakself.weexInstance.viewController presentViewController:nav animated:animated completion:^{
+        [[weakself.weexInstance.viewController TopViewController] presentViewController:nav animated:animated completion:^{
             
         }];
         
@@ -261,13 +261,13 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 -(void)dismiss
 {
     WXNormalViewContrller *vc= weexInstance.viewController;
-    
-    if(vc.navigationController!=nil)
-    {
-        [vc.navigationController dismiss:true];
-    }
-    else
-        [vc dismiss:true];
+    [[vc TopViewController] dismiss:true];
+//    if(vc.navigationController!=nil)
+//    {
+//        [vc.navigationController dismiss:true];
+//    }
+//    else
+//        [vc dismiss:true];
 }
 -(void)setRoot:(NSString*)rootid
 {
@@ -287,12 +287,8 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
     WXNormalViewContrller *vc= weexInstance.viewController;
     if(vc.callback!=nil)
         vc.callback(param, false);
-    if(vc.navigationController!=nil)
-    {
-        [vc.navigationController dismiss:animated];
-    }
-    else
-        [vc dismiss:animated];
+
+     [[vc TopViewController] dismiss:animated];
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer

@@ -130,7 +130,7 @@ static CGFloat floatBtnH = 80;
     
     _floatWindow.backgroundColor = [UIColor clearColor];
     [_floatWindow makeKeyAndVisible];
-    _floatWindow.windowLevel = kSystemKeyboardWindowLevel;
+//    _floatWindow.windowLevel = kSystemKeyboardWindowLevel;
     
     [currentKeyWindow makeKeyWindow];
     

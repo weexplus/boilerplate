@@ -633,39 +633,39 @@ static BOOL isshowErr;
 }
 -(void)add
 {
-    //    self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) / 2, 50, 80)];
-    //    float width = CGRectGetWidth(self.toolView.bounds);
-    //    float height = CGRectGetHeight(self.toolView.bounds);
-    //    float y = CGRectGetHeight(self.view.bounds) / 2;
-    //    self.toolView.backgroundColor=[@"#000000" toColor:0.3];
-    //    self.set=[UIButton buttonWithType:UIButtonTypeCustom];
-    //    self.set.frame = CGRectMake(0, y, width, (height - 20) / 2);
-    //    [self.set setTitle:@"设置" forState:UIControlStateNormal];
-    //    [self.set setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
-    //    [self.set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    //    [self.view addSubview:self.set];
-    //
-    //    [self.set addTarget:self
-    //                 action:@selector(gotoset)
-    //       forControlEvents:UIControlEventTouchUpInside
-    //     ];
-    //
-    //
-    //    self.refresh=[UIButton buttonWithType:UIButtonTypeCustom];
-    //    self.refresh.frame = CGRectMake(0, y + (height - 20) / 2 + 20, width, (height - 20) / 2);
-    //    [self.refresh setTitle:@"刷新" forState:UIControlStateNormal];
-    //    [self.refresh setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
-    //    [self.refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    //    [self.view addSubview:self.refresh];
-    //
-    //    [self.refresh addTarget:self
-    //                     action:@selector(refreshWeex)
-    //           forControlEvents:UIControlEventTouchUpInside
-    //     ];
-    //    [self.view addSubview:self.toolView];
-    //    [self.view bringSubviewToFront:self.toolView];
-    //    [self.view bringSubviewToFront:self.set];
-    //    [self.view bringSubviewToFront:self.refresh];
+    self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) / 2, 50, 80)];
+    float width = CGRectGetWidth(self.toolView.bounds);
+    float height = CGRectGetHeight(self.toolView.bounds);
+    float y = CGRectGetHeight(self.view.bounds) / 2;
+    self.toolView.backgroundColor=[@"#000000" toColor:0.3];
+    self.set=[UIButton buttonWithType:UIButtonTypeCustom];
+    self.set.frame = CGRectMake(0, y, width, (height - 20) / 2);
+    [self.set setTitle:@"设置" forState:UIControlStateNormal];
+    [self.set setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
+    [self.set setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [self.view addSubview:self.set];
+
+    [self.set addTarget:self
+                 action:@selector(gotoset)
+       forControlEvents:UIControlEventTouchUpInside
+     ];
+
+
+    self.refresh=[UIButton buttonWithType:UIButtonTypeCustom];
+    self.refresh.frame = CGRectMake(0, y + (height - 20) / 2 + 20, width, (height - 20) / 2);
+    [self.refresh setTitle:@"刷新" forState:UIControlStateNormal];
+    [self.refresh setTitleColor:[@"#ffffff" toColor] forState:UIControlStateNormal];
+    [self.refresh setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [self.view addSubview:self.refresh];
+
+    [self.refresh addTarget:self
+                     action:@selector(refreshWeex)
+           forControlEvents:UIControlEventTouchUpInside
+     ];
+    [self.view addSubview:self.toolView];
+    [self.view bringSubviewToFront:self.toolView];
+    [self.view bringSubviewToFront:self.set];
+    [self.view bringSubviewToFront:self.refresh];
     
     [self regist:@"loaddefault" method:@selector(loaddefault)];
     [self addFailLayout];

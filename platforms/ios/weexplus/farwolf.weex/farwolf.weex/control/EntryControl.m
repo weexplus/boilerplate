@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "WeexFactory.h"
 #import "Config.h"
+#import "WeexPlus.h"
 @interface EntryControl ()
 
 @end
@@ -28,6 +29,7 @@
     [super viewDidLoad];
     [self initView];
     [self gotoMain];
+    [WeexPlus addDebugBtn];
   
 }
 -(void)initView

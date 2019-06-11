@@ -109,8 +109,8 @@
 
 +(UIViewController*)start:(NSString*)image url:(NSString*)url
 {
-//    EntryControl *vc=[[EntryControl alloc]initWithImage:url img:image];
-        RenderControl *vc=[[RenderControl alloc]initWithImage:url img:image];
+    EntryControl *vc=[[EntryControl alloc]initWithImage:url img:image];
+//        RenderControl *vc=[[RenderControl alloc]initWithImage:url img:image];
     
     UINavigationController *nvc=[[UINavigationController alloc]initWithRootViewController:vc];
     return nvc;
