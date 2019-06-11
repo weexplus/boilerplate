@@ -29,7 +29,7 @@
     [super viewDidLoad];
     [self initView];
     [self gotoMain];
-    [WeexPlus addDebugBtn];
+//    [WeexPlus addDebugBtn];
   
 }
 -(void)initView
