@@ -70,6 +70,9 @@ WX_EXPORT_METHOD(@selector(excuteJs:))
     }else{
         NSString *path=@"";
         NSString *param=@"";
+        if([url startWith:PREFIX_SDCARD]){
+            url=[url replace:PREFIX_SDCARD withString:@""];
+        }
         if([url contains:@"?"]){
             path=[url split:@"?"][0];
             param=[url split:@"?"][1];

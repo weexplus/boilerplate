@@ -79,15 +79,25 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     NSDate *d= [@"1970-01-01" toDate:@"yyyy-MM-dd"];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] removeCookiesSinceDate:d];
 }
-
++ (NSString *)fileNameWithURL:(NSURL *)url {
+    //使用截取的方法获取url的文件名
+    NSString *path = url.absoluteString;
+    NSRange range = [path rangeOfString:@"/" options:(NSBackwardsSearch)];
+    if( range.location != NSNotFound ){
+        //以下方法会包含起始索引的字符，所以+1
+        return [path substringFromIndex:range.location+1];
+    }
+    
+    return @"";
+}
 -(void)download:(NSString*)url progress:(WXModuleKeepAliveCallback)progress compelete:(WXModuleKeepAliveCallback)compelete error:(WXModuleKeepAliveCallback)error
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
     path=[path add:@"/download"];
     [path mkdir];
-
-    path=[[path add:@"/"] add:[url toMd5]];
+    NSString *filename= [WXNetModule fileNameWithURL:[NSURL URLWithString:url]];
+    path=[[path add:@"/"] add:filename];
     [path delete];
     //    NSString *url=@"http://59.110.169.246/img/app.zip";
     ZipDownloader *zip= [[ZipDownloader alloc] initWidthUrl:url path:path progress:^(float percent,NSInteger current,NSInteger total) {

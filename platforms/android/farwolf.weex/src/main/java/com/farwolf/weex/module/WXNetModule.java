@@ -293,7 +293,8 @@ public class WXNetModule extends WXModule {
     public void download(String url,final JSCallback progress,final JSCallback compelete,final JSCallback exception)
     {
 
-        final String path= SDCard.getBasePath(mWXSDKInstance.getContext())+"/download/"+Md5.toMd5(url);;
+        String filename= url.substring(url.lastIndexOf("/")+1);
+        final String path= SDCard.getBasePath(mWXSDKInstance.getContext())+"/download/"+filename;
         String zip=SDCard.getBasePath(mWXSDKInstance.getContext())+"/download";
         File f= new File(zip);
         if(f.exists())
