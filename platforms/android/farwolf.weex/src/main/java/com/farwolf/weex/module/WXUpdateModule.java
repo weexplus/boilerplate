@@ -90,7 +90,7 @@ public class WXUpdateModule extends WXModule {
             @Override
             public void OnPostProcess(float newProgress,float current,float total) {
                 if(progress!=null)
-                    progress.invoke(newProgress);
+                    progress.invokeAndKeepAlive(newProgress);
             }
 
             @Override

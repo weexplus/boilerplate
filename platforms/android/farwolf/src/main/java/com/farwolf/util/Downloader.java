@@ -90,7 +90,7 @@ public class Downloader extends AsyncTask<String, Float, String> {
                 while ((readSize = is.read(buffer)) > 0) {
                     fos.write(buffer, 0, readSize);
                     currentSize += readSize;
-                    publishProgress((float)(currentSize * 100 / updateTotalSize),(float)currentSize,(float)updateTotalSize);
+                    publishProgress(((float)currentSize  / updateTotalSize),(float)currentSize,(float)updateTotalSize);
                 }
                 // download success
             } catch (Exception e) {
