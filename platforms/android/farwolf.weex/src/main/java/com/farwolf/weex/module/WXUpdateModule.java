@@ -17,8 +17,6 @@ import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
 
-import org.json.JSONObject;
-
 import java.util.HashMap;
 
 
@@ -78,14 +76,18 @@ public class WXUpdateModule extends WXModule {
 
 
     @JSMethod
-    public void hotUpdate(JSONObject param, final JSCallback start, final JSCallback progress, final JSCallback compelete, final JSCallback exception)
+    public void hotUpdate(HashMap param ,final JSCallback start,final JSCallback progress,final JSCallback compelete,final JSCallback exception)
     {
-        String url=param.optString("url");
-        int version=param.optInt("version");
-        int mode=param.optInt("mode",0);
 
-
-
+        String url=param.get("url")+"";
+        int version=0;
+        if(param.containsKey("version")){
+            version=Integer.parseInt( param.get("version")+"");
+        }
+        int mode=0;
+        if(param.containsKey("mode")){
+            mode=Integer.parseInt( param.get("mode")+"");
+        }
         new JsDownloader().start(url,version,mode, mWXSDKInstance.getContext(), new IFullHttp() {
             @Override
             public void OnPostProcess(float newProgress,float current,float total) {
