@@ -12,9 +12,6 @@ gen
 *.iml
 lint.xml
 project.properties
-assets/main.js
-assets/weex-main-jsfm.js
-assets/weex-rax-api.js
 .externalNativeBuild
 
 /libs/x86/
