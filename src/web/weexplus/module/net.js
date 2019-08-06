@@ -1,7 +1,6 @@
 let net={
   fetch(url,method, param,header,start,success,compelete,exception) {
     let stream=weex.requireModule('stream')
-    debugger
     start()
     stream.fetch({
       method: method,

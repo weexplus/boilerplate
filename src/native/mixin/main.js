@@ -86,6 +86,12 @@ Mixins.install = (Vue, options) => {
                 this.onResume()
         });
 
+        globalEvent.addEventListener("onDestory", (param) => {
+
+            if (this.onDestory != undefined)
+                this.onDestory()
+        });
+
     }
 
   })

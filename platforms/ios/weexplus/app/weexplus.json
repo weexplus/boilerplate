@@ -1,6 +1,6 @@
 {
   "schema":"js",
-  "debug":true,
+  "debug":false,
   "loglevel":"info",
   "logfiler":"",
   "showerror":true,
