@@ -628,10 +628,10 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     @Override
     protected void onDestroy() {
-
+        super.onDestroy();
         if (mWXSDKInstance != null) {
             mWXSDKInstance.fireGlobalEventCallback("onDestory",null);
-            super.onDestroy();
+
             mWXSDKInstance.onActivityDestroy();
 
 //            mWXSDKInstance.destroy();
