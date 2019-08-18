@@ -25,3 +25,4 @@ dist/*
 release
 .gradle
 /build
+package-lock.json

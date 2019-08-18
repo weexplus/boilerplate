@@ -115,6 +115,7 @@
 				4D2665341ECD84CD00664B38 /* Frameworks */,
 				4D2665351ECD84CD00664B38 /* Resources */,
 				1DE6AFADC2454A29F3AF5464 /* [CP] Copy Pods Resources */,
+				4D2169F023025AE400905F63 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -232,6 +233,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-weexplus/Pods-weexplus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4D2169F023025AE400905F63 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ../../../\nweexplus copy\n";
 		};
 		E1EBE96AEBABBDE8A9BEC3C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
