@@ -42,16 +42,16 @@ task clean(type: Delete) {
 }
 
 
-def command = "weexplus copy"
-exec {
-    ExecSpec execSpec ->
-        executable 'bash'
-        args '-c', "cd ../../"
-}
-exec {
-    ExecSpec execSpec ->
-        executable 'bash'
-        args '-c', command
-}
- 
+//def command = "weexplus copy"
+//exec {
+//    ExecSpec execSpec ->
+//        executable 'bash'
+//        args '-c', "cd ../../"
+//}
+//exec {
+//    ExecSpec execSpec ->
+//        executable 'bash'
+//        args '-c', command
+//}
+
 
