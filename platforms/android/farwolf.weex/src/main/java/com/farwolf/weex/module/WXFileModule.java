@@ -1,6 +1,8 @@
 package com.farwolf.weex.module;
 
 import com.farwolf.util.Callback;
+import com.farwolf.util.FileTool;
+import com.farwolf.util.FileTool_;
 import com.farwolf.util.SDCard;
 import com.farwolf.util.ZipHelper;
 import com.farwolf.weex.base.WXModuleBase;
@@ -32,7 +34,7 @@ public class WXFileModule extends WXModuleBase {
     public void unzip(String path, JSCallback callback)
     {
         try {
-             path=path.replace(Const.PREFIX_SDCARD,"");
+            path=path.replace(Const.PREFIX_SDCARD,"");
             FileInputStream fs=new FileInputStream(new File(path));
             String outpath= SDCard.getBasePath(mWXSDKInstance.getContext())+"/path";
             final List l=new ArrayList();
@@ -40,7 +42,7 @@ public class WXFileModule extends WXModuleBase {
                 @Override
                 public void onInvoke(Object o) {
 
-                   l.add(Weex.getSdcardPath(o+""));
+                    l.add(Weex.getSdcardPath(o+""));
                 }
             });
             HashMap m=new HashMap();
@@ -68,6 +70,25 @@ public class WXFileModule extends WXModuleBase {
             ja.put(m);
         }
         callback.invoke(ja);
+    }
+
+
+    @JSMethod(uiThread = false)
+    public HashMap diskSize(){
+        FileTool f= FileTool_.getInstance_(this.mWXSDKInstance.getContext());
+        HashMap m=new HashMap();
+        m.put("freeSize",f.getMemoryFree());
+        m.put("totalSize",f.getTotalMemory());
+        return m;
+    }
+
+    @JSMethod
+    public void del(String path){
+        path=path.replace(Const.PREFIX_SDCARD,"");
+        File f=new File(path);
+        if(f.exists()){
+            f.delete();
+        }
     }
 
 }
