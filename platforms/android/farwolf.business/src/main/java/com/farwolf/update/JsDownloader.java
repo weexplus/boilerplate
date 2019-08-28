@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import com.farwolf.interfac.IFullHttp;
 import com.farwolf.util.AppTool;
 import com.farwolf.util.Downloader;
+import com.farwolf.util.FileTool;
 import com.farwolf.util.SDCard;
 import com.farwolf.util.ZipHelper;
 
@@ -72,6 +73,12 @@ public class JsDownloader  {
 //                                    Toast.makeText(HybridCore.getInstance().getPageManager().getCurrentActivity(),"请给予权限!",Toast.LENGTH_SHORT).show();
                                 try {
                                     FileInputStream fs=new FileInputStream(new File(path));
+                                    String to= SDCard.getBasePath(c)+"";
+                                    File f=new File(to+"/app");
+                                    if(f.exists())
+                                    {
+                                        FileTool.deleteFile(f);
+                                    }
                                     ZipHelper.unZipFile(fs,SDCard.getBasePath(c));
                                 } catch (FileNotFoundException e) {
                                     e.printStackTrace();

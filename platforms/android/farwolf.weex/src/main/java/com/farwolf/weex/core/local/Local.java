@@ -126,7 +126,7 @@ public class Local  {
         File f=new File(to+"/app");
         if(f.exists())
         {
-            f.delete();
+            FileTool.deleteFile(f);
         }
         ZipHelper.unZipFile(is,to);
     }
