@@ -10,6 +10,7 @@ import com.farwolf.util.ZipHelper;
 import com.farwolf.weex.bean.Config;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 
 import static com.farwolf.util.SDCard.getBasePath;
@@ -120,15 +121,20 @@ public class Local  {
     public static void unzip(Context c)
     {
 
-        Asset a=new Asset();
-        InputStream is= a.getFileInputStream(c,"app/app.zip");
-        String to= SDCard.getBasePath(c)+"";
-        File f=new File(to+"/app");
-        if(f.exists())
-        {
-            FileTool.deleteFile(f);
+        try {
+            Asset a=new Asset();
+            String path= SDCard.getBasePath(c)+"/zip/app.zip";
+            InputStream is=new FileInputStream(new File(path));
+            String to= SDCard.getBasePath(c)+"";
+            File f=new File(to+"/app");
+            if(f.exists())
+            {
+                FileTool.deleteFile(f);
+            }
+            ZipHelper.unZipFile(is,to);
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        ZipHelper.unZipFile(is,to);
     }
 
 //    final String path= SDCard.getBasePath(c)+"/zip/app.zip";

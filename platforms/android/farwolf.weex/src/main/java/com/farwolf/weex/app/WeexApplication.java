@@ -17,6 +17,7 @@ import com.farwolf.util.DateTool;
 import com.farwolf.util.RegexBase;
 import com.farwolf.util.StringUtil;
 import com.farwolf.weex.R;
+import com.farwolf.weex.adapter.ImageDownLoader;
 import com.farwolf.weex.bean.Config;
 import com.farwolf.weex.core.local.Local;
 import com.farwolf.weex.event.RefreshEvent;
@@ -27,13 +28,18 @@ import com.farwolf.weex.util.Weex;
 import com.farwolf.weex.util.Weex_;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.squareup.picasso.Picasso;
 import com.taobao.weex.event.ErrorEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.Collections;
 import java.util.Date;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 
 //import android.support.multidex.MultiDex;
 //import android.support.multidex.MultiDexApplication;
@@ -65,6 +71,7 @@ public class WeexApplication extends MultiDexApplication {
         weex= Weex_.getInstance_(this);
         pref= new WeexPref_(this);
         initUnivsalImageloader();
+        initPicasso();
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         String schema= Config.schema(this);
@@ -276,5 +283,15 @@ public class WeexApplication extends MultiDexApplication {
                 .writeDebugLogs()
                 .build();
         com.nostra13.universalimageloader.core.ImageLoader.getInstance().init(config);
+    }
+
+
+    public static void initPicasso(){
+        OkHttpClient client = new OkHttpClient.Builder()
+                .protocols(Collections.singletonList(Protocol.HTTP_1_1))
+                .build();
+        Picasso.setSingletonInstance(new Picasso.Builder(instance).
+                downloader(new ImageDownLoader(client))
+                .build());
     }
 }
