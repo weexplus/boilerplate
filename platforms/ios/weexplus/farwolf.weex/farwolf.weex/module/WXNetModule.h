@@ -10,4 +10,5 @@
 #import "farwolf_weex.h"
 
 @interface WXNetModule:NSObject<WXModuleProtocol>
++ (NSString *)fileNameWithURL:(NSURL *)url;
 @end

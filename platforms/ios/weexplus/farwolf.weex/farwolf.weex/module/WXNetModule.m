@@ -9,6 +9,7 @@
 #import "WXNetModule.h"
 #import "FileReader.h"
 #import "ZipDownloader.h"
+#import "LFDownloadNetwork.h"
 
 @implementation WXNetModule
 @synthesize weexInstance;
@@ -24,7 +25,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
 -(void)fetch:(BOOL)usepost url:(NSString*)url param:(NSDictionary*)param header:(NSDictionary*)header start:(WXModuleKeepAliveCallback)start exception:(WXModuleKeepAliveCallback)exception success:(WXModuleKeepAliveCallback)success compelete:(WXModuleKeepAliveCallback)compelete
 {
     
-     
+    
     NSData *cookiesdata = [[NSUserDefaults standardUserDefaults] objectForKey:@"cookiecache"];
     if([cookiesdata length]) {
         NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookiesdata];
@@ -55,7 +56,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
         exception(@{},false);
     } compelete:^{
         
-     
+        
         NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL: [NSURL URLWithString:url]];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookies];
         [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"cookiecache"];
@@ -79,6 +80,8 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     NSDate *d= [@"1970-01-01" toDate:@"yyyy-MM-dd"];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] removeCookiesSinceDate:d];
 }
+
+
 + (NSString *)fileNameWithURL:(NSURL *)url {
     //使用截取的方法获取url的文件名
     NSString *path = url.absoluteString;
@@ -90,6 +93,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     
     return @"";
 }
+
 -(void)download:(NSString*)url progress:(WXModuleKeepAliveCallback)progress compelete:(WXModuleKeepAliveCallback)compelete error:(WXModuleKeepAliveCallback)error
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -99,18 +103,16 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     NSString *filename= [WXNetModule fileNameWithURL:[NSURL URLWithString:url]];
     path=[[path add:@"/"] add:filename];
     [path delete];
-    //    NSString *url=@"http://59.110.169.246/img/app.zip";
-    ZipDownloader *zip= [[ZipDownloader alloc] initWidthUrl:url path:path progress:^(float percent,NSInteger current,NSInteger total) {
     
-        progress(@{@"current":@(current),@"total":@(total),@"percent":@(percent)},true);
-    } compelete:^(NSString *path) {
+    [[LFDownloadNetwork shareManager] downloadWithUrl:url progress:^(float total, float download, float percent) {
+        progress(@{@"current":@(download),@"total":@(total),@"percent":@(percent)},true);
+    } success:^(NSURL * _Nonnull url) {
         compelete(@{@"path": [PREFIX_SDCARD add:path]},true);
-  
-    } exception:^(NSError *err) {
+    } failed:^(NSError * _Nonnull err) {
         error(@{},false);
-    } ];
+    }];
     
-    [zip start];
+    
 }
 
 -(NSString*)getSessionId:(NSString*)url
@@ -153,7 +155,6 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
         v=[v replace:@"sdcard:" withString:@""];
         v=[v replace:@"file://" withString:@""];
         NSData *data= [NSData dataWithContentsOfFile:v];
-        [f addWeg:key weg: [self getWeg:v]];
         [f addParam:key file:data];
         
     }
@@ -176,14 +177,6 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     
 }
 
-
--(NSString*)getWeg:(NSString*)path{
-    NSMutableArray *ary=[path split:@"/"];
-    if(ary.count==0){
-        return @"";
-    }
-    return ary[ary.count-1];
-}
 
 -(void)postJson:(NSString*)url param:(NSDictionary*)param header:(NSDictionary*)header start:(WXModuleKeepAliveCallback)start  success:(WXModuleKeepAliveCallback)success  compelete:(WXModuleKeepAliveCallback)compelete exception:(WXModuleKeepAliveCallback)exception
 {
@@ -224,7 +217,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
             
             NSData *data =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
             NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//            NSLog(result);
+            //            NSLog(result);
             //            NSHTTPURLResponse* response = operation.response;
             
             //            NSString  *cookie=response.allHeaderFields[@"Set-Cookie"];
