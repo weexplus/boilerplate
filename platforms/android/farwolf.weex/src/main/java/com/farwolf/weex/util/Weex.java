@@ -82,7 +82,6 @@ import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.taobao.weex.InitConfig;
-import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.bridge.WXBridgeManager;
@@ -135,15 +134,15 @@ public class Weex extends ServiceBase{
 
             }
         };
-        achandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                WXEnvironment.sDebugServerConnectable = true;
-                WXEnvironment.sRemoteDebugMode = true;
-                WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8089/debugProxy/native/123456";
-                WXSDKEngine.reload();
-            }
-        }, 8000);
+//        achandler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                WXEnvironment.sDebugServerConnectable = true;
+//                WXEnvironment.sRemoteDebugMode = true;
+//                WXEnvironment.sRemoteDebugProxyUrl = "ws://" + ip + ":8089/debugProxy/native/123456";
+//                WXSDKEngine.reload();
+//            }
+//        }, 8000);
 
 
     }

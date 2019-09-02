@@ -8,13 +8,14 @@
 #import "RefreshManager.h"
 #import "farwolf.h"
 #import "Weex.h"
+#import "WXDevTool.h"
 
 @implementation RefreshManager
 
 +(void)reload
 {
     [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
-//    [self notify:@"refreshpage" value:nil];
+    //    [self notify:@"refreshpage" value:nil];
 }
 -(void)send:(NSString*)msg
 {
@@ -54,8 +55,10 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
+    
+    NSString *msg=[@"" add:message];
     if ([@"refresh" isEqualToString:message]) {
- 
+        
         UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000;
         if(recordTime-_lastrefresh>300)
         {
@@ -68,6 +71,13 @@
         }
         
     }
+    else if ([msg contains:@"debugReady"]) {
+        NSString *url= [msg split:@"="][1];
+        [WXLog setLogLevel:WXLogLevelLog];
+        [WXDevTool setDebug:YES];
+        //        NSString *url=[[[[[@"ws://" add:ip]add:@":"]add:port]add:@"/debugProxy/native/"] add:@"123456"];
+        [WXDevTool launchDevToolDebugWithUrl:url];
+    }
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
@@ -75,8 +85,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [RefreshManager reload];
     });
-    
-   
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean

@@ -28,6 +28,8 @@ import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ws.WebSocket;
 import com.squareup.okhttp.ws.WebSocketCall;
 import com.squareup.okhttp.ws.WebSocketListener;
+import com.taobao.weex.WXEnvironment;
+import com.taobao.weex.WXSDKEngine;
 
 import java.io.IOException;
 
@@ -115,6 +117,16 @@ public class HotRefreshManager {
 
         if (TextUtils.equals("refresh", temp) && mHandler != null) {
           mHandler.obtainMessage(Constants.HOT_REFRESH_REFRESH, 0, 0, mUrl).sendToTarget();
+        }
+        else{
+          if(temp.contains("debugReady")){
+            String q[]=temp.split("=");
+            String url=q[1];
+            WXEnvironment.sDebugServerConnectable = true;
+            WXEnvironment.sRemoteDebugMode = true;
+            WXEnvironment.sRemoteDebugProxyUrl =url;
+            WXSDKEngine.reload();
+          }
         }
       }
     }
