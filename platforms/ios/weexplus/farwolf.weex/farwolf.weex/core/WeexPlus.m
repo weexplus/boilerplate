@@ -21,9 +21,10 @@
     UIViewController *vc= [Weex start:@"splash" url:[Weex getEntry]];
     window.rootViewController=vc;
     [window makeKeyAndVisible];
+     [WeexPluginManager initAllEntry:lanch];
     if([Config isDebug])
     {
-        [WeexPluginManager initAllEntry:lanch];
+       
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [WeexPlus addDebugBtn];
 //             [window makeKeyAndVisible];
