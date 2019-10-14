@@ -232,9 +232,10 @@ public class WXLocationModule extends WXModuleBase {
         res.put("lat", address.getLatitude());
         res.put("lon", address.getLongitude());
         String add="";
-        for (int i = 0; address.getAddressLine(i) != null; i++) {
-            add+= address.getAddressLine(i);//得到周边信息。包含街道等。i=0，得到街道名称
-        }
+        add = address.getAddressLine(0);
+        // for (int i = 0; address.getAddressLine(i) != null; i++) {
+        //     add+= address.getAddressLine(i);//得到周边信息。包含街道等。i=0，得到街道名称
+        // }
         res.put("address", add);
         callback.invokeAndKeepAlive(res);
     }
