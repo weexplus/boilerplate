@@ -7,7 +7,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.farwolf.interfac.IFullHttp;
 import com.farwolf.util.Downloader;
-import com.farwolf.util.Md5;
 import com.farwolf.util.SDCard;
 import com.farwolf.weex.app.WeexApplication;
 import com.farwolf.weex.util.Const;
@@ -62,6 +61,7 @@ public class WXNetModule extends WXModule {
                 preq.upJson(j.toJSONString());
                 preq.headers("content-Type", "application/json");
             }
+
             req.execute(new StringCallback() {
 
                 @Override

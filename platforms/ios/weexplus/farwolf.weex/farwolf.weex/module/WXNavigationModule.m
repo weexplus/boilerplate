@@ -238,6 +238,7 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
         vc.param=param;
         vc.callback=callback;
         vc.instance.param=param;
+        nav.modalPresentationStyle=UIModalPresentationFullScreen;
         [[weakself.weexInstance.viewController TopViewController] presentViewController:nav animated:animated completion:^{
             
         }];

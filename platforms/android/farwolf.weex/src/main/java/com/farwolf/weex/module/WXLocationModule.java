@@ -212,7 +212,7 @@ public class WXLocationModule extends WXModuleBase {
 
         HashMap res = new HashMap();
         res.putAll(param);
-        if(locationList==null)
+        if(locationList==null||locationList.size()==0)
         {
             res.put("err", 1);
             callback.invokeAndKeepAlive(res);

@@ -112,6 +112,7 @@ static BOOL isshowErr;
     {
         [self debugInit];
     }
+    self.modalPresentationStyle=UIModalPresentationFullScreen;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RefreshInstanc) name:@"RefreshInstance" object:nil];
     if(self.page!=nil)
     {
