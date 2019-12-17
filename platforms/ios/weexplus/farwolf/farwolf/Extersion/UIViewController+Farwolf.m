@@ -158,6 +158,7 @@
 -(UIViewController*)present:(NSString*)Id anim:(BOOL) anim
 {
     UIViewController *vc= [self fromStoryBoard:Id];
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:anim completion:^{
         
     }];

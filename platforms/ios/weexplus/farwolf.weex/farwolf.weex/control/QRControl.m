@@ -19,23 +19,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     CCQrCode *code = [[CCQrCode alloc] initWithFrame:self.view.bounds];
-    
     [self.view addSubview:code];
     __weak typeof (self) weakself=self;
     [code startReading:^(AVCaptureOutput *captureOutput, NSArray *metadataObjects, AVCaptureConnection *connection, AVMetadataMachineReadableCodeObject *metadataObj, NSString *stringValue) {
         
-        NSLog(@"%@",stringValue);
-        [code stopReading];
-//        [self dismiss:true];
-//        [self.TopViewController dismiss:true completion:nil];
-       
-        [weakself.TopViewController dismiss:true completion:^{
-            if(weakself.scanSuccess!=nil)
-            {
-                weakself.scanSuccess(stringValue);
-            }
-        }];
-      
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+              NSLog(@"%@",stringValue);
+                     [code stopReading];
+             //        [self dismiss:true];
+             //        [self.TopViewController dismiss:true completion:nil];
+                    
+                     [weakself.TopViewController dismiss:true completion:^{
+                         if(weakself.scanSuccess!=nil)
+                         {
+                             weakself.scanSuccess(stringValue);
+                         }
+                     }];
+        });
         
      
     }];

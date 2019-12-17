@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "6BE76D4B-334C-42F2-B11B-A6FD5C50C3BF"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "FE75B96F-B142-4A6A-B7BA-4B8D1549F142"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -19,29 +21,29 @@
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "FE75B96F-B142-4A6A-B7BA-4B8D1549F142 - b08d19d60659edd7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[EntryControl gotoMain]"
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/EntryControl.m"
-                  timestampString = "589079505.701857"
+                  urlString = "file:///Users/zhengjiangrong/Desktop/work/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/EntryControl.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "83"
                   endingLineNumber = "83"
-                  offsetFromSymbolStart = "684">
+                  offsetFromSymbolStart = "640">
                </Location>
                <Location
+                  uuid = "FE75B96F-B142-4A6A-B7BA-4B8D1549F142 - 3093a26f1ccf51f2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__24-[EntryControl gotoMain]_block_invoke_2"
                   moduleName = "weexplus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Documents/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/EntryControl.m"
-                  timestampString = "589079505.704613"
+                  urlString = "file:///Users/zhengjiangrong/Desktop/work/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/EntryControl.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "84"
@@ -54,6 +56,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "CFE13C5B-07FD-41B6-A2DE-E8CAEA89D6D3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -70,6 +73,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "092460FF-08AE-4F60-92C6-BAB188ED90B8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
