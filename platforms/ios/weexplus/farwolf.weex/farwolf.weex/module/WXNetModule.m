@@ -155,6 +155,8 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
         v=[v replace:@"sdcard:" withString:@""];
         v=[v replace:@"file://" withString:@""];
         NSData *data= [NSData dataWithContentsOfFile:v];
+       
+        [f addWeg:key weg: [self getWeg:v]];
         [f addParam:key file:data];
         
     }
@@ -177,6 +179,13 @@ WX_EXPORT_METHOD_SYNC(@selector(getSessionId:))
     
 }
 
+-(NSString*)getWeg:(NSString*)path{
+    NSMutableArray *ary=[path split:@"/"];
+    if(ary.count==0){
+        return @"";
+    }
+    return ary[ary.count-1];
+}
 
 -(void)postJson:(NSString*)url param:(NSDictionary*)param header:(NSDictionary*)header start:(WXModuleKeepAliveCallback)start  success:(WXModuleKeepAliveCallback)success  compelete:(WXModuleKeepAliveCallback)compelete exception:(WXModuleKeepAliveCallback)exception
 {
