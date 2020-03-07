@@ -343,7 +343,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         if( ActivityManager.getInstance().getCurrentActivity()==this)
         {
 
-            if("".equals(event.type))
+            if("log".equals(event.type))
             this.showError(event.msg);
         }
 

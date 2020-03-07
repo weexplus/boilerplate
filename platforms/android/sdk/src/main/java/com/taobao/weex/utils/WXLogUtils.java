@@ -169,7 +169,7 @@ public class WXLogUtils {
   {
 
 
-    if(msg.contains("TypeError"))
+    if(msg.contains("TypeError") ||msg.contains("ReferenceError"))
     {
       EventBus.getDefault().post(new ErrorEvent(msg.replace("__ERROR", "")));
       ErrorEvent ev=new ErrorEvent(msg);

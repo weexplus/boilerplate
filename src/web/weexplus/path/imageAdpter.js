@@ -8,7 +8,6 @@ export default {
       // let url=path.getImagePath(src)
       // alert(url)
       // return url
-      debugger
       if(src.startsWith('root:'))
         return src.replace('root:','')
       return src

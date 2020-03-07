@@ -11,6 +11,7 @@ import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.wang.avi.AVLoadingIndicatorView;
 import com.wang.avi.indicator.BallBeatIndicator;
 import com.wang.avi.indicator.BallClipRotateIndicator;
 import com.wang.avi.indicator.BallClipRotateMultipleIndicator;
@@ -149,6 +150,7 @@ public class LoadingView  extends View{
     }
 
     private void init(AttributeSet attrs, int defStyle) {
+        AVLoadingIndicatorView c;
         TypedArray a = getContext().obtainStyledAttributes(attrs, com.wang.avi.R.styleable.AVLoadingIndicatorView);
         mIndicatorId=a.getInt(com.wang.avi.R.styleable.AVLoadingIndicatorView_indicator, BallPulse);
         mIndicatorColor=a.getColor(com.wang.avi.R.styleable.AVLoadingIndicatorView_indicator_color, Color.WHITE);

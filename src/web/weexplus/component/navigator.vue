@@ -25,21 +25,21 @@
     },
     mounted()
     {
-      window.eventBus.$on('UPDATE_DIRECTION', (res) => {
-        if (!this.routerAnimation) {
-          return
-        }
-        this.direction = res
-        this.enterAnimate = this.direction == 'forward' ? "animated fadeInRight" : "animated fadeInLeft"
-        this.leaveAnimate = this.direction == 'forward' ? "animated fadeOutLeft" : "animated fadeOutRight"
-      })
-      window.eventBus.$on('ENABLE_ROUTER_ANIMATION', (res) => {
-        this.routerAnimation = res
-        if (!this.routerAnimation) {
-          this.enterAnimate = ""
-          this.leaveAnimate = ""
-        }
-      })
+      // window.eventBus.$on('UPDATE_DIRECTION', (res) => {
+      //   if (!this.routerAnimation) {
+      //     return
+      //   }
+      //   this.direction = res
+      //   this.enterAnimate = this.direction == 'forward' ? "animated fadeInRight" : "animated fadeInLeft"
+      //   this.leaveAnimate = this.direction == 'forward' ? "animated fadeOutLeft" : "animated fadeOutRight"
+      // })
+      // window.eventBus.$on('ENABLE_ROUTER_ANIMATION', (res) => {
+      //   this.routerAnimation = res
+      //   if (!this.routerAnimation) {
+      //     this.enterAnimate = ""
+      //     this.leaveAnimate = ""
+      //   }
+      // })
 
 //      this.$navigation.on('forward', (to, from) => {
 //        this.enterAnimate = "animated fadeInRight"
@@ -66,22 +66,22 @@
 //      next()
 //    },
     created(){
-      let _this=this
-      this.$router.beforeEach((to, from, next) => {
-//         return
-//        debugger
-        if (_this.routerList.length && _this.routerList.indexOf(to.fullPath) === _this.routerList.length - 1) {
-          // 后退
-          _this.routerList.splice(_this.routerList.length - 1, 1)
-          _this.cache=true
-
-        } else {
-          // 前进
-          _this.routerList.push(from.fullPath || '/')
-          _this.cache=false
-        }
-        next()
-      })
+//       let _this=this
+//       this.$router.beforeEach((to, from, next) => {
+// //         return
+// //        debugger
+//         if (_this.routerList.length && _this.routerList.indexOf(to.fullPath) === _this.routerList.length - 1) {
+//           // 后退
+//           _this.routerList.splice(_this.routerList.length - 1, 1)
+//           _this.cache=true
+//
+//         } else {
+//           // 前进
+//           _this.routerList.push(from.fullPath || '/')
+//           _this.cache=false
+//         }
+//         next()
+//       })
 //
     }
   }

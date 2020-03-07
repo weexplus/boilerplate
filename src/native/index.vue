@@ -15,8 +15,8 @@
 
             },
             gonext(){
-//                this.push('test.js',{name:"ssss"})
-                this.log('jdksdjsk','error')
+               this.push('index.js',{name:"ssss"})
+//                 this.log('jdksdjsk','error')
             }
         },
         created(){

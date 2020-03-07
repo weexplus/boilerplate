@@ -26,6 +26,7 @@ const helper = require('./helper');
 const postMessageToOpenPage =  (entry) => {
   let entrys = Object.keys(entry);
   let openpage = config.dev.openPage;
+  openpage='index.html#/'
   // exclude vendor entry.
   entrys = entrys.filter(entry => entry !== 'vendor' );
   if(entrys.indexOf('index') > -1) {
