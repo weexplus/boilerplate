@@ -10,7 +10,7 @@
         },
         methods: {
             onLoad(){
-                let url = 'root:index.js'
+                let url = 'root:views/index.js'
                 this.goToMain(url)
             },
             goToMain(url){

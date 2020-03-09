@@ -246,9 +246,13 @@ public class WXNavgationModule extends WXModuleBase {
             if(wa!=null)
                 in.putExtra("rootid",wa.rootid);
         }
-
-
-        url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
+        //路由模式计算路径
+        if(!url.contains(".js")){
+            String base= Weex.getBaseUrl(this.mWXSDKInstance);
+            url=  base+Weex.getTranslatePath(url);
+        }else{
+            url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
+        }
         in.putExtra("url",url);
         if(callback!=null&&(this.mWXSDKInstance.getContext() instanceof WeexActivity))
         {

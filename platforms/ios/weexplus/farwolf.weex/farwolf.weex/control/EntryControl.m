@@ -72,6 +72,7 @@
         vc.debug=[Config isDebug];
         vc.isLanscape=![Config isPortrait];
         UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+         nav.modalPresentationStyle=UIModalPresentationFullScreen;
         [self presentViewController:nav animated:false completion:^{
             
         }];

@@ -15,8 +15,11 @@
 
             },
             gonext(){
-               this.push('index.js',{name:"ssss"})
-//                 this.log('jdksdjsk','error')
+                // this.log('ss')
+                // weex.requireModule('log').log({msg:'sss',level:'error'})
+                // weex.requireModule('navigator').push('/page1')
+                wxp.al()
+
             }
         },
         created(){

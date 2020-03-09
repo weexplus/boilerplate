@@ -9,7 +9,7 @@ const config = {
   // router
   routerFilePath: 'web/router.js',
   // common
-  templateDir: 'src',
+  templateDir: 'dist',
   entryFilePath: 'web/entry.js',
   // Module exclude from compile process
   excludeModuleReg: /node_modules(?!(\/|\\).*(weex).*)/,
