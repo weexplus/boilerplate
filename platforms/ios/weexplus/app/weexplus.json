@@ -1,11 +1,11 @@
 {
   "schema":"js",
-  "debug":false,
+  "debug":true,
   "loglevel":"info",
   "logfiler":"",
   "showerror":true,
   "isPortrait":true,
-  "jsVersion":3,
+  "jsVersion":2,
   "debugIp":"127.0.0.1",
   "debugEntry":"",
   "releaseEntry":"app/entry.js",
