@@ -10,5 +10,7 @@
 @interface UIImage (Farwolf)
 - (NSString*)saveToDisk:(NSString*)path;
 - (UIImage *)toColor:(NSString *)color;
+-(NSData *)compress:(NSUInteger)maxSize;
+-(NSString*)save:(NSString*)path;
 @end
 

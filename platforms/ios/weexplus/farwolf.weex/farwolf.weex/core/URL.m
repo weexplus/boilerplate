@@ -17,10 +17,19 @@
 
 +(NSURL*)getFinalUrl:(NSString*)url weexInstance:(WXSDKInstance*)weexInstance
 {
-    if(weexInstance==nil)
-    {
-        int k=0;
-        k++;
+    if(![url contains:@".js"]){
+        NSString *base=[Weex getBaseUrl:weexInstance];
+         NSMutableDictionary *dic= [Weex getRouterDic];
+        NSString *tourl=@"";
+        if([dic objectForKey:url]!=nil)
+          tourl= dic[url];
+        url=[base add:tourl];
+        if([url startWith:@"http"]){
+            return [NSURL URLWithString:url];
+        }else{
+          
+            return [NSURL URLWithString:url];
+        }
     }
     if([url startWith:@"root:"])
     {
@@ -138,14 +147,23 @@
     {
         return;
     }
+    #ifdef DEBUG
+     NSString *disk= [self loadFromDisk:@"app"].absoluteString;
+    disk=[disk replace:@"file://" withString:@""];
+    [disk delete];
+    [disk mkdir];
+    [bundle copyToPath:disk];
+    #else
     if([Config isDebug]||![URL isDiskExist]||[Config diskJsVersion]<[Config bundleJsVersion])
-    {
-        NSString *disk= [self loadFromDisk:@"app"].absoluteString;
-        disk=[disk replace:@"file://" withString:@""];
-         [disk delete];
-        [disk mkdir];
-        [bundle copyToPath:disk];
-    }
+       {
+           NSString *disk= [self loadFromDisk:@"app"].absoluteString;
+           disk=[disk replace:@"file://" withString:@""];
+            [disk delete];
+           [disk mkdir];
+           [bundle copyToPath:disk];
+       }
+    #endif
+   
     NSString *key=@"downloadJsVersion";
     int dv= [self getSaveValue:key];
       if(dv>[Config diskJsVersion])

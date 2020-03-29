@@ -23,7 +23,8 @@
 +(NSString*)bundleJsVersion;
 +(NSString*)appBoard;
 +(NSString*)appBoardContent;
-
++(NSString*)routerTranslaterStr;
++(NSMutableDictionary*)routerTranslater;
 +(NSMutableArray*)preload;
 +(BOOL)isDebug;
 +(NSString*)getUMAndroidKey;

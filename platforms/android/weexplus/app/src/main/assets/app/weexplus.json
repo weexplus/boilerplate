@@ -7,10 +7,10 @@
   "isPortrait":true,
   "jsVersion":2,
   "debugIp":"127.0.0.1",
-  "debugEntry":"",
+  "debugEntry":"http://192.168.0.102:8890/js/index.js",
   "releaseEntry":"app/entry.js",
   "wechatEntry":"app/demo/index.js",
-  "appBoard":"root:common.js",
+  "appBoard":"root:mixin/common.js",
   "notifyEntry":"http://172.20.10.3:8890/js/notifyEntry.js"
 }
 

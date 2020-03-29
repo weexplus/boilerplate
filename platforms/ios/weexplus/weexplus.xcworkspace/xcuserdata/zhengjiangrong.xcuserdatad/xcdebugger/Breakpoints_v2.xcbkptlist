@@ -7,83 +7,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE75B96F-B142-4A6A-B7BA-4B8D1549F142"
-            shouldBeEnabled = "Yes"
+            uuid = "EA0FBD60-CDC0-46E4-A903-42C38F66700A"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/control/EntryControl.m"
-            timestampString = "585573777.461653"
+            filePath = "farwolf.weex/farwolf.weex/control/WXNormalViewContrller.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-gotoMain"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FE75B96F-B142-4A6A-B7BA-4B8D1549F142 - b08d19d60659edd7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[EntryControl gotoMain]"
-                  moduleName = "weexplus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Desktop/work/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/EntryControl.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "640">
-               </Location>
-               <Location
-                  uuid = "FE75B96F-B142-4A6A-B7BA-4B8D1549F142 - 3093a26f1ccf51f2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__24-[EntryControl gotoMain]_block_invoke_2"
-                  moduleName = "weexplus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengjiangrong/Desktop/work/GitHub/weexplus/platforms/ios/weexplus/farwolf.weex/farwolf.weex/control/EntryControl.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CFE13C5B-07FD-41B6-A2DE-E8CAEA89D6D3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/control/EntryControl.m"
-            timestampString = "585573777.4617209"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-gotoMain"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
+            landmarkName = "-viewWillDisappear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "092460FF-08AE-4F60-92C6-BAB188ED90B8"
-            shouldBeEnabled = "Yes"
+            uuid = "E5DF8D94-14C3-4F1F-A648-60618E5B09FE"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "farwolf.weex/farwolf.weex/control/EntryControl.m"
-            timestampString = "585573795.767992"
+            filePath = "farwolf.weex/farwolf.weex/module/WXFLogModule.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-gotoMain"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-log:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E17BAB1-22ED-4C5A-8BE8-FECC85A993BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "farwolf.weex/farwolf.weex/control/WXNormalViewContrller.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-dealloc"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6643EB2E-E66B-4AF9-9C57-03C7E821B032"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "farwolf.weex/farwolf.weex/module/WXNavigationModule.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-backFull:animated:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "477741DC-35FC-4BE2-890A-849709C573BD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "farwolf.weex/farwolf.weex/module/WXNavigationModule.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-backFull:animated:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

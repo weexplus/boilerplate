@@ -41,6 +41,7 @@
     EntryControl *vc=[[EntryControl alloc]initWithImage:_url img:_img];
      
     UINavigationController *nvc=[[UINavigationController alloc]initWithRootViewController:vc];
+    nvc.modalPresentationStyle=UIModalPresentationFullScreen;
     [self.navigationController presentViewController:nvc animated:false completion:^{
         
     }];

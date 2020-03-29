@@ -133,8 +133,11 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
 -(void)backFull:(NSDictionary*)param animated:(BOOL)animated
 {
     WXNormalViewContrller *vc=  weexInstance.viewController;
-    if(vc.callback!=nil)
+    if(vc.callback!=nil&&param!=nil)
         vc.callback(param, false);
+//    vc.isFinish=true;
+//    [vc fireDestory];
+//    [weexInstance fireGlobalEvent:@"onDestroy" params:nil];
     [vc back:animated];
 }
 -(void)backTo:(NSString*)pageid
@@ -150,7 +153,11 @@ WX_EXPORT_METHOD(@selector(invokeNativeCallBack:))
             if([pageid isEqualToString:wx.pageid])
             {
                 tvc=wx;
-                break;
+                 [wx fireDestory];
+               
+            }else{
+                wx.isFinish=true;
+                [wx fireDestory];
             }
         }
         NSMutableArray *nx=[NSMutableArray new ];

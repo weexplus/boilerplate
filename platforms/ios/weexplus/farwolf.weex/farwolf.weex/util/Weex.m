@@ -46,7 +46,8 @@
 #import "WXKeyboardModule.h"
 #import "WXDeviceInfoModule.h"
 #import "WXFLogModule.h"
-
+static NSString * routerContent;
+static NSMutableDictionary *router;
 @implementation Weex
 
 +(void)initWeex:(NSString*)group appName:(NSString*)appName appVersion:(NSString*)appVersion
@@ -106,6 +107,32 @@
     [WXLog setLogLevel: WXLogLevelError];
 }
 
+
++(NSMutableDictionary*)getRouterDic{
+    NSString *ab=[WXSDKInstance getAppBoardContent];
+     NSString *sp=@"/*******weexplus_split_router_weexplus******/";
+    if([ab contains:sp]){
+        ab=[ab componentsSeparatedByString:sp][0];
+           NSMutableArray *ary= [ab split:@"\n"];
+           ab=ary[ary.count-2];
+           ab=[ab substringFromIndex:3];
+           if(router==nil || routerContent!=ab){
+                routerContent=ab;
+                router=[ab toJson];
+           }
+            return router;
+    }else{
+       ab=[Config routerTranslaterStr];
+        if(router==nil || routerContent!=ab){
+                 routerContent=ab;
+                router=  [Config routerTranslater];
+          }
+      return router;
+        
+    }
+   
+   
+}
 
 +(UIViewController*)start:(NSString*)image url:(NSString*)url
 {

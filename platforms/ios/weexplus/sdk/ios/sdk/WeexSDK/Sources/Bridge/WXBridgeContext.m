@@ -1204,12 +1204,16 @@ _Pragma("clang diagnostic pop") \
                         [appMonitorHandler commitAppMonitorAlarm:@"weex" monitorPoint:@"jswarning" success:NO errorCode:@"99999" errorMsg:string arg:[WXSDKEngine topInstance].pageName];
                     }
                 }
-                //zjr add
-                NSNotification *n=[[NSNotification alloc]initWithName:@"weexError" object:nil userInfo:@{@"msg":string}];
-                [[NSNotificationCenter defaultCenter]postNotification:n];
-                n=[[NSNotification alloc]initWithName:@"weexLog" object:nil userInfo:@{@"msg":string,@"level":[self translate:logLevel]}];
-                [[NSNotificationCenter defaultCenter]postNotification:n];
-                ///////////
+                NSString *s=@"jsLog: \"{}\" ";
+                if(![s isEqualToString:string]){
+                  //zjr add
+                 NSNotification *n=[[NSNotification alloc]initWithName:@"weexError" object:nil userInfo:@{@"msg":string}];
+                 [[NSNotificationCenter defaultCenter]postNotification:n];
+                 n=[[NSNotification alloc]initWithName:@"weexLog" object:nil userInfo:@{@"msg":string,@"level":[self translate:logLevel]}];
+                 [[NSNotificationCenter defaultCenter]postNotification:n];
+                 ///////////
+                }
+               
                 WX_LOG(logLevel, @"%@", string);
             } else {
                 [string appendFormat:@"%@ ", jsVal];

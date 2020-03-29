@@ -388,35 +388,7 @@
             exception();
             compelete();
         }];
-//      return  [manager POST:url parameters:self.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//          NSDictionary *fields= [operation.response allHeaderFields];
-//          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
-//
-//
-//            NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//            NSLog(result);
-//            NSHTTPURLResponse* response = operation.response;
-//            NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
-//
-//            Json *res=[[self getDecoder] initWithString:result];
-//            res.resHeader=response.allHeaderFields;
-//            res.sessionId=sessionId;
-//            res.tag=self.tag;
-//            res.backString=result;
-//            success(res);
-//            compelete();
-//
-//
-//
-//
-//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//            NSLog(@"失败");
-//            NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
-//
-//            exception();
-//            compelete();
-//
-//        }];
+ 
     }
     else
     {
@@ -453,42 +425,7 @@
             compelete();
         }];
         
-//        NSArray *n=   [self.param allKeys];
-//        NSMutableDictionary *temp=[NSMutableDictionary new];
-//        for(NSString *key in n)
-//        {
-//            NSObject *value=self.param[key];
-//            NSString *t=[@"" add:value];
-////            t = [t stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//            [temp setValue:t forKey:key];
-//        }
-//        //        value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//      return  [manager GET:url parameters:temp success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//
-//          NSDictionary *fields= [operation.response allHeaderFields];
-//          NSArray *cookies=[NSHTTPCookie cookiesWithResponseHeaderFields:fields forURL:[NSURL URLWithString:url]];
-//
-//            NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//            NSLog(result);
-//            NSHTTPURLResponse* response = operation.response;
-//            NSString* sessionId = [NSString stringWithFormat:@"%@",[[response.allHeaderFields[@"Set-Cookie"]componentsSeparatedByString:@";"]objectAtIndex:0]];
-//            Json *res=[[self getDecoder] initWithString:result];
-//            res.sessionId=sessionId;
-//            res.resHeader=response.allHeaderFields;
-//            res.tag=self.tag;
-//            res.backString=result;
-//            success(res);
-//            compelete();
-//
-//
-//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//            NSLog(@"失败");
-//            NSLog(@"%@", error.userInfo[@"NSLocalizedDescription"]);
-//
-//            exception();
-//            compelete();
-//
-//        }];
+ 
     }
     
     

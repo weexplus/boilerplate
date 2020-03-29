@@ -164,6 +164,11 @@
         
         
         UIImage* original_image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        if(self.aspX==0||self.aspY==0){
+              [self.delegate imageSelect:original_image];
+            return;
+        }
+        
         TOCropViewController *cropViewController = [[TOCropViewController alloc] initWithImage:original_image];
             cropViewController.delegate = self;
             //cropViewController.aspectRatioPreset=TOCropViewControllerAspectRatioPresetCustom;

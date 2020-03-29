@@ -41,7 +41,7 @@ static BOOL isshowErr;
 }
 - (void)dealloc
 {
-    
+//    [self fireDestory];
     [_instance destroyInstance];
     [self _removeObservers];
     NSMutableDictionary *p=[NSMutableDictionary new];
@@ -215,7 +215,7 @@ static BOOL isshowErr;
 {
     
 }
-
+ 
 -(void)resetFrame
 {
     if(_freeFrame)
@@ -251,6 +251,7 @@ static BOOL isshowErr;
     {
         return;
     }
+   
     //    [self.fail_layout setHidden:false];
     isshowErr=true;
     
@@ -330,10 +331,25 @@ static BOOL isshowErr;
 {
     
     [self setBackBar:nil color:nil];
-    [_instance fireGlobalEvent:@"viewWillDisappear" params:nil];
+    NSArray *viewControllers = self.navigationController.viewControllers;
+     if (viewControllers.count > 1 && [viewControllers objectAtIndex:viewControllers.count-2] == self) {
+        //push
+         [_instance fireGlobalEvent:@"viewWillDisappear" params:nil];
+     } else if ([viewControllers indexOfObject:self] == NSNotFound) {
+        //pop
+          [_instance fireGlobalEvent:@"onDestory" params:nil];
+     }
+        
+    
     [_instance fireGlobalEvent:WX_APPLICATION_WILL_RESIGN_ACTIVE params:nil];
     
 }
+
+-(void)fireDestory{
+     [_instance fireGlobalEvent:@"onDestory" params:nil];
+}
+
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -355,7 +371,6 @@ static BOOL isshowErr;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [_instance fireGlobalEvent:@"viewDidAppear" params:nil];
     [_instance fireGlobalEvent:WX_APPLICATION_DID_BECOME_ACTIVE params:nil];
     [self _updateInstanceState:WeexInstanceAppear];
     
@@ -363,26 +378,15 @@ static BOOL isshowErr;
     //        [_instance fireGlobalEvent:@"onPageInit" params:nil];
 }
 
+
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
     [_instance fireGlobalEvent:@"viewDidDisappear" params:nil];
     [self _updateInstanceState:WeexInstanceDisappear];
-    
-    
-    //    NSLog([@"url== " add: self.sourceURL.absoluteString]);
-    //    NSLog([@"self== " addInt: self.naviIndex]);
-    //    NSLog([@"count== " addInt: self.TopViewController.navigationController.childViewControllers.count]);
-    //
-    //    if(self.naviIndex>self.TopViewController.navigationController.childViewControllers.count)
-    //    {
-    //        //        WXNormalViewContrller *vc= self.weexInstance.viewController;
-    //        NSMutableDictionary *p=[NSMutableDictionary new];
-    //        [p setValue:self.sourceURL.absoluteString forKey:@"url"];
-    //        [self notifyDict:@"removeUrl" value:p];
-    //    }
-    //
+ 
     printf("retain count = %ld\n",CFGetRetainCount((__bridge CFTypeRef)(self)));
 }
 

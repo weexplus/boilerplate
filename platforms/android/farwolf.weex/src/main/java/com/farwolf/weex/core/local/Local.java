@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 
+import com.farwolf.util.AppTool;
+import com.farwolf.util.AppTool_;
 import com.farwolf.util.FileTool;
 import com.farwolf.util.SDCard;
 import com.farwolf.util.ZipHelper;
@@ -57,14 +59,17 @@ public class Local  {
         {
             dj=Config.diskJsVersion(c);
         }
-        if(!isDiskExist(c)||Config.assetJsVersion(c)>Config.diskJsVersion(c))
+        AppTool appTool=AppTool_.getInstance_(c);
+        if(!isDiskExist(c)||Config.assetJsVersion(c)>Config.diskJsVersion(c)||appTool.isDebugMode())
         {
             if(!FileTool.IsFileExist(newpath))
             {
-
-                
+                FileTool.makeDir(newpath);
+            }else{
+                FileTool.delete(newpath);
                 FileTool.makeDir(newpath);
             }
+
             FileTool.copyAssets(c,"app",newpath);
         }
         if(isDiskExist(c))

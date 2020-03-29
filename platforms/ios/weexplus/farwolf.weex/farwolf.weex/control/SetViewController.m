@@ -55,9 +55,9 @@
 
 -(void)updateCache
 {
-    float tmpSize =[[SDImageCache sharedImageCache] getSize]/1024/1024;
-    NSString *ca=[[@"清除缓存(" addFloat:tmpSize] add:@"m)"];
-    [self.cachebtn setTitle:ca forState:UIControlStateNormal];
+//    float tmpSize =[[SDImageCache sharedImageCache] getSize]/1024/1024;
+//    NSString *ca=[[@"清除缓存(" addFloat:tmpSize] add:@"m)"];
+//    [self.cachebtn setTitle:ca forState:UIControlStateNormal];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -203,7 +203,7 @@
 }
 - (IBAction)clearCache:(id)sender {
 //    [[SDImageCache sharedImageCache] clearDisk];
-    [[SDImageCache sharedImageCache] clearMemory];
+//    [[SDImageCache sharedImageCache] clearMemory];
     [self updateCache];
     
 

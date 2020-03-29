@@ -50,6 +50,6 @@ static DebugScocket *debugScocket;
 +(NSString*)getEntry;
 +(NSString*)getDebugIp;
 +(void)findComponent:(NSString *)elemRef instance:(WXSDKInstance*)instance block:(void (^)(WXComponent *))block;
-
++(NSMutableDictionary*)getRouterDic;
 @end
 

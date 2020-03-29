@@ -9,7 +9,7 @@ const config = {
   // router
   routerFilePath: 'web/router.js',
   // common
-  templateDir: 'src',
+  templateDir: 'dist',
   entryFilePath: 'web/entry.js',
   // Module exclude from compile process
   excludeModuleReg: /node_modules(?!(\/|\\).*(weex).*)/,
@@ -45,7 +45,7 @@ const config = {
     cssSourceMap: false,
     proxyTable: {
       '/api': {
-        target: 'http://59.110.169.246/movie/', // 设置调用接口域名和端口号别忘了加http
+        target: 'http://192.168.0.102:8080/movie/', // 设置调用接口域名和端口号别忘了加http
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/' // 这里理解成用‘/api’代替target里面的地址，组件中我们调接口时直接用/api代替

@@ -14,5 +14,6 @@
 -(long)getMonth;
 -(long)getYear;
 -(long)getWeek;
+- (NSString *)getCurrentTimestamp;
  
 @end

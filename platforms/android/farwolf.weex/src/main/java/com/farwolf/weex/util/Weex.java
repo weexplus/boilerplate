@@ -12,6 +12,7 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.farwolf.base.ServiceBase;
 import com.farwolf.util.FileTool;
@@ -97,6 +98,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.json.JSONObject;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -117,6 +119,11 @@ public class Weex extends ServiceBase{
     WeexPref_ pref;
 
     public static String basedir;
+
+
+    public static Map navDic;
+    public static String router;
+
 //    public static String baseurl;
 
 
@@ -365,7 +372,7 @@ public class Weex extends ServiceBase{
     {
         if(instance==null)
             return "";
-        return  getBaseUrl(instance.getBundleUrl());
+        return  getBaseUrl(instance.getBundleUrl()).trim();
     }
 
 
@@ -381,7 +388,10 @@ public class Weex extends ServiceBase{
 
             if(x.length>3)
             {
-                String res= x[0]+"//"+x[2]+"/"+Weex.basedir;
+                String port=x[1];
+                if("".equals(port))
+                port=x[2];
+                String res= x[0]+"//"+port+"/"+Weex.basedir;
                 if(!res.endsWith("/"))
                     res+="/";
                 baseurl=res;
@@ -464,6 +474,7 @@ public class Weex extends ServiceBase{
 
     public static String getRelativeUrl(String url, WXSDKInstance  instance)
     {
+
         if(url.startsWith("sdcard:"))
         {
             return url;
@@ -476,6 +487,7 @@ public class Weex extends ServiceBase{
         {
             return url.replace("root:", getBaseUrl(instance));
         }
+
         if(url.startsWith("./"))
         {
             url=url.substring(2);
@@ -609,5 +621,35 @@ public class Weex extends ServiceBase{
     {
         appBoardContent=s;
     }
+
+
+    public static  Map getNavDic(Context c){
+        if(appBoardContent.contains("weexplus_split_router_weexplus")){
+            String appaboard=appBoardContent.split("\\/\\*\\*\\*\\*\\*\\*\\*weexplus_split_router_weexplus\\*\\*\\*\\*\\*\\*\\/")[0];
+            if(navDic==null ||  !(router+"").equals(appaboard)){
+                router=appaboard;
+                String q[]= appaboard.split("\n");
+                String router= q[q.length-1];
+                router=router.substring(3,router.length());
+                navDic= com.alibaba.fastjson.JSONObject.parseObject(router);
+            }
+            return navDic;
+        }else{
+            if(navDic==null  ){
+                navDic= Config.routerTranlater(c);
+            }
+            return navDic;
+        }
+
+    }
+
+    public static String getTranslatePath(String url,Context c){
+        Map  m=getNavDic(c);
+        if(m.containsKey(url)){
+            return m.get(url)+"";
+        }
+        return url;
+    }
+
 
 }

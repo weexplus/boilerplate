@@ -63,6 +63,29 @@
     return [[Weex conifg] objectForKey:@"appBoard"];
 }
 
++(NSMutableDictionary*)routerTranslater
+{
+    NSString *str=[Config routerTranslaterStr];
+   return [str toJson];
+}
++(NSString*)routerTranslaterStr
+{
+     
+    NSString *path = @"app/router-translator";
+     NSURL *url=nil;
+     if([URL isDiskExist])
+     {
+         url=[URL loadFromDisk:[path add:@".json"]];
+     }else{
+         url=[URL loadFromBundle:path ext:@"json"];
+     }
+  
+   NSError *err;
+   NSString *str =[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&err];
+    return  str;
+}
+
+
 +(NSString*)diskJsVersion
 {
     return  [[Weex diskConifg] objectForKey:@"jsVersion"];
