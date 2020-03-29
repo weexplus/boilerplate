@@ -392,7 +392,14 @@
 - (void)updateAttributes:(NSDictionary *)attributes
 {
     if (attributes[@"src"]) {
-        _videoURL = [NSURL URLWithString: attributes[@"src"]];
+       NSString *src=attributes[@"src"];
+        //zjr add
+       src= [src stringByReplacingOccurrencesOfString:@"sdcard:" withString:@""];
+       if([src hasPrefix:@"http"]){
+            _videoURL = [NSURL URLWithString:src];
+       }else{
+           _videoURL = [NSURL fileURLWithPath:src];
+       }
         [_videoView setURL:_videoURL];
     }
     if (attributes[@"autoPlay"]) {

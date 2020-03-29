@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "weex-builder src dist -w --ext & weexplus start & webpack-dev-server --env.NODE_ENV=development --progress",
     "build": "webpack --env.NODE_ENV=release",
-    "native":"weex-builder src dist -w --ext",
+    "native": "weex-builder src dist -w --ext",
     "web": "webpack-dev-server --env.NODE_ENV=development --progress"
   },
   "keywords": [
@@ -21,13 +21,15 @@
     "vue-template-compiler": "2.5.13",
     "vue-router": "^3.0.1",
     "vux": "^2.9.2",
-    "weex-vue-render": "^1.0.31",
+    "weex-vue-render": "^1.0.36",
     "replace": "^1.0.0",
     "delete": "^1.1.0",
     "weex-builder": "^0.4.1",
     "weexplus-render": "^1.0.1",
+    "weexplus-api": "^1.0.0",
     "vue-navigation": "^1.1.4",
-    "babel-core":"^6.26.3"
+    "babel-core": "^6.26.3",
+    "js-md5": "^0.7.3"
   },
   "devDependencies": {
     "autoprefixer": "^8.0.0",

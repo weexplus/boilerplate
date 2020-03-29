@@ -1,24 +1,23 @@
 <template>
     <div class="layout">
-        <image class="img" src="root:img/logo.png" @click="gonext"></image>
+        <image class="img" src="root:img/logo.png" ></image>
         <text class="text">欢迎使用weexplus!</text>
     </div>
 </template>
 <script>
     export default{
         data(){
-            return {}
+            return {
+                txt:{}
+            }
         },
         props: {},
         methods: {
-            onLoad(p){
+            onLoad(px){
 
             },
-            gonext(){
-                // this.log('ss')
-                // weex.requireModule('log').log({msg:'sss',level:'error'})
-                // weex.requireModule('navigator').push('/page1')
-                wxp.al()
+
+            onShow(){
 
             }
         },

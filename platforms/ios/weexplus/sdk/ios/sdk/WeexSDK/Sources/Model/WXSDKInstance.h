@@ -28,6 +28,7 @@
 extern NSString *const bundleUrlOptionKey;
 //zjr add
 static NSString * appBoardContent;
+
 @interface WXSDKInstance : NSObject
 
 /**
@@ -67,6 +68,8 @@ static NSString * appBoardContent;
 
 //zjr
 +(void)setAppBoardContent:(NSString*)content;
+
+
 /**
  * Component can freeze the rootview frame through the variable isRootViewFrozen
  * If Component want to freeze the rootview frame, set isRootViewFrozen YES, weex will not change the rootview frame when layout,or set NO.

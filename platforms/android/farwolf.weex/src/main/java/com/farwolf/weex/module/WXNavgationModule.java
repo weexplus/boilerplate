@@ -115,6 +115,7 @@ public class WXNavgationModule extends WXModuleBase {
                 callbacks.remove(id);
                 if(j!=null)
                 {
+                    if(m!=null)
                     j.invoke(m);
                 }
 
@@ -150,6 +151,7 @@ public class WXNavgationModule extends WXModuleBase {
         WeexActivity a=  (WeexActivity)this.mWXSDKInstance.getContext();
         if(a!=null)
             a.pageid=id;
+        setRoot("main");
     }
 
     @JSMethod(uiThread = false)
@@ -249,7 +251,7 @@ public class WXNavgationModule extends WXModuleBase {
         //路由模式计算路径
         if(!url.contains(".js")){
             String base= Weex.getBaseUrl(this.mWXSDKInstance);
-            url=  base+Weex.getTranslatePath(url);
+            url=  base+Weex.getTranslatePath(url,mWXSDKInstance.getContext());
         }else{
             url=  Weex.getRelativeUrl(url,this.mWXSDKInstance);
         }
@@ -302,10 +304,19 @@ public class WXNavgationModule extends WXModuleBase {
     {
         WeexActivity a=  (WeexActivity)this.mWXSDKInstance.getContext();
         a.rootid=id;
-        Stack<Activity> stack=  new Stack<Activity>();
-        stack.add(a);
-        stacks.put(a.rootid,stack);
-        a.isRoot=true;
+        if(stacks.containsKey(id)){
+             Stack<Activity> stack=  stacks.get(id);
+             if(stack.search(a)==-1){
+                 stack.add(a);
+             }
+        }else{
+            Stack<Activity> stack=  new Stack<Activity>();
+            stack.add(a);
+            stacks.put(a.rootid,stack);
+            a.isRoot=true;
+        }
+
+
     }
 
 

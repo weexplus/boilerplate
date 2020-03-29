@@ -28,7 +28,7 @@
 @property(nonatomic)BOOL isInView;
 @property(nonatomic)BOOL isLanscape;
 @property(nonatomic)BOOL debug;
-
+@property(nonatomic)BOOL isFinish;
 @property(nonatomic) CGPoint beginpoint;
 
 @property (copy,nonatomic)   typeof(void(^)(NSObject*)) nativeCallback;
@@ -51,7 +51,7 @@
 - (void)preRender:(NSString *)url finish:(void(^)())finish;
 - (void)interfaceOrientation:(UIInterfaceOrientation)orientation;
 
-
+-(void)fireDestory;
 - (void)refreshWeex;
 -(void)openWatch:(NSString*)ip;
 -(void)openQR;

@@ -16,6 +16,7 @@
 WX_EXPORT_METHOD(@selector(log:))
 -(void)log:(NSMutableDictionary*)param{
     NSString *msg=param[@"msg"];
+    
     NSString *level=level;
     if(param[@"level"]){
         level=param[@"level"];
@@ -23,6 +24,7 @@ WX_EXPORT_METHOD(@selector(log:))
     NSLog([@"weexplus:" add:msg]);
     NSString *m=[[[@"log:" add:level]add:@"level:"]add:msg];
 //    NSString *m=[@"log:" add:msg];
+   
     [[Weex getRefreshManager] send:m];
 }
 @end

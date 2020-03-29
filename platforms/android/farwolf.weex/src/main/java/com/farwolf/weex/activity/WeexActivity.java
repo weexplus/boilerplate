@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -118,7 +119,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     public ViewGroup container;
 
 
-
+    public boolean isFinish;
 
 
     @ViewById
@@ -628,16 +629,12 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
         if (mWXSDKInstance != null) {
-            mWXSDKInstance.fireGlobalEventCallback("onDestory",null);
-
+//            mWXSDKInstance.fireGlobalEventCallback("onDestory",null);
             mWXSDKInstance.onActivityDestroy();
-
-//            mWXSDKInstance.destroy();
-
         }
-
+        super.onDestroy();
     }
 
 
@@ -656,6 +653,9 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
         Log.e("stack",WXNavgationModule.stacks.get(rootid)+"");
     }
+
+
+
 
 
 
@@ -698,12 +698,10 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
     protected void onPause() {
 
         super.onPause();
-        if (mWXSDKInstance != null) {
+        if (mWXSDKInstance != null&&!this.isFinish) {
             mWXSDKInstance.fireGlobalEventCallback("onPause",null);
-
-            mWXSDKInstance.onActivityPause();
-
         }
+        mWXSDKInstance.onActivityPause();
         if(mReceiver!=null)
             unregisterReceiver(mReceiver);
 
@@ -715,6 +713,7 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
         super.onStop();
         if (mWXSDKInstance != null) {
             mWXSDKInstance.fireGlobalEventCallback("onStop",null);
+
             mWXSDKInstance.onActivityStop();
 
         }
@@ -842,10 +841,18 @@ public class WeexActivity extends TitleActivityBase implements IWXRenderListener
 
     @Override
     public void finish() {
-        super.finish();
+         this.isFinish=true;
         WXNavgationModule.pop(this.rootid);
         if (mWXSDKInstance != null) {
             mWXSDKInstance.fireGlobalEventCallback("onDestory",null);}
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+              WeexActivity.super.finish();
+            }
+        }, 200);
+
     }
 
     public void showTool()

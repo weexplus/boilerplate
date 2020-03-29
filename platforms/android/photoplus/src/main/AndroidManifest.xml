@@ -1,0 +1,30 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.farwolf.photoplus" >
+    <application android:theme="@style/AppTheme">
+
+        <provider
+            android:name="com.luck.picture.lib.PictureFileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <activity
+            android:name="com.luck.picture.lib.PictureSelectorActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.luck.picture.lib.PicturePreviewActivity" />
+        <activity
+            android:name="com.luck.picture.lib.PictureVideoPlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="sensor" />
+        <activity android:name="com.luck.picture.lib.PictureExternalPreviewActivity" />
+        <activity android:name="com.yalantis.ucrop.UCropActivity"
+            />
+        <activity android:name="com.yalantis.ucrop.PictureMultiCuttingActivity" />
+        <activity android:name="com.luck.picture.lib.PicturePlayAudioActivity" />
+
+
+    </application>
+</manifest>

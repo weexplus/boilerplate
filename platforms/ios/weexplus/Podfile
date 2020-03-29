@@ -57,6 +57,10 @@ def mypod
 
     pod ‘farwolf.weex’, :path => 'farwolf.weex'
     
+    pod ‘photoplus’, :path => 'photoplus'
+    
+    
+    
     pod 'WXDevtool','0.24.0'
 
     pod 'ZipArchive', '~> 1.4.0'

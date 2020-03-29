@@ -372,7 +372,7 @@ public class Weex extends ServiceBase{
     {
         if(instance==null)
             return "";
-        return  getBaseUrl(instance.getBundleUrl());
+        return  getBaseUrl(instance.getBundleUrl()).trim();
     }
 
 
@@ -388,7 +388,10 @@ public class Weex extends ServiceBase{
 
             if(x.length>3)
             {
-                String res= x[0]+"//"+x[2]+"/"+Weex.basedir;
+                String port=x[1];
+                if("".equals(port))
+                port=x[2];
+                String res= x[0]+"//"+port+"/"+Weex.basedir;
                 if(!res.endsWith("/"))
                     res+="/";
                 baseurl=res;
@@ -620,20 +623,28 @@ public class Weex extends ServiceBase{
     }
 
 
-    public static  Map getNavDic(){
-        String appaboard=appBoardContent.split("\\/\\*\\*\\*\\*\\*\\*\\*weexplus_split_router_weexplus\\*\\*\\*\\*\\*\\*\\/")[0];
-        if(navDic==null ||  !(router+"").equals(appaboard)){
-            router=appaboard;
-            String q[]= appaboard.split("\n");
-            String router= q[q.length-1];
-            router=router.substring(3,router.length());
-            navDic= com.alibaba.fastjson.JSONObject.parseObject(router);
+    public static  Map getNavDic(Context c){
+        if(appBoardContent.contains("weexplus_split_router_weexplus")){
+            String appaboard=appBoardContent.split("\\/\\*\\*\\*\\*\\*\\*\\*weexplus_split_router_weexplus\\*\\*\\*\\*\\*\\*\\/")[0];
+            if(navDic==null ||  !(router+"").equals(appaboard)){
+                router=appaboard;
+                String q[]= appaboard.split("\n");
+                String router= q[q.length-1];
+                router=router.substring(3,router.length());
+                navDic= com.alibaba.fastjson.JSONObject.parseObject(router);
+            }
+            return navDic;
+        }else{
+            if(navDic==null  ){
+                navDic= Config.routerTranlater(c);
+            }
+            return navDic;
         }
-        return navDic;
+
     }
 
-    public static String getTranslatePath(String url){
-        Map  m=getNavDic();
+    public static String getTranslatePath(String url,Context c){
+        Map  m=getNavDic(c);
         if(m.containsKey(url)){
             return m.get(url)+"";
         }

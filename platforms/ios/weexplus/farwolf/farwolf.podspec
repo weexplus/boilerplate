@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.dependency 'YYModel'
   s.dependency  "AFNetworking", "~>3.2.1"
   s.dependency 'Masonry', '~> 0.6.3'
-  s.dependency 'SDWebImage', '~> 4.2.2'
+  s.dependency 'SDWebImage', '~> 5.1.0'
   #s.dependency 'KoaPullToRefresh', '~> 1.0.6'    
      
   #s.dependency 'IQKeyboardManager', '~> 4.0.6'

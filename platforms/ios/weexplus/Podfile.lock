@@ -26,7 +26,7 @@ PODS:
     - Masonry (~> 0.6.3)
     - MBProgressHUD (~> 0.9.2)
     - SDCycleScrollView (~> 1.65)
-    - SDWebImage (~> 4.2.2)
+    - SDWebImage (~> 5.1.0)
     - SRMonthPicker
     - TOCropViewController (~> 2.0.8)
     - UIViewController_PopUp (~> 0.0.2)
@@ -49,20 +49,25 @@ PODS:
     - WeexSDK
     - zipzap (~> 8.1.1)
   - FSCalendar (2.7.9)
+  - GPUImage (0.1.7)
   - GSKStretchyHeaderView (0.12.2)
   - HcdDateTimePicker (1.1.1)
   - LMTowDatePicker (0.0.1):
     - FSCalendar (~> 2.7.9)
-  - LPPhotoViewer (0.2.2):
+  - LPPhotoViewer (0.2.3):
     - YYWebImage
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
+  - photoplus (0.0.1):
+    - farwolf.weex
+    - GPUImage
+    - ZLPhotoBrowser
   - RHAddressBook (1.1.1)
-  - SDCycleScrollView (1.75):
-    - SDWebImage (>= 4.0.0)
-  - SDWebImage (4.2.3):
-    - SDWebImage/Core (= 4.2.3)
-  - SDWebImage/Core (4.2.3)
+  - SDCycleScrollView (1.80):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.1.1):
+    - SDWebImage/Core (= 5.1.1)
+  - SDWebImage/Core (5.1.1)
   - SocketRocket (0.4.2)
   - SRMonthPicker (0.2.10)
   - SSLunarDate (0.0.1)
@@ -86,6 +91,8 @@ PODS:
   - YZHeaderScaleImage (1.0.1)
   - ZipArchive (1.4.0)
   - zipzap (8.1.1)
+  - ZLPhotoBrowser (3.1.2):
+    - SDWebImage
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
@@ -99,6 +106,7 @@ DEPENDENCIES:
   - LMTowDatePicker (from `LMTowDatePicker`)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
+  - photoplus (from `photoplus`)
   - SDCycleScrollView (~> 1.65)
   - SRMonthPicker
   - SSLunarDate (~> 0.0.1)
@@ -112,13 +120,14 @@ DEPENDENCIES:
   - ZipArchive (~> 1.4.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - BindingX
     - CHXBannerView
     - CocoaAsyncSocket
     - DOPDropDownMenu-Enhanced
     - FSCalendar
+    - GPUImage
     - GSKStretchyHeaderView
     - HcdDateTimePicker
     - LPPhotoViewer
@@ -142,6 +151,7 @@ SPEC REPOS:
     - YZHeaderScaleImage
     - ZipArchive
     - zipzap
+    - ZLPhotoBrowser
 
 EXTERNAL SOURCES:
   farwolf:
@@ -152,6 +162,8 @@ EXTERNAL SOURCES:
     :path: farwolf.weex
   LMTowDatePicker:
     :path: LMTowDatePicker
+  photoplus:
+    :path: photoplus
   WeexSDK:
     :path: sdk
 
@@ -161,19 +173,21 @@ SPEC CHECKSUMS:
   CHXBannerView: bfbaede8576af318bd2ce6fa8dcdc0cbfbd9dab8
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
-  farwolf: 6850f033a75b32196ae05571799c165e8647584f
+  farwolf: cffc1a49cf83d3715b2f6cb7a410ebaf08ff281a
   farwolf.business: 6bb8ac0b1d72340d7c2be924ea7410ce6b628daa
   farwolf.weex: 89ac961b9fc6b5229d70d77a3d771aa412c73b83
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   HcdDateTimePicker: 187736981f667f699d4d8d6ccc21621b55a6edb8
   LMTowDatePicker: 32e3d2699ca3dd39ccc4d0089116423f9b3cc420
-  LPPhotoViewer: d608bd60c17732a5198d65b87d33ccf6f2f73273
+  LPPhotoViewer: db52f4cd39d3c880cbb4439dfddfe1c2fdb23223
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  photoplus: 6d1111e958a2b0a14e857cfd08ef9cdc0541c855
   RHAddressBook: 870e9e0b34cb917b9c4c600fc3b7d5b530b23b13
-  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
-  SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
+  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
+  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SocketRocket: ffe08119b00ef982f6c37052a4705a057c8494ad
   SRMonthPicker: d3c639e82f525f1c10d1ad7f4bbdf180d404942b
   SSLunarDate: d5d7d581f7e7e157c8d704a5f053b4ebcf760bba
@@ -190,7 +204,8 @@ SPEC CHECKSUMS:
   YZHeaderScaleImage: 1ca4ed11644a4ccad7c4370de2fcbc8f6e145793
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
+  ZLPhotoBrowser: 7e88434918366af98f8ebbaf5b94206985812ed6
 
-PODFILE CHECKSUM: 07c7e15770d97b81bcf0c745a0a66686e436eaa9
+PODFILE CHECKSUM: 0c49aadc2d258a02a070da321565ca4d4ca0eedc
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

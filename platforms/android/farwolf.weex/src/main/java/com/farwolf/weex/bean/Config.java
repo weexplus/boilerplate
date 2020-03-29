@@ -33,6 +33,15 @@ public class Config {
         }
     }
 
+    public static com.alibaba.fastjson.JSONObject routerTranlater(Context c) {
+        String s = Local.getString(c,"app/router-translator.json");
+        try {
+            return com.alibaba.fastjson.JSONObject.parseObject(s);
+        } catch (Exception var3) {
+            return null;
+        }
+    }
+
 
     public static JSONObject assetConfig(Context c) {
         String s =Local.getAssetManager(c).getString(c,"app/weexplus.json");
