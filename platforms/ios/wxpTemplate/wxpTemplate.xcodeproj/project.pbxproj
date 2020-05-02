@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DA0F35D245C641400138242 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F35C245C641400138242 /* AppDelegate.m */; };
+		4DA0F360245C641400138242 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F35F245C641400138242 /* SceneDelegate.m */; };
+		4DA0F366245C641400138242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA0F364245C641400138242 /* Main.storyboard */; };
+		4DA0F368245C641500138242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA0F367245C641500138242 /* Assets.xcassets */; };
+		4DA0F36B245C641500138242 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA0F369245C641500138242 /* LaunchScreen.storyboard */; };
+		4DA0F36E245C641500138242 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F36D245C641500138242 /* main.m */; };
+		4DB3A81D245C6E720006478B /* app in Resources */ = {isa = PBXBuildFile; fileRef = 4DB3A81C245C6E720006478B /* app */; };
+		E5A5B3CE381F57934BC967ED /* libPods-wxpTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D380D5B3708B544E41C189DA /* libPods-wxpTemplate.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DA0F374245C641500138242 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DA0F350245C641400138242 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DA0F357245C641400138242;
+			remoteInfo = wxpTemplate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DA0F358245C641400138242 /* wxpTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wxpTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DA0F35B245C641400138242 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4DA0F35C245C641400138242 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4DA0F35E245C641400138242 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		4DA0F35F245C641400138242 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		4DA0F365245C641400138242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4DA0F367245C641500138242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DA0F36A245C641500138242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4DA0F36C245C641500138242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DA0F36D245C641500138242 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4DA0F373245C641500138242 /* wxpTemplateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wxpTemplateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB3A81C245C6E720006478B /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
+		89DD0867FEC4636099A9446F /* Pods-wxpTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wxpTemplate.debug.xcconfig"; path = "Target Support Files/Pods-wxpTemplate/Pods-wxpTemplate.debug.xcconfig"; sourceTree = "<group>"; };
+		D380D5B3708B544E41C189DA /* libPods-wxpTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wxpTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5559847DF6CE347BDC13B4 /* Pods-wxpTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wxpTemplate.release.xcconfig"; path = "Target Support Files/Pods-wxpTemplate/Pods-wxpTemplate.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DA0F355245C641400138242 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5A5B3CE381F57934BC967ED /* libPods-wxpTemplate.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DA0F370245C641500138242 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DA0F34F245C641400138242 = {
+			isa = PBXGroup;
+			children = (
+				4DB3A81C245C6E720006478B /* app */,
+				4DA0F35A245C641400138242 /* wxpTemplate */,
+				4DA0F359245C641400138242 /* Products */,
+				94ED0EB37619D4546796EAD3 /* Pods */,
+				7DC3BCDFD98FDC809C180530 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4DA0F359245C641400138242 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DA0F358245C641400138242 /* wxpTemplate.app */,
+				4DA0F373245C641500138242 /* wxpTemplateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DA0F35A245C641400138242 /* wxpTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4DA0F35B245C641400138242 /* AppDelegate.h */,
+				4DA0F35C245C641400138242 /* AppDelegate.m */,
+				4DA0F35E245C641400138242 /* SceneDelegate.h */,
+				4DA0F35F245C641400138242 /* SceneDelegate.m */,
+				4DA0F364245C641400138242 /* Main.storyboard */,
+				4DA0F367245C641500138242 /* Assets.xcassets */,
+				4DA0F369245C641500138242 /* LaunchScreen.storyboard */,
+				4DA0F36C245C641500138242 /* Info.plist */,
+				4DA0F36D245C641500138242 /* main.m */,
+			);
+			path = wxpTemplate;
+			sourceTree = "<group>";
+		};
+		7DC3BCDFD98FDC809C180530 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D380D5B3708B544E41C189DA /* libPods-wxpTemplate.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94ED0EB37619D4546796EAD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				89DD0867FEC4636099A9446F /* Pods-wxpTemplate.debug.xcconfig */,
+				FC5559847DF6CE347BDC13B4 /* Pods-wxpTemplate.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DA0F357245C641400138242 /* wxpTemplate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DA0F37C245C641500138242 /* Build configuration list for PBXNativeTarget "wxpTemplate" */;
+			buildPhases = (
+				233BF9976B17CC71C2AC553E /* [CP] Check Pods Manifest.lock */,
+				4DA0F354245C641400138242 /* Sources */,
+				4DA0F355245C641400138242 /* Frameworks */,
+				4DA0F356245C641400138242 /* Resources */,
+				A8544A26EE7438DB5606A73D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wxpTemplate;
+			productName = wxpTemplate;
+			productReference = 4DA0F358245C641400138242 /* wxpTemplate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DA0F372245C641500138242 /* wxpTemplateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DA0F37F245C641500138242 /* Build configuration list for PBXNativeTarget "wxpTemplateUITests" */;
+			buildPhases = (
+				4DA0F36F245C641500138242 /* Sources */,
+				4DA0F370245C641500138242 /* Frameworks */,
+				4DA0F371245C641500138242 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DA0F375245C641500138242 /* PBXTargetDependency */,
+			);
+			name = wxpTemplateUITests;
+			productName = wxpTemplateUITests;
+			productReference = 4DA0F373245C641500138242 /* wxpTemplateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DA0F350245C641400138242 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "郑江荣";
+				TargetAttributes = {
+					4DA0F357245C641400138242 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					4DA0F372245C641500138242 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 4DA0F357245C641400138242;
+					};
+				};
+			};
+			buildConfigurationList = 4DA0F353245C641400138242 /* Build configuration list for PBXProject "wxpTemplate" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DA0F34F245C641400138242;
+			productRefGroup = 4DA0F359245C641400138242 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DA0F357245C641400138242 /* wxpTemplate */,
+				4DA0F372245C641500138242 /* wxpTemplateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DA0F356245C641400138242 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DB3A81D245C6E720006478B /* app in Resources */,
+				4DA0F36B245C641500138242 /* LaunchScreen.storyboard in Resources */,
+				4DA0F368245C641500138242 /* Assets.xcassets in Resources */,
+				4DA0F366245C641400138242 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DA0F371245C641500138242 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		233BF9976B17CC71C2AC553E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wxpTemplate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8544A26EE7438DB5606A73D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wxpTemplate/Pods-wxpTemplate-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wxpTemplate/Pods-wxpTemplate-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wxpTemplate/Pods-wxpTemplate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DA0F354245C641400138242 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA0F35D245C641400138242 /* AppDelegate.m in Sources */,
+				4DA0F36E245C641500138242 /* main.m in Sources */,
+				4DA0F360245C641400138242 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DA0F36F245C641500138242 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DA0F375245C641500138242 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DA0F357245C641400138242 /* wxpTemplate */;
+			targetProxy = 4DA0F374245C641500138242 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4DA0F364245C641400138242 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DA0F365245C641400138242 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4DA0F369245C641500138242 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DA0F36A245C641500138242 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DA0F37A245C641500138242 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4DA0F37B245C641500138242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DA0F37D245C641500138242 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89DD0867FEC4636099A9446F /* Pods-wxpTemplate.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9N22VCET74;
+				INFOPLIST_FILE = wxpTemplate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsec.stockct;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4DA0F37E245C641500138242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC5559847DF6CE347BDC13B4 /* Pods-wxpTemplate.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9N22VCET74;
+				INFOPLIST_FILE = wxpTemplate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsec.stockct;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4DA0F380245C641500138242 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BCCTN825Z2;
+				INFOPLIST_FILE = wxpTemplateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.farwolf.wxptemplate.wxpTemplateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wxpTemplate;
+			};
+			name = Debug;
+		};
+		4DA0F381245C641500138242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BCCTN825Z2;
+				INFOPLIST_FILE = wxpTemplateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.farwolf.wxptemplate.wxpTemplateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wxpTemplate;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DA0F353245C641400138242 /* Build configuration list for PBXProject "wxpTemplate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA0F37A245C641500138242 /* Debug */,
+				4DA0F37B245C641500138242 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DA0F37C245C641500138242 /* Build configuration list for PBXNativeTarget "wxpTemplate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA0F37D245C641500138242 /* Debug */,
+				4DA0F37E245C641500138242 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DA0F37F245C641500138242 /* Build configuration list for PBXNativeTarget "wxpTemplateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA0F380245C641500138242 /* Debug */,
+				4DA0F381245C641500138242 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DA0F350245C641400138242 /* Project object */;
+}

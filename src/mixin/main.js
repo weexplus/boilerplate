@@ -11,7 +11,7 @@ Mixins.install = (Vue, options) => {
     components: {wraper, head, button, page},
     data(){
       return {
-
+      txt:'1'
       }
     },
     methods: {

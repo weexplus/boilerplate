@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+def keystorePropertiesFile = rootProject.file("gradle.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId keystoreProperties['appId']
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk{
+            abiFilters "armeabi-v7a","armeabi","x86"
+        }
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        releaseConfig {
+            if (properties.containsKey('storeFile') && properties.containsKey('storePassword') &&
+                    properties.containsKey('keyAlias') && properties.containsKey('keyPassword')) {
+                storePassword =keystoreProperties['storePassword']
+                keyAlias = keystoreProperties['keyAlias']
+                keyPassword = keystoreProperties['keyPassword']
+                storeFile = file(keystoreProperties['storeFile'])
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.farwolf.weexplus:weexplus:1.0.0'
+}
