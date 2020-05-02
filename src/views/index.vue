@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <image @click="goPage" class="img" src="root:img/logo.png" ></image>
+        <image  class="img"   src="root:img/logo.png" ></image>
         <text class="text">欢迎使用weexplus!</text>
     </div>
 </template>
@@ -8,26 +8,25 @@
     export default{
         data(){
             return {
-                txt:{}
+
             }
         },
         props: {},
         methods: {
-            back(){
-              this.$navigator.back()
-            },
-            goPage(){
-              this.$navigator.push({url:'/page1',preload:true})
-            },
             onLoad(px){
-                this.log('xxxx')
-               let nav=weex.requireModule('navigator')
-                nav.enableBackGesture()
+               //页面加载完成
+            },
+            onShow(){
+                //页面展示
+            },
+            onUnload(){
+               //页面卸载
+
+            },
+            onHide(){
+                //页面隐藏
             },
 
-            onShow(){
-
-            }
         },
         created(){
 

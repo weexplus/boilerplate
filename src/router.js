@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from './views/index.vue'
 import entry from './entry.vue'
-import page1 from './views/page1.vue'
+
 
 Vue.use(Router)
 module.exports = new Router({
@@ -18,14 +18,6 @@ module.exports = new Router({
     },
     {
       path: '/index',
-      component: index
-    },
-    {
-      path: '/page1',
-      component: page1
-    },
-    {
-      path: '/index2dd',
       component: index
     }
   ]
