@@ -1,7 +1,7 @@
 <template>
     <div class="layout" >
         <image  class="img"   src="root:img/logo.png" ></image>
-        <text class="text">欢迎使用weexplus!</text>
+        <text class="text">欢迎使用weexplus1!</text>
     </div>
 </template>
 <script>

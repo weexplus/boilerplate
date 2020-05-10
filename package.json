@@ -5,7 +5,7 @@
   "author": "",
   "private": true,
   "scripts": {
-    "dev": "weex-builder src dist -w --ext & weexplus start & webpack-dev-server --env.NODE_ENV=development --progress",
+    "dev": "concurrently \"weex-builder src dist -w --ext\" \"weexplus start\" \"webpack-dev-server --env.NODE_ENV=development --progress\"",
     "build": "webpack --env.NODE_ENV=release",
     "native": "weex-builder src dist -w --ext",
     "web": "webpack-dev-server --env.NODE_ENV=development --progress"
@@ -63,6 +63,7 @@
     "webpack-merge": "^4.1.0",
     "webpack-uglify-parallel": "^0.1.4",
     "weex-loader": "^0.7.2",
-    "weex-vue-precompiler": "^0.1.17"
+    "weex-vue-precompiler": "^0.1.17",
+    "concurrently": "^5.2.0"
   }
 }
