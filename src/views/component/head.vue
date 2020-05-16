@@ -3,17 +3,16 @@
         <div class="status" :style="{'background-color':statusBgcolor,'height':statusHeight+'px'}"></div>
         <div class="titlelayout">
             <div class="backarea" @click="backClick">
-                <image src="root:img/back.png"
-                       style="width: 70px;height: 70px;margin-left: -20px"></image>
-                <text style="color: white;font-size: 27px">返回</text>
+                <text class="back" style="font-family: sys;font-size: 30px;margin-left: 15px" :style="{'color':titleColor}">&#xe96e;</text>
+                <text style="color: white;font-size: 32px;margin-left: 2px;margin-bottom: 1px" :style="{'color':titleColor}" v-if="showCloseWord">{{closeWord}}</text>
             </div>
             <text style="color: white;font-size: 36px" :style="{'color':titleColor,'font-size':titleSize+'px'}">{{title}}</text>
             <div class="rightArea">
-               <slot name="right">
-               </slot>
+                <slot name="right">
+                </slot>
             </div>
             <div v-if="!hideBottomLine"
-             style="height: 1px;background-color: #cccccc;position: absolute;bottom: 0;left: 0;right: 0;width: 750px">
+                 style="height: 1px;background-color: #cccccc;position: absolute;bottom: 0;left: 0;right: 0;width: 750px">
             </div>
         </div>
     </div>
@@ -35,15 +34,21 @@
                 default: '#ffffff'
             },
             titleSize:{
-                default:36
+                default:38
             },
             hideBottomLine: {
                 default: true
             },
+            closeWord:{
+                default:'返回'
+            },
+            showCloseWord:{
+                default:true
+            }
         },
         data() {
             return {
-                statusHeight:40
+                statusHeight:44
             }
         },
         methods: {
@@ -60,26 +65,27 @@
 
             },
             backClick(){
-              this.$navigator.back()
+                this.$navigator.back()
+            },
+            registFont(){
+                const font = weex.requireModule('font')
+                font.addFont('sys','root:font/iconfont.ttf')
             },
             adjust() {
-                if (weex.config.env.platform == 'android') {
-                    // var p = weex.config.env.osVersion
-                    // p = p.replace(/\./g, '')
-                    // if (p.length < 3)
-                    //     p = p + "0";
-                    // if (p <= '440') {
-                    //     this.height = 108
-                    //     this.top = 16;
-                    //     this.titletop = 4;
-                    // }
+                if (weex.config.env.platform == 'android') { d
                 }else if (weex.config.env.platform == 'web') {
                     this.fontSize=20
+                }else if (weex.config.env.platform == 'iOS') {
+                    let isfullscreen= weex.requireModule('env').isFringeScreen()
+                    if(isfullscreen){
+                        this.statusHeight=90
+                    }
                 }
             }
         },
         created() {
             this.adjust()
+            this.registFont()
         }
     }
 </script>
@@ -106,7 +112,7 @@
         height: 88px;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+
         position: absolute;
         left: 0;
         top: 0;
