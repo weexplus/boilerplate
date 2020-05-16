@@ -44,9 +44,7 @@
             selectImg:{
                 default:''
             },
-            select:{
-              default:false
-            },
+
 
             fontSize:
             {
@@ -65,6 +63,7 @@
         data () {
             return {
                 visiable:true,
+                select:false
             }
         },
         filters:{
