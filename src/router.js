@@ -1,9 +1,7 @@
 import Vue from 'vue'
 /*global Vue*/
-import Router from 'vue-router'
 import index from './views/index.vue'
 import entry from './entry.vue'
-
 import Router from 'vue-router'
 Vue.use(Router)
 module.exports = new Router({

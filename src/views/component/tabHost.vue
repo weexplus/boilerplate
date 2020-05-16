@@ -10,6 +10,7 @@
                      :selectImg="item.selectImg" fontSize="26" color="#313131" selectColor="#1577FF">
             </tabitem>
         </div>
+        <div style="height:50px;width:750px;background-color: white " v-if="isFringeScreen" ></div>
     </div>
 </template>
 
@@ -26,7 +27,8 @@
         data() {
             return {
                 index: this.firstIndex,
-                loadFlag: {}
+                loadFlag: {},
+                isFringeScreen:weex.requireModule('env')?weex.requireModule('env').isFringeScreen():false
             }
         },
         methods: {
