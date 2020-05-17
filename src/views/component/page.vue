@@ -1,6 +1,6 @@
 <template>
    <div style="flex: 1;width: 750px">
-       <head v-if="hasHead" :title="title"  ></head>
+       <head v-if="hasHead" :title="title" :hasBackBtn="hasBackBtn" ></head>
        <div style="flex: 1;display: flex;width: 750px">
            <slot  ></slot>
        </div>
@@ -17,7 +17,10 @@
             },
             hasHead:{
                 default: true
-            }
+            },
+            hasBackBtn: {
+                default: true
+            },
         },
         data() {
             return {}

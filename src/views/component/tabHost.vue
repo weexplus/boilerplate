@@ -28,11 +28,10 @@
             return {
                 index: this.firstIndex,
                 loadFlag: {},
-                isFringeScreen:weex.requireModule('env')?weex.requireModule('env').isFringeScreen():false
+                isFringeScreen:weex.config.env.platform == 'iOS'&&weex.requireModule('env')?weex.requireModule('env').isFringeScreen():false
             }
         },
         methods: {
-
             change(i) {
                 this.index = i;
                 if (this.loadFlag[i + ''] == undefined) {

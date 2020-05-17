@@ -1,54 +1,59 @@
 <template>
-    <div class="layout" >
-        <image  class="img"   src="root:img/logo.png" ></image>
-        <text class="text">欢迎使用weexplus1!</text>
-    </div>
+    <tabHost :items="items">
+    </tabHost>
 </template>
 <script>
-    export default{
-        data(){
+    export default {
+        props: {},
+        data() {
             return {
-
+                items: [
+                    {text: '首页', normalImg: '&#xe970;', selectImg: '&#xe971;',component:require('./tab/tab1.vue')},
+                    {text: '新闻', normalImg: '&#xe97e;', selectImg: '&#xe980;',component:require('./tab/tab2.vue')},
+                    {text: '我的', normalImg: '&#xe973;', selectImg: '&#xe987;',component:require('./tab/tab3.vue')},
+                ],
+                index: 0
             }
         },
-        props: {},
         methods: {
-            onLoad(px){
-               //页面加载完成
-            },
-            onShow(){
-                //页面展示
-            },
-            onUnload(){
-               //页面卸载
+
+            onLoad(param) {
 
             },
-            onHide(){
-                //页面隐藏
-            },
+            onShow() {
 
+            },
+            onHide() {
+
+            },
+            onUnload() {
+
+            },
+            registFont(){
+                const font = weex.requireModule('font')
+                font.addFont('nj','root:font/iconfont.ttf')
+            }
         },
-        created(){
+        mounted(){
+            // this.$refs.host.components={tab1,tab2,tab3}
 
+            // debugger
+
+            // this.log(JSON.stringify(this.components))
+        },
+        created() {
+            this.registFont()
         }
     }
 </script>
+
 <style scoped>
-  .layout{
-      align-items: center;
-      background-color: #ffffff;
-      justify-content: center;
-  }
-    .img{
-        width: 200px;
-        height: 200px;
-        margin-top: -100px;
-        border-radius: 100px;
-    }
-    .text{
-        color: black;
-        margin-top: 30px;
-        font-size: 70px;
-        font-weight: bold;
+    .full {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 750px;
     }
 </style>

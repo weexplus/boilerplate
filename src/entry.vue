@@ -1,6 +1,9 @@
 <template>
     <div style="">
-
+        此页面不是真正的首页
+        此页面加载时用户看到的是启动图，不会看到本页面的内容
+        可以在此页面写一些跳转逻辑
+        例如根据登录状态跳转到登录页还是首页
     </div>
 </template>
 <script>
@@ -11,6 +14,7 @@
         },
         methods: {
             onLoad(){
+                //首页的地址
                 let url = '/index'
                 this.goToMain(url)
             },

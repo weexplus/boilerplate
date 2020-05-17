@@ -2,7 +2,7 @@
     <div class="titleroot"  :style="{'background-color':bgcolor}">
         <div class="status" :style="{'background-color':statusBgcolor,'height':statusHeight+'px'}"></div>
         <div class="titlelayout">
-            <div class="backarea" @click="backClick">
+            <div class="backarea" v-if="hasBackBtn" @click="backClick">
                 <text class="back" style="font-family: sys;font-size: 30px;margin-left: 15px" :style="{'color':titleColor}">&#xe96e;</text>
                 <text style="color: white;font-size: 32px;margin-left: 2px;margin-bottom: 1px" :style="{'color':titleColor}" v-if="showCloseWord">{{closeWord}}</text>
             </div>
@@ -26,6 +26,9 @@
             },
             bgcolor: {
                 default: '#1EA5FC'
+            },
+            hasBackBtn: {
+                default: true
             },
             statusBgcolor:{
                 default: '#1EA5FC'
@@ -72,9 +75,10 @@
                 font.addFont('sys','root:font/iconfont.ttf')
             },
             adjust() {
-                if (weex.config.env.platform == 'android') { d
+                if (weex.config.env.platform == 'android') {
+                    this.statusHeight=44
                 }else if (weex.config.env.platform == 'web') {
-                    this.fontSize=20
+
                 }else if (weex.config.env.platform == 'iOS') {
                     let isfullscreen= weex.requireModule('env').isFringeScreen()
                     if(isfullscreen){
