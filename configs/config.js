@@ -3,7 +3,7 @@ const ROOT = path.resolve(__dirname, '..')+"/dist";
 const ip = require('ip').address();
 const config = {
   root: ROOT,
-  // webpack-dev-server
+  // webpack-dev.md-server
   pluginConfigPath: 'plugins/plugins.json',
   pluginFilePath: 'plugins/plugins.js',
   // router

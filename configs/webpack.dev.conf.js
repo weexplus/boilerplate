@@ -125,7 +125,7 @@ const devWebpackConfig = webpackMerge(commonConfig[0], {
   ],
   /**
    * Webpack Development Server configuration
-   * Description: The webpack-dev-server is a little node.js Express server.
+   * Description: The webpack-dev.md-server is a little node.js Express server.
    * The server emits information about the compilation state to the client,
    * which reacts to those events.
    *
