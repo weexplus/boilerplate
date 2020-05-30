@@ -4,7 +4,7 @@
 
 <script>
     var he = require('he');
-    var font = require('../../lib/util/font');
+
     export default {
         props: {
             text: {
