@@ -1,7 +1,7 @@
 <template>
     <page title="首页"  :hasBackBtn="false">
         <div class="layout" >
-            <image  class="img"   src="root:img/logo.png" ></image>
+            <image  class="img" @click="test"  src="root:img/logo.png" ></image>
             <text class="text">欢迎使用weexplus!</text>
         </div>
     </page>
@@ -16,6 +16,10 @@
         },
         props: {},
         methods: {
+            test(){
+              debugger
+                this.log('sssss')
+            },
             onLoad(px){
                 //页面加载完成
             },
