@@ -16,12 +16,6 @@ android {
         }
         multiDexEnabled true
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     signingConfigs {
         releaseConfig {
             if (properties.containsKey('storeFile') && properties.containsKey('storePassword') &&
@@ -33,6 +27,18 @@ android {
             }
         }
     }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false //去掉不用资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
+        }
+        debug {
+
+        }
+    }
+
 }
 
 dependencies {
