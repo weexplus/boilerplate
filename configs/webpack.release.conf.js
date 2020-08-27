@@ -138,7 +138,7 @@ const productionConfig = webpackMerge(commonConfig[0], {
     /*
      * Plugin: UglifyJsparallelPlugin
      * Description: Identical to standard uglify webpack plugin
-     * with an option to build multiple files in parallel
+     * with an option to buildApp multiple files in parallel
      *
      * See: https://www.npmjs.com/package/webpack-uglify-parallel
      */
@@ -207,7 +207,7 @@ const weexConfig = webpackMerge(commonConfig[1], {
     /*
      * Plugin: UglifyJsparallelPlugin
      * Description: Identical to standard uglify webpack plugin
-     * with an option to build multiple files in parallel
+     * with an option to buildApp multiple files in parallel
      *
      * See: https://www.npmjs.com/package/webpack-uglify-parallel
      */

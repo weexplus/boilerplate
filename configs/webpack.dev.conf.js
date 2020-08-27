@@ -158,7 +158,7 @@ const weexConfig = webpackMerge(commonConfig[1], {
   watch: true
 })
 
-// build source to weex_bundle with watch mode.
+// buildApp source to weex_bundle with watch mode.
 webpack(weexConfig, (err, stats) => {
   if (err) {
     console.err('COMPILE ERROR:', err.stack)

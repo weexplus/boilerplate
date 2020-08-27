@@ -14,6 +14,7 @@ temp
 dist/*
 *.iml
 release
+weexplus.sketch
 .gradle
 /build
 package-lock.json
