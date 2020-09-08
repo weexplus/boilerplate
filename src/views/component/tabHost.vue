@@ -33,6 +33,7 @@
         },
         methods: {
             change(i) {
+                // this.log('x1='+i)
                 this.index = i;
                 if (this.loadFlag[i + ''] == undefined) {
                     this.loadFlag[i + ''] = true
@@ -41,7 +42,7 @@
                         cp.load()
                     }
                 }
-                // this.$emit('onChange',i)
+                this.$emit('onChange',i)
             },
             onLoad(param) {
                 this.loadFlag[this.firstIndex + ''] = true

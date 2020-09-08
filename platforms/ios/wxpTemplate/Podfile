@@ -2,19 +2,19 @@ platform :ios, '8.0'
 #use_frameworks!
 workspace “wxpTemplate”
 
- 
+
 
 xcodeproj “wxpTemplate.xcodeproj"
 
 def mypod
     platform :ios, '8.0'
     inhibit_all_warnings!
- 
-    pod 'farwolf.weex', :git => 'https://github.com/farwolf2010/farwolf.weex.git', :tag => '1.0.13'
+
+    pod 'farwolf.weex', :git => 'https://github.com/farwolf2010/farwolf.weex.git', :tag => '1.0.15'
     pod 'photoplus', :git => 'https://github.com/farwolf2010/photoplus-ios.git'
 
-    
-    
+
+
 
 end
 
@@ -24,7 +24,7 @@ target 'wxpTemplate' do
     xcodeproj "wxpTemplate.xcodeproj"
 end
 
- 
- 
- 
+
+
+
 
