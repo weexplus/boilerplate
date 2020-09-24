@@ -25,7 +25,7 @@
     "replace": "^1.0.0",
     "delete": "^1.1.0",
     "weex-builder": "^0.4.1",
-    "weexplus-render": "^1.0.6",
+    "weexplus-render": "^1.0.8",
     "weexplus-api": "^1.0.0",
     "vue-navigation": "^1.1.4",
     "js-md5": "^0.7.3"
