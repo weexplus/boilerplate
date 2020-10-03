@@ -4,4 +4,4 @@ let component={
         // weex.registerComponent('drawerlayout',drawerlayout)
     }
 }
-module.exports=component
+export  default component

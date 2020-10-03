@@ -4,4 +4,4 @@ let module={
         // weex.registerModule('navigator',navigator)
     }
 }
-module.exports=module
+export  default module
