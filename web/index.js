@@ -1,5 +1,5 @@
-import module from 'module'
-import component from 'component'
+import module from './module'
+import component from './component'
 
 
 
