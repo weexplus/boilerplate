@@ -17,7 +17,6 @@
         props: {},
         methods: {
             test(){
-              debugger
                 this.log('sssss')
             },
             onLoad(px){
