@@ -6,11 +6,15 @@ let page = require('../views/component/page.vue')
 let api = require('weexplus-api')
 let tabHost = require('../views/component/tabHost.vue')
 let tabitem = require('../views/component/tabitem.vue')
+let row = require('../views/component/row.vue')
+let VCenter = require('../views/component/VCenter.vue')
+let HCenter = require('../views/component/HCenter.vue')
+let mask = require('../views/component/mask.vue')
 
 Mixins.install = (Vue, options) => {
   api.install(Vue)
   Vue.mixin({
-    components: {wraper, head, button, page,tabHost,tabitem},
+    components: {wraper, head, button, page,tabHost,tabitem,row,VCenter,HCenter,mask},
     data(){
       return {
       txt:'1'

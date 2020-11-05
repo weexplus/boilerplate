@@ -21,6 +21,7 @@
     "vue-template-compiler": "2.5.13",
     "vue-router": "^3.0.1",
     "vux": "^2.9.2",
+    "weex-ui": "^0.8.5",
     "weex-vue-render": "^1.0.36",
     "replace": "^1.0.0",
     "delete": "^1.1.0",
