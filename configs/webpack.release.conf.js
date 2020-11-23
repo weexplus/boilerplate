@@ -21,7 +21,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 /**
  * Generate multiple entrys
- * @param {Array} entry 
+ * @param {Array} entry
  */
 const generateMultipleEntrys = (entry) => {
   let entrys = Object.keys(entry);
@@ -30,7 +30,7 @@ const generateMultipleEntrys = (entry) => {
   const htmlPlugin = entrys.map(name => {
     return new HtmlWebpackPlugin({
       filename: name + '.html',
-      template: helper.rootNode(`src/web/index.html`),
+      template: helper.rootNode(`dist/web/index.html`),
       isDevServer: true,
       chunksSortMode: 'dependency',
       inject: true,
@@ -95,7 +95,7 @@ const productionConfig = webpackMerge(commonConfig[0], {
   plugins: [
     /**
      * Plugin: webpack.DefinePlugin
-     * Description: The DefinePlugin allows you to create global constants which can be configured at compile time. 
+     * Description: The DefinePlugin allows you to create global constants which can be configured at compile time.
      *
      * See: https://webpack.js.org/plugins/define-plugin/
      */
@@ -121,7 +121,7 @@ const productionConfig = webpackMerge(commonConfig[0], {
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
     new HtmlWebpackPlugin({
-      template: 'src/web/index.html',
+      template: 'dist/web/index.html',
       chunksSortMode: 'dependency',
       inject: 'head'
     }),
@@ -142,32 +142,32 @@ const productionConfig = webpackMerge(commonConfig[0], {
      *
      * See: https://www.npmjs.com/package/webpack-uglify-parallel
      */
-    new UglifyJsparallelPlugin({
-      workers: os.cpus().length,
-      mangle: true,
-      compressor: {
-        warnings: false,
-        drop_console: true,
-        drop_debugger: true
-      }
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../src/native/img'),
-        to: path.resolve(__dirname, '../release/web/img'),
-        ignore: ['.*']
-      },
-      {
-        from: path.resolve(__dirname, '../src/native/font'),
-        to: path.resolve(__dirname, '../release/web/font'),
-        ignore: ['.*']
-      },
-      {
-        from: path.resolve(__dirname, '../src/native/file'),
-        to: path.resolve(__dirname, '../release/web/file'),
-        ignore: ['.*']
-      }
-    ])
+    // new UglifyJsparallelPlugin({
+    //   workers: os.cpus().length,
+    //   mangle: true,
+    //   compressor: {
+    //     warnings: false,
+    //     drop_console: true,
+    //     drop_debugger: true
+    //   }
+    // }),
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, '../src/native/img'),
+    //     to: path.resolve(__dirname, '../release/web/img'),
+    //     ignore: ['.*']
+    //   },
+    //   {
+    //     from: path.resolve(__dirname, '../src/native/font'),
+    //     to: path.resolve(__dirname, '../release/web/font'),
+    //     ignore: ['.*']
+    //   },
+    //   {
+    //     from: path.resolve(__dirname, '../src/native/file'),
+    //     to: path.resolve(__dirname, '../release/web/file'),
+    //     ignore: ['.*']
+    //   }
+    // ])
   ]
 });
 
