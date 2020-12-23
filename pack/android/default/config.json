@@ -1,9 +1,9 @@
 {
   "appName": "weexplus",
-  "storePassword": "123456",
+  "storePassword": "111111",
   "keyAlias":"key0",
   "appid": "com.farwolf.weexplus",
-  "keyPassword": "123456",
+  "keyPassword": "111111",
   "versionCode": 1,
   "versionName": "1.0.0"
 }
