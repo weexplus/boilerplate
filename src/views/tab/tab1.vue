@@ -1,8 +1,8 @@
 <template>
     <page title="首页"  :hasBackBtn="false">
         <div class="layout" >
-            <image  class="img" @click="test"  src="root:img/logo.png" ></image>
-            <text class="text">欢迎使用weexplus!</text>
+            <image  class="img" v-show="showImg" @click="test"  src="root:img/logo.png" ></image>
+            <text class="text" @click="showImg=!showImg">欢迎使用weexplus!</text>
         </div>
     </page>
 
@@ -11,7 +11,7 @@
     export default{
         data(){
             return {
-
+                showImg:true
             }
         },
         props: {},
