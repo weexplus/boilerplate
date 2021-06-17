@@ -142,15 +142,15 @@ const productionConfig = webpackMerge(commonConfig[0], {
      *
      * See: https://www.npmjs.com/package/webpack-uglify-parallel
      */
-    // new UglifyJsparallelPlugin({
-    //   workers: os.cpus().length,
-    //   mangle: true,
-    //   compressor: {
-    //     warnings: false,
-    //     drop_console: true,
-    //     drop_debugger: true
-    //   }
-    // }),
+    new UglifyJsparallelPlugin({
+      workers: os.cpus().length,
+      mangle: true,
+      compressor: {
+        warnings: false,
+        drop_console: true,
+        drop_debugger: true
+      }
+    }),
     // new CopyWebpackPlugin([
     //   {
     //     from: path.resolve(__dirname, '../src/native/img'),
