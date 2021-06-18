@@ -145,6 +145,7 @@ const productionConfig = webpackMerge(commonConfig[0], {
     new UglifyJsparallelPlugin({
       workers: os.cpus().length,
       mangle: true,
+      sourceMap:false,
       compressor: {
         warnings: false,
         drop_console: true,
