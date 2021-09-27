@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Index</title>
+    <meta name="weex-viewport" content="750">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <script src="./web/assets/qrcode.js"></script>
+    <script src="./web/assets/jq.js"></script>
+
+
+    <style>
+        html, body, #weex {
+            width: 100%;
+            height: 100%;
+        }
+
+        html, body {
+            -ms-overflow-style: scrollbar;
+            -webkit-tap-highlight-color: transparent;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        body::before {
+            content: "1";
+            height: 1px;
+            overflow: hidden;
+            color: transparent;
+            display: block;
+        }
+         div{
+             display: flex;
+             overflow-y: scroll;
+             flex: 1;
+         }
+        #root {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+    function createQRCode() {
+        // console.clear()
+        var trans = $.ajax({url: "router-translator.json", async: false});
+        trans = JSON.parse(trans.responseText)
+        let base = window.location.href.split('?')[0].split('#')[1]
+        let nurl = window.location.protocol + '//' + window.location.host.split(':')[0] + ':8890/js/' + trans[base]
+        console.log("路由跳转后后请刷新浏览器更新二维码 " );
+        console.log("weexplus 手机扫码 URL: " + nurl);
+
+        var QR = qrcode(0, 'L')
+        QR.addData(nurl)
+        QR.make()
+        var html = QR.createImgTag(6, 12)
+        html = html.replace('<img src="', '')
+        html = html.split('" width')[0]
+        html = html.trim()
+        console.log("%c ", "padding:75px 80px 75px;background:url(" + html + ") no-repeat;background-size:150px")
+
+    }
+
+    function socket() {
+        if(window.socket&&window.socket.close){
+            window.socket.close()
+        }
+        let ip = window.location.host.split(':')[0]
+        var ws = new WebSocket('ws://' + ip + ':' + 9897 + '');
+        window.socket = ws
+        ws.onopen = function () {
+            // Web Socket 已连接上，使用 send() 方法发送数据
+            console.log('socket 已连接！')
+        };
+    }
+
+    createQRCode()
+    socket()
+    // setTimeout(function () {
+    //     window.eventBus.$on('pageChange', function () {
+    //         setTimeout(function () {
+    //             createQRCode()
+    //         }, 100)
+    //     })
+    // }, 1200)
+
+
+</script>
+</body>
+<%= htmlWebpackPlugin.options.devScripts %>
+</html>

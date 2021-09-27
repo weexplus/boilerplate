@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "concurrently \"weex-builder src dist -w --ext\" \"weexplus start\" \"webpack-dev-server --env.NODE_ENV=development --progress\"",
     "build": "webpack --env.NODE_ENV=release",
-    "native": "weex-builder src dist -w --ext",
+    "native": "concurrently \"weex-builder src dist -w --ext\" \"weexplus start\"",
     "web": "webpack-dev-server --env.NODE_ENV=development --progress"
   },
   "keywords": [
@@ -15,6 +15,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.4",
     "delete": "^1.1.0",
     "file-loader": "^2.0.0",
     "js-md5": "^0.7.3",
