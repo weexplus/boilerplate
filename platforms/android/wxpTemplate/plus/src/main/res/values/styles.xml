@@ -1,0 +1,50 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+
+
+
+    <style name="pop" parent="android:Theme.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/pop_an_dismiss</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="pop_an_dismiss" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/pop</item>
+        <item name="android:activityOpenExitAnimation">@anim/dismiss</item>
+        <item name="android:activityCloseEnterAnimation">@anim/pop</item>
+        <item name="android:activityCloseExitAnimation">@anim/dismiss</item>
+    </style>
+
+    <style name="free_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+
+</resources>

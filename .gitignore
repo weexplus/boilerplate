@@ -5,7 +5,7 @@ platforms/android/wxpTemplate/app/src/main/assets/app/*
 !platforms/android/wxpTemplate/app/src/main/assets/app/weexplus.json
 platforms/ios/wxpTemplate/Pods
 platforms/ios/wxpTemplate/products/
-plugins/plugintemplate
+plugins/plugin-template
 .svn
 *.DS_Store
 .idea

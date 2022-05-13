@@ -1,0 +1,16 @@
+{
+  "schema":"js",
+  "debug":true,
+  "loglevel":"info",
+  "logfiler":"",
+  "showerror":true,
+  "isPortrait":true,
+  "jsVersion":2,
+  "debugIp":"127.0.0.1",
+  "debugEntry":"http://42.192.55.244/zttest/views/wxp/page1.js?module=zttest",
+  "releaseEntry":"app/entry.js",
+  "wechatEntry":"app/demo/index.js",
+  "appBoard":"root:mixin/appBoard.js",
+  "notifyEntry":"http://172.20.10.3:8890/js/notifyEntry.js"
+}
+

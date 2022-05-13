@@ -1,0 +1,75 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - Masonry (0.6.4)
+  - photoplus (1.0.6):
+    - TOCropViewController
+    - weexplus
+  - PlusWeexSDK (1.0.17)
+  - SDWebImage (5.1.1):
+    - SDWebImage/Core (= 5.1.1)
+  - SDWebImage/Core (5.1.1)
+  - SocketRocket (0.4.2)
+  - TOCropViewController (2.6.0)
+  - weexplus (1.0.6):
+    - AFNetworking (~> 4.0.0)
+    - Masonry (~> 0.6.3)
+    - PlusWeexSDK (~> 1.0.17)
+    - SDWebImage (~> 5.1.0)
+    - SocketRocket (~> 0.4.2)
+    - YYModel (~> 1.0.4)
+    - ZipArchive
+  - YYModel (1.0.4)
+  - ZipArchive (1.4.0)
+
+DEPENDENCIES:
+  - photoplus (from `photoplus`)
+  - PlusWeexSDK (from `PlusWeexSDK`)
+  - weexplus (from `plus`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - Masonry
+    - SDWebImage
+    - SocketRocket
+    - TOCropViewController
+    - YYModel
+    - ZipArchive
+
+EXTERNAL SOURCES:
+  photoplus:
+    :path: photoplus
+  PlusWeexSDK:
+    :path: PlusWeexSDK
+  weexplus:
+    :path: plus
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  photoplus: 20c585daf2e9f82d1b82527ece508770bfab8304
+  PlusWeexSDK: 3df9a549ea47a4bf3415870d63aed04948b8343e
+  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  SocketRocket: ffe08119b00ef982f6c37052a4705a057c8494ad
+  TOCropViewController: 3105367e808b7d3d886a74ff59bf4804e7d3ab38
+  weexplus: 7c54af20860f31b3a50a19cf61659cc141bdc901
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
+
+PODFILE CHECKSUM: 81b3be6cfdf3377146be564ab4ac6a76c0fb9112
+
+COCOAPODS: 1.11.2

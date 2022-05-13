@@ -13,7 +13,7 @@
 		4DA0F368245C641500138242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA0F367245C641500138242 /* Assets.xcassets */; };
 		4DA0F36B245C641500138242 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA0F369245C641500138242 /* LaunchScreen.storyboard */; };
 		4DA0F36E245C641500138242 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F36D245C641500138242 /* main.m */; };
-		4DB3A81D245C6E720006478B /* app in Resources */ = {isa = PBXBuildFile; fileRef = 4DB3A81C245C6E720006478B /* app */; };
+		4DD1DB96282CA4DB0062B1FF /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1DB95282CA4DB0062B1FF /* modules */; };
 		E5A5B3CE381F57934BC967ED /* libPods-wxpTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D380D5B3708B544E41C189DA /* libPods-wxpTemplate.a */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,7 @@
 		4DA0F36C245C641500138242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DA0F36D245C641500138242 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4DA0F373245C641500138242 /* wxpTemplateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wxpTemplateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DB3A81C245C6E720006478B /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
+		4DD1DB95282CA4DB0062B1FF /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = modules; sourceTree = "<group>"; };
 		89DD0867FEC4636099A9446F /* Pods-wxpTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wxpTemplate.debug.xcconfig"; path = "Target Support Files/Pods-wxpTemplate/Pods-wxpTemplate.debug.xcconfig"; sourceTree = "<group>"; };
 		D380D5B3708B544E41C189DA /* libPods-wxpTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wxpTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5559847DF6CE347BDC13B4 /* Pods-wxpTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wxpTemplate.release.xcconfig"; path = "Target Support Files/Pods-wxpTemplate/Pods-wxpTemplate.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 		4DA0F34F245C641400138242 = {
 			isa = PBXGroup;
 			children = (
-				4DB3A81C245C6E720006478B /* app */,
+				4DD1DB95282CA4DB0062B1FF /* modules */,
 				4DA0F35A245C641400138242 /* wxpTemplate */,
 				4DA0F359245C641400138242 /* Products */,
 				94ED0EB37619D4546796EAD3 /* Pods */,
@@ -199,7 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DB3A81D245C6E720006478B /* app in Resources */,
+				4DD1DB96282CA4DB0062B1FF /* modules in Resources */,
 				4DA0F36B245C641500138242 /* LaunchScreen.storyboard in Resources */,
 				4DA0F368245C641500138242 /* Assets.xcassets in Resources */,
 				4DA0F366245C641400138242 /* Main.storyboard in Resources */,

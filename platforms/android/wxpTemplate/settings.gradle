@@ -1,2 +1,4 @@
-include ':app'
-rootProject.name='wxpTemplate'
+include ':plus'
+include ':app',':sdk',
+        ':photoplus'
+rootProject.name = "weexplus"

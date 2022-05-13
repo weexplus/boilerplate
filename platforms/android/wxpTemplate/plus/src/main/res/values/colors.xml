@@ -1,0 +1,29 @@
+<resources>
+
+    <color name="crop__button_bar">#f3f3f3</color>
+    <color name="crop__button_text">#666666</color>
+    <color name="crop__selector_pressed">#1a000000</color>
+    <color name="crop__selector_focused">#77000000</color>
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_bg_topbar">#f5f5f5</color>
+    <color name="pickerview_topbar_title">#000000</color>
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
+    <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
+    <!--覆盖颜色-->
+    <color name="bgColor_overlay">#000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="viewfinder_laser">#ff09BB07</color>
+    <color name="viewfinder_border">#ff09BB07</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffbd21</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="theme">#1296db</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="text1">#000000</color>
+    <color name="text2">#333333</color>
+    <color name="split_line">#11112233</color>
+ 
+</resources>

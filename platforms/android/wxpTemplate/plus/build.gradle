@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.2"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+
+    implementation 'com.alibaba:fastjson:1.1.46.android'
+    implementation 'com.taobao.android:weex_inspector:0.20.3.0-beta'
+    implementation 'com.taobao.android.weex_inspection:urlconnection_interceptor:1.0.0'
+    implementation 'com.taobao.android.weex_inspection:protocol:1.1.4.1'
+    api project(path: ':sdk')
+
+
+    api 'com.github.bumptech.glide:glide:4.2.0'
+    implementation 'com.squareup.okhttp:okhttp:2.3.0'
+    implementation 'com.squareup.okhttp:okhttp-ws:2.3.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.lzy.net:okgo:3.0.4'
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.wang.avi:library:1.0.0'
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.alibaba.android:bindingx-core:1.0.2'
+    implementation 'com.alibaba.android:bindingx_weex_plugin:1.0.2'
+
+}

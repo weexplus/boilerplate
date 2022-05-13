@@ -1,0 +1,837 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+#import "WXBridgeManager.h"
+#import "WXBridgeContext.h"
+#import "WXLog.h"
+#import "WXAssert.h"
+#import "WXBridgeMethod.h"
+#import "WXCallJSMethod.h"
+#import "WXSDKManager.h"
+#import "WXSDKInstance_private.h"
+#import "WXServiceFactory.h"
+#import "WXResourceRequest.h"
+#import "WXResourceLoader.h"
+#import "WXDebugTool.h"
+#import "WXMonitor.h"
+#import "WXSDKInstance_performance.h"
+#import "WXThreadSafeMutableArray.h"
+#import "WXComponentManager.h"
+#import "WXCoreBridge.h"
+#import "WXHandlerFactory.h"
+#import "WXUtility.h"
+#import "WXExceptionUtils.h"
+#import "WXSDKEngine.h"
+#import "WXConfigCenterProtocol.h"
+#import "WXReactorProtocol.h"
+
+@interface WXBridgeManager ()
+
+@property (nonatomic, assign) BOOL stopRunning;
+@property (nonatomic, assign) BOOL supportMultiJSThread;
+@property (nonatomic, strong) WXBridgeContext *bridgeCtx;
+@property (nonatomic, strong) WXBridgeContext *backupBridgeCtx;
+@property (nonatomic, strong) WXThreadSafeMutableArray *instanceIdStack;
+@property (nonatomic, strong) NSMutableArray* jsTaskQueue;
+@property (nonatomic, strong) NSTimer *timer;
+
+@end
+
+static NSThread *WXBridgeThread;
+static NSThread *WXBackupBridgeThread;
+
+@implementation WXBridgeManager
+
++ (instancetype)sharedManager
+{
+    static id _sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _bridgeCtx = [[WXBridgeContext alloc] init];
+        _supportMultiJSThread = NO;
+        _jsTaskQueue = [NSMutableArray array];
+        _timer = nil;
+        _lastMethodInfo = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
+
+- (WXBridgeContext *)bridgeCtx {
+    if (_bridgeCtx) {
+        return _bridgeCtx;
+    }
+    _bridgeCtx = [[WXBridgeContext alloc] init];
+    return _bridgeCtx;
+}
+
+- (WXBridgeContext *)backupBridgeCtx {
+    if (_backupBridgeCtx) {
+        return _backupBridgeCtx;
+    }
+    if (!_supportMultiJSThread) {
+        _backupBridgeCtx = _bridgeCtx;
+    } else {
+        _backupBridgeCtx = [[WXBridgeContext alloc] init];
+    }
+    return _backupBridgeCtx;
+}
+
+- (WXSDKInstance *)topInstance
+{
+    return _bridgeCtx.topInstance;
+}
+
+- (void)unload
+{
+    _bridgeCtx = nil;
+    _backupBridgeCtx = nil;
+}
+
+#pragma mark Thread Management
+
+- (void)_runLoopThread
+{
+    [[NSRunLoop currentRunLoop] addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+    
+    while (!_stopRunning) {
+        @autoreleasepool {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
+    }
+}
+
++ (NSThread *)jsThread
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        WXBridgeThread = [[NSThread alloc] initWithTarget:[[self class]sharedManager] selector:@selector(_runLoopThread) object:nil];
+        [WXBridgeThread setName:WX_BRIDGE_THREAD_NAME];
+        [WXBridgeThread setQualityOfService:[[NSThread mainThread] qualityOfService]];
+        [WXBridgeThread start];
+    });
+
+    return WXBridgeThread;
+}
+
++ (NSThread *)backupJsThread
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        WXBackupBridgeThread = [[NSThread alloc] initWithTarget:[[self class]sharedManager] selector:@selector(_runLoopThread) object:nil];
+        [WXBackupBridgeThread setName:WX_BACKUP_BRIDGE_THREAD_NAME];
+        [WXBackupBridgeThread setQualityOfService:[[NSThread mainThread] qualityOfService]];
+        [WXBackupBridgeThread start];
+    });
+
+    return WXBackupBridgeThread;
+}
+
+void WXPerformBlockOnBridgeThread(void (^block)(void))
+{
+    [WXBridgeManager _performBlockOnBridgeThread:block];
+}
+
+void WXPerformBlockOnBridgeThreadForInstance(void (^block)(void), NSString* instance) {
+    [WXBridgeManager _performBlockOnBridgeThread:block instance:instance];
+}
+
++ (void)_performBlockOnBridgeThread:(void (^)(void))block
+{
+    if ([NSThread currentThread] == [self jsThread]) {
+        block();
+    } else {
+        [self performSelector:@selector(_performBlockOnBridgeThread:)
+                         onThread:[self jsThread]
+                       withObject:[block copy]
+                    waitUntilDone:NO];
+    }
+}
+
++ (void)_performBlockOnBridgeThread:(void (^)(void))block instance:(NSString*)instanceId
+{
+    if (![WXSDKManager bridgeMgr].supportMultiJSThread) {
+        if ([NSThread currentThread] == [self jsThread]) {
+            block();
+        } else {
+            [self performSelector:@selector(_performBlockOnBridgeThread:instance:)
+                         onThread:[self jsThread]
+                       withObject:[block copy]
+                    waitUntilDone:NO];
+       }
+        return;
+    }
+
+    if ([NSThread currentThread] == [self jsThread] || [NSThread currentThread] == [self backupJsThread]) {
+        block();
+    } else {
+        WXSDKInstance* instance = nil;
+        if (instanceId) {
+            instance = [WXSDKManager instanceForID:instanceId];
+        }
+
+        if (instance && instance.useBackupJsThread) {
+            [self performSelector:@selector(_performBlockOnBridgeThread:instance:)
+                         onThread:[self backupJsThread]
+                       withObject:[block copy]
+                    waitUntilDone:NO];
+        } else {
+            [self performSelector:@selector(_performBlockOnBridgeThread:instance:)
+                         onThread:[self jsThread]
+                       withObject:[block copy]
+                    waitUntilDone:NO];
+        }
+    }
+}
+
+void WXPerformBlockOnBackupBridgeThread(void (^block)(void))
+{
+    [WXBridgeManager _performBlockOnBackupBridgeThread:block putInTaskQueue:YES];
+}
+
++ (void)_performBlockOnBackupBridgeThread:(void (^)(void))block putInTaskQueue:(BOOL)putInTaskQueue
+{
+    if (![WXSDKManager bridgeMgr].supportMultiJSThread) {
+        return;
+    }
+    if (putInTaskQueue) {
+        [WXBridgeManager _performBlockOnBackupBridgeThread:^{
+            [[WXSDKManager bridgeMgr].jsTaskQueue addObject:block];
+        } putInTaskQueue:NO];
+    } else {
+        if ([NSThread currentThread] == [self backupJsThread]) {
+            block();
+        } else {
+            [self performSelector:@selector(_performBlockOnBridgeThread:instance:)
+                         onThread:[self backupJsThread]
+                       withObject:[block copy]
+                    waitUntilDone:NO];
+        }
+    }
+}
+
+void WXPerformBlockSyncOnBridgeThread(void (^block) (void)) {
+    [WXBridgeManager _performBlockSyncOnBridgeThread:block];
+}
+
+void WXPerformBlockSyncOnBridgeThreadForInstance(void (^block) (void), NSString* instance)
+{
+    [WXBridgeManager _performBlockSyncOnBridgeThread:block instance:instance];
+}
+
++ (void)_performBlockSyncOnBridgeThread:(void (^)(void))block
+{
+    if ([NSThread currentThread] == [self jsThread]) {
+        block();
+    } else {
+        [self performSelector:@selector(_performBlockSyncOnBridgeThread:)
+                     onThread:[self jsThread]
+                   withObject:[block copy]
+                waitUntilDone:YES];
+    }
+}
+
++ (void)_performBlockSyncOnBridgeThread:(void (^)(void))block instance:(NSString*)instanceId
+{
+    if (![WXSDKManager bridgeMgr].supportMultiJSThread) {
+        if ([NSThread currentThread] == [self jsThread]) {
+            block();
+        } else {
+            [self performSelector:@selector(_performBlockSyncOnBridgeThread:instance:)
+                         onThread:[self jsThread]
+                       withObject:[block copy]
+                    waitUntilDone:YES];
+        }
+        return;
+    }
+
+    if ([NSThread currentThread] == [self jsThread] || [NSThread currentThread] == [self backupJsThread]) {
+        block();
+    } else {
+        WXSDKInstance* instance = nil;
+        if (instanceId) {
+            instance = [WXSDKManager instanceForID:instanceId];
+        }
+
+        if (instance && instance.useBackupJsThread) {
+            [self performSelector:@selector(_performBlockSyncOnBridgeThread:instance:)
+                         onThread:[self backupJsThread]
+                       withObject:[block copy]
+                    waitUntilDone:YES];
+        } else {
+            [self performSelector:@selector(_performBlockSyncOnBridgeThread:instance:)
+                         onThread:[self jsThread]
+                       withObject:[block copy]
+                    waitUntilDone:YES];
+        }
+    }
+}
+
+#pragma mark JSBridge Management
+- (void)createInstanceForJS:(NSString *)instance
+              template:(NSString *)temp
+               options:(NSDictionary *)options
+                  data:(id)data {
+    if (!instance || !temp) return;
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *newOptions = [options mutableCopy] ?: [NSMutableDictionary new];
+    newOptions[@"EXEC_JS"] = @(YES);
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXSDKInstance* sdkInstance = [WXSDKManager instanceForID:instance];
+        if (!sdkInstance) {
+            return;
+        }
+        WXBridgeContext* context = sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context createInstance:instance
+                                  template:temp
+                                   options:newOptions
+                                      data:data];
+    }, instance);
+}
+
+- (void)createInstance:(NSString *)instance
+              template:(NSString *)temp
+               options:(NSDictionary *)options
+                  data:(id)data
+{
+    if (!instance || !temp) return;
+    if (![self.instanceIdStack containsObject:instance]) {
+        if ([options[@"RENDER_IN_ORDER"] boolValue]) {
+            [self.instanceIdStack addObject:instance];
+        } else {
+            [self.instanceIdStack insertObject:instance atIndex:0];
+        }
+    }
+    //third team impl...
+    WXSDKInstance* sdkInstance = [WXSDKManager instanceForID:instance];
+    if (sdkInstance) {
+        sdkInstance.apmInstance.isStartRender = YES;
+    }
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXBridgeContext* context = sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context createInstance:instance
+                                  template:temp
+                                   options:options
+                                      data:data];
+    }, instance);
+}
+
+- (void)createInstance:(NSString *)instance
+              contents:(NSData *)contents
+               options:(NSDictionary *)options
+                  data:(id)data
+{
+    if (!instance || !contents) return;
+    if (![self.instanceIdStack containsObject:instance]) {
+        if ([options[@"RENDER_IN_ORDER"] boolValue]) {
+            [self.instanceIdStack addObject:instance];
+        } else {
+            [self.instanceIdStack insertObject:instance atIndex:0];
+        }
+    }
+    //third team impl...
+    WXSDKInstance* sdkInstance = [WXSDKManager instanceForID:instance];
+    if (sdkInstance) {
+        sdkInstance.apmInstance.isStartRender = YES;
+    }
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXBridgeContext* context = sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context createInstance:instance
+                                  contents:contents
+                                   options:options
+                                      data:data];
+    }, instance);
+}
+
+- (void)executeJSTaskQueue {
+    __weak typeof(self) weakSelf = self;
+    [WXBridgeManager _performBlockOnBackupBridgeThread:^{
+        if (weakSelf.jsTaskQueue.count == 0 || !weakSelf.supportMultiJSThread) {
+            return;
+        }
+        for (id task in weakSelf.jsTaskQueue) {
+            void (^block)(void) = task;
+            block();
+        }
+        [weakSelf.jsTaskQueue removeAllObjects];
+    } putInTaskQueue:NO];
+}
+
+- (WXThreadSafeMutableArray *)instanceIdStack
+{
+    if (_instanceIdStack) return _instanceIdStack;
+    
+    _instanceIdStack = [[WXThreadSafeMutableArray alloc] init];
+    
+    return _instanceIdStack;
+}
+
+- (NSArray *)getInstanceIdStack;
+{
+    return [self.instanceIdStack copy];
+}
+
+- (void)destroyInstance:(NSString *)instance
+{
+    if (!instance) return;
+    [self.instanceIdStack removeObject:instance];
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXSDKInstance* sdkInstance = [WXSDKManager instanceForID:instance];
+        WXBridgeContext* context = sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context destroyInstance:instance];
+    }, instance);
+}
+
+- (void)forceGarbageCollection
+{
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx forceGarbageCollection];
+    });
+}
+
+- (void)refreshInstance:(NSString *)instance
+                   data:(NSDictionary *)data
+{
+    if (!instance) return;
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXSDKInstance* sdkInstance = [WXSDKManager instanceForID:instance];
+        WXBridgeContext* context = sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context refreshInstance:instance data:data];
+    }, instance);
+}
+
+- (void)updateState:(NSString *)instance data:(id)data
+{
+    if (!instance) return;
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXSDKInstance* sdkInstance = [WXSDKManager instanceForID:instance];
+        WXBridgeContext* context = sdkInstance && sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context updateState:instance data:data];
+    }, instance);
+}
+
+- (void)executeJsFramework:(NSString *)script
+{
+    if (!script) return;
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx executeJsFramework:script];
+    });
+    WXPerformBlockOnBackupBridgeThread(^{
+        [weakSelf.backupBridgeCtx executeJsFramework:script];
+    });
+}
+
+- (void)callJsMethod:(WXCallJSMethod *)method
+{
+    if (!method || !method.instance) return;
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXBridgeContext* context = method.instance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context executeJsMethod:method];
+    }, method.instance.instanceId);
+}
+
+- (JSValue *)callJSMethodWithResult:(WXCallJSMethod *)method
+{
+    if (!method || !method.instance) return nil;
+    __weak typeof(self) weakSelf = self;
+    __block JSValue *value;
+    WXPerformBlockSyncOnBridgeThreadForInstance(^(){
+        WXBridgeContext* context = method.instance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        value = [context excuteJSMethodWithResult:method];
+    }, method.instance.instanceId);
+    return value;
+}
+
+- (void)DownloadJS:(NSString*)instance url:(NSURL *)scriptUrl completion:(void (^)(NSString *script))complection;
+{
+    if (!scriptUrl || ![scriptUrl.absoluteString length]) {
+        if (complection) {
+            complection(nil);
+        }
+        return;
+    }
+    WXResourceRequest* request = [WXResourceRequest requestWithURL:scriptUrl];
+    WXResourceLoader* jsLoader = [[WXResourceLoader alloc] initWithRequest:request];
+    jsLoader.onFinished = ^(WXResourceResponse *response, NSData *data) {
+        NSString* jsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if (complection) {
+            complection(jsString);
+        }
+    };
+    jsLoader.onFailed = ^(NSError *loadError) {
+        if (complection) {
+            complection(nil);
+        }
+
+        WXSDKInstance *sdkInstance = [WXSDKManager instanceForID:instance];
+        WXComponentManager *manager = sdkInstance.componentManager;
+        if (manager.isValid) {
+            NSString *errorMessage = [NSString stringWithFormat:@"Request to %@ occurs an error:%@, info:%@", request.URL, loadError.localizedDescription, loadError.userInfo];
+            WXSDKErrCode errorCode = WX_KEY_EXCEPTION_JS_DOWNLOAD;
+            NSError *error = [NSError errorWithDomain:WX_ERROR_DOMAIN code:errorCode userInfo:@{NSLocalizedDescriptionKey:(errorMessage?:@"No message")}];
+            WXPerformBlockOnComponentThread(^{
+                [manager renderFailed:error];
+            });
+        }
+    };
+
+   [jsLoader start];
+}
+
+- (void)registerService:(NSString *)name withServiceUrl:(NSURL *)serviceScriptUrl withOptions:(NSDictionary *)options completion:(void(^)(BOOL result))completion
+{
+    if (!name || !serviceScriptUrl || !options) {
+        if (completion) {
+            completion(NO);
+        }
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    WXResourceRequest *request = [WXResourceRequest requestWithURL:serviceScriptUrl resourceType:WXResourceTypeServiceBundle referrer:@"" cachePolicy:NSURLRequestUseProtocolCachePolicy];
+    WXResourceLoader *serviceBundleLoader = [[WXResourceLoader alloc] initWithRequest:request];;
+    serviceBundleLoader.onFinished = ^(WXResourceResponse *response, NSData *data) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        NSString *jsServiceString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [strongSelf registerService:name withService:jsServiceString withOptions:options completion:completion];
+    };
+    
+    serviceBundleLoader.onFailed = ^(NSError *loadError) {
+        WXLogError(@"No script URL found");
+        if (completion) {
+            completion(NO);
+        }
+    };
+    
+    [serviceBundleLoader start];
+}
+
+- (void)registerService:(NSString *)name withService:(NSString *)serviceScript withOptions:(NSDictionary *)options completion:(void(^)(BOOL result))completion
+{
+    WXLogInfo(@"Register service: %@, options: %@", name, options);
+    
+    if (!name || !serviceScript || !options) {
+        if (completion) {
+            completion(NO);
+        }
+        return;
+    }
+    
+    NSString *script = [WXServiceFactory registerServiceScript:name withRawScript:serviceScript withOptions:options];
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        // save it when execute
+        [WXDebugTool cacheJsService:name withScript:serviceScript withOptions:options];
+        [weakSelf.bridgeCtx executeJsService:script withName:name];
+        if (completion) {
+            completion(YES);
+        }
+    });
+    WXPerformBlockOnBackupBridgeThread(^(){
+        [weakSelf.backupBridgeCtx executeJsService:script withName:name];
+    });
+}
+
+- (void)unregisterService:(NSString *)name
+{
+    if (!name) return;
+    
+    WXLogInfo(@"Unregister service: %@", name);
+    NSString *script = [WXServiceFactory unregisterServiceScript:name];
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        // save it when execute
+        [WXDebugTool removeCacheJsService:name];
+        [weakSelf.bridgeCtx executeJsService:script withName:name];
+    });
+    WXPerformBlockOnBackupBridgeThread(^(){
+        [weakSelf.backupBridgeCtx executeJsService:script withName:name];
+    });
+}
+
+- (void)registerModules:(NSDictionary *)modules
+{
+    if (!modules) return;
+    
+    modules = [WXUtility convertContainerToImmutable:modules];
+    WXLogInfo(@"Register modules: %@", modules);
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx registerModules:modules];
+    });
+    WXPerformBlockOnBackupBridgeThread(^(){
+        [weakSelf.backupBridgeCtx registerModules:modules];
+    });
+}
+
+- (void)registerComponents:(NSArray *)components
+{
+    if (!components) return;
+    
+    components = [WXUtility convertContainerToImmutable:components];
+    WXLogInfo(@"Register components: %@", components);
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx registerComponents:components];
+    });
+    WXPerformBlockOnBackupBridgeThread(^(){
+        [weakSelf.backupBridgeCtx registerComponents:components];
+    });
+}
+
+- (void)fireEvent:(NSString *)instanceId ref:(NSString *)ref type:(NSString *)type params:(NSDictionary *)params
+{
+    [self fireEvent:instanceId ref:ref type:type params:params domChanges:nil];
+}
+
+- (void)fireEvent:(NSString *)instanceId ref:(NSString *)ref type:(NSString *)type params:(NSDictionary *)params domChanges:(NSDictionary *)domChanges
+{
+    [self fireEvent:instanceId ref:ref type:type params:params domChanges:domChanges handlerArguments:nil];
+}
+
+- (void)fireEvent:(NSString *)instanceId ref:(NSString *)ref type:(NSString *)type params:(NSDictionary *)params domChanges:(NSDictionary *)domChanges handlerArguments:(NSArray *)handlerArguments
+{
+    WXSDKInstance *instance = [WXSDKManager instanceForID:instanceId];
+    if (instance.renderPlugin.isSupportFireEvent) {
+        WXPerformBlockOnComponentThread(^{
+            [instance.renderPlugin fireEvent:instanceId ref:ref event:type args:params?:@{} domChanges:domChanges?:@{}];
+        });
+        return;
+    }
+
+    if (!type || !ref) {
+        WXLogError(@"Event type and component ref should not be nil");
+        return;
+    }
+    if (instance.useReactor) {
+        id<WXReactorProtocol> reactorHandler = [WXHandlerFactory handlerForProtocol:NSProtocolFromString(@"WXReactorProtocol")];
+        if (reactorHandler) {
+            [reactorHandler fireEvent:instanceId ref:ref event:type args:params?:@{} domChanges:domChanges?:@{}];
+        } else {
+            WXLogError(@"There is no reactor handler");
+        }
+        return;
+    }
+
+    NSArray *args = @[ref, type, params?:@{}, domChanges?:@{}];
+    if (handlerArguments) {
+        NSMutableArray *newArgs = [args mutableCopy];
+        [newArgs addObject:@{@"params":handlerArguments}];
+        args = newArgs;
+    }
+    
+    if(instance && !instance.isJSCreateFinish)
+    {
+        instance.performance.fsCallEventNum++;
+    }
+    if (instance && !instance.apmInstance.isFSEnd) {
+        [instance.apmInstance updateFSDiffStats:KEY_PAGE_STATS_FS_CALL_EVENT_NUM withDiffValue:1];
+    }
+    
+    WXCallJSMethod *method = [[WXCallJSMethod alloc] initWithModuleName:nil methodName:@"fireEvent" arguments:[WXUtility convertContainerToImmutable:args] instance:instance];
+    [self callJsMethod:method];
+}
+
+- (void)callComponentHook:(NSString*)instanceId componentId:(NSString*)componentId type:(NSString*)type hook:(NSString*)hookPhase args:(NSArray*)args competion:(void (^)(JSValue * value))completion
+{
+     __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^{
+        if (!type || !instanceId || !hookPhase) {
+            WXLogError(@"type and instance id and hookPhase should not be nil");
+            return;
+        }
+        NSArray *newArgs = @[componentId, type, hookPhase, args?:@[]];
+        
+        WXCallJSMethod * method = [[WXCallJSMethod alloc] initWithModuleName:nil methodName:@"componentHook" arguments:newArgs instance:[WXSDKManager instanceForID:instanceId]];
+        WXSDKInstance* sdkInstance =  [WXSDKManager instanceForID:instanceId];
+        WXBridgeContext* context = sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context callJSMethod:@"callJS" args:@[instanceId, @[method.callJSTask]] onContext:nil completion:completion];
+    }, instanceId);
+}
+
+- (JSValue *)fireEventWithResult:(NSString *)instanceId ref:(NSString *)ref type:(NSString *)type params:(NSDictionary *)params domChanges:(NSDictionary *)domChanges
+{
+    if (!type || !ref) {
+        WXLogError(@"Event type and component ref should not be nil");
+        return nil;
+    }
+    NSArray *args = @[ref, type, params?:@{}, domChanges?:@{}];
+    WXSDKInstance *instance = [WXSDKManager instanceForID:instanceId];
+    WXCallJSMethod *method = [[WXCallJSMethod alloc] initWithModuleName:nil methodName:@"fireEvent" arguments:args instance:instance];
+    return [self callJSMethodWithResult:method];
+}
+
+- (void)callBack:(NSString *)instanceId funcId:(NSString *)funcId params:(id)params keepAlive:(BOOL)keepAlive
+{
+    NSArray *args = nil;
+    if (keepAlive) {
+        args = @[[funcId copy], params? [params copy]:@"\"{}\"", @true];
+    } else {
+        args = @[[funcId copy], params? [params copy]:@"\"{}\""];
+    }
+    WXSDKInstance *instance = [WXSDKManager instanceForID:instanceId];
+    if (instance.renderPlugin.isSupportInvokeJSCallBack) {
+        id strongArgs = params ? [params copy]:@"\"{}\"";
+        WXPerformBlockOnComponentThread(^{
+            [instance.renderPlugin invokeCallBack:instanceId function:funcId args:strongArgs keepAlive:keepAlive];
+        });
+    }
+    else if (instance.useReactor) {
+        id<WXReactorProtocol> reactorHandler = [WXHandlerFactory handlerForProtocol:NSProtocolFromString(@"WXReactorProtocol")];
+        if (reactorHandler) {
+            [reactorHandler invokeCallBack:instanceId function:funcId args:args];
+        } else {
+            WXLogError(@"There is no reactor handler");
+        }
+    } else {
+        WXCallJSMethod *method = [[WXCallJSMethod alloc] initWithModuleName:@"jsBridge" methodName:@"callback" arguments:args instance:instance];
+        [self callJsMethod:method];
+    }
+}
+
+- (void)callBack:(NSString *)instanceId funcId:(NSString *)funcId params:(id)params
+{
+    [self callBack:instanceId funcId:funcId params:params keepAlive:NO];
+}
+
+- (void)connectToDevToolWithUrl:(NSURL *)url {
+    WXPerformBlockOnBridgeThread(^(){
+        [self.bridgeCtx connectToDevToolWithUrl:url];
+    });
+}
+
+- (void)connectToWebSocket:(NSURL *)url
+{
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx connectToWebSocket:url];
+    });
+}
+
+- (void)logToWebSocket:(NSString *)flag message:(NSString *)message
+{
+    if (!message) return;
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx logToWebSocket:flag message:message];
+    });
+}
+
+- (void)resetEnvironment
+{
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx resetEnvironment];
+    });
+    WXPerformBlockOnBackupBridgeThread(^(){
+        [weakSelf.backupBridgeCtx resetEnvironment];
+    });
+}
+
+- (void)callJSMethod:(NSString *)method args:(NSArray *)args completion:(void (^)(JSValue *))completion {
+    if (!method) return;
+
+    __weak typeof(self) weakSelf = self;
+    NSString* instanceId = args[0];
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXSDKInstance* sdkInstance = [WXSDKManager instanceForID:instanceId];
+        WXBridgeContext* context = sdkInstance && sdkInstance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context callJSMethod:method args:args onContext:nil completion:completion];
+    }, instanceId);
+}
+
+- (void)callJSMethod:(NSString *)method args:(NSArray *)args {
+    [self callJSMethod:method args:args completion:nil];
+}
+
+#pragma mark JS Thread Check
+- (void)checkJSThread {
+    if (!_timer) {
+        id configCenter = [WXSDKEngine handlerForProtocol:@protocol(WXConfigCenterProtocol)];
+        if ([configCenter respondsToSelector:@selector(configForKey:defaultValue:isDefault:)]) {
+            BOOL enableCheckJSThread = [[configCenter configForKey:@"iOS_weex_ext_config.enable_check_js_thread" defaultValue:@(YES) isDefault:NULL] boolValue];
+            if (enableCheckJSThread) {
+                _timer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(_postTaskToBridgeThread) userInfo:nil repeats:YES];
+            }
+        }
+    }
+}
+
+- (void)_postTaskToBridgeThread {
+    __block BOOL taskFinished = NO;
+    WXPerformBlockOnBridgeThread(^{
+        taskFinished = YES;
+    });
+
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (!weakSelf) {
+            return;
+        }
+        if (!taskFinished) {
+            WXSDKErrCode errorCode = WX_KEY_EXCEPTION_JS_THREAD_BLOCK;
+            WXSDKInstance* instance = weakSelf.topInstance;
+            if (!instance) {
+                return;
+            }
+            NSString *instanceId = instance.instanceId;
+            [WXExceptionUtils commitCriticalExceptionRT:instanceId errCode:[NSString stringWithFormat:@"%d", errorCode] function:@"" exception:@"JS Thread is block" extParams:weakSelf.lastMethodInfo];
+        }
+    });
+}
+
+#pragma mark - Deprecated
+
+- (void)executeJsMethod:(WXCallJSMethod *)method
+{
+    if (!method || !method.instance) return;
+    
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThreadForInstance(^(){
+        WXBridgeContext* context = method.instance.useBackupJsThread ? weakSelf.backupBridgeCtx :  weakSelf.bridgeCtx;
+        [context executeJsMethod:method];
+    }, method.instance.instanceId);
+}
+
+@end

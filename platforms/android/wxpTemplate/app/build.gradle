@@ -1,20 +1,25 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 def keystorePropertiesFile = rootProject.file("gradle.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
-    compileSdkVersion 26
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
     defaultConfig {
-        applicationId keystoreProperties['appId']
+        applicationId "com.farwolf.weexplus"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        ndk{
-            abiFilters "armeabi-v7a","armeabi","x86"
-        }
         multiDexEnabled true
+        ndk{
+            abiFilters "armeabi-v7a","armeabi","arm64-v8a"
+        }
     }
     signingConfigs {
         releaseConfig {
@@ -30,18 +35,23 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            shrinkResources false //去掉不用资源
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.releaseConfig
-        }
-        debug {
-
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.farwolf.weexplus:weexplus:1.0.7'
+
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation project(path: ':plus')
+    implementation project(path: ':photoplus')
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="下载中"
+        android:textSize="17sp"
+        android:textColor="#72CEF9"
+        android:id="@+id/title"
+        />
+
+    <View
+        android:layout_width="match_parent"
+         android:background="#72CEF9"
+        android:layout_marginTop="20dp"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        >
+        <ProgressBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+             style="?android:attr/progressBarStyleHorizontal"
+            android:layout_weight="1"
+            android:id="@+id/progress"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:layout_marginRight="10dp"
+            android:id="@+id/percent"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

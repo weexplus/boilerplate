@@ -1,0 +1,16 @@
+.gradle
+.idea
+build
+captures
+local.properties
+target
+bin
+.classpath
+.project
+.externalNativeBuild
+.settings
+gen
+*.iml
+project.properties
+.externalNativeBuild
+proguard-rules-legacy.pro

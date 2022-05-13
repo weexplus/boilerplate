@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'com.novoda.bintray-release'
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+//publish {
+//    repoName = 'farwolf'
+//    //userOrg这个是用户的组织，我们创建的是个人帐号，也就是我们的用户名（后续会介绍，必须一致，改成你自己的bintrayName）
+//    userOrg = 'farwolf2010'
+//    //我们的组id 类比'com.github.bumptech.glide:glide:3.7.0' 中的 com.github.bumptech.glide 这一部分
+//    groupId = 'com.farwolf.weexplus'
+//    //原型id 类比'com.github.bumptech.glide:glide:3.7.0' 中的glide这一部分
+//    artifactId = 'photoplus'
+//    //版本号 类比'com.github.bumptech.glide:glide:3.7.0' 中的3.7.0 这一部分。很重要，我们在更新aar文件的时候需要提升版本号，类似更新apk
+//    publishVersion = '1.0.12'
+//    //描述，大致介绍自己的类库
+//    desc = 'weexplus基础库'
+//
+//}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':plus')
+//    api "com.farwolf.weexplus:farwolf.weex:1.0.10"
+    api "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation "org.reactivestreams:reactive-streams:1.0.2"
+
+}
