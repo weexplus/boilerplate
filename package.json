@@ -21,7 +21,7 @@
     "js-md5": "^0.7.3",
     "phantom-limb": "0.0.1",
     "replace": "^1.0.0",
-    "vue": "2.5.13",
+    "vue": "3.0.0",
     "vue-navigation": "^1.1.4",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "2.5.13",
